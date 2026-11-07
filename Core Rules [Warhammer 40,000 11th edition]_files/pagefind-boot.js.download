@@ -1,0 +1,351 @@
+/* Collated datasheets: do not keep 30+ MB behind display:none while filters run.
+ * Loaded from the edition root, so an already-generated datasheets.html picks this up. */
+(function () {
+	if (typeof location === "undefined") {
+		return;
+	}
+	var path = (location.pathname || "").toLowerCase();
+	if (path.indexOf("datasheets.html") < 0 && path.indexOf("warscrolls.html") < 0) {
+		return;
+	}
+	var st = document.createElement("style");
+	st.id = "wah-collated-paint";
+	st.textContent =
+		"html.wah-boot #wahMainContent{display:block!important}";
+	(document.head || document.documentElement).appendChild(st);
+	document.addEventListener(
+		"click",
+		function (e) {
+			var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+			if (!a) {
+				return;
+			}
+			var href = a.getAttribute("href") || "";
+			var hash = "";
+			if (href.charAt(0) === "#") {
+				hash = href.slice(1);
+			} else {
+				var hi = href.indexOf("#");
+				if (hi < 0) {
+					return;
+				}
+				var pth = href.slice(0, hi);
+				if (pth && pth !== location.pathname && href.indexOf(location.pathname) < 0) {
+					return;
+				}
+				hash = href.slice(hi + 1);
+			}
+			if (!hash) {
+				return;
+			}
+			try {
+				hash = decodeURIComponent(hash);
+			} catch (err) {}
+			var t = document.getElementById(hash) || document.getElementsByName(hash)[0];
+			if (!t) {
+				return;
+			}
+			t.style.contentVisibility = "visible";
+			t.scrollIntoView();
+		},
+		true
+	);
+	function patchTooltips() {
+		var $ = window.jQuery;
+		if (!$ || !$.fn) {
+			return;
+		}
+		if ($.expr && $.expr[":"] && !$.expr[":"]._wahCollatedHidden) {
+			var origHidden = $.expr[":"].hidden;
+			$.expr[":"].hidden = function (elem) {
+				if (elem && typeof elem.className === "string" && (" " + elem.className + " ").indexOf(" tooltip ") !== -1) {
+					return false;
+				}
+				return origHidden.apply(this, arguments);
+			};
+			$.expr[":"]._wahCollatedHidden = true;
+		}
+		if ($.fn.tooltipster && !$.fn.tooltipster._wahLazy) {
+			var origTs = $.fn.tooltipster;
+			var wrapped = function () {
+				if (this.length > 30) {
+					return this;
+				}
+				return origTs.apply(this, arguments);
+			};
+			wrapped._wahLazy = true;
+			$.fn.tooltipster = wrapped;
+			$(document).on("mouseover.wahTTLive", ".tooltip:not(.tooltipstered)", function () {
+				var el = $(this);
+				if (
+					el.hasClass("tooltipstered") ||
+					el.hasClass("tooltipk") ||
+					el.hasClass("tooltipLogin") ||
+					el.is("#btnContents, #btnArmyList, .tooltipContents, .tooltipArmyList")
+				) {
+					return;
+				}
+				origTs.call(el, {
+					plugins: ["sideTip", "scrollableTip"],
+					contentCloning: true,
+					maxWidth: 600,
+					trigger: "custom",
+					triggerOpen: { mouseenter: true, tap: true },
+					triggerClose: { click: true, mouseleave: true, tap: true },
+					functionBefore: function (instance, helper) {
+						if (typeof window.wahRefreshTooltipFromHost === "function") {
+							window.wahRefreshTooltipFromHost(instance, helper.origin);
+						}
+					}
+				});
+				el.tooltipster("open");
+			});
+			$(document).on("click.wahTTLiveK", ".tooltipk:not(.tooltipstered)", function () {
+				var el = $(this);
+				if (el.hasClass("tooltipstered")) {
+					return;
+				}
+				origTs.call(el, {
+					plugins: ["sideTip", "scrollableTip"],
+					contentCloning: true,
+					maxWidth: 600,
+					trigger: "custom",
+					triggerOpen: { click: true, tap: true },
+					triggerClose: { click: true, tap: true },
+					functionBefore: function (instance, helper) {
+						if (typeof window.wahRefreshTooltipFromHost === "function") {
+							window.wahRefreshTooltipFromHost(instance, helper.origin);
+						}
+					}
+				});
+				el.tooltipster("open");
+			});
+		}
+		if (typeof window.UpdateTooltipster === "function" && !window.UpdateTooltipster._wahLazy) {
+			window.UpdateTooltipster = function () {
+				if (typeof window.syncTooltipContent === "function") {
+					window.syncTooltipContent();
+				}
+			};
+			window.UpdateTooltipster._wahLazy = true;
+		}
+	}
+	patchTooltips();
+	if (window.jQuery) {
+		window.jQuery(function () {
+			patchTooltips();
+			setTimeout(patchTooltips, 0);
+		});
+	}
+})();
+
+/* Wahapedia Pagefind boot: waiting state + auto-restore while the index is rebuilt.
+ * Loaded from the edition root (survives pagefind/ replacement). */
+(function () {
+	if (typeof window === "undefined" || window.wahPagefindBoot) {
+		return;
+	}
+
+	var MSG = "Updating search index…";
+	var POLL_MS = 4000;
+	var hostsSel =
+		"#pagefind-search-desktop, #pagefind-search-mobile, #pagefind-search-page, .pagefind-search-host";
+	var timer = null;
+	var loadingScript = false;
+
+	function ensureCss() {
+		if (document.getElementById("wah-pf-boot-css")) {
+			return;
+		}
+		var st = document.createElement("style");
+		st.id = "wah-pf-boot-css";
+		st.textContent =
+			".wah-pf-wait{display:flex;align-items:center;min-height:36px;padding:0 2px;" +
+			"font-size:13px;line-height:1.3;opacity:0.55;pointer-events:none;" +
+			"animation:wahPfWaitPulse 2.8s ease-in-out infinite}" +
+			"@keyframes wahPfWaitPulse{0%,100%{opacity:0.35}50%{opacity:0.85}}";
+		document.head.appendChild(st);
+	}
+
+	function hostNodes() {
+		return Array.prototype.slice.call(document.querySelectorAll(hostsSel));
+	}
+
+	function showWaiting() {
+		ensureCss();
+		hostNodes().forEach(function (host) {
+			if (!host || host.querySelector(".pagefind-ui__search-input")) {
+				return;
+			}
+			var el = host.querySelector(".wah-pf-wait");
+			if (!el) {
+				el = document.createElement("div");
+				el.className = "wah-pf-wait";
+				el.setAttribute("role", "status");
+				el.textContent = MSG;
+				host.appendChild(el);
+			}
+		});
+	}
+
+	function hideWaiting() {
+		hostNodes().forEach(function (host) {
+			var el = host && host.querySelector(".wah-pf-wait");
+			if (el && el.parentNode) {
+				el.parentNode.removeChild(el);
+			}
+		});
+	}
+
+	function scriptUrl(bundlePath) {
+		var base = String(bundlePath || "").replace(/\/?$/, "/");
+		return base + "pagefind-ui.js";
+	}
+
+	function statusUrl(bundlePath) {
+		var base = String(bundlePath || "").replace(/\/?$/, "/");
+		// edition/pagefind/ → edition/pagefind-status.json
+		return base.replace(/pagefind\/?$/, "") + "pagefind-status.json";
+	}
+
+	function loadScript(url) {
+		return new Promise(function (resolve, reject) {
+			var s = document.createElement("script");
+			s.src = url + (url.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now();
+			s.async = true;
+			s.onload = function () {
+				resolve(true);
+			};
+			s.onerror = function () {
+				if (s.parentNode) {
+					s.parentNode.removeChild(s);
+				}
+				reject(new Error("load failed"));
+			};
+			document.head.appendChild(s);
+		});
+	}
+
+	function probeReady(bundlePath) {
+		var ui = scriptUrl(bundlePath);
+		return fetch(ui, { method: "HEAD", cache: "no-store" })
+			.then(function (r) {
+				return r.ok;
+			})
+			.catch(function () {
+				return false;
+			});
+	}
+
+	function resetHosts() {
+		hostNodes().forEach(function (host) {
+			if (host) {
+				host.removeAttribute("data-wah-pf");
+			}
+		});
+		window._wahPagefindPage = null;
+	}
+
+	function stopWatch() {
+		if (timer) {
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+
+	function watch(bundlePath, onReady) {
+		if (timer) {
+			return;
+		}
+		showWaiting();
+		var tick = function () {
+			if (loadingScript) {
+				return;
+			}
+			probeReady(bundlePath).then(function (ok) {
+				if (!ok) {
+					showWaiting();
+					return;
+				}
+				if (typeof PagefindUI !== "undefined" && PagefindUI.__wahWrapped) {
+					stopWatch();
+					hideWaiting();
+					resetHosts();
+					if (typeof onReady === "function") {
+						onReady();
+					}
+					return;
+				}
+				loadingScript = true;
+				loadScript(scriptUrl(bundlePath))
+					.then(function () {
+						loadingScript = false;
+						if (typeof PagefindUI === "undefined") {
+							showWaiting();
+							return;
+						}
+						stopWatch();
+						hideWaiting();
+						resetHosts();
+						if (typeof onReady === "function") {
+							onReady();
+						}
+					})
+					.catch(function () {
+						loadingScript = false;
+						showWaiting();
+					});
+			});
+		};
+		tick();
+		timer = setInterval(tick, POLL_MS);
+	}
+
+	window.wahPagefindBoot = {
+		showWaiting: showWaiting,
+		hideWaiting: hideWaiting,
+		watch: watch,
+		stopWatch: stopWatch,
+		statusUrl: statusUrl,
+		MSG: MSG,
+	};
+
+	function guessBundlePath() {
+		var nodes = document.querySelectorAll('script[src*="pagefind"], link[href*="pagefind-ui.css"]');
+		for (var i = 0; i < nodes.length; i++) {
+			var src = nodes[i].getAttribute("src") || nodes[i].getAttribute("href") || "";
+			var m = src.match(/^(.*\/pagefind\/)/);
+			if (m) {
+				return m[1];
+			}
+		}
+		var path = (location.pathname || "/").replace(/\/+$/, "");
+		var parts = path.split("/");
+		if (parts.length >= 2 && parts[1]) {
+			return "/" + parts[1] + "/pagefind/";
+		}
+		return "/pagefind/";
+	}
+
+	function autoStart() {
+		if (typeof PagefindUI !== "undefined") {
+			return;
+		}
+		if (!document.querySelector(hostsSel)) {
+			return;
+		}
+		watch(guessBundlePath(), function () {
+			if (typeof window.wahInitPagefind === "function") {
+				window.wahInitPagefind();
+			}
+		});
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", function () {
+			setTimeout(autoStart, 50);
+		});
+	} else {
+		setTimeout(autoStart, 50);
+	}
+})();
