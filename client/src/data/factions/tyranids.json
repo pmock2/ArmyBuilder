@@ -1,0 +1,6948 @@
+{
+  "faction": {
+    "id": "tyranids",
+    "catalogueId": "b984-7317-81cc-20f",
+    "name": "Tyranids",
+    "rawName": "Xenos - Tyranids",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "file": "Tyranids.json"
+  },
+  "detachments": [
+    {
+      "id": "c2fe-bf23-bf24-aa43",
+      "name": "Invasion Fleet",
+      "dpCost": 3,
+      "tags": [
+        "TAKE AND HOLD",
+        "3DP DETACHMENT",
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Hyper Adaptions",
+          "description": "At the start of the first battle round, select one of the following Hyper-adaptations to be active for **^^Tyranids^^** units from your army until the end of the battle:\n\n**SWARMING INSTINCTS**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Infantry^^** or **^^Swarm^^** unit, that attack has the **[SUSTAINED HITS 1]** ability.\n\n**HYPER-AGGRESSION**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Monster^^** or **^^Vehicle^^** unit, that attack has the **[LETHAL HITS]** ability.\n\n**HIVE PREDATORS**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Character^^** unit, if a Critical Hit is scored, that attack has the **[PRECISION]** ability."
+        }
+      ]
+    },
+    {
+      "id": "bba-65f6-a4d1-66ae",
+      "name": "Assimilation Swarm",
+      "dpCost": 2,
+      "tags": [
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Feed the Swarm",
+          "description": "In your Command phase, each **HARVESTER** unit from your army can Regenerate one friendly **TYRANIDS** unit that is within 6\" of it. A unit can only be regenerated once per phase. Each time a unit regenerates, do one of the following:\n▪ One model in that unit regains up to D3+1 lost wounds.\n▪ One destroyed **INFANTRY** model (excluding **CHARACTERS**) is returned to that unit with its full wounds remaining. If that unit is an **ENDLESS MULTITUDE** unit, up to 3 destroyed models are returned instead."
+        }
+      ]
+    },
+    {
+      "id": "850e-bee1-4845-820d",
+      "name": "Crusher Stampede",
+      "dpCost": 2,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Enraged Behemoths",
+          "description": "Each time a **TYRANIDS MONSTER** model from your army makes an attack, add 1 to the Hit roll if that model’s unit is below its Starting Strength, and add 1 to the Wound roll as well if that model’s unit is Below Half‑strength. In addition, while a **TYRANIDS MONSTER** unit from your army (excluding Battle‑shocked units) is at its Starting Strength, add 2 to the Objective Control characteristic of models in that unit."
+        }
+      ]
+    },
+    {
+      "id": "16ff-a068-4c31-285a",
+      "name": "Synaptic Nexus",
+      "dpCost": 2,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Synaptic Imperitives",
+          "description": "At the start of the battle round, you can select one of the Synaptic Imperatives shown below. Until the end of the battle round, that Synaptic Imperative is active for your army and while a **^^Tyranids^^** unit from your army is within Synapse Range of your army, it will benefit from it. Each Synaptic Imperative can only be selected once per battle.\n\n- **Synaptic Augmentation:** While this unit is within Synapse Range of your army, models in this unit have a 5+ invulnerable save.\n- **Surging Vitality:** While this unit is within Synapse Range of your army, add 1 to Advance and Charge rolls made for this unit.\n- **Goaded to Slaughter:** While this unit is within Synapse Range of your army, each time a model in this unit makes a melee attack, add 1 to the Hit roll"
+        }
+      ]
+    },
+    {
+      "id": "4cd9-313f-cd9b-c85a",
+      "name": "Unending Swarm",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Insurmountable Odds",
+          "description": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model from a friendly **ENDLESS MULTITUDE** unit was **destroyed** as a result of those attacks, that friendly unit can make a **surge move** of up to D6\"."
+        }
+      ]
+    },
+    {
+      "id": "f773-f91c-2999-c7e1",
+      "name": "Vanguard Onslaught",
+      "dpCost": 2,
+      "tags": [
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Vanguard Prime",
+          "description": "**^^Deathleaper^^** loses Hunter Organism rule and can be your **^^Warlord^^**."
+        },
+        {
+          "name": "Questing Tendrils",
+          "description": "**^^Tyranids^^** units with this ability are eligible to charge in a turn in which they Fell Back. Vanguard Invader units with this ability are eligible to charge in a turn in which they Advanced."
+        }
+      ]
+    },
+    {
+      "id": "7416-b7cc-fdbf-5bf0",
+      "name": "Warrior Bioform Onslaught",
+      "dpCost": 1,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Leader-beasts",
+          "description": "- Friendly **TYRANID WARRIORS WITH RANGED BIO‑WEAPONS/TYRANID WARRIORS WITH MELEE BIO‑WEAPONS** units have:\n-- **TYRANID WARRIORS**.\n-- **BATTLELINE**.\n- **TYRANID WARRIORS/TYRANID PRIME WITH LASH WHIP/WINGED TYRANID PRIME** models from your army have 5+ **InSv**."
+        }
+      ]
+    },
+    {
+      "id": "731f-1524-da02-945b",
+      "name": "Subterranean Assault",
+      "dpCost": 3,
+      "tags": [
+        "DISRUPTION",
+        "3DP DETACHMENT",
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Keywords",
+          "description": "**^^Mawloc^^** and **^^Trygon^^** units from your army have the Burrower keyword.\n\nIn the Muster Armies step, you can select up to 2 **^^Trygon^^** models from your army. The selected units gain the **^^Character^^** keyword.\n\n**Designer’s Note:** *This means that the selected models can be given Enhancements and one of them can be selected as your **^^Warlord^^**.*"
+        },
+        {
+          "name": "Surprise Assault",
+          "description": "Each time a **^^Tyranids^^** model from your army makes an attack, re-roll a Hit roll of 1.\n\nEach time a **^^Burrower^^** unit from your army is set up on the battlefield from Reserves, place a circular 40mm Tunnel Marker anywhere on the battlefield within 1\" of that unit and more than 3\" horizontally away from all enemy units.\n\nIn the Reinforcements step of your Movement phase, when you set up a unit on the battlefield from Reserves, you can set that unit up wholly within 9\" of one of your Tunnel Markers and more than 6\" horizontally away from any enemy units.\n\nIf an enemy model (excluding **^^Aircraft^^**) ends any kind of move within 3\" of one of your Tunnel Markers, that Tunnel Marker is removed from the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "cf1b-eb18-c465-27a5",
+      "name": "Ambush Predators",
+      "dpCost": 1,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Mindhunger",
+          "description": "- Friendly **DEATHLEAPER/LICTOR/NEUROLICTOR** units have Deep Strike.\n- Friendly **LICTOR/NEUROLICTOR** units’ attacks that target a **CHARACTER** unit can re‑roll **hit rolls** of 1."
+        }
+      ]
+    },
+    {
+      "id": "8d8b-a030-83d5-f4e6",
+      "name": "Talons of the Norn Queen",
+      "dpCost": 1,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Higher Imperatives",
+          "description": "Friendly **NORN EMISSARY/NORN ASSIMILATOR** units have the **Protean Purpose** ability."
+        }
+      ]
+    },
+    {
+      "id": "0a79-5968-68f0-56b5",
+      "name": "Host of Ascension",
+      "dpCost": 3,
+      "tags": [
+        "HOSTS",
+        "TAKE AND HOLD",
+        "3DP DETACHMENT",
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "A Perfect Ambush",
+          "description": "Each time a GENESTEALER CULTS unit from your army is set up on the battlefield as Reinforcements, until the end of your next Fight phase, weapons equipped by models in that unit have the [SUSTAINED HITS 1] and [IGNORES COVER] abilities"
+        }
+      ]
+    },
+    {
+      "id": "536a-b3ea-7597-81bb",
+      "name": "Xenocreed Congregation",
+      "dpCost": 2,
+      "tags": [
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Unquestioning Fanaticism",
+          "description": "For each **ACOLYTE HYBRIDS**, **HYBRID METAMORPHS**, and **NEOPHYTE HYBRID** unit from your army, while one or more **CHARACTER** models are leading that unit, you can re-roll Advance and Charge rolls made for it. If that **CHARACTER** model is a **MAGUS**, **PRIMUS**, or **ACOLYTE ICONWARD**, that model has the Feel No Pain 3+ ability while leading that unit."
+        }
+      ]
+    },
+    {
+      "id": "ff11-0fa4-2950-380e",
+      "name": "Biosanctic Broodsurge",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Hypermorphic Fury",
+          "description": "Add 1 to Charge rolls made for **^^Aberrants^^**, **^^Biophagus^^** and **^^Purestrain Genestealers^^** units from your army. In addition, each time such a unit is selected to fight, if it made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by the models in that unit."
+        }
+      ]
+    },
+    {
+      "id": "59e2-4fec-2b00-b1e8",
+      "name": "Outlander Claw",
+      "dpCost": 2,
+      "tags": [
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Rapid Takeover",
+          "description": "While a **GENESTEALER CULTS MOUNTED/VEHICLE** model from your army is not Battle‑shocked, add 1 to its Objective Control characteristic. In addition, at the end of your Command phase, if one or more **ATALAN JACKALS** units from your army are within range of an **objective** you control, that **objective** remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase."
+        }
+      ]
+    },
+    {
+      "id": "0a59-1d64-257c-04fb",
+      "name": "Brood Brother Auxilia",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Brood Brothers",
+          "description": "You can include **^^Astra Militarum^^** units in your army, even though they do not have the **^^Genestealer Cult^^** Faction keyword. The combined points cost of such units you can include in your army is:\n\n- Incursion: Up to 500 pts\n- Strike Force: Up to 1000 pts\n- Onslaught: Up to 1500 pts\n\nA **GENESTEALER CULTS** model must be your **WARLORD**, and **ASTRA MILITARUM** models from your army lose the Voice of Command ability if they have it. You cannot include units with any of the following keywords in your army using this rule: **AIRCRAFT**; **COMMISSAR**; **EPIC HERO**; **MILITARUM TEMPESTUS**; **OGRYN**; **RATLING**; **TECH‑PRIEST ENGINSEER**; **MINISTORUM PRIEST**."
+        },
+        {
+          "name": "Integrated Tactics",
+          "description": "Each time an **^^Astra Militarum^^** unit from your army is selected to shoot, you can select one enemy unit within 18\" of and visible to that unit. If you do, until the end of the phase, models in that **^^Astra Militarum^^** unit can only target that enemy unit (and only if it is an eligible target) and that enemy unit is caught in overlapping fire. While an enemy unit is caught in overlapping fire, each time a **^^Genestealer Cult^^** model from your army targets that enemy unit with a ranged attack, add 1 to the Hit roll."
+        }
+      ]
+    },
+    {
+      "id": "cb2f-554e-1162-75d5",
+      "name": "Final Day",
+      "dpCost": 2,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "The Star Children's Blessings",
+          "description": "You can include TYRANIDS VANGUARD INVADER units (excluding AIRCRAFT, BROODLORD and GENESTEALERS units) in your army. The combined points cost of such units depends on your battle size:\n\n■ Incursion: Up to 500 pts\n■ Strike Force: Up to 1000 pts\n■ Onslaught: Up to 1500 pts\n\nNo TYRANIDS models from your army can be your WARLORD."
+        },
+        {
+          "name": "Psionic Parasitism",
+          "description": "At the end of your Movement phase, for each TYRANIDS SYNAPSE unit from your army, you can select one friendly GENESTEALER CULTS unit (excluding PURESTRAIN GENESTEALER and PATRIARCH units) and one friendly TYRANIDS unit each within 9\" of and visible to that SYNAPSE unit. If you do, that GENESTEALER CULTS unit from your army suffers D3+1 mortal wounds and one model in the selected TYRANIDS unit regains up to that many lost wounds and until the start of your next Movement phase, each time a model in the selected TYRANIDS unit makes an attack, add 1 to the Hit roll.\n\nTYRANIDS units from your army have the following ability:\n\nCatalyst (Aura): While an enemy unit is within 6\" of this unit, each time a friendly GENESTEALER CULTS unit makes an attack that targets that enemy unit, add 1 to the Hit roll."
+        }
+      ]
+    },
+    {
+      "id": "fc4a-2c42-6f33-0347",
+      "name": "Heroes of the Uprising",
+      "dpCost": 1,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Killer Reputation",
+          "description": "Friendly **KELERMORPH/LOCUS/REDUCTUS SABOTEUR/SANCTUS** models have **KILLER**.\n- Friendly **KILLER** models’ attacks can:\n-- Re‑roll **hit rolls** of 1.\n-- Re‑roll **wound rolls** of 1."
+        }
+      ]
+    },
+    {
+      "id": "7acd-d099-e648-0838",
+      "name": "Purestrain Broodswarm",
+      "dpCost": 1,
+      "tags": [
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [
+          "PURESTRAIN"
+        ],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Enemy Within",
+          "description": "At the end of your opponent’s Fight phase, friendly **unengaged PURESTRAIN GENESTEALER** units can be placed in **strategic reserves**.\n\nThis **detachment** has the **PURESTRAIN** tag and cannot be taken with another **PURESTRAIN detachment**."
+        }
+      ]
+    },
+    {
+      "id": "deed-cbf8-1ac5-0294",
+      "name": "Xenocult Masses",
+      "dpCost": 1,
+      "tags": [
+        "HOSTS",
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [
+          "HOSTS"
+        ],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Hordes of the Faithful",
+          "description": "In your Command phase, if a friendly **NEOPHYTE HYBRIDS** unit is within a **terrain area**, that unit **heals** 3 wounds.\n\nThis **detachment** has the **HOSTS** tag and cannot be taken with another **HOSTS detachment**."
+        }
+      ]
+    }
+  ],
+  "enhancements": [],
+  "units": [
+    {
+      "id": "fa68-fcb9-38c-cd0f",
+      "name": "Winged Hive Tyrant",
+      "primaryCategory": "Character",
+      "categories": [
+        "Monster",
+        "Character",
+        "Psyker",
+        "Winged Hive Tyrant",
+        "Faction: Tyranids",
+        "Great Devourer",
+        "Fly",
+        "Synapse",
+        "Vanguard Invader",
+        "Hive Tyrant"
+      ],
+      "keywords": [
+        "Monster",
+        "Character",
+        "Psyker",
+        "Winged Hive Tyrant",
+        "Great Devourer",
+        "Fly",
+        "Synapse",
+        "Vanguard Invader",
+        "Hive Tyrant"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 185,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 185
+        }
+      ],
+      "stats": {
+        "name": "Winged Hive Tyrant",
+        "M": "12\"",
+        "T": "9",
+        "Sv": "2+",
+        "InSv": "4+",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "60mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Tyrant talons",
+          "range": "Melee",
+          "A": "5",
+          "WS": "2+",
+          "S": "7",
+          "AP": "-2",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Paroxysm (Psychic)",
+          "description": "At the start of the Fight phase, you can select one enemy unit within 12\" of and visible to this model and roll one D6: on a 1, this Psyker suffers D3 mortal wounds; on a 2+, until the end of the phase, subtract 1 from the Attacks characteristic of weapons equipped by models in that unit."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "3e96-8098-3401-77af",
+      "name": "Hive Tyrant",
+      "primaryCategory": "Character",
+      "categories": [
+        "Monster",
+        "Character",
+        "Psyker",
+        "Hive Tyrant",
+        "Faction: Tyranids",
+        "Great Devourer",
+        "Synapse",
+        "Leader"
+      ],
+      "keywords": [
+        "Monster",
+        "Character",
+        "Psyker",
+        "Hive Tyrant",
+        "Great Devourer",
+        "Synapse",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Tyrant Guard"
+      ],
+      "baseCost": 195,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 195
+        }
+      ],
+      "stats": {
+        "name": "Hive Tyrant",
+        "M": "8\"",
+        "T": "10",
+        "Sv": "2+",
+        "InSv": "4+",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "60mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Onslaught (Aura, Psychic)",
+          "description": "While a friendly **TYRANIDS** unit is within 6\" of this model, ranged weapons equipped by models in that unit have the **[ASSAULT]** and **[LETHAL HITS]** abilities."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit:\n- **^^Tyrant Guard^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "cd6d-87b3-125a-f372",
+      "name": "Tervigon",
+      "primaryCategory": "Character",
+      "categories": [
+        "Character",
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Tervigon",
+        "Faction: Tyranids",
+        "Synapse"
+      ],
+      "keywords": [
+        "Character",
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Tervigon",
+        "Synapse"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 150,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 150
+        }
+      ],
+      "stats": {
+        "name": "Tervigon",
+        "M": "8\"",
+        "T": "11",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "5",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Spawn Termagants",
+          "description": "In your Command phase, you can select one friendly TERMAGANTS unit within 6\" of this model and return up to D3+3 destroyed TERMAGANT models to that unit. A TERMAGANTS unit cannot be selected for this ability more than once per phase."
+        },
+        {
+          "name": "Brood Progenitor (Aura, Psychic)",
+          "description": "While a friendly TERMAGANTS unit is within 6\" of this model, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "13f7-1a3-eff-7393",
+      "name": "The Swarmlord",
+      "primaryCategory": "Epic Hero",
+      "categories": [
+        "Epic Hero",
+        "Character",
+        "Faction: Tyranids",
+        "Monster",
+        "The Swarmlord",
+        "Great Devourer",
+        "Synapse",
+        "Psyker",
+        "Hive Tyrant",
+        "Leader"
+      ],
+      "keywords": [
+        "Epic Hero",
+        "Character",
+        "Monster",
+        "The Swarmlord",
+        "Great Devourer",
+        "Synapse",
+        "Psyker",
+        "Hive Tyrant",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": true,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Tyrant Guard"
+      ],
+      "baseCost": 210,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 210
+        }
+      ],
+      "stats": {
+        "name": "The Swarmlord",
+        "M": "8\"",
+        "T": "10",
+        "Sv": "2+",
+        "InSv": "4+",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "60mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Synaptic Pulse",
+          "range": "18\"",
+          "A": "D6+3",
+          "BS": "N/A",
+          "S": "5",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Psychic, Torrent"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Bone Sabres",
+          "range": "Melee",
+          "A": "8",
+          "WS": "2+",
+          "S": "9",
+          "AP": "-2",
+          "D": "3",
+          "keywords": "Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Hive Commander",
+          "description": "At the start of your Command phase, if this model is on the battlefield, you gain 1CP"
+        },
+        {
+          "name": "Malign Presence (Aura)",
+          "description": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a **stratagem**, you can use this ability. If you do increase the CP cost of that use of that **stratagem** by 1CP."
+        },
+        {
+          "name": "Domination of the Hive Mind (Aura)",
+          "description": "While a friendly **TYRANIDS** unit is within 9\" of this model, that unit is within your army’s Synapse Range."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit:\n- **^^Tyrant Guard^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "b86a-b38a-380c-483d",
+      "name": "Broodlord",
+      "primaryCategory": "Character",
+      "categories": [
+        "Infantry",
+        "Character",
+        "Psyker",
+        "Broodlord",
+        "Faction: Tyranids",
+        "Great Devourer",
+        "Vanguard Invader",
+        "Synapse",
+        "Leader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Character",
+        "Psyker",
+        "Broodlord",
+        "Great Devourer",
+        "Vanguard Invader",
+        "Synapse",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Genestealers"
+      ],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        }
+      ],
+      "stats": {
+        "name": "Broodlord",
+        "M": "8\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "4+",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "75x42mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Broodlord Claws and Talons",
+          "range": "Melee",
+          "A": "5",
+          "WS": "2+",
+          "S": "6",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Devastating Wounds, Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Vicious Insight",
+          "description": "While this model is leading a unit, weapons equipped by models in that unit have the **[DEVASTATING WOUNDS]** ability."
+        },
+        {
+          "name": "Hypnotic Gaze (Psychic)",
+          "description": "At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit:\n- **^^Genestealers^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "9184-9ab6-9238-f558",
+      "name": "Old One Eye",
+      "primaryCategory": "Epic Hero",
+      "categories": [
+        "Epic Hero",
+        "Monster",
+        "Character",
+        "Great Devourer",
+        "Old One Eye",
+        "Faction: Tyranids",
+        "Leader"
+      ],
+      "keywords": [
+        "Epic Hero",
+        "Monster",
+        "Character",
+        "Great Devourer",
+        "Old One Eye",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": true,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Carnifexes"
+      ],
+      "baseCost": 130,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 130
+        }
+      ],
+      "stats": {
+        "name": "Old One Eye",
+        "M": "8\"",
+        "T": "9",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "9",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "105x70mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "➤ Old One Eye’s claws and talons - Strike",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "14",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": ""
+        },
+        {
+          "name": "➤ Old One Eye’s claws and talons - Sweep",
+          "range": "Melee",
+          "A": "12",
+          "WS": "3+",
+          "S": "6",
+          "AP": "-1",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Alpha Leader",
+          "description": "While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll."
+        },
+        {
+          "name": "Unstoppable Monster",
+          "description": "At the start of each player’s Command phase, this model regains up to D3 lost wounds."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit:\n- **^^Carnifexes^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "a125-b6fb-2945-56a",
+      "name": "Tyranid Warriors with Ranged Bio-Weapons",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Tyranid Warriors with Ranged Bio-weapons",
+        "Faction: Tyranids",
+        "Synapse",
+        "Great Devourer"
+      ],
+      "keywords": [
+        "Infantry",
+        "Tyranid Warriors with Ranged Bio-weapons",
+        "Synapse",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 60,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 60
+        },
+        {
+          "models": 3,
+          "cost": 120
+        }
+      ],
+      "stats": {
+        "name": "Tyranid Prime",
+        "M": "6\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "7+",
+        "OC": "2",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Adaptable Predators",
+          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Fell Back."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "5815-871c-9260-287a",
+      "name": "Tyranid Warriors with Melee Bio-Weapons",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Faction: Tyranids",
+        "Tyranid Warriors with Melee Bio-weapons",
+        "Great Devourer",
+        "Synapse",
+        "Tyranid Warriors"
+      ],
+      "keywords": [
+        "Infantry",
+        "Tyranid Warriors with Melee Bio-weapons",
+        "Great Devourer",
+        "Synapse",
+        "Tyranid Warriors"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 75,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 75
+        },
+        {
+          "models": 3,
+          "cost": 150
+        }
+      ],
+      "stats": {
+        "name": "Tyranid Prime",
+        "M": "6\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "7+",
+        "OC": "2",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Adaptive Instincts (Once per turn, per unit)",
+          "description": "In the Fight phase, when this unit is **selected to fight** or when an enemy unit targets this unit, you can select one of the following:\n▪ This unit’s melee attacks have +1 **S**.\n▪ <ins>Or</ins>: This unit has +1 **T**."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "359c-db2c-681a-8d62",
+      "name": "Termagants",
+      "primaryCategory": "Battleline",
+      "categories": [
+        "Battleline",
+        "Infantry",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Endless Multitude",
+        "Termagants"
+      ],
+      "keywords": [
+        "Battleline",
+        "Infantry",
+        "Great Devourer",
+        "Endless Multitude",
+        "Termagants"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": true,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 55,
+      "minModels": 10,
+      "maxModels": 20,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 55
+        },
+        {
+          "models": 10,
+          "cost": 110
+        }
+      ],
+      "stats": {
+        "name": "Termagants",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Fleshborer",
+          "range": "18\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Assault"
+        },
+        {
+          "name": "Termagant spinefist",
+          "range": "12\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "3",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Assault, Pistol, Twin-linked"
+        },
+        {
+          "name": "Termagant devourer",
+          "range": "18\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "4",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        },
+        {
+          "name": "Shardlauncher",
+          "range": "18\"",
+          "A": "D3",
+          "BS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Blast, Heavy"
+        },
+        {
+          "name": "Spike rifle",
+          "range": "24\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "4",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Heavy"
+        },
+        {
+          "name": "Strangleweb",
+          "range": "18\"",
+          "A": "D6",
+          "BS": "N/A",
+          "S": "2",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Assault, Devastating Wounds, Torrent"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Skulking Horrors",
+          "description": "In your opponent's Movement phase, if an enemy unit ends a move within 8\" of this unit, if this unit is not within Engagement Range of one or more enemy units, this unit can make a Normal move of up to D6\"."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "f15b-9f9c-9bf0-8160",
+      "name": "Hormagaunts",
+      "primaryCategory": "Battleline",
+      "categories": [
+        "Infantry",
+        "Battleline",
+        "Great Devourer",
+        "Endless Multitude",
+        "Hormagaunts",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Infantry",
+        "Battleline",
+        "Great Devourer",
+        "Endless Multitude",
+        "Hormagaunts"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": true,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 70,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 70
+        },
+        {
+          "models": 11,
+          "cost": 120
+        }
+      ],
+      "stats": {
+        "name": "Hormagaunts",
+        "M": "10\"",
+        "T": "3",
+        "Sv": "5+",
+        "InSv": "",
+        "W": "1",
+        "Ld": "8+",
+        "OC": "2",
+        "Base": "28.5mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Hormagaunt talons",
+          "range": "Melee",
+          "A": "3",
+          "WS": "4+",
+          "S": "3",
+          "AP": "-1",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bounding Leap",
+          "description": "This unit is eligible to declare a charge in a turn in which it Advanced."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "9ce8-7a63-15c3-0347",
+      "name": "Gargoyles",
+      "primaryCategory": "Battleline",
+      "categories": [
+        "Battleline",
+        "Infantry",
+        "Fly",
+        "Gargoyles",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Endless Multitude",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Battleline",
+        "Infantry",
+        "Fly",
+        "Gargoyles",
+        "Great Devourer",
+        "Endless Multitude",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": true,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 75,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 75
+        },
+        {
+          "models": 10,
+          "cost": 150
+        }
+      ],
+      "stats": {
+        "name": "Gargoyles",
+        "M": "12\"",
+        "T": "3",
+        "Sv": "6+",
+        "InSv": "",
+        "W": "1",
+        "Ld": "8+",
+        "OC": "2",
+        "Base": "32mm Flying"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Fleshborer",
+          "range": "18\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Assault"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Blinding venom",
+          "range": "Melee",
+          "A": "1",
+          "WS": "4+",
+          "S": "3",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Winged Swarm",
+          "description": "In your Shooting phase, after this unit has shot, if it is not within Engagement Range of any enemy units, it can make a Normal move of up to 6\". If it does, until the end of the turn, this unit is not eligible to declare a charge."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "30d0-521c-1d45-f57b",
+      "name": "Toxicrene",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Toxicrene",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Toxicrene"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 120,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 120
+        }
+      ],
+      "stats": {
+        "name": "Toxicrene",
+        "M": "8\"",
+        "T": "11",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Massive toxic lashes",
+          "range": "Melee",
+          "A": "12",
+          "WS": "3+",
+          "S": "6",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Anti-infantry 2+"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Grasping Tendrils",
+          "description": "Each time an enemy unit (excluding Titanic units) within Engagement Range of one or more units from your army with this ability is selected to Fall Back, you can roll one D6: on a 3+, that enemy unit must Remain Stationary instead."
+        },
+        {
+          "name": "Hypertoxic Miasma (Aura)",
+          "description": "At the end of your Movement phase, roll one D6 for each enemy unit within 6\" of this model: on a 2-3, that unit suffers 1 mortal wound; on a 4-5, that unit suffers D3 mortal wounds; on a 6, that unit suffers D6 mortal wounds."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "1645-5407-92c8-1441",
+      "name": "Tyrant Guard",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Tyrant Guard",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Tyrant Guard"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        },
+        {
+          "models": 3,
+          "cost": 170
+        }
+      ],
+      "stats": {
+        "name": "Tyrant Guard",
+        "M": "6\"",
+        "T": "8",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "4",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Scything talons and rending claws",
+          "range": "Melee",
+          "A": "5",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": ""
+        },
+        {
+          "name": "Bone cleaver, lash whip and rending claws",
+          "range": "Melee",
+          "A": "3",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        },
+        {
+          "name": "Crushing claws and rending claws",
+          "range": "Melee",
+          "A": "2",
+          "WS": "4+",
+          "S": "8",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Guardian Organism",
+          "description": "While a **^^Character^^** model is leading this unit, that **^^Character^^** has the Feel No Pain 5+ ability."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "507d-5ea4-6ef1-bf66",
+      "name": "Winged Tyranid Prime",
+      "primaryCategory": "Character",
+      "categories": [
+        "Winged Tyranid Prime",
+        "Character",
+        "Infantry",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Synapse",
+        "Vanguard Invader",
+        "Leader"
+      ],
+      "keywords": [
+        "Winged Tyranid Prime",
+        "Character",
+        "Infantry",
+        "Fly",
+        "Great Devourer",
+        "Synapse",
+        "Vanguard Invader",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Gargoyles",
+        "- **^^Tyranid Warriors With Melee Bio-Weapons",
+        "- **^^Tyranid Warriors With Ranged Bio-Weapons"
+      ],
+      "baseCost": 65,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 65
+        }
+      ],
+      "stats": {
+        "name": "Winged Tyranid Prime",
+        "M": "12\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Prime talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "6",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Alpha Warrior",
+          "description": "While this model is leading a unit, weapons equipped by models in that unit have the **[SUSTAINED HITS 1]** ability."
+        },
+        {
+          "name": "Death Blow",
+          "description": "If this model is destroyed by a melee attack, if it has not fought this phase, roll one D6: on a 4+, do not remove it from play. The destroyed model can fight after the attacking model’s unit has finished making its attacks, and is then removed from play."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following units:\n- **^^Gargoyles^^**\n- **^^Tyranid Warriors With Melee Bio-Weapons^^**\n- **^^Tyranid Warriors With Ranged Bio-Weapons^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "da44-72c9-7a27-48aa",
+      "name": "Lictor",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Lictor",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Lictor",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 60,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 60
+        }
+      ],
+      "stats": {
+        "name": "Lictor",
+        "M": "8\"",
+        "T": "6",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Pheromone Trail",
+          "description": "Once per battle round, you can target one model with this ability with the Rapid Ingress Stratagem for 0CP."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "bc36-92fe-ecc6-58b3",
+      "name": "Deathleaper",
+      "primaryCategory": "Epic Hero",
+      "categories": [
+        "Epic Hero",
+        "Faction: Tyranids",
+        "Character",
+        "Great Devourer",
+        "Deathleaper",
+        "Infantry",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Epic Hero",
+        "Character",
+        "Great Devourer",
+        "Deathleaper",
+        "Infantry",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": true,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        }
+      ],
+      "stats": {
+        "name": "Deathleaper",
+        "M": "8\"",
+        "T": "6",
+        "Sv": "3+",
+        "InSv": "4+",
+        "W": "7",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "60mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Fear of the Unseen (Aura)",
+          "description": "While an enemy unit is within 6\" of this model, worsen the Leadership characteristic of models in that unit by 1. In addition, in the Battle-shock step of your opponent’s Command phase, if such an enemy unit is below its Starting Strength, it must take a Battle-shock test."
+        },
+        {
+          "name": "Hunter Organism",
+          "description": "This model cannot be your Warlord"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "2c2d-a2f9-61a8-a6c6",
+      "name": "Maleceptor",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Maleceptor",
+        "Faction: Tyranids",
+        "Synapse"
+      ],
+      "keywords": [
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Maleceptor",
+        "Synapse"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 180,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 180
+        }
+      ],
+      "stats": {
+        "name": "Maleceptor",
+        "M": "8\"",
+        "T": "11",
+        "Sv": "3+",
+        "InSv": "4+",
+        "W": "14",
+        "Ld": "7+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "➤ Massive scything talons - strike",
+          "range": "Melee",
+          "A": "3",
+          "WS": "3+",
+          "S": "9",
+          "AP": "-2",
+          "D": "D6+1",
+          "keywords": ""
+        },
+        {
+          "name": "➤ Massive scything talons - sweep",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "7",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Encephalic Diffusion (Aura, Psychic)",
+          "description": "While an enemy unit is within 6\" of this model, each time a model in that unit makes an attack, subtract 1 from the Hit roll, and, if that enemy unit is Below Half-strength, subtract 1 from the Wound roll as well."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "1ae1-ed96-5100-eda5",
+      "name": "Neurotyrant",
+      "primaryCategory": "Character",
+      "categories": [
+        "Character",
+        "Monster",
+        "Fly",
+        "Psyker",
+        "Great Devourer",
+        "Neurotyrant",
+        "Faction: Tyranids",
+        "Synapse",
+        "Leader"
+      ],
+      "keywords": [
+        "Character",
+        "Monster",
+        "Fly",
+        "Psyker",
+        "Great Devourer",
+        "Neurotyrant",
+        "Synapse",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Neurogaunts",
+        "- **^^Tyrant Guard",
+        "- **^^Zoanthropes"
+      ],
+      "baseCost": 120,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 120
+        }
+      ],
+      "stats": {
+        "name": "Neurotyrant",
+        "M": "6\"",
+        "T": "8",
+        "Sv": "4+",
+        "InSv": "4+",
+        "W": "9",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Neurotyrant claws and lashes",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Node Lash (Psychic)",
+          "description": "While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll. If the target is Battle-shocked, add 1 to the Wound roll as well."
+        },
+        {
+          "name": "Psychic Terror (Psychic)",
+          "description": "If one or more Neurotyrants from your army are on the battlefield when you unleash the Shadow in the Warp, subtract 1 from the Battle-shock test each enemy unit on the battlefield must take as a result."
+        },
+        {
+          "name": "Neuroloids",
+          "description": "In your Command phase, you can select up to two friendly **^^Tyranids^^** units within 18\" of this model’s unit. Until the start of your next Command phase, the selected units are always considered to be within Synapse Range of your army.\n\n**Designer's Note:** *Place a Neuroloid token next to each select unit to remind you.*"
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following units:\n- **^^Neurogaunts^^**\n- **^^Tyrant Guard^^**\n- **^^Zoanthropes^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "d2c6-bd0b-3205-3319",
+      "name": "Pyrovores",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Pyrovores",
+        "Infantry",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Harvester"
+      ],
+      "keywords": [
+        "Pyrovores",
+        "Infantry",
+        "Great Devourer",
+        "Harvester"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 40,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 40
+        },
+        {
+          "models": 2,
+          "cost": 70
+        },
+        {
+          "models": 3,
+          "cost": 100
+        }
+      ],
+      "stats": {
+        "name": "Pyrovores",
+        "M": "5\"",
+        "T": "6",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "5",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "80mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Flamespurt",
+          "range": "12\"",
+          "A": "D6+1",
+          "BS": "N/A",
+          "S": "6",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Ignores Cover, Torrent, Twin-linked"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Burning Spray",
+          "description": "In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, that enemy unit cannot have the Benefit of Cover."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "6249-358f-27d7-ef60",
+      "name": "Haruspex",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Haruspex",
+        "Faction: Tyranids",
+        "Harvester"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Haruspex",
+        "Harvester"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 125,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 125
+        }
+      ],
+      "stats": {
+        "name": "Haruspex",
+        "M": "8\"",
+        "T": "11",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Grasping tongue",
+          "range": "12\"",
+          "A": "1",
+          "BS": "3+",
+          "S": "6",
+          "AP": "-2",
+          "D": "D6+1",
+          "keywords": "Precision"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Shovelling claws",
+          "range": "Melee",
+          "A": "4",
+          "WS": "3+",
+          "S": "14",
+          "AP": "-2",
+          "D": "D6+1",
+          "keywords": "Extra Attacks"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Grisly Spectacle",
+          "description": "Each time this model is selected to fight, after resolving its attacks, if one or more enemy units were destroyed by those attacks, each enemy unit within 6\" of this model must take a Battle-shock test."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "b563-c6d3-d0e5-1b78",
+      "name": "Venomthropes",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Fly",
+        "Faction: Tyranids",
+        "Venomthropes",
+        "Great Devourer"
+      ],
+      "keywords": [
+        "Infantry",
+        "Fly",
+        "Venomthropes",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 55,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 55
+        },
+        {
+          "models": 3,
+          "cost": 110
+        }
+      ],
+      "stats": {
+        "name": "Venomthropes",
+        "M": "6\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Toxic lashes",
+          "range": "Melee",
+          "A": "5",
+          "WS": "3+",
+          "S": "3",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Anti-Infantry 2+"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Foul Spores (Aura)",
+          "description": "Friendly **TYRANIDS** units within 6\" of this unit have **Stealth**."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "9bd8-ac8c-2d3b-79f6",
+      "name": "Von Ryan's Leapers",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Von Ryan's Leapers",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Von Ryan's Leapers",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 55,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 55
+        },
+        {
+          "models": 3,
+          "cost": 105
+        }
+      ],
+      "stats": {
+        "name": "Von Ryan's Leaper",
+        "M": "10\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "6+",
+        "W": "3",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Leaper's talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Pouncing Leap",
+          "description": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is ‑1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "8ccc-3f27-7e4e-da81",
+      "name": "Neurogaunts",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Neurogaunts",
+        "Endless Multitude",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Neurogaunts",
+        "Endless Multitude"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 45,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 45
+        },
+        {
+          "models": 11,
+          "cost": 90
+        }
+      ],
+      "stats": {
+        "name": "Neurogaunt Nodebeast",
+        "M": "6\"",
+        "T": "3",
+        "Sv": "6+",
+        "InSv": "",
+        "W": "1",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "28.5mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Neurocytes",
+          "description": "While this unit is within Synapse Range of your friendly **^^Tyranids^^** unit (excluding **^^Neurogaunt^^** units), it has the **^^Synapse^^** keyword."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "b622-a22-a04f-6303",
+      "name": "Zoanthropes",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Fly",
+        "Psyker",
+        "Great Devourer",
+        "Zoanthropes",
+        "Faction: Tyranids",
+        "Synapse"
+      ],
+      "keywords": [
+        "Infantry",
+        "Fly",
+        "Psyker",
+        "Great Devourer",
+        "Zoanthropes",
+        "Synapse"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 90,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 90
+        },
+        {
+          "models": 3,
+          "cost": 190
+        }
+      ],
+      "stats": {
+        "name": "Zoanthropes",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Spirit Leech (Aura, Psychic)",
+          "description": "While an enemy unit is within 6\" of this unit, if it contains a Neurothrope, each time that enemy unit fails a Battle-shock test, it suffers D3 mortal wounds and one model in this unit regains up to D3 lost wounds."
+        },
+        {
+          "name": "Warp Field (Aura, Psychic)",
+          "description": "While a friendly TYRANIDS unit is within 6\" of this unit, models in that unit have a 6+ invulnerable save."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "1de2-b57b-aa0a-1f0d",
+      "name": "Ripper Swarms",
+      "primaryCategory": "Swarm",
+      "categories": [
+        "Ripper Swarm",
+        "Swarm",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Harvester"
+      ],
+      "keywords": [
+        "Ripper Swarm",
+        "Swarm",
+        "Great Devourer",
+        "Harvester"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 30,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 30
+        },
+        {
+          "models": 2,
+          "cost": 40
+        },
+        {
+          "models": 3,
+          "cost": 50
+        }
+      ],
+      "stats": {
+        "name": "Ripper Swarms",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "d213-efd8-a2b4-42d2",
+      "name": "Parasite of Mortrex",
+      "primaryCategory": "Character",
+      "categories": [
+        "Parasite of Mortrex",
+        "Character",
+        "Fly",
+        "Great Devourer",
+        "Infantry",
+        "Faction: Tyranids",
+        "Vanguard Invader",
+        "Synapse"
+      ],
+      "keywords": [
+        "Parasite of Mortrex",
+        "Character",
+        "Fly",
+        "Great Devourer",
+        "Infantry",
+        "Vanguard Invader",
+        "Synapse"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 65,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 65
+        }
+      ],
+      "stats": {
+        "name": "Parasite of Mortrex",
+        "M": "12\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "5",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Barbed ovipositor",
+          "range": "Melee",
+          "A": "1",
+          "WS": "2+",
+          "S": "3",
+          "AP": "-2",
+          "D": "3",
+          "keywords": "Anti-infantry 3+, Extra Attacks"
+        },
+        {
+          "name": "Clawed limbs",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Parasitic Infection",
+          "description": "Each time an **^^Infantry^^** model is destroyed by an attack made with this model’s barbed ovipositor, after this model has finished making its attacks, you can add one new **^^Ripper Swarms^^** unit to your army consisting of D3 models and set it up within 3\" of this model. If you do, that **^^Ripper Swarms^^** unit can be set up within Engagement Range of the destroyed model’s unit (but not within Engagement Range of any other enemy units)."
+        },
+        {
+          "name": "It Itches!",
+          "description": "At the start of the Fight phase, select one enemy unit within Engagement Range of this model. That enemy unit must take a Battle-shock test."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "2bbb-d811-15f7-1a81",
+      "name": "Mawloc",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Mawloc",
+        "Monster",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Mawloc",
+        "Monster",
+        "Great Devourer",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 130,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 130
+        }
+      ],
+      "stats": {
+        "name": "Mawloc",
+        "M": "10\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Distendible jaw",
+          "range": "Melee",
+          "A": "1",
+          "WS": "3+",
+          "S": "5",
+          "AP": "0",
+          "D": "3",
+          "keywords": "Anti-infantry 4+, Devastating Wounds, Extra Attacks"
+        },
+        {
+          "name": "Mawloc scything talons",
+          "range": "Melee",
+          "A": "16",
+          "WS": "3+",
+          "S": "8",
+          "AP": "-2",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Terror from the Deep",
+          "description": "Each time this unit is set up on the battlefield using the Deep Strike ability, roll one D6 for each enemy unit within 12\" of this model: on a 2-4, that unit suffers D3 mortal wounds; on a 5+, that unit suffers 3 mortal wounds and must take a Battle-shock test."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "56db-d7c-b349-677f",
+      "name": "Trygon",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Trygon",
+        "Monster",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Trygon",
+        "Monster",
+        "Great Devourer",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 135,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 135
+        }
+      ],
+      "stats": {
+        "name": "Trygon",
+        "M": "10\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Trygon scything talons",
+          "range": "Melee",
+          "A": "12",
+          "WS": "3+",
+          "S": "9",
+          "AP": "-2",
+          "D": "3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Subterranean Tunnels",
+          "description": "In your Movement phase, when this model is set up on the battlefield using the Deep Strike ability, it can use a subterranean tunnel. If it does, this model can be set up anywhere on the battlefield that is more than 6\" horizontally away from all enemy units, but until the end of the turn, it is not eligible to declare a charge."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "c590-436d-4fd-ef26",
+      "name": "Spore Mines",
+      "primaryCategory": "Beast",
+      "categories": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 55,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 55
+        },
+        {
+          "models": 3,
+          "cost": 110
+        }
+      ],
+      "stats": {
+        "name": "Spore Mines",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "bbfd-5b01-5bd3-a28b",
+      "name": "Exocrine",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Exocrine",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Exocrine"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 135,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 135
+        }
+      ],
+      "stats": {
+        "name": "Exocrine",
+        "M": "8\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Bio-plasmic cannon",
+          "range": "36\"",
+          "A": "D6+3",
+          "BS": "3+",
+          "S": "9",
+          "AP": "-3",
+          "D": "3",
+          "keywords": "Blast, Heavy"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Powerful limbs",
+          "range": "Melee",
+          "A": "3",
+          "WS": "3+",
+          "S": "7",
+          "AP": "0",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Symbiotic Targeting",
+          "description": "In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly TYRANIDS model makes an attack that targets that unit, re-roll a Hit roll of 1."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "707a-9de8-f75b-41c5",
+      "name": "Mucolid Spores",
+      "primaryCategory": "Beast",
+      "categories": [
+        "Mucolid Spores",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Mucolid Spores",
+        "Beast",
+        "Fly",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Mucolid Spores",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "3f2c-85ec-d83c-4a2f",
+      "name": "Biovores",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Biovore",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Biovore"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 60,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 60
+        },
+        {
+          "models": 2,
+          "cost": 100
+        },
+        {
+          "models": 3,
+          "cost": 140
+        }
+      ],
+      "stats": {
+        "name": "Biovore",
+        "M": "5\"",
+        "T": "6",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "5",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "80mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Spore mine launcher",
+          "range": "48\"",
+          "A": "D3",
+          "BS": "4+",
+          "S": "6",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Blast, Devastating Wounds, Heavy, Indirect Fire"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Seed Spore Mines",
+          "description": "Once per turn, in your Shooting Phase, when selected to shoot, one unit with this ability can use it instead of making any attacks with its ranged weapons. If it does, you can add one new **SPORE MINES** unit to your army and set it up anywhere on the battlefield that is wholly within 48\" of this unit and more than 8\" horizontally away from all enemy units. That **SPORE MINES** unit contains 1 model for each model in this unit."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "9efd-5564-f0f5-21ea",
+      "name": "Carnifexes",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Carnifexes",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Carnifexes"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Carnifex",
+        "M": "8\"",
+        "T": "9",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "8",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "105x70mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Chitinous claws and teeth",
+          "range": "Melee",
+          "A": "4",
+          "WS": "4+",
+          "S": "6",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Blistering Assault",
+          "description": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit lost a wound as a result of those attacks, this unit can make a **surge move** of up to D6+2\"."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "8e53-d4a-a69f-e71d",
+      "name": "Screamer-killer",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Screamer-killer",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Screamer-killer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 125,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 125
+        }
+      ],
+      "stats": {
+        "name": "Screamer-killer",
+        "M": "8\"",
+        "T": "9",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "90mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Bio-plasmic scream",
+          "range": "18\"",
+          "A": "D6+3",
+          "BS": "4+",
+          "S": "8",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Assault, Blast"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Screamer-killer talons",
+          "range": "Melee",
+          "A": "10",
+          "WS": "3+",
+          "S": "10",
+          "AP": "-2",
+          "D": "3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Death Scream",
+          "description": "In your Shooting phase, after this model has shot, select one unit hit by one or more of those attacks. That unit must take a Battle-shock test, subtracting 1 from that test."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "ac7a-2560-c083-45b8",
+      "name": "Hive Guard",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Hive Guard",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Hive Guard"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 80,
+      "minModels": 3,
+      "maxModels": 6,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        },
+        {
+          "models": 4,
+          "cost": 160
+        }
+      ],
+      "stats": {
+        "name": "Hive Guard",
+        "M": "6\"",
+        "T": "7",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "4",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Shockcannon",
+          "range": "24\"",
+          "A": "2",
+          "BS": "3+",
+          "S": "7",
+          "AP": "-1",
+          "D": "3",
+          "keywords": "Anti-Vehicle 2+"
+        },
+        {
+          "name": "Impaler cannon",
+          "range": "36\"",
+          "A": "4",
+          "BS": "4+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Heavy, Indirect Fire"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Defensive Stance",
+          "description": "Each time you target this unit with the Fire Overwatch Stratagem, while resolving that Stratagem, hits are scored on unmodified Hit rolls of 5+, or unmodified Hit rolls of 4+ instead if this unit is within range of an objective marker that you control."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "1705-379b-330d-36d4",
+      "name": "Tyrannofex",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Tyrannofex"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Tyrannofex"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 170,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 170
+        }
+      ],
+      "stats": {
+        "name": "Tyrannofex",
+        "M": "9\"",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "16",
+        "Ld": "8+",
+        "OC": "5",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Powerful limbs",
+          "range": "Melee",
+          "A": "4",
+          "WS": "3+",
+          "S": "8",
+          "AP": "0",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Resilient Organism",
+          "description": "Once per battle, when an attack is allocated to this model, you can change the Damage characteristic of that attack to 0."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "fada-677a-f6a4-cd12",
+      "name": "Tyrannocyte",
+      "primaryCategory": "Dedicated Transport",
+      "categories": [
+        "Dedicated Transport",
+        "Transport",
+        "Monster",
+        "Fly",
+        "Great Devourer",
+        "Tyrannocyte",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Dedicated Transport",
+        "Transport",
+        "Monster",
+        "Fly",
+        "Great Devourer",
+        "Tyrannocyte",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": true,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        }
+      ],
+      "stats": {
+        "name": "Tyrannocyte",
+        "M": "8\"",
+        "T": "9",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "8+",
+        "OC": "2",
+        "Base": "100mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Tyrannocyte Bio-weapons",
+          "range": "24\"",
+          "A": "5",
+          "BS": "4+",
+          "S": "5",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Flensing Whips",
+          "range": "Melee",
+          "A": "6",
+          "WS": "4+",
+          "S": "7",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Aerial Seeding",
+          "description": "This model must start the battle in Reserves, but neither it nor any units embarked within it are counted towards any limits placed on the maximum number of Reserves units you can start the battle with. This model can be set up in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules. Any units embarked within this model must immediately disembark after it has been set up on the battlefield, and they must be set up more than 8\" away from all enemy models. After this model has been set up on the battlefield, no units can embark within it."
+        }
+      ],
+      "transportCapacity": "This model has a transport capacity of 20 TYRANIDS INFANTRY models, or 1 TYRANIDS MONSTER model with a Wounds characteristic of 12 or less. Each INFANTRY model with a Wounds characteristic of more than 1 takes up the space of 3 models."
+    },
+    {
+      "id": "c679-b06a-750b-e7f7",
+      "name": "Harpy",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Harpy",
+        "Monster",
+        "Fly",
+        "Aircraft",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Harpy",
+        "Monster",
+        "Fly",
+        "Aircraft",
+        "Great Devourer",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 185,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 185
+        }
+      ],
+      "stats": {
+        "name": "Harpy",
+        "M": "-",
+        "T": "9",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "12",
+        "Ld": "8+",
+        "OC": "-",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Spore Mine Cysts",
+          "description": "At the end of your opponent’s Fight phase, you can do one of the following:\n- Select one **visible** enemy unit (excluding **Lone Operative** units) within 24\" of this unit and roll six D6 for that unit: for each 3+, that unit suffers 1 **mortal wound**.\n- Add a new **SPORE MINES** unit containing D3 models to your army and set it up anywhere on the battlefield that is within 6\" of this model and more than 8\" horizontally away from all enemy units. You cannot select this option for more than one model per turn."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "93aa-dd13-de9d-402b",
+      "name": "Hive Crone",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Aircraft",
+        "Monster",
+        "Fly",
+        "Great Devourer",
+        "Hive Crone",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Aircraft",
+        "Monster",
+        "Fly",
+        "Great Devourer",
+        "Hive Crone",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 170,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 170
+        }
+      ],
+      "stats": {
+        "name": "Hive Crone",
+        "M": "-",
+        "T": "9",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "12",
+        "Ld": "8+",
+        "OC": "-",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Drool cannon",
+          "range": "12\"",
+          "A": "2D6",
+          "BS": "N/A",
+          "S": "6",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Torrent"
+        },
+        {
+          "name": "Tentaclids",
+          "range": "36\"",
+          "A": "4",
+          "BS": "3+",
+          "S": "7",
+          "AP": "0",
+          "D": "2",
+          "keywords": "Anti-vehicle 4+, Devastating Wounds"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Thorax spur",
+          "range": "Melee",
+          "A": "1",
+          "WS": "3+",
+          "S": "10",
+          "AP": "-3",
+          "D": "D6",
+          "keywords": "Anti-fly 2+, Extra Attacks"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Airborne Predator",
+          "description": "Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "2cdd-3bf1-55e0-7641",
+      "name": "Sporocyst",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Sporocyst",
+        "Great Devourer",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Monster",
+        "Sporocyst",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 145,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 145
+        }
+      ],
+      "stats": {
+        "name": "Sporocyst",
+        "M": "-",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "8+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Sporocyst bio-weapon",
+          "range": "24\"",
+          "A": "10",
+          "BS": "4+",
+          "S": "5",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Hive Defences"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Flensing whips",
+          "range": "Melee",
+          "A": "6",
+          "WS": "4+",
+          "S": "7",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Seed Mucolids",
+          "description": "Once per turn, in your shooting phase, when selected to shoot, one unit with this ability can use it instead of making any attacks with it's ranged weapons. If it does, you can add one new **MUCOLID SPORES** containing 1 model to your army and set it up anywhere on the battlefield that is wholly within 18\" of this model and more than 8\" horizontally away from all enemy units."
+        },
+        {
+          "name": "Hive Defences",
+          "description": "You can target this model with the Fire Overwatch stratagem for 0CP, and can do so even if you have already targeted a different unit with that stratagem this turn. This model can only be targeted with that Stratagem once per turn"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "b6ac-f091-a018-dab2",
+      "name": "Psychophage",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Psychophage",
+        "Faction: Tyranids",
+        "Harvester",
+        "Smoke"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Psychophage",
+        "Harvester",
+        "Smoke"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 110,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 110
+        }
+      ],
+      "stats": {
+        "name": "Psychophage",
+        "M": "12\"",
+        "T": "9",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Talons and betentacled maw",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "6",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Anti-Psyker 4+, Devastating Wounds"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bio-stimulus",
+          "description": "In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly **TYRANIDS** unit makes a melee attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. The same enemy unit can only be affected by this ability once per turn."
+        },
+        {
+          "name": "Feeding Frenzy",
+          "description": "Each time this model makes a melee attack that targets a unit that is below its Starting Strength, add 1 to the Hit roll. If that target is also Below Half strength, add 1 to the Wound roll as well."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "6de-ccee-11b4-be3e",
+      "name": "Barbgaunts",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Barbgaunts",
+        "Infantry",
+        "Great Devourer",
+        "Faction: Tyranids"
+      ],
+      "keywords": [
+        "Barbgaunts",
+        "Infantry",
+        "Great Devourer"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 50,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 50
+        },
+        {
+          "models": 5,
+          "cost": 100
+        }
+      ],
+      "stats": {
+        "name": "Barbgaunt",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Barblauncher",
+          "range": "24\"",
+          "A": "D6",
+          "BS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Blast, Heavy"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Chitinous claws and teeth",
+          "range": "Melee",
+          "A": "1",
+          "WS": "4+",
+          "S": "4",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Disruption Bombardment",
+          "description": "In your Shooting phase, after this unit has shot, select one enemy INFANTRY unit hit by one or more of those attacks. Until the end of your opponent’s next turn, that enemy unit is disrupted. While a unit is disrupted, subtract 2 from its Move characteristic, and subtract 2 from Advance and Charge rolls made for it."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "afd0-a0ca-68c3-d912",
+      "name": "Barbed Hierodule [Legends]",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Faction: Tyranids",
+        "Monster",
+        "Great Devourer",
+        "Barbed Hierodule",
+        "Frame"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Barbed Hierodule",
+        "Frame"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 340,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 340
+        }
+      ],
+      "stats": {
+        "name": "Barbed Hierodule",
+        "M": "8\"",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "18",
+        "Ld": "8+",
+        "OC": "5",
+        "Base": "130mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Bio-cannon",
+          "range": "48\"",
+          "A": "D6+3",
+          "BS": "3+",
+          "S": "9",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Blast"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Hierodule scything talons",
+          "range": "Melee",
+          "A": "8",
+          "WS": "3+",
+          "S": "14",
+          "AP": "-2",
+          "D": "D3+3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Overgrown Barbs",
+          "description": "In your Shooting phase, after this model has shot, select one enemy unit (excluding Titanic units) that was hit by one or more of those attacks. Until the start of your next turn, while this model is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "218c-639e-22e0-59ce",
+      "name": "Scythed Hierodule [Legends]",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Faction: Tyranids",
+        "Monster",
+        "Great Devourer",
+        "Scythed Hierodule",
+        "Frame"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Scythed Hierodule",
+        "Frame"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 330,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 330
+        }
+      ],
+      "stats": {
+        "name": "Scythed Hierodule",
+        "M": "12\"",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "18",
+        "Ld": "8+",
+        "OC": "5",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Bio-acid spray",
+          "range": "18\"",
+          "A": "3D6",
+          "BS": "N/A",
+          "S": "6",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Torrent"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Hierodule scything talons",
+          "range": "Melee",
+          "A": "10",
+          "WS": "3+",
+          "S": "14",
+          "AP": "-2",
+          "D": "D3+3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Irresistible Force",
+          "description": "This model is eligible to declare a charge in a turn in which it Fell Back."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "9b5c-3b5a-1f80-9a74",
+      "name": "Harridan",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Faction: Tyranids",
+        "Monster",
+        "Titanic",
+        "Fly",
+        "Transport",
+        "Great Devourer",
+        "Harridan"
+      ],
+      "keywords": [
+        "Monster",
+        "Titanic",
+        "Fly",
+        "Transport",
+        "Great Devourer",
+        "Harridan"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 610,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 610
+        }
+      ],
+      "stats": {
+        "name": "Harridan",
+        "M": "14\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "30",
+        "Ld": "8+",
+        "OC": "0",
+        "Base": "Unique"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Dire bio-cannon",
+          "range": "48\"",
+          "A": "D6+6",
+          "BS": "3+",
+          "S": "10",
+          "AP": "-3",
+          "D": "3",
+          "keywords": "Blast"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Gargantuan scything talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "14",
+          "AP": "-2",
+          "D": "D6",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Damaged: 1-10 wounds remaining",
+          "description": "While this model has 1-10 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "Frenzied Metabolism",
+          "description": "Each time this model is selected to shoot, you can use this ability. If you do, until the end of the phase, each time this model makes an attack, add 1 to the Wound roll. After resolving those attacks, roll one D6: on a 2+, this model suffers D3 mortal wounds."
+        }
+      ],
+      "transportCapacity": "This model has a transport capacity of 20 GARGOYLES models and 1 WINGED TYRANID PRIME model."
+    },
+    {
+      "id": "fbc0-3a2b-1d7d-23d9",
+      "name": "Hierophant",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Faction: Tyranids",
+        "Monster",
+        "Titanic",
+        "Towering",
+        "Transport",
+        "Great Devourer",
+        "Hierophant",
+        "Frame"
+      ],
+      "keywords": [
+        "Monster",
+        "Titanic",
+        "Towering",
+        "Transport",
+        "Great Devourer",
+        "Hierophant",
+        "Frame"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 810,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 810
+        }
+      ],
+      "stats": {
+        "name": "Hierophant",
+        "M": "12\"",
+        "T": "14",
+        "Sv": "2+",
+        "InSv": "5+",
+        "W": "30",
+        "Ld": "8+",
+        "OC": "12",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Bio-plasma torrent",
+          "range": "12\"",
+          "A": "3D6",
+          "BS": "N/A",
+          "S": "7",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Assault, Torrent"
+        },
+        {
+          "name": "Dire bio-cannon",
+          "range": "48\"",
+          "A": "D6+6",
+          "BS": "3+",
+          "S": "10",
+          "AP": "-3",
+          "D": "3",
+          "keywords": "Blast"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Lashwhip pods",
+          "range": "Melee",
+          "A": "10",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Extra Attacks"
+        },
+        {
+          "name": "Titanic scything talons",
+          "range": "Melee",
+          "A": "8",
+          "WS": "3+",
+          "S": "20",
+          "AP": "-2",
+          "D": "D6+1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Damaged: 1-10 wounds remaining",
+          "description": "While this model has 1-10 wounds remaining, subtract 6 from this model’s Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "Apex-beast",
+          "description": "Each time this model makes an attack that targets a unit that is Battle-shocked, add 1 to the Hit roll."
+        },
+        {
+          "name": "Stalking Forward",
+          "description": "Each time this model makes a Normal, Advance or Fall Back move, it can move over models (excluding TITANIC models) and terrain features that are 4\" or less in height as if they were not there."
+        }
+      ],
+      "transportCapacity": "This model has a transport capacity of 20 TYRANIDS INFANTRY models. Each model with a Wounds characteristic of more than 1 takes up the space of 3 models. This model cannot transport models that can FLY."
+    },
+    {
+      "id": "853e-48b8-4cc5-3704",
+      "name": "Genestealers",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Faction: Tyranids",
+        "Infantry",
+        "Great Devourer",
+        "Genestealers",
+        "Vanguard Invader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Genestealers",
+        "Vanguard Invader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 75,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 75
+        },
+        {
+          "models": 6,
+          "cost": 140
+        }
+      ],
+      "stats": {
+        "name": "Genestealers",
+        "M": "8\"",
+        "T": "4",
+        "Sv": "5+",
+        "InSv": "5+",
+        "W": "2",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Genestealers claws and talons",
+          "range": "Melee",
+          "A": "4",
+          "WS": "2+",
+          "S": "4",
+          "AP": "-2",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Vanguard Predator",
+          "description": "Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target is within range of one or more objective markers, re-roll a Wound roll 1 as well."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "3f5-f7d6-1ce8-e6b9",
+      "name": "Raveners",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Faction: Tyranids",
+        "Infantry",
+        "Great Devourer",
+        "Raveners",
+        "Vanguard Invader",
+        "Burrowers"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Raveners",
+        "Vanguard Invader",
+        "Burrowers"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 125,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 125
+        }
+      ],
+      "stats": {
+        "name": "Raveners",
+        "M": "10\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "8+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Ravener claws and talons",
+          "range": "Melee",
+          "A": "3",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Death From Below",
+          "description": "At the end of your opponent’s turn, if this unit is not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "78ca-3743-c254-4404",
+      "name": "Dimachaeron [Legends]",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Faction: Tyranids",
+        "Monster",
+        "Great Devourer",
+        "Dimachaeron",
+        "Frame"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Dimachaeron",
+        "Frame"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 200,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 200
+        }
+      ],
+      "stats": {
+        "name": "Dimachaeron",
+        "M": "12\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "5+",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "5",
+        "Base": "120x92mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Massive scything talons",
+          "range": "Melee",
+          "A": "10",
+          "WS": "3+",
+          "S": "9",
+          "AP": "-2",
+          "D": "3",
+          "keywords": "Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Digestion Spine",
+          "description": "Each time this model fights, after it has resolved its attacks, if one or more enemy models (excluding Vehicle models) were destroyed as the result of those attacks, this model regains up to D3 mortal wounds."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "f46f-9d2b-1f97-aaf6",
+      "name": "Sky-slasher Swarms [Legends]",
+      "primaryCategory": "Swarm",
+      "categories": [
+        "Faction: Tyranids",
+        "Swarm",
+        "Great Devourer",
+        "Fly",
+        "Sky-slasher Swarms"
+      ],
+      "keywords": [
+        "Swarm",
+        "Great Devourer",
+        "Fly",
+        "Sky-slasher Swarms"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 60,
+      "minModels": 3,
+      "maxModels": 3,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 60
+        }
+      ],
+      "stats": {
+        "name": "Sky-slasher Swarms",
+        "M": "12\"",
+        "T": "2",
+        "Sv": "6+",
+        "InSv": "",
+        "W": "4",
+        "Ld": "8+",
+        "OC": "0",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Spinemaws",
+          "range": "6\"",
+          "A": "4",
+          "BS": "5+",
+          "S": "3",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Pistol"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Claws and teeth",
+          "range": "Melee",
+          "A": "6",
+          "WS": "5+",
+          "S": "2",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Sustained Hits 1"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Chitinous Horrors",
+          "description": "While an enemy unit is within Engagement Range of one or more units with this ability, halve the Objective Control characteristic of models in that enemy unit."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "c17f-f55f-a3cb-530b",
+      "name": "Malanthrope [Legends]",
+      "primaryCategory": "Character",
+      "categories": [
+        "Faction: Tyranids",
+        "Infantry",
+        "Character",
+        "Fly",
+        "Great Devourer",
+        "Synapse",
+        "Leader",
+        "Malanthrope"
+      ],
+      "keywords": [
+        "Infantry",
+        "Character",
+        "Fly",
+        "Great Devourer",
+        "Synapse",
+        "Leader",
+        "Malanthrope"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Venomthropes"
+      ],
+      "baseCost": 75,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 75
+        }
+      ],
+      "stats": {
+        "name": "Malanthrope",
+        "M": "6\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "60mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Grasping tail",
+          "range": "Melee",
+          "A": "4",
+          "WS": "4",
+          "S": "5",
+          "AP": "0",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Enhanced Toxic Miasma",
+          "description": "While this model is leading a unit, the range of that unit's Foul Spores Aura ability is increased to 9\"."
+        },
+        {
+          "name": "Prey Adaptation",
+          "description": "Each time this model's unit is selected to fight, select one of the following abilities to apply to all melee weapons equipped by models in that unit until the end of the phase:\n- **[SUSTAINED HITS 1]**\n- **[LANCE]**\n- **[LETHAL HITS]**"
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit: \n- **^^Venomthropes^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "642f-9302-4fdc-ab68",
+      "name": "Neurolictor",
+      "primaryCategory": "Infantry",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Neurolictor",
+        "Vanguard Invader",
+        "Faction: Tyranids",
+        "Synapse"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Neurolictor",
+        "Vanguard Invader",
+        "Synapse"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        }
+      ],
+      "stats": {
+        "name": "Neurolictor",
+        "M": "8\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "4+",
+        "W": "7",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Piercing claws and talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "6",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Precision"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Feeder Tendrils",
+          "description": "Each time this model destroys an enemy CHARACTER model, you gain 1CP"
+        },
+        {
+          "name": "Neural Disruption",
+          "description": "In your Command phase, select one enemy unit within 12\" of this model. That unit must take a Battle-shock test"
+        },
+        {
+          "name": "Psychological Saboteur (Aura)",
+          "description": "While an enemy unit is with 12\" of this model, if that unit is Battle-shocked:\n\n- Each time a model in that unit makes an attack, subtract 1 from the Hit roll\n- Each time a friendly TYRANIDS model makes an attack that targets that unit, add 1 to the Wound roll."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "5720-2873-8c2c-edc3",
+      "name": "Norn Emissary",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Synapse",
+        "Norn Emissary"
+      ],
+      "keywords": [
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Synapse",
+        "Norn Emissary"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 250,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 250
+        }
+      ],
+      "stats": {
+        "name": "Norn Emissary",
+        "M": "10\"",
+        "T": "11",
+        "Sv": "2+",
+        "InSv": "4+",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "5",
+        "Base": "100mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "➤ Psychic tendril - neuroparasite",
+          "range": "18\"",
+          "A": "2",
+          "BS": "2+",
+          "S": "8",
+          "AP": "-2",
+          "D": "D3",
+          "keywords": "Precision, Psychic"
+        },
+        {
+          "name": "➤ Psychic tendril - neurolance",
+          "range": "18\"",
+          "A": "2",
+          "BS": "2+",
+          "S": "12",
+          "AP": "-3",
+          "D": "D6",
+          "keywords": "Melta 2, Psychic"
+        },
+        {
+          "name": "➤ Psychic tendril - neuroblast",
+          "range": "18\"",
+          "A": "2D6",
+          "BS": "2+",
+          "S": "6",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Blast, Psychic"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Monstrous rending claws",
+          "range": "Melee",
+          "A": "4",
+          "WS": "2+",
+          "S": "7",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Extra Attacks"
+        },
+        {
+          "name": "Monstrous scything talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "9",
+          "AP": "-2",
+          "D": "3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "6a9b-8e2f-edac-fa2d",
+      "name": "Norn Assimilator",
+      "primaryCategory": "Monster",
+      "categories": [
+        "Monster",
+        "Great Devourer",
+        "Synapse",
+        "Norn Assimilator",
+        "Faction: Tyranids",
+        "Harvester"
+      ],
+      "keywords": [
+        "Monster",
+        "Great Devourer",
+        "Synapse",
+        "Norn Assimilator",
+        "Harvester"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 250,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 250
+        }
+      ],
+      "stats": {
+        "name": "Norn Assimilator",
+        "M": "10\"",
+        "T": "11",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "5",
+        "Base": "100mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Monstrous scything talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "9",
+          "AP": "-2",
+          "D": "3",
+          "keywords": ""
+        },
+        {
+          "name": "Toxinjecter Harpoon",
+          "range": "Melee",
+          "A": "4",
+          "WS": "2+",
+          "S": "12",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": "Extra Attacks"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Harpoon Barbs",
+          "description": "Once per turn, when an enemy unit within Engagement Range of this unit is chosen to Fall Back, roll one D6; on a 2+, that unit suffers D6 mortal wounds."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "c10d-772e-a54f-a2b9",
+      "name": "Hyperadapted Raveners",
+      "primaryCategory": "Character",
+      "categories": [
+        "Infantry",
+        "Great Devourer",
+        "Vanguard Invader",
+        "Burrowers",
+        "Hyperadapted Raveners",
+        "Faction: Tyranids",
+        "Character",
+        "Leader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Great Devourer",
+        "Vanguard Invader",
+        "Burrowers",
+        "Hyperadapted Raveners",
+        "Character",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "Raveners"
+      ],
+      "baseCost": 165,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 165
+        }
+      ],
+      "stats": {
+        "name": "Ravener Prime",
+        "M": "10\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "40mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Venom bolt",
+          "range": "12\"",
+          "A": "D6+3",
+          "BS": "N/A",
+          "S": "6",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Assault, Ignores Cover, Torrent"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Prime claws and talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "3+",
+          "S": "5",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Anti-Monster 5+, Anti-Vehicle 5+, Twin-linked"
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Alpha Invader",
+          "description": "Weapons equipped by models in this unit have the **[SUSTAINED HITS 1]** ability."
+        },
+        {
+          "name": "Hypersensory Array",
+          "description": "Once per battle round, you can target this unit with the **Rapid Ingress/Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n- That use is -1 CP.\n- That use does not prevent any uses of that **stratagem** on other units this phase."
+        },
+        {
+          "name": "Leader",
+          "description": "This unit can be attached to the following units: **^^Raveners^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "527c-d3c6-c620-c7c6",
+      "name": "Node Organism [Crucible]",
+      "primaryCategory": "Character",
+      "categories": [
+        "Character",
+        "Infantry",
+        "Crucible",
+        "Great Devourer",
+        "Synapse",
+        "Faction: Tyranids",
+        "Node Organism",
+        "Leader"
+      ],
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Crucible",
+        "Great Devourer",
+        "Synapse",
+        "Node Organism",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Tyranid Warriors with Melee Bio-weapons",
+        "- **^^Tyranid Warriors with Ranged Bio-weapons"
+      ],
+      "baseCost": 80,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 80
+        }
+      ],
+      "stats": {
+        "name": "Node Organism",
+        "M": "6\"",
+        "T": "5",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Alpha Warrior",
+          "description": "While this model is leading a unit, weapons equipped by models in that unit have the **[SUSTAINED HITS 1]** ability."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following units:\n- **^^Tyranid Warriors with Melee Bio-weapons^^**\n- **^^Tyranid Warriors with Ranged Bio-weapons^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "6f46-0c77-acd0-3f5d",
+      "name": "Prime Organism [Crucible]",
+      "primaryCategory": "Character",
+      "categories": [
+        "Character",
+        "Crucible",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Monster",
+        "Prime Organism",
+        "Leader"
+      ],
+      "keywords": [
+        "Character",
+        "Crucible",
+        "Great Devourer",
+        "Monster",
+        "Prime Organism",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Carnifexes",
+        "- **^^Tyrant Guard"
+      ],
+      "baseCost": 135,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 135
+        }
+      ],
+      "stats": {
+        "name": "Prime Organism",
+        "M": "8\"",
+        "T": "9",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "9",
+        "Ld": "7+",
+        "OC": "3",
+        "Base": "-"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Monstrous Barrage",
+          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following units:\n- **^^Carnifexes^^**\n- **^^Tyrant Guard^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "a89f-8ad1-3d79-174f",
+      "name": "Macro Organism [Crucible]",
+      "primaryCategory": "Character",
+      "categories": [
+        "Character",
+        "Crucible",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Monster",
+        "Macro Organism"
+      ],
+      "keywords": [
+        "Character",
+        "Crucible",
+        "Great Devourer",
+        "Monster",
+        "Macro Organism"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 150,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 150
+        }
+      ],
+      "stats": {
+        "name": "Macro Organism",
+        "M": "8\"",
+        "T": "10",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "14",
+        "Ld": "8+",
+        "OC": "4",
+        "Base": "-"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Unstoppable Monstrosity",
+          "description": "At the start of each player's Command phase, this model regains up to D3 lost wounds."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "31f9-9730-853c-6f13",
+      "name": "Tyranid Prime with Lash Whip",
+      "primaryCategory": "Character",
+      "categories": [
+        "Infantry",
+        "Character",
+        "Faction: Tyranids",
+        "Great Devourer",
+        "Synapse",
+        "Tyranid Prime with Lash Whip",
+        "Leader"
+      ],
+      "keywords": [
+        "Infantry",
+        "Character",
+        "Great Devourer",
+        "Synapse",
+        "Tyranid Prime with Lash Whip",
+        "Leader"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": true,
+      "isSupport": false,
+      "canLead": [
+        "- **^^Hormagaunts",
+        "- **^^Termagants",
+        "- **^^Tyranid Warriors with Melee Bio-weapons",
+        "- **^^Tyranid Warriors with Ranged Bio-weapons"
+      ],
+      "baseCost": 75,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 75
+        }
+      ],
+      "stats": {
+        "name": "Tyranid Prime with Lash Whip",
+        "M": "10\"",
+        "T": "5",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "1",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Rending claw",
+          "range": "Melee",
+          "A": "4",
+          "WS": "2+",
+          "S": "8",
+          "AP": "-2",
+          "D": "3",
+          "keywords": ""
+        },
+        {
+          "name": "Lash whip",
+          "range": "Melee",
+          "A": "8",
+          "WS": "2+",
+          "S": "4",
+          "AP": "-2",
+          "D": "1",
+          "keywords": "Extra Attacks"
+        },
+        {
+          "name": "Scything talons",
+          "range": "Melee",
+          "A": "6",
+          "WS": "2+",
+          "S": "6",
+          "AP": "-2",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Alpha Warrior",
+          "description": "Weapons equipped by models in this model’s unit have the **[SUSTAINED HITS 1]** ability."
+        },
+        {
+          "name": "Aggressive Leader‑beast",
+          "description": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was **destroyed** by those attacks, this unit can make a **surge move** of up to D6\"."
+        },
+        {
+          "name": "Leader",
+          "description": "This model can be attached to the following unit:\n- **^^Hormagaunts^^**\n- **^^Termagants^^**\n- **^^Tyranid Warriors with Melee Bio-weapons^^**\n- **^^Tyranid Warriors with Ranged Bio-weapons^^**"
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "80c2-aecc-5b59-7345",
+      "name": "Spore Mines (Biovore)",
+      "primaryCategory": "Reference",
+      "categories": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Reference"
+      ],
+      "keywords": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Reference"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Spore Mines (Biovore)",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "4390-b3c7-64d2-c1b8",
+      "name": "Ripper Swarms (Parasite of Mortrex)",
+      "primaryCategory": "Reference",
+      "categories": [
+        "Ripper Swarm",
+        "Swarm",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Harvester",
+        "Reference"
+      ],
+      "keywords": [
+        "Ripper Swarm",
+        "Swarm",
+        "Great Devourer",
+        "Harvester",
+        "Reference"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Ripper Swarms (Parasite of Mortrex)",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "9943-934a-221b-e0c0",
+      "name": "Mucolid Spores (Sporocyst)",
+      "primaryCategory": "Reference",
+      "categories": [
+        "Mucolid Spores",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Reference"
+      ],
+      "keywords": [
+        "Mucolid Spores",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Reference"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Mucolid Spores (Sporocyst)",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "7173-1bd9-b60b-6555",
+      "name": "The Red Terror",
+      "primaryCategory": "Epic Hero",
+      "categories": [
+        "Character",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Vanguard Invader",
+        "Epic Hero",
+        "Monster",
+        "The Red Terror",
+        "Burrowers",
+        "Mobile"
+      ],
+      "keywords": [
+        "Character",
+        "Great Devourer",
+        "Vanguard Invader",
+        "Epic Hero",
+        "Monster",
+        "The Red Terror",
+        "Burrowers",
+        "Mobile"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": true,
+      "isEpicHero": true,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 120,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 120
+        }
+      ],
+      "stats": {
+        "name": "The Red Terror",
+        "M": "10\"",
+        "T": "8",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "9",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "100mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Gaping maw",
+          "range": "Melee",
+          "A": "1",
+          "WS": "2+",
+          "S": "5",
+          "AP": "-",
+          "D": "D3+2",
+          "keywords": "Extra Attacks, Devastating Wounds, Precision"
+        },
+        {
+          "name": "Scything talons",
+          "range": "Melee",
+          "A": "12",
+          "WS": "2+",
+          "S": "7",
+          "AP": "-2",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Swallow Whole",
+          "description": "Each time an attack with this model’s gaping maw targets an **^^Infantry^^**, **^^Mounted^^** or **^^Beasts^^** unit, each successful unmodified Wound roll is a Critical Wound. Each time an **^^Infantry^^**, **^^Mounted^^** or **^^Beasts^^** model is destroyed as a result of an attack made by this model’s gaping maw, this model regains up to D3+2 lost wounds."
+        },
+        {
+          "name": "Subterranean Hunter",
+          "description": "At the end of the Fight phase, if this unit is not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
+        }
+      ],
+      "transportCapacity": null
+    },
+    {
+      "id": "f464-429b-4606-199a",
+      "name": "Spore Mines (Harpy)",
+      "primaryCategory": "Reference",
+      "categories": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Reference"
+      ],
+      "keywords": [
+        "Spore Mines",
+        "Beast",
+        "Fly",
+        "Great Devourer",
+        "Reference"
+      ],
+      "factionKeywords": [
+        "Tyranids"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Spore Mines (Harpy)",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null
+    },
+    {
+      "id": "5b1d-134a-9996-b634",
+      "name": "Aegis Defence Line with Weapon Emplacement [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Fortification",
+        "Aegis Defence Line with Weapon Emplacement"
+      ],
+      "keywords": [
+        "Fortification",
+        "Aegis Defence Line with Weapon Emplacement"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 145,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 145
+        }
+      ],
+      "stats": {
+        "name": "Aegis Defence Line with Weapon Emplacement",
+        "M": "-",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "e85b-17c7-1ad9-8375",
+      "name": "Ambull [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Monster",
+        "Character",
+        "Ambull",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Monster",
+        "Character",
+        "Ambull",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": true,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 85,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 85
+        }
+      ],
+      "stats": {
+        "name": "Ambull",
+        "M": "6\"",
+        "T": "8",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "8",
+        "Ld": "8+",
+        "OC": "3",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Enormous claws",
+          "range": "Melee",
+          "A": "4",
+          "WS": "3+",
+          "S": "6",
+          "AP": "-2",
+          "D": "D3",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Frenzy",
+          "description": "Each time an enemy unit is selected to shoot or fight, after it has finished making its attacks, if one or more of those attacks targeted this model and this model is not destroyed, this model can fight as if it were the Fight phase"
+        },
+        {
+          "name": "Borewyrm Infestation",
+          "description": "Twice per battle, at the end of your opponent’s turn, if this model is not within Engagement Range of one or more enemy units, you can remove this model from the battlefield. In the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that\nis more than 9\" horizontally away from all enemy models. If the battle ends and this unit is not on the battlefield, it is destroyed. \n\nDesigner’s Note: Place two Borewyrm Infestation tokens next to this model, removing one each time this ability has been used."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "5134-5fe9-e489-43c4",
+      "name": "Bastion [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Fortification",
+        "Towering",
+        "Vehicle",
+        "Transport",
+        "Bastion"
+      ],
+      "keywords": [
+        "Fortification",
+        "Towering",
+        "Vehicle",
+        "Transport",
+        "Bastion"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 275,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 275
+        }
+      ],
+      "stats": {
+        "name": "Bastion",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "18",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "71b0-77b9-522c-17d6",
+      "name": "Firestorm Redoubt [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Transport",
+        "Vehicle",
+        "Wall of Martyrs",
+        "Firestorm Redoubt"
+      ],
+      "keywords": [
+        "Fortification",
+        "Transport",
+        "Vehicle",
+        "Wall of Martyrs",
+        "Firestorm Redoubt"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 260,
+      "minModels": 2,
+      "maxModels": 2,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 260
+        }
+      ],
+      "stats": {
+        "name": "Firestorm Redoubt",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "18",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
+    },
+    {
+      "id": "c4d1-c85a-a20e-6c94",
+      "name": "Fortress of Redemption [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Transport",
+        "Titanic",
+        "Vehicle",
+        "Towering",
+        "Fortress of Redemption"
+      ],
+      "keywords": [
+        "Fortification",
+        "Transport",
+        "Titanic",
+        "Vehicle",
+        "Towering",
+        "Fortress of Redemption"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 480,
+      "minModels": 1,
+      "maxModels": 4,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 480
+        }
+      ],
+      "stats": {
+        "name": "Fortress of Redemption",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "30",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Redemptor lascannons",
+          "range": "48\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "14",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": "Anti-Fly 2+"
+        },
+        {
+          "name": "➤ Redemptor missile silo - superfrag",
+          "range": "48\"",
+          "A": "2D6+2",
+          "BS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Blast"
+        },
+        {
+          "name": "➤ Redemptor missile silo - superkrak",
+          "range": "48\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "10",
+          "AP": "-2",
+          "D": "D6+1",
+          "keywords": ""
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Vantage Point",
+          "description": "While a model is on top of the tower roof of this FORTIFICATION, improve the Armour Penetration characteristic of ranged weapons equipped by that model by 1."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "e3ba-7f87-c32-229",
+      "name": "Guardian Drone [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Monster",
+        "Guardian Drone",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Monster",
+        "Guardian Drone",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 45,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 45
+        }
+      ],
+      "stats": {
+        "name": "Guardian Drone",
+        "M": "5\"",
+        "T": "7",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "7",
+        "Ld": "6+",
+        "OC": "2",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Destroyer pulse",
+          "range": "18\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "8",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Pistol"
+        },
+        {
+          "name": "Guardian salvo launchers",
+          "range": "24\"",
+          "A": "D6",
+          "BS": "4+",
+          "S": "5",
+          "AP": "-1",
+          "D": "1",
+          "keywords": "Blast"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Manipulator limbs",
+          "range": "Melee",
+          "A": "4",
+          "WS": "4+",
+          "S": "5",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Drone Commander (Aura)",
+          "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "3b75-e314-ecd5-cd63",
+      "name": "Macro-cannon Aquila Strongpoint [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Titanic",
+        "Vehicle",
+        "Transport",
+        "Wall of Martyrs",
+        "Macro-cannon Aquila Strongpoint"
+      ],
+      "keywords": [
+        "Fortification",
+        "Titanic",
+        "Vehicle",
+        "Transport",
+        "Wall of Martyrs",
+        "Macro-cannon Aquila Strongpoint"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 550,
+      "minModels": 1,
+      "maxModels": 4,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 550
+        }
+      ],
+      "stats": {
+        "name": "Macro-cannon Aquila Strongpoint",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "30",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Aquila macro-cannon",
+          "range": "72\"",
+          "A": "D6+6",
+          "BS": "5+",
+          "S": "16",
+          "AP": "-4",
+          "D": "4",
+          "keywords": ""
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Tremor Quake",
+          "description": "In your Shooting phase, just after selecting a target for this model’s Aquila macro-cannon, the target unit and every other enemy INFANTRY unit within 3\" of that unit must take a Battle-shock test."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "cabe-2c66-c8b6-de6c",
+      "name": "Plasma Obliterator [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Transport",
+        "Vehicle",
+        "Towering",
+        "Plasma Obliterator"
+      ],
+      "keywords": [
+        "Fortification",
+        "Transport",
+        "Vehicle",
+        "Towering",
+        "Plasma Obliterator"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 225,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 225
+        }
+      ],
+      "stats": {
+        "name": "Plasma Obliterator",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "18",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "~50mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "➤ Plasma obliterator - standard",
+          "range": "48\"",
+          "A": "D6+3",
+          "BS": "5+",
+          "S": "9",
+          "AP": "-3",
+          "D": "3",
+          "keywords": "Blast"
+        },
+        {
+          "name": "➤ Plasma obliterator - supercharge",
+          "range": "48\"",
+          "A": "D6+3",
+          "BS": "5+",
+          "S": "10",
+          "AP": "-4",
+          "D": "4",
+          "keywords": "Blast, Hazardous"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Emergency Plasma Vents",
+          "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "f39-fc54-f95a-8395",
+      "name": "Primaris Redoubt [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Vehicle",
+        "Primaris Redoubt"
+      ],
+      "keywords": [
+        "Fortification",
+        "Vehicle",
+        "Primaris Redoubt"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 220,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 220
+        }
+      ],
+      "stats": {
+        "name": "Primaris Redoubt",
+        "M": "-",
+        "T": "12",
+        "Sv": "3+",
+        "InSv": "5+",
+        "W": "18",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Primaris Redoubt turbo-laser destructor",
+          "range": "96\"",
+          "A": "D3+1",
+          "BS": "4+",
+          "S": "16",
+          "AP": "-3",
+          "D": "D6+3",
+          "keywords": "Blast"
+        },
+        {
+          "name": "Primaris air defence missiles",
+          "range": "48\"",
+          "A": "D6",
+          "BS": "4+",
+          "S": "6",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Anti-Fly 2+"
+        },
+        {
+          "name": "Primaris Icarus lascannon",
+          "range": "48\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "12",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": "Anti-Fly 2+"
+        },
+        {
+          "name": "Primaris Icarus quad lascannon",
+          "range": "48\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "12",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": "Anti-Fly 2+, Twin-linked"
+        },
+        {
+          "name": "Primaris quad-gun",
+          "range": "48\"",
+          "A": "4",
+          "BS": "4+",
+          "S": "8",
+          "AP": "-1",
+          "D": "2",
+          "keywords": ""
+        },
+        {
+          "name": "Primaris castellan launcher",
+          "range": "72\"",
+          "A": "D6+1",
+          "BS": "4+",
+          "S": "6",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Blast, Indirect Fire"
+        },
+        {
+          "name": "Primaris vengeance launcher",
+          "range": "72\"",
+          "A": "D3+1",
+          "BS": "4+",
+          "S": "7",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Blast, Indirect Fire"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "54c-8b9f-b1d8-93c3",
+      "name": "Skyshield Landing Pad [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Skyshield Landing Pad"
+      ],
+      "keywords": [
+        "Fortification",
+        "Skyshield Landing Pad"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 125,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 125
+        }
+      ],
+      "stats": {
+        "name": "Skyshield Landing Pad",
+        "M": "-",
+        "T": "12",
+        "Sv": "3+",
+        "InSv": "5+",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Skyshield",
+          "description": "Friendly Infantry models and friendly units that can Fly can be set up or end any type of move on top of the platform section of this Fortification. While such a model is on the platform section of this Fortification, that model has a 5+ invulnerable save against ranged attacks"
+        },
+        {
+          "name": "Repair Aircraft",
+          "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "da76-e18f-523e-d45a",
+      "name": "Spindle Drones [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Infantry",
+        "Spindle Drones",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Infantry",
+        "Spindle Drones",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 35,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 35
+        }
+      ],
+      "stats": {
+        "name": "Spindle Drone",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "25mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Drone pulse",
+          "range": "18\"",
+          "A": "1",
+          "BS": "4+",
+          "S": "4",
+          "AP": "0",
+          "D": "1",
+          "keywords": "Pistol"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "A": "1",
+          "WS": "4+",
+          "S": "3",
+          "AP": "0",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Threat Level Rising",
+          "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "11b2-8348-ae67-fa98",
+      "name": "The Archivist [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Faction: Unaligned Forces",
+        "Monster",
+        "Epic Hero",
+        "Character",
+        "The Archivist",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Monster",
+        "Epic Hero",
+        "Character",
+        "The Archivist",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": true,
+      "isEpicHero": true,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 70,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 70
+        }
+      ],
+      "stats": {
+        "name": "The Archivist",
+        "M": "5\"",
+        "T": "6",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "6",
+        "Ld": "7+",
+        "OC": "2",
+        "Base": "50mm"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Atomic disassembler",
+          "range": "18\"",
+          "A": "1",
+          "BS": "3+",
+          "S": "8",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Ignores Cover, Pistol"
+        }
+      ],
+      "meleeWeapons": [
+        {
+          "name": "Eradicator glove",
+          "range": "Melee",
+          "A": "4",
+          "WS": "4+",
+          "S": "8",
+          "AP": "-2",
+          "D": "2",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Fearsome Assault",
+          "description": "At the start of the Fight phase, each enemy unit within Engagement Range of one or more units with this ability must take a Battle-shock test."
+        },
+        {
+          "name": "Disruptive Influence (Aura)",
+          "description": "While an enemy unit is within 6\" of this model, each time that unit takes a Battle-shock or Leadership test, subtract 1 from that test."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "14fe-18ed-9c25-189c",
+      "name": "Vengeance Weapon Battery [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Wall of Martyrs",
+        "Vehicle",
+        "Vengeance Weapon Battery"
+      ],
+      "keywords": [
+        "Fortification",
+        "Wall of Martyrs",
+        "Vehicle",
+        "Vengeance Weapon Battery"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 140,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 140
+        }
+      ],
+      "stats": {
+        "name": "Vengeance Weapon Battery",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Automated Defences",
+          "description": "Each time this model makes a ranged attack that targets the closest enemy unit:\n- If that attack is made with a Punisher gatling cannon and the target is not a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a battle cannon and the target is a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a quad-lascannon and the target can FLY, add 1 to the Hit roll."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "4501-646d-e705-9dca",
+      "name": "Void Shield Generator [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Void Shield Generator"
+      ],
+      "keywords": [
+        "Fortification",
+        "Void Shield Generator"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 155,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 155
+        }
+      ],
+      "stats": {
+        "name": "Void Shield Generator",
+        "M": "-",
+        "T": "12",
+        "Sv": "3+",
+        "InSv": "4+",
+        "W": "16",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Projected Void Shields (Aura)",
+          "description": "While a friendly model is wholly within 6\" of this FORTIFICATION, that model has a 4+ invulnerable save against ranged attacks."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "5c81-92c5-e20b-edf1",
+      "name": "Vortex Missile Strongpoint [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Titanic",
+        "Vehicle",
+        "Transport",
+        "Wall of Martyrs",
+        "Vortex Missile Strongpoint"
+      ],
+      "keywords": [
+        "Fortification",
+        "Titanic",
+        "Vehicle",
+        "Transport",
+        "Wall of Martyrs",
+        "Vortex Missile Strongpoint"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 525,
+      "minModels": 1,
+      "maxModels": 4,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 525
+        }
+      ],
+      "stats": {
+        "name": "Vortex Missile Strongpoint",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "30",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Vortex missile battery",
+          "range": "72\"",
+          "A": "D6+3",
+          "BS": "5+",
+          "S": "16",
+          "AP": "-4",
+          "D": "D6",
+          "keywords": "Blast, Devastating Wounds, Hazardous, Indirect Fire"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Vortex",
+          "description": "In your Shooting phase, each time you select a target for this model’s vortex missile battery, roll one D6 for the target unit and one D6 for every other enemy unit within 3\" of the target unit. On a 4+, the unit being rolled for is struck by the vortex; after resolving all of this model’s attacks against the target unit, each unit struck by the vortex suffers D3 mortal wounds."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "9698-2e0-15ac-1193",
+      "name": "Wall of Martyrs Bunker [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Transport",
+        "Vehicle",
+        "Wall of Martyrs",
+        "Bunker"
+      ],
+      "keywords": [
+        "Fortification",
+        "Transport",
+        "Vehicle",
+        "Wall of Martyrs",
+        "Bunker"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 180,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 180
+        }
+      ],
+      "stats": {
+        "name": "Wall of Martyrs Bunker",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Inviolable Bastion",
+          "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
+        }
+      ],
+      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
+    },
+    {
+      "id": "8419-8133-33f3-e0a4",
+      "name": "Wall of Martyrs Defence Emplacement [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Wall of Martyrs",
+        "Defence Emplacement"
+      ],
+      "keywords": [
+        "Fortification",
+        "Wall of Martyrs",
+        "Defence Emplacement"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 140,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 140
+        }
+      ],
+      "stats": {
+        "name": "Wall of Martyrs Defence Emplacement",
+        "M": "-",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "64b7-a2df-416a-9963",
+      "name": "Wall of Martyrs Defence Line [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Wall of Martyrs",
+        "Defence Line"
+      ],
+      "keywords": [
+        "Fortification",
+        "Wall of Martyrs",
+        "Defence Line"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 140,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 140
+        }
+      ],
+      "stats": {
+        "name": "Wall of Martyrs Defence Line",
+        "M": "-",
+        "T": "12",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "10",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "f6f8-8759-3282-2ab",
+      "name": "Imperial Fortress Walls [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Fortification",
+        "Faction: Unaligned Forces",
+        "Titanic",
+        "Vehicle",
+        "Towering",
+        "Transport",
+        "Imperial Fortress Walls"
+      ],
+      "keywords": [
+        "Fortification",
+        "Titanic",
+        "Vehicle",
+        "Towering",
+        "Transport",
+        "Imperial Fortress Walls"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 2,
+      "maxModels": 2,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Imperial Fortress Walls",
+        "M": "-",
+        "T": "14",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "80",
+        "Ld": "7+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Twin long-barrelled autocannon",
+          "range": "60\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "9",
+          "AP": "-1",
+          "D": "3",
+          "keywords": "Twin-linked"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Damaged: 1-30 Wounds Remaining",
+          "description": "While this model has 1-30 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "Fortress",
+          "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "20c8-d2-586d-623",
+      "name": "Castellum Stronghold [Legends]",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Castellum Stronghold",
+        "Fortification",
+        "Titanic",
+        "Vehicle",
+        "Transport",
+        "Faction: Unaligned Forces"
+      ],
+      "keywords": [
+        "Castellum Stronghold",
+        "Fortification",
+        "Titanic",
+        "Vehicle",
+        "Transport"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 0,
+      "minModels": 1,
+      "maxModels": 3,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 0
+        }
+      ],
+      "stats": {
+        "name": "Castellum Stronghold",
+        "M": "-",
+        "T": "13",
+        "Sv": "2+",
+        "InSv": "",
+        "W": "50",
+        "Ld": "6+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Castellum battle cannon",
+          "range": "48\"",
+          "A": "D6+3",
+          "BS": "4+",
+          "S": "10",
+          "AP": "-1",
+          "D": "3",
+          "keywords": "Blast"
+        },
+        {
+          "name": "Whirlwind castellan launcher",
+          "range": "72\"",
+          "A": "D6+3",
+          "BS": "4+",
+          "S": "8",
+          "AP": "-2",
+          "D": "2",
+          "keywords": "Blast, Indirect Fire"
+        },
+        {
+          "name": "Castellum Icarus quad lascannon",
+          "range": "48\"",
+          "A": "2",
+          "BS": "4+",
+          "S": "12",
+          "AP": "-3",
+          "D": "D6+1",
+          "keywords": "Anti-Fly 2+, Twin-linked"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Stronghold",
+          "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION. Any friendly model can be set up or end any type of move on the ramp or platform section of this FORTIFICATION."
+        },
+        {
+          "name": "Damaged: 1-15 Wounds Remaining",
+          "description": "While this model has 1-15 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
+        }
+      ],
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
+    },
+    {
+      "id": "983d-b163-dc9f-3c54",
+      "name": "Sentry Gun",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Vehicle",
+        "Faction: Unaligned Forces",
+        "Sentry Gun",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Vehicle",
+        "Sentry Gun",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 30,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 30
+        }
+      ],
+      "stats": {
+        "name": "Sentry Gun",
+        "M": "-",
+        "T": "4",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "6+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [
+        {
+          "name": "Twin heavy bolter",
+          "range": "36\"",
+          "A": "3",
+          "BS": "5+",
+          "S": "5",
+          "AP": "-1",
+          "D": "2",
+          "keywords": "Heavy, Sustained Hits 1, Twin-linked"
+        }
+      ],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Defensive Emplacement",
+          "description": "In the Create the Battlefield and Place Objective Markers step, set this model up in one of the Sentry Gun positions (marked D1 on the mission map)."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "61f3-ff33-ec7a-3546",
+      "name": "Searchlight",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 10,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 10
+        }
+      ],
+      "stats": {
+        "name": "Searchlight",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "3+",
+        "InSv": "",
+        "W": "2",
+        "Ld": "6+",
+        "OC": "1",
+        "Base": "32mm"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [],
+      "abilities": [
+        {
+          "name": "Enemy Spotted",
+          "description": "Each time a model from your army makes a ranged attack that targets an enemy unit that is within 9\" of and visible to any Searchlights from your army, re-roll a Hit of 1 and, if the model making that attack is a Sentry Gun, add 1 to the Hit roll as well."
+        },
+        {
+          "name": "Wall",
+          "description": "This model is a terrain feature and counts as a Wall."
+        },
+        {
+          "name": "Camera Network",
+          "description": "In the Create the Battlefield and Place Objective Markers step, set this terrain feature up in one of the Searchlight positions (marked D2 on the mission map) that does not already contain a Searchlight."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    },
+    {
+      "id": "a5c2-3951-e727-b64a",
+      "name": "Breaching Robot",
+      "primaryCategory": "Allied Units",
+      "categories": [
+        "Vehicle",
+        "Faction: Unaligned Forces",
+        "Breaching Robot",
+        "Allies: Unaligned Forces"
+      ],
+      "keywords": [
+        "Vehicle",
+        "Breaching Robot",
+        "Allies: Unaligned Forces"
+      ],
+      "factionKeywords": [
+        "Unaligned Forces"
+      ],
+      "isCharacter": false,
+      "isEpicHero": false,
+      "isBattleline": false,
+      "isDedicatedTransport": false,
+      "isLeader": false,
+      "isSupport": false,
+      "canLead": [],
+      "baseCost": 35,
+      "minModels": 1,
+      "maxModels": 1,
+      "costTiers": [
+        {
+          "models": 1,
+          "cost": 35
+        }
+      ],
+      "stats": {
+        "name": "Breaching Robot",
+        "M": "6\"",
+        "T": "4",
+        "Sv": "4+",
+        "InSv": "",
+        "W": "3",
+        "Ld": "6+",
+        "OC": "0",
+        "Base": "Hull"
+      },
+      "rangedWeapons": [],
+      "meleeWeapons": [
+        {
+          "name": "Cutting blade",
+          "range": "Melee",
+          "A": "2",
+          "WS": "4+",
+          "S": "4",
+          "AP": "-2",
+          "D": "1",
+          "keywords": ""
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Limited Loadout",
+          "description": "This model cannot attempt to operate Hatchways and cannot perform Tactical Manoeuvres."
+        },
+        {
+          "name": "Assault Robot",
+          "description": "In the Deploy Armies step, when setting up a unit from your army within an Entry Zone, you can set this model up alongside that unit as if it was part of it, using the same Entry Zone."
+        },
+        {
+          "name": "Bomb Kit",
+          "description": "When the bearer is destroyed (other than through triggering its bomb, as described below), roll one D6 before removing it from play: on a 6 it explodes, and each other unit within 3\" of and visible to the bearer suffers 1 mortal wound.\n\nIn your Command phase, the bearer can trigger its bombs. If it does:\n- Open each Hatchway that is within 3\" of the bearer. Your opponent cannot attempt to prevent those Hatchways from opening, and those Hatchways cannot be closed again.\n- Roll one D6 for each other unit within 3\" of and visible to the bearer: on a 2+, that unit suffers 1 mortal wound. The bearer is then destroyed."
+        },
+        {
+          "name": "Cutting Gear",
+          "description": "Each time the bearer ends a Normal move, you can open one Hatchway that is within 1\" of it. Your opponent cannot attempt to prevent that Hatchway from opening."
+        }
+      ],
+      "transportCapacity": null,
+      "isAllied": true
+    }
+  ]
+}

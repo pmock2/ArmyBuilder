@@ -321,6 +321,9 @@ export const App: React.FC = () => {
               allEnhancements={factionData.enhancements}
               totalDP={validation.totalDP}
               dpLimit={validation.dpLimit}
+              subFactionName={activeRoster.subFactionName}
+              subFactionId={activeRoster.subFactionId}
+              rosterUnits={activeRoster.units}
               onToggleDetachment={handleToggleDetachment}
             />
 

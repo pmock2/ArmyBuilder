@@ -107,7 +107,23 @@ function validateRoster(roster, factionData) {
     }
   }
 
-  // 5. Warlord Validation
+  // 5. Detachment Faction / Chapter Restriction Check
+  for (const d of detachments) {
+    if (d.constraints?.requiredPrimaryCatalogue) {
+      const requiredCat = d.constraints.requiredPrimaryCatalogue;
+      const isMatchingCat = (roster.subFactionId === requiredCat) || (roster.factionId === requiredCat);
+      if (!isMatchingCat) {
+        issues.push({
+          id: `detachment-invalid-subfaction-${d.name}`,
+          severity: 'error',
+          title: 'Invalid Detachment for Sub-Faction',
+          message: `'${d.name}' is exclusive to its specific sub-faction and cannot be taken by ${roster.subFactionName || roster.factionName}.`
+        });
+      }
+    }
+  }
+
+  // 6. Warlord Validation
   const warlordUnits = units.filter(u => u.isWarlord);
   if (warlordUnits.length === 0) {
     issues.push({

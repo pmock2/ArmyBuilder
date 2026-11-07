@@ -11,205 +11,6 @@
   },
   "detachments": [
     {
-      "id": "7afb-a0f6-b95d-e791",
-      "name": "Bridgehead Strike",
-      "dpCost": 1,
-      "tags": [
-        "PRIORITY ASSETS"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Fire Zone Purge",
-          "description": "- If a friendly **MILITARUM TEMPESTUS OFFICER** model is your **WARLORD**, friendly **TEMPESTUS SCIONS** units have:\n-- **BATTLELINE**.\n-- +1 **OC**.\n- When a friendly **MILITARUM TEMPESTUS** unit is **selected to shoot**, if that unit was set up this turn, that unit’s ranged attacks have +1 to **hit rolls**."
-        }
-      ]
-    },
-    {
-      "id": "05ed-772d-bd3a-a790",
-      "name": "Mechanised Assault",
-      "dpCost": 2,
-      "tags": [
-        "RECONNAISSANCE"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Armoured Fist",
-          "description": "Each time an **^^Astra Militarum^^** model from your army makes a ranged attack in a turn in which it disembarked from a **^^Transport^^**, add 1 to the Wound roll."
-        }
-      ]
-    },
-    {
-      "id": "3d9f-5d9a-4a18-21aa",
-      "name": "Recon Element",
-      "dpCost": 2,
-      "tags": [
-        "RECON",
-        "RECONNAISSANCE"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Masters of Camouflage",
-          "description": "Friendly **ASTRA MILITARUM** units (excluding **TITANIC** units) have **Stealth**."
-        }
-      ]
-    },
-    {
-      "id": "cc4e-a30b-f987-c984",
-      "name": "Grizzled Company",
-      "dpCost": 3,
-      "tags": [
-        "ABHUMAN",
-        "PRIORITY ASSETS",
-        "3DP DETACHMENT",
-        "PURGE THE FOE"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Ruthless Discipline",
-          "description": "Add 1 to the number of Orders each **^^Astra Militarum Officer^^** model from your army can issue, as stated on their datasheet.\n\nWhile an **^^Astra Militarum^^** unit from your army is affected by an Order, each time a model in that unit makes an attack, re‑roll a Hit roll of 1."
-        }
-      ]
-    },
-    {
-      "id": "1aca-af79-006f-bf56",
-      "name": "Designation Force",
-      "dpCost": 1,
-      "tags": [
-        "RECON",
-        "RECONNAISSANCE"
-      ],
-      "constraints": {
-        "exclusiveTags": [
-          "RECON"
-        ],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Designated Targets",
-          "description": "Friendly **SCOUT SENTINEL/ASTRA MILITARUM INFANTRY SMOKE** units have the Signal Flares ability.\n\nThis **detachment** has the **RECON** tag and cannot be taken with another **RECON detachment**."
-        }
-      ]
-    },
-    {
-      "id": "c2fe-bf23-bf24-aa43",
-      "name": "Invasion Fleet",
-      "dpCost": 3,
-      "tags": [
-        "TAKE AND HOLD",
-        "3DP DETACHMENT",
-        "PRIORITY ASSETS"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Hyper Adaptions",
-          "description": "At the start of the first battle round, select one of the following Hyper-adaptations to be active for **^^Tyranids^^** units from your army until the end of the battle:\n\n**SWARMING INSTINCTS**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Infantry^^** or **^^Swarm^^** unit, that attack has the **[SUSTAINED HITS 1]** ability.\n\n**HYPER-AGGRESSION**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Monster^^** or **^^Vehicle^^** unit, that attack has the **[LETHAL HITS]** ability.\n\n**HIVE PREDATORS**\nEach time a **^^Tyranids^^** model with this Hyper-adaptation makes an attack that targets an enemy **^^Character^^** unit, if a Critical Hit is scored, that attack has the **[PRECISION]** ability."
-        }
-      ]
-    },
-    {
-      "id": "bba-65f6-a4d1-66ae",
-      "name": "Assimilation Swarm",
-      "dpCost": 2,
-      "tags": [
-        "PRIORITY ASSETS"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Feed the Swarm",
-          "description": "In your Command phase, each **HARVESTER** unit from your army can Regenerate one friendly **TYRANIDS** unit that is within 6\" of it. A unit can only be regenerated once per phase. Each time a unit regenerates, do one of the following:\n▪ One model in that unit regains up to D3+1 lost wounds.\n▪ One destroyed **INFANTRY** model (excluding **CHARACTERS**) is returned to that unit with its full wounds remaining. If that unit is an **ENDLESS MULTITUDE** unit, up to 3 destroyed models are returned instead."
-        }
-      ]
-    },
-    {
-      "id": "f773-f91c-2999-c7e1",
-      "name": "Vanguard Onslaught",
-      "dpCost": 2,
-      "tags": [
-        "RECONNAISSANCE"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Vanguard Prime",
-          "description": "**^^Deathleaper^^** loses Hunter Organism rule and can be your **^^Warlord^^**."
-        },
-        {
-          "name": "Questing Tendrils",
-          "description": "**^^Tyranids^^** units with this ability are eligible to charge in a turn in which they Fell Back. Vanguard Invader units with this ability are eligible to charge in a turn in which they Advanced."
-        }
-      ]
-    },
-    {
-      "id": "731f-1524-da02-945b",
-      "name": "Subterranean Assault",
-      "dpCost": 3,
-      "tags": [
-        "DISRUPTION",
-        "3DP DETACHMENT",
-        "RECONNAISSANCE"
-      ],
-      "constraints": {
-        "exclusiveTags": [],
-        "exclusiveChapters": false,
-        "requiredPrimaryCatalogue": null,
-        "synergies": []
-      },
-      "rules": [
-        {
-          "name": "Keywords",
-          "description": "**^^Mawloc^^** and **^^Trygon^^** units from your army have the Burrower keyword.\n\nIn the Muster Armies step, you can select up to 2 **^^Trygon^^** models from your army. The selected units gain the **^^Character^^** keyword.\n\n**Designer’s Note:** *This means that the selected models can be given Enhancements and one of them can be selected as your **^^Warlord^^**.*"
-        },
-        {
-          "name": "Surprise Assault",
-          "description": "Each time a **^^Tyranids^^** model from your army makes an attack, re-roll a Hit roll of 1.\n\nEach time a **^^Burrower^^** unit from your army is set up on the battlefield from Reserves, place a circular 40mm Tunnel Marker anywhere on the battlefield within 1\" of that unit and more than 3\" horizontally away from all enemy units.\n\nIn the Reinforcements step of your Movement phase, when you set up a unit on the battlefield from Reserves, you can set that unit up wholly within 9\" of one of your Tunnel Markers and more than 6\" horizontally away from any enemy units.\n\nIf an enemy model (excluding **^^Aircraft^^**) ends any kind of move within 3\" of one of your Tunnel Markers, that Tunnel Marker is removed from the battlefield."
-        }
-      ]
-    },
-    {
       "id": "0a79-5968-68f0-56b5",
       "name": "Host of Ascension",
       "dpCost": 3,
@@ -253,6 +54,26 @@
       ]
     },
     {
+      "id": "ff11-0fa4-2950-380e",
+      "name": "Biosanctic Broodsurge",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Hypermorphic Fury",
+          "description": "Add 1 to Charge rolls made for **^^Aberrants^^**, **^^Biophagus^^** and **^^Purestrain Genestealers^^** units from your army. In addition, each time such a unit is selected to fight, if it made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by the models in that unit."
+        }
+      ]
+    },
+    {
       "id": "59e2-4fec-2b00-b1e8",
       "name": "Outlander Claw",
       "dpCost": 2,
@@ -269,6 +90,74 @@
         {
           "name": "Rapid Takeover",
           "description": "While a **GENESTEALER CULTS MOUNTED/VEHICLE** model from your army is not Battle‑shocked, add 1 to its Objective Control characteristic. In addition, at the end of your Command phase, if one or more **ATALAN JACKALS** units from your army are within range of an **objective** you control, that **objective** remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase."
+        }
+      ]
+    },
+    {
+      "id": "0a59-1d64-257c-04fb",
+      "name": "Brood Brother Auxilia",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Brood Brothers",
+          "description": "You can include **^^Astra Militarum^^** units in your army, even though they do not have the **^^Genestealer Cult^^** Faction keyword. The combined points cost of such units you can include in your army is:\n\n- Incursion: Up to 500 pts\n- Strike Force: Up to 1000 pts\n- Onslaught: Up to 1500 pts\n\nA **GENESTEALER CULTS** model must be your **WARLORD**, and **ASTRA MILITARUM** models from your army lose the Voice of Command ability if they have it. You cannot include units with any of the following keywords in your army using this rule: **AIRCRAFT**; **COMMISSAR**; **EPIC HERO**; **MILITARUM TEMPESTUS**; **OGRYN**; **RATLING**; **TECH‑PRIEST ENGINSEER**; **MINISTORUM PRIEST**."
+        },
+        {
+          "name": "Integrated Tactics",
+          "description": "Each time an **^^Astra Militarum^^** unit from your army is selected to shoot, you can select one enemy unit within 18\" of and visible to that unit. If you do, until the end of the phase, models in that **^^Astra Militarum^^** unit can only target that enemy unit (and only if it is an eligible target) and that enemy unit is caught in overlapping fire. While an enemy unit is caught in overlapping fire, each time a **^^Genestealer Cult^^** model from your army targets that enemy unit with a ranged attack, add 1 to the Hit roll."
+        }
+      ]
+    },
+    {
+      "id": "cb2f-554e-1162-75d5",
+      "name": "Final Day",
+      "dpCost": 2,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "The Star Children's Blessings",
+          "description": "You can include TYRANIDS VANGUARD INVADER units (excluding AIRCRAFT, BROODLORD and GENESTEALERS units) in your army. The combined points cost of such units depends on your battle size:\n\n■ Incursion: Up to 500 pts\n■ Strike Force: Up to 1000 pts\n■ Onslaught: Up to 1500 pts\n\nNo TYRANIDS models from your army can be your WARLORD."
+        },
+        {
+          "name": "Psionic Parasitism",
+          "description": "At the end of your Movement phase, for each TYRANIDS SYNAPSE unit from your army, you can select one friendly GENESTEALER CULTS unit (excluding PURESTRAIN GENESTEALER and PATRIARCH units) and one friendly TYRANIDS unit each within 9\" of and visible to that SYNAPSE unit. If you do, that GENESTEALER CULTS unit from your army suffers D3+1 mortal wounds and one model in the selected TYRANIDS unit regains up to that many lost wounds and until the start of your next Movement phase, each time a model in the selected TYRANIDS unit makes an attack, add 1 to the Hit roll.\n\nTYRANIDS units from your army have the following ability:\n\nCatalyst (Aura): While an enemy unit is within 6\" of this unit, each time a friendly GENESTEALER CULTS unit makes an attack that targets that enemy unit, add 1 to the Hit roll."
+        }
+      ]
+    },
+    {
+      "id": "fc4a-2c42-6f33-0347",
+      "name": "Heroes of the Uprising",
+      "dpCost": 1,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Killer Reputation",
+          "description": "Friendly **KELERMORPH/LOCUS/REDUCTUS SABOTEUR/SANCTUS** models have **KILLER**.\n- Friendly **KILLER** models’ attacks can:\n-- Re‑roll **hit rolls** of 1.\n-- Re‑roll **wound rolls** of 1."
         }
       ]
     },
@@ -11546,7 +11435,7 @@
     {
       "id": "37ad-63e5-1786-87cf",
       "name": "Bullgryn Squad",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Bullgryn Squad",
         "Ogryn",
@@ -11604,12 +11493,13 @@
           "description": "Each time an attack is allocated to a model in this unit, subtract 1 from the Damage characteristic of that attack."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a979-5b21-dc69-b949",
       "name": "Commissar",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Commissar",
         "Faction: Astra Militarum",
@@ -11681,12 +11571,13 @@
           "description": "This model can be attached to the following units:\n- **CADIAN SHOCK TROOPS**\n- **CATACHAN JUNGLE FIGHTERS**\n- **DEATH KORPS GRENADIER SQUAD**\n- **DEATH KORPS OF KRIEG**\n- **KASRKIN**\n- **KRIEG COMBAT ENGINEERS**\n- **TEMPESTUS SCIONS**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "653d-80-d715-7d55",
       "name": "Gaunt’s Ghosts",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Gaunt’s Ghosts",
         "Faction: Astra Militarum",
@@ -11826,12 +11717,13 @@
           "description": "Models in this unit have the Benefit of Cover."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "913f-3cb6-fb80-7f6a",
       "name": "‘Iron Hand’ Straken [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "‘Iron Hand’ Straken",
         "Faction: Astra Militarum",
@@ -11923,12 +11815,13 @@
           "description": "While this model is leading a unit, melee weapons equipped by models in that unit have the **[LETHAL HITS]** ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a9d-55c1-3d24-fa25",
       "name": "Lord Solar Leontus",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Lord Solar Leontus",
         "Mounted",
@@ -12039,12 +11932,13 @@
           "description": "This model can be attached to the following units:\n- **ATTILAN ROUGH RIDERS**\n- **CADIAN SHOCK TROOPS**\n- **CATACHAN JUNGLE FIGHTERS**\n- **DEATH KORPS GRENADIER SQUAD**\n- **DEATH KORPS OF KRIEG**\n- **DEATH RIDERS**\n- **KASRKIN**\n- **KRIEG COMBAT ENGINEERS**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "497-36ad-8ecb-f7c7",
       "name": "Militarum Tempestus Command Squad",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Militarum Tempestus",
         "Faction: Astra Militarum",
@@ -12123,12 +12017,13 @@
           "description": "At the start of your Command phase, if the bearer's unit is below its Starting Strength, you can return up to D3 destroyed Tempestus Scions models to this unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5c5f-8f23-7f13-2af6",
       "name": "Munitorum Servitors [Legends]",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Munitorum Servitors",
         "Faction: Astra Militarum",
@@ -12234,12 +12129,13 @@
           "description": "At the start of the Declare Battle Formations step, this unit can join one other unit from your army that is being led by a **^^Regimental Enginseer^^** (a unit cannot have more than one **^^Munitorum Servitors^^** unit joined to it). If it does, until the end of the battle, every model in this unit counts as being part of that Bodyguard unit, and that Bodyguard unit’s Starting Strength is increased accordingly."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "bcda-f4bb-e726-9bfe",
       "name": "Nork Deddog",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Nork Deddog",
         "Faction: Astra Militarum",
@@ -12314,12 +12210,13 @@
           "description": "At the start of the Declare Battle Formations step, this model must join one **^^Command Squad^^** unit from your army (a **^^Command Squad^^** cannot have more than one **^^Loyal Protector^^** model joined to it). This model then counts as part of that **^^Command Squad^^** for the rest of the battle, and its Starting Strength is increased accordingly. If it is not possible to join this model to a **^^Command Squad^^**, it does not take part in the battle and counts as having been destroyed. \n\nWhile this model is joined to a unit, it can embark within any **^^Transport^^** that unit can embark within, and takes up the space of 3 models.\n\nThis model cannot be selected as your **^^Warlord^^**."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a7c2-1534-93b0-c0eb",
       "name": "Ogryn Bodyguard",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Bodyguard",
         "Faction: Astra Militarum",
@@ -12388,12 +12285,13 @@
           "description": "At the start of the Declare Battle Formations step, this model must join one **^^Command Squad^^** unit from your army (a **^^Command Squad^^** cannot have more than one **^^Loyal Protector^^** model joined to it). This model then counts as part of that **^^Command Squad^^** for the rest of the battle, and its Starting Strength is increased accordingly. If it is not possible to join this model to a **^^Command Squad^^**, it does not take part in the battle and counts as having been destroyed. \n\nWhile this model is joined to a unit, it can embark within any **^^Transport^^** that unit can embark within, and takes up the space of 3 models.\n\nThis model cannot be selected as your **WARLORD** and cannot be given Enhancements"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "c9eb-2007-af01-a853",
       "name": "Ogryn Squad",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Ogryn Squad",
         "Faction: Astra Militarum",
@@ -12451,12 +12349,13 @@
           "description": "Each time a model in this unit makes a ranged attack that targets the closest eligible target, improve the Armour Penetration characteristic of that attack by 1."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f556-a33d-dc90-d6fc",
       "name": "Tech-Priest Enginseer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Tech-Priest Enginseer",
         "Faction: Astra Militarum",
@@ -12560,12 +12459,13 @@
           "description": "This model can be attached to the following units:\n- **^^Cadian Shock Troops^^**\n- **^^Catachan Jungle Fighters^^**\n- **^^Death Korps of Krieg^^**\n- **^^Kasrkin^^**\n- **^^Krieg Combat Engineers^^**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a8d5-81f9-96a0-fd12",
       "name": "Sergeant Harker [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Sergeant Harker",
         "Faction: Astra Militarum",
@@ -12646,12 +12546,13 @@
           "description": "Once per battle, when this model is selected to shoot, it can use this ability. If it does, until the end of the phase, its Payback weapon has an Attacks characteristic of 6 and the **[SUSTAINED HITS 3]** ability instead of the **[SUSTAINED HITS 1]** ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4d50-e535-616a-259c",
       "name": "Sly Marbo",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Sly Marbo",
         "Faction: Astra Militarum",
@@ -12735,12 +12636,13 @@
           "description": "Once per turn, in your opponent's Shooting phase, when an enemy unit makes a ranged attack that targets a friendly **^^Regiment^^** unit within 3\" of this model, after that enemy unit has shot, this model can shoot as if it were your Shooting phase, but it must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "679b-f37f-2388-748",
       "name": "Tempestus Scions",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Tempestus Scions",
         "Faction: Astra Militarum",
@@ -12800,12 +12702,13 @@
           "description": "Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Wound roll instead."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "b6b2-9971-ec0c-349e",
       "name": "Ursula Creed",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Ursula Creed",
         "Faction: Astra Militarum",
@@ -12885,12 +12788,13 @@
           "description": "This model can be attached to the following units:\n- ^^**Cadian Shock Troops**^^\n- **^^Kasrkin^^**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "532c-2c97-357a-fa1e",
       "name": "Avenger Strike Fighter",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Vehicle",
@@ -12957,12 +12861,13 @@
           "description": "Once per turn, in your opponent’s Shooting phase, when another friendly ASTRA MILITARUM unit within 6\" of this model is destroyed by an attack made by a unit that can Fly, one model from your army with this ability can use it. If it does, after the attacking unit has finished making its attacks, that model can shoot as if it were your Shooting phase, but when resolving those attacks it can only target that enemy unit (and only if it is an eligible target)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ed3d-fa87-4f0d-d10c",
       "name": "Voss-pattern Lightning [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Vehicle",
@@ -13027,12 +12932,13 @@
           "description": "Each time an attack targets this model, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7f1f-38c8-1bdc-55d7",
       "name": "Marauder Bomber [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Vehicle",
@@ -13088,12 +12994,13 @@
           "description": "While this model has 1-7 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "18f9-56ec-7334-69a7",
       "name": "Marauder Destroyer [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Vehicle",
@@ -13184,12 +13091,13 @@
           "description": "Each time this model ends a Normal move, you can select one enemy unit it moved over during that move and roll six D6: for each 3+, that unit suffers 1 mortal wound."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7d5b-1aae-55-2f5b",
       "name": "Rein and Raus [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Epic Hero",
         "Infantry",
@@ -13269,12 +13177,13 @@
           "description": "While this unit contains 2 models, each time a model in this unit makes a ranged attack, you can re-roll the Hit roll and you can re-roll the Wound roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d58c-e97f-5062-d9e1",
       "name": "Death Rider Commissar [Legends]",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Mounted",
         "Character",
@@ -13376,12 +13285,13 @@
           "description": "This model can be attached to the following unit:\n- **^^Death Riders^^**\n\n*You can attach this model to the above unit even if one **^^Death Rider Squadron Commander^^**, **^^Lord Marshal Dreir^^** or **^^Lord Solar Leontus^^** model has already been attached to it. If you do, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths.*"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "aa9f-f137-1638-0369",
       "name": "Tempestus Aquilons",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Infantry",
         "Grenades",
@@ -13524,12 +13434,13 @@
           "description": "When this unit is set up on the battlefield using the Deep Strike ability, the Tempestor Aquilon can shoot with its sentry weapon (its sentry flamer, sentry grenade launcher or sentry hot-shot volley gun)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8293-a070-2c87-de30",
       "name": "Ratlings",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -13613,12 +13524,13 @@
           "description": "The bearer’s unit has the **^^Grenades^^** keyword."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "9033-d07c-3e1c-f6f0",
       "name": "Lord Marshal Dreir",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Mounted",
         "Epic Hero",
@@ -13709,12 +13621,13 @@
           "description": "Each time this model's unit makes a Charge move, until the end of the turn, melee weapons equipped by models in that unit have the **[DEVASTATING WOUNDS]** ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ba72-7b05-33c9-a1c0",
       "name": "Ministorum Priest",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -13786,12 +13699,13 @@
           "description": "This model can be attached to the following units:\n- **CADIAN SHOCK TROOPS**\n- **CATACHAN JUNGLE FIGHTERS**\n- **DEATH KORPS GRENADIER SQUAD**\n- **DEATH KORPS OF KRIEG**\n- **KASRKIN**\n- **KRIEG COMBAT ENGINEERS**\n- **TEMPESTUS SCIONS**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f4d1-cea9-f487-4501",
       "name": "Provisionally Prepared [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -13870,12 +13784,13 @@
           "description": "This model can be attached to the following unit:\n- **^^Ratlings^^**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2408-cf76-fe11-c6da",
       "name": "Hell's Last [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -13971,12 +13886,13 @@
           "description": "Add 1 to the Objective Control characteristic of models in the bearer’s unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3962-1fa9-7088-aedd",
       "name": "Commissar Yarrick",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -14102,12 +14018,13 @@
           "description": "In your Command phase, you can select one of the abilities in the Hero of Hades Hive section. Until the start of your next Command phase, this model has that ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "50b8-1f13-9807-0069",
       "name": "Commissar Graves",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -14227,12 +14144,13 @@
           "description": "Each time this unit ends a Charge move, you can select one enemy unit within Engagement Range of it, then roll one D6: on a 2‑3, that enemy unit suffers D3 mortal wounds; on a 4‑5, that enemy unit suffers 3 mortal wounds; on a 6, that enemy unit suffers D3+3 mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d624-2be1-87a3-41ca",
       "name": "Commissar Graves on Foot",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -14332,12 +14250,13 @@
           "description": "Your army can only include one **^^Commissar Graves^^** or **^^Commissar Graves on Foot^^** unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4aa7-5845-84ad-2d7d",
       "name": "Ciaphas Cain [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Astra Militarum",
         "Imperium",
@@ -14451,12 +14370,13 @@
           "description": "In the Deploy Armies step, you must set this unit up on the battlefield, or embarked within a **TRANSPORT** unit that is set up on the battlefield. Abilities that allow you to redeploy a unit or place a unit in **strategic reserves** cannot affect this unit or a **TRANSPORT** unit this unit is embarked within."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5b1d-134a-9996-b634",
       "name": "Aegis Defence Line with Weapon Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -14499,12 +14419,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e85b-17c7-1ad9-8375",
       "name": "Ambull [Legends]",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -14571,12 +14492,13 @@
           "description": "Twice per battle, at the end of your opponent’s turn, if this model is not within Engagement Range of one or more enemy units, you can remove this model from the battlefield. In the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that\nis more than 9\" horizontally away from all enemy models. If the battle ends and this unit is not on the battlefield, it is destroyed. \n\nDesigner’s Note: Place two Borewyrm Infestation tokens next to this model, removing one each time this ability has been used."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5134-5fe9-e489-43c4",
       "name": "Bastion [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -14625,12 +14547,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "71b0-77b9-522c-17d6",
       "name": "Firestorm Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -14679,12 +14602,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "c4d1-c85a-a20e-6c94",
       "name": "Fortress of Redemption [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -14771,12 +14695,13 @@
           "description": "While a model is on top of the tower roof of this FORTIFICATION, improve the Armour Penetration characteristic of ranged weapons equipped by that model by 1."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "e3ba-7f87-c32-229",
       "name": "Guardian Drone [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -14858,12 +14783,13 @@
           "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3b75-e314-ecd5-cd63",
       "name": "Macro-cannon Aquila Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -14930,12 +14856,13 @@
           "description": "In your Shooting phase, just after selecting a target for this model’s Aquila macro-cannon, the target unit and every other enemy INFANTRY unit within 3\" of that unit must take a Battle-shock test."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "cabe-2c66-c8b6-de6c",
       "name": "Plasma Obliterator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15010,12 +14937,13 @@
           "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "f39-fc54-f95a-8395",
       "name": "Primaris Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15131,12 +15059,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "54c-8b9f-b1d8-93c3",
       "name": "Skyshield Landing Pad [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15188,12 +15117,13 @@
           "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "da76-e18f-523e-d45a",
       "name": "Spindle Drones [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Infantry",
@@ -15265,12 +15195,13 @@
           "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "11b2-8348-ae67-fa98",
       "name": "The Archivist [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -15350,12 +15281,13 @@
           "description": "While an enemy unit is within 6\" of this model, each time that unit takes a Battle-shock or Leadership test, subtract 1 from that test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "14fe-18ed-9c25-189c",
       "name": "Vengeance Weapon Battery [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15407,12 +15339,13 @@
           "description": "Each time this model makes a ranged attack that targets the closest enemy unit:\n- If that attack is made with a Punisher gatling cannon and the target is not a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a battle cannon and the target is a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a quad-lascannon and the target can FLY, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4501-646d-e705-9dca",
       "name": "Void Shield Generator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15460,12 +15393,13 @@
           "description": "While a friendly model is wholly within 6\" of this FORTIFICATION, that model has a 4+ invulnerable save against ranged attacks."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5c81-92c5-e20b-edf1",
       "name": "Vortex Missile Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15532,12 +15466,13 @@
           "description": "In your Shooting phase, each time you select a target for this model’s vortex missile battery, roll one D6 for the target unit and one D6 for every other enemy unit within 3\" of the target unit. On a 4+, the unit being rolled for is struck by the vortex; after resolving all of this model’s attacks against the target unit, each unit struck by the vortex suffers D3 mortal wounds."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "9698-2e0-15ac-1193",
       "name": "Wall of Martyrs Bunker [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15591,12 +15526,13 @@
           "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
         }
       ],
-      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "8419-8133-33f3-e0a4",
       "name": "Wall of Martyrs Defence Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15641,12 +15577,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "64b7-a2df-416a-9963",
       "name": "Wall of Martyrs Defence Line [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15691,12 +15628,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f6f8-8759-3282-2ab",
       "name": "Imperial Fortress Walls [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -15767,12 +15705,13 @@
           "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "20c8-d2-586d-623",
       "name": "Castellum Stronghold [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Castellum Stronghold",
         "Fortification",
@@ -15861,12 +15800,13 @@
           "description": "While this model has 1-15 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "983d-b163-dc9f-3c54",
       "name": "Sentry Gun",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -15927,12 +15867,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this model up in one of the Sentry Gun positions (marked D1 on the mission map)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "61f3-ff33-ec7a-3546",
       "name": "Searchlight",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Allies: Unaligned Forces"
       ],
@@ -15983,12 +15924,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this terrain feature up in one of the Searchlight positions (marked D2 on the mission map) that does not already contain a Searchlight."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a5c2-3951-e727-b64a",
       "name": "Breaching Robot",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -16061,12 +16003,13 @@
           "description": "Each time the bearer ends a Normal move, you can open one Hatchway that is within 1\" of it. Your opponent cannot attempt to prevent that Hatchway from opening."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "1de2-b57b-aa0a-1f0d",
       "name": "Ripper Swarms",
-      "primaryCategory": "Swarm",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Ripper Swarm",
         "Swarm",
@@ -16121,7 +16064,8 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     }
   ]
 }

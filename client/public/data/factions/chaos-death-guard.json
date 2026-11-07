@@ -9,7 +9,190 @@
     "parentFaction": null,
     "file": "Chaos - Death Guard.json"
   },
-  "detachments": [],
+  "detachments": [
+    {
+      "id": "df4a-2ead-43d5-ea61",
+      "name": "Flyblown Host",
+      "dpCost": 1,
+      "tags": [
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Verminous Haze",
+          "description": "In the **Declare Battle Formations** step, you can select up to two friendly **PLAGUE MARINES** units. Those units have **Infiltrators**. \n"
+        }
+      ]
+    },
+    {
+      "id": "e2ff-ece0-6cbb-be05",
+      "name": "Virulent Vectorium",
+      "dpCost": 3,
+      "tags": [
+        "TAKE AND HOLD",
+        "3DP DETACHMENT",
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Worldblight",
+          "description": "At the end of your Command phase, if a friendly DEATH GUARD unit is controlling an objective, that objective is secured. Until you lose control of that objective, while an enemy unit is within range of that objective, that enemy unit is Afflicted."
+        }
+      ]
+    },
+    {
+      "id": "7a84-2212-be14-a713",
+      "name": "Shamblerot Vectorium",
+      "dpCost": 2,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Numberless Horde",
+          "description": "In your Command phase in each of the following battle rounds, depending on your chosen battle size, add a new ^^**Poxwalkers**^^ unit with a Starting Strength of 10 to your army, in Strategic Reserves.\n\nIncursion - Battle Rounds 2,3\nStrike Force - Battle Rounds 2,3,4\nOnslaught - Battle Round 2,3,4,5\n\n^^**Poxwalkers**^^ unit from your army gain the ^^**Battleline**^^ keyword."
+        }
+      ]
+    },
+    {
+      "id": "f038-29f5-5625-6cc1",
+      "name": "Death Lord's Chosen",
+      "dpCost": 2,
+      "tags": [
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Deadly Vectors",
+          "description": "In your opponent's Command phase, roll 2D6 for each Afflicted enemy unit, subtracting 1 from the result if that unit is Below Half-strength. If the result is 6 or less, that enemy unit suffers D3 mortal wounds."
+        }
+      ]
+    },
+    {
+      "id": "18b0-2d87-798f-ef1c",
+      "name": "Mortarion's Hammer",
+      "dpCost": 2,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Miasmic Bombardment",
+          "description": "At the start of the battle round, select a number of enemy units more than 12\" away from every model in your army that is on the battle field. Until the end of the battle round, those enemy units are Afflicted. The maximum number of units you can select in this way depends on the battle size, as shown below.\n\nIncursion - 1 Unit\nStrike Force - 2 Units\nOnslaught - 3 Units"
+        }
+      ]
+    },
+    {
+      "id": "fd92-8b6d-0ef2-e14d",
+      "name": "Champions of Contagion",
+      "dpCost": 2,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Manifold Maladies",
+          "description": "At the start of the battle round, you can select one of the Plagues listed in Nurgle's Gift. Until the end of the battle, that is your chosen Plague instead of any previously chosen Plague."
+        }
+      ]
+    },
+    {
+      "id": "69e5-13c7-06bf-d454",
+      "name": "Tallyband Summoners",
+      "dpCost": 2,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Reverberant Rancidity",
+          "description": "While a ^^**Plague Legions^^** unit from your army is within 7\" of one or more ^^**Death Guard^^** units from your army, that ^^**Plague Legions^^** unit has the Nurgle's Gift ability.\n\nWhile a ^^**Death Guard^^** unit from your army is within 7\" of one or more ^^**Plague Legions^^** units from your army, add 3\" to that ^^**Death Guard^^** unit's Contagion Range."
+        }
+      ]
+    },
+    {
+      "id": "e58e-f981-24ed-6cd4",
+      "name": "Contagion Engines",
+      "dpCost": 1,
+      "tags": [
+        "RECONNAISSANCE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Warped and Rusted Animus",
+          "description": "Friendly FOETID BLOAT‑DRONE/FOETID BLOAT‑DRONE WITH HEAVY BLIGHT LAUNCHER/HELBRUTE/MYPHITIC BLIGHT‑HAULER units have CONTAGION ENGINE. \n- Friendly CONTAGION ENGINE units’ ranged attacks have [ASSAULT]. \n"
+        }
+      ]
+    },
+    {
+      "id": "c437-a67d-c0cd-11ab",
+      "name": "Paragons of Putrescence",
+      "dpCost": 1,
+      "tags": [
+        "PRIORITY ASSETS"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Hypervirulent Strains",
+          "description": "Friendly **DEATH GUARD CHARACTER** units have +3\" to their **Contagion Range** (to a maximum of 12\")."
+        }
+      ]
+    }
+  ],
   "enhancements": [],
   "units": [
     {
@@ -6049,7 +6232,7 @@
     {
       "id": "e289-ad32-c78a-e055",
       "name": "Chaos Acastus Knight Asterius",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6140,12 +6323,13 @@
           "description": "Each time this model makes an attack that targets a ^^**Vehicle^^**, improve the Strength and Damage characteristics of that attack by 1 (if that attack targets a ^^**Fortification^^**, improve the Strength and Damage characteristics of that attack by 2 instead)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "fe77-6f85-5ddb-65bf",
       "name": "Chaos Acastus Knight Porphyrion",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6216,12 +6400,13 @@
           "description": "Each time this model Remains Stationary, until the end of the turn, ranged weapons equipped by this model have the [LETHAL HITS] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ec6e-d1d6-f7c6-d008",
       "name": "Chaos Cerastus Knight Acheron",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6327,12 +6512,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 6\" of this model, it is affected by this ability. At the start of the Fight phase, each enemy unit within Engagement Range of one or more ^^**War Dog^^** units affected by this ability must take a Battle-shock test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8b1d-9029-f9e1-42d9",
       "name": "Chaos Cerastus Knight Atrapos",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6440,12 +6626,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 6\" of this model, each time that ^^**War Dog^^** model makes an attack that targets a ^^**Titanic^^** or ^^**Towering^^** unit, you can re-roll the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "b6e5-911b-93f-476",
       "name": "Chaos Cerastus Knight Castigator",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6543,12 +6730,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 6\" of this model, ranged weapons equipped by that ^^**War Dog^^** model have the [SUSTAINED HITS 1] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4175-82c6-8e96-bef8",
       "name": "Chaos Cerastus Knight Lancer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6646,12 +6834,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 6\" of this model, ranged weapons equipped by that ^^**War Dog^^** model have the [ASSAULT] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2d0e-5b83-b678-56dc",
       "name": "Chaos Questoris Knight Magaera",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -6733,12 +6922,13 @@
           "description": "At the end of your Command phase, this model regains up to D3 lost wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "106c-4bdf-79a4-1c70",
       "name": "Chaos Questoris Knight Styrix",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6827,12 +7017,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 6\" of this model, ranged weapons equipped by that ^^**War Dog^^** model have the [IGNORES COVER] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a78d-828b-302b-1bec",
       "name": "Knight Abominant",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -6932,12 +7123,13 @@
           "description": "At the end of your Movement phase, roll one D6 for each enemy unit within 9\" of one or more models with this ability: on a 3+, that enemy unit suffers D3 mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7a51-8f1f-7290-d9d2",
       "name": "Knight Desecrator",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7024,12 +7216,13 @@
           "description": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit can ignore modifiers to this unit’s: \n- BS. \n- Hit rolls and wound rolls."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "0119-8c04-435e-c782",
       "name": "Knight Despoiler",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7106,12 +7299,13 @@
           "description": "Each time this model is selected to shoot or fight, you can re-roll one Hit roll or you can re-roll one Wound roll when resolving those attacks."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "61e0-e55b-1926-44df",
       "name": "Knight Rampager",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7218,12 +7412,13 @@
           "description": "Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [Devastating Wounds] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "87ea-c7bd-6df0-f056",
       "name": "Knight Tyrant",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7309,12 +7504,13 @@
           "description": "Enemy units that are set up on the battlefield as Reinforcements cannot be set up within 12\" of this model."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "753d-4e02-eda3-4809",
       "name": "War Dog Brigand",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7368,12 +7564,13 @@
           "description": "Ranged weapons equipped by this model have the [Ignores Cover] ability while targeting enemy units in range of one or more objective markers."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8df0-fc3c-8ced-ffce",
       "name": "War Dog Executioner",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7438,12 +7635,13 @@
           "description": "Each time this model makes an attack that targets a unit Below Half-strength, add 1 to the Hit roll. Each time an enemy unit is destroyed as the result of this model's attacks, before removing the last model in that unit from the battlefield, each other unit from your opponent's army that is within 3\" of it must take a Battle-shock test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "6e6d-7950-ce6d-4cd4",
       "name": "War Dog Huntsman",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7497,12 +7695,13 @@
           "description": "Each time this model makes an attack that targets a ^^**Monster^^** or ^^**Vehicle^^** unit, you can re-roll the Wound roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e96b-ac98-7fd2-a155",
       "name": "War Dog Karnivore",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7577,12 +7776,13 @@
           "description": "You can re-roll Advance and Charge rolls made for this model."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ae7c-3679-a88-6895",
       "name": "War Dog Moirax",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7636,12 +7836,13 @@
           "description": "You can target this unit with the Heroic Intervention Stratagem for 0CP, and can do so even if you have already targeted a different unit with that Stratagem this phase."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "bbc6-c0ed-24e8-86b7",
       "name": "War Dog Stalker",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7695,12 +7896,13 @@
           "description": "Each time this model makes an attack that targets an enemy unit, if there are no other units from your opponent’s army within 6\" of that target, add 1 to the Wound roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "c0a2-eb65-6d34-5bc6",
       "name": "Knight Ruinator",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Chaos Knights",
         "Vehicle",
@@ -7808,12 +8010,13 @@
           "description": "While a friendly ^^**War Dog^^** model is within 9\" of this model, each time that ^^**War Dog^^** model makes an attack that targets the closest enemy unit, improve the Armour Penetration characteristic of that attack by 1."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "1f26-fce8-bb2d-2c44",
       "name": "Javelin Attack Speeder [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -7876,12 +8079,13 @@
           "description": "In your Shooting phase, each time this model has shot, if it is not within Engagement Range of any enemy units, it can make a Normal move of up to D6\". If it does, until the end of the turn, this model is not eligible to declare a charge."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "68be-7090-1fbc-9021",
       "name": "Deathstorm Drop Pod [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -7952,12 +8156,13 @@
           "description": "This model must start the battle in Reserves, but it is not counted towards any limits placed on the maximum number of Reserves units you can start the battle with. This model can be set up in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ca2a-69ca-dd3c-47",
       "name": "Sicaran Arcus [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -8020,12 +8225,13 @@
           "description": "Each time this model makes an attack that targets the enemy unit you selected for the Oath of Moment ability, that attack has the [IGNORES COVER] ability and can ignore the penalty to their Hit rolls when making attacks with Indirect Fire weapons against targets that are not visible to them."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8b64-6aba-150d-27e4",
       "name": "Sicaran Omega [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -8098,12 +8304,13 @@
           "description": "Each time this model makes an attack that targets the closest eligible enemy unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "128d-5011-8e6-45a6",
       "name": "Vindicator Laser Destroyer [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -8176,12 +8383,13 @@
           "description": "Each time this model makes a ranged attack that targets a MONSTER or VEHICLE unit, re-roll a Damage roll of 1."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7fd0-d95d-d076-3472",
       "name": "Dreadnought Drop Pod [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -8233,12 +8441,13 @@
           "description": "This model must start the battle in Reserves, but neither it nor any units embarked within it are counted towards any limits placed on the maximum number of Reserves units you can start the battle with. This model can be set up in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules. Any units embarked within this model must immediately disembark after it has been set up on the battlefield, and they must be set up more than 9\" away from all enemy models. After this model has been set up on the battlefield, no units can embark within it."
         }
       ],
-      "transportCapacity": "This model has a transport capacity of 1 Dreadnought model."
+      "transportCapacity": "This model has a transport capacity of 1 Dreadnought model.",
+      "isAllied": true
     },
     {
       "id": "d298-eb55-5779-f90e",
       "name": "Tarantula Sentry Battery [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Adeptus Astartes",
         "Vehicle",
@@ -8292,12 +8501,13 @@
           "description": "(Once per phase, per unit)\nWhen you target this unit with the Fire Overwatch stratagem, this unit's snap shooting attacks hit on unmodified hit rolls of 4+ until that stratagem is resolved."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7e7a-96f6-cad0-50ec",
       "name": "Decimator [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Heretic Astartes",
         "Vehicle",
@@ -8413,12 +8623,13 @@
           "description": "The first time this model is destroyed, remove it from play without resolving its Deadly Demise ability. Then, at the end of the phase, roll one D6: on a 2+, set this model back up on the battlefield as close as possible to where it was destroyed and not within Engagement Range of any enemy units, with D6 wounds remaining."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "9401-616b-6e9e-10e5",
       "name": "Dreadclaw Drop Pod [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Heretic Astartes",
         "Vehicle",
@@ -8483,12 +8694,13 @@
           "description": "This model must start the battle in Reserves, but neither it nor any units embarked within it are counted towards any limits placed on the maximum number of Reserves units you can start the battle with. This model can be set up in the Reinforcements step of your first, second or third Movement phase, regardless of any mission rules. Any units embarked within this model can disembark after it has been set up on the battlefield, and if they do they must be set up more than 9\" away from all enemy models."
         }
       ],
-      "transportCapacity": "This model has a transport capacity of 12 HERETIC ASTARTES INFANTRY models. Each JUMP PACK, POSSESSED and TERMINATOR model takes up the space of 2 models. Each OBLITERATOR model takes up the space of 3 models. This model can instead transport 1 HELBRUTE or DREADNOUGHT model."
+      "transportCapacity": "This model has a transport capacity of 12 HERETIC ASTARTES INFANTRY models. Each JUMP PACK, POSSESSED and TERMINATOR model takes up the space of 2 models. Each OBLITERATOR model takes up the space of 3 models. This model can instead transport 1 HELBRUTE or DREADNOUGHT model.",
+      "isAllied": true
     },
     {
       "id": "fdad-1104-a934-3812",
       "name": "Blood Slaughterer [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -8573,12 +8785,13 @@
           "description": "Each time this unit Advances, do not make an Advance roll for it. Instead, until the end of the phase, add 6\" to the Move characteristic of models in this unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f564-7bc-21a6-7796",
       "name": "Greater Brass Scorpion [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Titanic",
@@ -8689,12 +8902,13 @@
           "description": "While this model has 1-9 wounds remaining, subtract 5 from this model’s Objective Control characteristic and each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "6c76-b4e-4437-27e2",
       "name": "Kytan Ravager [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Titanic",
@@ -8785,12 +8999,13 @@
           "description": "Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [SUSTAINED HITS 1] ability. In addition, once per battle, this model is eligible to declare a charge in a turn in which it Advanced."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5bb7-ac8-4448-a4d8",
       "name": "Kharybdis Assault Claw [Legends]",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Heretic Astartes",
         "Vehicle",
@@ -8892,12 +9107,13 @@
           "description": "While this model has 1-7 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": "This model has a transport capacity of 22 HERETIC ASTARTES INFANTRY models. Each JUMP PACK, POSSESSED and TERMINATOR model takes up the space of 2 models. Each OBLITERATOR model takes up the space of 3 models. This model can instead transport 1 HELBRUTE or DREADNOUGHT model."
+      "transportCapacity": "This model has a transport capacity of 22 HERETIC ASTARTES INFANTRY models. Each JUMP PACK, POSSESSED and TERMINATOR model takes up the space of 2 models. Each OBLITERATOR model takes up the space of 3 models. This model can instead transport 1 HELBRUTE or DREADNOUGHT model.",
+      "isAllied": true
     },
     {
       "id": "b7e8-f3ae-be53-9ba5",
       "name": "Reaver Titan",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -8980,12 +9196,13 @@
           "description": "Each time you target this model with a Stratagem, you must spend three times that Stratagem’s stated CP cost to do so."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8e6f-4e09-12d5-fafd",
       "name": "Warbringer Nemesis Titan",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -9078,12 +9295,13 @@
           "description": "Each time you target this model with a Stratagem, you must spend three times that Stratagem’s stated CP cost to do so."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8eb5-a990-6eb0-9b41",
       "name": "Warhound Titan",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -9155,12 +9373,13 @@
           "description": "Each time you target this model with a Stratagem, you must spend twice that Stratagem’s stated CP cost to do so."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "eafa-cd47-1c2f-61ee",
       "name": "Warlord Titan",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Walker",
@@ -9253,12 +9472,13 @@
           "description": "Each time you target this model with a Stratagem, you must spend four times that Stratagem’s stated CP cost to do so."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5b1d-134a-9996-b634",
       "name": "Aegis Defence Line with Weapon Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -9301,12 +9521,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e85b-17c7-1ad9-8375",
       "name": "Ambull [Legends]",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -9373,12 +9594,13 @@
           "description": "Twice per battle, at the end of your opponent’s turn, if this model is not within Engagement Range of one or more enemy units, you can remove this model from the battlefield. In the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that\nis more than 9\" horizontally away from all enemy models. If the battle ends and this unit is not on the battlefield, it is destroyed. \n\nDesigner’s Note: Place two Borewyrm Infestation tokens next to this model, removing one each time this ability has been used."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5134-5fe9-e489-43c4",
       "name": "Bastion [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -9427,12 +9649,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "71b0-77b9-522c-17d6",
       "name": "Firestorm Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9481,12 +9704,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "c4d1-c85a-a20e-6c94",
       "name": "Fortress of Redemption [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9573,12 +9797,13 @@
           "description": "While a model is on top of the tower roof of this FORTIFICATION, improve the Armour Penetration characteristic of ranged weapons equipped by that model by 1."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "e3ba-7f87-c32-229",
       "name": "Guardian Drone [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -9660,12 +9885,13 @@
           "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3b75-e314-ecd5-cd63",
       "name": "Macro-cannon Aquila Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9732,12 +9958,13 @@
           "description": "In your Shooting phase, just after selecting a target for this model’s Aquila macro-cannon, the target unit and every other enemy INFANTRY unit within 3\" of that unit must take a Battle-shock test."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "cabe-2c66-c8b6-de6c",
       "name": "Plasma Obliterator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9812,12 +10039,13 @@
           "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "f39-fc54-f95a-8395",
       "name": "Primaris Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9933,12 +10161,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "54c-8b9f-b1d8-93c3",
       "name": "Skyshield Landing Pad [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -9990,12 +10219,13 @@
           "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "da76-e18f-523e-d45a",
       "name": "Spindle Drones [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Infantry",
@@ -10067,12 +10297,13 @@
           "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "11b2-8348-ae67-fa98",
       "name": "The Archivist [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -10152,12 +10383,13 @@
           "description": "While an enemy unit is within 6\" of this model, each time that unit takes a Battle-shock or Leadership test, subtract 1 from that test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "14fe-18ed-9c25-189c",
       "name": "Vengeance Weapon Battery [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10209,12 +10441,13 @@
           "description": "Each time this model makes a ranged attack that targets the closest enemy unit:\n- If that attack is made with a Punisher gatling cannon and the target is not a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a battle cannon and the target is a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a quad-lascannon and the target can FLY, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4501-646d-e705-9dca",
       "name": "Void Shield Generator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10262,12 +10495,13 @@
           "description": "While a friendly model is wholly within 6\" of this FORTIFICATION, that model has a 4+ invulnerable save against ranged attacks."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5c81-92c5-e20b-edf1",
       "name": "Vortex Missile Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10334,12 +10568,13 @@
           "description": "In your Shooting phase, each time you select a target for this model’s vortex missile battery, roll one D6 for the target unit and one D6 for every other enemy unit within 3\" of the target unit. On a 4+, the unit being rolled for is struck by the vortex; after resolving all of this model’s attacks against the target unit, each unit struck by the vortex suffers D3 mortal wounds."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "9698-2e0-15ac-1193",
       "name": "Wall of Martyrs Bunker [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10393,12 +10628,13 @@
           "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
         }
       ],
-      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "8419-8133-33f3-e0a4",
       "name": "Wall of Martyrs Defence Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10443,12 +10679,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "64b7-a2df-416a-9963",
       "name": "Wall of Martyrs Defence Line [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10493,12 +10730,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f6f8-8759-3282-2ab",
       "name": "Imperial Fortress Walls [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -10569,12 +10807,13 @@
           "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "20c8-d2-586d-623",
       "name": "Castellum Stronghold [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Castellum Stronghold",
         "Fortification",
@@ -10663,12 +10902,13 @@
           "description": "While this model has 1-15 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "983d-b163-dc9f-3c54",
       "name": "Sentry Gun",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -10729,12 +10969,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this model up in one of the Sentry Gun positions (marked D1 on the mission map)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "61f3-ff33-ec7a-3546",
       "name": "Searchlight",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Allies: Unaligned Forces"
       ],
@@ -10785,12 +11026,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this terrain feature up in one of the Searchlight positions (marked D2 on the mission map) that does not already contain a Searchlight."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a5c2-3951-e727-b64a",
       "name": "Breaching Robot",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -10863,12 +11105,13 @@
           "description": "Each time the bearer ends a Normal move, you can open one Hatchway that is within 1\" of it. Your opponent cannot attempt to prevent that Hatchway from opening."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5714-846a-d343-d1b4",
       "name": "An'ggrath the Unbound [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -10968,12 +11211,13 @@
           "description": "At the end of the Fight phase, you can select one enemy unit within Engagement Range of this model and roll eight D6: for each 4+, that enemy unit suffers 1 mortal wound."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2c37-2898-8350-ef45",
       "name": "Be'lakor",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -11083,12 +11327,13 @@
           "description": "At the start of the battle round, select one Shadow Form ability. Until the end of the battle round, this model has that ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2de0-5897-f724-a592",
       "name": "Beasts of Nurgle",
-      "primaryCategory": "Beast",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Beast",
@@ -11161,12 +11406,13 @@
           "description": "At the end of each phase, if a Beasts of Nurgle model in this unit has lost any wounds but is not destroyed, that model regains all of its lost wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2f31-9132-b703-5fd8",
       "name": "Bloodcrushers",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -11228,12 +11474,13 @@
           "description": "Each time this unit ends a Charge move, select one enemy unit within Engagement Range of this unit and roll one D6 for each model in this unit: for each 4+, that enemy unit suffers D3 mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4ecc-6aa5-da28-2c57",
       "name": "Bloodletters",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -11293,12 +11540,13 @@
           "description": "Each time an enemy unit (excluding Monsters and Vehicles) within Engagement Range of one or more units from your army with this ability Falls Back, models in that enemy unit must take Desperate Escape tests. When doing so, if that enemy unit is also Battle-shocked, subtract 1 from each of those Desperate Escape tests."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ccae-b5f1-8787-4c7d",
       "name": "Bloodmaster",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -11372,12 +11620,13 @@
           "description": "Each time this model’s unit Consolidates, it can move up to 6\" instead of up to 3\"."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a018-ca33-afd0-be83",
       "name": "Bloodthirster",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -11454,12 +11703,13 @@
           "description": "At the end of the Fight phase, you can select one enemy unit within Engagement Range of this model and roll eight D6: for each 4+, that enemy unit suffers 1 mortal wound."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "b795-b936-ad61-e407",
       "name": "Blue Horrors",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -11567,12 +11817,13 @@
           "description": "Each time this unit is selected to fight, you can select one enemy unit within Engagement Range of it, then select one or more ^^Brimstone Horror^^ models in this unit. For each ^^Brimstone Horror^^ model you select, roll one D6: on a 4+, that model is destroyed and that enemy unit suffers 1 mortal wound."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f6eb-b62f-5baf-d96d",
       "name": "Burning Chariot",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Chaos",
@@ -11653,12 +11904,13 @@
           "description": "In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, that unit cannot have the Benefit of Cover."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a44f-b07c-5a50-ff95",
       "name": "Aetaos'rau'keres [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -11772,12 +12024,13 @@
           "description": "In your Shooting phase, select one of the following abilities: [IGNORES COVER]; [LETHAL HITS]; [SUSTAINED HITS D3]. Until the end of the phase, this model’s ranged weapon has that ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8b7c-d709-90d4-298e",
       "name": "Changecaster",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -11854,12 +12107,13 @@
           "description": "This model can be attached to the following units:\n■ PINK HORRORS\n■ BLUE HORRORS"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "36df-8f40-8a6b-7d4c",
       "name": "Contorted Epitome",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -11954,12 +12208,13 @@
           "description": "This model can be attached to the following unit:\n■ DAEMONETTES"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "497d-e065-f5a5-5e80",
       "name": "Daemon Prince of Chaos",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -12053,12 +12308,13 @@
           "description": "While this model is within 3\" of one or more friendly ^^**Legiones Daemonica^^** Infantry units, this model has the Lone Operative ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5800-3978-370d-b573",
       "name": "Daemon Prince of Chaos with wings",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -12150,12 +12406,13 @@
           "description": "Each time this model is selected to fight, select one of the following abilities. Until the end of the phase, this model’s hellforged weapons have that ability:\n■ [LETHAL HITS]\n■ [PRECISION]\n■ [SUSTAINED HITS 1]"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "41c2-d2e6-ae43-3beb",
       "name": "Daemonettes",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -12226,12 +12483,13 @@
           "description": "At the start of the Fight phase, each enemy unit within Engagement Range of one of more units from your army with this ability must take a Battle-shock test, subtracting 1 from the result if that enemy unit is Below Half-strength."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5851-dc90-9afe-76a7",
       "name": "Epidemius",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -12316,12 +12574,13 @@
           "description": "Keep a tally of how many enemy models are destroyed by NURGLE LEGIONES DAEMONICA models from your army during the battle. At the start of your Command phase, if this tally is 7 or more, you gain 1CP and the tally is reset to 0."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "de54-5b38-8ca1-c39c",
       "name": "Exalted Flamer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -12412,12 +12671,13 @@
           "description": "This model cannot be your ^^Warlord^^ and cannot be given Enhancements."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7f62-6b3f-c4fe-b971",
       "name": "Exalted Seeker Chariot [Legends]",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -12507,12 +12767,13 @@
           "description": "In the Fight phase, after this model has finished making its attacks, if one or more enemy units were destroyed as a result of those attacks, every enemy unit within 6\" of this model must take a Battleshock test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "c199-b27c-7cc2-7935",
       "name": "Fateskimmer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -12601,12 +12862,13 @@
           "description": "Once per battle, at the end of your opponent’s turn, if this model’s unit is not within Engagement Range of one or more enemy units, you can remove that unit from the battlefield and place it into Strategic Reserves."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "13f0-d2b5-6201-ba84",
       "name": "Feculent Gnarlmaw",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Fortification",
@@ -12670,12 +12932,13 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d1ee-8d05-4fae-1727",
       "name": "Fiends",
-      "primaryCategory": "Beast",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Beast",
@@ -12748,12 +13011,13 @@
           "description": "Each time an enemy unit (excluding ^^Monsters^^ and ^^Vehicles^^) within Engagement Range of one or more units from your army with this ability Falls Back, models in that enemy unit must take Desperate Escape tests. When doing so, if that enemy unit is also Battle-shocked, subtract 1 from each of those Desperate Escape tests."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5f23-4d6-f2f9-5973",
       "name": "Flamers",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Infantry",
         "Fly",
@@ -12839,12 +13103,13 @@
           "description": "This unit is eligible to shoot in a turn in which it Fell Back."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "fd31-64a2-b20f-f0bc",
       "name": "Flesh Hounds",
-      "primaryCategory": "Beast",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Beast",
@@ -12917,12 +13182,13 @@
           "description": "At the end of your opponent’s turn, if this unit is not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "eba5-8a7a-fc5b-d7ec",
       "name": "Fluxmaster",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -13001,12 +13267,13 @@
           "description": "Once per battle round, after a Hit roll, a Wound roll or a saving throw is made for this model, you can change the result of that roll to a 6."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "1b9e-e164-7a5a-c8b7",
       "name": "Furies [Legends]",
-      "primaryCategory": "Infantry",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -13077,12 +13344,13 @@
           "description": "Each time this model makes an attack that targets an enemy unit that is Battle-shocked, add 1 to the Wound roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2901-92bd-2f4-736d",
       "name": "Giant Chaos Spawn [Legends]",
-      "primaryCategory": "Monster",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -13145,12 +13413,13 @@
           "description": "At the start of each player’s Command phase, this model regains up to D3 lost wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d490-6c4d-e83b-b183",
       "name": "Great Unclean One",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -13227,12 +13496,13 @@
           "description": "At the end of your Movement phase, you can select one enemy unit within 12\" of this model. Until the start of your next Movement phase, subtract 1 from the Toughness characteristic of models in that unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e8d-bf22-b29-d20e",
       "name": "Hellflayers",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -13322,12 +13592,13 @@
           "description": "Each time a model in this unit makes a melee attack, if this unit made a Charge move this turn, improve the Strength and Damage characteristics of that attack by 1."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "b48f-f9b4-b47d-d181",
       "name": "Herald of Slaanesh on Steed of Slaanesh [Legends]",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -13424,12 +13695,13 @@
           "description": "This model can be attached to the following unit:\n■ SEEKERS"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7151-238f-a6eb-2f94",
       "name": "Horticulous Slimux",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -13524,12 +13796,13 @@
           "description": "At the end of your Movement phase, if this model is within one AREA TERRAIN feature, until the end of the battle, that AREA TERRAIN feature is considered to be within your army’s Shadow of Chaos."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "2cc5-ef65-c4b9-28c6",
       "name": "Infernal Enrapturess",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -13635,12 +13908,13 @@
           "description": "While an enemy ^^Psyker^^ unit is within 12\" of this model, Psychic weapons equipped by models in that unit have the [HAZARDOUS] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "6df5-f246-6bd-55b8",
       "name": "Kairos Fateweaver",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -13740,12 +14014,13 @@
           "description": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a stratagem, you can use this ability. If you do, increase the CP cost of that use of that stratagem by 1CP."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8436-cec1-e65a-d1a7",
       "name": "Karanak",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Beast",
         "Character",
@@ -13845,12 +14120,13 @@
           "description": "The bearer has the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a903-dd97-339d-6899",
       "name": "Keeper of Secrets",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -13958,12 +14234,13 @@
           "description": "Each time an attack targets this model, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8e9f-aa9-17f5-e2d3",
       "name": "Khorne Soul Grinder",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Vehicle",
@@ -14029,12 +14306,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3600-9f92-933-bf54",
       "name": "Lord of Change",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -14134,12 +14412,13 @@
           "description": "In your Shooting phase, select one of the following abilities: [IGNORES COVER]; [LETHAL HITS]; [SUSTAINED HITS D3]. Until the end of the phase, this model’s Bolt of Change has that ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "137e-d9b8-e764-c7cd",
       "name": "Nurgle Soul Grinder",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Vehicle",
@@ -14205,12 +14484,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e403-3a9-279e-41b7",
       "name": "Nurglings",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Swarm",
@@ -14285,12 +14565,13 @@
           "description": "Each time an enemy unit (excluding ^^Titanic^^ units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e7b8-aa40-6da7-778e",
       "name": "Pink Horrors",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -14414,12 +14695,13 @@
           "description": "If, at any point, this unit contains no ^^Pink Horrors^^ models, use the ^^Blue Horrors^^ datasheet for this unit. \n\n\n_Designer’s Note: While this unit contains one or more ^^Pink Horrors^^ models, the Cackling Horrors and Exploding Horrors abilities from the Blue Horrors datasheet do not apply to this unit._"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d620-146a-41cd-f28f",
       "name": "Plague Drones",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -14515,12 +14797,13 @@
           "description": "In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly NURGLE LEGIONES DAEMONICA unit makes an attack that targets that unit, you can re-roll the Wound roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a5c9-6285-af1e-3cc3",
       "name": "Plague Toads [Legends]",
-      "primaryCategory": "Beast",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Beast",
@@ -14604,12 +14887,13 @@
           "description": "You can target this unit with the Heroic Intervention Stratagem for 0CP, and can do so even if you have already used that Stratagem on a different unit this phase."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d1eb-b092-d944-e729",
       "name": "Plaguebearers",
-      "primaryCategory": "Battleline",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -14680,12 +14964,13 @@
           "description": "If you control an objective marker at the end of your Command phase and this unit is within range of that objective marker, that objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "fd5b-9e27-797d-6a3a",
       "name": "Pox Riders [Legends]",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -14779,12 +15064,13 @@
           "description": "Each time this unit ends a Charge move, until the end of the turn, Pox Rider plagueswords equipped by models in this unit have the [LANCE] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7b06-189d-b11e-c189",
       "name": "Poxbringer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -14871,12 +15157,13 @@
           "description": "While an enemy unit is within 6\" of this model, each time that unit takes a Battle-shock test, subtract 1 from that test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "d1cc-e17a-f1a1-4349",
       "name": "Rendmaster on Blood Throne",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -14953,12 +15240,13 @@
           "description": "Each time this model makes a melee attack that targets a CHARACTER or MONSTER unit, you can re-roll the Wound roll. Each time this model destroys an enemy CHARACTER or MONSTER unit, this model regains up to D6 lost wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "cff8-7388-a2c9-946c",
       "name": "Rotigus",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -15056,12 +15344,13 @@
           "description": "While an enemy unit is within 6\" of this model, subtract 2 from the Move characteristic and subtract 1 from the Objective Control characteristic of models in that unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e57d-435b-99da-d559",
       "name": "Scabeiathrax the Bloated [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -15159,12 +15448,13 @@
           "description": "At the end of your Movement phase, you can select one enemy unit within 12\" of this model. Until the start of your next Movement phase, subtract 1 from the Toughness characteristic of models in that unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "550b-c5ab-5e27-f59b",
       "name": "Screamers",
-      "primaryCategory": "Beast",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Beast",
@@ -15239,12 +15529,13 @@
           "description": "In your Movement phase, after this unit ends a Normal move, you can select one enemy unit it moved over during that move and roll one D6 for each model in this unit: for each 4+, that enemy unit suffers 1 mortal wound."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5fe1-5a7a-9f8e-21e0",
       "name": "Seeker Chariot [Legends]",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -15334,12 +15625,13 @@
           "description": "Each time this unit makes a Charge move, until the end of the phase, melee weapons equipped by models in this unit have the [ANTI-INFANTRY 4+] ability."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "112d-8078-777f-76a5",
       "name": "Seekers",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -15422,12 +15714,13 @@
           "description": "You can re-roll Advance and Charge rolls made for this unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "c49d-5ebc-4ee4-689e",
       "name": "Shalaxi Helbane",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -15545,12 +15838,13 @@
           "description": "At the start of the first battle round, select one enemy unit to be this model’s quarry. Each time this model makes a melee attack that targets its quarry, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s quarry is destroyed, select one new enemy unit to be this model’s quarry."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "7998-d0a-baa4-e8b3",
       "name": "Skarbrand",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -15650,12 +15944,13 @@
           "description": "While this model has 1-7 wounds remaining, add 2 to the Attacks characteristic of this model’s Slaughter and Carnage."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "464a-b548-355f-2058",
       "name": "Skull Altar",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Fortification",
@@ -15719,12 +16014,13 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this Fortification, that model has the Benefit of Cover against that attack."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "fd37-8a80-3da8-f262",
       "name": "Skull Cannon",
-      "primaryCategory": "Mounted",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -15814,12 +16110,13 @@
           "description": "In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. That unit must take a Battle-shock test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "dd30-ba4c-34a4-e788",
       "name": "Skullmaster",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -15893,12 +16190,13 @@
           "description": "This model can be attached to the following units:\n■ BLOODCRUSHERS"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "8872-785a-1efa-7ca1",
       "name": "Skulltaker",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -15983,12 +16281,13 @@
           "description": "This model can be attached to the following unit:\n■ BLOODLETTERS"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5df-73b6-d758-14fc",
       "name": "Slaanesh Soul Grinder",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Vehicle",
@@ -16054,12 +16353,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3da0-5db0-7531-33b6",
       "name": "Sloppity Bilepiper",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -16144,12 +16444,13 @@
           "description": "At the start of the Fight phase, every enemy unit (excluding ^^Monsters^^ and ^^Vehicles^^) within 6\" of this model must take a Battle-shock test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "da05-80d-6229-6e44",
       "name": "Spined Chaos Beast [Legends]",
-      "primaryCategory": "Monster",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -16212,12 +16513,13 @@
           "description": "Each time this model ends a Charge move, select one enemy unit within Engagement Range of it and roll one D6: on a 2-3, that enemy unit suffers D3 mortal wounds; on a 4-5, that enemy unit suffers 3 mortal wounds; on a 6, that enemy unit suffers D3+3 mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e7cd-468b-37dd-d82f",
       "name": "Spoilpox Scrivener",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -16313,12 +16615,13 @@
           "description": "While this model is leading a unit, add 1 to the Objective Control characteristic of models in that unit."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "27f6-d907-66f-ca28",
       "name": "Syll'esske",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -16434,12 +16737,13 @@
           "description": "This model can be attached to the following unit:\n■ DAEMONETTES"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "caf1-8818-9e65-7154",
       "name": "The Blue Scribes",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -16518,12 +16822,13 @@
           "description": "At the end of your Movement phase, roll one D6 for each enemy unit within 6\" of this model: on a 2-3, that unit suffers 1 mortal wound; on a 4-5, that unit suffers D3 mortal wounds; on a 6, that unit suffers D6 mortal wounds."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "ac75-c011-9a10-2c4a",
       "name": "The Changeling",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -16623,12 +16928,13 @@
           "description": "At the start of your opponent’s Shooting phase, select one enemy unit within 12\" of and visible to this model and roll one D6: on a 2-5, until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll; on a 6, that enemy unit is not eligible to shoot this phase"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "1567-b99b-bd8f-d485",
       "name": "The Masque of Slaanesh",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -16707,12 +17013,13 @@
           "description": "This model is eligible to declare a charge in a turn in which it Advanced or Fell Back."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "673b-111b-6dcb-352",
       "name": "Tormentbringer",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Mounted",
@@ -16820,12 +17127,13 @@
           "description": "This model can be attached to the following unit: \n- ^^**Hellflayers^^**"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "dba-34e3-46f2-56e0",
       "name": "Tranceweaver",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Infantry",
@@ -16912,12 +17220,13 @@
           "description": "This model can be attached to the following unit:\n■ DAEMONETTES"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e1b1-146f-6f77-3a15",
       "name": "Tzeentch Soul Grinder",
-      "primaryCategory": "Vehicle",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Vehicle",
@@ -16983,12 +17292,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "268e-459c-c6e8-7754",
       "name": "Zarakynel [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Legiones Daemonica",
         "Monster",
@@ -17096,7 +17406,8 @@
           "description": "Each time an attack targets this model, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     }
   ]
 }

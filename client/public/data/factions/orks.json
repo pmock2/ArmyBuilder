@@ -33,6 +33,86 @@
       ]
     },
     {
+      "id": "80e6-2190-9767-a7ed",
+      "name": "Da Big Hunt",
+      "dpCost": 1,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Da Hunt Is On",
+          "description": "Friendly **BEAST SNAGGA** units' attacks that targets a **MONSTER/VEHICLE** unit have +1 **AP**."
+        }
+      ]
+    },
+    {
+      "id": "807c-9732-5465-5ca5",
+      "name": "Dread Mob",
+      "dpCost": 1,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Try Dat Button!",
+          "description": "In your Shooting phase or the Fight phase, when a friendly **ORKS WALKER** unit (excluding **TITANIC** units) is **selected to attack**, you can use this ability. If you do, roll either one D6 or two D6 (keep re-rolling duplicate results). This unit's attacks have the relevant rule(s).\n\nIf you rolled two D6, when this unit has attacked, this unit makes one **hazard roll**."
+        }
+      ]
+    },
+    {
+      "id": "795f-b961-9504-bd08",
+      "name": "Green Tide",
+      "dpCost": 1,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Mob-handed Brutality",
+          "description": "- Friendly **BOYZ** units' melee attacks have **[SUSTAINED HITS 1]**.\n- If a friendly **ORKS INFANTRY** unit made a **charge move** this turn, that unit's melee attacks have **[LETHAL HITS: non-MONSTER/VEHICLE]**."
+        }
+      ]
+    },
+    {
+      "id": "4b17-a73a-7a0a-a265",
+      "name": "Bully Boyz",
+      "dpCost": 1,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Displays of Savagery",
+          "description": "Friendly **MEGANOBZ/NOBZ** units' melee attacks have **[SUSTAINED HITS 1]**."
+        }
+      ]
+    },
+    {
       "id": "b404-44f-e9b4-7fe2",
       "name": "Kult of Speed",
       "dpCost": 1,
@@ -49,6 +129,46 @@
         {
           "name": "Adrenaline Junkies",
           "description": "- Friendly **WARBIKERS** units have **BATTLELINE**.\n- When a friendly **SPEED FREEKS** unit is selected to make an **advance/fall-back move**:\n    - That unit's ranged attacks have **[ASSAULT]** until the end of the turn.\n    - That move does not prevent that unit from being **eligible to declare a charge**."
+        }
+      ]
+    },
+    {
+      "id": "fdd5-9868-a9ee-e9f1",
+      "name": "Taktikal Brigade",
+      "dpCost": 1,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Suspiciously Well Organised",
+          "description": "Friendly **STORMBOYZ** units have **BATTLELINE**.\n- When a friendly **BOYZ/KOMMANDOS/STORMBOYZ** unit is selected to make an **fall‑back move**, that **fall-back move** does not prevent that unit from being **eligible to declare a charge**."
+        }
+      ]
+    },
+    {
+      "id": "63cc-721f-b263-9d4a",
+      "name": "Blitz Brigade",
+      "dpCost": 1,
+      "tags": [
+        "TAKE AND HOLD"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Unstoppable Momentum",
+          "description": "- Friendly **WAGON** units can re-roll **charge rolls**.\n- When a friendly **WAGON** unit is selected to make an **advance move**, that unit can change **advance rolls** to a 6."
         }
       ]
     },
@@ -73,6 +193,26 @@
       ]
     },
     {
+      "id": "fca1-ecdf-4e4a-df41",
+      "name": "Shoota Boyz",
+      "dpCost": 1,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Dakka! Dakka! Dakka!",
+          "description": "Friendly **ORKS INFANTRY** units’ ranged attacks have **[ASSAULT]**.\n- While this unit is **riled up**, +3\" **R**."
+        }
+      ]
+    },
+    {
       "id": "f782-e3f1-c132-fe52",
       "name": "Wreckas",
       "dpCost": 1,
@@ -93,6 +233,26 @@
       ]
     },
     {
+      "id": "9ae4-56d1-1fd8-adcf",
+      "name": "Madcap Meks",
+      "dpCost": 1,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Unpredictable Genius",
+          "description": "In your Shooting phase, when all of a friendly **BIG MEK/MEK GUNS/MORKANAUT/WAZBOM BLASTAJET** unit's ranged attacks target a single enemy unit: roll one D6:\n\n"
+        }
+      ]
+    },
+    {
       "id": "7c3c-fb9c-8689-8c7a",
       "name": "Flyboyz",
       "dpCost": 1,
@@ -109,6 +269,46 @@
         {
           "name": "Skyborne Loons",
           "description": "- Friendly **ORKS AIRCRAFT** do not count towards the combined points value of your **strategic reserves** units.\n- While a friendly **ORKS AIRCRAFT/DEFFKOPTAS** unit is **riled up**, this unit's ranged attacks have +1 to **hit rolls**."
+        }
+      ]
+    },
+    {
+      "id": "09b2-b286-7608-d613",
+      "name": "Brute Bosses",
+      "dpCost": 1,
+      "tags": [
+        "PURGE THE FOE"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "'Ard As Nails",
+          "description": "When a friendly **WARBOSS** model is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6, with +1 to the roll if your unit is **riled up**:\n- On a 3+, do not remove this **WARBOSS** model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), this **WARBOSS** model is removed from the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "1b34-af6b-8900-61b5",
+      "name": "Wurrband",
+      "dpCost": 1,
+      "tags": [
+        "DISRUPTION"
+      ],
+      "constraints": {
+        "exclusiveTags": [],
+        "exclusiveChapters": false,
+        "requiredPrimaryCatalogue": null,
+        "synergies": []
+      },
+      "rules": [
+        {
+          "name": "Powers of Da Waaagh!",
+          "description": "Friendly **ORKS PSYKER** models' **[PSYCHIC]** attacks have:\n- +1 **S**.\n- +1 **S** for every 5 models in this unit (or embarked within this model).\n\nFriendly **ORKS PSYKER** models have the **Roar of Mork** and **Visions of Violence psychic abilities** "
         }
       ]
     }
@@ -6016,7 +6216,7 @@
     {
       "id": "5b1d-134a-9996-b634",
       "name": "Aegis Defence Line with Weapon Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -6059,12 +6259,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "e85b-17c7-1ad9-8375",
       "name": "Ambull [Legends]",
-      "primaryCategory": "Character",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -6131,12 +6332,13 @@
           "description": "Twice per battle, at the end of your opponent’s turn, if this model is not within Engagement Range of one or more enemy units, you can remove this model from the battlefield. In the Reinforcements step of your next Movement phase, set it up anywhere on the battlefield that\nis more than 9\" horizontally away from all enemy models. If the battle ends and this unit is not on the battlefield, it is destroyed. \n\nDesigner’s Note: Place two Borewyrm Infestation tokens next to this model, removing one each time this ability has been used."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5134-5fe9-e489-43c4",
       "name": "Bastion [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Fortification",
@@ -6185,12 +6387,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 15 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "71b0-77b9-522c-17d6",
       "name": "Firestorm Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6239,12 +6442,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 15 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "c4d1-c85a-a20e-6c94",
       "name": "Fortress of Redemption [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6331,12 +6535,13 @@
           "description": "While a model is on top of the tower roof of this FORTIFICATION, improve the Armour Penetration characteristic of ranged weapons equipped by that model by 1."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "e3ba-7f87-c32-229",
       "name": "Guardian Drone [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -6418,12 +6623,13 @@
           "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "3b75-e314-ecd5-cd63",
       "name": "Macro-cannon Aquila Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6490,12 +6696,13 @@
           "description": "In your Shooting phase, just after selecting a target for this model’s Aquila macro-cannon, the target unit and every other enemy INFANTRY unit within 3\" of that unit must take a Battle-shock test."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "cabe-2c66-c8b6-de6c",
       "name": "Plasma Obliterator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6570,12 +6777,13 @@
           "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 20 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "f39-fc54-f95a-8395",
       "name": "Primaris Redoubt [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6691,12 +6899,13 @@
       ],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "54c-8b9f-b1d8-93c3",
       "name": "Skyshield Landing Pad [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6748,12 +6957,13 @@
           "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "da76-e18f-523e-d45a",
       "name": "Spindle Drones [Legends]",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Infantry",
@@ -6825,12 +7035,13 @@
           "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "11b2-8348-ae67-fa98",
       "name": "The Archivist [Legends]",
-      "primaryCategory": "Epic Hero",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Faction: Unaligned Forces",
         "Monster",
@@ -6910,12 +7121,13 @@
           "description": "While an enemy unit is within 6\" of this model, each time that unit takes a Battle-shock or Leadership test, subtract 1 from that test."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "14fe-18ed-9c25-189c",
       "name": "Vengeance Weapon Battery [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -6967,12 +7179,13 @@
           "description": "Each time this model makes a ranged attack that targets the closest enemy unit:\n- If that attack is made with a Punisher gatling cannon and the target is not a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a battle cannon and the target is a MONSTER or VEHICLE, add 1 to the Hit roll.\n- If that attack is made with a quad-lascannon and the target can FLY, add 1 to the Hit roll."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "4501-646d-e705-9dca",
       "name": "Void Shield Generator [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7020,12 +7233,13 @@
           "description": "While a friendly model is wholly within 6\" of this FORTIFICATION, that model has a 4+ invulnerable save against ranged attacks."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "5c81-92c5-e20b-edf1",
       "name": "Vortex Missile Strongpoint [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7092,12 +7306,13 @@
           "description": "In your Shooting phase, each time you select a target for this model’s vortex missile battery, roll one D6 for the target unit and one D6 for every other enemy unit within 3\" of the target unit. On a 4+, the unit being rolled for is struck by the vortex; after resolving all of this model’s attacks against the target unit, each unit struck by the vortex suffers D3 mortal wounds."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 30 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "9698-2e0-15ac-1193",
       "name": "Wall of Martyrs Bunker [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7151,12 +7366,13 @@
           "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
         }
       ],
-      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more"
+      "transportCapacity": "This Fortification has a transport capacity of 11 Infantry models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-Character models with a Wounds characteristic of 4 or more",
+      "isAllied": true
     },
     {
       "id": "8419-8133-33f3-e0a4",
       "name": "Wall of Martyrs Defence Emplacement [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7201,12 +7417,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "64b7-a2df-416a-9963",
       "name": "Wall of Martyrs Defence Line [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7251,12 +7468,13 @@
       "rangedWeapons": [],
       "meleeWeapons": [],
       "abilities": [],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "f6f8-8759-3282-2ab",
       "name": "Imperial Fortress Walls [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Fortification",
         "Faction: Unaligned Forces",
@@ -7327,12 +7545,13 @@
           "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 65 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "20c8-d2-586d-623",
       "name": "Castellum Stronghold [Legends]",
-      "primaryCategory": "Fortification",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Castellum Stronghold",
         "Fortification",
@@ -7421,12 +7640,13 @@
           "description": "While this model has 1-15 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         }
       ],
-      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more."
+      "transportCapacity": "This FORTIFICATION has a transport capacity of 60 INFANTRY models. Each model with a Wounds characteristic of 3 or more takes up the space of 2 models. It cannot transport non-CHARACTER models with a Wounds characteristic of 4 or more.",
+      "isAllied": true
     },
     {
       "id": "983d-b163-dc9f-3c54",
       "name": "Sentry Gun",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -7487,12 +7707,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this model up in one of the Sentry Gun positions (marked D1 on the mission map)."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "61f3-ff33-ec7a-3546",
       "name": "Searchlight",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Allies: Unaligned Forces"
       ],
@@ -7543,12 +7764,13 @@
           "description": "In the Create the Battlefield and Place Objective Markers step, set this terrain feature up in one of the Searchlight positions (marked D2 on the mission map) that does not already contain a Searchlight."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     },
     {
       "id": "a5c2-3951-e727-b64a",
       "name": "Breaching Robot",
-      "primaryCategory": "Allies: Unaligned Forces",
+      "primaryCategory": "Allied Units",
       "categories": [
         "Vehicle",
         "Faction: Unaligned Forces",
@@ -7621,7 +7843,8 @@
           "description": "Each time the bearer ends a Normal move, you can open one Hatchway that is within 1\" of it. Your opponent cannot attempt to prevent that Hatchway from opening."
         }
       ],
-      "transportCapacity": null
+      "transportCapacity": null,
+      "isAllied": true
     }
   ]
 }
