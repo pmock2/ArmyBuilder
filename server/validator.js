@@ -29,6 +29,45 @@ const BATTLE_SIZE_LIMITS = {
   }
 };
 
+const CATALOGUE_ID_TO_FACTION_SLUG = {
+  '34a5-8c7e-f468-82d1': { slug: 'aeldari-craftworlds', name: 'Aeldari' },
+  '38de-521f-1ce0-44a0': { slug: 'aeldari-drukhari', name: 'Drukhari' },
+  'd265-877b-e03d-30ca': { slug: 'chaos-chaos-daemons', name: 'Chaos Daemons' },
+  '46d8-abc8-ef3a-9f85': { slug: 'chaos-chaos-knights', name: 'Chaos Knights' },
+  'c8da-e875-58f7-f6d6': { slug: 'chaos-chaos-space-marines', name: 'Chaos Space Marines' },
+  '5108-f98-63c2-53cb': { slug: 'chaos-death-guard', name: 'Death Guard' },
+  '03fe-a162-4c02-f07b': { slug: 'chaos-emperor-s-children', name: "Emperor's Children" },
+  '1069-10ff-3ba9-873b': { slug: 'chaos-thousand-sons', name: 'Thousand Sons' },
+  '880c-c7e-4a43-a0c1': { slug: 'chaos-titanicus-traitoris', name: 'Titanicus Traitoris' },
+  'df9a-59b2-f464-59ad': { slug: 'chaos-world-eaters', name: 'World Eaters' },
+  '3bdf-a114-5035-c6ac': { slug: 'genestealer-cults', name: 'Genestealer Cults' },
+  'b39e-4401-8f3e-fdf7': { slug: 'imperium-adepta-sororitas', name: 'Adepta Sororitas' },
+  '1f19-6509-d906-ca10': { slug: 'imperium-adeptus-custodes', name: 'Adeptus Custodes' },
+  '77b9-2f66-3f9b-5cf3': { slug: 'imperium-adeptus-mechanicus', name: 'Adeptus Mechanicus' },
+  'bdc0-c0d-72d7-87e2': { slug: 'imperium-adeptus-titanicus', name: 'Adeptus Titanicus' },
+  'b00-cd86-4b4c-97ba': { slug: 'imperium-agents-of-the-imperium', name: 'Agents of the Imperium' },
+  'b0ae-12a5-c84-ea45': { slug: 'imperium-astra-militarum', name: 'Astra Militarum' },
+  '36d3-36bc-68dd-40ac': { slug: 'imperium-black-templars', name: 'Black Templars' },
+  '4ef9-15ce-e3e6-36de': { slug: 'imperium-blood-angels', name: 'Blood Angels' },
+  '470a-6daa-9014-12df': { slug: 'imperium-dark-angels', name: 'Dark Angels' },
+  'f89b-84e0-6e3b-f1e2': { slug: 'imperium-deathwatch', name: 'Deathwatch' },
+  '50c4-3e83-fe54-97c4': { slug: 'imperium-grey-knights', name: 'Grey Knights' },
+  '5d6e-fd3-330a-11dd': { slug: 'imperium-imperial-fists', name: 'Imperial Fists' },
+  '25dd-7aa0-6bf4-f2d5': { slug: 'imperium-imperial-knights', name: 'Imperial Knights' },
+  'f27e-18c0-b73e-748e': { slug: 'imperium-iron-hands', name: 'Iron Hands' },
+  '6e59-e1ee-47ad-6ce5': { slug: 'imperium-raven-guard', name: 'Raven Guard' },
+  '2261-79a5-19d9-1668': { slug: 'imperium-salamanders', name: 'Salamanders' },
+  'e0af-67df-9d63-8fb7': { slug: 'imperium-space-marines', name: 'Space Marines' },
+  '94bb-3284-ee14-57a1': { slug: 'imperium-space-wolves', name: 'Space Wolves' },
+  '4029-9237-e8db-af55': { slug: 'imperium-ultramarines', name: 'Ultramarines' },
+  '67c1-fc13-f9a1-cbbf': { slug: 'imperium-white-scars', name: 'White Scars' },
+  'f616-3f08-ee8e-3349': { slug: 'leagues-of-votann', name: 'Leagues of Votann' },
+  'b654-a18a-ea1-3bf2': { slug: 'necrons', name: 'Necrons' },
+  'a55f-b7b3-6c65-a05f': { slug: 'orks', name: 'Orks' },
+  'd81a-61dd-6d27-a3ce': { slug: 't-au-empire', name: "T'au Empire" },
+  'b984-7317-81cc-20f': { slug: 'tyranids', name: 'Tyranids' }
+};
+
 function validateRoster(roster, factionData) {
   const issues = [];
   const battleSizeKey = (roster.battleSize || 'strike-force').toLowerCase().replace(/\s+/g, '-');
@@ -111,13 +150,27 @@ function validateRoster(roster, factionData) {
   for (const d of detachments) {
     if (d.constraints?.requiredPrimaryCatalogue) {
       const requiredCat = d.constraints.requiredPrimaryCatalogue;
-      const isMatchingCat = (roster.subFactionId === requiredCat) || (roster.factionId === requiredCat);
+      const targetFaction = CATALOGUE_ID_TO_FACTION_SLUG[requiredCat];
+      const targetSlug = targetFaction ? targetFaction.slug : requiredCat;
+      const targetName = targetFaction ? targetFaction.name.toLowerCase() : '';
+
+      const rosterSubFactionName = (roster.subFactionName || '').toLowerCase();
+      const rosterFactionName = (roster.factionName || '').toLowerCase();
+
+      const isMatchingCat =
+        roster.subFactionId === targetSlug ||
+        roster.factionId === targetSlug ||
+        roster.subFactionId === requiredCat ||
+        roster.factionId === requiredCat ||
+        (targetName && (rosterSubFactionName.includes(targetName) || targetName.includes(rosterSubFactionName))) ||
+        (targetName && (rosterFactionName.includes(targetName) || targetName.includes(rosterFactionName)));
+
       if (!isMatchingCat) {
         issues.push({
           id: `detachment-invalid-subfaction-${d.name}`,
           severity: 'error',
           title: 'Invalid Detachment for Sub-Faction',
-          message: `'${d.name}' is exclusive to its specific sub-faction and cannot be taken by ${roster.subFactionName || roster.factionName}.`
+          message: `'${d.name}' is exclusive to ${targetFaction ? targetFaction.name : 'its specific sub-faction'} and cannot be taken by ${roster.subFactionName || roster.factionName}.`
         });
       }
     }
