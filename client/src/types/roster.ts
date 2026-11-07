@@ -66,6 +66,27 @@ export interface Datasheet {
   meleeWeapons: WeaponProfile[];
   abilities: Ability[];
   transportCapacity?: string | null;
+  isAllied?: boolean;
+}
+
+export function getUnitRole(unit: Datasheet | SelectedUnit): string {
+  const d = 'datasheet' in unit ? unit.datasheet : unit;
+  
+  if (d.isAllied || d.primaryCategory === 'Allied Units') return 'Allied Units';
+  if (d.isEpicHero) return 'Epic Hero';
+  if (d.isCharacter) return 'Character';
+  if (d.isBattleline) return 'Battleline';
+  if (d.isDedicatedTransport) return 'Dedicated Transport';
+
+  const cats = (d.categories || []).map(c => c.toLowerCase());
+  if (cats.includes('aircraft')) return 'Aircraft';
+  if (cats.includes('fortification')) return 'Fortification';
+  if (cats.includes('mounted')) return 'Mounted';
+  if (cats.includes('monster')) return 'Monster';
+  if (cats.includes('vehicle')) return 'Vehicle';
+  if (cats.includes('infantry')) return 'Infantry';
+
+  return d.primaryCategory || 'Other';
 }
 
 export interface Enhancement {

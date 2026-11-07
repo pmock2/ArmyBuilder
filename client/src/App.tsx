@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment } from './types/roster';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole } from './types/roster';
 import { FactionDetail } from './types/faction';
 import { loadAllRosters, saveRoster, deleteRoster, duplicateRoster } from './utils/storage';
 import { validateClientRoster, BATTLE_SIZE_CONFIGS } from './utils/validator';
@@ -256,15 +256,39 @@ export const App: React.FC = () => {
   const validation = validateClientRoster(activeRoster);
   const limits = BATTLE_SIZE_CONFIGS[activeRoster.battleSize] || BATTLE_SIZE_CONFIGS['strike-force'];
 
-  // Categorize Units by Role for Section rendering
+  // Dynamically compute only categories that this army actually has access to
+  const activeArmyCategories = useMemo(() => {
+    if (!factionData?.units) return [];
+    const rolesSet = new Set<string>();
+
+    for (const d of factionData.units) {
+      rolesSet.add(getUnitRole(d));
+    }
+    for (const u of activeRoster.units) {
+      rolesSet.add(getUnitRole(u));
+    }
+
+    const canonical = [
+      { key: 'Epic Hero', title: 'Epic Heroes', limit: 1 },
+      { key: 'Character', title: 'Characters', limit: limits.unitLimit },
+      { key: 'Battleline', title: 'Battleline', limit: limits.battlelineLimit },
+      { key: 'Infantry', title: 'Infantry', limit: limits.unitLimit },
+      { key: 'Mounted', title: 'Mounted', limit: limits.unitLimit },
+      { key: 'Monster', title: 'Monsters', limit: limits.unitLimit },
+      { key: 'Vehicle', title: 'Vehicles', limit: limits.unitLimit },
+      { key: 'Dedicated Transport', title: 'Dedicated Transports', limit: limits.battlelineLimit },
+      { key: 'Aircraft', title: 'Aircraft', limit: limits.unitLimit },
+      { key: 'Fortification', title: 'Fortifications', limit: limits.unitLimit },
+      { key: 'Allied Units', title: 'Allied Units', limit: limits.unitLimit }
+    ];
+
+    // Only categories available to this army!
+    return canonical.filter(c => rolesSet.has(c.key));
+  }, [factionData, activeRoster.units, limits]);
+
+  // Categorize Units by Role for Section rendering strictly using getUnitRole
   const getUnitsByRole = (role: string) => {
-    return activeRoster.units.filter(u => {
-      if (role === 'Epic Hero') return u.isEpicHero;
-      if (role === 'Character') return u.isCharacter && !u.isEpicHero;
-      if (role === 'Battleline') return u.isBattleline && !u.isCharacter && !u.isEpicHero;
-      if (role === 'Dedicated Transport') return u.isDedicatedTransport;
-      return u.datasheet.primaryCategory.toLowerCase() === role.toLowerCase();
-    });
+    return activeRoster.units.filter(u => getUnitRole(u) === role);
   };
 
   return (
@@ -327,157 +351,24 @@ export const App: React.FC = () => {
               onToggleDetachment={handleToggleDetachment}
             />
 
-            {/* 3. Battlefield Role Unit Sections */}
+            {/* 3. Battlefield Role Unit Sections (Only categories available to this army) */}
             <div className="space-y-4">
-              {/* Epic Heroes */}
-              <UnitSection
-                title="Epic Heroes"
-                roleKey="Epic Hero"
-                units={getUnitsByRole('Epic Hero')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={1}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Characters */}
-              <UnitSection
-                title="Characters"
-                roleKey="Character"
-                units={getUnitsByRole('Character')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Battleline */}
-              <UnitSection
-                title="Battleline"
-                roleKey="Battleline"
-                units={getUnitsByRole('Battleline')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.battlelineLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Infantry */}
-              <UnitSection
-                title="Infantry"
-                roleKey="Infantry"
-                units={getUnitsByRole('Infantry')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Mounted */}
-              <UnitSection
-                title="Mounted"
-                roleKey="Mounted"
-                units={getUnitsByRole('Mounted')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Monster */}
-              <UnitSection
-                title="Monsters"
-                roleKey="Monster"
-                units={getUnitsByRole('Monster')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Vehicle */}
-              <UnitSection
-                title="Vehicles"
-                roleKey="Vehicle"
-                units={getUnitsByRole('Vehicle')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Dedicated Transport */}
-              <UnitSection
-                title="Dedicated Transports"
-                roleKey="Dedicated Transport"
-                units={getUnitsByRole('Dedicated Transport')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.battlelineLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Aircraft */}
-              <UnitSection
-                title="Aircraft"
-                roleKey="Aircraft"
-                units={getUnitsByRole('Aircraft')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
-
-              {/* Fortifications */}
-              <UnitSection
-                title="Fortifications"
-                roleKey="Fortification"
-                units={getUnitsByRole('Fortification')}
-                allUnitsInRoster={activeRoster.units}
-                availableEnhancements={factionData.enhancements}
-                unitLimit={limits.unitLimit}
-                onOpenBrowser={handleOpenBrowser}
-                onUpdateUnit={handleUpdateUnit}
-                onDuplicateUnit={handleDuplicateUnit}
-                onRemoveUnit={handleRemoveUnit}
-                onSetWarlord={handleSetWarlord}
-              />
+              {activeArmyCategories.map((cat) => (
+                <UnitSection
+                  key={cat.key}
+                  title={cat.title}
+                  roleKey={cat.key}
+                  units={getUnitsByRole(cat.key)}
+                  allUnitsInRoster={activeRoster.units}
+                  availableEnhancements={factionData.enhancements}
+                  unitLimit={cat.limit}
+                  onOpenBrowser={handleOpenBrowser}
+                  onUpdateUnit={handleUpdateUnit}
+                  onDuplicateUnit={handleDuplicateUnit}
+                  onRemoveUnit={handleRemoveUnit}
+                  onSetWarlord={handleSetWarlord}
+                />
+              ))}
             </div>
           </>
         )}
