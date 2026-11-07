@@ -175,3 +175,4 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
     </div>
   );
 };
+

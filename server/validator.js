@@ -310,3 +310,4 @@ module.exports = {
   BATTLE_SIZE_LIMITS,
   validateRoster
 };
+

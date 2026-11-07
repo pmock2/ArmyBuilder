@@ -26,3 +26,4 @@ export interface FactionDetail {
   enhancements: Enhancement[];
   units: Datasheet[];
 }
+

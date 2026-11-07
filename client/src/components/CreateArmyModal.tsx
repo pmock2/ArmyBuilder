@@ -265,3 +265,4 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
     </div>
   );
 };
+
