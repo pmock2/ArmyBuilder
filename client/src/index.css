@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0b0d10] text-[#e6edf8];
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, .font-warhammer {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111419;
+}
+::-webkit-scrollbar-thumb {
+  background: #282f3d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c99a3e;
+}
+
+/* Grimdark Metallic Accents */
+.border-gold-glow {
+  border-color: #c99a3e;
+  box-shadow: 0 0 15px rgba(201, 154, 62, 0.15);
+}
+
+.border-red-glow {
+  border-color: #961d1d;
+  box-shadow: 0 0 15px rgba(150, 29, 29, 0.2);
+}
+
+.badge-gold {
+  @apply bg-amber-950/60 text-amber-300 border border-amber-600/40;
+}
+
+.badge-red {
+  @apply bg-red-950/60 text-red-300 border border-red-700/50;
+}
+
+.badge-blue {
+  @apply bg-blue-950/60 text-blue-300 border border-blue-700/40;
+}
+
+.badge-gray {
+  @apply bg-grimdark-800 text-grimdark-300 border border-grimdark-700;
+}

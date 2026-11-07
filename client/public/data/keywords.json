@@ -1,0 +1,2542 @@
+{
+  "version": "11.0.0",
+  "generatedAt": "2026-11-07T04:18:29.671Z",
+  "categories": {
+    "coreAbilities": [
+      {
+        "name": "DEADLY DEMISE",
+        "ruleNumber": "24.08",
+        "type": "Core Unit Ability",
+        "summary": "Explodes upon destruction, inflicting mortal wounds on nearby units.",
+        "description": "From detonating ammunition to the death throes of colossal beasts, some units violently erupt when destroyed. When a model with DEADLY DEMISE X is destroyed, roll one D6 before removing it from play. On a 6, each unit within 6\" suffers X mortal wounds."
+      },
+      {
+        "name": "DEEP STRIKE",
+        "ruleNumber": "24.09",
+        "type": "Core Unit Ability",
+        "summary": "Can start in Reserves and arrive anywhere on the battlefield >9\" from enemies.",
+        "description": "During deployment, you can set up this unit in Reserves instead of setting it up on the battlefield. In the Reinforcements step of one of your Movement phases, you can set up this unit anywhere on the battlefield that is more than 9\" horizontally away from all enemy models."
+      },
+      {
+        "name": "FEEL NO PAIN",
+        "ruleNumber": "24.12",
+        "type": "Core Unit Ability",
+        "summary": "Post-damage roll to shrug off suffered wounds on X+.",
+        "description": "Each time a model with FEEL NO PAIN X+ suffers damage and would lose a wound, roll one D6. On an X+, that wound is not lost. Can be rolled against normal and mortal wounds."
+      },
+      {
+        "name": "FIGHTS FIRST",
+        "ruleNumber": "24.13",
+        "type": "Core Unit Ability",
+        "summary": "Unit is eligible to fight in the Fights First step before standard combat.",
+        "description": "Units with FIGHTS FIRST are eligible to fight in the Fights First step of the Fight phase, before players alternate selecting eligible units to fight."
+      },
+      {
+        "name": "FIRING DECK",
+        "ruleNumber": "24.14",
+        "type": "Core Unit Ability",
+        "summary": "Embarked passengers can fire up to X ranged weapons from the transport.",
+        "description": "Each time a TRANSPORT model with FIRING DECK X is selected to shoot, you can select up to X ranged weapons equipped by passengers embarked within it. This transport model is treated as being equipped with those weapons until that shooting is resolved."
+      },
+      {
+        "name": "HOVER",
+        "ruleNumber": "24.17",
+        "type": "Core Unit Ability",
+        "summary": "Aircraft can opt to lose Aircraft rules and function as a standard Flyer.",
+        "description": "Before the battle, in the Declare Battle Formations step, you can select for this AIRCRAFT model to Hover. If it does, its Move characteristic becomes 20\", it loses the AIRCRAFT keyword, and it no longer follows the Aircraft rules."
+      },
+      {
+        "name": "INFILTRATORS",
+        "ruleNumber": "24.20",
+        "type": "Core Unit Ability",
+        "summary": "Can deploy anywhere outside the enemy deployment zone >9\" from enemies.",
+        "description": "During deployment, a unit with INFILTRATORS can be set up anywhere on the battlefield that is more than 9\" horizontally away from the enemy deployment zone and all enemy models."
+      },
+      {
+        "name": "LEADER",
+        "ruleNumber": "24.22",
+        "type": "Core Unit Ability (11th Edition Architecture)",
+        "summary": "Can attach to eligible Bodyguard units. Bodyguards can take 1 Leader and 1 Support.",
+        "description": "Before the battle in the Muster Armies step, a LEADER unit can attach to an eligible BODYGUARD unit to form an attached unit. In 11th edition, each bodyguard unit can have up to one LEADER and one SUPPORT unit attached."
+      },
+      {
+        "name": "LONE OPERATIVE",
+        "ruleNumber": "24.24",
+        "type": "Core Unit Ability",
+        "summary": "Cannot be targeted by ranged attacks from more than 12\" away (or X\" if specified).",
+        "description": "Unless part of an attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12\" (or the specified range X\")."
+      },
+      {
+        "name": "SCOUTS",
+        "ruleNumber": "24.31",
+        "type": "Core Unit Ability",
+        "summary": "Pre-battle scout move of up to X\" before the first turn begins.",
+        "description": "Units with SCOUTS X\" can make a normal move of up to X\" before the first battle round begins. If both players have Scout units, players alternate resolving Scout moves starting with the first turn player."
+      },
+      {
+        "name": "STEALTH",
+        "ruleNumber": "24.33",
+        "type": "Core Unit Ability",
+        "summary": "Distorts targeting. -1 to Hit rolls made by enemy ranged attacks against this unit.",
+        "description": "Each time a ranged attack is made against a unit with STEALTH, subtract 1 from the Hit roll."
+      },
+      {
+        "name": "SUPPORT",
+        "ruleNumber": "24.34",
+        "type": "Core Unit Ability (11th Edition Innovation)",
+        "summary": "Specialist officer or support asset. Must attach to a bodyguard unit (1 Leader + 1 Support allowed).",
+        "description": "Before battle in the Muster Armies step, each SUPPORT unit in your army must be attached to an eligible BODYGUARD unit. In 11th edition, a bodyguard unit can have both a LEADER and a SUPPORT attached simultaneously."
+      },
+      {
+        "name": "SUPER-HEAVY WALKER",
+        "ruleNumber": "24.35",
+        "type": "Core Unit Ability",
+        "summary": "Titanic walkers that can step over obstacles and non-Titanic models.",
+        "description": "Models in this unit can move through and over models (excluding TITANIC models) and can move horizontally over terrain features that are 4\" or less in height as if they were not there."
+      },
+      {
+        "name": "DAMAGED",
+        "ruleNumber": "24.39",
+        "type": "Core Unit Ability",
+        "summary": "Degrading performance characteristics when reduced to below half wounds.",
+        "description": "While this model has fewer than half its starting wounds remaining, its characteristics degrade (typically -1 to Hit rolls and/or reduced Objective Control)."
+      }
+    ],
+    "weaponAbilities": [
+      {
+        "name": "[ANTI]",
+        "ruleNumber": "24.03",
+        "type": "Weapon Ability",
+        "summary": "Critical wound on unmodified wound roll of X+ against specified target keyword.",
+        "description": "Weapons with [ANTI-KEYWORD X+] in their profile are designed to defeat specific opponents. Each time an attack is made with such a weapon against a target unit with the specified keyword, an unmodified wound roll of X+ scores a Critical Wound."
+      },
+      {
+        "name": "[ASSAULT]",
+        "ruleNumber": "24.04",
+        "type": "Weapon Ability",
+        "summary": "Allows shooting even if the bearer's unit Advanced this turn.",
+        "description": "Weapons with [ASSAULT] can be fired on the move. A unit that contains one or more models equipped with an [ASSAULT] weapon is eligible to shoot in your Shooting phase even if that unit Advanced this turn, though only models equipped with [ASSAULT] weapons can make attacks."
+      },
+      {
+        "name": "[BLAST]",
+        "ruleNumber": "24.05",
+        "type": "Weapon Ability",
+        "summary": "Explosive ordnance. Adds attacks against large squads, cannot fire in Engagement Range.",
+        "description": "Weapons with [BLAST] in their profile represent high-explosive payloads. Each time you determine how many attacks are made with a [BLAST] weapon, add 1 to the Attacks characteristic for every five models that were in the target unit in the Select Targets step (rounding down). Blast weapons cannot be used to make attacks against target units that are within Engagement Range of one or more friendly units."
+      },
+      {
+        "name": "[CLEAVE]",
+        "ruleNumber": "24.06",
+        "type": "Weapon Ability (11th Edition)",
+        "summary": "Sweeping strikes. Adds attack dice for every 5 models in the target unit.",
+        "description": "With sufficient might or skill, warriors may sweep blades or talons through their foes in long lethal arcs. This ability always takes the form [CLEAVE X]. Each time you gather attack dice for a [CLEAVE] weapon, if you only selected one target for all of that weapon’s attacks, add X additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down)."
+      },
+      {
+        "name": "[CLOSE-QUARTERS]",
+        "ruleNumber": "24.07",
+        "type": "Weapon Ability (11th Edition)",
+        "summary": "Sidearm weapon that can be fired while locked in Engagement Range (identical to Pistol).",
+        "description": "Weapons with [CLOSE-QUARTERS] can be fired at point-blank range while in Engagement Range of enemy units. A model equipped with a [CLOSE-QUARTERS] weapon can shoot with it even if its unit is within Engagement Range of enemy units. Identical in rules to [PISTOL]."
+      },
+      {
+        "name": "[DEVASTATING WOUNDS]",
+        "ruleNumber": "24.10",
+        "type": "Weapon Ability",
+        "summary": "Critical wounds bypass armour and invulnerable saving throws.",
+        "description": "Weapons with [DEVASTATING WOUNDS] can pierce almost any defense. A Critical Wound inflicted by an attack with this weapon cannot be saved against by armour or invulnerable saves — the target unit simply suffers the damage."
+      },
+      {
+        "name": "[EXTRA ATTACKS]",
+        "ruleNumber": "24.11",
+        "type": "Weapon Ability",
+        "summary": "Bearer attacks with this weapon in addition to other melee weapons.",
+        "description": "A model equipped with an [EXTRA ATTACKS] weapon can attack with it in addition to any other melee weapons it selects to fight with. The Attacks characteristic of an [EXTRA ATTACKS] weapon cannot be modified."
+      },
+      {
+        "name": "[HAZARDOUS]",
+        "ruleNumber": "24.15",
+        "type": "Weapon Ability",
+        "summary": "Risk of weapon malfunction. Roll D6 per weapon used; roll of 1 destroys model or causes mortal wounds.",
+        "description": "After resolving all attacks with [HAZARDOUS] weapons, roll one D6 for each [HAZARDOUS] weapon used. For each roll of 1, one model in the attacking unit equipped with that weapon suffers 3 mortal wounds (or is destroyed if it is a Character/Monster/Vehicle)."
+      },
+      {
+        "name": "[HEAVY]",
+        "ruleNumber": "24.16",
+        "type": "Weapon Ability",
+        "summary": "+1 to Hit rolls if the firing unit Remained Stationary this turn.",
+        "description": "Heavy weapons require bracing. Each time an attack is made with an [HEAVY] weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll."
+      },
+      {
+        "name": "[IGNORES COVER]",
+        "ruleNumber": "24.18",
+        "type": "Weapon Ability",
+        "summary": "Target cannot gain the Benefit of Cover against these attacks.",
+        "description": "Each time an attack is made with an [IGNORES COVER] weapon, the target cannot have the Benefit of Cover against that attack."
+      },
+      {
+        "name": "[INDIRECT FIRE]",
+        "ruleNumber": "24.19",
+        "type": "Weapon Ability",
+        "summary": "Can target non-visible enemy units (-1 to Hit, target gains Benefit of Cover).",
+        "description": "Weapons with [INDIRECT FIRE] can make attacks against targets that are not visible to the attacking model. If an attack is made against a target that is not visible, subtract 1 from the Hit roll and the target has the Benefit of Cover against that attack."
+      },
+      {
+        "name": "[LANCE]",
+        "ruleNumber": "24.21",
+        "type": "Weapon Ability",
+        "summary": "+1 to Wound rolls if the bearer charged this turn.",
+        "description": "Each time an attack is made with a [LANCE] weapon, if the bearer made a charge move this turn, add 1 to that attack’s Wound roll."
+      },
+      {
+        "name": "[LETHAL HITS]",
+        "ruleNumber": "24.23",
+        "type": "Weapon Ability",
+        "summary": "Critical hits automatically wound the target.",
+        "description": "Each time an attack is made with a [LETHAL HITS] weapon, a Critical Hit automatically wounds the target without needing a wound roll."
+      },
+      {
+        "name": "[MELTA]",
+        "ruleNumber": "24.25",
+        "type": "Weapon Ability",
+        "summary": "Thermal armor-melting blast. Adds +X Damage at half range.",
+        "description": "Weapons with [MELTA X] unleash blinding heat. Each time an attack made with a [MELTA X] weapon targets a unit within half that weapon’s Range, that attack’s Damage characteristic is increased by X."
+      },
+      {
+        "name": "[ONE SHOT]",
+        "ruleNumber": "24.26",
+        "type": "Weapon Ability",
+        "summary": "Single-use weapon that can only be fired once per battle.",
+        "description": "The bearer can only shoot with this weapon once per battle."
+      },
+      {
+        "name": "[PISTOL]",
+        "ruleNumber": "24.27",
+        "type": "Weapon Ability",
+        "summary": "Can shoot in Engagement Range. Functionally identical to [CLOSE-QUARTERS].",
+        "description": "Weapons with [PISTOL] can shoot while their unit is in Engagement Range of enemy units, targeting those enemy units. Functionally identical to [CLOSE-QUARTERS]."
+      },
+      {
+        "name": "[PRECISION]",
+        "ruleNumber": "24.28",
+        "type": "Weapon Ability",
+        "summary": "Attacking player can allocate successful attacks directly to a visible Character in an Attached unit.",
+        "description": "When an attack made with a [PRECISION] weapon successfully wounds an attached unit, if a CHARACTER model in that unit is visible to the attacking model, the attacking player can allocate that attack directly to that CHARACTER model instead of the bodyguard unit."
+      },
+      {
+        "name": "[PSYCHIC]",
+        "ruleNumber": "24.29",
+        "type": "Weapon Ability",
+        "summary": "Psychic manifestation weapon or attack, interacts with [ANTI-PSYKER].",
+        "description": "Weapons and abilities with the [PSYCHIC] tag represent manifestations of warp powers. Interacts directly with abilities that confer defense or bonuses against psychic attacks (such as [ANTI-PSYKER] or psychic protection)."
+      },
+      {
+        "name": "[RAPID FIRE]",
+        "ruleNumber": "24.30",
+        "type": "Weapon Ability",
+        "summary": "Adds +X Attacks when firing at targets within half range.",
+        "description": "Weapons with [RAPID FIRE X] deliver high rates of fire at close range. Each time an attack made with such a weapon targets a unit within half range, increase the Attacks characteristic by X."
+      },
+      {
+        "name": "[SUSTAINED HITS]",
+        "ruleNumber": "24.36",
+        "type": "Weapon Ability",
+        "summary": "Critical hits generate X additional hits on the target.",
+        "description": "Each time an attack is made with a [SUSTAINED HITS X] weapon, a Critical Hit scores X additional hits on the target unit in addition to the normal hit."
+      },
+      {
+        "name": "[TORRENT]",
+        "ruleNumber": "24.37",
+        "type": "Weapon Ability",
+        "summary": "Cones of fire/acid/flame. Attacks automatically hit the target without rolling.",
+        "description": "Weapons with [TORRENT] project continuous streams of fire, acid, or gas. Attacks made with a [TORRENT] weapon automatically hit the target without making a Hit roll. Cannot have [INDIRECT FIRE] or [PRECISION]."
+      },
+      {
+        "name": "[TWIN-LINKED]",
+        "ruleNumber": "24.38",
+        "type": "Weapon Ability",
+        "summary": "Paired weapon synchronization. You can re-roll all Wound rolls made with this weapon.",
+        "description": "Weapons with [TWIN-LINKED] feature synchronized barrels or power conduits. Each time an attack is made with a [TWIN-LINKED] weapon, you can re-roll the Wound roll."
+      }
+    ],
+    "battlefieldRoles": [
+      {
+        "id": "9cfd-1c32-585f-7d5c",
+        "name": "Character",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Character. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4f3a-f0f7-6647-348d",
+        "name": "Epic Hero",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Epic Hero. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "cf47-a0d7-7207-29dc",
+        "name": "Infantry",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Infantry. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9693-cf84-fe69-37a9",
+        "name": "Monster",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Monster. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e338-111e-d0c6-b687",
+        "name": "Battleline",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Battleline. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ba07-411c-2832-1f79",
+        "name": "Dedicated Transport",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Dedicated Transport. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "14a0-40c9-2748-ae6e",
+        "name": "Mounted",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Mounted. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "dbd4-63-af05-998",
+        "name": "Vehicle",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Vehicle. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "63f1-e6e8-f6f6-a4f0",
+        "name": "Aircraft",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Aircraft. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "19d7-9c74-2140-5851",
+        "name": "Fortification",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Fortification. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4c3e-9310-a516-3590",
+        "name": "Beast",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Beast. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b00b-5bae-444f-964e",
+        "name": "Swarm",
+        "type": "Battlefield Role",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Swarm. Used for rules interactions, target eligibility, and army validation."
+      }
+    ],
+    "factionKeywords": [
+      {
+        "id": "bb67-f191-6562-acc7",
+        "name": "Faction: Chaos Knights",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Chaos Knights. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "d1d8-6ae0-1be7-e9e",
+        "name": "Faction: Tyranids",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Tyranids. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1015-db48-a2fa-c7da",
+        "name": "Faction: Drukhari",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Drukhari. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4378-1827-4988-be4e",
+        "name": "Faction: Asuryani",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Asuryani. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "fa45-57e-930e-602b",
+        "name": "Faction: Astra Militarum",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Astra Militarum. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b5e4-3253-c157-54fd",
+        "name": "Faction: Imperial Knights",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Imperial Knights. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1e42-dfae-cbdd-207d",
+        "name": "Faction: Heretic Astartes",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Heretic Astartes. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "fd71-afa6-b13b-7fda",
+        "name": "Faction: Adepta Sororitas",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Adepta Sororitas. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ee0-cf31-4fb5-6b26",
+        "name": "Faction: Necrons",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Necrons. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "571f-ec3a-a5a2-751a",
+        "name": "Faction: Legiones Daemonica",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Legiones Daemonica. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6e7-40c-58d9-e402",
+        "name": "Faction: Adeptus Astartes",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Adeptus Astartes. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5418-f86b-6e76-c5a",
+        "name": "Faction: Adeptus Mechanicus",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Adeptus Mechanicus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "226b-cf1e-353a-ae7f",
+        "name": "Faction: Genestealer Cults",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Genestealer Cults. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "bd1d-c1a5-6ca2-c791",
+        "name": "Faction: World Eaters",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: World Eaters. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "8474-765-16a9-f00d",
+        "name": "Faction: Leagues of Votann",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Leagues of Votann. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9888-ddb2-a141-6037",
+        "name": "Faction: Death Guard",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Death Guard. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "3d58-2655-391e-ecc",
+        "name": "Faction: T'au Empire",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: T'au Empire. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "eea5-aeaf-bbf0-d5ee",
+        "name": "Faction: Adeptus Custodes",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Adeptus Custodes. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "56cc-5f43-2403-8da0",
+        "name": "Faction: Orks",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Orks. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "7002-1fbb-7571-e8e7",
+        "name": "Faction: Thousand Sons",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Thousand Sons. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "d564-3284-bf44-b873",
+        "name": "Faction: Grey Knights",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Grey Knights. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5128-90b-e4a5-dcbd",
+        "name": "Faction: Agents of the Imperium",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Agents of the Imperium. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "aab1-4f05-fabe-5ba5",
+        "name": "Faction: Dark Angels",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Dark Angels. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "65e4-13-4fa8-b36c",
+        "name": "Faction: Salamanders",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Salamanders. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "d39c-9989-db7f-d815",
+        "name": "Faction: Deathwatch",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Deathwatch. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "62ac-ef42-27b4-ae7",
+        "name": "Faction: Blood Angels",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Blood Angels. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1a2d-2f00-c054-4dcb",
+        "name": "Faction: Ultramarines",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Ultramarines. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "a0d9-c115-2a-8330",
+        "name": "Faction: Space Wolves",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Space Wolves. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9249-acae-2882-d95",
+        "name": "Faction: Black Templars",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Black Templars. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "84b7-7194-3b84-1b0c",
+        "name": "Faction: Raven Guard",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Raven Guard. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b88e-1b0c-b79f-5cdf",
+        "name": "Faction: Iron Hands",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Iron Hands. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "97aa-d0e4-71c7-96c3",
+        "name": "Faction: Imperial Fists",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Imperial Fists. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5c0e-2250-dd3a-1df9",
+        "name": "Faction: White Scars",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: White Scars. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "a5a2-d0c0-0349-d226",
+        "name": "Faction: Harlequins",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Harlequins. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9a21-190a-9d31-35d2",
+        "name": "Faction: Ynnari",
+        "type": "Faction Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Faction: Ynnari. Used for rules interactions, target eligibility, and army validation."
+      }
+    ],
+    "armourAndEquipment": [
+      {
+        "id": "5a61-81ac-eb7c-a87e",
+        "name": "Grenades",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Grenades. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6df-937-16bc-8c1a",
+        "name": "Smoke",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Smoke. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "13bf-2bee-3ae0-b414",
+        "name": "Psyker",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Psyker. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "740a-892c-8958-defa",
+        "name": "Terminator",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Terminator. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "dda2-bb0a-215e-ad9c",
+        "name": "Jump Pack",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Jump Pack. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "81f0-f40e-c36c-5a30",
+        "name": "Gravis",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Gravis. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5179-8ede-45e3-49a2",
+        "name": "Tacticus",
+        "type": "Equipment & Armour Type",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Tacticus. Used for rules interactions, target eligibility, and army validation."
+      }
+    ],
+    "movementAndScale": [
+      {
+        "id": "c619-2086-bbcf-69c9",
+        "name": "Fly",
+        "type": "Movement & Scale Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Fly. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6dda-e157-334d-e93a",
+        "name": "Walker",
+        "type": "Movement & Scale Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Walker. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "d666-e2c9-b6cc-5716",
+        "name": "Towering",
+        "type": "Movement & Scale Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Towering. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5929-ad51-d006-e008",
+        "name": "Titanic",
+        "type": "Movement & Scale Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Titanic. Used for rules interactions, target eligibility, and army validation."
+      }
+    ],
+    "generalKeywords": [
+      {
+        "id": "2d7f-1892-2fd0-e29c",
+        "name": "Captain",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Captain. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "aff3-d6a3-2a95-9dc",
+        "name": "Imperium",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Imperium. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4ac9-fd30-1e3d-b249",
+        "name": "Configuration",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Configuration. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1160-70ae-a862-b1a8",
+        "name": "Unit",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Unit. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "75e8-57c4-40e3-1817",
+        "name": "Transport",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Transport. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4c00-2578-faf5-6918",
+        "name": "Chaos",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Chaos. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b2a9-ede5-7a83-4da8",
+        "name": "Slaanesh",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Slaanesh. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ed0d-8e2a-225c-2340",
+        "name": "Nurgle",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Nurgle. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4bd-5ee0-f179-2fc5",
+        "name": "Khorne",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Khorne. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b188-114f-6ba5-79a1",
+        "name": "Tzeentch",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Tzeentch. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5c0e-4c31-d51b-e470",
+        "name": "Warlord",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Warlord. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9c0e-7e25-4580-e439",
+        "name": "Daemon",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Daemon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6474-0ce3-6b5a-120c",
+        "name": "Primarch",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Primarch. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4f09-0141-6c70-6c5a",
+        "name": "Daemon Prince",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Daemon Prince. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "2471-e2e0-3f55-d6cb",
+        "name": "Drone",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Drone. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "7850-cc5a-c191-b80d",
+        "name": "Great Devourer",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Great Devourer. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "cc77-a53-fca8-f48e",
+        "name": "Retinue",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Retinue. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "50a2-5557-84bb-ca4d",
+        "name": "Rhino",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Rhino. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4c40-ab9-54af-d290",
+        "name": "Armiger",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Armiger. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e4d6-1a77-132b-f39d",
+        "name": "Questoris",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Questoris. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "af4c-b971-a31c-669c",
+        "name": "Dominus",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Dominus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "f76f-29c1-de9-74c2",
+        "name": "Acastus",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Acastus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "481c-3b2e-5c99-c248",
+        "name": "Cerastus",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Cerastus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "8cab-448d-37b7-32bc",
+        "name": "Artillery",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Artillery. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ac7e-be7b-eb02-4752",
+        "name": "Order of Battle",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Order of Battle. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "26fe-d7cb-eb8f-77d4",
+        "name": "Tyrannic War Veteran",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Tyrannic War Veteran. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "0dce-ed3d-83af-2f27",
+        "name": "Striding Behemoths",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Striding Behemoths. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1532-9501-d870-4514",
+        "name": "Monster Hunters",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Monster Hunters. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4546-4a0c-b3be-e84c",
+        "name": "Psychic Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Psychic Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "064a-0470-60eb-e3ef",
+        "name": "Torrent Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Torrent Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "eeda-8544-a2f3-3fab",
+        "name": "Ranged Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Ranged Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ccdd-3987-11ed-90cd",
+        "name": "Melee Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Melee Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "c13c-1717-f8a8-a8df",
+        "name": "Crusade Relic",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Crusade Relic. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1db0-c6b5-19db-8d0c",
+        "name": "Pistol Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Pistol Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "7278-781b-ce6c-d23c",
+        "name": "Death Company",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Death Company. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e993-e086-6de1-12af",
+        "name": "Attacks Dx Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Attacks Dx Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "4986-bf86-beb4-13ac",
+        "name": "Damage Dx Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Damage Dx Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6337-b83b-0d1e-5770",
+        "name": "Attacks Dx+0 Modifier",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Attacks Dx+0 Modifier. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "982b-de77-dd2d-d9bd",
+        "name": "Damage Dx+0 Modifier",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Damage Dx+0 Modifier. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "59a9-b5cc-7c11-aaad",
+        "name": "Tech-Priest",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Tech-Priest. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "cc88-9467-86ac-4ca2",
+        "name": "Ministorum Priest",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Ministorum Priest. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9d4f-4beb-107d-3175",
+        "name": "Sanctifiers",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Sanctifiers. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5b15-724e-2eeb-8cb7",
+        "name": "Pilot",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Pilot. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e106-0758-7137-2432",
+        "name": "Assault Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Assault Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e2bc-fc0c-1099-3e75",
+        "name": "Crucible",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Crucible. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "eef1-be80-500a-edfc",
+        "name": "Reference",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Reference. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "c97c-376-e2e0-1dd2",
+        "name": "Dreadnought",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Dreadnought. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "bdc8-7127-287c-a267",
+        "name": "Docked Vehicle",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Docked Vehicle. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "0cc6-ca49-ee2f-4294",
+        "name": "Critical Threat",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Critical Threat. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "75fe-c657-43c6-7c09",
+        "name": "Supreme Commander",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Supreme Commander. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1cf9-0660-4ef2-4d18",
+        "name": "Bellatus",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Bellatus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9440-07f1-b09d-ce8b",
+        "name": "Unbound Adversaries",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Unbound Adversaries. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "d445-8a18-5300-c3cc",
+        "name": "Greater Daemon",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Greater Daemon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "f927-898a-ebe2-1aca",
+        "name": "Lesser Daemon",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Lesser Daemon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e17d-56fd-1957-071f",
+        "name": "Abomination",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Abomination. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "a783-fe90-2280-47ec",
+        "name": "Daemonic Beasts",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Daemonic Beasts. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "355c-0ee6-3cde-6c71",
+        "name": "Mobile",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Mobile. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b927-8eeb-7cc3-8dec",
+        "name": "Frame",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Frame. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e33d-891d-33aa-e9bf",
+        "name": "Explosives",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Explosives. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "ecf8-cf72-7d5b-1b5b",
+        "name": "Disruption",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Disruption. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "0936-9767-1cc7-52ae",
+        "name": "Priority Assets",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Priority Assets. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "6fe0-3dbe-f7e0-10bb",
+        "name": "Purge the Foe",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Purge the Foe. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1cc1-f11a-4e8f-1bcc",
+        "name": "Take and Hold",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Take and Hold. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "b4a7-5083-fe94-4d24",
+        "name": "Reconnaissance",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Reconnaissance. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "1556-9b56-fba6-4370",
+        "name": "Leader",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Leader. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "7dcd-7f61-69a7-0294",
+        "name": "Support",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Support. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "751c-b78a-45fa-cc5f",
+        "name": "Rapid Fire Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Rapid Fire Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "742f-5727-1bc9-6da5",
+        "name": "Allies: Imperial Agents",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Imperial Agents. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "24fa-8caf-cd68-31fb",
+        "name": "Allies: Titanicus Traitoris",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Titanicus Traitoris. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "8dd6-af11-abd3-55f1",
+        "name": "Allies: Chaos Knights",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Chaos Knights. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "07d9-ab1c-cf28-0939",
+        "name": "Allies: Unaligned Forces",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Unaligned Forces. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "e1ea-71b9-f0ef-d788",
+        "name": "Allies: Legiones Daemonica",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Legiones Daemonica. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "5e03-9044-273d-e818",
+        "name": "Allies: Imperial Knights",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Imperial Knights. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "8247-35f6-ec2a-7caa",
+        "name": "Allies: Astra Militarum",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Astra Militarum. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "81b0-a893-4fb7-c298",
+        "name": "Kill Team",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Kill Team. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "92e6-f82e-0a48-2276",
+        "name": "Allies: Heretic Astartes",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Heretic Astartes. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "9988-6b5e-660e-d973",
+        "name": "Allies: Adeptus Titanicus",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Adeptus Titanicus. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "7d80-2de5-816e-9d2b",
+        "name": "3DP Detachment",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: 3DP Detachment. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "a5ab-185a-4855-0cb8",
+        "name": "Melta Weapon",
+        "type": "General Keyword",
+        "hidden": true,
+        "description": "Warhammer 40,000 keyword: Melta Weapon. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "3d1c-7f16-1489-fac3",
+        "name": "Possessed",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Possessed. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "cb29-f4bb-ff15-6b11",
+        "name": "Plasma",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Plasma. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "8886-848f-a0f9-1e19",
+        "name": "Allies: Deathwatch",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Deathwatch. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "94a4-4c41-84a4-d038",
+        "name": "Fortis Kill Team",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Fortis Kill Team. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "2546-062b-7236-7fa3",
+        "name": "Indomitor Kill Team",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Indomitor Kill Team. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "2b33-05a8-bf42-72f9",
+        "name": "Spectrus Kill Team",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Spectrus Kill Team. Used for rules interactions, target eligibility, and army validation."
+      },
+      {
+        "id": "747a-c6a9-6f4f-7f09",
+        "name": "Allies: Tyranids",
+        "type": "General Keyword",
+        "hidden": false,
+        "description": "Warhammer 40,000 keyword: Allies: Tyranids. Used for rules interactions, target eligibility, and army validation."
+      }
+    ]
+  },
+  "allKeywordsList": [
+    {
+      "name": "[ANTI]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.03",
+      "summary": "Critical wound on unmodified wound roll of X+ against specified target keyword.",
+      "description": "Weapons with [ANTI-KEYWORD X+] in their profile are designed to defeat specific opponents. Each time an attack is made with such a weapon against a target unit with the specified keyword, an unmodified wound roll of X+ scores a Critical Wound."
+    },
+    {
+      "name": "[ASSAULT]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.04",
+      "summary": "Allows shooting even if the bearer's unit Advanced this turn.",
+      "description": "Weapons with [ASSAULT] can be fired on the move. A unit that contains one or more models equipped with an [ASSAULT] weapon is eligible to shoot in your Shooting phase even if that unit Advanced this turn, though only models equipped with [ASSAULT] weapons can make attacks."
+    },
+    {
+      "name": "[BLAST]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.05",
+      "summary": "Explosive ordnance. Adds attacks against large squads, cannot fire in Engagement Range.",
+      "description": "Weapons with [BLAST] in their profile represent high-explosive payloads. Each time you determine how many attacks are made with a [BLAST] weapon, add 1 to the Attacks characteristic for every five models that were in the target unit in the Select Targets step (rounding down). Blast weapons cannot be used to make attacks against target units that are within Engagement Range of one or more friendly units."
+    },
+    {
+      "name": "[CLEAVE]",
+      "category": "Weapon Ability (11th Edition)",
+      "ruleRef": "24.06",
+      "summary": "Sweeping strikes. Adds attack dice for every 5 models in the target unit.",
+      "description": "With sufficient might or skill, warriors may sweep blades or talons through their foes in long lethal arcs. This ability always takes the form [CLEAVE X]. Each time you gather attack dice for a [CLEAVE] weapon, if you only selected one target for all of that weapon’s attacks, add X additional attack dice for every five models that were in the target unit in the Select Targets step (rounding down)."
+    },
+    {
+      "name": "[CLOSE-QUARTERS]",
+      "category": "Weapon Ability (11th Edition)",
+      "ruleRef": "24.07",
+      "summary": "Sidearm weapon that can be fired while locked in Engagement Range (identical to Pistol).",
+      "description": "Weapons with [CLOSE-QUARTERS] can be fired at point-blank range while in Engagement Range of enemy units. A model equipped with a [CLOSE-QUARTERS] weapon can shoot with it even if its unit is within Engagement Range of enemy units. Identical in rules to [PISTOL]."
+    },
+    {
+      "name": "DEADLY DEMISE",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.08",
+      "summary": "Explodes upon destruction, inflicting mortal wounds on nearby units.",
+      "description": "From detonating ammunition to the death throes of colossal beasts, some units violently erupt when destroyed. When a model with DEADLY DEMISE X is destroyed, roll one D6 before removing it from play. On a 6, each unit within 6\" suffers X mortal wounds."
+    },
+    {
+      "name": "DEEP STRIKE",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.09",
+      "summary": "Can start in Reserves and arrive anywhere on the battlefield >9\" from enemies.",
+      "description": "During deployment, you can set up this unit in Reserves instead of setting it up on the battlefield. In the Reinforcements step of one of your Movement phases, you can set up this unit anywhere on the battlefield that is more than 9\" horizontally away from all enemy models."
+    },
+    {
+      "name": "[DEVASTATING WOUNDS]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.10",
+      "summary": "Critical wounds bypass armour and invulnerable saving throws.",
+      "description": "Weapons with [DEVASTATING WOUNDS] can pierce almost any defense. A Critical Wound inflicted by an attack with this weapon cannot be saved against by armour or invulnerable saves — the target unit simply suffers the damage."
+    },
+    {
+      "name": "[EXTRA ATTACKS]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.11",
+      "summary": "Bearer attacks with this weapon in addition to other melee weapons.",
+      "description": "A model equipped with an [EXTRA ATTACKS] weapon can attack with it in addition to any other melee weapons it selects to fight with. The Attacks characteristic of an [EXTRA ATTACKS] weapon cannot be modified."
+    },
+    {
+      "name": "FEEL NO PAIN",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.12",
+      "summary": "Post-damage roll to shrug off suffered wounds on X+.",
+      "description": "Each time a model with FEEL NO PAIN X+ suffers damage and would lose a wound, roll one D6. On an X+, that wound is not lost. Can be rolled against normal and mortal wounds."
+    },
+    {
+      "name": "FIGHTS FIRST",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.13",
+      "summary": "Unit is eligible to fight in the Fights First step before standard combat.",
+      "description": "Units with FIGHTS FIRST are eligible to fight in the Fights First step of the Fight phase, before players alternate selecting eligible units to fight."
+    },
+    {
+      "name": "FIRING DECK",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.14",
+      "summary": "Embarked passengers can fire up to X ranged weapons from the transport.",
+      "description": "Each time a TRANSPORT model with FIRING DECK X is selected to shoot, you can select up to X ranged weapons equipped by passengers embarked within it. This transport model is treated as being equipped with those weapons until that shooting is resolved."
+    },
+    {
+      "name": "[HAZARDOUS]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.15",
+      "summary": "Risk of weapon malfunction. Roll D6 per weapon used; roll of 1 destroys model or causes mortal wounds.",
+      "description": "After resolving all attacks with [HAZARDOUS] weapons, roll one D6 for each [HAZARDOUS] weapon used. For each roll of 1, one model in the attacking unit equipped with that weapon suffers 3 mortal wounds (or is destroyed if it is a Character/Monster/Vehicle)."
+    },
+    {
+      "name": "[HEAVY]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.16",
+      "summary": "+1 to Hit rolls if the firing unit Remained Stationary this turn.",
+      "description": "Heavy weapons require bracing. Each time an attack is made with an [HEAVY] weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll."
+    },
+    {
+      "name": "HOVER",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.17",
+      "summary": "Aircraft can opt to lose Aircraft rules and function as a standard Flyer.",
+      "description": "Before the battle, in the Declare Battle Formations step, you can select for this AIRCRAFT model to Hover. If it does, its Move characteristic becomes 20\", it loses the AIRCRAFT keyword, and it no longer follows the Aircraft rules."
+    },
+    {
+      "name": "[IGNORES COVER]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.18",
+      "summary": "Target cannot gain the Benefit of Cover against these attacks.",
+      "description": "Each time an attack is made with an [IGNORES COVER] weapon, the target cannot have the Benefit of Cover against that attack."
+    },
+    {
+      "name": "[INDIRECT FIRE]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.19",
+      "summary": "Can target non-visible enemy units (-1 to Hit, target gains Benefit of Cover).",
+      "description": "Weapons with [INDIRECT FIRE] can make attacks against targets that are not visible to the attacking model. If an attack is made against a target that is not visible, subtract 1 from the Hit roll and the target has the Benefit of Cover against that attack."
+    },
+    {
+      "name": "INFILTRATORS",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.20",
+      "summary": "Can deploy anywhere outside the enemy deployment zone >9\" from enemies.",
+      "description": "During deployment, a unit with INFILTRATORS can be set up anywhere on the battlefield that is more than 9\" horizontally away from the enemy deployment zone and all enemy models."
+    },
+    {
+      "name": "[LANCE]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.21",
+      "summary": "+1 to Wound rolls if the bearer charged this turn.",
+      "description": "Each time an attack is made with a [LANCE] weapon, if the bearer made a charge move this turn, add 1 to that attack’s Wound roll."
+    },
+    {
+      "name": "LEADER",
+      "category": "Core Unit Ability (11th Edition Architecture)",
+      "ruleRef": "24.22",
+      "summary": "Can attach to eligible Bodyguard units. Bodyguards can take 1 Leader and 1 Support.",
+      "description": "Before the battle in the Muster Armies step, a LEADER unit can attach to an eligible BODYGUARD unit to form an attached unit. In 11th edition, each bodyguard unit can have up to one LEADER and one SUPPORT unit attached."
+    },
+    {
+      "name": "[LETHAL HITS]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.23",
+      "summary": "Critical hits automatically wound the target.",
+      "description": "Each time an attack is made with a [LETHAL HITS] weapon, a Critical Hit automatically wounds the target without needing a wound roll."
+    },
+    {
+      "name": "LONE OPERATIVE",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.24",
+      "summary": "Cannot be targeted by ranged attacks from more than 12\" away (or X\" if specified).",
+      "description": "Unless part of an attached unit, this unit can only be selected as the target of a ranged attack if the attacking model is within 12\" (or the specified range X\")."
+    },
+    {
+      "name": "[MELTA]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.25",
+      "summary": "Thermal armor-melting blast. Adds +X Damage at half range.",
+      "description": "Weapons with [MELTA X] unleash blinding heat. Each time an attack made with a [MELTA X] weapon targets a unit within half that weapon’s Range, that attack’s Damage characteristic is increased by X."
+    },
+    {
+      "name": "[ONE SHOT]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.26",
+      "summary": "Single-use weapon that can only be fired once per battle.",
+      "description": "The bearer can only shoot with this weapon once per battle."
+    },
+    {
+      "name": "[PISTOL]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.27",
+      "summary": "Can shoot in Engagement Range. Functionally identical to [CLOSE-QUARTERS].",
+      "description": "Weapons with [PISTOL] can shoot while their unit is in Engagement Range of enemy units, targeting those enemy units. Functionally identical to [CLOSE-QUARTERS]."
+    },
+    {
+      "name": "[PRECISION]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.28",
+      "summary": "Attacking player can allocate successful attacks directly to a visible Character in an Attached unit.",
+      "description": "When an attack made with a [PRECISION] weapon successfully wounds an attached unit, if a CHARACTER model in that unit is visible to the attacking model, the attacking player can allocate that attack directly to that CHARACTER model instead of the bodyguard unit."
+    },
+    {
+      "name": "[PSYCHIC]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.29",
+      "summary": "Psychic manifestation weapon or attack, interacts with [ANTI-PSYKER].",
+      "description": "Weapons and abilities with the [PSYCHIC] tag represent manifestations of warp powers. Interacts directly with abilities that confer defense or bonuses against psychic attacks (such as [ANTI-PSYKER] or psychic protection)."
+    },
+    {
+      "name": "[RAPID FIRE]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.30",
+      "summary": "Adds +X Attacks when firing at targets within half range.",
+      "description": "Weapons with [RAPID FIRE X] deliver high rates of fire at close range. Each time an attack made with such a weapon targets a unit within half range, increase the Attacks characteristic by X."
+    },
+    {
+      "name": "SCOUTS",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.31",
+      "summary": "Pre-battle scout move of up to X\" before the first turn begins.",
+      "description": "Units with SCOUTS X\" can make a normal move of up to X\" before the first battle round begins. If both players have Scout units, players alternate resolving Scout moves starting with the first turn player."
+    },
+    {
+      "name": "STEALTH",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.33",
+      "summary": "Distorts targeting. -1 to Hit rolls made by enemy ranged attacks against this unit.",
+      "description": "Each time a ranged attack is made against a unit with STEALTH, subtract 1 from the Hit roll."
+    },
+    {
+      "name": "SUPPORT",
+      "category": "Core Unit Ability (11th Edition Innovation)",
+      "ruleRef": "24.34",
+      "summary": "Specialist officer or support asset. Must attach to a bodyguard unit (1 Leader + 1 Support allowed).",
+      "description": "Before battle in the Muster Armies step, each SUPPORT unit in your army must be attached to an eligible BODYGUARD unit. In 11th edition, a bodyguard unit can have both a LEADER and a SUPPORT attached simultaneously."
+    },
+    {
+      "name": "SUPER-HEAVY WALKER",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.35",
+      "summary": "Titanic walkers that can step over obstacles and non-Titanic models.",
+      "description": "Models in this unit can move through and over models (excluding TITANIC models) and can move horizontally over terrain features that are 4\" or less in height as if they were not there."
+    },
+    {
+      "name": "[SUSTAINED HITS]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.36",
+      "summary": "Critical hits generate X additional hits on the target.",
+      "description": "Each time an attack is made with a [SUSTAINED HITS X] weapon, a Critical Hit scores X additional hits on the target unit in addition to the normal hit."
+    },
+    {
+      "name": "[TORRENT]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.37",
+      "summary": "Cones of fire/acid/flame. Attacks automatically hit the target without rolling.",
+      "description": "Weapons with [TORRENT] project continuous streams of fire, acid, or gas. Attacks made with a [TORRENT] weapon automatically hit the target without making a Hit roll. Cannot have [INDIRECT FIRE] or [PRECISION]."
+    },
+    {
+      "name": "[TWIN-LINKED]",
+      "category": "Weapon Ability",
+      "ruleRef": "24.38",
+      "summary": "Paired weapon synchronization. You can re-roll all Wound rolls made with this weapon.",
+      "description": "Weapons with [TWIN-LINKED] feature synchronized barrels or power conduits. Each time an attack is made with a [TWIN-LINKED] weapon, you can re-roll the Wound roll."
+    },
+    {
+      "name": "DAMAGED",
+      "category": "Core Unit Ability",
+      "ruleRef": "24.39",
+      "summary": "Degrading performance characteristics when reduced to below half wounds.",
+      "description": "While this model has fewer than half its starting wounds remaining, its characteristics degrade (typically -1 to Hit rolls and/or reduced Objective Control)."
+    },
+    {
+      "name": "Character",
+      "category": "Battlefield Role",
+      "id": "9cfd-1c32-585f-7d5c",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Character. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Epic Hero",
+      "category": "Battlefield Role",
+      "id": "4f3a-f0f7-6647-348d",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Epic Hero. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Infantry",
+      "category": "Battlefield Role",
+      "id": "cf47-a0d7-7207-29dc",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Infantry. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Monster",
+      "category": "Battlefield Role",
+      "id": "9693-cf84-fe69-37a9",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Monster. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Battleline",
+      "category": "Battlefield Role",
+      "id": "e338-111e-d0c6-b687",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Battleline. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Dedicated Transport",
+      "category": "Battlefield Role",
+      "id": "ba07-411c-2832-1f79",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Dedicated Transport. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Mounted",
+      "category": "Battlefield Role",
+      "id": "14a0-40c9-2748-ae6e",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Mounted. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Captain",
+      "category": "General Keyword",
+      "id": "2d7f-1892-2fd0-e29c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Captain. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Grenades",
+      "category": "Equipment & Armour Type",
+      "id": "5a61-81ac-eb7c-a87e",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Grenades. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Imperium",
+      "category": "General Keyword",
+      "id": "aff3-d6a3-2a95-9dc",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Imperium. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Configuration",
+      "category": "General Keyword",
+      "id": "4ac9-fd30-1e3d-b249",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Configuration. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Unit",
+      "category": "General Keyword",
+      "id": "1160-70ae-a862-b1a8",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Unit. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Fly",
+      "category": "Movement & Scale Keyword",
+      "id": "c619-2086-bbcf-69c9",
+      "summary": "Movement & Scale Keyword designation",
+      "description": "Warhammer 40,000 keyword: Fly. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Smoke",
+      "category": "Equipment & Armour Type",
+      "id": "6df-937-16bc-8c1a",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Smoke. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Psyker",
+      "category": "Equipment & Armour Type",
+      "id": "13bf-2bee-3ae0-b414",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Psyker. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Vehicle",
+      "category": "Battlefield Role",
+      "id": "dbd4-63-af05-998",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Vehicle. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Walker",
+      "category": "Movement & Scale Keyword",
+      "id": "6dda-e157-334d-e93a",
+      "summary": "Movement & Scale Keyword designation",
+      "description": "Warhammer 40,000 keyword: Walker. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Transport",
+      "category": "General Keyword",
+      "id": "75e8-57c4-40e3-1817",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Transport. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Aircraft",
+      "category": "Battlefield Role",
+      "id": "63f1-e6e8-f6f6-a4f0",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Aircraft. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Fortification",
+      "category": "Battlefield Role",
+      "id": "19d7-9c74-2140-5851",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Fortification. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Towering",
+      "category": "Movement & Scale Keyword",
+      "id": "d666-e2c9-b6cc-5716",
+      "summary": "Movement & Scale Keyword designation",
+      "description": "Warhammer 40,000 keyword: Towering. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Titanic",
+      "category": "Movement & Scale Keyword",
+      "id": "5929-ad51-d006-e008",
+      "summary": "Movement & Scale Keyword designation",
+      "description": "Warhammer 40,000 keyword: Titanic. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Beast",
+      "category": "Battlefield Role",
+      "id": "4c3e-9310-a516-3590",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Beast. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Chaos",
+      "category": "General Keyword",
+      "id": "4c00-2578-faf5-6918",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Chaos. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Chaos Knights",
+      "category": "Faction Keyword",
+      "id": "bb67-f191-6562-acc7",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Chaos Knights. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Tyranids",
+      "category": "Faction Keyword",
+      "id": "d1d8-6ae0-1be7-e9e",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Tyranids. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Drukhari",
+      "category": "Faction Keyword",
+      "id": "1015-db48-a2fa-c7da",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Drukhari. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Asuryani",
+      "category": "Faction Keyword",
+      "id": "4378-1827-4988-be4e",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Asuryani. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Astra Militarum",
+      "category": "Faction Keyword",
+      "id": "fa45-57e-930e-602b",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Astra Militarum. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Imperial Knights",
+      "category": "Faction Keyword",
+      "id": "b5e4-3253-c157-54fd",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Imperial Knights. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Heretic Astartes",
+      "category": "Faction Keyword",
+      "id": "1e42-dfae-cbdd-207d",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Heretic Astartes. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Adepta Sororitas",
+      "category": "Faction Keyword",
+      "id": "fd71-afa6-b13b-7fda",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Adepta Sororitas. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Necrons",
+      "category": "Faction Keyword",
+      "id": "ee0-cf31-4fb5-6b26",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Necrons. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Legiones Daemonica",
+      "category": "Faction Keyword",
+      "id": "571f-ec3a-a5a2-751a",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Legiones Daemonica. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Slaanesh",
+      "category": "General Keyword",
+      "id": "b2a9-ede5-7a83-4da8",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Slaanesh. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Nurgle",
+      "category": "General Keyword",
+      "id": "ed0d-8e2a-225c-2340",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Nurgle. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Khorne",
+      "category": "General Keyword",
+      "id": "4bd-5ee0-f179-2fc5",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Khorne. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Tzeentch",
+      "category": "General Keyword",
+      "id": "b188-114f-6ba5-79a1",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Tzeentch. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Adeptus Astartes",
+      "category": "Faction Keyword",
+      "id": "6e7-40c-58d9-e402",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Adeptus Astartes. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Adeptus Mechanicus",
+      "category": "Faction Keyword",
+      "id": "5418-f86b-6e76-c5a",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Adeptus Mechanicus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Genestealer Cults",
+      "category": "Faction Keyword",
+      "id": "226b-cf1e-353a-ae7f",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Genestealer Cults. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: World Eaters",
+      "category": "Faction Keyword",
+      "id": "bd1d-c1a5-6ca2-c791",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: World Eaters. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Leagues of Votann",
+      "category": "Faction Keyword",
+      "id": "8474-765-16a9-f00d",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Leagues of Votann. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Death Guard",
+      "category": "Faction Keyword",
+      "id": "9888-ddb2-a141-6037",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Death Guard. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: T'au Empire",
+      "category": "Faction Keyword",
+      "id": "3d58-2655-391e-ecc",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: T'au Empire. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Adeptus Custodes",
+      "category": "Faction Keyword",
+      "id": "eea5-aeaf-bbf0-d5ee",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Adeptus Custodes. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Orks",
+      "category": "Faction Keyword",
+      "id": "56cc-5f43-2403-8da0",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Orks. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Thousand Sons",
+      "category": "Faction Keyword",
+      "id": "7002-1fbb-7571-e8e7",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Thousand Sons. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Grey Knights",
+      "category": "Faction Keyword",
+      "id": "d564-3284-bf44-b873",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Grey Knights. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Agents of the Imperium",
+      "category": "Faction Keyword",
+      "id": "5128-90b-e4a5-dcbd",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Agents of the Imperium. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Dark Angels",
+      "category": "Faction Keyword",
+      "id": "aab1-4f05-fabe-5ba5",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Dark Angels. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Salamanders",
+      "category": "Faction Keyword",
+      "id": "65e4-13-4fa8-b36c",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Salamanders. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Deathwatch",
+      "category": "Faction Keyword",
+      "id": "d39c-9989-db7f-d815",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Deathwatch. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Blood Angels",
+      "category": "Faction Keyword",
+      "id": "62ac-ef42-27b4-ae7",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Blood Angels. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Ultramarines",
+      "category": "Faction Keyword",
+      "id": "1a2d-2f00-c054-4dcb",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Ultramarines. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Space Wolves",
+      "category": "Faction Keyword",
+      "id": "a0d9-c115-2a-8330",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Space Wolves. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Black Templars",
+      "category": "Faction Keyword",
+      "id": "9249-acae-2882-d95",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Black Templars. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Raven Guard",
+      "category": "Faction Keyword",
+      "id": "84b7-7194-3b84-1b0c",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Raven Guard. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Iron Hands",
+      "category": "Faction Keyword",
+      "id": "b88e-1b0c-b79f-5cdf",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Iron Hands. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Imperial Fists",
+      "category": "Faction Keyword",
+      "id": "97aa-d0e4-71c7-96c3",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Imperial Fists. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: White Scars",
+      "category": "Faction Keyword",
+      "id": "5c0e-2250-dd3a-1df9",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: White Scars. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Warlord",
+      "category": "General Keyword",
+      "id": "5c0e-4c31-d51b-e470",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Warlord. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Daemon",
+      "category": "General Keyword",
+      "id": "9c0e-7e25-4580-e439",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Daemon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Primarch",
+      "category": "General Keyword",
+      "id": "6474-0ce3-6b5a-120c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Primarch. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Daemon Prince",
+      "category": "General Keyword",
+      "id": "4f09-0141-6c70-6c5a",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Daemon Prince. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Swarm",
+      "category": "Battlefield Role",
+      "id": "b00b-5bae-444f-964e",
+      "summary": "Battlefield Role designation",
+      "description": "Warhammer 40,000 keyword: Swarm. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Drone",
+      "category": "General Keyword",
+      "id": "2471-e2e0-3f55-d6cb",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Drone. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Great Devourer",
+      "category": "General Keyword",
+      "id": "7850-cc5a-c191-b80d",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Great Devourer. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Retinue",
+      "category": "General Keyword",
+      "id": "cc77-a53-fca8-f48e",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Retinue. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Terminator",
+      "category": "Equipment & Armour Type",
+      "id": "740a-892c-8958-defa",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Terminator. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Rhino",
+      "category": "General Keyword",
+      "id": "50a2-5557-84bb-ca4d",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Rhino. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Jump Pack",
+      "category": "Equipment & Armour Type",
+      "id": "dda2-bb0a-215e-ad9c",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Jump Pack. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Armiger",
+      "category": "General Keyword",
+      "id": "4c40-ab9-54af-d290",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Armiger. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Questoris",
+      "category": "General Keyword",
+      "id": "e4d6-1a77-132b-f39d",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Questoris. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Dominus",
+      "category": "General Keyword",
+      "id": "af4c-b971-a31c-669c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Dominus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Acastus",
+      "category": "General Keyword",
+      "id": "f76f-29c1-de9-74c2",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Acastus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Cerastus",
+      "category": "General Keyword",
+      "id": "481c-3b2e-5c99-c248",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Cerastus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Artillery",
+      "category": "General Keyword",
+      "id": "8cab-448d-37b7-32bc",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Artillery. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Order of Battle",
+      "category": "General Keyword",
+      "id": "ac7e-be7b-eb02-4752",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Order of Battle. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Harlequins",
+      "category": "Faction Keyword",
+      "id": "a5a2-d0c0-0349-d226",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Harlequins. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Faction: Ynnari",
+      "category": "Faction Keyword",
+      "id": "9a21-190a-9d31-35d2",
+      "summary": "Faction Keyword designation",
+      "description": "Warhammer 40,000 keyword: Faction: Ynnari. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Tyrannic War Veteran",
+      "category": "General Keyword",
+      "id": "26fe-d7cb-eb8f-77d4",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Tyrannic War Veteran. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Striding Behemoths",
+      "category": "General Keyword",
+      "id": "0dce-ed3d-83af-2f27",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Striding Behemoths. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Monster Hunters",
+      "category": "General Keyword",
+      "id": "1532-9501-d870-4514",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Monster Hunters. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Psychic Weapon",
+      "category": "General Keyword",
+      "id": "4546-4a0c-b3be-e84c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Psychic Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Torrent Weapon",
+      "category": "General Keyword",
+      "id": "064a-0470-60eb-e3ef",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Torrent Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Ranged Weapon",
+      "category": "General Keyword",
+      "id": "eeda-8544-a2f3-3fab",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Ranged Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Melee Weapon",
+      "category": "General Keyword",
+      "id": "ccdd-3987-11ed-90cd",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Melee Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Crusade Relic",
+      "category": "General Keyword",
+      "id": "c13c-1717-f8a8-a8df",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Crusade Relic. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Pistol Weapon",
+      "category": "General Keyword",
+      "id": "1db0-c6b5-19db-8d0c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Pistol Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Death Company",
+      "category": "General Keyword",
+      "id": "7278-781b-ce6c-d23c",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Death Company. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Attacks Dx Weapon",
+      "category": "General Keyword",
+      "id": "e993-e086-6de1-12af",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Attacks Dx Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Damage Dx Weapon",
+      "category": "General Keyword",
+      "id": "4986-bf86-beb4-13ac",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Damage Dx Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Attacks Dx+0 Modifier",
+      "category": "General Keyword",
+      "id": "6337-b83b-0d1e-5770",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Attacks Dx+0 Modifier. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Damage Dx+0 Modifier",
+      "category": "General Keyword",
+      "id": "982b-de77-dd2d-d9bd",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Damage Dx+0 Modifier. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Tech-Priest",
+      "category": "General Keyword",
+      "id": "59a9-b5cc-7c11-aaad",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Tech-Priest. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Ministorum Priest",
+      "category": "General Keyword",
+      "id": "cc88-9467-86ac-4ca2",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Ministorum Priest. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Sanctifiers",
+      "category": "General Keyword",
+      "id": "9d4f-4beb-107d-3175",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Sanctifiers. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Pilot",
+      "category": "General Keyword",
+      "id": "5b15-724e-2eeb-8cb7",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Pilot. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Assault Weapon",
+      "category": "General Keyword",
+      "id": "e106-0758-7137-2432",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Assault Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Crucible",
+      "category": "General Keyword",
+      "id": "e2bc-fc0c-1099-3e75",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Crucible. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Reference",
+      "category": "General Keyword",
+      "id": "eef1-be80-500a-edfc",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Reference. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Dreadnought",
+      "category": "General Keyword",
+      "id": "c97c-376-e2e0-1dd2",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Dreadnought. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Docked Vehicle",
+      "category": "General Keyword",
+      "id": "bdc8-7127-287c-a267",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Docked Vehicle. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Critical Threat",
+      "category": "General Keyword",
+      "id": "0cc6-ca49-ee2f-4294",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Critical Threat. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Supreme Commander",
+      "category": "General Keyword",
+      "id": "75fe-c657-43c6-7c09",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Supreme Commander. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Bellatus",
+      "category": "General Keyword",
+      "id": "1cf9-0660-4ef2-4d18",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Bellatus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Unbound Adversaries",
+      "category": "General Keyword",
+      "id": "9440-07f1-b09d-ce8b",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Unbound Adversaries. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Greater Daemon",
+      "category": "General Keyword",
+      "id": "d445-8a18-5300-c3cc",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Greater Daemon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Lesser Daemon",
+      "category": "General Keyword",
+      "id": "f927-898a-ebe2-1aca",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Lesser Daemon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Abomination",
+      "category": "General Keyword",
+      "id": "e17d-56fd-1957-071f",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Abomination. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Daemonic Beasts",
+      "category": "General Keyword",
+      "id": "a783-fe90-2280-47ec",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Daemonic Beasts. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Mobile",
+      "category": "General Keyword",
+      "id": "355c-0ee6-3cde-6c71",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Mobile. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Frame",
+      "category": "General Keyword",
+      "id": "b927-8eeb-7cc3-8dec",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Frame. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Explosives",
+      "category": "General Keyword",
+      "id": "e33d-891d-33aa-e9bf",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Explosives. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Disruption",
+      "category": "General Keyword",
+      "id": "ecf8-cf72-7d5b-1b5b",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Disruption. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Priority Assets",
+      "category": "General Keyword",
+      "id": "0936-9767-1cc7-52ae",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Priority Assets. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Purge the Foe",
+      "category": "General Keyword",
+      "id": "6fe0-3dbe-f7e0-10bb",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Purge the Foe. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Take and Hold",
+      "category": "General Keyword",
+      "id": "1cc1-f11a-4e8f-1bcc",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Take and Hold. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Reconnaissance",
+      "category": "General Keyword",
+      "id": "b4a7-5083-fe94-4d24",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Reconnaissance. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Leader",
+      "category": "General Keyword",
+      "id": "1556-9b56-fba6-4370",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Leader. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Support",
+      "category": "General Keyword",
+      "id": "7dcd-7f61-69a7-0294",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Support. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Rapid Fire Weapon",
+      "category": "General Keyword",
+      "id": "751c-b78a-45fa-cc5f",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Rapid Fire Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Imperial Agents",
+      "category": "General Keyword",
+      "id": "742f-5727-1bc9-6da5",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Imperial Agents. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Titanicus Traitoris",
+      "category": "General Keyword",
+      "id": "24fa-8caf-cd68-31fb",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Titanicus Traitoris. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Chaos Knights",
+      "category": "General Keyword",
+      "id": "8dd6-af11-abd3-55f1",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Chaos Knights. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Unaligned Forces",
+      "category": "General Keyword",
+      "id": "07d9-ab1c-cf28-0939",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Unaligned Forces. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Legiones Daemonica",
+      "category": "General Keyword",
+      "id": "e1ea-71b9-f0ef-d788",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Legiones Daemonica. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Imperial Knights",
+      "category": "General Keyword",
+      "id": "5e03-9044-273d-e818",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Imperial Knights. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Astra Militarum",
+      "category": "General Keyword",
+      "id": "8247-35f6-ec2a-7caa",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Astra Militarum. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Kill Team",
+      "category": "General Keyword",
+      "id": "81b0-a893-4fb7-c298",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Kill Team. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Heretic Astartes",
+      "category": "General Keyword",
+      "id": "92e6-f82e-0a48-2276",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Heretic Astartes. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Adeptus Titanicus",
+      "category": "General Keyword",
+      "id": "9988-6b5e-660e-d973",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Adeptus Titanicus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "3DP Detachment",
+      "category": "General Keyword",
+      "id": "7d80-2de5-816e-9d2b",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: 3DP Detachment. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Melta Weapon",
+      "category": "General Keyword",
+      "id": "a5ab-185a-4855-0cb8",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Melta Weapon. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Possessed",
+      "category": "General Keyword",
+      "id": "3d1c-7f16-1489-fac3",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Possessed. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Plasma",
+      "category": "General Keyword",
+      "id": "cb29-f4bb-ff15-6b11",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Plasma. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Deathwatch",
+      "category": "General Keyword",
+      "id": "8886-848f-a0f9-1e19",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Deathwatch. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Gravis",
+      "category": "Equipment & Armour Type",
+      "id": "81f0-f40e-c36c-5a30",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Gravis. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Tacticus",
+      "category": "Equipment & Armour Type",
+      "id": "5179-8ede-45e3-49a2",
+      "summary": "Equipment & Armour Type designation",
+      "description": "Warhammer 40,000 keyword: Tacticus. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Fortis Kill Team",
+      "category": "General Keyword",
+      "id": "94a4-4c41-84a4-d038",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Fortis Kill Team. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Indomitor Kill Team",
+      "category": "General Keyword",
+      "id": "2546-062b-7236-7fa3",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Indomitor Kill Team. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Spectrus Kill Team",
+      "category": "General Keyword",
+      "id": "2b33-05a8-bf42-72f9",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Spectrus Kill Team. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "Allies: Tyranids",
+      "category": "General Keyword",
+      "id": "747a-c6a9-6f4f-7f09",
+      "summary": "General Keyword designation",
+      "description": "Warhammer 40,000 keyword: Allies: Tyranids. Used for rules interactions, target eligibility, and army validation."
+    }
+  ]
+}

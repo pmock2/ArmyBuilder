@@ -1,0 +1,15 @@
+{
+  "name": "wh40k-11e-army-builder-server",
+  "version": "1.0.0",
+  "description": "Backend API and Catalogue Indexer for Warhammer 40k 11th Edition Army Builder",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "index": "node indexer.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  }
+}
+

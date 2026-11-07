@@ -1,0 +1,21 @@
+{
+  "name": "warhammer-40k-11e-army-builder",
+  "version": "1.0.0",
+  "description": "Warhammer 40,000 11th Edition Army Builder",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev:server": "node server/server.js",
+    "dev:client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "index-data": "node server/indexer.js"
+  },
+  "keywords": [
+    "warhammer",
+    "40k",
+    "11th-edition",
+    "army-builder",
+    "bsdata"
+  ],
+  "author": "",
+  "license": "MIT"
+}

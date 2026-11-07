@@ -1,0 +1,407 @@
+[
+  {
+    "id": "aeldari-craftworlds",
+    "catalogueId": "34a5-8c7e-f468-82d1",
+    "name": "Aeldari",
+    "rawName": "Xenos - Aeldari",
+    "superFaction": "Aeldari",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "aeldari-drukhari",
+    "catalogueId": "38de-521f-1ce0-44a0",
+    "name": "Drukhari",
+    "rawName": "Xenos - Drukhari",
+    "superFaction": "Aeldari",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-chaos-daemons",
+    "catalogueId": "d265-877b-e03d-30ca",
+    "name": "Chaos Daemons",
+    "rawName": "Chaos - Chaos Daemons",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-chaos-knights",
+    "catalogueId": "46d8-abc8-ef3a-9f85",
+    "name": "Chaos Knights",
+    "rawName": "Chaos - Chaos Knights",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-chaos-space-marines",
+    "catalogueId": "c8da-e875-58f7-f6d6",
+    "name": "Chaos Space Marines",
+    "rawName": "Chaos - Chaos Space Marines",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-death-guard",
+    "catalogueId": "5108-f98-63c2-53cb",
+    "name": "Death Guard",
+    "rawName": "Chaos - Death Guard",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-emperor-s-children",
+    "catalogueId": "03fe-a162-4c02-f07b",
+    "name": "Emperor's Children",
+    "rawName": "Chaos - Emperor's Children",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-thousand-sons",
+    "catalogueId": "1069-10ff-3ba9-873b",
+    "name": "Thousand Sons",
+    "rawName": "Chaos - Thousand Sons",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-titanicus-traitoris",
+    "catalogueId": "880c-c7e-4a43-a0c1",
+    "name": "Titanicus Traitoris",
+    "rawName": "Chaos - Titanicus Traitoris",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "chaos-world-eaters",
+    "catalogueId": "df9a-59b2-f464-59ad",
+    "name": "World Eaters",
+    "rawName": "Chaos - World Eaters",
+    "superFaction": "Chaos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "genestealer-cults",
+    "catalogueId": "3bdf-a114-5035-c6ac",
+    "name": "Genestealer Cults",
+    "rawName": "Xenos - Genestealer Cults",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-adepta-sororitas",
+    "catalogueId": "b39e-4401-8f3e-fdf7",
+    "name": "Adepta Sororitas",
+    "rawName": "Imperium - Adepta Sororitas",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-adeptus-custodes",
+    "catalogueId": "1f19-6509-d906-ca10",
+    "name": "Adeptus Custodes",
+    "rawName": "Imperium - Adeptus Custodes",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-adeptus-mechanicus",
+    "catalogueId": "77b9-2f66-3f9b-5cf3",
+    "name": "Adeptus Mechanicus",
+    "rawName": "Imperium - Adeptus Mechanicus",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-adeptus-titanicus",
+    "catalogueId": "bdc0-c0d-72d7-87e2",
+    "name": "Adeptus Titanicus",
+    "rawName": "Imperium - Adeptus Titanicus",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-agents-of-the-imperium",
+    "catalogueId": "b00-cd86-4b4c-97ba",
+    "name": "Agents of the Imperium",
+    "rawName": "Imperium - Agents of the Imperium",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-astra-militarum",
+    "catalogueId": "b0ae-12a5-c84-ea45",
+    "name": "Astra Militarum",
+    "rawName": "Imperium - Astra Militarum",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-black-templars",
+    "catalogueId": "36d3-36bc-68dd-40ac",
+    "name": "Black Templars",
+    "rawName": "Imperium - Adeptus Astartes - Black Templars",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-blood-angels",
+    "catalogueId": "4ef9-15ce-e3e6-36de",
+    "name": "Blood Angels",
+    "rawName": "Imperium - Adeptus Astartes - Blood Angels",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-dark-angels",
+    "catalogueId": "470a-6daa-9014-12df",
+    "name": "Dark Angels",
+    "rawName": "Imperium - Adeptus Astartes - Dark Angels",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-deathwatch",
+    "catalogueId": "f89b-84e0-6e3b-f1e2",
+    "name": "Deathwatch",
+    "rawName": "Imperium - Adeptus Astartes - Deathwatch",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-grey-knights",
+    "catalogueId": "50c4-3e83-fe54-97c4",
+    "name": "Grey Knights",
+    "rawName": "Imperium - Grey Knights",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-imperial-fists",
+    "catalogueId": "5d6e-fd3-330a-11dd",
+    "name": "Imperial Fists",
+    "rawName": "Imperium - Adeptus Astartes - Imperial Fists",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-imperial-knights",
+    "catalogueId": "25dd-7aa0-6bf4-f2d5",
+    "name": "Imperial Knights",
+    "rawName": "Imperium - Imperial Knights",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "imperium-iron-hands",
+    "catalogueId": "f27e-18c0-b73e-748e",
+    "name": "Iron Hands",
+    "rawName": "Imperium - Adeptus Astartes - Iron Hands",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-raven-guard",
+    "catalogueId": "6e59-e1ee-47ad-6ce5",
+    "name": "Raven Guard",
+    "rawName": "Imperium - Adeptus Astartes - Raven Guard",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-salamanders",
+    "catalogueId": "2261-79a5-19d9-1668",
+    "name": "Salamanders",
+    "rawName": "Imperium - Adeptus Astartes - Salamanders",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-space-marines",
+    "catalogueId": "e0af-67df-9d63-8fb7",
+    "name": "Space Marines",
+    "rawName": "Imperium - Adeptus Astartes - Space Marines",
+    "superFaction": "Imperium",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": [
+      {
+        "id": "imperium-black-templars",
+        "name": "Black Templars"
+      },
+      {
+        "id": "imperium-blood-angels",
+        "name": "Blood Angels"
+      },
+      {
+        "id": "imperium-dark-angels",
+        "name": "Dark Angels"
+      },
+      {
+        "id": "imperium-deathwatch",
+        "name": "Deathwatch"
+      },
+      {
+        "id": "imperium-imperial-fists",
+        "name": "Imperial Fists"
+      },
+      {
+        "id": "imperium-iron-hands",
+        "name": "Iron Hands"
+      },
+      {
+        "id": "imperium-raven-guard",
+        "name": "Raven Guard"
+      },
+      {
+        "id": "imperium-salamanders",
+        "name": "Salamanders"
+      },
+      {
+        "id": "imperium-space-wolves",
+        "name": "Space Wolves"
+      },
+      {
+        "id": "imperium-ultramarines",
+        "name": "Ultramarines"
+      },
+      {
+        "id": "imperium-white-scars",
+        "name": "White Scars"
+      }
+    ]
+  },
+  {
+    "id": "imperium-space-wolves",
+    "catalogueId": "94bb-3284-ee14-57a1",
+    "name": "Space Wolves",
+    "rawName": "Imperium - Adeptus Astartes - Space Wolves",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-ultramarines",
+    "catalogueId": "4029-9237-e8db-af55",
+    "name": "Ultramarines",
+    "rawName": "Imperium - Adeptus Astartes - Ultramarines",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "imperium-white-scars",
+    "catalogueId": "67c1-fc13-f9a1-cbbf",
+    "name": "White Scars",
+    "rawName": "Imperium - Adeptus Astartes - White Scars",
+    "superFaction": "Imperium",
+    "isSubFaction": true,
+    "parentFaction": "imperium-space-marines",
+    "subFactions": []
+  },
+  {
+    "id": "leagues-of-votann",
+    "catalogueId": "f616-3f08-ee8e-3349",
+    "name": "Leagues of Votann",
+    "rawName": "Xenos - Leagues of Votann",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "necrons",
+    "catalogueId": "b654-a18a-ea1-3bf2",
+    "name": "Necrons",
+    "rawName": "Xenos - Necrons",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "orks",
+    "catalogueId": "a55f-b7b3-6c65-a05f",
+    "name": "Orks",
+    "rawName": "Xenos - Orks",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "t-au-empire",
+    "catalogueId": "d81a-61dd-6d27-a3ce",
+    "name": "T'au Empire",
+    "rawName": "Xenos - T'au Empire",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  },
+  {
+    "id": "tyranids",
+    "catalogueId": "b984-7317-81cc-20f",
+    "name": "Tyranids",
+    "rawName": "Xenos - Tyranids",
+    "superFaction": "Xenos",
+    "isSubFaction": false,
+    "parentFaction": null,
+    "subFactions": []
+  }
+]
