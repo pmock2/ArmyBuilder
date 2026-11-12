@@ -4,7 +4,7 @@ import { FactionDetail } from './types/faction';
 import { loadAllRosters, saveRoster, deleteRoster, duplicateRoster, loadActiveRosterId, saveActiveRosterId, loadPlayMode, savePlayMode } from './utils/storage';
 import { validateClientRoster, BATTLE_SIZE_CONFIGS } from './utils/validator';
 import { LandingPage } from './components/LandingPage';
-import { CreateArmyModal } from './components/CreateArmyModal';
+import CreateArmyModal from './components/CreateArmyModal';
 import { Navbar } from './components/Navbar';
 import { DetachmentSelector } from './components/DetachmentSelector';
 import { UnitSection } from './components/UnitSection';
