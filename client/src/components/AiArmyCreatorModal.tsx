@@ -65,7 +65,7 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
       setStatusStep(`Loading ${factionId} datasheets and detachment rules...`);
 
       // 2. Fetch the faction catalogue
-      const res = await fetch(`/data/factions/${factionId}.json`);
+      const res = await fetch(`${import.meta.env.BASE_URL}data/factions/${factionId}.json`);
       if (!res.ok) {
         throw new Error(`Failed to load faction catalogue for "${factionId}".`);
       }

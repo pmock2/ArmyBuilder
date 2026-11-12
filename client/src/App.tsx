@@ -166,7 +166,7 @@ export const App: React.FC = () => {
       const factionId = activeRoster.factionId;
 
       try {
-        const staticRes = await fetch(`/data/factions/${factionId}.json`, { cache: 'no-cache' });
+        const staticRes = await fetch(`${import.meta.env.BASE_URL}data/factions/${factionId}.json`, { cache: 'no-cache' });
         if (staticRes.ok) {
           const data = await staticRes.json();
           setFactionData(data);

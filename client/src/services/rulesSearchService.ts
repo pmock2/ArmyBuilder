@@ -22,7 +22,7 @@ let cachedKeywords: KeywordEntry[] | null = null;
 export async function loadRulesReference(): Promise<RuleSection[]> {
   if (cachedRules) return cachedRules;
   try {
-    const res = await fetch('/data/rules_reference.json');
+    const res = await fetch(`${import.meta.env.BASE_URL}data/rules_reference.json`);
     if (res.ok) {
       cachedRules = await res.json();
       return cachedRules || [];
@@ -36,7 +36,7 @@ export async function loadRulesReference(): Promise<RuleSection[]> {
 export async function loadKeywordsCompendium(): Promise<KeywordEntry[]> {
   if (cachedKeywords) return cachedKeywords;
   try {
-    const res = await fetch('/data/keywords.json');
+    const res = await fetch(`${import.meta.env.BASE_URL}data/keywords.json`);
     if (res.ok) {
       const data = await res.json();
       cachedKeywords = data.allKeywordsList || [];
