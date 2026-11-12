@@ -8,29 +8,52 @@ export default {
   theme: {
     extend: {
       colors: {
-        grimdark: {
-          950: '#0b0d10',
-          900: '#111419',
-          850: '#161a22',
-          800: '#1c212b',
-          700: '#282f3d',
-          600: '#3a4457',
-          500: '#526079',
-          400: '#7383a0',
-          300: '#9cb0cf',
-          200: '#c5d3ea',
-          100: '#e6edf8'
+        // Standardized Semantic Theme System (backed by CSS variables in index.css)
+        theme: {
+          bg: 'rgb(var(--theme-bg) / <alpha-value>)',
+          surface: 'rgb(var(--theme-surface) / <alpha-value>)',
+          card: 'rgb(var(--theme-card) / <alpha-value>)',
+          elevated: 'rgb(var(--theme-elevated) / <alpha-value>)',
+          border: 'rgb(var(--theme-border) / <alpha-value>)',
+          'border-subtle': 'rgb(var(--theme-border-subtle) / <alpha-value>)',
+          text: 'rgb(var(--theme-text) / <alpha-value>)',
+          'text-secondary': 'rgb(var(--theme-text-secondary) / <alpha-value>)',
+          'text-muted': 'rgb(var(--theme-text-muted) / <alpha-value>)',
+          accent: 'rgb(var(--theme-accent) / <alpha-value>)',
+          'accent-hover': 'rgb(var(--theme-accent-hover) / <alpha-value>)',
+          'accent-soft': 'rgb(var(--theme-accent-soft) / <alpha-value>)',
+          success: 'rgb(var(--theme-success) / <alpha-value>)',
+          warning: 'rgb(var(--theme-warning) / <alpha-value>)',
+          danger: 'rgb(var(--theme-danger) / <alpha-value>)'
         },
-        warhammer: {
-          gold: '#c99a3e',
-          goldLight: '#e4b85d',
-          goldDark: '#997328',
-          red: '#961d1d',
-          redLight: '#c23333',
-          redDark: '#6b1111',
-          blue: '#1b4a82',
-          green: '#1a5933',
-          teal: '#1b676b'
+        // Map legacy palette aliases so all components follow the standardized theme
+        slate: {
+          950: 'rgb(var(--theme-bg) / <alpha-value>)',
+          900: 'rgb(var(--theme-surface) / <alpha-value>)',
+          850: 'rgb(var(--theme-card) / <alpha-value>)',
+          800: 'rgb(var(--theme-elevated) / <alpha-value>)',
+          750: 'rgb(var(--theme-border-subtle) / <alpha-value>)',
+          700: 'rgb(var(--theme-border) / <alpha-value>)',
+          650: 'rgb(var(--theme-border) / <alpha-value>)',
+          600: 'rgb(var(--theme-text-muted) / <alpha-value>)',
+          500: 'rgb(var(--theme-text-muted) / <alpha-value>)',
+          400: 'rgb(var(--theme-text-secondary) / <alpha-value>)',
+          300: 'rgb(var(--theme-text-secondary) / <alpha-value>)',
+          200: 'rgb(var(--theme-text) / <alpha-value>)',
+          100: 'rgb(var(--theme-text) / <alpha-value>)'
+        },
+        grimdark: {
+          950: 'rgb(var(--theme-bg) / <alpha-value>)',
+          900: 'rgb(var(--theme-surface) / <alpha-value>)',
+          850: 'rgb(var(--theme-card) / <alpha-value>)',
+          800: 'rgb(var(--theme-elevated) / <alpha-value>)',
+          700: 'rgb(var(--theme-border) / <alpha-value>)',
+          600: 'rgb(var(--theme-text-muted) / <alpha-value>)',
+          500: 'rgb(var(--theme-text-muted) / <alpha-value>)',
+          400: 'rgb(var(--theme-text-secondary) / <alpha-value>)',
+          300: 'rgb(var(--theme-text-secondary) / <alpha-value>)',
+          200: 'rgb(var(--theme-text) / <alpha-value>)',
+          100: 'rgb(var(--theme-text) / <alpha-value>)'
         }
       },
       fontFamily: {
@@ -41,4 +64,3 @@ export default {
   },
   plugins: [],
 }
-

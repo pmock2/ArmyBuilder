@@ -1,4 +1,4 @@
-import { ArmyRoster, BattleSizeConfig, ValidationIssue, ValidationResult } from '../types/roster';
+import { ArmyRoster, BattleSizeConfig, ValidationIssue, ValidationResult, getUnitTotalPts } from '../types/roster';
 
 export const BATTLE_SIZE_CONFIGS: Record<string, BattleSizeConfig> = {
   incursion: {
@@ -77,11 +77,7 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
   // 1. Calculate Total Points
   let totalPoints = 0;
   for (const u of units) {
-    let unitCost = Number(u.cost || 0);
-    if (u.enhancement) {
-      unitCost += Number(u.enhancement.pts || 0);
-    }
-    totalPoints += unitCost;
+    totalPoints += getUnitTotalPts(u);
   }
 
   if (totalPoints > limits.points) {
@@ -308,7 +304,8 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
             unitInstanceId: u.instanceId
           });
         }
-        if (!u.isCharacter) {
+        const requiresCharacter = !enh.requiredKeywords || enh.requiredKeywords.some(k => k.toLowerCase() === 'character');
+        if (requiresCharacter && !u.isCharacter) {
           issues.push({
             id: `non-character-enhancement-${u.name}`,
             severity: 'error',

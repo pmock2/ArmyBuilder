@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Plus, ChevronDown, ChevronUp } from 'lucide-react';
-import { SelectedUnit, Enhancement } from '../types/roster';
+import React from 'react';
+import { Plus } from 'lucide-react';
+import { SelectedUnit, Enhancement, SelectedDetachment, getUnitTotalPts } from '../types/roster';
 import { UnitCard } from './UnitCard';
 
 interface UnitSectionProps {
@@ -9,6 +9,8 @@ interface UnitSectionProps {
   units: SelectedUnit[];
   allUnitsInRoster: SelectedUnit[];
   availableEnhancements: Enhancement[];
+  selectedDetachments?: SelectedDetachment[];
+  isPlayMode?: boolean;
   unitLimit: number;
   onOpenBrowser: (roleKey: string) => void;
   onUpdateUnit: (updated: SelectedUnit) => void;
@@ -23,92 +25,82 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
   units,
   allUnitsInRoster,
   availableEnhancements,
-  unitLimit,
+  selectedDetachments = [],
+  isPlayMode = false,
   onOpenBrowser,
   onUpdateUnit,
   onDuplicateUnit,
   onRemoveUnit,
   onSetWarlord
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const sectionPoints = units.reduce((acc, u) => acc + getUnitTotalPts(u), 0);
+  const hasUnits = units.length > 0;
 
-  // Total points for this role
-  const sectionPoints = units.reduce((acc, u) => acc + u.cost + (u.enhancement ? u.enhancement.pts : 0), 0);
+  if (isPlayMode && !hasUnits) {
+    return null;
+  }
 
   return (
-    <div className="bg-grimdark-950/60 border border-grimdark-800 rounded-2xl p-4 sm:p-5 mb-5 shadow-lg">
-      
+    <section
+      className={
+        hasUnits
+          ? 'panel-theme-section'
+          : 'bg-theme-surface/40 border border-theme-border-subtle/60 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-theme-surface/70'
+      }
+    >
       {/* Section Header */}
-      <div className="flex items-center justify-between gap-3 mb-3">
-        <div 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="flex items-center gap-2.5 cursor-pointer select-none group"
-        >
-          <button 
-            type="button" 
-            className="p-1 rounded text-grimdark-400 group-hover:text-amber-400 transition-colors"
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <h3
+            className={`font-warhammer text-xs sm:text-sm font-bold tracking-wider uppercase ${
+              hasUnits ? 'text-theme-text' : 'text-theme-text-secondary'
+            }`}
           >
-            {isCollapsed ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
-          </button>
-          
-          <h3 className="font-warhammer text-sm sm:text-base font-bold text-amber-200 group-hover:text-amber-300 transition-colors">
             {title}
           </h3>
-
-          <span className="text-xs px-2 py-0.5 rounded-full bg-grimdark-900 border border-grimdark-800 text-grimdark-400 font-mono">
-            {units.length} {unitLimit ? `/ ${unitLimit}` : ''}
+          <span className="text-xs font-mono font-semibold text-theme-text-muted">
+            ({units.length})
           </span>
-
           {sectionPoints > 0 && (
-            <span className="text-xs font-mono text-amber-400/80 font-bold hidden sm:inline">
-              ({sectionPoints} pts)
+            <span className="text-xs sm:text-sm font-mono text-theme-text-secondary font-bold">
+              • {sectionPoints} pts
             </span>
           )}
         </div>
 
-        {/* Add Unit Button */}
-        <button
-          type="button"
-          onClick={() => onOpenBrowser(roleKey)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-grimdark-850 hover:bg-amber-600 hover:text-black text-amber-400 border border-amber-600/40 font-semibold text-xs transition-all shadow-sm active:scale-95"
-        >
-          <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-          <span>Add {title.replace(/s$/, '')}</span>
-        </button>
+        {!isPlayMode && (
+          <button
+            type="button"
+            onClick={() => onOpenBrowser(roleKey)}
+            className="btn-theme-secondary min-h-[32px] px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-semibold tracking-wide"
+            title={`Add ${title}`}
+            aria-label={`Add ${title}`}
+          >
+            <Plus className="w-3.5 h-3.5 text-theme-accent-soft stroke-[2.5]" />
+            <span>Add</span>
+          </button>
+        )}
       </div>
 
       {/* Units List */}
-      {!isCollapsed && (
-        <div>
-          {units.length === 0 ? (
-            <div 
-              onClick={() => onOpenBrowser(roleKey)}
-              className="text-center py-6 border border-dashed border-grimdark-800 rounded-xl hover:border-amber-600/40 hover:bg-grimdark-900/30 cursor-pointer transition-all"
-            >
-              <p className="text-xs text-grimdark-500 font-medium">
-                No {title.toLowerCase()} added yet. Click to muster units.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {units.map((u) => (
-                <UnitCard
-                  key={u.instanceId}
-                  unit={u}
-                  allUnitsInRoster={allUnitsInRoster}
-                  availableEnhancements={availableEnhancements}
-                  onUpdateUnit={onUpdateUnit}
-                  onDuplicateUnit={onDuplicateUnit}
-                  onRemoveUnit={onRemoveUnit}
-                  onSetWarlord={onSetWarlord}
-                />
-              ))}
-            </div>
-          )}
+      {hasUnits && (
+        <div className={isPlayMode ? 'space-y-3 mt-3' : 'space-y-2 mt-3'}>
+          {units.map((u) => (
+            <UnitCard
+              key={u.instanceId}
+              unit={u}
+              allUnitsInRoster={allUnitsInRoster}
+              availableEnhancements={availableEnhancements}
+              selectedDetachments={selectedDetachments}
+              isPlayMode={isPlayMode}
+              onUpdateUnit={onUpdateUnit}
+              onDuplicateUnit={onDuplicateUnit}
+              onRemoveUnit={onRemoveUnit}
+              onSetWarlord={onSetWarlord}
+            />
+          ))}
         </div>
       )}
-
-    </div>
+    </section>
   );
 };
-

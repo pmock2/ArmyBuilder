@@ -79,7 +79,26 @@ function validateRoster(roster, factionData) {
   // 1. Calculate Total Points
   let totalPoints = 0;
   for (const u of units) {
-    totalPoints += Number(u.totalCost || u.cost || 0);
+    let unitCost = Number(u.totalCost || u.cost || 0);
+    if (!u.totalCost) {
+      if (u.enhancement && u.enhancement.pts) {
+        unitCost += Number(u.enhancement.pts);
+      }
+      if (u.datasheet && u.datasheet.wargearGroups) {
+        for (const g of u.datasheet.wargearGroups) {
+          const selectedIds = (u.selectedOptions && u.selectedOptions[g.id] !== undefined)
+            ? u.selectedOptions[g.id]
+            : (g.defaultOptionIds || []);
+          const idSet = new Set(selectedIds);
+          for (const opt of (g.options || [])) {
+            if (idSet.has(opt.id) && opt.pts) {
+              unitCost += Number(opt.pts);
+            }
+          }
+        }
+      }
+    }
+    totalPoints += unitCost;
   }
   if (totalPoints > limits.points) {
     issues.push({
@@ -300,7 +319,8 @@ function validateRoster(roster, factionData) {
             message: `Epic Heroes cannot be given enhancements.`
           });
         }
-        if (!u.isCharacter) {
+        const requiresCharacter = !enh.requiredKeywords || enh.requiredKeywords.some(k => k.toLowerCase() === 'character');
+        if (requiresCharacter && !u.isCharacter) {
           issues.push({
             id: `non-character-enhancement-${u.name}`,
             severity: 'error',

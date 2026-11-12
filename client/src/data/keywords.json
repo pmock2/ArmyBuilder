@@ -2537,6 +2537,27 @@
       "id": "747a-c6a9-6f4f-7f09",
       "summary": "General Keyword designation",
       "description": "Warhammer 40,000 keyword: Allies: Tyranids. Used for rules interactions, target eligibility, and army validation."
+    },
+    {
+      "name": "BENEFIT OF COVER",
+      "category": "Core Rule",
+      "id": "core-cover",
+      "summary": "Adds +1 to armor saving throws against ranged attacks (does not improve 3+ saves against AP 0).",
+      "description": "Each time a ranged attack is allocated to a model that has the Benefit of Cover, add 1 to the saving throw made for that attack (excluding invulnerable saving throws). Models with a Save characteristic of 3+ or better cannot have the Benefit of Cover against attacks with an Armour Penetration characteristic of 0."
+    },
+    {
+      "name": "MORTAL WOUNDS",
+      "category": "Core Rule",
+      "id": "core-mortal-wounds",
+      "summary": "Unstoppable damage that bypasses normal Armor and Invulnerable saves and spills over between models.",
+      "description": "Each mortal wound inflicted on a unit causes one model in that unit to lose one wound. No saving throws of any kind can be made against mortal wounds (though Feel No Pain rules can be used). Unlike normal attacks, excess mortal wounds are not lost when a model is destroyed and continue to be allocated to other models in the target unit."
+    },
+    {
+      "name": "BATTLE-SHOCK",
+      "category": "Core Rule",
+      "id": "core-battle-shock",
+      "summary": "Battle-shocked units have OC 0, cannot be targeted by friendly Stratagems, and must take Desperate Escape tests if Falling Back.",
+      "description": "While a unit is Battle-shocked: the Objective Control characteristic of all its models is 0; if it is selected to Fall Back, you must take a Desperate Escape test for every model in that unit; and its controlling player cannot use Stratagems to affect that unit."
     }
   ]
 }

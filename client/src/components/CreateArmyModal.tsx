@@ -8,9 +8,10 @@ interface CreateArmyModalProps {
   isOpen: boolean;
   onClose: () => void;
   onCreate: (roster: ArmyRoster) => void;
+  onOpenAiCreator?: () => void;
 }
 
-export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClose, onCreate }) => {
+export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClose, onCreate, onOpenAiCreator }) => {
   const [name, setName] = useState('New Strike Force');
   const [selectedSuperFaction, setSelectedSuperFaction] = useState('Imperium');
   const [selectedFactionId, setSelectedFactionId] = useState('');
@@ -56,7 +57,6 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
     // If a subfaction is chosen (e.g. Salamanders), that is the effective faction catalogue!
     const effectiveFactionId = selectedSubFactionId || selectedFactionId;
-    const effectiveFaction = factions.find(f => f.id === effectiveFactionId) || currentFaction;
 
     const newRoster: ArmyRoster = {
       id: `roster-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
@@ -79,31 +79,53 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-grimdark-900 border border-grimdark-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-grimdark-800 bg-grimdark-950/60">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/95">
           <div className="flex items-center gap-2.5">
-            <Swords className="w-5 h-5 text-amber-500" />
-            <h2 className="font-warhammer text-lg font-bold text-amber-300 tracking-wide">
+            <Swords className="w-5 h-5 text-sky-400" />
+            <h2 className="font-warhammer text-base sm:text-lg font-bold text-slate-100 tracking-wide">
               Muster a New Army
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-grimdark-400 hover:text-white hover:bg-grimdark-800 transition-colors"
+            className="btn-theme-icon min-w-[38px] min-h-[38px] rounded-xl"
+            aria-label="Close dialog"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[2]" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <form onSubmit={handleCreate} className="p-6 overflow-y-auto space-y-6 flex-1 text-xs">
+        <form onSubmit={handleCreate} className="p-4 sm:p-6 overflow-y-auto space-y-5 flex-1 text-xs sm:text-sm">
           
+          {onOpenAiCreator && (
+            <div className="p-3 rounded-xl bg-gradient-to-r from-sky-950/70 via-indigo-950/60 to-purple-950/60 border border-sky-500/40 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <Sparkles className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                <span className="text-xs text-slate-200 font-medium">
+                  Have a specific army concept in mind? Let the AI build it from your prompt.
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenAiCreator();
+                }}
+                className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex-shrink-0 transition-colors shadow-sm"
+              >
+                AI Prompt
+              </button>
+            </div>
+          )}
+
           {/* Step 1: Army Name */}
           <div>
-            <label className="block text-grimdark-300 font-semibold mb-2 uppercase tracking-wider text-[11px]">
+            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
               1. Army Name
             </label>
             <input
@@ -112,25 +134,25 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. 1st Company Strike Force"
-              className="w-full px-4 py-2.5 rounded-lg bg-grimdark-950 border border-grimdark-700 text-grimdark-100 placeholder-grimdark-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-sm font-medium transition-all"
+              className="w-full min-h-[46px] px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 text-base sm:text-sm font-medium transition-all"
             />
           </div>
 
           {/* Step 2: Super-Faction Filter */}
           <div>
-            <label className="block text-grimdark-300 font-semibold mb-2 uppercase tracking-wider text-[11px]">
+            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
               2. Allegiance / Super-Faction
             </label>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {['Imperium', 'Chaos', 'Xenos', 'Aeldari'].map((sf) => (
                 <button
                   type="button"
                   key={sf}
                   onClick={() => setSelectedSuperFaction(sf)}
-                  className={`py-2 px-3 rounded-lg border text-xs font-bold transition-all text-center ${
+                  className={`min-h-[44px] py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center active:scale-95 ${
                     selectedSuperFaction.toLowerCase() === sf.toLowerCase()
-                      ? 'bg-amber-600 text-black border-amber-500 shadow-md font-bold'
-                      : 'bg-grimdark-950 text-grimdark-400 border-grimdark-800 hover:border-grimdark-600 hover:text-grimdark-200'
+                      ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
+                      : 'bg-slate-850 text-slate-300 border-slate-750 hover:border-slate-600 hover:text-white'
                   }`}
                 >
                   {sf}
@@ -141,10 +163,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 3: Main Faction */}
           <div>
-            <label className="block text-grimdark-300 font-semibold mb-2 uppercase tracking-wider text-[11px]">
+            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
               3. Primary Faction
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-40 overflow-y-auto p-1 bg-grimdark-950 rounded-lg border border-grimdark-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-1.5 bg-slate-950 rounded-xl border border-slate-750">
               {availableFactions.map((fac) => {
                 const isSelected = selectedFactionId === fac.id;
                 return (
@@ -152,14 +174,14 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                     type="button"
                     key={fac.id}
                     onClick={() => handleFactionSelect(fac.id)}
-                    className={`p-2.5 rounded-md border text-left transition-all flex items-center justify-between text-xs ${
+                    className={`min-h-[46px] p-3 rounded-lg border text-left transition-all flex items-center justify-between text-xs sm:text-sm active:scale-95 ${
                       isSelected
-                        ? 'bg-amber-950/60 border-amber-500 text-amber-200 font-bold'
-                        : 'bg-grimdark-900 border-grimdark-800 text-grimdark-300 hover:bg-grimdark-850 hover:text-white'
+                        ? 'bg-sky-950/80 border-sky-600 text-sky-200 font-semibold'
+                        : 'bg-slate-850 border-slate-750 text-slate-300 hover:bg-slate-800 hover:text-white'
                     }`}
                   >
                     <span className="truncate">{fac.name}</span>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />}
+                    {isSelected && <Check className="w-4 h-4 text-sky-400 flex-shrink-0 ml-1.5" />}
                   </button>
                 );
               })}
@@ -168,17 +190,17 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 4: Sub-Faction / Chapter (if applicable) */}
           {subFactions.length > 0 && (
-            <div className="p-4 rounded-xl bg-grimdark-950 border border-amber-600/30">
-              <div className="flex items-center gap-1.5 mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <label className="text-amber-300 font-bold uppercase tracking-wider text-[11px]">
+            <div className="p-4 rounded-xl bg-slate-850 border border-slate-700">
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <Sparkles className="w-4 h-4 text-sky-400" />
+                <label className="text-sky-300 font-semibold uppercase tracking-wider text-xs">
                   4. Select Chapter / Sub-Faction
                 </label>
               </div>
-              <p className="text-[11px] text-grimdark-400 mb-3">
-                Unlocks Chapter-specific epic heroes, unique units, and chapter detachments (like Salamanders' Forgefather's Seekers).
+              <p className="text-xs text-slate-400 mb-3">
+                Unlocks Chapter-specific heroes, unique units, and chapter detachments (like Salamanders' Forgefather's Seekers).
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-36 overflow-y-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-40 overflow-y-auto">
                 {subFactions.map((sub) => {
                   const isSelected = selectedSubFactionId === sub.id;
                   return (
@@ -186,14 +208,14 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                       type="button"
                       key={sub.id}
                       onClick={() => setSelectedSubFactionId(sub.id)}
-                      className={`p-2 rounded-md border text-left text-xs transition-all flex items-center justify-between ${
+                      className={`min-h-[44px] p-2.5 rounded-lg border text-left text-xs sm:text-sm transition-all flex items-center justify-between active:scale-95 ${
                         isSelected
-                          ? 'bg-amber-600 text-black border-amber-500 font-bold shadow'
-                          : 'bg-grimdark-900 border-grimdark-800 text-grimdark-300 hover:bg-grimdark-800 hover:text-white'
+                          ? 'bg-blue-600 text-white border-blue-500 font-semibold shadow-sm'
+                          : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-750 hover:text-white'
                       }`}
                     >
                       <span className="truncate">{sub.name}</span>
-                      {isSelected && <Check className="w-3 h-3 text-black flex-shrink-0" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-white flex-shrink-0 ml-1.5" />}
                     </button>
                   );
                 })}
@@ -203,10 +225,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 5: Battle Size */}
           <div>
-            <label className="block text-grimdark-300 font-semibold mb-2 uppercase tracking-wider text-[11px]">
+            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
               5. Battle Size
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               {[
                 { id: 'incursion', name: 'Incursion', points: 1000, dp: 2, desc: 'Quick patrol & skirmish' },
                 { id: 'strike-force', name: 'Strike Force', points: 2000, dp: 3, desc: 'Standard tournament size' },
@@ -218,22 +240,22 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                     type="button"
                     key={bs.id}
                     onClick={() => setBattleSize(bs.id as BattleSize)}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`min-h-[70px] p-3.5 rounded-xl border text-left transition-all active:scale-95 ${
                       isSelected
-                        ? 'bg-amber-950/60 border-amber-500 shadow-md'
-                        : 'bg-grimdark-950 border-grimdark-800 hover:border-grimdark-700'
+                        ? 'bg-sky-950/70 border-sky-600 shadow-sm ring-1 ring-sky-500/50'
+                        : 'bg-slate-850 border-slate-750 hover:border-slate-650'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`font-warhammer text-xs font-bold ${isSelected ? 'text-amber-300' : 'text-grimdark-200'}`}>
+                      <span className={`font-warhammer text-xs sm:text-sm font-semibold ${isSelected ? 'text-sky-300' : 'text-slate-200'}`}>
                         {bs.name}
                       </span>
-                      {isSelected && <Shield className="w-3.5 h-3.5 text-amber-400" />}
+                      {isSelected && <Shield className="w-4 h-4 text-sky-400" />}
                     </div>
-                    <div className="font-mono text-amber-400 font-bold text-xs">
-                      {bs.points} pts <span className="text-grimdark-500 font-normal">| {bs.dp} DP</span>
+                    <div className="font-mono text-sky-400 font-bold text-xs sm:text-sm">
+                      {bs.points} pts <span className="text-slate-400 font-normal">| {bs.dp} DP</span>
                     </div>
-                    <div className="text-[10px] text-grimdark-400 mt-1">
+                    <div className="text-xs text-slate-400 mt-1">
                       {bs.desc}
                     </div>
                   </button>
@@ -243,17 +265,17 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Modal Footer */}
-          <div className="pt-4 border-t border-grimdark-800 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg bg-grimdark-800 hover:bg-grimdark-700 text-grimdark-300 hover:text-white transition-colors"
+              className="btn-theme-secondary min-h-[42px] px-5 rounded-xl text-xs sm:text-sm font-semibold"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-black font-bold tracking-wide shadow-lg shadow-amber-900/20 transition-all active:scale-95"
+              className="btn-theme-primary min-h-[42px] px-6 rounded-xl text-xs sm:text-sm tracking-wide"
             >
               Begin Mustering Force
             </button>
@@ -265,4 +287,3 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
     </div>
   );
 };
-

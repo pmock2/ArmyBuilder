@@ -1,6 +1,48 @@
 import { ArmyRoster } from '../types/roster';
 
 const STORAGE_KEY = 'wh40k_11e_rosters';
+const ACTIVE_ROSTER_KEY = 'wh40k_11e_active_roster_id';
+const PLAY_MODE_KEY = 'wh40k_11e_play_mode';
+
+export function loadActiveRosterId(): string | null {
+  try {
+    return localStorage.getItem(ACTIVE_ROSTER_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function saveActiveRosterId(rosterId: string | null): void {
+  try {
+    if (rosterId) {
+      localStorage.setItem(ACTIVE_ROSTER_KEY, rosterId);
+    } else {
+      localStorage.removeItem(ACTIVE_ROSTER_KEY);
+    }
+  } catch (err) {
+    console.error('Failed to save active roster ID:', err);
+  }
+}
+
+export function loadPlayMode(): boolean {
+  try {
+    return localStorage.getItem(PLAY_MODE_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+export function savePlayMode(isPlayMode: boolean): void {
+  try {
+    if (isPlayMode) {
+      localStorage.setItem(PLAY_MODE_KEY, 'true');
+    } else {
+      localStorage.removeItem(PLAY_MODE_KEY);
+    }
+  } catch {
+    // ignore storage errors
+  }
+}
 
 export function loadAllRosters(): ArmyRoster[] {
   try {
@@ -39,6 +81,9 @@ export function deleteRoster(rosterId: string): ArmyRoster[] {
   const current = loadAllRosters().filter(r => r.id !== rosterId);
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+    if (loadActiveRosterId() === rosterId) {
+      saveActiveRosterId(null);
+    }
   } catch (err) {
     console.error('Failed to delete roster:', err);
   }

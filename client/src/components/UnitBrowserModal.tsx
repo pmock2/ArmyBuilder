@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { X, Search, Plus, Eye, Check } from 'lucide-react';
-import { Datasheet, SelectedUnit, BattleSize, getUnitRole } from '../types/roster';
+import { X, Search, Plus, Eye } from 'lucide-react';
+import { Datasheet, SelectedUnit, BattleSize, getUnitRole, isLegendsUnit, isUnitAllowedForChapter } from '../types/roster';
 import { BATTLE_SIZE_CONFIGS } from '../utils/validator';
 import { DatasheetModal } from './DatasheetModal';
 
@@ -11,6 +11,10 @@ interface UnitBrowserModalProps {
   unitsInRoster: SelectedUnit[];
   battleSize: BattleSize;
   initialRoleFilter?: string;
+  includeLegends?: boolean;
+  factionId?: string;
+  subFactionName?: string | null;
+  onToggleLegends?: (enabled: boolean) => void;
   onAddUnit: (datasheet: Datasheet) => void;
 }
 
@@ -21,56 +25,38 @@ export const UnitBrowserModal: React.FC<UnitBrowserModalProps> = ({
   unitsInRoster,
   battleSize,
   initialRoleFilter = 'All',
+  includeLegends = false,
+  factionId = '',
+  subFactionName = null,
   onAddUnit
 }) => {
   const [search, setSearch] = useState('');
-  const [selectedRole, setSelectedRole] = useState(initialRoleFilter);
   const [inspectDatasheet, setInspectDatasheet] = useState<Datasheet | null>(null);
 
-  // Sync selectedRole whenever modal opens or initialRoleFilter changes
+  // Reset search whenever modal opens or role changes
   useEffect(() => {
     if (isOpen) {
-      setSelectedRole(initialRoleFilter || 'All');
       setSearch('');
     }
   }, [isOpen, initialRoleFilter]);
 
   const limits = BATTLE_SIZE_CONFIGS[battleSize] || BATTLE_SIZE_CONFIGS['strike-force'];
 
-  // Calculate only the roles that this army actually has access to
-  const roles = useMemo(() => {
-    const rolesSet = new Set<string>();
-    for (const d of availableDatasheets) {
-      rolesSet.add(getUnitRole(d));
-    }
-    const canonical = [
-      'Epic Hero',
-      'Character',
-      'Battleline',
-      'Infantry',
-      'Mounted',
-      'Monster',
-      'Vehicle',
-      'Dedicated Transport',
-      'Aircraft',
-      'Fortification',
-      'Allied Units'
-    ];
-    const active = canonical.filter(r => rolesSet.has(r));
-    return ['All', ...active];
-  }, [availableDatasheets]);
-
-  // Filter datasheets strictly by getUnitRole and search query
+  // Filter datasheets strictly by initialRoleFilter, legends setting, chapter exclusivity, and search query
   const filtered = useMemo(() => {
     return availableDatasheets.filter(d => {
-      const unitRole = getUnitRole(d);
-
-      // Strict role filter
-      if (selectedRole !== 'All') {
-        if (unitRole !== selectedRole) return false;
+      if (!isUnitAllowedForChapter(d, factionId, subFactionName)) {
+        return false;
+      }
+      if (!includeLegends && isLegendsUnit(d)) {
+        return false;
       }
 
-      // Search query
+      const unitRole = getUnitRole(d);
+      if (initialRoleFilter && initialRoleFilter !== 'All') {
+        if (unitRole !== initialRoleFilter) return false;
+      }
+
       if (search.trim()) {
         const q = search.toLowerCase();
         const matchName = d.name.toLowerCase().includes(q);
@@ -81,173 +67,117 @@ export const UnitBrowserModal: React.FC<UnitBrowserModalProps> = ({
 
       return true;
     });
-  }, [availableDatasheets, selectedRole, search]);
+  }, [availableDatasheets, initialRoleFilter, search, includeLegends, factionId, subFactionName]);
 
   if (!isOpen) return null;
 
-  // Helper: Count how many times a datasheet is already in roster
   const getCountInRoster = (datasheetId: string) => {
     return unitsInRoster.filter(u => u.datasheetId === datasheetId).length;
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-grimdark-900 border border-grimdark-700 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-theme-bg/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-theme-surface border border-theme-border w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-grimdark-800 bg-grimdark-950/80">
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="font-warhammer text-lg font-bold text-amber-300">
-                Muster Units ({filtered.length})
-              </h2>
-              {selectedRole !== 'All' && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold font-mono">
-                  {selectedRole}
-                </span>
-              )}
-            </div>
-            <p className="text-xs text-grimdark-400 mt-0.5">
-              Select datasheets to add to your army roster.
-            </p>
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-theme-border-subtle bg-theme-surface">
+          <div className="flex items-center gap-2">
+            <h2 className="font-warhammer text-base sm:text-lg font-bold text-theme-text">
+              {initialRoleFilter && initialRoleFilter !== 'All' ? initialRoleFilter : 'Muster Units'} ({filtered.length})
+            </h2>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-grimdark-400 hover:text-white hover:bg-grimdark-800 transition-colors"
+            className="btn-theme-icon min-w-[38px] min-h-[38px] rounded-xl"
+            aria-label="Close unit browser"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[2]" />
           </button>
         </div>
 
-        {/* Search & Role Filter Tabs (Only categories available to this army) */}
-        <div className="p-4 border-b border-grimdark-800 bg-grimdark-950/50 space-y-3">
-          {/* Search Input */}
+        {/* Search Input */}
+        <div className="p-2.5 sm:p-3 border-b border-theme-border-subtle bg-theme-bg/50">
           <div className="relative">
-            <Search className="w-4 h-4 text-grimdark-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-theme-text-muted absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by unit name, weapon, or keyword..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg bg-grimdark-900 border border-grimdark-700 text-grimdark-200 text-xs focus:outline-none focus:border-amber-500 placeholder-grimdark-500"
+              placeholder="Search unit name, weapon, keyword..."
+              className="w-full pl-9 pr-3 min-h-[40px] rounded-xl bg-theme-bg border border-theme-border text-theme-text text-base sm:text-sm focus:outline-none focus:border-theme-accent placeholder-theme-text-muted"
             />
-          </div>
-
-          {/* Role Filter Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
-            {roles.map((r) => {
-              const count = r === 'All' 
-                ? availableDatasheets.length 
-                : availableDatasheets.filter(d => getUnitRole(d) === r).length;
-
-              return (
-                <button
-                  key={r}
-                  type="button"
-                  onClick={() => setSelectedRole(r)}
-                  className={`px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-all text-xs flex items-center gap-1.5 ${
-                    selectedRole === r
-                      ? 'bg-amber-600 text-black font-bold shadow'
-                      : 'bg-grimdark-900 text-grimdark-400 hover:text-grimdark-200 hover:bg-grimdark-800 border border-grimdark-800'
-                  }`}
-                >
-                  <span>{r}</span>
-                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded ${
-                    selectedRole === r ? 'bg-amber-800/40 text-black' : 'bg-grimdark-950 text-grimdark-500'
-                  }`}>
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
           </div>
         </div>
 
         {/* Datasheet Cards Grid */}
-        <div className="p-6 overflow-y-auto flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-2.5 sm:p-4 overflow-y-auto flex-1 grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3">
           {filtered.length === 0 ? (
-            <div className="col-span-full py-12 text-center text-xs text-grimdark-500">
-              No matching {selectedRole !== 'All' ? selectedRole.toLowerCase() : ''} units found.
+            <div className="col-span-full py-16 text-center text-sm font-medium text-theme-text-secondary">
+              No matching {initialRoleFilter !== 'All' ? initialRoleFilter.toLowerCase() : ''} units found.
             </div>
           ) : (
             filtered.map((datasheet) => {
               const inRosterCount = getCountInRoster(datasheet.id);
               const maxAllowed = datasheet.isEpicHero ? 1 : datasheet.isBattleline ? limits.battlelineLimit : limits.unitLimit;
               const isMaxedOut = inRosterCount >= maxAllowed;
-              const role = getUnitRole(datasheet);
 
               return (
                 <div
                   key={datasheet.id}
-                  className="p-4 rounded-xl bg-grimdark-950 border border-grimdark-800 hover:border-grimdark-700 transition-all flex flex-col justify-between"
+                  className="card-theme-item p-3 sm:p-3.5 flex items-center justify-between gap-3"
                 >
-                  <div>
-                    {/* Top Tag & Cost */}
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-grimdark-900 text-grimdark-300 border border-grimdark-800">
-                          {role}
-                        </span>
-                        {datasheet.isLeader && (
-                          <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-amber-950/60 text-amber-400 border border-amber-800/40">
-                            Leader
-                          </span>
-                        )}
-                        {datasheet.isSupport && (
-                          <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-indigo-950/60 text-indigo-400 border border-indigo-800/40">
-                            Support
-                          </span>
-                        )}
-                      </div>
-
-                      <span className="font-mono text-sm font-bold text-amber-400">
-                        {datasheet.baseCost} pts
+                  {/* Left: Name, Points, and Count vs Allowed */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h3
+                        onClick={() => setInspectDatasheet(datasheet)}
+                        className="font-warhammer text-sm sm:text-base font-bold text-theme-text hover:text-theme-accent-soft transition-colors cursor-pointer truncate"
+                      >
+                        {datasheet.name}
+                      </h3>
+                      <span className={`text-xs font-mono font-semibold px-2 py-0.5 rounded-md border ${
+                        isMaxedOut
+                          ? 'bg-amber-950/60 text-amber-300 border-amber-700/50'
+                          : inRosterCount > 0
+                          ? 'bg-theme-accent/15 text-theme-accent-soft border-theme-accent/35'
+                          : 'bg-theme-bg/70 text-theme-text-muted border-theme-border-subtle'
+                      }`}>
+                        {inRosterCount}/{maxAllowed}
                       </span>
                     </div>
 
-                    {/* Unit Name */}
-                    <h3 className="font-warhammer text-sm font-bold text-amber-200 mb-1">
-                      {datasheet.name}
-                    </h3>
-
-                    {/* Keywords preview */}
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {datasheet.keywords.slice(0, 4).map((kw) => (
-                        <span
-                          key={kw}
-                          className="text-[9px] px-1.5 py-0.2 rounded bg-grimdark-900 text-grimdark-400 border border-grimdark-800"
-                        >
-                          {kw}
-                        </span>
-                      ))}
+                    <div className="font-mono text-sm font-bold text-theme-text-secondary">
+                      {datasheet.baseCost} pts
                     </div>
                   </div>
 
-                  {/* Action Bar */}
-                  <div className="flex items-center justify-between gap-2 pt-3 border-t border-grimdark-800/60">
+                  {/* Right: Eyeball to inspect & Plus to add */}
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       type="button"
                       onClick={() => setInspectDatasheet(datasheet)}
-                      className="p-1.5 rounded-lg bg-grimdark-900 hover:bg-grimdark-800 text-grimdark-400 hover:text-amber-300 border border-grimdark-800 transition-colors flex items-center gap-1 text-xs"
-                      title="Inspect full datasheet"
+                      className="btn-theme-icon min-h-[38px] min-w-[38px] rounded-xl"
+                      title="Inspect datasheet"
+                      aria-label={`Inspect ${datasheet.name} datasheet`}
                     >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Datasheet</span>
+                      <Eye className="w-4 h-4 stroke-[2]" />
                     </button>
 
                     <button
                       type="button"
                       disabled={isMaxedOut}
                       onClick={() => onAddUnit(datasheet)}
-                      className={`px-3 py-1.5 rounded-lg font-semibold text-xs flex items-center gap-1.5 transition-all ${
+                      className={`min-h-[38px] min-w-[38px] px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all ${
                         isMaxedOut
-                          ? 'bg-grimdark-900 text-grimdark-600 border border-grimdark-850 cursor-not-allowed'
-                          : 'bg-amber-600 hover:bg-amber-500 text-black shadow active:scale-95'
+                          ? 'bg-theme-elevated/40 text-theme-text-muted border border-theme-border-subtle cursor-not-allowed'
+                          : 'btn-theme-primary'
                       }`}
+                      title={isMaxedOut ? 'Maximum limit reached' : 'Add unit to roster'}
+                      aria-label={`Add ${datasheet.name}`}
                     >
-                      <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-                      <span>{inRosterCount > 0 ? `Add (${inRosterCount}/${maxAllowed})` : 'Add Unit'}</span>
+                      <Plus className="w-4 h-4 stroke-[2.5]" />
+                      <span className="hidden sm:inline">Add</span>
                     </button>
                   </div>
                 </div>

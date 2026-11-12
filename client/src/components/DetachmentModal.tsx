@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Sparkles, Shield, AlertTriangle } from 'lucide-react';
-import { SelectedDetachment, Enhancement } from '../types/roster';
+import { SelectedDetachment, Enhancement, normalizeDetachmentName } from '../types/roster';
+import { FormattedText } from './FormattedText';
 
 interface DetachmentModalProps {
   detachment: SelectedDetachment | null;
@@ -9,6 +10,7 @@ interface DetachmentModalProps {
   onClose: () => void;
   onSelect?: () => void;
   isSelected?: boolean;
+  isPlayMode?: boolean;
 }
 
 export const DetachmentModal: React.FC<DetachmentModalProps> = ({
@@ -17,32 +19,37 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
   isOpen,
   onClose,
   onSelect,
-  isSelected = false
+  isSelected = false,
+  isPlayMode = false
 }) => {
   if (!isOpen || !detachment) return null;
 
+  const detachmentEnhancements = allEnhancements.filter(
+    (enh) => !enh.detachment || normalizeDetachmentName(enh.detachment) === normalizeDetachmentName(detachment.name)
+  );
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-grimdark-900 border border-grimdark-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-grimdark-800 bg-grimdark-950/80">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/95">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-600/20 border border-amber-500/40 flex items-center justify-center font-warhammer font-bold text-amber-400">
+            <div className="w-9 h-9 rounded-xl bg-sky-600/20 border border-sky-500/40 flex items-center justify-center font-warhammer font-bold text-sky-400 text-sm">
               {detachment.dpCost}
             </div>
             <div>
-              <h2 className="font-warhammer text-lg font-bold text-amber-300">
+              <h2 className="font-warhammer text-base sm:text-lg font-bold text-slate-100">
                 {detachment.name}
               </h2>
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-[11px] font-mono text-amber-400 font-bold">
+              <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                <span className="text-xs font-mono text-sky-400 font-semibold">
                   {detachment.dpCost} Detachment Points (DP)
                 </span>
                 {detachment.tags && detachment.tags.length > 0 && (
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5 flex-wrap">
                     {detachment.tags.map(t => (
-                      <span key={t} className="text-[10px] px-1.5 py-0.2 rounded bg-grimdark-800 text-grimdark-300 border border-grimdark-700">
+                      <span key={t} className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
                         {t}
                       </span>
                     ))}
@@ -54,37 +61,39 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-grimdark-400 hover:text-white hover:bg-grimdark-800 transition-colors"
+            className="btn-theme-icon min-w-[38px] min-h-[38px] rounded-xl"
+            aria-label="Close detachment details"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[2]" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 overflow-y-auto space-y-6 text-xs flex-1">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 text-xs sm:text-sm flex-1">
           
           {/* Rules Section */}
           <div>
-            <h3 className="font-warhammer text-xs font-bold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-amber-500" />
+            <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center gap-2">
+              <Shield className="w-4 h-4 text-sky-400" />
               <span>Detachment Rules</span>
             </h3>
 
             {detachment.rules && detachment.rules.length > 0 ? (
               <div className="space-y-4">
                 {detachment.rules.map((rule, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-grimdark-950 border border-grimdark-800">
-                    <h4 className="font-warhammer text-sm font-bold text-amber-200 mb-2">
+                  <div key={idx} className="p-4 rounded-xl bg-slate-850 border border-slate-750">
+                    <h4 className="font-warhammer text-sm font-bold text-sky-300 mb-2">
                       {rule.name}
                     </h4>
-                    <div className="text-grimdark-300 whitespace-pre-line leading-relaxed text-xs">
-                      {rule.description}
-                    </div>
+                    <FormattedText
+                      text={rule.description}
+                      className="text-slate-300 text-xs sm:text-sm font-sans"
+                    />
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-grimdark-500 italic">No specific detachment rules text found.</p>
+              <p className="text-slate-400 italic">No specific detachment rules text found.</p>
             )}
           </div>
 
@@ -93,17 +102,17 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
             (detachment.constraints.exclusiveTags && detachment.constraints.exclusiveTags.length > 0) ||
             detachment.constraints.exclusiveChapters
           ) && (
-            <div className="p-3.5 rounded-xl bg-amber-950/30 border border-amber-600/40 text-amber-300 flex items-start gap-2.5">
-              <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-slate-850 border border-slate-700 text-slate-300 flex items-start gap-3">
+              <AlertTriangle className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-bold text-xs mb-1">Detachment Restrictions</div>
+                <div className="font-semibold text-xs sm:text-sm text-slate-200 mb-1">Detachment Restrictions</div>
                 {detachment.constraints.exclusiveTags.length > 0 && (
-                  <p className="text-[11px] text-amber-200/90 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     This detachment has the <strong>{detachment.constraints.exclusiveTags.join(', ')}</strong> tag and cannot be taken with another {detachment.constraints.exclusiveTags.join(', ')} detachment.
                   </p>
                 )}
                 {detachment.constraints.exclusiveChapters && (
-                  <p className="text-[11px] text-amber-200/90 leading-relaxed mt-1">
+                  <p className="text-xs text-slate-300 leading-relaxed mt-1">
                     Your army cannot include units drawn from any other Space Marine Chapter.
                   </p>
                 )}
@@ -111,27 +120,28 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
             </div>
           )}
 
-          {/* Available Enhancements for this detachment */}
-          {allEnhancements.length > 0 && (
+          {/* Available Enhancements for this detachment (Hidden in Play Mode) */}
+          {!isPlayMode && detachmentEnhancements.length > 0 && (
             <div>
-              <h3 className="font-warhammer text-xs font-bold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Faction Enhancements & Upgrades</span>
+              <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-sky-400" />
+                <span>Detachment Enhancements & Upgrades</span>
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {allEnhancements.slice(0, 4).map((enh) => (
-                  <div key={enh.id} className="p-3 rounded-lg bg-grimdark-950 border border-grimdark-800">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-warhammer font-bold text-amber-300 text-xs truncate">
+                {detachmentEnhancements.map((enh) => (
+                  <div key={enh.id} className="p-3.5 rounded-xl bg-slate-850 border border-slate-750">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="font-warhammer font-bold text-sky-300 text-xs sm:text-sm truncate">
                         {enh.name}
                       </span>
-                      <span className="font-mono text-amber-400 font-bold text-[11px]">
+                      <span className="font-mono text-sky-400 font-bold text-xs">
                         +{enh.pts} pts
                       </span>
                     </div>
-                    <p className="text-[11px] text-grimdark-400 line-clamp-3">
-                      {enh.description}
-                    </p>
+                    <FormattedText
+                      text={enh.description}
+                      className="text-xs text-slate-300 line-clamp-3 leading-relaxed"
+                    />
                   </div>
                 ))}
               </div>
@@ -141,15 +151,15 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 border-t border-grimdark-800 bg-grimdark-950/80 flex items-center justify-between">
-          <div className="text-xs text-grimdark-400">
-            Cost: <span className="text-amber-400 font-bold font-mono">{detachment.dpCost} DP</span>
+        <div className="p-4 border-t border-slate-800 bg-slate-900/90 flex flex-wrap items-center justify-between gap-3">
+          <div className="text-xs sm:text-sm text-slate-300">
+            Cost: <span className="text-sky-400 font-bold font-mono text-base">{detachment.dpCost} DP</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-lg bg-grimdark-800 hover:bg-grimdark-700 text-grimdark-300 hover:text-white transition-colors"
+              className="btn-theme-secondary min-h-[42px] px-4 rounded-xl text-xs sm:text-sm font-semibold"
             >
               Close
             </button>
@@ -159,13 +169,13 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
                   onSelect();
                   onClose();
                 }}
-                className={`px-5 py-2 rounded-lg font-bold text-xs tracking-wide transition-all shadow-md ${
+                className={`min-h-[42px] px-5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all ${
                   isSelected
-                    ? 'bg-red-950/80 hover:bg-red-900 border border-red-700 text-red-200'
-                    : 'bg-amber-600 hover:bg-amber-500 text-black'
+                    ? 'bg-red-950/70 hover:bg-red-900/80 border border-red-700/60 text-red-200'
+                    : 'btn-theme-primary'
                 }`}
               >
-                {isSelected ? 'Remove Detachment' : 'Select Detachment'}
+                {isSelected ? 'Remove Detachment' : 'Add Detachment'}
               </button>
             )}
           </div>
@@ -175,4 +185,3 @@ export const DetachmentModal: React.FC<DetachmentModalProps> = ({
     </div>
   );
 };
-

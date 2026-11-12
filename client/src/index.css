@@ -2,15 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Standardized Theme Variables (RGB channels for full Tailwind opacity support)
+     Ready for future user theme customization (including background, surfaces, borders, text, and accents) */
+  --theme-bg: 13 17 23;              /* #0d1117 - Deep, calm obsidian slate canvas */
+  --theme-surface: 20 26 36;         /* #141a24 - Elevated section / modal container */
+  --theme-card: 27 35 48;            /* #1b2330 - Distinct raised card surface */
+  --theme-elevated: 35 45 61;        /* #232d3d - Interactive button / hover / input surface */
+  --theme-border-subtle: 36 46 62;   /* #242e3e - Soft structural divider */
+  --theme-border: 46 58 77;          /* #2e3a4d - Muted card border (no harsh white edges) */
+  --theme-text: 229 235 243;         /* #e5ebf3 - Soft off-white primary text */
+  --theme-text-secondary: 148 163 184; /* #94a3b8 - Readable secondary label */
+  --theme-text-muted: 100 116 139;   /* #64748b - De-emphasized metadata / empty category label */
+  --theme-accent: 59 130 246;        /* #3b82f6 - Primary interactive accent */
+  --theme-accent-hover: 96 165 250;  /* #60a5fa - Primary accent hover */
+  --theme-accent-soft: 125 211 252;  /* #7dd3fc - Soft highlight for values */
+  --theme-success: 52 211 153;       /* #34d399 - Legal / valid status */
+  --theme-warning: 251 191 36;       /* #fbbf24 - Caution / limit warning */
+  --theme-danger: 248 113 113;       /* #f87171 - Error / remove action */
+}
+
 @layer base {
   body {
-    @apply bg-[#0b0d10] text-[#e6edf8];
+    @apply bg-theme-bg text-theme-text antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   h1, h2, h3, .font-warhammer {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.05em;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.015em;
+    font-weight: 700;
+  }
+}
+
+/* Standardized Reusable UI Primitives */
+@layer components {
+  /* Primary Call-to-Action Button (Save, New Army, Primary Modal Confirm) */
+  .btn-theme-primary {
+    @apply bg-theme-accent hover:bg-theme-accent-hover text-white font-bold border border-white/10 shadow-md shadow-black/40 transition-all active:translate-y-[1px] active:shadow-sm;
+  }
+
+  /* Secondary / Quiet Action Button (Category + Add, Export, Back, Secondary Actions) */
+  .btn-theme-secondary {
+    @apply bg-theme-elevated hover:bg-theme-border text-theme-text border border-theme-border/80 shadow-sm shadow-black/30 transition-all active:translate-y-[1px];
+  }
+
+  /* Icon-Only Action Button (Inspect Eye, Duplicate, Close) */
+  .btn-theme-icon {
+    @apply bg-theme-elevated/90 hover:bg-theme-border text-theme-text-secondary hover:text-theme-text border border-theme-border/70 shadow-sm shadow-black/25 flex items-center justify-center transition-all active:translate-y-[1px];
+  }
+
+  /* Danger Icon Button (Remove / Delete) */
+  .btn-theme-danger-icon {
+    @apply bg-theme-elevated/90 hover:bg-red-950/80 text-theme-text-secondary hover:text-red-300 border border-theme-border/70 hover:border-red-700/60 shadow-sm shadow-black/25 flex items-center justify-center transition-all active:translate-y-[1px];
+  }
+
+  /* Elevated Item Card (Unit row, Detachment row) */
+  .card-theme-item {
+    @apply bg-theme-card hover:bg-theme-elevated/85 border border-theme-border/80 hover:border-theme-accent/40 rounded-xl shadow-md shadow-black/35 transition-all;
+  }
+
+  /* Section Container Panel (Groups category header + its cards so the eye has a clear resting zone) */
+  .panel-theme-section {
+    @apply bg-theme-surface/90 border border-theme-border-subtle rounded-2xl p-3 sm:p-4 shadow-sm shadow-black/25;
   }
 }
 
@@ -20,40 +74,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #111419;
+  background: rgb(var(--theme-bg));
 }
 ::-webkit-scrollbar-thumb {
-  background: #282f3d;
+  background: rgb(var(--theme-border));
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c99a3e;
+  background: rgb(var(--theme-text-muted));
 }
-
-/* Grimdark Metallic Accents */
-.border-gold-glow {
-  border-color: #c99a3e;
-  box-shadow: 0 0 15px rgba(201, 154, 62, 0.15);
-}
-
-.border-red-glow {
-  border-color: #961d1d;
-  box-shadow: 0 0 15px rgba(150, 29, 29, 0.2);
-}
-
-.badge-gold {
-  @apply bg-amber-950/60 text-amber-300 border border-amber-600/40;
-}
-
-.badge-red {
-  @apply bg-red-950/60 text-red-300 border border-red-700/50;
-}
-
-.badge-blue {
-  @apply bg-blue-950/60 text-blue-300 border border-blue-700/40;
-}
-
-.badge-gray {
-  @apply bg-grimdark-800 text-grimdark-300 border border-grimdark-700;
-}
-
