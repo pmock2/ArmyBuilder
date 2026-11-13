@@ -30,12 +30,41 @@ export interface Stratagem {
 interface StratagemsDataFile {
   edition: string;
   source: string;
+  wahapediaUpdatedAt?: string;
   generatedAt: string;
   coreStratagems: Stratagem[];
   detachmentStratagems: Record<string, Stratagem[]>;
 }
 
 const parsedData = stratagemsData as StratagemsDataFile;
+
+export const WAHAPEDIA_UPDATED_AT: string = parsedData.wahapediaUpdatedAt || '';
+
+let cachedDatasheetStratagems: Record<string, string[]> | null = null;
+let datasheetStratagemsPromise: Promise<Record<string, string[]>> | null = null;
+
+export async function loadDatasheetStratagemsMap(): Promise<Record<string, string[]>> {
+  if (cachedDatasheetStratagems) return cachedDatasheetStratagems;
+  if (!datasheetStratagemsPromise) {
+    datasheetStratagemsPromise = fetch(`${import.meta.env.BASE_URL}data/datasheet_stratagems.json`)
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((data: Record<string, string[]>) => {
+        cachedDatasheetStratagems = data || {};
+        return cachedDatasheetStratagems;
+      })
+      .catch(() => {
+        cachedDatasheetStratagems = {};
+        return {};
+      });
+  }
+  return datasheetStratagemsPromise;
+}
+
+export async function getEligibleStratagemIdsForUnit(unitName: string): Promise<Set<string>> {
+  const map = await loadDatasheetStratagemsMap();
+  const key = normalizeDetachmentKey(unitName);
+  return new Set(map[key] || []);
+}
 
 /**
  * Official Warhammer 40,000 11th Edition Core Stratagems (sourced from Wahapedia wh40k11ed)

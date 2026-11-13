@@ -18,9 +18,13 @@ import {
   StratagemPhase,
   StratagemTurn,
   CORE_STRATAGEMS,
+  WAHAPEDIA_UPDATED_AT,
   getDetachmentStratagems
 } from '../data/stratagems';
 import { FormattedText } from './FormattedText';
+
+type TurnFilter = 'all' | 'your' | 'opponent';
+type PhaseFilter = 'all' | 'Command' | 'Movement' | 'Shooting' | 'Charge' | 'Fight';
 
 interface StratagemsModalProps {
   isOpen: boolean;
@@ -63,10 +67,20 @@ const getTurnTheme = (turn: StratagemTurn) => {
 
 const getPhaseIcon = (phase: StratagemPhase) => {
   if (phase === 'Command') return <Crown className="w-3.5 h-3.5 text-amber-400" />;
-  if (phase.includes('Movement')) return <Footprints className="w-3.5 h-3.5 text-sky-400" />;
+  if (phase === 'Movement') return <Footprints className="w-3.5 h-3.5 text-sky-400" />;
   if (phase === 'Shooting') return <Crosshair className="w-3.5 h-3.5 text-sky-400" />;
   if (phase === 'Charge') return <Zap className="w-3.5 h-3.5 text-amber-400" />;
-  if (phase.includes('Fight')) return <Swords className="w-3.5 h-3.5 text-rose-400" />;
+  if (phase === 'Fight') return <Swords className="w-3.5 h-3.5 text-rose-400" />;
+  if (phase.includes('/')) {
+    return (
+      <span className="inline-flex items-center gap-0.5">
+        {phase.includes('Movement') && <Footprints className="w-3 h-3 text-sky-400" />}
+        {phase.includes('Shooting') && <Crosshair className="w-3 h-3 text-sky-400" />}
+        {phase.includes('Charge') && <Zap className="w-3 h-3 text-amber-400" />}
+        {phase.includes('Fight') && <Swords className="w-3 h-3 text-rose-400" />}
+      </span>
+    );
+  }
   return <Sparkles className="w-3.5 h-3.5 text-emerald-400" />;
 };
 
@@ -76,10 +90,29 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
   selectedDetachments
 }) => {
   const [inspectStratagem, setInspectStratagem] = useState<Stratagem | null>(null);
+  const [turnFilter, setTurnFilter] = useState<TurnFilter>('all');
+  const [phaseFilter, setPhaseFilter] = useState<PhaseFilter>('all');
 
   if (!isOpen) return null;
 
-  const detachmentGroups = getDetachmentStratagems(selectedDetachments);
+  const matchesFilters = (strat: Stratagem): boolean => {
+    if (turnFilter === 'your' && strat.turn === 'opponent') return false;
+    if (turnFilter === 'opponent' && strat.turn === 'your') return false;
+
+    if (phaseFilter !== 'all') {
+      if (strat.phase !== 'Any Phase' && !strat.phase.includes(phaseFilter)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const detachmentGroups = getDetachmentStratagems(selectedDetachments).map((g) => ({
+    ...g,
+    stratagems: g.stratagems.filter(matchesFilters)
+  }));
+  const filteredCoreStratagems = CORE_STRATAGEMS.filter(matchesFilters);
+  const hasActiveFilter = turnFilter !== 'all' || phaseFilter !== 'all';
 
   const renderStratagemCard = (strat: Stratagem) => {
     const theme = getTurnTheme(strat.turn);
@@ -175,6 +208,74 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
           </button>
         </div>
 
+        {/* Turn & Phase Filter Bar */}
+        <div className="px-4 sm:px-5 py-2.5 border-b border-slate-800 bg-slate-900/70 space-y-2">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            {/* Turn Filter Pills */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1">Turn:</span>
+              {([
+                { id: 'all', label: 'All Turns', activeClass: 'bg-slate-700 text-white border-slate-500' },
+                { id: 'your', label: 'Your Turn', activeClass: 'bg-sky-600 text-white border-sky-400' },
+                { id: 'opponent', label: "Opponent's Turn", activeClass: 'bg-rose-600 text-white border-rose-400' }
+              ] as const).map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => setTurnFilter(t.id)}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
+                    turnFilter === t.id
+                      ? t.activeClass
+                      : 'bg-slate-850 text-slate-300 border-slate-700/80 hover:border-slate-600'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            {hasActiveFilter && (
+              <button
+                type="button"
+                onClick={() => {
+                  setTurnFilter('all');
+                  setPhaseFilter('all');
+                }}
+                className="text-[11px] font-semibold text-sky-400 hover:text-sky-300 underline underline-offset-2"
+              >
+                Reset Filters
+              </button>
+            )}
+          </div>
+
+          {/* Phase Filter Pills */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1">Phase:</span>
+            {([
+              { id: 'all', label: 'All Phases' },
+              { id: 'Command', label: 'Command' },
+              { id: 'Movement', label: 'Movement' },
+              { id: 'Shooting', label: 'Shooting' },
+              { id: 'Charge', label: 'Charge' },
+              { id: 'Fight', label: 'Fight' }
+            ] as const).map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPhaseFilter(p.id)}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
+                  phaseFilter === p.id
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/60'
+                    : 'bg-slate-850 text-slate-300 border-slate-700/80 hover:border-slate-600'
+                }`}
+              >
+                {p.id !== 'all' && getPhaseIcon(p.id)}
+                <span>{p.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Scrollable Content */}
         <div className="p-3 sm:p-5 overflow-y-auto flex-1 space-y-6">
           
@@ -197,9 +298,15 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
                     <div className="text-xs font-warhammer font-bold text-sky-400 uppercase tracking-wider mb-2">
                       {group.detachmentName} ({group.dpCost} DP)
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                      {group.stratagems.map(renderStratagemCard)}
-                    </div>
+                    {group.stratagems.length === 0 ? (
+                      <div className="p-3 rounded-xl bg-slate-850/70 border border-slate-800 text-slate-400 text-xs text-center">
+                        No detachment stratagems match the selected Turn / Phase filter.
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                        {group.stratagems.map(renderStratagemCard)}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -210,14 +317,26 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
           <div>
             <div className="flex items-center justify-between pb-2 border-b border-slate-800 mb-3">
               <h3 className="font-warhammer text-sm sm:text-base font-extrabold text-slate-100 tracking-wider uppercase">
-                Core Stratagems ({CORE_STRATAGEMS.length})
+                Core Stratagems ({filteredCoreStratagems.length})
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-              {CORE_STRATAGEMS.map(renderStratagemCard)}
-            </div>
+            {filteredCoreStratagems.length === 0 ? (
+              <div className="p-3 rounded-xl bg-slate-850/70 border border-slate-800 text-slate-400 text-xs text-center">
+                No core stratagems match the selected Turn / Phase filter.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {filteredCoreStratagems.map(renderStratagemCard)}
+              </div>
+            )}
           </div>
+
+          {WAHAPEDIA_UPDATED_AT && (
+            <div className="pt-2 border-t border-slate-800/80 text-[11px] text-slate-500 text-right font-mono">
+              11th Edition Stratagems • Wahapedia sync {WAHAPEDIA_UPDATED_AT}
+            </div>
+          )}
 
         </div>
       </div>

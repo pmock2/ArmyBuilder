@@ -1,20 +1,28 @@
 /**
- * Imports 11th Edition Core & Detachment Stratagems from Wahapedia's Stratagems.csv
- * into client/src/data/stratagems_data.json.
+ * Imports 11th Edition Core & Detachment Stratagems, Last Update timestamp,
+ * and Datasheet->Stratagem eligibility links from Wahapedia CSV exports.
  *
  * Usage:
- *   node server/import_stratagems.js          (uses local data_repo/wahapedia/Stratagems.csv)
- *   node server/import_stratagems.js --fetch  (downloads latest Stratagems.csv from Wahapedia first)
+ *   node server/import_stratagems.js          (uses local data_repo/wahapedia/*.csv)
+ *   node server/import_stratagems.js --fetch  (downloads latest CSVs from Wahapedia first)
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const CSV_URL = 'https://wahapedia.ru/wh40k11ed/Stratagems.csv';
-const CSV_PATH = path.resolve(__dirname, '..', 'data_repo', 'wahapedia', 'Stratagems.csv');
-const OUT_PATH = path.resolve(__dirname, '..', 'client', 'src', 'data', 'stratagems_data.json');
+const WAHA_BASE = 'https://wahapedia.ru/wh40k11ed';
+const WAHA_DIR = path.resolve(__dirname, '..', 'data_repo', 'wahapedia');
+const FACTIONS_DIR = path.resolve(__dirname, '..', 'client', 'public', 'data', 'factions');
 
-function normalizeDetachmentKey(name) {
+const STRAT_CSV_PATH = path.join(WAHA_DIR, 'Stratagems.csv');
+const DS_CSV_PATH = path.join(WAHA_DIR, 'Datasheets.csv');
+const DS_STRAT_CSV_PATH = path.join(WAHA_DIR, 'Datasheets_stratagems.csv');
+const LAST_UPDATE_CSV_PATH = path.join(WAHA_DIR, 'Last_update.csv');
+
+const OUT_STRAT_PATH = path.resolve(__dirname, '..', 'client', 'src', 'data', 'stratagems_data.json');
+const OUT_DS_STRAT_PATH = path.resolve(__dirname, '..', 'client', 'public', 'data', 'datasheet_stratagems.json');
+
+function normalizeKey(name) {
   return (name || '')
     .replace(/[\u2018\u2019]/g, "'")
     .replace(/\s+/g, ' ')
@@ -28,8 +36,18 @@ function toTitleCase(str) {
     .replace(/(^|[\s\-\u2013\u2014'’])([a-z])/g, (_, sep, ch) => sep + ch.toUpperCase());
 }
 
-function mapTurn(rawTurn) {
+function mapTurn(rawTurn, convertedDesc) {
   const t = (rawTurn || '').toLowerCase();
+  const whenLine = (convertedDesc || '').split('\n')[0].toLowerCase();
+
+  // Catch occasional upstream Wahapedia turn-column typos when WHEN is unambiguous
+  if (whenLine.includes('your ') && !whenLine.includes('opponent') && !whenLine.includes('either')) {
+    return 'your';
+  }
+  if (whenLine.includes('opponent') && !whenLine.includes('your ') && !whenLine.includes('either')) {
+    return 'opponent';
+  }
+
   if (t.includes('opponent')) return 'opponent';
   if (t.includes('either')) return 'either';
   return 'your';
@@ -97,7 +115,7 @@ function convertHtmlDescription(html) {
     .replace(/<li[^>]*>/gi, '\n• ')
     .replace(/<\/li>/gi, '');
 
-  // Bold / Italic / Underline
+  // Bold / Italic
   text = text
     .replace(/<b[^>]*>(.*?)<\/b>/gi, (_, inner) => `**${inner.trim()}**`)
     .replace(/<strong[^>]*>(.*?)<\/strong>/gi, (_, inner) => `**${inner.trim()}**`)
@@ -132,36 +150,49 @@ function parsePipeCsv(raw) {
         obj[headers[j]] = (cols[j] || '').trim();
       }
     }
-    if (obj.id && obj.name) {
-      rows.push(obj);
-    }
+    rows.push(obj);
   }
   return rows;
 }
 
-async function main() {
-  if (process.argv.includes('--fetch') || !fs.existsSync(CSV_PATH)) {
-    console.log(`Fetching ${CSV_URL}...`);
-    const res = await fetch(CSV_URL);
+async function ensureCsv(filename, localPath) {
+  if (process.argv.includes('--fetch') || !fs.existsSync(localPath)) {
+    const url = `${WAHA_BASE}/${filename}`;
+    console.log(`Fetching ${url}...`);
+    const res = await fetch(url);
     if (!res.ok) {
-      throw new Error(`Failed to fetch ${CSV_URL}: ${res.status} ${res.statusText}`);
+      throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
     }
     const text = await res.text();
-    fs.mkdirSync(path.dirname(CSV_PATH), { recursive: true });
-    fs.writeFileSync(CSV_PATH, text, 'utf8');
-    console.log(`Saved ${CSV_PATH}`);
+    fs.mkdirSync(path.dirname(localPath), { recursive: true });
+    fs.writeFileSync(localPath, text, 'utf8');
+  }
+}
+
+async function main() {
+  await ensureCsv('Stratagems.csv', STRAT_CSV_PATH);
+  await ensureCsv('Datasheets.csv', DS_CSV_PATH);
+  await ensureCsv('Datasheets_stratagems.csv', DS_STRAT_CSV_PATH);
+  await ensureCsv('Last_update.csv', LAST_UPDATE_CSV_PATH);
+
+  // 1. Read Last_update.csv
+  let wahapediaUpdatedAt = '';
+  if (fs.existsSync(LAST_UPDATE_CSV_PATH)) {
+    const luRows = parsePipeCsv(fs.readFileSync(LAST_UPDATE_CSV_PATH, 'utf8'));
+    if (luRows[0]?.last_update) {
+      wahapediaUpdatedAt = luRows[0].last_update;
+    }
   }
 
-  const raw = fs.readFileSync(CSV_PATH, 'utf8');
-  const rows = parsePipeCsv(raw);
-  console.log(`Parsed ${rows.length} rows from Stratagems.csv`);
-
+  // 2. Parse Stratagems.csv
+  const rows = parsePipeCsv(fs.readFileSync(STRAT_CSV_PATH, 'utf8')).filter((r) => r.id && r.name);
   const coreStratagems = [];
   const detachmentStratagems = {};
+  const validStratIds = new Set();
 
   for (const r of rows) {
     const cp = parseInt(r.cp_cost, 10);
-    if (Number.isNaN(cp)) continue; // Skip non-CP ability entries like SNAP SHOOTING
+    if (Number.isNaN(cp)) continue;
 
     const detRaw = (r.detachment || '').trim();
     const is11eCore = r.id.startsWith('000010810');
@@ -170,45 +201,88 @@ async function main() {
       continue;
     }
 
+    const description = convertHtmlDescription(r.description);
     const stratObj = {
       id: `waha-${r.id}`,
       name: toTitleCase(r.name),
       cp,
-      turn: mapTurn(r.turn),
+      turn: mapTurn(r.turn, description),
       phase: mapPhase(r.phase),
       category: (r.type || 'Stratagem').replace(/\s+Stratagem$/i, '').trim(),
-      description: convertHtmlDescription(r.description)
+      description
     };
 
     if (is11eCore) {
       coreStratagems.push(stratObj);
+      validStratIds.add(stratObj.id);
     } else if (detRaw) {
       stratObj.detachment = detRaw.replace(/[\u2018\u2019]/g, "'");
-      const key = normalizeDetachmentKey(detRaw);
+      const key = normalizeKey(detRaw);
       if (!detachmentStratagems[key]) {
         detachmentStratagems[key] = [];
       }
-      // Avoid duplicates by name within the same detachment
       if (!detachmentStratagems[key].some((s) => s.name.toLowerCase() === stratObj.name.toLowerCase())) {
         detachmentStratagems[key].push(stratObj);
+        validStratIds.add(stratObj.id);
       }
     }
   }
 
-  // Sort core stratagems in a consistent logical order (by ID)
   coreStratagems.sort((a, b) => a.id.localeCompare(b.id));
 
-  const output = {
+  const stratOutput = {
     edition: '11th Edition',
     source: 'Wahapedia wh40k11ed Stratagems.csv',
+    wahapediaUpdatedAt,
     generatedAt: new Date().toISOString(),
     coreStratagems,
     detachmentStratagems
   };
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2), 'utf8');
+  fs.writeFileSync(OUT_STRAT_PATH, JSON.stringify(stratOutput, null, 2), 'utf8');
   console.log(
-    `Wrote ${OUT_PATH}: ${coreStratagems.length} core stratagems, ${Object.keys(detachmentStratagems).length} detachments.`
+    `Wrote ${OUT_STRAT_PATH}: ${coreStratagems.length} core, ${Object.keys(detachmentStratagems).length} detachments.`
+  );
+
+  // 3. Build compact Datasheet -> Stratagem IDs map for units in our app
+  const appUnitNames = new Set();
+  if (fs.existsSync(FACTIONS_DIR)) {
+    for (const file of fs.readdirSync(FACTIONS_DIR)) {
+      if (!file.endsWith('.json')) continue;
+      const data = JSON.parse(fs.readFileSync(path.join(FACTIONS_DIR, file), 'utf8'));
+      for (const u of data.units || []) {
+        appUnitNames.add(normalizeKey(u.name));
+      }
+    }
+  }
+
+  const dsRows = parsePipeCsv(fs.readFileSync(DS_CSV_PATH, 'utf8'));
+  const dsIdToName = new Map();
+  for (const r of dsRows) {
+    if (r.id && r.name) {
+      dsIdToName.set(r.id, normalizeKey(r.name));
+    }
+  }
+
+  const dsStratRows = parsePipeCsv(fs.readFileSync(DS_STRAT_CSV_PATH, 'utf8'));
+  const unitStratMap = {};
+  for (const r of dsStratRows) {
+    const unitKey = dsIdToName.get(r.datasheet_id);
+    const stratId = r.stratagem_id ? `waha-${r.stratagem_id}` : '';
+    if (!unitKey || !stratId || !validStratIds.has(stratId)) continue;
+    if (appUnitNames.size > 0 && !appUnitNames.has(unitKey)) continue;
+
+    if (!unitStratMap[unitKey]) {
+      unitStratMap[unitKey] = [];
+    }
+    if (!unitStratMap[unitKey].includes(stratId)) {
+      unitStratMap[unitKey].push(stratId);
+    }
+  }
+
+  fs.writeFileSync(OUT_DS_STRAT_PATH, JSON.stringify(unitStratMap), 'utf8');
+  console.log(
+    `Wrote ${OUT_DS_STRAT_PATH}: ${Object.keys(unitStratMap).length} units mapped to eligible stratagems.`
   );
 }
 

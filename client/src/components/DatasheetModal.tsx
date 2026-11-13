@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Shield, Swords, Crosshair, Sparkles, Tag, Users, Star, Eye, Check, ChevronDown, ChevronRight, Plus, Minus } from 'lucide-react';
+import { X, Shield, Swords, Crosshair, Sparkles, Tag, Users, Star, Eye, Check, ChevronDown, ChevronRight, Plus, Minus, Zap } from 'lucide-react';
 import {
   Datasheet,
   SelectedUnit,
@@ -16,6 +16,12 @@ import {
 import { computeUnitEquippedData, computeModifiedStat } from '../utils/equippedStats';
 import { KeywordTooltip } from './KeywordTooltip';
 import { FormattedText } from './FormattedText';
+import {
+  Stratagem,
+  CORE_STRATAGEMS,
+  getDetachmentStratagems,
+  getEligibleStratagemIdsForUnit
+} from '../data/stratagems';
 
 interface DatasheetModalProps {
   unit: Datasheet | null;
@@ -46,14 +52,36 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const [previewSelectedOptions, setPreviewSelectedOptions] = useState<Record<string, string[]>>({});
   const [isWargearOpen, setIsWargearOpen] = useState(false);
   const [isEnhancementsOpen, setIsEnhancementsOpen] = useState(false);
+  const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
+  const [eligibleStratIds, setEligibleStratIds] = useState<Set<string>>(new Set());
+  const [expandedStratId, setExpandedStratId] = useState<string | null>(null);
 
   useEffect(() => {
     setIsWargearOpen(false);
     setIsEnhancementsOpen(false);
+    setIsStratagemsOpen(false);
     setInspectingOption(null);
-  }, [unit?.id, selectedUnit?.instanceId, isOpen]);
+    setExpandedStratId(null);
+
+    if (isOpen && unit?.name) {
+      let active = true;
+      getEligibleStratagemIdsForUnit(unit.name).then((ids) => {
+        if (active) setEligibleStratIds(ids);
+      });
+      return () => {
+        active = false;
+      };
+    } else {
+      setEligibleStratIds(new Set());
+    }
+  }, [unit?.id, unit?.name, selectedUnit?.instanceId, isOpen]);
 
   if (!isOpen || !unit) return null;
+
+  const detachmentStrats = getDetachmentStratagems(selectedDetachments).flatMap((g) => g.stratagems);
+  const eligibleStratagems: Stratagem[] = [...detachmentStrats, ...CORE_STRATAGEMS].filter((s) =>
+    eligibleStratIds.has(s.id)
+  );
 
   const currentModelsCount = selectedUnit?.modelsCount || unit.minModels || 1;
   const wargearPts = getUnitWargearPts(selectedUnit, previewSelectedOptions, unit);
@@ -1394,6 +1422,83 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* 7. Eligible Stratagems (Wahapedia 11e) */}
+          {eligibleStratagems.length > 0 && (
+            <div className="border-t border-slate-800 pt-4">
+              <button
+                type="button"
+                onClick={() => setIsStratagemsOpen((prev) => !prev)}
+                className="w-full flex items-center justify-between text-left group"
+              >
+                <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2 group-hover:text-sky-300 transition-colors">
+                  <Zap className="w-4 h-4 text-amber-400" />
+                  <span>Eligible Stratagems ({eligibleStratagems.length})</span>
+                </h3>
+                {isStratagemsOpen ? (
+                  <ChevronDown className="w-4 h-4 text-slate-400" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                )}
+              </button>
+
+              {isStratagemsOpen && (
+                <div className="mt-3 space-y-2">
+                  {eligibleStratagems.map((strat) => {
+                    const isExpanded = expandedStratId === strat.id;
+                    const turnPill =
+                      strat.turn === 'your'
+                        ? 'bg-sky-950/80 text-sky-300 border-sky-700/60'
+                        : strat.turn === 'opponent'
+                          ? 'bg-rose-950/80 text-rose-300 border-rose-700/60'
+                          : 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60';
+                    const turnLabel =
+                      strat.turn === 'your'
+                        ? 'Your Turn'
+                        : strat.turn === 'opponent'
+                          ? "Opponent's Turn"
+                          : 'Either Turn';
+
+                    return (
+                      <div
+                        key={strat.id}
+                        onClick={() => setExpandedStratId(isExpanded ? null : strat.id)}
+                        className="rounded-xl p-3 bg-slate-850/90 border border-slate-750 hover:border-slate-650 cursor-pointer transition-all"
+                      >
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-[11px] font-mono font-black px-1.5 py-0.5 rounded bg-slate-900 text-amber-300 border border-amber-500/40">
+                              {strat.cp}CP
+                            </span>
+                            <span className="font-warhammer text-xs sm:text-sm font-bold text-slate-100">
+                              {strat.name}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${turnPill}`}>
+                              {turnLabel}
+                            </span>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-700">
+                              {strat.phase}
+                            </span>
+                          </div>
+                        </div>
+
+                        {isExpanded && (
+                          <div className="mt-2.5 pt-2.5 border-t border-slate-800">
+                            <FormattedText
+                              text={strat.description}
+                              className="text-slate-300 text-xs font-sans"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
 
         </div>
 
