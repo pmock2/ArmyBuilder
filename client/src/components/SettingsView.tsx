@@ -11,8 +11,15 @@ import {
   Sparkles,
   Package,
   Layers,
-  Key
+  Key,
+  Smartphone
 } from 'lucide-react';
+import {
+  isHapticsEnabled,
+  setHapticsEnabled,
+  isVibrationSupported,
+  triggerHaptic
+} from '../utils/haptics';
 import { ArmyRoster } from '../types/roster';
 import {
   AppTheme,
@@ -79,6 +86,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   const [hasGeminiKey, setHasGeminiKey] = useState<boolean>(
     () => Boolean(localStorage.getItem('wh40k_gemini_api_key'))
   );
+  const [hapticsOn, setHapticsOn] = useState<boolean>(() => isHapticsEnabled());
+  const vibrationSupported = isVibrationSupported();
 
   const handleSelectTheme = (theme: AppTheme) => {
     setActiveTheme(theme);
@@ -261,6 +270,43 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
       {activeTab === 'theme' ? (
         <div className="space-y-5">
+          {/* Mobile Haptics Toggle */}
+          <section className="panel-theme-section flex items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <Smartphone className="w-5 h-5 text-theme-accent-soft shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-sm font-bold text-theme-text">
+                  Mobile Haptic Vibration
+                </h3>
+                <p className="text-xs text-theme-text-secondary">
+                  {vibrationSupported
+                    ? 'Subtle vibration feedback when tapping buttons and controls on supported mobile devices.'
+                    : 'Subtle vibration feedback on supported Android browsers (not supported by this browser/device).'}
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={hapticsOn}
+              onClick={() => {
+                const next = !hapticsOn;
+                setHapticsOn(next);
+                setHapticsEnabled(next);
+                if (next) triggerHaptic('medium');
+              }}
+              className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 items-center p-0.5 ${
+                hapticsOn ? 'bg-theme-accent' : 'bg-theme-elevated'
+              }`}
+            >
+              <span
+                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow transition duration-200 ${
+                  hapticsOn ? 'translate-x-5' : 'translate-x-0'
+                }`}
+              />
+            </button>
+          </section>
+
           {/* Preset & Saved Themes Grid */}
           <section className="panel-theme-section space-y-3">
             <div className="flex items-center justify-between">

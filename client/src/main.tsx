@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { initTheme } from './utils/themeStorage';
+import { initGlobalHaptics } from './utils/haptics';
 import './index.css';
 
 initTheme();
+initGlobalHaptics();
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
