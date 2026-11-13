@@ -69,6 +69,15 @@
   .panel-theme-section {
     @apply bg-theme-surface/90 border border-theme-border-subtle rounded-2xl p-3 sm:p-4 shadow-sm shadow-black/25;
   }
+
+  /* Distinct Theme-Aware Section Header Strip */
+  .section-theme-header {
+    @apply flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-theme-accent/15 border border-theme-accent/25 border-l-4 border-l-theme-accent;
+  }
+
+  .section-theme-title {
+    @apply font-warhammer text-xs sm:text-sm font-extrabold tracking-wider uppercase text-theme-accent-soft;
+  }
 }
 
 /* Custom Scrollbars */

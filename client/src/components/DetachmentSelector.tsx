@@ -48,19 +48,15 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
             : 'bg-theme-surface/40 border border-theme-border-subtle/60 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-theme-surface/70'
         }
       >
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <h3
-              className={`font-warhammer text-xs sm:text-sm font-bold tracking-wider uppercase ${
-                hasDetachments ? 'text-theme-text' : 'text-theme-text-secondary'
-              }`}
-            >
+        <div className="section-theme-header">
+          <div className="flex items-center gap-2 min-w-0">
+            <h3 className="section-theme-title truncate">
               Detachments
             </h3>
-            <span className="text-xs font-mono font-semibold text-theme-text-muted">
+            <span className="text-xs font-mono font-semibold text-theme-accent-soft/80">
               ({selectedDetachments.length})
             </span>
-            <span className="text-xs sm:text-sm font-mono text-theme-text-secondary font-bold">
+            <span className="text-xs sm:text-sm font-mono text-theme-text font-bold">
               • {totalDP}/{dpLimit} DP
             </span>
           </div>
@@ -69,7 +65,7 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
             <button
               type="button"
               onClick={() => setIsBrowserOpen(true)}
-              className="btn-theme-secondary min-h-[32px] px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-semibold tracking-wide"
+              className="btn-theme-secondary min-h-[30px] px-2.5 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0"
               title="Add Detachment"
               aria-label="Add Detachment"
             >
@@ -131,8 +127,8 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
       {/* 2. Stratagems Section (Simple Card with Eye Icon underneath Detachments) */}
       <section className="panel-theme-section">
-        <div className="flex items-center justify-between gap-2 mb-2.5">
-          <h3 className="font-warhammer text-xs sm:text-sm font-bold text-theme-text tracking-wider uppercase">
+        <div className="section-theme-header mb-3">
+          <h3 className="section-theme-title">
             Stratagems
           </h3>
         </div>

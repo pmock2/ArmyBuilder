@@ -49,20 +49,22 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
       }
     >
       {/* Section Header */}
-      <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+      <div className={hasUnits ? 'section-theme-header' : 'flex items-center justify-between gap-2 pl-2 border-l-2 border-theme-accent/60'}>
+        <div className="flex items-center gap-2 min-w-0">
           <h3
-            className={`font-warhammer text-xs sm:text-sm font-bold tracking-wider uppercase ${
-              hasUnits ? 'text-theme-text' : 'text-theme-text-secondary'
-            }`}
+            className={
+              hasUnits
+                ? 'section-theme-title truncate'
+                : 'font-warhammer text-xs sm:text-sm font-bold tracking-wider uppercase text-theme-accent-soft/85 truncate'
+            }
           >
             {title}
           </h3>
-          <span className="text-xs font-mono font-semibold text-theme-text-muted">
+          <span className={`text-xs font-mono font-semibold ${hasUnits ? 'text-theme-accent-soft/80' : 'text-theme-text-muted'}`}>
             ({units.length})
           </span>
           {sectionPoints > 0 && (
-            <span className="text-xs sm:text-sm font-mono text-theme-text-secondary font-bold">
+            <span className="text-xs sm:text-sm font-mono text-theme-text font-bold whitespace-nowrap">
               • {sectionPoints} pts
             </span>
           )}
@@ -72,7 +74,7 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
           <button
             type="button"
             onClick={() => onOpenBrowser(roleKey)}
-            className="btn-theme-secondary min-h-[32px] px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-semibold tracking-wide"
+            className="btn-theme-secondary min-h-[30px] px-2.5 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0"
             title={`Add ${title}`}
             aria-label={`Add ${title}`}
           >
