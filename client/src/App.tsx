@@ -313,6 +313,20 @@ export const App: React.FC = () => {
     saveRoster(updated);
   };
 
+  // Rename Roster
+  const handleRenameRoster = (newName: string) => {
+    if (!activeRoster) return;
+    const trimmed = newName.trim();
+    if (!trimmed) return;
+    const updated: ArmyRoster = {
+      ...activeRoster,
+      name: trimmed
+    };
+    setActiveRoster(updated);
+    const updatedList = saveRoster(updated);
+    setRosters(updatedList);
+  };
+
   // Add Unit
   const handleAddUnit = (datasheet: Datasheet) => {
     if (!activeRoster) return;
@@ -692,6 +706,7 @@ export const App: React.FC = () => {
         includeLegends={activeRoster.includeLegends || false}
         onToggleLegends={handleToggleLegends}
         rosterName={activeRoster.name}
+        onRenameRoster={handleRenameRoster}
       />
 
       {/* Floating Rules AI Assistant Pill in Play Mode */}

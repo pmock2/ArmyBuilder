@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Settings, BookOpen } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Settings, BookOpen, Pencil } from 'lucide-react';
 
 interface ListSettingsModalProps {
   isOpen: boolean;
@@ -7,6 +7,7 @@ interface ListSettingsModalProps {
   includeLegends: boolean;
   onToggleLegends: (enabled: boolean) => void;
   rosterName: string;
+  onRenameRoster: (newName: string) => void;
 }
 
 export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
@@ -14,9 +15,26 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
   onClose,
   includeLegends,
   onToggleLegends,
-  rosterName
+  rosterName,
+  onRenameRoster
 }) => {
+  const [nameDraft, setNameDraft] = useState(rosterName);
+
+  useEffect(() => {
+    if (isOpen) {
+      setNameDraft(rosterName);
+    }
+  }, [isOpen, rosterName]);
+
   if (!isOpen) return null;
+
+  const commitRenameAndClose = () => {
+    const trimmed = nameDraft.trim();
+    if (trimmed && trimmed !== rosterName) {
+      onRenameRoster(trimmed);
+    }
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
@@ -49,7 +67,31 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
 
         {/* Content */}
         <div className="p-4 sm:p-6 space-y-5">
-          
+          {/* Setting 0: Roster Name */}
+          <div className="bg-slate-850 border border-slate-750 rounded-2xl p-4 sm:p-5">
+            <label
+              htmlFor="roster-name-input"
+              className="font-warhammer text-sm sm:text-base font-bold text-slate-100 flex items-center gap-2 mb-2"
+            >
+              <Pencil className="w-4 h-4 text-theme-accent-soft" />
+              <span>Roster Name</span>
+            </label>
+            <input
+              id="roster-name-input"
+              type="text"
+              value={nameDraft}
+              onChange={(e) => setNameDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  commitRenameAndClose();
+                }
+              }}
+              placeholder="Enter army roster name..."
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-theme-accent"
+            />
+          </div>
+
           {/* Setting 1: Warhammer Legends Toggle */}
           <div className="bg-slate-850 border border-slate-750 rounded-2xl p-4 sm:p-5">
             <div className="flex items-start justify-between gap-4">
@@ -117,7 +159,7 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
         <div className="px-4 sm:px-6 py-3.5 border-t border-slate-800 bg-slate-900/90 flex justify-end">
           <button
             type="button"
-            onClick={onClose}
+            onClick={commitRenameAndClose}
             className="btn-theme-primary w-full sm:w-auto min-h-[42px] px-6 rounded-xl text-sm tracking-wide"
           >
             Done
