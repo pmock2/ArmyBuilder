@@ -499,6 +499,7 @@ export const App: React.FC = () => {
           onSelectRoster={(r) => setActiveRoster(r)}
           onDuplicateRoster={handleDuplicateRoster}
           onDeleteRoster={handleDeleteRoster}
+          onRostersChange={setRosters}
           onImportRoster={handleImportRoster}
           onOpenAiArmyCreator={handleOpenAiArmyCreator}
           onOpenAiRules={handleOpenAiRules}
@@ -580,7 +581,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-grimdark-950 flex flex-col pb-8">
+    <div className="min-h-screen bg-transparent flex flex-col pb-8">
       
       {/* Top HUD */}
       <Navbar

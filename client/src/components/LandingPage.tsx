@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
+import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose, Settings } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { parseRosterJSON } from '../utils/storage';
 import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
+import { SettingsView } from './SettingsView';
 import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
 
 interface LandingPageProps {
@@ -12,6 +13,7 @@ interface LandingPageProps {
   onSelectRoster: (roster: ArmyRoster) => void;
   onDuplicateRoster: (rosterId: string) => void;
   onDeleteRoster: (rosterId: string) => void;
+  onRostersChange?: (rosters: ArmyRoster[]) => void;
   onImportRoster: (roster: ArmyRoster) => void;
   onOpenAiArmyCreator?: () => void;
   onOpenAiRules?: () => void;
@@ -24,13 +26,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onSelectRoster,
   onDuplicateRoster,
   onDeleteRoster,
+  onRostersChange,
   onImportRoster,
   onOpenAiArmyCreator,
   onOpenAiRules,
   onOpenAiSettings
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [activeNav, setActiveNav] = useState<'armies' | 'owned'>('armies');
+  const [activeNav, setActiveNav] = useState<'armies' | 'owned' | 'settings'>('armies');
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
@@ -53,7 +56,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-theme-bg flex flex-col text-theme-text">
+    <div className="min-h-screen bg-transparent flex flex-col text-theme-text">
       {/* Top Banner */}
       <header className="border-b border-theme-border-subtle bg-theme-surface/95 backdrop-blur-sm px-4 sm:px-6 py-3.5 sm:py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
@@ -93,7 +96,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenAiArmyCreator}
-                className="min-h-[38px] flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-md shadow-sky-950/50 transition-all active:scale-[0.98]"
+                className="min-h-[38px] flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide bg-gradient-to-r from-theme-accent to-theme-accent-hover text-white shadow-md shadow-black/35 transition-all active:scale-[0.98]"
                 title="Create Army with AI"
               >
                 <Sparkles className="w-4 h-4" />
@@ -190,6 +193,25 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </span>
                 )}
               </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveNav('settings')}
+                title="Settings (Theme & Data Manager)"
+                aria-label="Settings"
+                className={`flex items-center ${
+                  isNavExpanded ? 'justify-start px-3' : 'justify-center px-0'
+                } h-10 rounded-xl text-sm font-medium transition-colors ${
+                  activeNav === 'settings'
+                    ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
+                    : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
+                }`}
+              >
+                <span className="flex items-center gap-3 min-w-0">
+                  <Settings className="w-5 h-5 shrink-0" />
+                  {isNavExpanded && <span className="truncate">Settings</span>}
+                </span>
+              </button>
             </nav>
           </div>
 
@@ -232,7 +254,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* Main Content + Footer */}
         <div className="flex-1 min-w-0 flex flex-col">
           <main className="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-6">
-          {activeNav === 'owned' ? (
+          {activeNav === 'settings' ? (
+            <SettingsView
+              rosters={rosters}
+              onRostersChange={(next) => onRostersChange?.(next)}
+              ownedModels={ownedModels}
+              onUpdateOwnedModels={setOwnedModels}
+            />
+          ) : activeNav === 'owned' ? (
             <OwnedModelsView
               ownedModels={ownedModels}
               onUpdateOwnedModels={setOwnedModels}

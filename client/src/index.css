@@ -20,11 +20,14 @@
   --theme-success: 52 211 153;       /* #34d399 - Legal / valid status */
   --theme-warning: 251 191 36;       /* #fbbf24 - Caution / limit warning */
   --theme-danger: 248 113 113;       /* #f87171 - Error / remove action */
+  --theme-bg-gradient: none;
 }
 
 @layer base {
   body {
     @apply bg-theme-bg text-theme-text antialiased;
+    background-image: var(--theme-bg-gradient, none);
+    background-attachment: fixed;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
