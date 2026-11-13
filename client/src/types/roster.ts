@@ -462,6 +462,7 @@ export interface ArmyRoster {
   subFactionId?: string | null;
   subFactionName?: string | null;
   battleSize: BattleSize;
+  customPointsLimit?: number | null;
   detachments: SelectedDetachment[];
   forceDisposition?: string | null;
   forceDispositions?: string[];

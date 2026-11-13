@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Settings, Pencil } from 'lucide-react';
+import { X, Settings, Pencil, Coins, RotateCcw } from 'lucide-react';
 
 interface ListSettingsModalProps {
   isOpen: boolean;
@@ -8,6 +8,9 @@ interface ListSettingsModalProps {
   onToggleLegends: (enabled: boolean) => void;
   rosterName: string;
   onRenameRoster: (newName: string) => void;
+  customPointsLimit?: number | null;
+  defaultPointsLimit: number;
+  onSetCustomPointsLimit: (limit: number | null) => void;
 }
 
 export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
@@ -16,22 +19,39 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
   includeLegends,
   onToggleLegends,
   rosterName,
-  onRenameRoster
+  onRenameRoster,
+  customPointsLimit,
+  defaultPointsLimit,
+  onSetCustomPointsLimit
 }) => {
   const [nameDraft, setNameDraft] = useState(rosterName);
+  const [pointsDraft, setPointsDraft] = useState<string>(
+    String(customPointsLimit || defaultPointsLimit)
+  );
 
   useEffect(() => {
     if (isOpen) {
       setNameDraft(rosterName);
+      setPointsDraft(String(customPointsLimit || defaultPointsLimit));
     }
-  }, [isOpen, rosterName]);
+  }, [isOpen, rosterName, customPointsLimit, defaultPointsLimit]);
 
   if (!isOpen) return null;
 
-  const commitRenameAndClose = () => {
+  const commitChangesAndClose = () => {
     const trimmed = nameDraft.trim();
     if (trimmed && trimmed !== rosterName) {
       onRenameRoster(trimmed);
+    }
+    const parsedPts = parseInt(pointsDraft, 10);
+    if (!isNaN(parsedPts) && parsedPts > 0) {
+      if (parsedPts === defaultPointsLimit && !customPointsLimit) {
+        // unchanged default
+      } else if (parsedPts === defaultPointsLimit) {
+        onSetCustomPointsLimit(null);
+      } else {
+        onSetCustomPointsLimit(parsedPts);
+      }
     }
     onClose();
   };
@@ -84,7 +104,7 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
-                  commitRenameAndClose();
+                  commitChangesAndClose();
                 }
               }}
               placeholder="Enter army roster name..."
@@ -92,7 +112,70 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
             />
           </div>
 
-          {/* Setting 1: Warhammer Legends Toggle */}
+          {/* Setting 1: Custom Points Limit */}
+          <div className="bg-slate-850 border border-slate-750 rounded-2xl p-4 sm:p-5 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              <label
+                htmlFor="custom-points-input"
+                className="font-warhammer text-sm sm:text-base font-bold text-slate-100 flex items-center gap-2"
+              >
+                <Coins className="w-4 h-4 text-theme-accent-soft" />
+                <span>Points Limit</span>
+              </label>
+              {customPointsLimit && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onSetCustomPointsLimit(null);
+                    setPointsDraft(String(defaultPointsLimit));
+                  }}
+                  className="text-xs text-theme-text-secondary hover:text-theme-text flex items-center gap-1"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span>Reset ({defaultPointsLimit})</span>
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <input
+                id="custom-points-input"
+                type="number"
+                min={100}
+                max={20000}
+                step={50}
+                value={pointsDraft}
+                onChange={(e) => setPointsDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    commitChangesAndClose();
+                  }
+                }}
+                className="w-32 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm font-mono font-bold text-slate-100 focus:outline-none focus:border-theme-accent"
+              />
+              <span className="text-xs text-slate-400 font-medium">pts</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {[500, 1000, 1500, 2000, 3000].map((preset) => (
+                <button
+                  key={preset}
+                  type="button"
+                  onClick={() => setPointsDraft(String(preset))}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold border transition-colors ${
+                    Number(pointsDraft) === preset
+                      ? 'bg-theme-accent/20 text-theme-accent-soft border-theme-accent/50'
+                      : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-slate-500'
+                  }`}
+                >
+                  {preset}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Setting 2: Warhammer Legends Toggle */}
           <div className="bg-slate-850 border border-slate-750 rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-4">
             <h3 className="font-warhammer text-sm sm:text-base font-bold text-slate-100">
               Include Legends Units
@@ -123,7 +206,7 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
         <div className="px-4 sm:px-6 py-3.5 border-t border-slate-800 bg-slate-900/90 flex justify-end">
           <button
             type="button"
-            onClick={commitRenameAndClose}
+            onClick={commitChangesAndClose}
             className="btn-theme-primary w-full sm:w-auto min-h-[42px] px-6 rounded-xl text-sm tracking-wide"
           >
             Done

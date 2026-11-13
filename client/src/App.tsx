@@ -234,7 +234,7 @@ export const App: React.FC = () => {
 
   const handleUpdateBattleSize = (size: BattleSize) => {
     if (!activeRoster) return;
-    const updated = { ...activeRoster, battleSize: size };
+    const updated = { ...activeRoster, battleSize: size, customPointsLimit: null };
     setActiveRoster(updated);
     saveRoster(updated);
   };
@@ -321,6 +321,18 @@ export const App: React.FC = () => {
     const updated: ArmyRoster = {
       ...activeRoster,
       name: trimmed
+    };
+    setActiveRoster(updated);
+    const updatedList = saveRoster(updated);
+    setRosters(updatedList);
+  };
+
+  // Set Custom Points Limit
+  const handleSetCustomPointsLimit = (limit: number | null) => {
+    if (!activeRoster) return;
+    const updated: ArmyRoster = {
+      ...activeRoster,
+      customPointsLimit: limit
     };
     setActiveRoster(updated);
     const updatedList = saveRoster(updated);
@@ -707,6 +719,15 @@ export const App: React.FC = () => {
         onToggleLegends={handleToggleLegends}
         rosterName={activeRoster.name}
         onRenameRoster={handleRenameRoster}
+        customPointsLimit={activeRoster.customPointsLimit}
+        defaultPointsLimit={
+          activeRoster.battleSize === 'incursion'
+            ? 1000
+            : activeRoster.battleSize === 'onslaught'
+            ? 3000
+            : 2000
+        }
+        onSetCustomPointsLimit={handleSetCustomPointsLimit}
       />
 
       {/* Floating Rules AI Assistant Pill in Play Mode */}

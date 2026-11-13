@@ -70,6 +70,10 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
   const issues: ValidationIssue[] = [];
   const battleSizeKey = (roster.battleSize || 'strike-force').toLowerCase().replace(/\s+/g, '-');
   const limits = BATTLE_SIZE_CONFIGS[battleSizeKey] || BATTLE_SIZE_CONFIGS['strike-force'];
+  const effectivePointsLimit =
+    roster.customPointsLimit && roster.customPointsLimit > 0
+      ? roster.customPointsLimit
+      : limits.points;
 
   const units = roster.units || [];
   const detachments = roster.detachments || [];
@@ -80,12 +84,12 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
     totalPoints += getUnitTotalPts(u);
   }
 
-  if (totalPoints > limits.points) {
+  if (totalPoints > effectivePointsLimit) {
     issues.push({
       id: 'points-limit',
       severity: 'error',
       title: 'Points Budget Exceeded',
-      message: `Total army points (${totalPoints} pts) exceeds the ${limits.name} limit of ${limits.points} pts.`
+      message: `Total army points (${totalPoints} pts) exceeds the ${roster.customPointsLimit ? 'custom' : limits.name} limit of ${effectivePointsLimit} pts.`
     });
   }
 
@@ -374,7 +378,7 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
     errorsCount: issues.filter(i => i.severity === 'error').length,
     warningsCount: issues.filter(i => i.severity === 'warning').length,
     totalPoints,
-    pointsLimit: limits.points,
+    pointsLimit: effectivePointsLimit,
     totalDP,
     dpLimit: limits.dp,
     enhancementCount: standardEnhancementCount,
