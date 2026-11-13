@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose, Settings } from 'lucide-react';
+import { Plus, Upload, Trash2, Copy, Shield, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose, Settings } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { parseRosterJSON } from '../utils/storage';
 import { validateClientRoster } from '../utils/validator';
@@ -345,23 +345,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                           )}
                         </div>
 
-                        <div className={`flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg border ${
-                          validation.isValid
-                            ? 'bg-emerald-950/50 text-emerald-300 border-emerald-700/40'
-                            : 'bg-red-950/60 text-red-300 border-red-700/50'
-                        }`}>
-                          {validation.isValid ? (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 stroke-[2.25]" />
-                              <span>Legal</span>
-                            </>
-                          ) : (
-                            <>
-                              <AlertTriangle className="w-3.5 h-3.5 text-red-400 stroke-[2.25]" />
-                              <span>{validation.errorsCount} {validation.errorsCount === 1 ? 'Error' : 'Errors'}</span>
-                            </>
-                          )}
-                        </div>
+                        {!validation.isValid && (
+                          <div className="flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg border bg-red-950/60 text-red-300 border-red-700/50">
+                            <AlertTriangle className="w-3.5 h-3.5 text-red-400 stroke-[2.25]" />
+                            <span>{validation.errorsCount} {validation.errorsCount === 1 ? 'Error' : 'Errors'}</span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Army Title & Faction */}

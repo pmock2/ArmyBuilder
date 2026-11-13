@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CheckCircle2, AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, Key, MoreVertical } from 'lucide-react';
+import { AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, Key, MoreVertical } from 'lucide-react';
 import { ArmyRoster, BattleSize, ValidationResult } from '../types/roster';
 
 interface NavbarProps {
@@ -236,27 +236,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
 
-            {/* Legal Status Pill (Hidden in Play Mode to reduce clutter) */}
-            {!isPlayMode && (
+            {/* Error Status Pill (Only shown when invalid & not in Play Mode) */}
+            {!isPlayMode && !validation.isValid && (
               <button
                 onClick={onToggleValidationDrawer}
-                className={`min-h-[32px] sm:min-h-[34px] flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-bold border transition-all active:translate-y-[1px] flex-shrink-0 whitespace-nowrap ${
-                  validation.isValid
-                    ? 'bg-emerald-950/50 text-emerald-300 border-emerald-700/40 hover:bg-emerald-950/70'
-                    : 'bg-red-950/60 text-red-300 border-red-700/50 hover:bg-red-950/80'
-                }`}
+                className="min-h-[32px] sm:min-h-[34px] flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-bold border transition-all active:translate-y-[1px] flex-shrink-0 whitespace-nowrap bg-red-950/60 text-red-300 border-red-700/50 hover:bg-red-950/80"
               >
-                {validation.isValid ? (
-                  <>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 stroke-[2.25]" />
-                    <span>Legal</span>
-                  </>
-                ) : (
-                  <>
-                    <AlertTriangle className="w-3.5 h-3.5 text-red-400 stroke-[2.25]" />
-                    <span>{validation.errorsCount} {validation.errorsCount === 1 ? 'Error' : 'Errors'}</span>
-                  </>
-                )}
+                <AlertTriangle className="w-3.5 h-3.5 text-red-400 stroke-[2.25]" />
+                <span>{validation.errorsCount} {validation.errorsCount === 1 ? 'Error' : 'Errors'}</span>
               </button>
             )}
           </div>
