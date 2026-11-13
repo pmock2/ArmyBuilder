@@ -16,6 +16,7 @@ import { AiSettingsModal } from './components/AiSettingsModal';
 import { AiArmyCreatorModal } from './components/AiArmyCreatorModal';
 import { AiRulesAssistant } from './components/AiRulesAssistant';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
+import { useBackNavigation } from './utils/backNavigation';
 import { hasApiKey } from './services/geminiService';
 import { Shield, Sparkles, BookOpen, Plus } from 'lucide-react';
 
@@ -41,6 +42,22 @@ export const App: React.FC = () => {
   const [isAiSettingsModalOpen, setIsAiSettingsModalOpen] = useState(false);
   const [isAiArmyCreatorOpen, setIsAiArmyCreatorOpen] = useState(false);
   const [isAiRulesAssistantOpen, setIsAiRulesAssistantOpen] = useState(false);
+
+  // Android / mobile hardware Back button navigation stack
+  useBackNavigation(Boolean(activeRoster), () => {
+    setIsPlayMode(false);
+    setRosters(loadAllRosters());
+    setActiveRoster(null);
+  });
+  useBackNavigation(Boolean(activeRoster) && isPlayMode, () => setIsPlayMode(false));
+  useBackNavigation(isCreateModalOpen, () => setIsCreateModalOpen(false));
+  useBackNavigation(isBrowserModalOpen, () => setIsBrowserModalOpen(false));
+  useBackNavigation(isValidationDrawerOpen, () => setIsValidationDrawerOpen(false));
+  useBackNavigation(isExportModalOpen, () => setIsExportModalOpen(false));
+  useBackNavigation(isSettingsModalOpen, () => setIsSettingsModalOpen(false));
+  useBackNavigation(isAiSettingsModalOpen, () => setIsAiSettingsModalOpen(false));
+  useBackNavigation(isAiArmyCreatorOpen, () => setIsAiArmyCreatorOpen(false));
+  useBackNavigation(isAiRulesAssistantOpen, () => setIsAiRulesAssistantOpen(false));
 
   // 1. Persist Active Roster ID & Play Mode across mobile browser reloads / sleep wakeups
   useEffect(() => {

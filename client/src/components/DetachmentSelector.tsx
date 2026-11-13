@@ -4,6 +4,7 @@ import { SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
 import { DetachmentBrowserModal } from './DetachmentBrowserModal';
 import { DetachmentModal } from './DetachmentModal';
 import { StratagemsModal } from './StratagemsModal';
+import { useBackNavigation } from '../utils/backNavigation';
 
 interface DetachmentSelectorProps {
   availableDetachments: SelectedDetachment[];
@@ -35,6 +36,10 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [inspectDetachment, setInspectDetachment] = useState<SelectedDetachment | null>(null);
   const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
+
+  useBackNavigation(isBrowserOpen, () => setIsBrowserOpen(false));
+  useBackNavigation(Boolean(inspectDetachment), () => setInspectDetachment(null));
+  useBackNavigation(isStratagemsOpen, () => setIsStratagemsOpen(false));
 
   const hasDetachments = selectedDetachments.length > 0;
 

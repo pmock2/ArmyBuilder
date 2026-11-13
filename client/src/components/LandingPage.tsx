@@ -6,6 +6,7 @@ import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
 import { SettingsView } from './SettingsView';
 import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
+import { useBackNavigation } from '../utils/backNavigation';
 
 interface LandingPageProps {
   rosters: ArmyRoster[];
@@ -37,6 +38,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
+
+  useBackNavigation(activeNav !== 'armies', () => setActiveNav('armies'));
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
