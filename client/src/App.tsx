@@ -15,6 +15,7 @@ import { ListSettingsModal } from './components/ListSettingsModal';
 import { AiSettingsModal } from './components/AiSettingsModal';
 import { AiArmyCreatorModal } from './components/AiArmyCreatorModal';
 import { AiRulesAssistant } from './components/AiRulesAssistant';
+import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { hasApiKey } from './services/geminiService';
 import { Shield, Sparkles, BookOpen, Plus } from 'lucide-react';
 
@@ -541,6 +542,7 @@ export const App: React.FC = () => {
           isOpen={isAiSettingsModalOpen}
           onClose={() => setIsAiSettingsModalOpen(false)}
         />
+        <InstallPromptBanner />
         <AiArmyCreatorModal
           isOpen={isAiArmyCreatorOpen}
           onClose={() => setIsAiArmyCreatorOpen(false)}
@@ -770,6 +772,7 @@ export const App: React.FC = () => {
         activeRoster={activeRoster}
       />
 
+      <InstallPromptBanner />
     </div>
   );
 };

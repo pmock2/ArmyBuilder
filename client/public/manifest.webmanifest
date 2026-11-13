@@ -1,0 +1,25 @@
+{
+  "name": "Warhammer 40k 11th Edition Army Builder",
+  "short_name": "40k Builder",
+  "description": "Warhammer 40,000 11th Edition army roster builder, play mode reference, and owned model tracker.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
