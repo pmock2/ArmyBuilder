@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, Key, MoreVertical } from 'lucide-react';
+import { AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, MoreVertical } from 'lucide-react';
 import { ArmyRoster, BattleSize, ValidationResult } from '../types/roster';
 
 interface NavbarProps {
@@ -14,7 +14,6 @@ interface NavbarProps {
   onToggleValidationDrawer: () => void;
   onOpenSettings: () => void;
   onOpenAiRules?: () => void;
-  onOpenAiSettings?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -28,8 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onBackToDashboard,
   onToggleValidationDrawer,
   onOpenSettings,
-  onOpenAiRules,
-  onOpenAiSettings
+  onOpenAiRules
 }) => {
   // Points color
   let pointsColor = 'text-theme-text';
@@ -170,19 +168,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span>Rules AI</span>
                     </button>
                   )}
-                  {onOpenAiSettings && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        onOpenAiSettings();
-                      }}
-                      className="w-full px-3.5 py-2 text-left text-xs font-semibold text-theme-text hover:bg-theme-elevated flex items-center gap-2.5"
-                    >
-                      <Key className="w-4 h-4 text-theme-accent-soft" />
-                      <span>AI Key &amp; Settings</span>
-                    </button>
-                  )}
                 </div>
               )}
             </div>
@@ -279,17 +264,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {!isPlayMode && (
               <>
-                {onOpenAiSettings && (
-                  <button
-                    onClick={onOpenAiSettings}
-                    className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-xl"
-                    title="Gemini AI Key & Settings"
-                    aria-label="AI Settings"
-                  >
-                    <Key className="w-4 h-4 text-sky-400" />
-                  </button>
-                )}
-
                 <button
                   onClick={onOpenSettings}
                   className={`min-h-[34px] min-w-[34px] rounded-xl ${

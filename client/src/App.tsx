@@ -42,6 +42,7 @@ export const App: React.FC = () => {
   const [isAiSettingsModalOpen, setIsAiSettingsModalOpen] = useState(false);
   const [isAiArmyCreatorOpen, setIsAiArmyCreatorOpen] = useState(false);
   const [isAiRulesAssistantOpen, setIsAiRulesAssistantOpen] = useState(false);
+  const [pendingAiFeature, setPendingAiFeature] = useState<'creator' | 'rules' | null>(null);
 
   // Android / mobile hardware Back button navigation stack
   useBackNavigation(Boolean(activeRoster), () => {
@@ -519,6 +520,7 @@ export const App: React.FC = () => {
   // AI Modal Launchers with Strict API Key Gate
   const handleOpenAiArmyCreator = () => {
     if (!hasApiKey()) {
+      setPendingAiFeature('creator');
       setIsAiSettingsModalOpen(true);
       return;
     }
@@ -527,10 +529,29 @@ export const App: React.FC = () => {
 
   const handleOpenAiRules = () => {
     if (!hasApiKey()) {
+      setPendingAiFeature('rules');
       setIsAiSettingsModalOpen(true);
       return;
     }
     setIsAiRulesAssistantOpen(true);
+  };
+
+  const handleCloseAiSettings = () => {
+    setIsAiSettingsModalOpen(false);
+    setPendingAiFeature(null);
+  };
+
+  const handleAiKeySaved = (hasKey: boolean) => {
+    if (hasKey && pendingAiFeature) {
+      const target = pendingAiFeature;
+      setPendingAiFeature(null);
+      setIsAiSettingsModalOpen(false);
+      if (target === 'creator') {
+        setIsAiArmyCreatorOpen(true);
+      } else if (target === 'rules') {
+        setIsAiRulesAssistantOpen(true);
+      }
+    }
   };
 
   // If No Active Roster, Show Landing Page
@@ -557,7 +578,8 @@ export const App: React.FC = () => {
         />
         <AiSettingsModal
           isOpen={isAiSettingsModalOpen}
-          onClose={() => setIsAiSettingsModalOpen(false)}
+          onClose={handleCloseAiSettings}
+          onKeySaved={handleAiKeySaved}
         />
         <InstallPromptBanner />
         <AiArmyCreatorModal
@@ -565,6 +587,7 @@ export const App: React.FC = () => {
           onClose={() => setIsAiArmyCreatorOpen(false)}
           onOpenSettings={() => {
             setIsAiArmyCreatorOpen(false);
+            setPendingAiFeature('creator');
             setIsAiSettingsModalOpen(true);
           }}
           onCreateRoster={handleCreateNewRoster}
@@ -574,6 +597,7 @@ export const App: React.FC = () => {
           onClose={() => setIsAiRulesAssistantOpen(false)}
           onOpenSettings={() => {
             setIsAiRulesAssistantOpen(false);
+            setPendingAiFeature('rules');
             setIsAiSettingsModalOpen(true);
           }}
           activeRoster={null}
@@ -645,7 +669,6 @@ export const App: React.FC = () => {
         onToggleValidationDrawer={() => setIsValidationDrawerOpen(true)}
         onOpenSettings={() => setIsSettingsModalOpen(true)}
         onOpenAiRules={handleOpenAiRules}
-        onOpenAiSettings={() => setIsAiSettingsModalOpen(true)}
       />
 
       {/* Main Builder Scrollable Canvas */}
@@ -766,7 +789,8 @@ export const App: React.FC = () => {
       {/* Gemini AI Modals */}
       <AiSettingsModal
         isOpen={isAiSettingsModalOpen}
-        onClose={() => setIsAiSettingsModalOpen(false)}
+        onClose={handleCloseAiSettings}
+        onKeySaved={handleAiKeySaved}
       />
 
       <AiArmyCreatorModal
@@ -774,6 +798,7 @@ export const App: React.FC = () => {
         onClose={() => setIsAiArmyCreatorOpen(false)}
         onOpenSettings={() => {
           setIsAiArmyCreatorOpen(false);
+          setPendingAiFeature('creator');
           setIsAiSettingsModalOpen(true);
         }}
         onCreateRoster={handleCreateNewRoster}
@@ -784,6 +809,7 @@ export const App: React.FC = () => {
         onClose={() => setIsAiRulesAssistantOpen(false)}
         onOpenSettings={() => {
           setIsAiRulesAssistantOpen(false);
+          setPendingAiFeature('rules');
           setIsAiSettingsModalOpen(true);
         }}
         activeRoster={activeRoster}
