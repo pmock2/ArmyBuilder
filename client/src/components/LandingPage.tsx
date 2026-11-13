@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers } from 'lucide-react';
+import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { parseRosterJSON } from '../utils/storage';
 import { validateClientRoster } from '../utils/validator';
@@ -31,6 +31,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activeNav, setActiveNav] = useState<'armies' | 'owned'>('armies');
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
 
@@ -132,64 +133,101 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </header>
 
-      {/* Main Content Area with Navigation Pane */}
-      <div className="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-6 flex flex-col lg:flex-row gap-4 lg:gap-6">
-        <aside className="lg:w-56 shrink-0">
-          <nav
-            aria-label="Dashboard Navigation"
-            className="flex lg:flex-col gap-1.5 bg-theme-surface-card border border-theme-border-subtle rounded-xl p-1.5"
-          >
+      {/* Body: Left Icon Nav + Main Content */}
+      <div className="flex-1 flex min-h-0">
+        {/* Left Expandable/Collapsible Navigation Rail */}
+        <aside
+          aria-label="Dashboard Navigation"
+          className={`${
+            isNavExpanded ? 'w-56' : 'w-14 sm:w-16'
+          } shrink-0 border-r border-theme-border-subtle bg-theme-surface/95 flex flex-col justify-between py-3 px-2 transition-all duration-200 select-none`}
+        >
+          <nav className="flex flex-col gap-1.5">
             <button
               type="button"
               onClick={() => setActiveNav('armies')}
-              className={`flex-1 lg:flex-initial flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+              title={`Army Lists (${rosters.length})`}
+              aria-label={`Army Lists (${rosters.length})`}
+              className={`relative flex items-center ${
+                isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
+              } h-11 rounded-xl text-sm font-medium transition-colors ${
                 activeNav === 'armies'
-                  ? 'bg-theme-accent-primary text-white shadow-sm'
-                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text-primary'
+                  ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
+                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
               }`}
             >
-              <span className="flex items-center gap-2">
-                <Layers className="w-4 h-4 shrink-0" />
-                <span>Army Lists</span>
+              <span className="flex items-center gap-3 min-w-0">
+                <Layers className="w-5 h-5 shrink-0" />
+                {isNavExpanded && <span className="truncate">Army Lists</span>}
               </span>
-              <span
-                className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
-                  activeNav === 'armies'
-                    ? 'bg-white/20 text-white'
-                    : 'bg-theme-surface-elevated text-theme-text-muted'
-                }`}
-              >
-                {rosters.length}
-              </span>
+              {isNavExpanded ? (
+                <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
+                  {rosters.length}
+                </span>
+              ) : (
+                rosters.length > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center bg-theme-accent text-white shadow">
+                    {rosters.length}
+                  </span>
+                )
+              )}
             </button>
 
             <button
               type="button"
               onClick={() => setActiveNav('owned')}
-              className={`flex-1 lg:flex-initial flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+              title={`Owned Models (${totalOwnedModels})`}
+              aria-label={`Owned Models (${totalOwnedModels})`}
+              className={`relative flex items-center ${
+                isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
+              } h-11 rounded-xl text-sm font-medium transition-colors ${
                 activeNav === 'owned'
-                  ? 'bg-theme-accent-primary text-white shadow-sm'
-                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text-primary'
+                  ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
+                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
               }`}
             >
-              <span className="flex items-center gap-2">
-                <Package className="w-4 h-4 shrink-0" />
-                <span>Owned Models</span>
+              <span className="flex items-center gap-3 min-w-0">
+                <Package className="w-5 h-5 shrink-0" />
+                {isNavExpanded && <span className="truncate">Owned Models</span>}
               </span>
-              <span
-                className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
-                  activeNav === 'owned'
-                    ? 'bg-white/20 text-white'
-                    : 'bg-theme-surface-elevated text-theme-text-muted'
-                }`}
-              >
-                {totalOwnedModels}
-              </span>
+              {isNavExpanded ? (
+                <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
+                  {totalOwnedModels}
+                </span>
+              ) : (
+                totalOwnedModels > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center bg-theme-accent text-white shadow">
+                    {totalOwnedModels > 99 ? '99+' : totalOwnedModels}
+                  </span>
+                )
+              )}
             </button>
           </nav>
+
+          {/* Expand / Collapse Toggle */}
+          <button
+            type="button"
+            onClick={() => setIsNavExpanded((prev) => !prev)}
+            title={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
+            aria-label={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
+            className={`flex items-center ${
+              isNavExpanded ? 'justify-start gap-3 px-3' : 'justify-center px-0'
+            } h-10 rounded-xl text-xs font-medium text-theme-text-muted hover:text-theme-text hover:bg-theme-surface-hover transition-colors`}
+          >
+            {isNavExpanded ? (
+              <>
+                <PanelLeftClose className="w-4 h-4 shrink-0" />
+                <span>Collapse</span>
+              </>
+            ) : (
+              <PanelLeftOpen className="w-4 h-4 shrink-0" />
+            )}
+          </button>
         </aside>
 
-        <main className="flex-1 min-w-0">
+        {/* Main Content + Footer */}
+        <div className="flex-1 min-w-0 flex flex-col">
+          <main className="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-6">
           {activeNav === 'owned' ? (
             <OwnedModelsView
               ownedModels={ownedModels}
@@ -338,13 +376,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         )}
 
-        </main>
-      </div>
+          </main>
 
-      {/* Footer */}
-      <footer className="border-t border-theme-border-subtle px-6 py-4 text-center text-xs text-theme-text-muted">
-        Warhammer 40,000 11th Edition Army Builder • Verified with BSData wh40k-11e
-      </footer>
+          {/* Footer */}
+          <footer className="border-t border-theme-border-subtle px-6 py-4 text-center text-xs text-theme-text-muted">
+            Warhammer 40,000 11th Edition Army Builder • Verified with BSData wh40k-11e
+          </footer>
+        </div>
+      </div>
     </div>
   );
 };
