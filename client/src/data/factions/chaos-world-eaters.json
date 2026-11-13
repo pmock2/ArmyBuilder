@@ -2249,6 +2249,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "cfd2-df58-3637-0a6c",
+            "cfd2-df58-3637-0a6c",
             "cfd2-df58-3637-0a6c"
           ],
           "options": [
@@ -28431,7 +28433,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

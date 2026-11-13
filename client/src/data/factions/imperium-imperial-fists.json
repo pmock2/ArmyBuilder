@@ -7218,6 +7218,8 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "c44d-6380-a431-c369",
+            "c44d-6380-a431-c369",
             "c44d-6380-a431-c369"
           ],
           "options": [
@@ -9273,6 +9275,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "968b-d705-7908-3862",
+            "968b-d705-7908-3862",
+            "968b-d705-7908-3862",
             "968b-d705-7908-3862"
           ],
           "options": [
@@ -26517,7 +26522,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "1270-ab3c-2561-4179",
@@ -29302,7 +29308,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "2e61-a3ba-8898-a22f",
@@ -29377,7 +29384,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -29743,7 +29751,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "a461-656d-b18-a31f",
@@ -29838,7 +29847,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -30472,7 +30482,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "79a5-db07-381a-9f08",
@@ -31405,7 +31416,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -33460,7 +33472,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -36223,7 +36236,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "93f9-8b4c-83e4-e7ff",
@@ -38228,7 +38242,8 @@
           "max": 6,
           "isExclusive": false,
           "defaultOptionIds": [
-            "81cb-dfdf-f1fe-9501"
+            "6c92-6680-fbe1-642f",
+            "6c92-6680-fbe1-642f"
           ],
           "options": [
             {
@@ -42015,6 +42030,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "1008-b543-bfc2-4959",
+            "1008-b543-bfc2-4959",
             "1008-b543-bfc2-4959"
           ],
           "options": [
@@ -42581,6 +42598,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "2-e9c0-140-a1ef",
+            "2-e9c0-140-a1ef",
             "2-e9c0-140-a1ef"
           ],
           "options": [
@@ -43006,6 +43025,9 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "c435-bd14-2d69-1c38",
+            "c435-bd14-2d69-1c38",
+            "c435-bd14-2d69-1c38",
             "c435-bd14-2d69-1c38"
           ],
           "options": [
@@ -43417,6 +43439,9 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5ca1-8654-298a-b29f",
+            "5ca1-8654-298a-b29f",
+            "5ca1-8654-298a-b29f",
             "5ca1-8654-298a-b29f"
           ],
           "options": [
@@ -46057,6 +46082,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5700-4122-349a-e5da",
+            "5700-4122-349a-e5da",
             "5700-4122-349a-e5da"
           ],
           "options": [
@@ -50215,7 +50242,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -51281,7 +51309,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "2cdd-be22-d95d-aacb-squad-options",
@@ -51290,6 +51319,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "9724-313-f5d0-e06c",
+            "9724-313-f5d0-e06c",
             "9724-313-f5d0-e06c"
           ],
           "options": [
@@ -64493,7 +64524,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "69fc-472b-e77b-fab8-squad-options",
@@ -65353,7 +65385,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "220a-fd5c-42e7-2e65-squad-options",
@@ -66185,7 +66218,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "89e4-6018-5660-fe73-squad-options",
@@ -68676,7 +68710,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -69948,7 +69983,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "4c04-51ad-3658-7582",
@@ -70488,7 +70524,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -74026,7 +74063,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "fb41-65cd-89a7-d7",
@@ -74214,7 +74252,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

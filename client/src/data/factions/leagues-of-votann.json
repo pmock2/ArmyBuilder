@@ -1095,6 +1095,14 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
+            "4782-445d-730e-6b69",
             "4782-445d-730e-6b69"
           ],
           "options": [
@@ -2872,7 +2880,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "6eb4-83c6-3025-a19c-squad-options",
@@ -3101,6 +3110,8 @@
           "max": 6,
           "isExclusive": false,
           "defaultOptionIds": [
+            "48b1-2aa0-4098-6661",
+            "48b1-2aa0-4098-6661",
             "48b1-2aa0-4098-6661"
           ],
           "options": [
@@ -3858,7 +3869,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -4400,6 +4412,14 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
+            "712c-437b-174b-a4bf",
             "712c-437b-174b-a4bf"
           ],
           "options": [
@@ -5726,7 +5746,8 @@
           "max": 5,
           "isExclusive": false,
           "defaultOptionIds": [
-            "0242-6438-3327-ec21"
+            "79d8-6081-2fae-ff86",
+            "79d8-6081-2fae-ff86"
           ],
           "options": [
             {
@@ -6085,7 +6106,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

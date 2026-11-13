@@ -176,7 +176,7 @@ function createWargearParser({
     const groups = [];
     const visitedGroups = new Set();
 
-    function processContainer(container, contextLabel, parentModelOptional = false) {
+    function processContainer(container, contextLabel, parentModelOptional = false, modelScopeMax = 1) {
       if (!container) return;
 
       // 1. Direct optional upgrades in selectionEntries / entryLinks (non-models)
@@ -263,6 +263,7 @@ function createWargearParser({
           // Identify profiles that are already mandatory on min >= 1 models in this squad group
           const mandatoryModelProfileNames = new Set();
           let mandatoryModelEntriesCount = 0;
+          let mandatoryModelMinSum = 0;
 
           for (const e of gEntries) {
             if (shouldSkipWargearNode(e)) continue;
@@ -271,6 +272,7 @@ function createWargearParser({
             const { min: mMin } = getWargearMinMax(e, res);
             if (mMin >= 1 || gEntries.length === 1) {
               mandatoryModelEntriesCount++;
+              mandatoryModelMinSum += Math.max(1, mMin);
               // Collect profiles from direct mandatory (min >= 1) wargear on this mandatory model
               const mDirect = [
                 ...(res.selectionEntries || []),
@@ -291,6 +293,7 @@ function createWargearParser({
           }
 
           const squadModelOptions = [];
+          let optionalSubGroupModelsCount = 0;
 
           for (const e of gEntries) {
             if (shouldSkipWargearNode(e)) continue;
@@ -300,8 +303,18 @@ function createWargearParser({
             const isOptionalModel = mMin === 0 && gEntries.length > 1;
 
             const groupsBefore = groups.length;
-            processContainer(res, e.name || res.name, parentModelOptional || isOptionalModel);
-            const addedSubGroups = groups.length > groupsBefore;
+            processContainer(res, e.name || res.name, parentModelOptional || isOptionalModel, mMax || 1);
+            const addedGroups = groups.slice(groupsBefore);
+            const addedSubGroups = addedGroups.length > 0;
+
+            if (isOptionalModel && addedSubGroups) {
+              const hasActiveExclusiveSubGroup = addedGroups.some(
+                ag => ag.isExclusive && ag.defaultOptionIds && ag.defaultOptionIds.length > 0
+              );
+              if (hasActiveExclusiveSubGroup) {
+                optionalSubGroupModelsCount += 1;
+              }
+            }
 
             if (isOptionalModel && !addedSubGroups) {
               const allModelProfiles = extractOptionProfiles(e);
@@ -345,6 +358,16 @@ function createWargearParser({
                 const gMaxC = rawG.constraints.find(c => c.type === 'max' && c.field === 'selections');
                 if (gMaxC && Number(gMaxC.value) > 0) gMax = Number(gMaxC.value);
               }
+              const { min: groupMinModels } = getWargearMinMax(rawG, g);
+              const defEntryId = rawG.defaultSelectionEntryId || g.defaultSelectionEntryId;
+              const preferredDef = defEntryId && squadModelOptions.find(o => o.id === defEntryId);
+              const defaultOpt = (preferredDef && !preferredDef.pts)
+                ? preferredDef
+                : (freeSquadOpts[0] || squadModelOptions[0]);
+              const accountedModels = mandatoryModelMinSum + optionalSubGroupModelsCount;
+              const targetDefaultCount = Math.max(1, (groupMinModels || 1) - accountedModels);
+              const clampedDefaultCount = Math.min(targetDefaultCount, defaultOpt.maxCount || targetDefaultCount);
+
               groups.push({
                 id: squadGroupId,
                 name: isSpecialistUpgrade ? `${groupName} — Optional Wargear` : `${groupName} — Loadout Options`,
@@ -353,7 +376,7 @@ function createWargearParser({
                 isExclusive: false,
                 defaultOptionIds: isSpecialistUpgrade
                   ? []
-                  : [(freeSquadOpts[0] || squadModelOptions[0]).id],
+                  : Array(clampedDefaultCount).fill(defaultOpt.id),
                 options: squadModelOptions
               });
             }
@@ -443,7 +466,7 @@ function createWargearParser({
             }
           }
 
-          groups.push({
+          const groupObj = {
             id: uniqueGroupId,
             name: contextLabel && !groupName.toLowerCase().includes(contextLabel.toLowerCase())
               ? `${contextLabel} — ${groupName}`
@@ -453,18 +476,22 @@ function createWargearParser({
             isExclusive,
             defaultOptionIds,
             options
-          });
+          };
+          if (isExclusive && modelScopeMax > 1) {
+            groupObj.perModel = true;
+          }
+          groups.push(groupObj);
         }
 
         if (hasSubGroups) {
-          processContainer(g, contextLabel, parentModelOptional);
+          processContainer(g, contextLabel, parentModelOptional, modelScopeMax);
         }
       }
 
       // 3. Recurse into direct child models
       for (const cm of childModels) {
         const isOpt = cm.min === 0 && childModels.length > 1;
-        processContainer(cm.resolved, cm.item.name || cm.resolved.name, parentModelOptional || isOpt);
+        processContainer(cm.resolved, cm.item.name || cm.resolved.name, parentModelOptional || isOpt, cm.max || 1);
       }
     }
 

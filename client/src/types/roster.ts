@@ -81,6 +81,7 @@ export interface WargearGroup {
   min: number;
   max: number;
   isExclusive: boolean;
+  perModel?: boolean;
   defaultOptionIds: string[];
   options: WargearOption[];
 }
@@ -264,8 +265,11 @@ export function getEffectiveOptionMaxCount(
   const minModels = datasheet.minModels || 1;
   const maxModels = datasheet.maxModels || minModels;
 
-  // Max special weapon models cannot exceed non-sergeant models in the squad
-  const availableRoomInSquad = Math.max(1, currentModelsCount - 1);
+  // Max special weapon models cannot exceed non-sergeant models in the squad when a fixed leader exists
+  const hasFixedLeader = maxSquadAllowed < maxModels;
+  const availableRoomInSquad = hasFixedLeader
+    ? Math.max(1, currentModelsCount - 1)
+    : currentModelsCount;
 
   if (maxModels <= minModels || maxSquadAllowed <= 1) {
     return Math.min(maxSquadAllowed, availableRoomInSquad);

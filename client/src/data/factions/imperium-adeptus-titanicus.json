@@ -13133,6 +13133,8 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "c44d-6380-a431-c369",
+            "c44d-6380-a431-c369",
             "c44d-6380-a431-c369"
           ],
           "options": [
@@ -15188,6 +15190,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "968b-d705-7908-3862",
+            "968b-d705-7908-3862",
+            "968b-d705-7908-3862",
             "968b-d705-7908-3862"
           ],
           "options": [
@@ -16576,7 +16581,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "e8e2-7d30-7759-3f3c",
@@ -17208,7 +17214,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "4a6a-3ff2-5307-ca55",
@@ -17835,6 +17842,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "a79f-07df-7641-174d",
+            "a79f-07df-7641-174d",
             "a79f-07df-7641-174d"
           ],
           "options": [
@@ -18281,6 +18290,10 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "61f0-d0c1-d9a8-09b9",
+            "61f0-d0c1-d9a8-09b9",
+            "61f0-d0c1-d9a8-09b9",
+            "61f0-d0c1-d9a8-09b9",
             "61f0-d0c1-d9a8-09b9"
           ],
           "options": [
@@ -18994,7 +19007,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "385f-2b00-0a85-56a5",
@@ -19066,7 +19080,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "2a7d-60a7-2a46-0065",
@@ -19160,7 +19175,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "c7d5-ef2f-d262-cbea-squad-options",
@@ -19625,7 +19641,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "0b2e-b07e-c906-f05d",
@@ -19811,7 +19828,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "690e-9b37-0f5f-ef86",
@@ -20443,7 +20461,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "44d3-d210-78bf-09fd-squad-options",
@@ -20656,7 +20675,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "7389-29a6-1898-b9a2",
@@ -20777,7 +20797,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "04e3-3ffa-8e46-0e7a-squad-options",
@@ -20786,6 +20807,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "64ea-9061-6196-a72b",
+            "64ea-9061-6196-a72b",
             "64ea-9061-6196-a72b"
           ],
           "options": [

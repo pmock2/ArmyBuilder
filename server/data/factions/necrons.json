@@ -3958,6 +3958,15 @@
           "max": 20,
           "isExclusive": false,
           "defaultOptionIds": [
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
+            "2498-87b1-fec5-2973",
             "2498-87b1-fec5-2973"
           ],
           "options": [
@@ -4206,7 +4215,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -4571,7 +4581,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6412,7 +6423,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "8add-80f8-971e-dee9",
@@ -6453,7 +6465,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6654,7 +6667,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6776,7 +6790,9 @@
           "max": 6,
           "isExclusive": false,
           "defaultOptionIds": [
-            "8e8e-dbd6-2923-62f3"
+            "35c6-7a15-4dc7-1661",
+            "35c6-7a15-4dc7-1661",
+            "35c6-7a15-4dc7-1661"
           ],
           "options": [
             {
@@ -10066,7 +10082,11 @@
           "max": 5,
           "isExclusive": false,
           "defaultOptionIds": [
-            "b23f-37fd-a252-e8de"
+            "12f0-e346-b675-9b00",
+            "12f0-e346-b675-9b00",
+            "12f0-e346-b675-9b00",
+            "12f0-e346-b675-9b00",
+            "12f0-e346-b675-9b00"
           ],
           "options": [
             {

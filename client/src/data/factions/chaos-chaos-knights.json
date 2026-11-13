@@ -2007,6 +2007,14 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
+            "d6f3-d15d-622b-8be9",
             "d6f3-d15d-622b-8be9"
           ],
           "options": [
@@ -3160,6 +3168,14 @@
           "max": 19,
           "isExclusive": false,
           "defaultOptionIds": [
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
+            "705d-76e0-e3ad-fac3",
             "705d-76e0-e3ad-fac3"
           ],
           "options": [
@@ -4660,7 +4676,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -32230,7 +32247,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "8ff0-d411-a894-83b8-squad-options",
@@ -32239,6 +32257,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5b0b-fb3-69ec-310f",
+            "5b0b-fb3-69ec-310f",
             "5b0b-fb3-69ec-310f"
           ],
           "options": [
@@ -33092,7 +33112,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "26e5-2cdb-5f82-8a8f",
@@ -33166,7 +33187,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "9977-c11-280e-fb88-squad-options",
@@ -33175,6 +33197,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "d30b-b831-35ff-d173",
+            "d30b-b831-35ff-d173",
             "d30b-b831-35ff-d173"
           ],
           "options": [
@@ -34476,6 +34500,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "ea9c-3be5-b49a-800b",
+            "ea9c-3be5-b49a-800b",
+            "ea9c-3be5-b49a-800b",
             "ea9c-3be5-b49a-800b"
           ],
           "options": [
@@ -36137,6 +36164,7 @@
           "max": 5,
           "isExclusive": false,
           "defaultOptionIds": [
+            "7012-8aec-f98-e883",
             "7012-8aec-f98-e883"
           ],
           "options": [
@@ -36861,6 +36889,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "b6c1-f5f5-550f-cb87",
+            "b6c1-f5f5-550f-cb87",
+            "b6c1-f5f5-550f-cb87",
             "b6c1-f5f5-550f-cb87"
           ],
           "options": [
@@ -37767,6 +37798,9 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "d82-980e-54d-7c",
+            "d82-980e-54d-7c",
+            "d82-980e-54d-7c",
             "d82-980e-54d-7c"
           ],
           "options": [
@@ -43510,6 +43544,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "3ccd-582f-3e1f-ce3",
+            "3ccd-582f-3e1f-ce3",
+            "3ccd-582f-3e1f-ce3",
             "3ccd-582f-3e1f-ce3"
           ],
           "options": [
@@ -43982,7 +44019,10 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
-            "f4a6-f3e-129d-c7c9"
+            "477c-681d-afd5-2daa",
+            "477c-681d-afd5-2daa",
+            "477c-681d-afd5-2daa",
+            "477c-681d-afd5-2daa"
           ],
           "options": [
             {
@@ -61003,6 +61043,7 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "61da-b89e-f4be-859e",
             "61da-b89e-f4be-859e"
           ],
           "options": [
@@ -69153,7 +69194,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

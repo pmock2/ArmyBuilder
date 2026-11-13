@@ -2806,6 +2806,7 @@
           "max": 8,
           "isExclusive": false,
           "defaultOptionIds": [
+            "9de3-2a5c-beea-72ae",
             "9de3-2a5c-beea-72ae"
           ],
           "options": [
@@ -11671,6 +11672,8 @@
           "max": 3,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5c78-4af2-518c-ccee",
+            "5c78-4af2-518c-ccee",
             "5c78-4af2-518c-ccee"
           ],
           "options": [
@@ -17290,8 +17293,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "2127-efcc-1f62-7fab",
@@ -20538,8 +20540,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "1502-bae3-93b4-c89a",
@@ -20669,8 +20670,7 @@
       "baseWeaponCounts": {},
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "fbaf-15f6-37d8-c5b",
@@ -20888,8 +20888,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "31ec-a804-92ad-97",
@@ -20990,8 +20989,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "ed8d-9053-9d33-61da",
@@ -21072,8 +21070,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "f1a-7c78-ffdc-bf5b",
@@ -21694,8 +21691,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "95b4-68d6-26cf-188e",
@@ -22181,8 +22177,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "bc69-45ff-789c-90bb",
@@ -22532,8 +22527,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "a185-ae7a-4503-8ceb",
@@ -22873,8 +22867,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5e59-657b-5c85-1d92",
@@ -23250,8 +23243,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "efc7-ac4c-1fcd-5b39",
@@ -23355,8 +23347,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "a93c-9d4b-8fd9-15b4",
@@ -23847,8 +23838,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "d7a-7abb-831b-1c67",
@@ -24206,8 +24196,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "731f-e022-6394-3690",
@@ -24565,8 +24554,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "e951-f9f2-3dd4-d5b8",
@@ -24924,8 +24912,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "247-2938-79b6-ff4b",
@@ -25142,8 +25129,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "c7cc-ad05-15f6-a4f3",
@@ -25331,8 +25317,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "1653-dc47-25b-c71f",
@@ -25565,8 +25550,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "3936-a532-dc5e-8498",
@@ -25941,8 +25925,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5d8e-2b2a-6ed1-8309",
@@ -26262,8 +26245,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "59c4-e4de-fe70-b221",
@@ -26655,8 +26637,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "fc41-a899-8d5a-dc01",
@@ -27032,8 +27013,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "8a25-2a0c-87d2-3ea6",
@@ -27299,8 +27279,7 @@
         "da24-02e9-22e6-cb3d"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "e184-bfe9-ea12-a5e3",
@@ -27402,8 +27381,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5762-f71e-7693-49a6",
@@ -27504,8 +27482,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "9673-7eaa-8ed9-bc7c",
@@ -27732,8 +27709,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "badd-6133-a469-613c",
@@ -27967,8 +27943,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "cb82-5250-6959-d2c3",
@@ -28077,8 +28052,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "421a-6683-9e78-fb7",
@@ -28586,7 +28560,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -28605,8 +28580,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "73b2-edbf-eec3-563d",
@@ -28846,8 +28820,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "a95f-9dd6-de66-fa59",
@@ -29060,8 +29033,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "6800-f1ce-7deb-d9eb",
@@ -29301,8 +29273,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "9fb1-876b-ac2d-6c9b",
@@ -29544,8 +29515,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "b6a7-4d64-1155-70c1",
@@ -29860,8 +29830,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "81d4-2ed9-b0a4-6bdd",
@@ -30010,8 +29979,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "4b76-f049-77b1-38bf",
@@ -30327,8 +30295,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "28d1-70b2-70be-c998",
@@ -30560,8 +30527,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "c8fc-b9fa-d126-a296",
@@ -31440,8 +31406,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "d4da-78a0-ef0-1e7e",
@@ -31559,8 +31524,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "7be8-bfe0-6416-8ed7",
@@ -31829,8 +31793,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "4c63-309e-88e3-7d17",
@@ -31925,8 +31888,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "f46c-76ef-3d9c-98ea",
@@ -32035,8 +31997,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "adbb-4624-738f-61ec",
@@ -32145,8 +32106,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "92a9-a820-b7f-7dc2",
@@ -32257,8 +32217,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "1d02-5302-f162-65d6",
@@ -32392,8 +32351,7 @@
         "33fd-bb93-1bf4-f1c"
       ],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "3597-3243-6870-70a1",
@@ -32644,7 +32602,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -32659,8 +32618,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "8cc1-8512-710f-f15f",
@@ -32747,8 +32705,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "fe5a-764e-37ed-7cef",
@@ -33533,6 +33490,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "20b2-d42e-cd67-2e1b",
+            "20b2-d42e-cd67-2e1b",
+            "20b2-d42e-cd67-2e1b",
             "20b2-d42e-cd67-2e1b"
           ],
           "options": [
@@ -35760,6 +35720,9 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "b179-d6c3-a951-7f51",
+            "b179-d6c3-a951-7f51",
+            "b179-d6c3-a951-7f51",
             "b179-d6c3-a951-7f51"
           ],
           "options": [
@@ -37148,6 +37111,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "9c6f-a6a0-6fd6-5e07",
+            "9c6f-a6a0-6fd6-5e07",
+            "9c6f-a6a0-6fd6-5e07",
             "9c6f-a6a0-6fd6-5e07"
           ],
           "options": [
@@ -37494,7 +37460,9 @@
           "max": 3,
           "isExclusive": false,
           "defaultOptionIds": [
-            "ae6d-a756-e82b-dd61"
+            "0707-563e-2d7d-09b2",
+            "0707-563e-2d7d-09b2",
+            "0707-563e-2d7d-09b2"
           ],
           "options": [
             {
@@ -37845,6 +37813,8 @@
           "max": 3,
           "isExclusive": false,
           "defaultOptionIds": [
+            "a931-b713-9804-ecc4",
+            "a931-b713-9804-ecc4",
             "a931-b713-9804-ecc4"
           ],
           "options": [
@@ -52717,8 +52687,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "b44d-ecac-2542-e584",
@@ -52912,8 +52881,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "8b13-7c06-de12-4227",
@@ -52996,8 +52964,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "f8cc-73b7-6caa-f741",
@@ -53181,8 +53148,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "4946-40d2-ee8b-a71c",
@@ -53399,8 +53365,7 @@
       },
       "enhancementGroupIds": [],
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "9665-3160-8a04-d2bc",
@@ -54670,8 +54635,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "a9d-55c1-3d24-fa25",
@@ -55230,7 +55194,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "1346-7fbc-d56a-103e-optional-wargear",
@@ -55695,7 +55660,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -55711,8 +55677,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "bcda-f4bb-e726-9bfe",
@@ -56498,8 +56463,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "4d50-e535-616a-259c",
@@ -56853,7 +56817,10 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
-            "6943-b07c-6468-7493"
+            "cb6f-b118-f52e-71ed",
+            "cb6f-b118-f52e-71ed",
+            "cb6f-b118-f52e-71ed",
+            "cb6f-b118-f52e-71ed"
           ],
           "options": [
             {
@@ -57510,8 +57477,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "7f1f-38c8-1bdc-55d7",
@@ -57672,8 +57638,7 @@
       ],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "18f9-56ec-7334-69a7",
@@ -57856,8 +57821,7 @@
       ],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "7d5b-1aae-55-2f5b",
@@ -57991,8 +57955,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "d58c-e97f-5062-d9e1",
@@ -58124,8 +58087,7 @@
       ],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "aa9f-f137-1638-0369",
@@ -59451,8 +59413,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "2408-cf76-fe11-c6da",
@@ -59645,8 +59606,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "3962-1fa9-7088-aedd",
@@ -60242,8 +60202,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5b1d-134a-9996-b634",
@@ -60403,8 +60362,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "e85b-17c7-1ad9-8375",
@@ -60491,8 +60449,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5134-5fe9-e489-43c4",
@@ -60725,8 +60682,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "71b0-77b9-522c-17d6",
@@ -61023,8 +60979,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "c4d1-c85a-a20e-6c94",
@@ -61205,8 +61160,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "e3ba-7f87-c32-229",
@@ -61315,8 +61269,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "3b75-e314-ecd5-cd63",
@@ -61469,8 +61422,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "cabe-2c66-c8b6-de6c",
@@ -61584,8 +61536,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "f39-fc54-f95a-8395",
@@ -62144,8 +62095,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "54c-8b9f-b1d8-93c3",
@@ -62223,8 +62173,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "da76-e18f-523e-d45a",
@@ -62319,8 +62268,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "11b2-8348-ae67-fa98",
@@ -62425,8 +62373,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "14fe-18ed-9c25-189c",
@@ -62619,8 +62566,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "4501-646d-e705-9dca",
@@ -62693,8 +62639,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "5c81-92c5-e20b-edf1",
@@ -62851,8 +62796,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "9698-2e0-15ac-1193",
@@ -63039,8 +62983,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "8419-8133-33f3-e0a4",
@@ -63120,8 +63063,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "64b7-a2df-416a-9963",
@@ -63201,8 +63143,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "f6f8-8759-3282-2ab",
@@ -63467,8 +63408,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "20c8-d2-586d-623",
@@ -64102,8 +64042,7 @@
       "enhancementGroupIds": [],
       "isAllied": true,
       "canBeLed": false,
-      "canHaveSupport": false,
-      "isLegends": true
+      "canHaveSupport": false
     },
     {
       "id": "983d-b163-dc9f-3c54",

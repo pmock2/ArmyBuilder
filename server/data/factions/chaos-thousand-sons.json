@@ -5325,6 +5325,9 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "1901-5e60-1564-2562",
+            "1901-5e60-1564-2562",
+            "1901-5e60-1564-2562",
             "1901-5e60-1564-2562"
           ],
           "options": [
@@ -6588,6 +6591,7 @@
           "max": 5,
           "isExclusive": false,
           "defaultOptionIds": [
+            "996-bd56-400b-a51e",
             "996-bd56-400b-a51e"
           ],
           "options": [
@@ -6994,6 +6998,14 @@
           "max": 19,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
+            "5b9-7d59-48fd-b485",
             "5b9-7d59-48fd-b485"
           ],
           "options": [
@@ -29437,7 +29449,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

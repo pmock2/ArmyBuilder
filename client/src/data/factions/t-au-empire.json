@@ -4042,7 +4042,15 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
-            "cc51-5731-3dce-1d45"
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d",
+            "1c19-f20d-8e7b-db5d"
           ],
           "options": [
             {
@@ -8109,7 +8117,8 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "5068-3b7e-4bf0-a83d",
@@ -8272,7 +8281,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "f89f-b48e-6c34-af5b",

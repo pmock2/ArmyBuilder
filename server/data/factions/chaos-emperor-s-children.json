@@ -3507,6 +3507,8 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "4a52-6694-b18b-54aa",
+            "4a52-6694-b18b-54aa",
             "4a52-6694-b18b-54aa"
           ],
           "options": [
@@ -21598,7 +21600,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

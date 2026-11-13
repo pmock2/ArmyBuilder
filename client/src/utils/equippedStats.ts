@@ -225,6 +225,24 @@ export function computeUnitEquippedData(
   const selectedOptionCountSum: Record<string, number> = {};
   const selectedOptionCountMax: Record<string, number> = {};
 
+  const currentModels = (selectedUnit?.modelsCount) || unit.minModels || 1;
+
+  // Count distinct single-model scopes (e.g. Sergeant, or optional specialist models)
+  // so `perModel` exclusive groups (e.g. "Aggressors — Weapon Option") scale to the remaining models.
+  const activeSingleModelPrefixes = new Set<string>();
+  let nonExclusiveSpecialistCount = 0;
+  for (const group of wargearGroups) {
+    const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
+    if (selIds.length === 0) continue;
+    if (group.isExclusive && !group.perModel) {
+      const prefix = group.name.includes(' — ') ? group.name.split(' — ')[0] : group.id;
+      activeSingleModelPrefixes.add(prefix);
+    } else if (!group.isExclusive) {
+      nonExclusiveSpecialistCount += selIds.length;
+    }
+  }
+  const perModelCount = Math.max(1, currentModels - activeSingleModelPrefixes.size - nonExclusiveSpecialistCount);
+
   for (const group of wargearGroups) {
     const rawSelectedIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
     for (const opt of group.options) {
@@ -251,7 +269,8 @@ export function computeUnitEquippedData(
             abilitySourceMap[p.name] = { label: `Wargear • ${opt.name}`, type: 'wargear' };
           }
           if (p.type === 'ranged' || p.type === 'melee') {
-            const c = (p.count || 1) * optCount;
+            const effectiveOptCount = group.perModel && optCount > 0 ? perModelCount : optCount;
+            const c = (p.count || 1) * effectiveOptCount;
             const typedKey = `${p.type}:${p.name}`;
             selectedOptionCountSum[typedKey] = (selectedOptionCountSum[typedKey] || 0) + c;
             selectedOptionCountMax[typedKey] = Math.max(selectedOptionCountMax[typedKey] || 0, c);
@@ -393,8 +412,6 @@ export function computeUnitEquippedData(
 
     const isBaseWeapon = baseProfileSet.has(weaponName) ||
       Boolean(unit.baseProfileNames && unit.baseProfileNames.some(p => p.toLowerCase() === weaponName.toLowerCase()));
-
-    const currentModels = (selectedUnit?.modelsCount) || unit.minModels || 1;
 
     let totalCount = 1;
 
