@@ -248,29 +248,32 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
             )}
           </div>
 
-          {/* Phase Filter Pills */}
+          {/* Phase Filter Pills (Icon-only for phases) */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1">Phase:</span>
             {([
               { id: 'all', label: 'All Phases' },
-              { id: 'Command', label: 'Command' },
-              { id: 'Movement', label: 'Movement' },
-              { id: 'Shooting', label: 'Shooting' },
-              { id: 'Charge', label: 'Charge' },
-              { id: 'Fight', label: 'Fight' }
+              { id: 'Command', label: 'Command Phase' },
+              { id: 'Movement', label: 'Movement Phase' },
+              { id: 'Shooting', label: 'Shooting Phase' },
+              { id: 'Charge', label: 'Charge Phase' },
+              { id: 'Fight', label: 'Fight Phase' }
             ] as const).map((p) => (
               <button
                 key={p.id}
                 type="button"
                 onClick={() => setPhaseFilter(p.id)}
-                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all ${
+                title={p.label}
+                aria-label={p.label}
+                className={`inline-flex items-center justify-center min-h-[32px] ${
+                  p.id === 'all' ? 'px-2.5 text-[11px] font-bold' : 'w-9 px-2'
+                } rounded-lg border transition-all ${
                   phaseFilter === p.id
-                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/60'
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-sm'
                     : 'bg-slate-850 text-slate-300 border-slate-700/80 hover:border-slate-600'
                 }`}
               >
-                {p.id !== 'all' && getPhaseIcon(p.id)}
-                <span>{p.label}</span>
+                {p.id === 'all' ? <span>All</span> : getPhaseIcon(p.id)}
               </button>
             ))}
           </div>
