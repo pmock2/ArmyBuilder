@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, BookOpen, Shield, Sparkles } from 'lucide-react';
 import { FormattedText } from './FormattedText';
+import { useBackNavigation } from '../utils/backNavigation';
 import keywordsData from '../data/keywords.json';
 
 interface KeywordTooltipProps {
@@ -12,6 +13,8 @@ interface KeywordTooltipProps {
 
 export const KeywordTooltip: React.FC<KeywordTooltipProps> = ({ keyword, children, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useBackNavigation(isOpen, () => setIsOpen(false));
 
   // Close popup on Escape key
   useEffect(() => {

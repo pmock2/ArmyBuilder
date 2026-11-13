@@ -14,6 +14,7 @@ import {
   getEffectiveOptionMaxCount
 } from '../types/roster';
 import { computeUnitEquippedData, computeModifiedStat } from '../utils/equippedStats';
+import { useBackNavigation } from '../utils/backNavigation';
 import { KeywordTooltip } from './KeywordTooltip';
 import { FormattedText } from './FormattedText';
 import {
@@ -55,6 +56,9 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
   const [eligibleStratIds, setEligibleStratIds] = useState<Set<string>>(new Set());
   const [expandedStratId, setExpandedStratId] = useState<string | null>(null);
+
+  useBackNavigation(isOpen && Boolean(unit), onClose);
+  useBackNavigation(isOpen && Boolean(unit) && Boolean(inspectingOption), () => setInspectingOption(null));
 
   useEffect(() => {
     setIsWargearOpen(false);

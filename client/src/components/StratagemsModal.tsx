@@ -22,6 +22,7 @@ import {
   getDetachmentStratagems
 } from '../data/stratagems';
 import { FormattedText } from './FormattedText';
+import { useBackNavigation } from '../utils/backNavigation';
 
 type TurnFilter = 'all' | 'your' | 'opponent';
 type PhaseFilter = 'all' | 'Command' | 'Movement' | 'Shooting' | 'Charge' | 'Fight';
@@ -92,6 +93,8 @@ export const StratagemsModal: React.FC<StratagemsModalProps> = ({
   const [inspectStratagem, setInspectStratagem] = useState<Stratagem | null>(null);
   const [turnFilter, setTurnFilter] = useState<TurnFilter>('all');
   const [phaseFilter, setPhaseFilter] = useState<PhaseFilter>('all');
+
+  useBackNavigation(isOpen && Boolean(inspectStratagem), () => setInspectStratagem(null));
 
   if (!isOpen) return null;
 

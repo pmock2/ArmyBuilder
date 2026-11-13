@@ -25,6 +25,7 @@ import {
   saveOwnedFaction,
   deleteOwnedFaction
 } from '../utils/ownedModelsStorage';
+import { useBackNavigation } from '../utils/backNavigation';
 
 interface OwnedModelsViewProps {
   ownedModels: Record<string, OwnedFactionInventory>;
@@ -69,6 +70,9 @@ export const OwnedModelsView: React.FC<OwnedModelsViewProps> = ({
   const [unitRoleFilter, setUnitRoleFilter] = useState('All');
   const [includeLegends, setIncludeLegends] = useState(false);
   const [ownedSearch, setOwnedSearch] = useState('');
+
+  useBackNavigation(isAddFactionOpen, () => setIsAddFactionOpen(false));
+  useBackNavigation(isAddUnitModalOpen, () => setIsAddUnitModalOpen(false));
 
   // Keep selectedFactionId valid if tracked list changes
   useEffect(() => {
@@ -710,3 +714,4 @@ export const OwnedModelsView: React.FC<OwnedModelsViewProps> = ({
     </div>
   );
 };
+
