@@ -5,7 +5,7 @@ import { FactionSummary, FactionDetail } from '../types/faction';
 import { hasApiKey } from '../services/geminiService';
 import { identifyTargetFaction, generateRosterPlan, buildRosterFromPlan, generateAiPromptIdea } from '../services/aiRosterBuilder';
 import { hasAnyOwnedModels, getTotalOwnedModelsCount, loadAllOwnedModels } from '../utils/ownedModelsStorage';
-import { startVoxTransmission, triggerHaptic } from '../utils/haptics';
+import { startVoxTransmission } from '../utils/haptics';
 import factionsIndexData from '../data/factions_index.json';
 
 interface AiArmyCreatorModalProps {
@@ -39,15 +39,6 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
     setOnlyOwnedModels(models > 0);
   }, [isOpen]);
 
-  useEffect(() => {
-    if (!isGenerating) return;
-    const stopVox = startVoxTransmission();
-    return () => {
-      stopVox();
-      triggerHaptic('success');
-    };
-  }, [isGenerating]);
-
   if (!isOpen) return null;
 
   const keyConfigured = hasApiKey();
@@ -80,6 +71,7 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
     setIsGenerating(true);
     setErrorMessage(null);
     setStatusStep('Analyzing prompt and identifying faction...');
+    const stopVox = startVoxTransmission();
 
     try {
       // 1. Identify target faction ID
@@ -110,6 +102,8 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
       console.error('AI Roster generation error:', err);
       setIsGenerating(false);
       setErrorMessage(err.message || 'An error occurred during army generation. Please try again.');
+    } finally {
+      stopVox();
     }
   };
 

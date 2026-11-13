@@ -4,7 +4,7 @@ import { hasApiKey, callGemini } from '../services/geminiService';
 import { loadRulesReference, loadKeywordsCompendium, searchRulesAndKeywords, RuleSection, KeywordEntry } from '../services/rulesSearchService';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import { ArmyRoster } from '../types/roster';
-import { startVoxTransmission, triggerHaptic } from '../utils/haptics';
+import { startVoxTransmission } from '../utils/haptics';
 
 interface Message {
   id: string;
@@ -55,15 +55,6 @@ export const AiRulesAssistant: React.FC<AiRulesAssistantProps> = ({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isAsking]);
 
-  useEffect(() => {
-    if (!isAsking) return;
-    const stopVox = startVoxTransmission();
-    return () => {
-      stopVox();
-      triggerHaptic('success');
-    };
-  }, [isAsking]);
-
   if (!isOpen) return null;
 
   const keyConfigured = hasApiKey();
@@ -88,6 +79,7 @@ export const AiRulesAssistant: React.FC<AiRulesAssistantProps> = ({
     setMessages(prev => [...prev, userMsg]);
     setInputQuery('');
     setIsAsking(true);
+    const stopVox = startVoxTransmission();
 
     try {
       // 1. Lexical retrieval of top rules & keywords
@@ -153,6 +145,7 @@ ${rosterContext}`;
       };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
+      stopVox();
       setIsAsking(false);
     }
   };

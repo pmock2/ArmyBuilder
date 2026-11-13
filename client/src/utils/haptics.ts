@@ -39,40 +39,37 @@ export function triggerHaptic(pattern: HapticPattern = 'light'): void {
   }
 }
 
-// Vox-caster style rhythmic telemetry bursts while waiting on AI responses
-const VOX_BURSTS: number[][] = [
-  [22, 45, 14, 45, 32, 95, 16],
-  [16, 40, 28, 55, 14, 40, 14],
-  [28, 50, 14, 40, 18, 85, 26],
-  [14, 35, 14, 35, 34, 70, 16]
+// Vox-caster style rhythmic telemetry pattern (~22s) played in a single synchronous
+// navigator.vibrate() call so Android Chrome's user-activation check allows it.
+const VOX_BURST_UNITS: number[][] = [
+  [26, 45, 16, 45, 38],             // Opening squelch
+  [22, 45, 14, 45, 32, 95, 16],     // Burst 1
+  [16, 40, 28, 55, 14, 40, 14],     // Burst 2
+  [28, 50, 14, 40, 18, 85, 26],     // Burst 3
+  [14, 35, 14, 35, 34, 70, 16]      // Burst 4
 ];
+
+const VOX_LONG_PATTERN: number[] = (() => {
+  const seq: number[] = [...VOX_BURST_UNITS[0]];
+  for (let i = 0; i < 18; i++) {
+    seq.push(650); // pause between telemetry bursts
+    seq.push(...VOX_BURST_UNITS[1 + (i % (VOX_BURST_UNITS.length - 1))]);
+  }
+  return seq;
+})();
 
 export function startVoxTransmission(): () => void {
   if (!isHapticsEnabled() || !isVibrationSupported()) {
     return () => {};
   }
 
-  let step = 0;
-  // Opening vox squelch
   try {
-    navigator.vibrate([26, 45, 16, 45, 36]);
+    navigator.vibrate(VOX_LONG_PATTERN);
   } catch {
     // ignore
   }
 
-  const intervalId = window.setInterval(() => {
-    if (!isHapticsEnabled() || !isVibrationSupported()) return;
-    const burst = VOX_BURSTS[step % VOX_BURSTS.length];
-    step++;
-    try {
-      navigator.vibrate(burst);
-    } catch {
-      // ignore
-    }
-  }, 1150);
-
   return () => {
-    window.clearInterval(intervalId);
     try {
       navigator.vibrate(0);
     } catch {
