@@ -39,6 +39,48 @@ export function triggerHaptic(pattern: HapticPattern = 'light'): void {
   }
 }
 
+// Vox-caster style rhythmic telemetry bursts while waiting on AI responses
+const VOX_BURSTS: number[][] = [
+  [22, 45, 14, 45, 32, 95, 16],
+  [16, 40, 28, 55, 14, 40, 14],
+  [28, 50, 14, 40, 18, 85, 26],
+  [14, 35, 14, 35, 34, 70, 16]
+];
+
+export function startVoxTransmission(): () => void {
+  if (!isHapticsEnabled() || !isVibrationSupported()) {
+    return () => {};
+  }
+
+  let step = 0;
+  // Opening vox squelch
+  try {
+    navigator.vibrate([26, 45, 16, 45, 36]);
+  } catch {
+    // ignore
+  }
+
+  const intervalId = window.setInterval(() => {
+    if (!isHapticsEnabled() || !isVibrationSupported()) return;
+    const burst = VOX_BURSTS[step % VOX_BURSTS.length];
+    step++;
+    try {
+      navigator.vibrate(burst);
+    } catch {
+      // ignore
+    }
+  }, 1150);
+
+  return () => {
+    window.clearInterval(intervalId);
+    try {
+      navigator.vibrate(0);
+    } catch {
+      // ignore
+    }
+  };
+}
+
 const INTERACTIVE_SELECTOR =
   'button, a, select, input[type="checkbox"], input[type="radio"], input[type="color"], [role="button"], [role="switch"], [role="tab"]';
 
@@ -63,3 +105,4 @@ export function initGlobalHaptics(): void {
     { capture: true, passive: true }
   );
 }
+

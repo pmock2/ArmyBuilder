@@ -5,6 +5,7 @@ import { FactionSummary, FactionDetail } from '../types/faction';
 import { hasApiKey } from '../services/geminiService';
 import { identifyTargetFaction, generateRosterPlan, buildRosterFromPlan, generateAiPromptIdea } from '../services/aiRosterBuilder';
 import { hasAnyOwnedModels, getTotalOwnedModelsCount, loadAllOwnedModels } from '../utils/ownedModelsStorage';
+import { startVoxTransmission, triggerHaptic } from '../utils/haptics';
 import factionsIndexData from '../data/factions_index.json';
 
 interface AiArmyCreatorModalProps {
@@ -37,6 +38,15 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
     setOwnedSummary({ models, units });
     setOnlyOwnedModels(models > 0);
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isGenerating) return;
+    const stopVox = startVoxTransmission();
+    return () => {
+      stopVox();
+      triggerHaptic('success');
+    };
+  }, [isGenerating]);
 
   if (!isOpen) return null;
 
