@@ -71,31 +71,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
-            {onOpenAiRules && (
-              <button
-                type="button"
-                onClick={onOpenAiRules}
-                className="btn-theme-secondary min-h-[40px] flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-amber-300 hover:text-amber-200 border-amber-500/40"
-                title="Search 11th Edition Rules with AI"
-              >
-                <BookOpen className="w-4 h-4 text-amber-400" />
-                <span>Rules AI</span>
-              </button>
-            )}
-
-            {onOpenAiSettings && (
-              <button
-                type="button"
-                onClick={onOpenAiSettings}
-                className="btn-theme-icon min-h-[40px] min-w-[40px] rounded-xl"
-                title="Gemini AI Key & Settings"
-                aria-label="AI Settings"
-              >
-                <Key className="w-4 h-4 text-sky-400" />
-              </button>
-            )}
-
+          <div className="flex items-center gap-2">
             <input
               type="file"
               ref={fileInputRef}
@@ -105,17 +81,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="btn-theme-secondary min-h-[40px] flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold"
+              className="btn-theme-secondary min-h-[38px] flex items-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold"
+              title="Import Roster JSON"
+              aria-label="Import Roster JSON"
             >
               <Upload className="w-4 h-4 text-theme-text-secondary" />
-              <span>Import</span>
+              <span className="hidden sm:inline">Import</span>
             </button>
 
             {onOpenAiArmyCreator && (
               <button
                 type="button"
                 onClick={onOpenAiArmyCreator}
-                className="min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-md shadow-sky-950/50 transition-all active:scale-[0.98]"
+                className="min-h-[38px] flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-md shadow-sky-950/50 transition-all active:scale-[0.98]"
+                title="Create Army with AI"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Create with AI</span>
@@ -124,7 +103,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             <button
               onClick={onCreateNew}
-              className="btn-theme-primary min-h-[40px] flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm tracking-wide"
+              className="btn-theme-primary min-h-[38px] flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm tracking-wide"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
               <span>New Army</span>
@@ -139,90 +118,115 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <aside
           aria-label="Dashboard Navigation"
           className={`${
-            isNavExpanded ? 'w-56' : 'w-14 sm:w-16'
-          } shrink-0 border-r border-theme-border-subtle bg-theme-surface/95 flex flex-col justify-between py-3 px-2 transition-all duration-200 select-none`}
+            isNavExpanded ? 'w-56' : 'w-14'
+          } shrink-0 border-r border-theme-border-subtle bg-theme-surface/95 flex flex-col justify-between py-2.5 px-2 transition-all duration-200 select-none`}
         >
-          <nav className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-2">
+            {/* Expand / Collapse Toggle at top of rail */}
             <button
               type="button"
-              onClick={() => setActiveNav('armies')}
-              title={`Army Lists (${rosters.length})`}
-              aria-label={`Army Lists (${rosters.length})`}
-              className={`relative flex items-center ${
+              onClick={() => setIsNavExpanded((prev) => !prev)}
+              title={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
+              aria-label={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
+              className={`flex items-center ${
                 isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
-              } h-11 rounded-xl text-sm font-medium transition-colors ${
-                activeNav === 'armies'
-                  ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
-                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
-              }`}
+              } h-9 rounded-lg text-xs font-medium text-theme-text-muted hover:text-theme-text hover:bg-theme-surface-hover transition-colors`}
             >
-              <span className="flex items-center gap-3 min-w-0">
-                <Layers className="w-5 h-5 shrink-0" />
-                {isNavExpanded && <span className="truncate">Army Lists</span>}
-              </span>
               {isNavExpanded ? (
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
-                  {rosters.length}
-                </span>
+                <>
+                  <span className="uppercase tracking-wider text-[10px] font-bold">Menu</span>
+                  <PanelLeftClose className="w-4 h-4 shrink-0" />
+                </>
               ) : (
-                rosters.length > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center bg-theme-accent text-white shadow">
+                <PanelLeftOpen className="w-4 h-4 shrink-0" />
+              )}
+            </button>
+
+            <nav className="flex flex-col gap-1.5">
+              <button
+                type="button"
+                onClick={() => setActiveNav('armies')}
+                title={`Army Lists (${rosters.length})`}
+                aria-label={`Army Lists (${rosters.length})`}
+                className={`flex items-center ${
+                  isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
+                } h-10 rounded-xl text-sm font-medium transition-colors ${
+                  activeNav === 'armies'
+                    ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
+                    : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
+                }`}
+              >
+                <span className="flex items-center gap-3 min-w-0">
+                  <Layers className="w-5 h-5 shrink-0" />
+                  {isNavExpanded && <span className="truncate">Army Lists</span>}
+                </span>
+                {isNavExpanded && (
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
                     {rosters.length}
                   </span>
-                )
-              )}
-            </button>
+                )}
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveNav('owned')}
-              title={`Owned Models (${totalOwnedModels})`}
-              aria-label={`Owned Models (${totalOwnedModels})`}
-              className={`relative flex items-center ${
-                isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
-              } h-11 rounded-xl text-sm font-medium transition-colors ${
-                activeNav === 'owned'
-                  ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
-                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
-              }`}
-            >
-              <span className="flex items-center gap-3 min-w-0">
-                <Package className="w-5 h-5 shrink-0" />
-                {isNavExpanded && <span className="truncate">Owned Models</span>}
-              </span>
-              {isNavExpanded ? (
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
-                  {totalOwnedModels}
+              <button
+                type="button"
+                onClick={() => setActiveNav('owned')}
+                title={`Owned Models (${totalOwnedModels})`}
+                aria-label={`Owned Models (${totalOwnedModels})`}
+                className={`flex items-center ${
+                  isNavExpanded ? 'justify-between px-3' : 'justify-center px-0'
+                } h-10 rounded-xl text-sm font-medium transition-colors ${
+                  activeNav === 'owned'
+                    ? 'bg-theme-accent/20 text-theme-accent-soft border border-theme-accent/40 shadow-sm'
+                    : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text border border-transparent'
+                }`}
+              >
+                <span className="flex items-center gap-3 min-w-0">
+                  <Package className="w-5 h-5 shrink-0" />
+                  {isNavExpanded && <span className="truncate">Owned Models</span>}
                 </span>
-              ) : (
-                totalOwnedModels > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center bg-theme-accent text-white shadow">
-                    {totalOwnedModels > 99 ? '99+' : totalOwnedModels}
+                {isNavExpanded && (
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-theme-bg/70 text-theme-text-secondary border border-theme-border-subtle">
+                    {totalOwnedModels}
                   </span>
-                )
-              )}
-            </button>
-          </nav>
+                )}
+              </button>
+            </nav>
+          </div>
 
-          {/* Expand / Collapse Toggle */}
-          <button
-            type="button"
-            onClick={() => setIsNavExpanded((prev) => !prev)}
-            title={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
-            aria-label={isNavExpanded ? 'Collapse navigation' : 'Expand navigation'}
-            className={`flex items-center ${
-              isNavExpanded ? 'justify-start gap-3 px-3' : 'justify-center px-0'
-            } h-10 rounded-xl text-xs font-medium text-theme-text-muted hover:text-theme-text hover:bg-theme-surface-hover transition-colors`}
-          >
-            {isNavExpanded ? (
-              <>
-                <PanelLeftClose className="w-4 h-4 shrink-0" />
-                <span>Collapse</span>
-              </>
-            ) : (
-              <PanelLeftOpen className="w-4 h-4 shrink-0" />
-            )}
-          </button>
+          {/* Secondary Tools: Rules AI & AI Settings */}
+          {(onOpenAiRules || onOpenAiSettings) && (
+            <div className="flex flex-col gap-1.5 pt-2 border-t border-theme-border-subtle">
+              {onOpenAiRules && (
+                <button
+                  type="button"
+                  onClick={onOpenAiRules}
+                  title="Search 11th Edition Rules with AI"
+                  aria-label="Rules AI"
+                  className={`flex items-center ${
+                    isNavExpanded ? 'justify-start gap-3 px-3' : 'justify-center px-0'
+                  } h-10 rounded-xl text-sm font-medium text-amber-300 hover:text-amber-200 hover:bg-theme-surface-hover transition-colors`}
+                >
+                  <BookOpen className="w-5 h-5 shrink-0 text-amber-400" />
+                  {isNavExpanded && <span className="truncate">Rules AI</span>}
+                </button>
+              )}
+
+              {onOpenAiSettings && (
+                <button
+                  type="button"
+                  onClick={onOpenAiSettings}
+                  title="Gemini AI Key & Settings"
+                  aria-label="AI Settings"
+                  className={`flex items-center ${
+                    isNavExpanded ? 'justify-start gap-3 px-3' : 'justify-center px-0'
+                  } h-10 rounded-xl text-sm font-medium text-theme-text-secondary hover:text-theme-text hover:bg-theme-surface-hover transition-colors`}
+                >
+                  <Key className="w-5 h-5 shrink-0 text-sky-400" />
+                  {isNavExpanded && <span className="truncate">AI Key & Settings</span>}
+                </button>
+              )}
+            </div>
+          )}
         </aside>
 
         {/* Main Content + Footer */}
