@@ -6,6 +6,49 @@ import { callGemini } from './geminiService';
 import factionsIndexData from '../data/factions_index.json';
 import { getOwnedModelsForFaction } from '../utils/ownedModelsStorage';
 
+interface MetaFactionEntry {
+  factionId: string;
+  factionName: string;
+  podiumCount: number;
+  firstPlaceCount: number;
+  topDetachments: { name: string; count: number }[];
+  sampleWinningLists: {
+    eventName: string;
+    date: string;
+    playersNumber: number;
+    rank: number;
+    wins: number;
+    loss: number;
+    detachments: string[];
+    listText: string;
+  }[];
+}
+
+interface MetaSnapshot {
+  source: string;
+  updatedAt: string;
+  totalPodiumListsAnalyzed: number;
+  factions: Record<string, MetaFactionEntry>;
+}
+
+let cachedMetaSnapshot: MetaSnapshot | null | undefined = undefined;
+
+async function loadMetaSnapshot(): Promise<MetaSnapshot | null> {
+  if (cachedMetaSnapshot !== undefined) return cachedMetaSnapshot;
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}data/meta_snapshot.json`);
+    if (!res.ok) {
+      cachedMetaSnapshot = null;
+      return null;
+    }
+    cachedMetaSnapshot = await res.json();
+    return cachedMetaSnapshot || null;
+  } catch {
+    cachedMetaSnapshot = null;
+    return null;
+  }
+}
+
 interface AiUnitDirective {
   name: string;
   modelsCount?: number;
@@ -207,11 +250,41 @@ Output strictly valid JSON conforming to this schema:
   "summary": "brief 1-2 sentence explanation of list strategy and total points"
 }`;
 
+  const metaSnapshot = await loadMetaSnapshot();
+  const factionMeta =
+    metaSnapshot?.factions?.[factionData.faction.id] ||
+    (factionData.faction.parentFaction
+      ? metaSnapshot?.factions?.[factionData.faction.parentFaction]
+      : undefined);
+
+  let metaContextSection = '';
+  if (factionMeta && (factionMeta.topDetachments.length > 0 || factionMeta.sampleWinningLists.length > 0)) {
+    const topDetsText = factionMeta.topDetachments
+      .slice(0, 4)
+      .map((d) => `${d.name} (${d.count} podiums)`)
+      .join(', ');
+    const listsText = factionMeta.sampleWinningLists
+      .slice(0, 2)
+      .map(
+        (l, idx) =>
+          `--- Winning GT List #${idx + 1}: #${l.rank} at ${l.eventName} (${l.date}, ${l.playersNumber} players, ${l.wins}-${l.loss}, Detachments: ${l.detachments.join(' + ')}) ---\n${l.listText}`
+      )
+      .join('\n\n');
+
+    metaContextSection = `
+RECENT TOURNAMENT META REFERENCE (${metaSnapshot?.source || 'Tournament Data'}, updated ${metaSnapshot?.updatedAt?.slice(0, 10) || 'recently'}):
+Top Performing Detachments for ${factionMeta.factionName}: ${topDetsText || 'N/A'} (${factionMeta.firstPlaceCount} 1st-place wins, ${factionMeta.podiumCount} podiums)
+
+Use these real tournament-winning lists to guide detachment selection, competitive unit synergies, squad sizes, and army ratios (while still strictly using ONLY exact unit/detachment names from CATALOGUE UNITS/DETACHMENTS above${onlyOwnedModels ? ' and NEVER exceeding maxOwnedModels' : ''}):
+${listsText}
+`;
+  }
+
   const promptContent = `USER REQUEST: "${userPrompt}"
 FACTION: ${factionData.faction.name} (${factionData.faction.id})
 TARGET POINTS: ${pointsTarget} pts (${detectedBattleSize.toUpperCase()})
 DP BUDGET: ${dpBudget} DP
-
+${metaContextSection}
 CATALOGUE DETACHMENTS:
 ${JSON.stringify(detachmentsList, null, 2)}
 
