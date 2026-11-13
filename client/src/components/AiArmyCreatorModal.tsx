@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { X, Sparkles, Wand2, Loader2, Key, AlertCircle, ArrowRight, Dices } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Sparkles, Wand2, Loader2, Key, AlertCircle, ArrowRight, Dices, Package } from 'lucide-react';
 import { BattleSize, ArmyRoster } from '../types/roster';
 import { FactionSummary, FactionDetail } from '../types/faction';
 import { hasApiKey } from '../services/geminiService';
 import { identifyTargetFaction, generateRosterPlan, buildRosterFromPlan, generateAiPromptIdea } from '../services/aiRosterBuilder';
+import { hasAnyOwnedModels, getTotalOwnedModelsCount, loadAllOwnedModels } from '../utils/ownedModelsStorage';
 import factionsIndexData from '../data/factions_index.json';
 
 interface AiArmyCreatorModalProps {
@@ -21,10 +22,21 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
 }) => {
   const [prompt, setPrompt] = useState('');
   const [preferredBattleSize, setPreferredBattleSize] = useState<BattleSize | 'auto'>('auto');
+  const [onlyOwnedModels, setOnlyOwnedModels] = useState<boolean>(() => hasAnyOwnedModels());
+  const [ownedSummary, setOwnedSummary] = useState<{ models: number; units: number }>({ models: 0, units: 0 });
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGeneratingIdea, setIsGeneratingIdea] = useState(false);
   const [statusStep, setStatusStep] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const all = loadAllOwnedModels();
+    const models = getTotalOwnedModelsCount(all);
+    const units = Object.values(all).reduce((acc, inv) => acc + inv.units.length, 0);
+    setOwnedSummary({ models, units });
+    setOnlyOwnedModels(models > 0);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -74,12 +86,12 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
       // 3. Generate Roster Plan with Gemini
       setStatusStep(`Consulting 11th edition rules & building competitive roster...`);
       const battleSizeParam = preferredBattleSize === 'auto' ? undefined : preferredBattleSize;
-      const plan = await generateRosterPlan(prompt.trim(), factionData, battleSizeParam);
+      const plan = await generateRosterPlan(prompt.trim(), factionData, battleSizeParam, onlyOwnedModels);
 
       // 4. Hydrate into full ArmyRoster
       setStatusStep('Finalizing leader attachments, model thresholds & Warlord...');
       const factions = factionsIndexData as FactionSummary[];
-      const roster = buildRosterFromPlan(plan, factionData, factions);
+      const roster = buildRosterFromPlan(plan, factionData, factions, onlyOwnedModels);
 
       setIsGenerating(false);
       onCreateRoster(roster);
@@ -219,6 +231,37 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Owned Models Restriction Toggle */}
+            <div className="pt-1">
+              <label
+                className={`flex items-center justify-between gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                  onlyOwnedModels
+                    ? 'bg-sky-950/50 border-sky-500/60'
+                    : 'bg-slate-850/70 border-slate-750 hover:border-slate-650'
+                }`}
+              >
+                <div className="flex items-start gap-2.5 min-w-0">
+                  <Package className={`w-4 h-4 mt-0.5 shrink-0 ${onlyOwnedModels ? 'text-sky-400' : 'text-slate-400'}`} />
+                  <div className="min-w-0">
+                    <span className="text-xs font-bold text-slate-200 block">
+                      Use only my Owned Models
+                    </span>
+                    <span className="text-[11px] text-slate-400 block">
+                      {ownedSummary.models > 0
+                        ? `Restricts AI to your ${ownedSummary.units} tracked unit${ownedSummary.units === 1 ? '' : 's'} (${ownedSummary.models} model${ownedSummary.models === 1 ? '' : 's'}).`
+                        : 'No owned models tracked yet — add them in the Owned Models tab first.'}
+                    </span>
+                  </div>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={onlyOwnedModels}
+                  onChange={(e) => setOnlyOwnedModels(e.target.checked)}
+                  className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-sky-500 focus:ring-sky-500 shrink-0"
+                />
+              </label>
             </div>
 
             {/* Progress / Status / Error Indicator */}

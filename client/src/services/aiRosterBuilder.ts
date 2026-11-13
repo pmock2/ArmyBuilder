@@ -4,6 +4,7 @@ import { ArmyRoster, BattleSize, SelectedUnit, SelectedDetachment, getUnitBaseCo
 import { FactionSummary, FactionDetail } from '../types/faction';
 import { callGemini } from './geminiService';
 import factionsIndexData from '../data/factions_index.json';
+import { getOwnedModelsForFaction } from '../utils/ownedModelsStorage';
 
 interface AiUnitDirective {
   name: string;
@@ -95,7 +96,8 @@ Keep it simple, punchy, and under 15 words. Respond ONLY with the prompt text it
 export async function generateRosterPlan(
   userPrompt: string,
   factionData: FactionDetail,
-  preferredBattleSize?: BattleSize
+  preferredBattleSize?: BattleSize,
+  onlyOwnedModels?: boolean
 ): Promise<AiRosterPlan> {
   // Detect battle size and target points from prompt or preferred option
   let detectedBattleSize: BattleSize = preferredBattleSize || 'strike-force';
@@ -121,16 +123,51 @@ export async function generateRosterPlan(
       .map(e => `${e.name} (${e.pts} pts)`)
   }));
 
-  const unitsList = (factionData.units || []).map(u => ({
-    name: u.name,
-    role: u.primaryCategory,
-    pts: u.baseCost,
-    minModels: u.minModels || 1,
-    maxModels: u.maxModels || 1,
-    costTiers: u.costTiers?.map(t => `${t.models}m=${t.cost}pts`) || [],
-    isLeader: u.isLeader,
-    canLead: u.canLead || []
-  }));
+  let candidateUnits = factionData.units || [];
+  let ownedById: Map<string, number> | null = null;
+
+  if (onlyOwnedModels) {
+    const ownedEntries = getOwnedModelsForFaction(factionData.faction.id);
+    if (ownedEntries.length === 0) {
+      throw new Error(
+        `You have no owned models recorded for ${factionData.faction.name}. Add units in the Owned Models tab or disable "Use only my Owned Models".`
+      );
+    }
+    ownedById = new Map(ownedEntries.map(e => [e.datasheetId, e.modelsCount]));
+    candidateUnits = candidateUnits.filter(u => {
+      const ownedCount = ownedById!.get(u.id) || 0;
+      return ownedCount >= (u.minModels || 1);
+    });
+    if (candidateUnits.length === 0) {
+      throw new Error(
+        `None of your owned models for ${factionData.faction.name} meet the minimum squad size for a unit.`
+      );
+    }
+  }
+
+  const unitsList = candidateUnits.map(u => {
+    const base: Record<string, any> = {
+      name: u.name,
+      role: u.primaryCategory,
+      pts: u.baseCost,
+      minModels: u.minModels || 1,
+      maxModels: ownedById ? Math.min(u.maxModels || 1, ownedById.get(u.id) || 1) : (u.maxModels || 1),
+      costTiers: u.costTiers?.map(t => `${t.models}m=${t.cost}pts`) || [],
+      isLeader: u.isLeader,
+      canLead: u.canLead || []
+    };
+    if (ownedById) {
+      base.maxOwnedModels = ownedById.get(u.id) || 0;
+    }
+    return base;
+  });
+
+  const ownedModelsRule = onlyOwnedModels
+    ? `\n5. OWNED MODELS RESTRICTION (STRICT):
+   - The user has enabled "Owned Models Only". The catalogue above ONLY contains units the user owns.
+   - Each unit includes "maxOwnedModels", which is the TOTAL number of models the user owns across ALL copies of that unit combined.
+   - NEVER include any unit not in the list, and NEVER exceed "maxOwnedModels" total models for any unit across the entire roster.`
+    : '';
 
   const systemInstruction = `You are an expert Warhammer 40,000 11th Edition Army Builder and Tournament Strategist AI.
 Your job is to analyze the user's army list prompt (e.g. "Build a 2k competitive Salamanders Army" or specific unit requirements) and build a complete, battle-forged, competitive army roster utilizing the points available from the provided faction catalogue.
@@ -151,7 +188,7 @@ CRITICAL ARMY BUILDING RULES:
    - Include fast skirmish/objective scoring units.
    - Assign 1-2 Enhancements from the selected detachment to eligible non-Epic Hero Characters.
 4. CATALOGUE FIDELITY:
-   - ONLY select units, detachments, and enhancements that exist in the provided catalogue. Use their EXACT names.
+   - ONLY select units, detachments, and enhancements that exist in the provided catalogue. Use their EXACT names.${ownedModelsRule}
 
 Output strictly valid JSON conforming to this schema:
 {
@@ -202,7 +239,8 @@ Generate the complete JSON army roster plan. Fill the points budget up to ~${poi
 export function buildRosterFromPlan(
   plan: AiRosterPlan,
   factionData: FactionDetail,
-  factionsIndex: FactionSummary[]
+  factionsIndex: FactionSummary[],
+  onlyOwnedModels?: boolean
 ): ArmyRoster {
   const currentFaction = factionsIndex.find(f => f.id === factionData.faction.id);
 
@@ -224,11 +262,19 @@ export function buildRosterFromPlan(
   // 2. Units Matching
   const instantiatedUnits: SelectedUnit[] = [];
   const attachedMapping: { leaderInstanceId: string; bodyguardName: string }[] = [];
+  const remainingOwned = onlyOwnedModels
+    ? new Map<string, number>(
+        getOwnedModelsForFaction(factionData.faction.id).map(e => [e.datasheetId, e.modelsCount])
+      )
+    : null;
 
   for (const uDirective of plan.units || []) {
-    // Find matching datasheet
+    // Find matching datasheet (restrict to owned datasheets when onlyOwnedModels is active)
     const cleanDirName = uDirective.name.toLowerCase().trim();
-    const ds = factionData.units?.find(u => {
+    const candidatePool = remainingOwned
+      ? (factionData.units || []).filter(u => remainingOwned.has(u.id))
+      : (factionData.units || []);
+    const ds = candidatePool.find(u => {
       const uName = u.name.toLowerCase();
       return uName === cleanDirName ||
         uName.includes(cleanDirName) ||
@@ -236,15 +282,29 @@ export function buildRosterFromPlan(
     });
 
     if (!ds) {
-      console.warn(`AI suggested unit "${uDirective.name}" not found in ${factionData.faction.name} catalogue.`);
+      console.warn(`AI suggested unit "${uDirective.name}" not found in ${onlyOwnedModels ? 'owned ' : ''}${factionData.faction.name} catalogue.`);
       continue;
+    }
+
+    const minReq = ds.minModels || 1;
+    let maxAllowed = ds.maxModels || 1;
+    if (remainingOwned) {
+      const avail = remainingOwned.get(ds.id) ?? 0;
+      if (avail < minReq) {
+        console.warn(`Skipping "${ds.name}" — insufficient remaining owned models (${avail} < ${minReq}).`);
+        continue;
+      }
+      maxAllowed = Math.min(maxAllowed, avail);
     }
 
     const instanceId = `unit-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
     const modelsCount = Math.min(
-      ds.maxModels || 1,
-      Math.max(ds.minModels || 1, uDirective.modelsCount || ds.minModels || 1)
+      maxAllowed,
+      Math.max(minReq, uDirective.modelsCount || minReq)
     );
+    if (remainingOwned) {
+      remainingOwned.set(ds.id, Math.max(0, (remainingOwned.get(ds.id) ?? 0) - modelsCount));
+    }
     const cost = getUnitBaseCostForModelCount(ds, modelsCount);
 
     // Default wargear options

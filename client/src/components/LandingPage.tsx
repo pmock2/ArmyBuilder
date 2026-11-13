@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Plus, Upload, Trash2, Copy, Shield, CheckCircle2, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { parseRosterJSON } from '../utils/storage';
 import { validateClientRoster } from '../utils/validator';
+import { OwnedModelsView } from './OwnedModelsView';
+import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
 
 interface LandingPageProps {
   rosters: ArmyRoster[];
@@ -28,6 +30,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenAiSettings
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [activeNav, setActiveNav] = useState<'armies' | 'owned'>('armies');
+  const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
+  const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -127,10 +132,71 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-6">
-        
-        {rosters.length === 0 ? (
+      {/* Main Content Area with Navigation Pane */}
+      <div className="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-6 flex flex-col lg:flex-row gap-4 lg:gap-6">
+        <aside className="lg:w-56 shrink-0">
+          <nav
+            aria-label="Dashboard Navigation"
+            className="flex lg:flex-col gap-1.5 bg-theme-surface-card border border-theme-border-subtle rounded-xl p-1.5"
+          >
+            <button
+              type="button"
+              onClick={() => setActiveNav('armies')}
+              className={`flex-1 lg:flex-initial flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                activeNav === 'armies'
+                  ? 'bg-theme-accent-primary text-white shadow-sm'
+                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text-primary'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Layers className="w-4 h-4 shrink-0" />
+                <span>Army Lists</span>
+              </span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                  activeNav === 'armies'
+                    ? 'bg-white/20 text-white'
+                    : 'bg-theme-surface-elevated text-theme-text-muted'
+                }`}
+              >
+                {rosters.length}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveNav('owned')}
+              className={`flex-1 lg:flex-initial flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                activeNav === 'owned'
+                  ? 'bg-theme-accent-primary text-white shadow-sm'
+                  : 'text-theme-text-secondary hover:bg-theme-surface-hover hover:text-theme-text-primary'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Package className="w-4 h-4 shrink-0" />
+                <span>Owned Models</span>
+              </span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                  activeNav === 'owned'
+                    ? 'bg-white/20 text-white'
+                    : 'bg-theme-surface-elevated text-theme-text-muted'
+                }`}
+              >
+                {totalOwnedModels}
+              </span>
+            </button>
+          </nav>
+        </aside>
+
+        <main className="flex-1 min-w-0">
+          {activeNav === 'owned' ? (
+            <OwnedModelsView
+              ownedModels={ownedModels}
+              onUpdateOwnedModels={setOwnedModels}
+              onOpenAiArmyCreator={onOpenAiArmyCreator}
+            />
+          ) : rosters.length === 0 ? (
           /* Empty State */
           <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center max-w-lg mx-auto">
             <div className="w-16 h-16 rounded-2xl bg-theme-surface border border-theme-border-subtle flex items-center justify-center mb-4 shadow-md">
@@ -272,7 +338,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         )}
 
-      </main>
+        </main>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-theme-border-subtle px-6 py-4 text-center text-xs text-theme-text-muted">
