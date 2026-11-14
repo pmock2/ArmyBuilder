@@ -66,7 +66,7 @@ export const UnitBrowserModal: React.FC<UnitBrowserModalProps> = ({
       }
 
       return true;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
   }, [availableDatasheets, initialRoleFilter, search, includeLegends, factionId, subFactionName]);
 
   if (!isOpen) return null;
