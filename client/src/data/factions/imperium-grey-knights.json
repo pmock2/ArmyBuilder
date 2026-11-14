@@ -20872,11 +20872,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 90,
-      "minModels": 9,
-      "maxModels": 9,
+      "minModels": 10,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 9,
+          "models": 10,
           "cost": 90
         }
       ],
@@ -21600,11 +21600,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 90,
-      "minModels": 9,
-      "maxModels": 9,
+      "minModels": 11,
+      "maxModels": 11,
       "costTiers": [
         {
-          "models": 9,
+          "models": 11,
           "cost": 90
         }
       ],
@@ -21902,11 +21902,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 85,
-      "minModels": 9,
-      "maxModels": 9,
+      "minModels": 11,
+      "maxModels": 11,
       "costTiers": [
         {
-          "models": 9,
+          "models": 11,
           "cost": 85
         }
       ],
@@ -23591,15 +23591,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 90,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 90
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 180
         }
       ],
@@ -25451,11 +25451,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 175,
-      "minModels": 4,
-      "maxModels": 4,
+      "minModels": 5,
+      "maxModels": 5,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 175
         }
       ],
@@ -26416,11 +26416,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 100,
-      "minModels": 9,
-      "maxModels": 9,
+      "minModels": 10,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 9,
+          "models": 10,
           "cost": 100
         }
       ],
@@ -28795,15 +28795,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 210,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 210
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 420
         }
       ],

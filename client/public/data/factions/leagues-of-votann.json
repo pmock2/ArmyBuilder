@@ -915,11 +915,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 90,
-      "minModels": 9,
-      "maxModels": 9,
+      "minModels": 10,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 9,
+          "models": 10,
           "cost": 90
         }
       ],
@@ -2248,11 +2248,11 @@
         "HEARTHKYN WARRIORS"
       ],
       "baseCost": 70,
-      "minModels": 4,
-      "maxModels": 4,
+      "minModels": 5,
+      "maxModels": 5,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 70
         }
       ],
@@ -2465,15 +2465,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 130,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 130
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 270
         }
       ],
@@ -5617,15 +5617,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 80,
-      "minModels": 2,
-      "maxModels": 5,
+      "minModels": 3,
+      "maxModels": 6,
       "costTiers": [
         {
-          "models": 2,
+          "models": 3,
           "cost": 80
         },
         {
-          "models": 5,
+          "models": 6,
           "cost": 170
         }
       ],
@@ -5839,15 +5839,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 75,
-      "minModels": 2,
-      "maxModels": 5,
+      "minModels": 3,
+      "maxModels": 6,
       "costTiers": [
         {
-          "models": 2,
+          "models": 3,
           "cost": 75
         },
         {
-          "models": 5,
+          "models": 6,
           "cost": 150
         }
       ],

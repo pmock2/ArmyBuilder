@@ -265,8 +265,7 @@ export function computeUnitEquippedData(
       isMultiModelUnit &&
       !group.perModel &&
       Boolean(groupPrefix) &&
-      groupPrefix.toLowerCase() !== unit.name.toLowerCase() &&
-      groupPrefix.toLowerCase() !== (unit.stats.name || '').toLowerCase();
+      groupPrefix.toLowerCase() !== unit.name.toLowerCase();
 
     for (const opt of group.options) {
       const optCount = rawSelectedIds.filter((id) => id === opt.id).length;
@@ -594,14 +593,16 @@ export function computeUnitEquippedData(
     ...buildProfileStats(es, activeStatModifiers)
   }));
 
-  const primaryCount = Math.max(1, currentModels - subModelProfiles.length);
+  const primaryCount = currentModels - subModelProfiles.length;
   const statProfiles: ComputedStatProfile[] = [
-    {
-      name: unit.stats.name || unit.name,
-      count: primaryCount,
-      Base: unit.stats.Base,
-      ...primaryStats
-    },
+    ...(primaryCount > 0 || subModelProfiles.length === 0
+      ? [{
+          name: unit.stats.name || unit.name,
+          count: Math.max(1, primaryCount),
+          Base: unit.stats.Base,
+          ...primaryStats
+        }]
+      : []),
     ...subModelProfiles,
     ...extraStatProfiles
   ];

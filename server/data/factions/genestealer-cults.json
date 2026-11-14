@@ -21558,15 +21558,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 60,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 60
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 110
         }
       ],
@@ -39348,11 +39348,11 @@
         "Raveners"
       ],
       "baseCost": 165,
-      "minModels": 4,
-      "maxModels": 4,
+      "minModels": 5,
+      "maxModels": 5,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 165
         }
       ],

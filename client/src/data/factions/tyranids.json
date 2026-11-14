@@ -10092,11 +10092,11 @@
         "Raveners"
       ],
       "baseCost": 165,
-      "minModels": 4,
-      "maxModels": 4,
+      "minModels": 5,
+      "maxModels": 5,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 165
         }
       ],

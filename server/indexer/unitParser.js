@@ -215,31 +215,29 @@ function createUnitParser({
       }
     }
 
-    if (hasModelGroup) {
-      minModels = totalGroupMin;
-      maxModels = Math.max(totalGroupMin, totalGroupMax);
-    } else {
-      // Direct model children
-      let directMin = 0;
-      let directMax = 0;
-      const directModelChildren = (entry.selectionEntries || []).concat(entry.entryLinks || []).filter(e => {
-        const res = e.targetId ? allEntriesById.get(e.targetId) : e;
-        return e.type === 'model' || (res && res.type === 'model');
-      });
+    // Direct model children (summed alongside any model groups, e.g. Breacher Team / Crisis Battlesuits)
+    let directMin = 0;
+    let directMax = 0;
+    const directModelChildren = (entry.selectionEntries || []).concat(entry.entryLinks || []).filter(e => {
+      const res = e.targetId ? allEntriesById.get(e.targetId) : e;
+      return e.type === 'model' || (res && res.type === 'model');
+    });
 
-      if (directModelChildren.length > 0) {
-        for (const me of directModelChildren) {
-          const res = me.targetId ? (allEntriesById.get(me.targetId) || me) : me;
-          const allC = [...(me.constraints || []), ...((res && res.constraints) || [])];
-          const cMin = allC.find(c => c.type === 'min' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
-          const cMax = allC.find(c => c.type === 'max' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
-          directMin += cMin ? Number(cMin.value) : 0;
-          directMax += cMax ? Number(cMax.value) : (cMin ? Number(cMin.value) : 1);
-          inspectModelCost(me);
-        }
-        minModels = Math.max(1, directMin);
-        maxModels = Math.max(minModels, directMax);
+    if (directModelChildren.length > 0) {
+      for (const me of directModelChildren) {
+        const res = me.targetId ? (allEntriesById.get(me.targetId) || me) : me;
+        const allC = [...(me.constraints || []), ...((res && res.constraints) || [])];
+        const cMin = allC.find(c => c.type === 'min' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
+        const cMax = allC.find(c => c.type === 'max' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
+        directMin += cMin ? Number(cMin.value) : 0;
+        directMax += cMax ? Number(cMax.value) : (cMin ? Number(cMin.value) : 1);
+        inspectModelCost(me);
       }
+    }
+
+    if (hasModelGroup || directModelChildren.length > 0) {
+      minModels = Math.max(1, totalGroupMin + directMin);
+      maxModels = Math.max(minModels, totalGroupMax + directMax);
     }
 
     if (baseCost === 0 && perModelCost > 0) {

@@ -2398,15 +2398,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 85,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 85
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 170
         }
       ],
@@ -2867,15 +2867,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 95,
-      "minModels": 4,
-      "maxModels": 9,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 95
         },
         {
-          "models": 9,
+          "models": 10,
           "cost": 175
         }
       ],
@@ -3325,11 +3325,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 155,
-      "minModels": 4,
-      "maxModels": 4,
+      "minModels": 5,
+      "maxModels": 5,
       "costTiers": [
         {
-          "models": 4,
+          "models": 5,
           "cost": 155
         },
         {
@@ -4563,11 +4563,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 160,
-      "minModels": 5,
-      "maxModels": 5,
+      "minModels": 6,
+      "maxModels": 6,
       "costTiers": [
         {
-          "models": 5,
+          "models": 6,
           "cost": 160
         }
       ],

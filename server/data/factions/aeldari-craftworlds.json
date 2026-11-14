@@ -10753,11 +10753,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 100,
-      "minModels": 10,
-      "maxModels": 10,
+      "minModels": 11,
+      "maxModels": 11,
       "costTiers": [
         {
-          "models": 10,
+          "models": 11,
           "cost": 100
         }
       ],
@@ -18698,14 +18698,14 @@
       "canLead": [],
       "baseCost": 115,
       "minModels": 5,
-      "maxModels": 10,
+      "maxModels": 11,
       "costTiers": [
         {
           "models": 5,
           "cost": 115
         },
         {
-          "models": 10,
+          "models": 11,
           "cost": 230
         }
       ],
@@ -20564,7 +20564,7 @@
       "canLead": [],
       "baseCost": 125,
       "minModels": 3,
-      "maxModels": 6,
+      "maxModels": 7,
       "costTiers": [
         {
           "models": 3,
@@ -21073,7 +21073,7 @@
       "canLead": [],
       "baseCost": 125,
       "minModels": 5,
-      "maxModels": 10,
+      "maxModels": 11,
       "costTiers": [
         {
           "models": 5,

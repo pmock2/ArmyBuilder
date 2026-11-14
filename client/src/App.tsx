@@ -108,6 +108,8 @@ export const App: React.FC = () => {
           oldWgJson !== newWgJson ||
           JSON.stringify(u.datasheet.abilities || []) !== JSON.stringify(freshDs.abilities || []) ||
           JSON.stringify(u.datasheet.extraStats || []) !== JSON.stringify(freshDs.extraStats || []) ||
+          u.datasheet.minModels !== freshDs.minModels ||
+          u.datasheet.maxModels !== freshDs.maxModels ||
           !u.datasheet.baseProfileNames ||
           !u.datasheet.baseWeaponCounts ||
           JSON.stringify(u.datasheet.enhancementGroupIds || []) !== JSON.stringify(freshDs.enhancementGroupIds || []) ||
@@ -116,12 +118,17 @@ export const App: React.FC = () => {
           u.datasheet.canBeLed === undefined ||
           u.datasheet.canHaveSupport === undefined
         ) {
-          const matchedTier = freshDs.costTiers?.find(t => t.models === u.modelsCount);
+          const nextModelsCount = Math.min(
+            Math.max(u.modelsCount || 1, freshDs.minModels || 1),
+            freshDs.maxModels || freshDs.minModels || 1
+          );
+          const matchedTier = freshDs.costTiers?.find(t => t.models === nextModelsCount);
           const updatedCost = u.cost === 0 && freshDs.baseCost > 0
             ? (matchedTier ? matchedTier.cost : freshDs.baseCost)
             : u.cost;
           nextUnit = {
             ...nextUnit,
+            modelsCount: nextModelsCount,
             cost: updatedCost,
             isLeader: freshDs.isLeader,
             isSupport: freshDs.isSupport,
