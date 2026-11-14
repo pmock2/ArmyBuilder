@@ -565,9 +565,14 @@ export function computeUnitEquippedData(
   const { M: modM, T: modT, Sv: modSv, W: modW, Ld: modLd, OC: modOC, InSv: modInSv } = primaryStats;
 
   const subModelProfiles: ComputedStatProfile[] = [];
+  const consumedExtraStatNames = new Set<string>();
   for (const [subName, subMods] of Object.entries(subModelModifiersMap)) {
+    const matchingExtra = (unit.extraStats || []).find(
+      (es) => (es.name || '').toLowerCase() === subName.toLowerCase()
+    );
+    const subBase = matchingExtra || unit.stats;
     const combinedMods = [...activeStatModifiers, ...subMods];
-    const subStats = buildProfileStats(unit.stats, combinedMods);
+    const subStats = buildProfileStats(subBase, combinedMods);
     const differsFromPrimary =
       subStats.M.value !== modM.value ||
       subStats.T.value !== modT.value ||
@@ -578,23 +583,34 @@ export function computeUnitEquippedData(
       subStats.InSv.value !== modInSv.value;
 
     if (differsFromPrimary) {
+      if (matchingExtra) {
+        consumedExtraStatNames.add(subName.toLowerCase());
+      }
       subModelProfiles.push({
         name: subName,
         count: 1,
-        Base: unit.stats.Base,
+        Base: subBase.Base,
         ...subStats
       });
     }
   }
 
-  const extraStatProfiles: ComputedStatProfile[] = (unit.extraStats || []).map((es) => ({
-    name: es.name || unit.name,
-    Base: es.Base,
-    ...buildProfileStats(es, activeStatModifiers)
-  }));
+  const statSignature = (sp: Pick<ComputedStatProfile, 'M' | 'T' | 'Sv' | 'W' | 'Ld' | 'OC' | 'InSv' | 'Base'>) =>
+    [sp.M.value, sp.T.value, sp.Sv.value, sp.W.value, sp.Ld.value, sp.OC.value, sp.InSv.value, sp.Base || ''].join('|');
+
+  const primarySignature = statSignature({ ...primaryStats, Base: unit.stats.Base });
+
+  const extraStatProfiles: ComputedStatProfile[] = (unit.extraStats || [])
+    .filter((es) => !consumedExtraStatNames.has((es.name || '').toLowerCase()))
+    .map((es) => ({
+      name: es.name || unit.name,
+      Base: es.Base,
+      ...buildProfileStats(es, activeStatModifiers)
+    }))
+    .filter((esProfile) => statSignature(esProfile) !== primarySignature);
 
   const primaryCount = currentModels - subModelProfiles.length;
-  const statProfiles: ComputedStatProfile[] = [
+  const rawStatProfiles: ComputedStatProfile[] = [
     ...(primaryCount > 0 || subModelProfiles.length === 0
       ? [{
           name: unit.stats.name || unit.name,
@@ -606,6 +622,27 @@ export function computeUnitEquippedData(
     ...subModelProfiles,
     ...extraStatProfiles
   ];
+
+  // Group any profiles with identical modified stats into a single combined profile row
+  const statProfiles: ComputedStatProfile[] = [];
+  const profileBySig = new Map<string, ComputedStatProfile>();
+  for (const sp of rawStatProfiles) {
+    const sig = statSignature(sp);
+    const existing = profileBySig.get(sig);
+    if (existing) {
+      if (existing.count !== undefined && sp.count !== undefined) {
+        existing.count += sp.count;
+      }
+      const existingNames = existing.name.split(' / ');
+      if (!existingNames.includes(sp.name)) {
+        existing.name = `${existing.name} / ${sp.name}`;
+      }
+    } else {
+      const copy = { ...sp };
+      profileBySig.set(sig, copy);
+      statProfiles.push(copy);
+    }
+  }
 
   const computedRangedWeapons: ComputedWeaponProfile[] = equippedRangedRaw.map((w) => ({
     name: w.name,
