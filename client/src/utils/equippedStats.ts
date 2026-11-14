@@ -241,7 +241,7 @@ export function computeUnitEquippedData(
   const selectedOptionCountSum: Record<string, number> = {};
   const selectedOptionCountMax: Record<string, number> = {};
 
-  const currentModels = (selectedUnit?.modelsCount) || unit.minModels || 1;
+  const currentModels = Math.max(unit.minModels || 1, selectedUnit?.modelsCount || unit.minModels || 1);
 
   // Count distinct single-model scopes (e.g. Sergeant, or optional specialist models)
   // so `perModel` exclusive groups (e.g. "Aggressors — Weapon Option") scale to the remaining models.
@@ -351,7 +351,7 @@ export function computeUnitEquippedData(
             }
           }
           if (p.type === 'ranged' || p.type === 'melee') {
-            const effectiveOptCount = group.perModel && optCount > 0 ? perModelCount : optCount;
+            const effectiveOptCount = group.perModel ? optCount * perModelCount : optCount;
             const c = (p.count || 1) * effectiveOptCount;
             const typedKey = `${p.type}:${p.name}`;
             selectedOptionCountSum[typedKey] = (selectedOptionCountSum[typedKey] || 0) + c;

@@ -87,7 +87,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     eligibleStratIds.has(s.id)
   );
 
-  const currentModelsCount = selectedUnit?.modelsCount || unit.minModels || 1;
+  const currentModelsCount = Math.max(unit.minModels || 1, selectedUnit?.modelsCount || unit.minModels || 1);
   const wargearPts = getUnitWargearPts(selectedUnit, previewSelectedOptions, unit);
   const currentCost = selectedUnit
     ? getUnitTotalPts(selectedUnit)
@@ -115,16 +115,13 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     modInSv
   } = computeUnitEquippedData(unit, selectedUnit, previewSelectedOptions, allUnitsInRoster);
 
-  const totalSpecialModels = wargearGroups
-    .filter((g) => !g.isExclusive)
-    .reduce((acc, g) => acc + getGroupSelectedIds(g.id, g.defaultOptionIds).length, 0);
-
-  const normalModelsCount = Math.max(1, currentModelsCount - totalSpecialModels);
+  const minSquadModels = unit.minModels || 1;
+  const maxSquadModels = unit.maxModels || minSquadModels;
 
   const handleStepSquadModels = (delta: number) => {
     if (!selectedUnit || !onUpdateUnit) return;
-    const maxM = unit.maxModels || unit.minModels || 1;
-    const nextCount = Math.min(Math.max(selectedUnit.modelsCount + delta, 1), maxM);
+    const baseCurrent = Math.max(minSquadModels, selectedUnit.modelsCount);
+    const nextCount = Math.min(Math.max(baseCurrent + delta, minSquadModels), maxSquadModels);
     if (nextCount === selectedUnit.modelsCount) return;
 
     const newBaseCost = getUnitBaseCostForModelCount(unit, nextCount);
@@ -183,8 +180,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     optionId: string,
     delta: number,
     effectiveMax: number,
-    defaultIds: string[],
-    isSpecialistModel: boolean = false
+    defaultIds: string[]
   ) => {
     const currentSelected = getGroupSelectedIds(groupId, defaultIds);
     const curCount = currentSelected.filter((id) => id === optionId).length;
@@ -205,18 +201,15 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     }
 
     if (selectedUnit && onUpdateUnit) {
-      let nextModelsCount = selectedUnit.modelsCount;
-      let newBaseCost = selectedUnit.cost;
-
-      if (isSpecialistModel) {
-        const maxM = unit.maxModels || unit.minModels || 1;
-        nextModelsCount = Math.min(Math.max(selectedUnit.modelsCount + delta, 1), maxM);
-        newBaseCost = getUnitBaseCostForModelCount(unit, nextModelsCount);
-      }
+      const healedModelsCount = Math.max(minSquadModels, selectedUnit.modelsCount);
+      const newBaseCost =
+        healedModelsCount !== selectedUnit.modelsCount
+          ? getUnitBaseCostForModelCount(unit, healedModelsCount)
+          : selectedUnit.cost;
 
       onUpdateUnit({
         ...selectedUnit,
-        modelsCount: nextModelsCount,
+        modelsCount: healedModelsCount,
         cost: newBaseCost,
         selectedOptions: {
           ...(selectedUnit.selectedOptions || {}),
@@ -540,38 +533,36 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                   <div className="flex items-center justify-between gap-3 p-2 rounded-lg bg-slate-850 border border-slate-750">
                     <div className="min-w-0 flex-1">
                       <span className="text-xs font-bold text-slate-200 block truncate">
-                        Standard Models
+                        Squad Models
                       </span>
                       <span className="text-[11px] text-slate-400">
-                        {totalSpecialModels > 0
-                          ? `${normalModelsCount} standard + ${totalSpecialModels} specialist = ${currentModelsCount} total`
-                          : `Total standard squad models`}
+                        Total models in unit
                       </span>
                     </div>
 
                     <div className="inline-flex items-center gap-1 rounded-lg bg-slate-900 border border-slate-700 p-0.5 shadow-sm">
                       <button
                         type="button"
-                        disabled={normalModelsCount <= 1}
+                        disabled={currentModelsCount <= minSquadModels}
                         onClick={() => handleStepSquadModels(-1)}
                         className="w-7 h-7 rounded flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-750 disabled:opacity-25 disabled:pointer-events-none transition-colors"
-                        title="Decrease standard models"
-                        aria-label="Decrease standard models"
+                        title={`Decrease squad models (Min: ${minSquadModels})`}
+                        aria-label="Decrease squad models"
                       >
                         <Minus className="w-3.5 h-3.5 stroke-[2.5]" />
                       </button>
 
                       <span className="text-xs font-mono font-bold text-slate-200 px-2 min-w-[24px] text-center">
-                        {normalModelsCount}
+                        {currentModelsCount}
                       </span>
 
                       <button
                         type="button"
-                        disabled={currentModelsCount >= (unit.maxModels || unit.minModels || 1)}
+                        disabled={currentModelsCount >= maxSquadModels}
                         onClick={() => handleStepSquadModels(1)}
                         className="w-7 h-7 rounded flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-750 disabled:opacity-25 disabled:pointer-events-none transition-colors"
-                        title={`Increase standard models (Max: ${unit.maxModels || unit.minModels || 1})`}
-                        aria-label="Increase standard models"
+                        title={`Increase squad models (Max: ${maxSquadModels})`}
+                        aria-label="Increase squad models"
                       >
                         <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
                       </button>
@@ -848,21 +839,14 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                         <div className="space-y-1.5">
                           {group.options.map((opt) => {
                             const isExclusive = group.isExclusive;
-                            const isSpecialistModel = (unit.maxModels || 1) > 1 && !isExclusive;
-                            const maxModels = unit.maxModels || unit.minModels || 1;
-
-                            // If this option is a specialist model, adding 1 increases total squad model count
-                            const projectedSquadSize = isSpecialistModel ? currentModelsCount + 1 : currentModelsCount;
-                            const effectiveMaxAtProjected = getEffectiveOptionMaxCount(opt, unit, projectedSquadSize);
                             const effectiveMaxCurrent = getEffectiveOptionMaxCount(opt, unit, currentModelsCount);
 
                             const currentCount = selectedIds.filter((id) => id === opt.id).length;
                             const isSelected = currentCount > 0;
-                            const isAtSquadMax = isSpecialistModel && currentModelsCount >= maxModels;
-                            const exceedsAllowance = currentCount >= effectiveMaxAtProjected;
+                            const exceedsAllowance = currentCount >= effectiveMaxCurrent;
                             const groupHasRoom = !group.max || group.max <= 0 || selectedIds.length < group.max;
 
-                            const canAddOption = !isAtSquadMax && !exceedsAllowance && groupHasRoom;
+                            const canAddOption = !exceedsAllowance && groupHasRoom;
 
                             return (
                               <div
@@ -929,8 +913,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                                             opt.id,
                                             -1,
                                             effectiveMaxCurrent,
-                                            group.defaultOptionIds,
-                                            isSpecialistModel
+                                            group.defaultOptionIds
                                           )
                                         }
                                         className="w-6 h-6 rounded flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-750 disabled:opacity-25 disabled:pointer-events-none transition-colors"
@@ -957,17 +940,14 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                                             group.id,
                                             opt.id,
                                             1,
-                                            effectiveMaxAtProjected,
-                                            group.defaultOptionIds,
-                                            isSpecialistModel
+                                            effectiveMaxCurrent,
+                                            group.defaultOptionIds
                                           )
                                         }
                                         className="w-6 h-6 rounded flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-750 disabled:opacity-25 disabled:pointer-events-none transition-colors"
                                         title={
-                                          isAtSquadMax
-                                            ? `Squad is at maximum capacity (${maxModels} models). Reduce standard models to add specialist models.`
-                                            : exceedsAllowance
-                                            ? `Limit reached for ${projectedSquadSize} models (${opt.maxCount || 1} allowed at ${maxModels} models)`
+                                          exceedsAllowance
+                                            ? `Limit reached (${effectiveMaxCurrent} allowed)`
                                             : !groupHasRoom
                                             ? `Group limit reached`
                                             : `Add 1 ${opt.name}`
