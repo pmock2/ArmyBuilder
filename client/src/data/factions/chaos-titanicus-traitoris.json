@@ -13285,58 +13285,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "4f7e-5125-3ce4-4cf8",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
         }
       ],
       "baseProfileNames": [
@@ -13859,58 +13807,6 @@
                   "stat": "InSv",
                   "type": "set",
                   "value": "4+"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2fd5-27d5-2ded-3321",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
                 }
               ]
             }

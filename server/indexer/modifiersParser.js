@@ -18,37 +18,87 @@ function shouldSkipWargearNode(node) {
   return SKIP_WARGEAR_NAMES.some((s) => lower.includes(s));
 }
 
-/**
- * Collects unconditional `set` modifiers that override a constraint's value
- * (BattleScribe modifiers whose `field` is a constraint id, e.g. "set min to 0").
- * Conditional modifiers are ignored since their conditions depend on roster state.
- */
-function getUnconditionalConstraintOverrides(...nodes) {
-  const overrides = new Map();
+function evaluateStaticCondition(c, ancestorIds) {
+  if (!c) return null;
+  if (c.scope && c.scope !== 'ancestor') return null;
+  if (c.type === 'instanceOf') return ancestorIds ? ancestorIds.has(c.childId) : false;
+  if (c.type === 'notInstanceOf') return ancestorIds ? !ancestorIds.has(c.childId) : true;
+  return null;
+}
+
+function evaluateStaticConditionGroup(cg, ancestorIds) {
+  if (!cg) return true;
+  const results = [];
+  for (const c of (cg.conditions || [])) {
+    const r = evaluateStaticCondition(c, ancestorIds);
+    if (r === null) return null;
+    results.push(r);
+  }
+  for (const sub of (cg.conditionGroups || [])) {
+    const r = evaluateStaticConditionGroup(sub, ancestorIds);
+    if (r === null) return null;
+    results.push(r);
+  }
+  if (results.length === 0) return true;
+  return cg.type === 'or' ? results.some(Boolean) : results.every(Boolean);
+}
+
+function areStaticConditionsMet(node, ancestorIds) {
+  const hasConds = (node.conditions && node.conditions.length > 0) || (node.conditionGroups && node.conditionGroups.length > 0);
+  if (!hasConds) return true;
+  if (!ancestorIds) return false;
+  return evaluateStaticConditionGroup({ type: 'and', conditions: node.conditions, conditionGroups: node.conditionGroups }, ancestorIds) === true;
+}
+
+function collectActiveStaticModifiers(ancestorIds, ...nodes) {
+  const active = [];
   for (const n of nodes) {
     if (!n) continue;
-    const mods = [
-      ...(n.modifiers || []),
-      ...((n.modifierGroups || [])
-        .filter((mg) => !(mg.conditions && mg.conditions.length) && !(mg.conditionGroups && mg.conditionGroups.length))
-        .flatMap((mg) => mg.modifiers || []))
-    ];
-    for (const m of mods) {
-      if (!m || m.type !== 'set' || !m.field) continue;
-      if ((m.conditions && m.conditions.length) || (m.conditionGroups && m.conditionGroups.length)) continue;
-      if (m.repeats && m.repeats.length) continue;
-      overrides.set(m.field, Number(m.value));
+    for (const m of (n.modifiers || [])) {
+      if (!m || (m.repeats && m.repeats.length)) continue;
+      if (areStaticConditionsMet(m, ancestorIds)) {
+        active.push(m);
+      }
     }
+    for (const mg of (n.modifierGroups || [])) {
+      if (!mg || (mg.repeats && mg.repeats.length)) continue;
+      if (!areStaticConditionsMet(mg, ancestorIds)) continue;
+      for (const m of (mg.modifiers || [])) {
+        if (!m || (m.repeats && m.repeats.length)) continue;
+        if (areStaticConditionsMet(m, ancestorIds)) {
+          active.push(m);
+        }
+      }
+    }
+  }
+  return active;
+}
+
+function isHiddenByAncestorModifiers(ancestorIds, ...nodes) {
+  const active = collectActiveStaticModifiers(ancestorIds, ...nodes);
+  return active.some((m) => m.field === 'hidden' && m.type === 'set' && (m.value === true || m.value === 'true'));
+}
+
+/**
+ * Collects `set` modifiers (unconditional or statically matching `ancestorIds`)
+ * that override a constraint's value (e.g. "set max to 1 for Crisis Fireknife").
+ */
+function getUnconditionalConstraintOverrides(ancestorIds, ...nodes) {
+  const overrides = new Map();
+  const active = collectActiveStaticModifiers(ancestorIds, ...nodes);
+  for (const m of active) {
+    if (!m || m.type !== 'set' || !m.field || m.field === 'hidden') continue;
+    overrides.set(m.field, Number(m.value));
   }
   return overrides;
 }
 
-function getWargearMinMax(node, resolved) {
+function getWargearMinMax(node, resolved, ancestorIds = null) {
   const constraints = [
     ...(node.constraints || []),
     ...((resolved && resolved !== node && resolved.constraints) || [])
   ];
-  const overrides = getUnconditionalConstraintOverrides(node, resolved !== node ? resolved : null);
+  const overrides = getUnconditionalConstraintOverrides(ancestorIds, node, resolved !== node ? resolved : null);
   const valueOf = (c) => (overrides.has(c.id) ? overrides.get(c.id) : Number(c.value));
 
   const minC = constraints.find(
@@ -286,6 +336,7 @@ module.exports = {
   SKIP_WARGEAR_NAMES,
   STAT_FIELD_MAP,
   shouldSkipWargearNode,
+  isHiddenByAncestorModifiers,
   getWargearMinMax,
   getNodeDirectPts,
   createModifiersParser

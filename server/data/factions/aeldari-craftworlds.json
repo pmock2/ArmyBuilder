@@ -13158,7 +13158,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "a792-8ae4-1a10-c52a",
@@ -13230,7 +13231,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -22492,11 +22494,12 @@
         {
           "id": "813e-c434-ebe3-9157",
           "name": "Heavy Weapons [Legends]",
-          "min": 1,
-          "max": 1,
-          "isExclusive": true,
+          "min": 2,
+          "max": 2,
+          "isExclusive": false,
           "defaultOptionIds": [
-            "8385-f1ab-090c-2ea6"
+            "8385-f1ab-090c-2ea6",
+            "494a-12c7-988a-e4e3"
           ],
           "options": [
             {
@@ -26773,18 +26776,6 @@
               ]
             },
             {
-              "id": "7535-5b09-8df8-05c7",
-              "name": "Skyrunner's Heavy Aspect armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skyrunner's Heavy Aspect armour",
-                  "type": "ability",
-                  "description": "(^^**MOUNTED**^^ only):\nChange this model’s Save characteristic to 3+. Add the following unit to the list of units this model can be attached to:\n• Shining Spears"
-                }
-              ]
-            },
-            {
               "id": "e12e-294b-018f-c121",
               "name": "Wayleaper's Heavy Aspect Armour",
               "maxCount": 1,
@@ -26815,21 +26806,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "f7a0-0ef4-f274-54a1"
+            "0d23-43bb-9d76-13a0"
           ],
           "options": [
-            {
-              "id": "f7a0-0ef4-f274-54a1",
-              "name": "Doomseer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Doomseer",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a model in this unit makes an attack, add 1 to the Hit roll."
-                }
-              ]
-            },
             {
               "id": "5553-9c59-c78c-e6c3",
               "name": "Outcast",
@@ -26857,18 +26836,6 @@
                   "name": "Superlative Strategist",
                   "type": "ability",
                   "description": "You can re-roll Advance rolls made for this model’s unit, and you can re-roll any rolls made for that unit while it is performing an Agile Manoeuvre."
-                }
-              ]
-            },
-            {
-              "id": "40b1-8e52-7f41-01f7",
-              "name": "Warden of Fate",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Warden of Fate",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a ranged attack targets this unit, models in that unit have the Benefit of Cover."
                 }
               ]
             }
@@ -27005,37 +26972,6 @@
               ]
             },
             {
-              "id": "7ad8-34c8-cb3f-8839",
-              "name": "Ghostglaive",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "➤ Ghostglaive - Strike",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "4+",
-                  "S": "10",
-                  "AP": "-3",
-                  "D": "D6+1",
-                  "keywords": ""
-                },
-                {
-                  "name": "➤ Ghostglaive - Sweep",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "8",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "4584-b6bc-e3a7-f20c",
               "name": "Paragon Sabre",
               "maxCount": 2,
@@ -27079,49 +27015,6 @@
               ]
             },
             {
-              "id": "a9cc-92aa-c771-0cd0",
-              "name": "Wraithbone Fists",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Wraithbone Fists",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "866e-84f0-5764-4fad",
-              "name": "Singing Spear",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "84f8-9c1d-1538-1fd4",
               "name": "Star Glaive",
               "maxCount": 2,
@@ -27139,93 +27032,6 @@
                   "keywords": ""
                 }
               ]
-            },
-            {
-              "id": "3046-5fb3-140b-9f48",
-              "name": "Star Lance",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Star Lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "2+",
-                  "S": "5",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": "Anti-Monster 3+, Anti-Vehicle 3+, Lance"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Lance",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[LANCE]** weapon, if the attacking model’s unit made a **charge move** this turn, add 1 to the **wound roll**."
-                }
-              ]
-            },
-            {
-              "id": "27b1-dfa8-aef0-2fbf",
-              "name": "Witch Staff",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witch Staff",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "D3",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "6365-1382-1889-3f0f",
-              "name": "Witchblade",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witchblade",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
             }
           ]
         },
@@ -27236,38 +27042,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "38e3-bb31-bdbf-b074"
+            "9e0b-19ce-c5c1-e60f"
           ],
           "options": [
-            {
-              "id": "38e3-bb31-bdbf-b074",
-              "name": "Destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Psychic, Torrent"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
             {
               "id": "9e0b-19ce-c5c1-e60f",
               "name": "Death Spinner",
@@ -27323,35 +27100,6 @@
                   "name": "Melta",
                   "type": "ability",
                   "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
-              "id": "880e-426b-a4bd-4ec4",
-              "name": "Eldritch Storm",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Eldritch Storm",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Blast, Psychic"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 }
               ]
             },
@@ -27516,194 +27264,6 @@
                   "name": "Lethal Hits",
                   "type": "ability",
                   "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "4506-71c3-ff7d-7d79",
-              "name": "Singing Spear",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Assault, Psychic"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "f35b-67df-9e2e-ced2",
-              "name": "Star Lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Star Lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "6\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": "Assault"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "9b5c-8d1f-ba50-88b3",
-              "name": "Twin Shuriken Catapult",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Twin Shuriken Catapult",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Assault, Twin-Linked"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Twin-linked",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "1887-1b28-9960-fec4",
-          "name": "Ghost Warrior Ranged Weapons",
-          "min": 0,
-          "max": 4,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "c6f7-1b5c-4a21-4fa8",
-            "f4eb-0801-1e0b-bbed",
-            "ceeb-1089-9d20-83df",
-            "3f9c-21cb-d0ce-6013"
-          ],
-          "options": [
-            {
-              "id": "c6f7-1b5c-4a21-4fa8",
-              "name": "Bright Lance",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Bright Lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "12",
-                  "AP": "-3",
-                  "D": "D6+2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "f4eb-0801-1e0b-bbed",
-              "name": "Flamer",
-              "maxCount": 4,
-              "profiles": [
-                {
-                  "name": "Flamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "4",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                }
-              ]
-            },
-            {
-              "id": "ceeb-1089-9d20-83df",
-              "name": "Shuriken Catapult",
-              "maxCount": 4,
-              "profiles": [
-                {
-                  "name": "Shuriken Catapult",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "4+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Assault"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "3f9c-21cb-d0ce-6013",
-              "name": "Starcannon",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Starcannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "8",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -28166,75 +27726,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "cf44-ddd9-8e4a-c8eb"
+            "1560-5374-b963-c7cb"
           ],
           "options": [
-            {
-              "id": "cf44-ddd9-8e4a-c8eb",
-              "name": "Cameleoline Cloak",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Cameleoline Cloak",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nThis model gains the Infiltrators and Stealth abilities, and replace the list of units this model can be attached to:\n• Rangers"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Rangers"
-                },
-                {
-                  "name": "Infiltrators",
-                  "type": "ability",
-                  "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-                },
-                {
-                  "name": "Stealth",
-                  "type": "ability",
-                  "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
-                }
-              ]
-            },
-            {
-              "id": "00bb-b794-f177-dabd",
-              "name": "Corsair Raider",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Corsair Raider",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nThis model gains the Scouts 7\" ability, adds the ^^**ANHRATHE**^^ keyword, and replace the list of units this model can be attached to:\n• Corsair Voidreavers\n• Corsair Voidscarred"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Corsair Voidreavers\n■ Corsair Voidscarred"
-                },
-                {
-                  "name": "Scouts",
-                  "type": "ability",
-                  "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-                }
-              ]
-            },
-            {
-              "id": "9dba-c6a8-864b-36ea",
-              "name": "Heavy Aspect Armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy Aspect Armour",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nChange this model’s Save characteristic to 3+. Add the following units to the list of units this model can be attached to:\n• Dark Reapers\n• Dire Avengers\n• Fire Dragons\n• Howling Banshees\n• Striking Scorpions"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Guardian Defenders\n■ Storm Guardian\n■ Warlock Conclave\n■ Dark Reapers\n■ Dire Avengers\n■ Fire Dragons\n■ Howling Banshees\n■ Striking Scorpions"
-                }
-              ]
-            },
             {
               "id": "1560-5374-b963-c7cb",
               "name": "Path of the Witch",
@@ -28258,28 +27752,6 @@
                   "description": "(^^**MOUNTED**^^ only):\nChange this model’s Save characteristic to 3+. Add the following unit to the list of units this model can be attached to:\n• Shining Spears"
                 }
               ]
-            },
-            {
-              "id": "e12e-294b-018f-c121",
-              "name": "Wayleaper's Heavy Aspect Armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Wayleaper's Heavy Aspect Armour",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nChange this model’s Move characteristic to 14\", its Save characteristic to 3+, it gains the Deep Strike ability, and add the ^^**FLY**^^ and ^^**JUMP PACK**^^ keywords.\nReplace the list of units this model can be attached to:\n• Swooping Hawks\n• Warp Spiders"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Swooping Hawks\n■ Warp Spiders"
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ]
             }
           ]
         },
@@ -28290,21 +27762,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "f7a0-0ef4-f274-54a1"
+            "0d23-43bb-9d76-13a0"
           ],
           "options": [
-            {
-              "id": "f7a0-0ef4-f274-54a1",
-              "name": "Doomseer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Doomseer",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a model in this unit makes an attack, add 1 to the Hit roll."
-                }
-              ]
-            },
             {
               "id": "5553-9c59-c78c-e6c3",
               "name": "Outcast",
@@ -28332,18 +27792,6 @@
                   "name": "Superlative Strategist",
                   "type": "ability",
                   "description": "You can re-roll Advance rolls made for this model’s unit, and you can re-roll any rolls made for that unit while it is performing an Agile Manoeuvre."
-                }
-              ]
-            },
-            {
-              "id": "40b1-8e52-7f41-01f7",
-              "name": "Warden of Fate",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Warden of Fate",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a ranged attack targets this unit, models in that unit have the Benefit of Cover."
                 }
               ]
             }
@@ -28480,37 +27928,6 @@
               ]
             },
             {
-              "id": "7ad8-34c8-cb3f-8839",
-              "name": "Ghostglaive",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "➤ Ghostglaive - Strike",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "4+",
-                  "S": "10",
-                  "AP": "-3",
-                  "D": "D6+1",
-                  "keywords": ""
-                },
-                {
-                  "name": "➤ Ghostglaive - Sweep",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "8",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "4584-b6bc-e3a7-f20c",
               "name": "Paragon Sabre",
               "maxCount": 2,
@@ -28550,49 +27967,6 @@
                   "name": "Sustained Hits",
                   "type": "ability",
                   "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                }
-              ]
-            },
-            {
-              "id": "a9cc-92aa-c771-0cd0",
-              "name": "Wraithbone Fists",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Wraithbone Fists",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "866e-84f0-5764-4fad",
-              "name": "Singing Spear",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 }
               ]
             },
@@ -28643,64 +28017,6 @@
                   "description": "Each time an attack is made with a **[LANCE]** weapon, if the attacking model’s unit made a **charge move** this turn, add 1 to the **wound roll**."
                 }
               ]
-            },
-            {
-              "id": "27b1-dfa8-aef0-2fbf",
-              "name": "Witch Staff",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witch Staff",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "D3",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "6365-1382-1889-3f0f",
-              "name": "Witchblade",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witchblade",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
             }
           ]
         },
@@ -28711,38 +28027,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "38e3-bb31-bdbf-b074"
+            "9e0b-19ce-c5c1-e60f"
           ],
           "options": [
-            {
-              "id": "38e3-bb31-bdbf-b074",
-              "name": "Destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Psychic, Torrent"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
             {
               "id": "9e0b-19ce-c5c1-e60f",
               "name": "Death Spinner",
@@ -28798,35 +28085,6 @@
                   "name": "Melta",
                   "type": "ability",
                   "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
-              "id": "880e-426b-a4bd-4ec4",
-              "name": "Eldritch Storm",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Eldritch Storm",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Blast, Psychic"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 }
               ]
             },
@@ -28995,35 +28253,6 @@
               ]
             },
             {
-              "id": "4506-71c3-ff7d-7d79",
-              "name": "Singing Spear",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Assault, Psychic"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "f35b-67df-9e2e-ced2",
               "name": "Star Lance",
               "maxCount": 1,
@@ -29073,112 +28302,6 @@
                   "name": "Twin-linked",
                   "type": "ability",
                   "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "1887-1b28-9960-fec4",
-          "name": "Ghost Warrior Ranged Weapons",
-          "min": 0,
-          "max": 4,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "c6f7-1b5c-4a21-4fa8",
-            "f4eb-0801-1e0b-bbed",
-            "ceeb-1089-9d20-83df",
-            "3f9c-21cb-d0ce-6013"
-          ],
-          "options": [
-            {
-              "id": "c6f7-1b5c-4a21-4fa8",
-              "name": "Bright Lance",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Bright Lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "12",
-                  "AP": "-3",
-                  "D": "D6+2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "f4eb-0801-1e0b-bbed",
-              "name": "Flamer",
-              "maxCount": 4,
-              "profiles": [
-                {
-                  "name": "Flamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "4",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                }
-              ]
-            },
-            {
-              "id": "ceeb-1089-9d20-83df",
-              "name": "Shuriken Catapult",
-              "maxCount": 4,
-              "profiles": [
-                {
-                  "name": "Shuriken Catapult",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "4+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Assault"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "3f9c-21cb-d0ce-6013",
-              "name": "Starcannon",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Starcannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "8",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -29643,77 +28766,11 @@
           "name": "Specialisms",
           "min": 0,
           "max": 1,
-          "isExclusive": true,
+          "isExclusive": false,
           "defaultOptionIds": [
-            "cf44-ddd9-8e4a-c8eb"
+            "1560-5374-b963-c7cb"
           ],
           "options": [
-            {
-              "id": "cf44-ddd9-8e4a-c8eb",
-              "name": "Cameleoline Cloak",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Cameleoline Cloak",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nThis model gains the Infiltrators and Stealth abilities, and replace the list of units this model can be attached to:\n• Rangers"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Rangers"
-                },
-                {
-                  "name": "Infiltrators",
-                  "type": "ability",
-                  "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-                },
-                {
-                  "name": "Stealth",
-                  "type": "ability",
-                  "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
-                }
-              ]
-            },
-            {
-              "id": "00bb-b794-f177-dabd",
-              "name": "Corsair Raider",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Corsair Raider",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nThis model gains the Scouts 7\" ability, adds the ^^**ANHRATHE**^^ keyword, and replace the list of units this model can be attached to:\n• Corsair Voidreavers\n• Corsair Voidscarred"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Corsair Voidreavers\n■ Corsair Voidscarred"
-                },
-                {
-                  "name": "Scouts",
-                  "type": "ability",
-                  "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-                }
-              ]
-            },
-            {
-              "id": "9dba-c6a8-864b-36ea",
-              "name": "Heavy Aspect Armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy Aspect Armour",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nChange this model’s Save characteristic to 3+. Add the following units to the list of units this model can be attached to:\n• Dark Reapers\n• Dire Avengers\n• Fire Dragons\n• Howling Banshees\n• Striking Scorpions"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Guardian Defenders\n■ Storm Guardian\n■ Warlock Conclave\n■ Dark Reapers\n■ Dire Avengers\n■ Fire Dragons\n■ Howling Banshees\n■ Striking Scorpions"
-                }
-              ]
-            },
             {
               "id": "1560-5374-b963-c7cb",
               "name": "Path of the Witch",
@@ -29725,40 +28782,6 @@
                   "description": "The model gains the ^^**PSYKER**^^ keyword."
                 }
               ]
-            },
-            {
-              "id": "7535-5b09-8df8-05c7",
-              "name": "Skyrunner's Heavy Aspect armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skyrunner's Heavy Aspect armour",
-                  "type": "ability",
-                  "description": "(^^**MOUNTED**^^ only):\nChange this model’s Save characteristic to 3+. Add the following unit to the list of units this model can be attached to:\n• Shining Spears"
-                }
-              ]
-            },
-            {
-              "id": "e12e-294b-018f-c121",
-              "name": "Wayleaper's Heavy Aspect Armour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Wayleaper's Heavy Aspect Armour",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ only):\nChange this model’s Move characteristic to 14\", its Save characteristic to 3+, it gains the Deep Strike ability, and add the ^^**FLY**^^ and ^^**JUMP PACK**^^ keywords.\nReplace the list of units this model can be attached to:\n• Swooping Hawks\n• Warp Spiders"
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Swooping Hawks\n■ Warp Spiders"
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ]
             }
           ]
         },
@@ -29767,41 +28790,11 @@
           "name": "Abilities",
           "min": 1,
           "max": 1,
-          "isExclusive": true,
+          "isExclusive": false,
           "defaultOptionIds": [
-            "f7a0-0ef4-f274-54a1"
+            "0d23-43bb-9d76-13a0"
           ],
           "options": [
-            {
-              "id": "f7a0-0ef4-f274-54a1",
-              "name": "Doomseer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Doomseer",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a model in this unit makes an attack, add 1 to the Hit roll."
-                }
-              ]
-            },
-            {
-              "id": "5553-9c59-c78c-e6c3",
-              "name": "Outcast",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Outcast",
-                  "type": "ability",
-                  "description": "(^^**INFANTRY**^^ and ^^**MOUNTED **^^ only):\nThis model has the Lone Operative ability."
-                },
-                {
-                  "name": "Lone Operative",
-                  "type": "ability",
-                  "description": "Unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within 12\" of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within 12\" of this unit. \nIf this ability takes the form **Lone Operative X\"**, unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within **X\"** of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within **X\"** of this unit."
-                }
-              ],
-              "pts": 10
-            },
             {
               "id": "0d23-43bb-9d76-13a0",
               "name": "Superlative Strategist",
@@ -29811,94 +28804,6 @@
                   "name": "Superlative Strategist",
                   "type": "ability",
                   "description": "You can re-roll Advance rolls made for this model’s unit, and you can re-roll any rolls made for that unit while it is performing an Agile Manoeuvre."
-                }
-              ]
-            },
-            {
-              "id": "40b1-8e52-7f41-01f7",
-              "name": "Warden of Fate",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Warden of Fate",
-                  "type": "ability",
-                  "description": "(^^**PSYKER**^^ only):\nEach time a ranged attack targets this unit, models in that unit have the Benefit of Cover."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "5ea3-7b41-1b2b-4463",
-          "name": "Pistols",
-          "min": 0,
-          "max": 2,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "ead5-5e12-4337-1012",
-            "18fb-1781-82c6-25a6"
-          ],
-          "options": [
-            {
-              "id": "ead5-5e12-4337-1012",
-              "name": "Dragon Fusion Pistol",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Dragon Fusion Pistol",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "6\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Assault, Melta 3, Pistol"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "18fb-1781-82c6-25a6",
-              "name": "Shuriken Pistol",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Shuriken Pistol",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Assault, Pistol"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
                 }
               ]
             }
@@ -30052,30 +28957,6 @@
               ]
             },
             {
-              "id": "866e-84f0-5764-4fad",
-              "name": "Singing Spear",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "84f8-9c1d-1538-1fd4",
               "name": "Star Glaive",
               "maxCount": 2,
@@ -30093,93 +28974,6 @@
                   "keywords": ""
                 }
               ]
-            },
-            {
-              "id": "3046-5fb3-140b-9f48",
-              "name": "Star Lance",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Star Lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "2+",
-                  "S": "5",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": "Anti-Monster 3+, Anti-Vehicle 3+, Lance"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Lance",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[LANCE]** weapon, if the attacking model’s unit made a **charge move** this turn, add 1 to the **wound roll**."
-                }
-              ]
-            },
-            {
-              "id": "27b1-dfa8-aef0-2fbf",
-              "name": "Witch Staff",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witch Staff",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "D3",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "6365-1382-1889-3f0f",
-              "name": "Witchblade",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Witchblade",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
             }
           ]
         },
@@ -30190,38 +28984,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "38e3-bb31-bdbf-b074"
+            "9e0b-19ce-c5c1-e60f"
           ],
           "options": [
-            {
-              "id": "38e3-bb31-bdbf-b074",
-              "name": "Destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Psychic, Torrent"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
             {
               "id": "9e0b-19ce-c5c1-e60f",
               "name": "Death Spinner",
@@ -30277,35 +29042,6 @@
                   "name": "Melta",
                   "type": "ability",
                   "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
-              "id": "880e-426b-a4bd-4ec4",
-              "name": "Eldritch Storm",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Eldritch Storm",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Blast, Psychic"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 }
               ]
             },
@@ -30470,88 +29206,6 @@
                   "name": "Lethal Hits",
                   "type": "ability",
                   "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "4506-71c3-ff7d-7d79",
-              "name": "Singing Spear",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Singing Spear",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "0",
-                  "D": "3",
-                  "keywords": "Assault, Psychic"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "f35b-67df-9e2e-ced2",
-              "name": "Star Lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Star Lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "6\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": "Assault"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "9b5c-8d1f-ba50-88b3",
-              "name": "Twin Shuriken Catapult",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Twin Shuriken Catapult",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Assault, Twin-Linked"
-                },
-                {
-                  "name": "Assault",
-                  "type": "ability",
-                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                },
-                {
-                  "name": "Twin-linked",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
                 }
               ]
             }
@@ -35997,7 +34651,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "5a8-c819-bc11-d270",
@@ -36066,7 +34721,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "3110-f04c-8047-d632",
@@ -36200,7 +34856,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -40596,45 +39253,11 @@
           "name": "Specialisms",
           "min": 0,
           "max": 1,
-          "isExclusive": true,
+          "isExclusive": false,
           "defaultOptionIds": [
-            "56e5-1e64-0052-24ef"
+            "ce87-bab3-f153-a4b2"
           ],
           "options": [
-            {
-              "id": "56e5-1e64-0052-24ef",
-              "name": "Jetbike",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Jetbike",
-                  "type": "ability",
-                  "description": "(^^**ARCHTORMENTOR**^^ only): Change this model’s Move characteristic to 16\", its Toughness characteristic to 4, and its Wounds characteristic to 5. Add the **^^Fly^^** and **^^Mounted^^** keywords, and replace the list of units this model can be attached to: ^^**REAVERS**^^."
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Reavers"
-                }
-              ]
-            },
-            {
-              "id": "fea3-79b2-3771-a87e",
-              "name": "Kabal Overlord",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Kabal Overlord",
-                  "type": "ability",
-                  "description": "(^^**ARCHTORMENTOR**^^ only): Change this model’s Move characteristic to 7\", and its Leadership characteristic to 6+. Remove the **^^Wych Cult^^** keyword, add the **^^Kabal^^** keyword, and replace the list of units this model can be attached to: ^^**HAND OF THE ARCHON, INCUBI, KABALITE WARRIORS**^^."
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Hand of the Archon\n■ Incubi\n■ Kabalite Warriors"
-                }
-              ]
-            },
             {
               "id": "ce87-bab3-f153-a4b2",
               "name": "Pseudovian Form",
@@ -40649,28 +39272,6 @@
                   "name": "Leader",
                   "type": "ability",
                   "description": "This model can be attached to the following units:\n■ Scourges with Heavy Weapons\n■ Scourges with Shardcarbines"
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ]
-            },
-            {
-              "id": "f78e-3638-39ce-fcfc",
-              "name": "Skyboard",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skyboard",
-                  "type": "ability",
-                  "description": "(^^**ARCHTORMENTOR**^^ only): Change this model’s Move characteristic to 14\", its Toughness characteristic to 4, and its Wounds characteristic to 5. Add the **^^Fly^^** and **^^Mounted^^** keywords, it gains the Deep Strike ability, and replace the list of units this model can be attached to: ^^**HELLIONS**^^."
-                },
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units:\n■ Hellions"
                 },
                 {
                   "name": "Deep Strike",

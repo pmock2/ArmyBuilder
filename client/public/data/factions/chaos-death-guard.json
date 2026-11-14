@@ -21719,40 +21719,6 @@
               ]
             },
             {
-              "id": "0062-8dd8-49f2-f58a",
-              "name": "Plague sprayer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plague sprayer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
               "id": "1584-1adf-b870-2e60",
               "name": "Plague Wind",
               "maxCount": 1,
@@ -21836,74 +21802,6 @@
                   "name": "Rapid Fire",
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "bb63-0e95-fa4b-6e76",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
-              "id": "847c-0b5b-743d-2b81",
-              "name": "Twin plague spewer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Twin plague spewer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent, Twin-linked"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Twin-linked",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
                 }
               ]
             }
@@ -22023,45 +21921,6 @@
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
                 }
               ]
-            },
-            {
-              "id": "f7e5-d030-bb02-e7cf",
-              "name": "Plaguespurt gauntlet",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Plaguespurt gauntlet",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 4+, Ignores Cover, Pistol, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
             }
           ]
         },
@@ -22173,59 +22032,6 @@
               ]
             },
             {
-              "id": "1eb2-b402-b5b6-aa45",
-              "name": "Flail of corruption",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flail of corruption",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "8d4e-cbfb-85ec-9cbd",
-              "name": "Great plague blade",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Great plague blade",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "dd98-d7ca-8b68-1f9e",
               "name": "Heavy plague weapon",
               "maxCount": 1,
@@ -22288,42 +22094,6 @@
                   "S": "8",
                   "AP": "-2",
                   "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "92ac-05af-5e2a-5f58",
-              "name": "Manreaper",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Manreaper - strike",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "2+",
-                  "S": "9",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "➤ Manreaper - sweep",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "10",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
                   "keywords": "Lethal Hits"
                 },
                 {
@@ -23270,86 +23040,6 @@
               ]
             },
             {
-              "id": "0062-8dd8-49f2-f58a",
-              "name": "Plague sprayer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plague sprayer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
-              "id": "1584-1adf-b870-2e60",
-              "name": "Plague Wind",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Plague Wind - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic, Torrent"
-                },
-                {
-                  "name": "➤ Plague Wind - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6+3",
-                  "BS": "N/A",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Hazardous, Psychic, Torrent"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
               "id": "d198-b3a8-0335-643d",
               "name": "Plasma gun",
               "maxCount": 1,
@@ -23387,74 +23077,6 @@
                   "name": "Rapid Fire",
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "bb63-0e95-fa4b-6e76",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
-              "id": "847c-0b5b-743d-2b81",
-              "name": "Twin plague spewer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Twin plague spewer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent, Twin-linked"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Twin-linked",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
                 }
               ]
             }
@@ -23574,45 +23196,6 @@
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
                 }
               ]
-            },
-            {
-              "id": "f7e5-d030-bb02-e7cf",
-              "name": "Plaguespurt gauntlet",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Plaguespurt gauntlet",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 4+, Ignores Cover, Pistol, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
             }
           ]
         },
@@ -23691,59 +23274,6 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "c01f-528e-bd60-bcbc",
-              "name": "Corrupted staff",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Corrupted staff",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Lethal Hits, Psychic"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "1eb2-b402-b5b6-aa45",
-              "name": "Flail of corruption",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flail of corruption",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
                 }
               ]
             },
@@ -23839,42 +23369,6 @@
                   "S": "8",
                   "AP": "-2",
                   "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "92ac-05af-5e2a-5f58",
-              "name": "Manreaper",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Manreaper - strike",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "2+",
-                  "S": "9",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "➤ Manreaper - sweep",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "10",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
                   "keywords": "Lethal Hits"
                 },
                 {
@@ -24814,86 +24308,6 @@
               ]
             },
             {
-              "id": "0062-8dd8-49f2-f58a",
-              "name": "Plague sprayer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plague sprayer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
-              "id": "1584-1adf-b870-2e60",
-              "name": "Plague Wind",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Plague Wind - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic, Torrent"
-                },
-                {
-                  "name": "➤ Plague Wind - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6+3",
-                  "BS": "N/A",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Hazardous, Psychic, Torrent"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
               "id": "d198-b3a8-0335-643d",
               "name": "Plasma gun",
               "maxCount": 1,
@@ -24933,76 +24347,9 @@
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 }
               ]
-            },
-            {
-              "id": "bb63-0e95-fa4b-6e76",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
-              "id": "847c-0b5b-743d-2b81",
-              "name": "Twin plague spewer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Twin plague spewer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 2+, Ignores Cover, Torrent, Twin-linked"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Twin-linked",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "ee96-4d62-53e4-109a",
@@ -25118,45 +24465,6 @@
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
                 }
               ]
-            },
-            {
-              "id": "f7e5-d030-bb02-e7cf",
-              "name": "Plaguespurt gauntlet",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Plaguespurt gauntlet",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Anti-Infantry 4+, Ignores Cover, Pistol, Torrent"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
             }
           ]
         },
@@ -25239,88 +24547,6 @@
               ]
             },
             {
-              "id": "c01f-528e-bd60-bcbc",
-              "name": "Corrupted staff",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Corrupted staff",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Lethal Hits, Psychic"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "1eb2-b402-b5b6-aa45",
-              "name": "Flail of corruption",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flail of corruption",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "8d4e-cbfb-85ec-9cbd",
-              "name": "Great plague blade",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Great plague blade",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "dd98-d7ca-8b68-1f9e",
               "name": "Heavy plague weapon",
               "maxCount": 1,
@@ -25383,42 +24609,6 @@
                   "S": "8",
                   "AP": "-2",
                   "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "92ac-05af-5e2a-5f58",
-              "name": "Manreaper",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Manreaper - strike",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "2+",
-                  "S": "9",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "➤ Manreaper - sweep",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "10",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
                   "keywords": "Lethal Hits"
                 },
                 {
@@ -26533,58 +25723,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "2fd5-27d5-2ded-3321",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
         }
       ],
       "baseProfileNames": [
@@ -27108,58 +26246,6 @@
                   "stat": "InSv",
                   "type": "set",
                   "value": "4+"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "4f7e-5125-3ce4-4cf8",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
                 }
               ]
             }

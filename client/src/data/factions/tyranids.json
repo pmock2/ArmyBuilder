@@ -7100,7 +7100,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "5f3d-a52c-cd27-c5fd",
@@ -7241,7 +7242,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

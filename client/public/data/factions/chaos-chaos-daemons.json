@@ -5961,21 +5961,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -7051,21 +7039,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -8203,21 +8179,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -8547,21 +8511,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -11146,21 +11098,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -30296,58 +30236,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "4f7e-5125-3ce4-4cf8",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
         }
       ],
       "baseProfileNames": [
@@ -30869,58 +30757,6 @@
                   "stat": "InSv",
                   "type": "set",
                   "value": "4+"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2fd5-27d5-2ded-3321",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2bc8-f9ba-9d56-eb64-optional-wargear",
-          "name": "Optional Wargear",
-          "min": 0,
-          "max": 1,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "d925-5864-b5f1-fc6e"
-          ],
-          "options": [
-            {
-              "id": "d925-5864-b5f1-fc6e",
-              "name": "Daemonic Wings",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "increment",
-                  "value": 4
                 }
               ]
             }
@@ -37799,12 +37635,6 @@
                   "description": "Add 3 to the Attacks characteristic of this model's infernal cannon."
                 }
               ]
-            },
-            {
-              "id": "e9bb-ae3a-eba6-cbd8",
-              "name": "Chaos Undivided",
-              "maxCount": 1,
-              "profiles": []
             }
           ]
         }
@@ -38017,12 +37847,6 @@
                   "description": "Add 3 to the Attacks characteristic of this model's infernal cannon."
                 }
               ]
-            },
-            {
-              "id": "e9bb-ae3a-eba6-cbd8",
-              "name": "Chaos Undivided",
-              "maxCount": 1,
-              "profiles": []
             }
           ]
         }
@@ -61761,21 +61585,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -63812,21 +63624,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -65686,21 +65486,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "6464-525a-0356-5c1d"
+            "a5de-ce59-0b3f-ea7a"
           ],
           "options": [
-            {
-              "id": "6464-525a-0356-5c1d",
-              "name": "Daemonkin (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Daemonkin (Psychic)",
-                  "type": "ability",
-                  "description": "Add 1 to Advance and Charge rolls made for this unit."
-                }
-              ]
-            },
             {
               "id": "b03f-bb5b-cafe-fd33",
               "name": "Dark Zealotry",
@@ -65735,18 +65523,6 @@
                   "name": "Master of Mechanisms",
                   "type": "ability",
                   "description": "In your Command phase, select one friendly ^^**Heretic Astartes Vehicle**^^ model within 3\" of this model. That ^^**Vehicle**^^ model regains up to D3 lost wounds and, until the start of your next Command phase, each time that ^^**Vehicle**^^ makes an attack, add 1 to the Hit roll. Each model can only be selected for this ability once per Command phase."
-                }
-              ]
-            },
-            {
-              "id": "e0f2-bfa2-9e39-9e60",
-              "name": "Prescience (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Prescience (Psychic)",
-                  "type": "ability",
-                  "description": "Each time an attack targets this unit, subtract 1 from the Hit roll."
                 }
               ]
             }
@@ -65972,54 +65748,6 @@
               ]
             },
             {
-              "id": "f803-3100-bef8-c3fd",
-              "name": "Bladed limbs",
-              "maxCount": 3,
-              "profiles": [
-                {
-                  "name": "Bladed limbs",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Extra Attacks"
-                },
-                {
-                  "name": "Extra Attacks",
-                  "type": "ability",
-                  "description": "Each time a unit containing one or more models with an **[EXTRA ATTACKS]** weapon fights, those models will make attacks with those weapons in addition to any others. In the Select Weapons step (04.01), for each of those models, you must select: \n- All of that model’s **[EXTRA ATTACKS]** weapons. \n- One of that model’s other melee weapons, if possible."
-                }
-              ]
-            },
-            {
-              "id": "c158-c5a2-43d0-349b",
-              "name": "Chainfist",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chainfist",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "fb65-8fa9-c91b-6605",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -66082,30 +65810,6 @@
               ]
             },
             {
-              "id": "02fa-a489-1cad-c8ff",
-              "name": "Force weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Force weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "1c13-238e-680f-a36a",
               "name": "Impaler chainglaive",
               "maxCount": 1,
@@ -66145,35 +65849,6 @@
                   "AP": "-2",
                   "D": "2",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "8e2c-21a7-831e-aeba",
-              "name": "Staff of possession",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Staff of possession",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Anti-Psyker 2+, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
                 }
               ]
             },
@@ -66239,62 +65914,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "5816-f8ff-2fe3-6f6a"
+            "f8ba-db58-7edd-4043"
           ],
           "options": [
-            {
-              "id": "5816-f8ff-2fe3-6f6a",
-              "name": "Balefire tome",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Balefire tome",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "9495-d0a3-34eb-e55c",
-              "name": "Baleflamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Baleflamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6+3",
-                  "BS": "N/A",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
             {
               "id": "f8ba-db58-7edd-4043",
               "name": "Boltgun",
@@ -66431,49 +66053,6 @@
               ]
             },
             {
-              "id": "241c-c6d0-7944-cc4d",
-              "name": "Helstalker autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Helstalker autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "48\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-1",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "7b1c-308f-0565-9884",
-              "name": "Magma cutter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Magma cutter",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "6\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Melta 2"
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
               "id": "0b0f-e28c-32e9-b69b",
               "name": "Meltagun",
               "maxCount": 1,
@@ -66525,137 +66104,6 @@
                   "AP": "-3",
                   "D": "2",
                   "keywords": "Hazardous, Rapid Fire 1"
-                }
-              ]
-            },
-            {
-              "id": "1006-0f61-9cac-eb40",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                }
-              ]
-            },
-            {
-              "id": "6a6f-5f32-db1b-0346",
-              "name": "Rite of Possession",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Rite of Possession - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "4",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": "Anti-PSYKER 2+, Pistol, Precision, Psychic"
-                },
-                {
-                  "name": "➤ Rite of Possession - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Anti-PSYKER 2+, Hazardous, Pistol, Precision, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Precision",
-                  "type": "ability",
-                  "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                }
-              ]
-            },
-            {
-              "id": "4a5c-f8ec-5685-d19e",
-              "name": "Infernal Gaze",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Infernal Gaze - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Infernal Gaze - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Devastating Wounds, Hazardous, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
                 }
               ]
             }
@@ -67685,54 +67133,6 @@
               ]
             },
             {
-              "id": "f803-3100-bef8-c3fd",
-              "name": "Bladed limbs",
-              "maxCount": 3,
-              "profiles": [
-                {
-                  "name": "Bladed limbs",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Extra Attacks"
-                },
-                {
-                  "name": "Extra Attacks",
-                  "type": "ability",
-                  "description": "Each time a unit containing one or more models with an **[EXTRA ATTACKS]** weapon fights, those models will make attacks with those weapons in addition to any others. In the Select Weapons step (04.01), for each of those models, you must select: \n- All of that model’s **[EXTRA ATTACKS]** weapons. \n- One of that model’s other melee weapons, if possible."
-                }
-              ]
-            },
-            {
-              "id": "c158-c5a2-43d0-349b",
-              "name": "Chainfist",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chainfist",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "fb65-8fa9-c91b-6605",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -67980,35 +67380,6 @@
               ]
             },
             {
-              "id": "9495-d0a3-34eb-e55c",
-              "name": "Baleflamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Baleflamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6+3",
-                  "BS": "N/A",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
               "id": "f8ba-db58-7edd-4043",
               "name": "Boltgun",
               "maxCount": 1,
@@ -68144,49 +67515,6 @@
               ]
             },
             {
-              "id": "241c-c6d0-7944-cc4d",
-              "name": "Helstalker autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Helstalker autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "48\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-1",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "7b1c-308f-0565-9884",
-              "name": "Magma cutter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Magma cutter",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "6\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Melta 2"
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
               "id": "0b0f-e28c-32e9-b69b",
               "name": "Meltagun",
               "maxCount": 1,
@@ -68238,35 +67566,6 @@
                   "AP": "-3",
                   "D": "2",
                   "keywords": "Hazardous, Rapid Fire 1"
-                }
-              ]
-            },
-            {
-              "id": "1006-0f61-9cac-eb40",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
                 }
               ]
             },
@@ -68381,21 +67680,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "3bb3-78e-db85-353b"
+            "cb13-6792-cb2e-4702"
           ],
           "options": [
-            {
-              "id": "3bb3-78e-db85-353b",
-              "name": "Khorne",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Khorne",
-                  "type": "ability",
-                  "description": "Add 2 to the Strength characteristic of this model's hellforged weapons."
-                }
-              ]
-            },
             {
               "id": "cb13-6792-cb2e-4702",
               "name": "Nurgle",
@@ -68928,167 +68215,17 @@
           "name": "Specialisms",
           "min": 0,
           "max": 1,
-          "isExclusive": true,
+          "isExclusive": false,
           "defaultOptionIds": [
-            "39f6-5849-1b1c-f5ff"
+            "8270-eebb-b9c8-a2c3"
           ],
           "options": [
-            {
-              "id": "39f6-5849-1b1c-f5ff",
-              "name": "Combat Bike",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Chaos Bikers**^^."
-                },
-                {
-                  "name": "Combi-bolter",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Rapid Fire 2"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "12\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "5"
-                },
-                {
-                  "target": "unit",
-                  "stat": "W",
-                  "type": "set",
-                  "value": "5"
-                }
-              ]
-            },
-            {
-              "id": "199b-a165-dc5f-b07e",
-              "name": "Daemon Host",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Possessed**^^."
-                }
-              ],
-              "pts": 10,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "9\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "InSv",
-                  "type": "set",
-                  "value": "5+"
-                }
-              ]
-            },
-            {
-              "id": "d488-b080-56a1-f492",
-              "name": "Jump Pack",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Raptors**^^."
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "12\""
-                }
-              ]
-            },
             {
               "id": "8270-eebb-b9c8-a2c3",
               "name": "Sigil of Corruption",
               "maxCount": 1,
               "profiles": [],
               "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "InSv",
-                  "type": "set",
-                  "value": "4+"
-                }
-              ]
-            },
-            {
-              "id": "d643-7189-fe30-9d40",
-              "name": "Terminator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Chaos Terminator Squad**^^."
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "5\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "5"
-                },
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "2+"
-                },
-                {
-                  "target": "unit",
-                  "stat": "W",
-                  "type": "set",
-                  "value": "5"
-                },
                 {
                   "target": "unit",
                   "stat": "InSv",
@@ -69106,21 +68243,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "6464-525a-0356-5c1d"
+            "a5de-ce59-0b3f-ea7a"
           ],
           "options": [
-            {
-              "id": "6464-525a-0356-5c1d",
-              "name": "Daemonkin (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Daemonkin (Psychic)",
-                  "type": "ability",
-                  "description": "Add 1 to Advance and Charge rolls made for this unit."
-                }
-              ]
-            },
             {
               "id": "b03f-bb5b-cafe-fd33",
               "name": "Dark Zealotry",
@@ -69155,18 +68280,6 @@
                   "name": "Master of Mechanisms",
                   "type": "ability",
                   "description": "In your Command phase, select one friendly ^^**Heretic Astartes Vehicle**^^ model within 3\" of this model. That ^^**Vehicle**^^ model regains up to D3 lost wounds and, until the start of your next Command phase, each time that ^^**Vehicle**^^ makes an attack, add 1 to the Hit roll. Each model can only be selected for this ability once per Command phase."
-                }
-              ]
-            },
-            {
-              "id": "e0f2-bfa2-9e39-9e60",
-              "name": "Prescience (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Prescience (Psychic)",
-                  "type": "ability",
-                  "description": "Each time an attack targets this unit, subtract 1 from the Hit roll."
                 }
               ]
             }
@@ -69416,30 +68529,6 @@
               ]
             },
             {
-              "id": "c158-c5a2-43d0-349b",
-              "name": "Chainfist",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chainfist",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "fb65-8fa9-c91b-6605",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -69502,30 +68591,6 @@
               ]
             },
             {
-              "id": "02fa-a489-1cad-c8ff",
-              "name": "Force weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Force weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "1c13-238e-680f-a36a",
               "name": "Impaler chainglaive",
               "maxCount": 1,
@@ -69565,35 +68630,6 @@
                   "AP": "-2",
                   "D": "2",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "8e2c-21a7-831e-aeba",
-              "name": "Staff of possession",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Staff of possession",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Anti-Psyker 2+, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
                 }
               ]
             },
@@ -69659,33 +68695,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "5816-f8ff-2fe3-6f6a"
+            "9495-d0a3-34eb-e55c"
           ],
           "options": [
-            {
-              "id": "5816-f8ff-2fe3-6f6a",
-              "name": "Balefire tome",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Balefire tome",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
             {
               "id": "9495-d0a3-34eb-e55c",
               "name": "Baleflamer",
@@ -69945,137 +68957,6 @@
                   "AP": "-3",
                   "D": "2",
                   "keywords": "Hazardous, Rapid Fire 1"
-                }
-              ]
-            },
-            {
-              "id": "1006-0f61-9cac-eb40",
-              "name": "Reaper autocannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Reaper autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "4",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                }
-              ]
-            },
-            {
-              "id": "6a6f-5f32-db1b-0346",
-              "name": "Rite of Possession",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Rite of Possession - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "4",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": "Anti-PSYKER 2+, Pistol, Precision, Psychic"
-                },
-                {
-                  "name": "➤ Rite of Possession - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Anti-PSYKER 2+, Hazardous, Pistol, Precision, Psychic"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Precision",
-                  "type": "ability",
-                  "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                }
-              ]
-            },
-            {
-              "id": "4a5c-f8ec-5685-d19e",
-              "name": "Infernal Gaze",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Infernal Gaze - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Infernal Gaze - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Devastating Wounds, Hazardous, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
                 }
               ]
             }

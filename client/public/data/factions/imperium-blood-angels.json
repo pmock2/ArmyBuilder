@@ -15485,7 +15485,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -18764,7 +18765,8 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -39806,30 +39808,6 @@
               ]
             },
             {
-              "id": "0a04-411a-a87e-6a6c",
-              "name": "Ravenwing Hunter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ravenwing Hunter",
-                  "type": "ability",
-                  "description": "While this model is leading a unit, that unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-                }
-              ]
-            },
-            {
-              "id": "b793-13b8-04d5-5e67",
-              "name": "Tortuous Revelation (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Tortuous Revelation (Psychic)",
-                  "type": "ability",
-                  "description": "In your Shooting phase, you can select one enemy unit within 18\" of this model. That enemy unit must take a Battle-Shock test."
-                }
-              ]
-            },
-            {
               "id": "59f0-f830-aee5-1576",
               "name": "Blood Chalice",
               "maxCount": 1,
@@ -40318,52 +40296,6 @@
               ]
             },
             {
-              "id": "f696-eb5d-8268-3e7e",
-              "name": "Smite",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Smite - Witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Smite - Focused Witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D3+3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Hazardous, Psychic"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "d69c-4b21-ed9a-f0c4",
               "name": "Storm bolter",
               "maxCount": 1,
@@ -40393,7 +40325,7 @@
           "id": "c27e-8657-5478-5f5b-optional-wargear",
           "name": "Optional Wargear",
           "min": 0,
-          "max": 10,
+          "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
             "a896-b48a-6e58-c6e9",
@@ -40404,7 +40336,6 @@
             "857d-4f17-b35d-80a0",
             "89aa-84eb-0e10-1c93",
             "4d7d-323e-5821-199f",
-            "f696-eb5d-8268-3e7e",
             "d69c-4b21-ed9a-f0c4"
           ],
           "options": [
@@ -40612,52 +40543,6 @@
                   "name": "Rapid Fire",
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "f696-eb5d-8268-3e7e",
-              "name": "Smite",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Smite - Witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Smite - Focused Witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D3+3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Hazardous, Psychic"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
                 }
               ]
             },
@@ -41228,35 +41113,6 @@
               ]
             },
             {
-              "id": "98a6-ed36-67b1-1042",
-              "name": "Great weapon of the Unforgiven",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Great weapon of the Unforgiven",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                }
-              ]
-            },
-            {
               "id": "7581-5e59-97b9-1506",
               "name": "Relic weapon",
               "maxCount": 1,
@@ -41447,30 +41303,6 @@
                   "name": "Cleave",
                   "type": "ability",
                   "description": "This ability always takes the form **[CLEAVE X]**. Each time you gather **attack dice** for a **[CLEAVE]** weapon, if you only selected one target for all of that weapon’s attacks, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). \n***Example: If a **[CLEAVE 1]** weapon with an **A** characteristic of 3 targets one unit containing 16 models, you would gather three additional **attack dice** for that weapon (for a total of six for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "fa1a-0159-f57e-6fdf",
-              "name": "Force weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Force weapon [Psychic]",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 }
               ]
             },
@@ -42932,18 +42764,6 @@
               ]
             },
             {
-              "id": "0a04-411a-a87e-6a6c",
-              "name": "Ravenwing Hunter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ravenwing Hunter",
-                  "type": "ability",
-                  "description": "While this model is leading a unit, that unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-                }
-              ]
-            },
-            {
               "id": "b793-13b8-04d5-5e67",
               "name": "Tortuous Revelation (Psychic)",
               "maxCount": 1,
@@ -44354,35 +44174,6 @@
               ]
             },
             {
-              "id": "98a6-ed36-67b1-1042",
-              "name": "Great weapon of the Unforgiven",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Great weapon of the Unforgiven",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds, Sustained Hits 1"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                }
-              ]
-            },
-            {
               "id": "7581-5e59-97b9-1506",
               "name": "Relic weapon",
               "maxCount": 1,
@@ -45693,18 +45484,6 @@
               ]
             },
             {
-              "id": "9a0a-9a12-62c2-bc37",
-              "name": "Blessing of the Omnissiah",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Blessing of the Omnissiah",
-                  "type": "ability",
-                  "description": "In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3\" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that Vehicle model makes an attack, add 1 to the Hit roll. Each model can only be selected for this ability once per turn."
-                }
-              ]
-            },
-            {
               "id": "2b0d-0487-b793-7aaf",
               "name": "Litany of Hate",
               "maxCount": 1,
@@ -45769,30 +45548,6 @@
                   "stat": "keywords",
                   "type": "append",
                   "value": "Lethal Hits"
-                }
-              ]
-            },
-            {
-              "id": "0a04-411a-a87e-6a6c",
-              "name": "Ravenwing Hunter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ravenwing Hunter",
-                  "type": "ability",
-                  "description": "While this model is leading a unit, that unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-                }
-              ]
-            },
-            {
-              "id": "b793-13b8-04d5-5e67",
-              "name": "Tortuous Revelation (Psychic)",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Tortuous Revelation (Psychic)",
-                  "type": "ability",
-                  "description": "In your Shooting phase, you can select one enemy unit within 18\" of this model. That enemy unit must take a Battle-Shock test."
                 }
               ]
             },
@@ -71550,18 +71305,6 @@
                   "description": "This model can be attached to the following units: ^^**Imperial Navy Breachers, Voidsmen-at-Arms**^^"
                 }
               ]
-            },
-            {
-              "id": "3cf4-5fcb-5a5f-ab76",
-              "name": "The Long Vigil",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Kill Team**^^ (excluding ^^**Fly, Gravis**^^ and ^^**Terminator**^^)"
-                }
-              ]
             }
           ]
         },
@@ -71639,18 +71382,6 @@
                   "stat": "keywords",
                   "type": "append",
                   "value": "Lethal Hits"
-                }
-              ]
-            },
-            {
-              "id": "686f-4aca-55f8-363b",
-              "name": "Oracular Gifts",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Oracular Gifts",
-                  "type": "ability",
-                  "description": "This model has the ^^**Psyker**^^ keyword. Enemy units that are set up on the battlefield as Reinforcements cannot be set up within 12\" of this model."
                 }
               ]
             },
@@ -71913,64 +71644,6 @@
               ]
             },
             {
-              "id": "fda8-a3fd-914a-b1b1",
-              "name": "Heavy bolter",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy bolter",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "3",
-                  "BS": "4+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Heavy, Sustained Hits 1"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                }
-              ]
-            },
-            {
-              "id": "295b-783f-341f-4788",
-              "name": "Master-crafted bolt sniper rifle",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Master-crafted bolt sniper rifle",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Heavy, Precision"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Precision",
-                  "type": "ability",
-                  "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
-                }
-              ]
-            },
-            {
               "id": "163f-2e50-e948-ca54",
               "name": "Lasgun",
               "maxCount": 1,
@@ -72048,64 +71721,6 @@
               ]
             },
             {
-              "id": "05c5-c480-1ad2-e6d9",
-              "name": "Ministorum heavy flamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ministorum heavy flamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "D6",
-                  "BS": "N/A",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
-              "id": "b53e-b5ab-c0ba-f62e",
-              "name": "Multi-melta",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Multi-melta",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "4+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Heavy, Melta 4"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                }
-              ]
-            },
-            {
               "id": "2ba4-ada1-b715-3201",
               "name": "Plasma gun",
               "maxCount": 1,
@@ -72143,83 +71758,6 @@
                   "name": "Rapid Fire",
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "7b62-69bb-f38c-4893",
-              "name": "Psychic Shock Wave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Psychic Shock Wave",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2D6",
-                  "BS": "N/A",
-                  "S": "3",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Psychic, Torrent"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
-              "id": "fa3f-2644-1c9f-b994",
-              "name": "Unholy Gaze",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Unholy Gaze",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "bf17-2c28-692e-ef5e",
-              "name": "Vigil spear",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Vigil spear",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -72267,7 +71805,7 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "28d1-f1e9-34dc-b05b",
-            "754d-be2d-1c67-f017"
+            "71ea-8ad4-fd3f-9368"
           ],
           "options": [
             {
@@ -72282,30 +71820,6 @@
                   "range": "12\"",
                   "A": "1",
                   "BS": "3+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Pistol"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "754d-be2d-1c67-f017",
-              "name": "Heavy bolt pistol",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Heavy bolt pistol",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
                   "S": "4",
                   "AP": "-1",
                   "D": "1",
@@ -72575,30 +72089,6 @@
               ]
             },
             {
-              "id": "191d-6edd-7d0f-367c",
-              "name": "Deathwatch weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Deathwatch weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "78dc-f732-cf56-869a",
               "name": "Eviscerator",
               "maxCount": 1,
@@ -72642,30 +72132,6 @@
               ]
             },
             {
-              "id": "22f1-da37-b6a0-19b8",
-              "name": "Force weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Force weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "6a96-81ce-ea25-55fd",
               "name": "Power weapon",
               "maxCount": 1,
@@ -72681,35 +72147,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a21e-2015-e46d-6d59",
-              "name": "Warp grasp",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Warp grasp",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "4",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Lethal Hits, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
                 }
               ]
             }
@@ -73293,18 +72730,6 @@
                   "description": "This model can be attached to the following units: ^^**Imperial Navy Breachers, Voidsmen-at-Arms**^^"
                 }
               ]
-            },
-            {
-              "id": "3cf4-5fcb-5a5f-ab76",
-              "name": "The Long Vigil",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Kill Team**^^ (excluding ^^**Fly, Gravis**^^ and ^^**Terminator**^^)"
-                }
-              ]
             }
           ]
         },
@@ -73382,18 +72807,6 @@
                   "stat": "keywords",
                   "type": "append",
                   "value": "Lethal Hits"
-                }
-              ]
-            },
-            {
-              "id": "686f-4aca-55f8-363b",
-              "name": "Oracular Gifts",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Oracular Gifts",
-                  "type": "ability",
-                  "description": "This model has the ^^**Psyker**^^ keyword. Enemy units that are set up on the battlefield as Reinforcements cannot be set up within 12\" of this model."
                 }
               ]
             },
@@ -73685,35 +73098,6 @@
               ]
             },
             {
-              "id": "295b-783f-341f-4788",
-              "name": "Master-crafted bolt sniper rifle",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Master-crafted bolt sniper rifle",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Heavy, Precision"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Precision",
-                  "type": "ability",
-                  "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
-                }
-              ]
-            },
-            {
               "id": "163f-2e50-e948-ca54",
               "name": "Lasgun",
               "maxCount": 1,
@@ -73890,83 +73274,6 @@
               ]
             },
             {
-              "id": "7b62-69bb-f38c-4893",
-              "name": "Psychic Shock Wave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Psychic Shock Wave",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2D6",
-                  "BS": "N/A",
-                  "S": "3",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Devastating Wounds, Psychic, Torrent"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                }
-              ]
-            },
-            {
-              "id": "fa3f-2644-1c9f-b994",
-              "name": "Unholy Gaze",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Unholy Gaze",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
-              "id": "bf17-2c28-692e-ef5e",
-              "name": "Vigil spear",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Vigil spear",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "6f9c-7f44-5c47-2cd8",
               "name": "Webber",
               "maxCount": 1,
@@ -74010,7 +73317,7 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "28d1-f1e9-34dc-b05b",
-            "754d-be2d-1c67-f017"
+            "71ea-8ad4-fd3f-9368"
           ],
           "options": [
             {
@@ -74025,30 +73332,6 @@
                   "range": "12\"",
                   "A": "1",
                   "BS": "3+",
-                  "S": "4",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Pistol"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "754d-be2d-1c67-f017",
-              "name": "Heavy bolt pistol",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Heavy bolt pistol",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
                   "S": "4",
                   "AP": "-1",
                   "D": "1",
@@ -74318,30 +73601,6 @@
               ]
             },
             {
-              "id": "191d-6edd-7d0f-367c",
-              "name": "Deathwatch weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Deathwatch weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "78dc-f732-cf56-869a",
               "name": "Eviscerator",
               "maxCount": 1,
@@ -74385,30 +73644,6 @@
               ]
             },
             {
-              "id": "22f1-da37-b6a0-19b8",
-              "name": "Force weapon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Force weapon",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
-            {
               "id": "6a96-81ce-ea25-55fd",
               "name": "Power weapon",
               "maxCount": 1,
@@ -74424,35 +73659,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a21e-2015-e46d-6d59",
-              "name": "Warp grasp",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Warp grasp",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "4",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Lethal Hits, Psychic"
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
                 }
               ]
             }

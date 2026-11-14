@@ -5400,7 +5400,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6732,104 +6733,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "0661-f3b2-fdf9-b19d"
+            "0492-45d5-e5f8-5972"
           ],
           "options": [
-            {
-              "id": "05f6-68ba-8b8a-a426",
-              "name": "Cthonian Augmentations",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Cthonian Beserks**^^"
-                },
-                {
-                  "name": "Feel No Pain",
-                  "type": "ability",
-                  "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-                }
-              ],
-              "pts": 20,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "6\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "6"
-                },
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "5+"
-                }
-              ]
-            },
-            {
-              "id": "0661-f3b2-fdf9-b19d",
-              "name": "Exoarmour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Einhyr Hearthguard**^^"
-                },
-                {
-                  "name": "Exo-armour grenade launcher",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D3",
-                  "BS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Blast"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "2+"
-                }
-              ]
-            },
-            {
-              "id": "724a-f975-95d0-dff2",
-              "name": "Exoframe",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Brôkhyr Thunderkyn**^^"
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "6"
-                }
-              ]
-            },
             {
               "id": "0492-45d5-e5f8-5972",
               "name": "Yaegir",
@@ -7114,30 +7020,6 @@
               ]
             },
             {
-              "id": "7c09-de6d-ca40-7d7e",
-              "name": "Graviton blast cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Graviton blast cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Anti-Monster 3+, Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "30d9-0451-da93-c7ee",
               "name": "Bolt shotgun",
               "maxCount": 1,
@@ -7158,54 +7040,6 @@
                   "name": "Assault",
                   "type": "ability",
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "eadf-8ebf-dc90-770b",
-              "name": "EtaCarn plasma gun",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "EtaCarn plasma gun",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": "Rapid Fire 1"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "8351-50e2-565a-17f9",
-              "name": "Bolt cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Bolt cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Sustained Hits 2"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
                 }
               ]
             },
@@ -7234,30 +7068,6 @@
               ]
             },
             {
-              "id": "82e7-3928-7489-bebc",
-              "name": "Heavy volkanite disintegrator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy volkanite disintegrator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "4c7a-ed48-106b-953a",
               "name": "Ion blaster",
               "maxCount": 1,
@@ -7273,59 +7083,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "0369-aee5-7c7b-58b6",
-              "name": "SP conversion beamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "SP conversion beamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Conversion, Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Conversion (Thunderkyn)",
-                  "type": "ability",
-                  "description": "Each time an attack made with this weapon targets an enemy unit that is not within 12\", an unmodified Hit roll of 4+ scores a Critical Hit."
-                }
-              ]
-            },
-            {
-              "id": "9a90-09f0-7607-6c6c",
-              "name": "Volkanite disintegrator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Volkanite disintegrator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
                 }
               ]
             }
@@ -7379,30 +7136,6 @@
                   "A": "1",
                   "BS": "2+",
                   "S": "4",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Pistol"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "0c62-027a-60d9-a2a4",
-              "name": "Bolt revolver",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Bolt revolver",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "5",
                   "AP": "0",
                   "D": "1",
                   "keywords": "Pistol"
@@ -7490,30 +7223,6 @@
               ]
             },
             {
-              "id": "c4c2-acce-b45c-6e11",
-              "name": "Concussion gauntlet",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Concussion gauntlet",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
               "id": "a109-b288-e138-4dcf",
               "name": "Concussion maul",
               "maxCount": 1,
@@ -7534,25 +7243,6 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
-              "id": "6caa-aab1-0b46-c95e",
-              "name": "Darkstar axe",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Darkstar axe",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -7638,44 +7328,6 @@
               ]
             },
             {
-              "id": "86e8-c43a-a297-f307",
-              "name": "Mass hammer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Mass hammer",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "3+",
-                  "S": "12",
-                  "AP": "-3",
-                  "D": "D6+1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a34b-dcc3-72ca-dce4",
-              "name": "Plasma blade gauntlet",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma blade gauntlet",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9395-43ea-59bc-17b4",
               "name": "Plasma knife",
               "maxCount": 1,
@@ -7691,25 +7343,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "c08f-ebaf-bcf8-3ccc",
-              "name": "Plasma sword",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma sword",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Sustained Hits 1"
                 }
               ]
             },
@@ -8351,21 +7984,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "b6e9-7591-fb93-2600"
+            "0030-be43-a831-1a88"
           ],
           "options": [
-            {
-              "id": "b6e9-7591-fb93-2600",
-              "name": "Barrier Tech Repulsion",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Barrier Tech Repulsion",
-                  "type": "ability",
-                  "description": "Each time a ranged attack targets this unit, subtract 1 from the Hit roll."
-                }
-              ]
-            },
             {
               "id": "0030-be43-a831-1a88",
               "name": "Exemplar of the Einhyr",
@@ -8467,50 +8088,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "7271-0c90-d769-afc4"
+            "f6d8-6a0b-55bf-71d3"
           ],
           "options": [
-            {
-              "id": "7271-0c90-d769-afc4",
-              "name": "Ancestral Wrath",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Ancestral Wrath - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Ancestral Wrath - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Hazardous, Psychic"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
             {
               "id": "f6d8-6a0b-55bf-71d3",
               "name": "Autoch-pattern bolter",
@@ -8550,30 +8130,6 @@
               ]
             },
             {
-              "id": "7c09-de6d-ca40-7d7e",
-              "name": "Graviton blast cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Graviton blast cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Anti-Monster 3+, Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "30d9-0451-da93-c7ee",
               "name": "Bolt shotgun",
               "maxCount": 1,
@@ -8594,54 +8150,6 @@
                   "name": "Assault",
                   "type": "ability",
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "eadf-8ebf-dc90-770b",
-              "name": "EtaCarn plasma gun",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "EtaCarn plasma gun",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": "Rapid Fire 1"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "8351-50e2-565a-17f9",
-              "name": "Bolt cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Bolt cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Sustained Hits 2"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
                 }
               ]
             },
@@ -8670,30 +8178,6 @@
               ]
             },
             {
-              "id": "82e7-3928-7489-bebc",
-              "name": "Heavy volkanite disintegrator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy volkanite disintegrator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                }
-              ]
-            },
-            {
               "id": "4c7a-ed48-106b-953a",
               "name": "Ion blaster",
               "maxCount": 1,
@@ -8709,59 +8193,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "0369-aee5-7c7b-58b6",
-              "name": "SP conversion beamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "SP conversion beamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Conversion, Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Conversion (Thunderkyn)",
-                  "type": "ability",
-                  "description": "Each time an attack made with this weapon targets an enemy unit that is not within 12\", an unmodified Hit roll of 4+ scores a Critical Hit."
-                }
-              ]
-            },
-            {
-              "id": "9a90-09f0-7607-6c6c",
-              "name": "Volkanite disintegrator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Volkanite disintegrator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
                 }
               ]
             }
@@ -8827,30 +8258,6 @@
               ]
             },
             {
-              "id": "0c62-027a-60d9-a2a4",
-              "name": "Bolt revolver",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Bolt revolver",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Pistol"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
               "id": "4117-09b4-0881-13eb",
               "name": "Theyn's pistol",
               "maxCount": 2,
@@ -8883,29 +8290,10 @@
           "max": 2,
           "isExclusive": false,
           "defaultOptionIds": [
-            "ef07-32f4-dc06-3a43",
-            "6b2b-4115-7418-4bfc"
+            "6b2b-4115-7418-4bfc",
+            "a109-b288-e138-4dcf"
           ],
           "options": [
-            {
-              "id": "ef07-32f4-dc06-3a43",
-              "name": "Ancestral ward stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ancestral ward stave",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                }
-              ]
-            },
             {
               "id": "6b2b-4115-7418-4bfc",
               "name": "Close combat weapon",
@@ -8922,30 +8310,6 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "c4c2-acce-b45c-6e11",
-              "name": "Concussion gauntlet",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Concussion gauntlet",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "3+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
                 }
               ]
             },
@@ -8970,25 +8334,6 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
-              "id": "6caa-aab1-0b46-c95e",
-              "name": "Darkstar axe",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Darkstar axe",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -9074,44 +8419,6 @@
               ]
             },
             {
-              "id": "86e8-c43a-a297-f307",
-              "name": "Mass hammer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Mass hammer",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "3+",
-                  "S": "12",
-                  "AP": "-3",
-                  "D": "D6+1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a34b-dcc3-72ca-dce4",
-              "name": "Plasma blade gauntlet",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma blade gauntlet",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9395-43ea-59bc-17b4",
               "name": "Plasma knife",
               "maxCount": 1,
@@ -9127,25 +8434,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "c08f-ebaf-bcf8-3ccc",
-              "name": "Plasma sword",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma sword",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Sustained Hits 1"
                 }
               ]
             },
@@ -9600,210 +8888,15 @@
       "transportCapacity": null,
       "wargearGroups": [
         {
-          "id": "b031-4151-d1be-211b",
-          "name": "Specialisms",
-          "min": 0,
-          "max": 1,
-          "isExclusive": true,
-          "defaultOptionIds": [
-            "0661-f3b2-fdf9-b19d"
-          ],
-          "options": [
-            {
-              "id": "05f6-68ba-8b8a-a426",
-              "name": "Cthonian Augmentations",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Cthonian Beserks**^^"
-                },
-                {
-                  "name": "Feel No Pain",
-                  "type": "ability",
-                  "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-                }
-              ],
-              "pts": 20,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "6\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "6"
-                },
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "5+"
-                }
-              ]
-            },
-            {
-              "id": "0661-f3b2-fdf9-b19d",
-              "name": "Exoarmour",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Einhyr Hearthguard**^^"
-                },
-                {
-                  "name": "Exo-armour grenade launcher",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "D3",
-                  "BS": "2+",
-                  "S": "3",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Blast"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "2+"
-                }
-              ]
-            },
-            {
-              "id": "724a-f975-95d0-dff2",
-              "name": "Exoframe",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Brôkhyr Thunderkyn**^^"
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "6"
-                }
-              ]
-            },
-            {
-              "id": "0492-45d5-e5f8-5972",
-              "name": "Yaegir",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Hernkyn Yaegirs**^^"
-                },
-                {
-                  "name": "Infiltrators",
-                  "type": "ability",
-                  "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-                }
-              ],
-              "pts": 10,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "6\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "5+"
-                }
-              ]
-            },
-            {
-              "id": "ba0f-7a20-9c08-baab",
-              "name": "Magna-coil Bike",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Hernkyn Pioneers**^^"
-                },
-                {
-                  "name": "Scouts",
-                  "type": "ability",
-                  "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-                },
-                {
-                  "name": "Magna-coil autocannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "4+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ],
-              "pts": 15,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "12\""
-                },
-                {
-                  "target": "unit",
-                  "stat": "T",
-                  "type": "set",
-                  "value": "6"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": "9095-8778-907b-08f9",
           "name": "Abilities",
           "min": 1,
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "b6e9-7591-fb93-2600"
+            "0030-be43-a831-1a88"
           ],
           "options": [
-            {
-              "id": "b6e9-7591-fb93-2600",
-              "name": "Barrier Tech Repulsion",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Barrier Tech Repulsion",
-                  "type": "ability",
-                  "description": "Each time a ranged attack targets this unit, subtract 1 from the Hit roll."
-                }
-              ]
-            },
             {
               "id": "0030-be43-a831-1a88",
               "name": "Exemplar of the Einhyr",
@@ -9905,50 +8998,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "7271-0c90-d769-afc4"
+            "f6d8-6a0b-55bf-71d3"
           ],
           "options": [
-            {
-              "id": "7271-0c90-d769-afc4",
-              "name": "Ancestral Wrath",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Ancestral Wrath - witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                },
-                {
-                  "name": "➤ Ancestral Wrath - focused witchfire",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "D3",
-                  "keywords": "Hazardous, Psychic"
-                },
-                {
-                  "name": "Hazardous",
-                  "type": "ability",
-                  "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
-                },
-                {
-                  "name": "Psychic",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
-                }
-              ]
-            },
             {
               "id": "f6d8-6a0b-55bf-71d3",
               "name": "Autoch-pattern bolter",
@@ -9988,30 +9040,6 @@
               ]
             },
             {
-              "id": "7c09-de6d-ca40-7d7e",
-              "name": "Graviton blast cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Graviton blast cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Anti-Monster 3+, Anti-Vehicle 3+"
-                },
-                {
-                  "name": "Anti",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
               "id": "30d9-0451-da93-c7ee",
               "name": "Bolt shotgun",
               "maxCount": 1,
@@ -10032,54 +9060,6 @@
                   "name": "Assault",
                   "type": "ability",
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "eadf-8ebf-dc90-770b",
-              "name": "EtaCarn plasma gun",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "EtaCarn plasma gun",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": "Rapid Fire 1"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "8351-50e2-565a-17f9",
-              "name": "Bolt cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Bolt cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "3",
-                  "BS": "3+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": "Sustained Hits 2"
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
                 }
               ]
             },
@@ -10147,35 +9127,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "0369-aee5-7c7b-58b6",
-              "name": "SP conversion beamer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "SP conversion beamer",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "2",
-                  "BS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "3",
-                  "keywords": "Conversion, Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                },
-                {
-                  "name": "Conversion (Thunderkyn)",
-                  "type": "ability",
-                  "description": "Each time an attack made with this weapon targets an enemy unit that is not within 12\", an unmodified Hit roll of 4+ scores a Critical Hit."
                 }
               ]
             },
@@ -10265,30 +9216,6 @@
               ]
             },
             {
-              "id": "0c62-027a-60d9-a2a4",
-              "name": "Bolt revolver",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Bolt revolver",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Pistol"
-                },
-                {
-                  "name": "Pistol",
-                  "type": "ability",
-                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
               "id": "4117-09b4-0881-13eb",
               "name": "Theyn's pistol",
               "maxCount": 2,
@@ -10321,29 +9248,10 @@
           "max": 2,
           "isExclusive": false,
           "defaultOptionIds": [
-            "ef07-32f4-dc06-3a43",
-            "6b2b-4115-7418-4bfc"
+            "6b2b-4115-7418-4bfc",
+            "c4c2-acce-b45c-6e11"
           ],
           "options": [
-            {
-              "id": "ef07-32f4-dc06-3a43",
-              "name": "Ancestral ward stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ancestral ward stave",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "D3",
-                  "keywords": "Psychic"
-                }
-              ]
-            },
             {
               "id": "6b2b-4115-7418-4bfc",
               "name": "Close combat weapon",
@@ -10408,25 +9316,6 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
-                }
-              ]
-            },
-            {
-              "id": "6caa-aab1-0b46-c95e",
-              "name": "Darkstar axe",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Darkstar axe",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -10512,44 +9401,6 @@
               ]
             },
             {
-              "id": "86e8-c43a-a297-f307",
-              "name": "Mass hammer",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Mass hammer",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "3+",
-                  "S": "12",
-                  "AP": "-3",
-                  "D": "D6+1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a34b-dcc3-72ca-dce4",
-              "name": "Plasma blade gauntlet",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma blade gauntlet",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9395-43ea-59bc-17b4",
               "name": "Plasma knife",
               "maxCount": 1,
@@ -10565,25 +9416,6 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "c08f-ebaf-bcf8-3ccc",
-              "name": "Plasma sword",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasma sword",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "6",
-                  "WS": "3+",
-                  "S": "6",
-                  "AP": "-2",
-                  "D": "1",
-                  "keywords": "Sustained Hits 1"
                 }
               ]
             },

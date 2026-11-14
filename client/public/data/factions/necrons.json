@@ -11773,69 +11773,6 @@
           ]
         },
         {
-          "id": "92f3-c9e9-2d30-5c8f",
-          "name": "Cryptek Abilities",
-          "min": 0,
-          "max": 4,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "eea9-53b5-b23e-59f5",
-            "a03d-c6eb-7c78-1499",
-            "a901-70f3-ac2e-5817",
-            "0239-1d76-f450-d929"
-          ],
-          "options": [
-            {
-              "id": "eea9-53b5-b23e-59f5",
-              "name": "Harbinger of Despair",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Harbinger of Despair",
-                  "type": "ability",
-                  "description": "Once per battle round, at the start of a phase during your turn, you can select one enemy unit within 18\" of this model. That unit must make a Battle-shock test, subtracting 1 from the test when it does so."
-                }
-              ]
-            },
-            {
-              "id": "a03d-c6eb-7c78-1499",
-              "name": "Harbinger of Destruction",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Harbinger of Destruction",
-                  "type": "ability",
-                  "description": "Each time a model in this unit makes a ranged attack, an unmodified Hit roll of 5+ scores a Critical Hit."
-                }
-              ]
-            },
-            {
-              "id": "a901-70f3-ac2e-5817",
-              "name": "Living Lightning",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Living Lightning",
-                  "type": "ability",
-                  "description": "In your Shooting phase, select one enemy unit within 18\" of and visible to this model and roll 4 D6: for each 4+, that enemy unit suffers 1 mortal wound."
-                }
-              ]
-            },
-            {
-              "id": "0239-1d76-f450-d929",
-              "name": "Timesplinter Mantle",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Timesplinter Mantle",
-                  "type": "ability",
-                  "description": "While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll."
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": "247d-78d8-5da9-98e2",
           "name": "Shared abilties",
           "min": 0,
@@ -11913,233 +11850,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "a723-53ed-16ac-e79c"
+            "7e16-f489-90c1-9f52"
           ],
           "options": [
-            {
-              "id": "a723-53ed-16ac-e79c",
-              "name": "Abyssal lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Abyssal lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "1",
-                  "BS": "4+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "4000-7272-d06c-1b8e",
-              "name": "Chronomancer's stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chronomancer's stave",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "D6",
-                  "BS": "4+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Blast"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "4ad7-41b0-9676-5d18",
-              "name": "Enmitic annihilator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic annihilator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Rapid Fire 2"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "a108-db30-66c9-4adc",
-              "name": "Enmitic exterminator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic exterminator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "6",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Heavy, Rapid Fire 6, Sustained Hits 1"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "453c-cb97-143c-0387",
-              "name": "Gauss cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "4a08-f125-d9bb-849d",
-              "name": "Gauss destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "48\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "14",
-                  "AP": "-4",
-                  "D": "6",
-                  "keywords": "Heavy, Lethal Hits"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "9c28-f044-15e7-b452",
-              "name": "Heat ray",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Heat ray - dispersed",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "2D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "➤ Heat ray - focused",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Melta 4"
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                }
-              ]
-            },
-            {
-              "id": "590c-28ae-1cb6-20e1",
-              "name": "Heavy gauss cannon array",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy gauss cannon array",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "2+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
             {
               "id": "7e16-f489-90c1-9f52",
               "name": "Particle caster",
@@ -12166,54 +11879,6 @@
                   "name": "Pistol",
                   "type": "ability",
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "00b1-cd1f-027a-2e85",
-              "name": "Particle shredder",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Particle shredder",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "D6+6",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Blast, Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "e362-eddb-0497-d653",
-              "name": "Plasmic lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasmic lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "3",
-                  "BS": "4+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -12317,48 +11982,10 @@
           "max": 2,
           "isExclusive": false,
           "defaultOptionIds": [
-            "1fb6-98ea-c83c-6352",
-            "b99c-f038-e0d9-4a16"
+            "11de-f0cf-17fa-a10c",
+            "762f-c689-905a-63bd"
           ],
           "options": [
-            {
-              "id": "1fb6-98ea-c83c-6352",
-              "name": "Abyssal lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Abyssal lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "1",
-                  "WS": "4+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "b99c-f038-e0d9-4a16",
-              "name": "Chronomancer's stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chronomancer's stave",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "4+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
             {
               "id": "11de-f0cf-17fa-a10c",
               "name": "Hyperphase sword",
@@ -12408,44 +12035,6 @@
               ]
             },
             {
-              "id": "8d59-31ef-e581-2e20",
-              "name": "Flensing claw",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flensing claw",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "8",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "7b69-156f-b26e-75f3",
-              "name": "Hyperphase harvester",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Hyperphase harvester",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "2+",
-                  "S": "10",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9fb7-d44f-92cd-4db3",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -12484,44 +12073,6 @@
               ]
             },
             {
-              "id": "2c1e-c642-db07-c3ed",
-              "name": "Skorpekh hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skorpekh hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a555-c631-3163-bebe",
-              "name": "Plasmic lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasmic lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "1557-ab8c-13d6-72d0",
               "name": "Rod of covenant",
               "maxCount": 1,
@@ -12534,25 +12085,6 @@
                   "A": "3",
                   "WS": "3+",
                   "S": "5",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "3bbb-5f05-b7e0-daba",
-              "name": "Ophydian hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ophydian hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "4",
                   "AP": "-2",
                   "D": "2",
                   "keywords": ""
@@ -12574,25 +12106,6 @@
                   "S": "5",
                   "AP": "-2",
                   "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "954b-da68-cfdf-e193",
-              "name": "Stalker's forelimbs",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Stalker's forelimbs",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "3",
                   "keywords": ""
                 }
               ]
@@ -13135,29 +12648,6 @@
               ]
             },
             {
-              "id": "b76f-77dd-bf5d-9c51",
-              "name": "Flayer Curse",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Flayed Ones**^^"
-                },
-                {
-                  "name": "Infiltrators",
-                  "type": "ability",
-                  "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-                },
-                {
-                  "name": "Stealth",
-                  "type": "ability",
-                  "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
-                }
-              ],
-              "pts": 10
-            },
-            {
               "id": "76b0-838b-c236-c258",
               "name": "Gravity Displacement Pack",
               "maxCount": 1,
@@ -13179,46 +12669,6 @@
                   "stat": "M",
                   "type": "set",
                   "value": "10\""
-                }
-              ]
-            },
-            {
-              "id": "6889-e6c6-7649-ffd6",
-              "name": "Ophydian Lord",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Leader",
-                  "type": "ability",
-                  "description": "This model can be attached to the following units: ^^**Ophydian Destroyers**^^"
-                },
-                {
-                  "name": "Deep Strike",
-                  "type": "ability",
-                  "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-                }
-              ],
-              "pts": 10,
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "M",
-                  "type": "set",
-                  "value": "10\""
-                }
-              ]
-            },
-            {
-              "id": "fdc8-cd80-08d6-b90a",
-              "name": "Superior Living Metal",
-              "maxCount": 1,
-              "profiles": [],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "Sv",
-                  "type": "set",
-                  "value": "2+"
                 }
               ]
             }
@@ -13291,12 +12741,11 @@
           "id": "247d-78d8-5da9-98e2",
           "name": "Shared abilties",
           "min": 0,
-          "max": 4,
+          "max": 3,
           "isExclusive": false,
           "defaultOptionIds": [
             "a7d6-c417-375e-90ec",
             "b8bb-bac8-74d3-25e0",
-            "1645-6e4c-7b6b-aa0b",
             "31ff-f473-d945-6395"
           ],
           "options": [
@@ -13321,18 +12770,6 @@
                   "name": "Engrammatic Logic",
                   "type": "ability",
                   "description": "Once per battle, at the start of any phase, you can select one friendly ^^**Necrons**^^ unit that is Battle-shocked and within 12\" of this model. That unit is no longer Battle-shocked."
-                }
-              ]
-            },
-            {
-              "id": "1645-6e4c-7b6b-aa0b",
-              "name": "My Will Be Done",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "My Will Be Done",
-                  "type": "ability",
-                  "description": "Once per battle round, one unit from your army with this ability can be targeted with a Stratagem for 0CP, even if you have already targeted a different unit with that Stratagem this phase."
                 }
               ]
             },
@@ -13412,187 +12849,6 @@
               ]
             },
             {
-              "id": "4ad7-41b0-9676-5d18",
-              "name": "Enmitic annihilator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic annihilator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Rapid Fire 2"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "a108-db30-66c9-4adc",
-              "name": "Enmitic exterminator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic exterminator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "6",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Heavy, Rapid Fire 6, Sustained Hits 1"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "453c-cb97-143c-0387",
-              "name": "Gauss cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "4a08-f125-d9bb-849d",
-              "name": "Gauss destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "48\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "14",
-                  "AP": "-4",
-                  "D": "6",
-                  "keywords": "Heavy, Lethal Hits"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "9c28-f044-15e7-b452",
-              "name": "Heat ray",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "➤ Heat ray - dispersed",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "12\"",
-                  "A": "2D6",
-                  "BS": "N/A",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Ignores Cover, Torrent"
-                },
-                {
-                  "name": "➤ Heat ray - focused",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "9",
-                  "AP": "-4",
-                  "D": "D6",
-                  "keywords": "Melta 4"
-                },
-                {
-                  "name": "Melta",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
-                },
-                {
-                  "name": "Torrent",
-                  "type": "ability",
-                  "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
-                },
-                {
-                  "name": "Ignores Cover",
-                  "type": "ability",
-                  "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
-                }
-              ]
-            },
-            {
-              "id": "590c-28ae-1cb6-20e1",
-              "name": "Heavy gauss cannon array",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Heavy gauss cannon array",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "6",
-                  "BS": "2+",
-                  "S": "8",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
               "id": "7e16-f489-90c1-9f52",
               "name": "Particle caster",
               "maxCount": 1,
@@ -13618,35 +12874,6 @@
                   "name": "Pistol",
                   "type": "ability",
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
-                }
-              ]
-            },
-            {
-              "id": "00b1-cd1f-027a-2e85",
-              "name": "Particle shredder",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Particle shredder",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "D6+6",
-                  "BS": "2+",
-                  "S": "7",
-                  "AP": "0",
-                  "D": "1",
-                  "keywords": "Blast, Devastating Wounds"
-                },
-                {
-                  "name": "Devastating Wounds",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
                 }
               ]
             },
@@ -13860,44 +13087,6 @@
               ]
             },
             {
-              "id": "8d59-31ef-e581-2e20",
-              "name": "Flensing claw",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flensing claw",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "8",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "7b69-156f-b26e-75f3",
-              "name": "Hyperphase harvester",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Hyperphase harvester",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "2+",
-                  "S": "10",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9fb7-d44f-92cd-4db3",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -13932,25 +13121,6 @@
                   "AP": "-3",
                   "D": "2",
                   "keywords": "Devastating Wounds"
-                }
-              ]
-            },
-            {
-              "id": "2c1e-c642-db07-c3ed",
-              "name": "Skorpekh hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skorpekh hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -13993,25 +13163,6 @@
               ]
             },
             {
-              "id": "3bbb-5f05-b7e0-daba",
-              "name": "Ophydian hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ophydian hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "4",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "f6ae-6720-189c-0e6e",
               "name": "Staff of light",
               "maxCount": 1,
@@ -14026,25 +13177,6 @@
                   "S": "5",
                   "AP": "-2",
                   "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "954b-da68-cfdf-e193",
-              "name": "Stalker's forelimbs",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Stalker's forelimbs",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "3",
                   "keywords": ""
                 }
               ]
@@ -14568,69 +13700,6 @@
       "transportCapacity": null,
       "wargearGroups": [
         {
-          "id": "92f3-c9e9-2d30-5c8f",
-          "name": "Cryptek Abilities",
-          "min": 0,
-          "max": 4,
-          "isExclusive": false,
-          "defaultOptionIds": [
-            "eea9-53b5-b23e-59f5",
-            "a03d-c6eb-7c78-1499",
-            "a901-70f3-ac2e-5817",
-            "0239-1d76-f450-d929"
-          ],
-          "options": [
-            {
-              "id": "eea9-53b5-b23e-59f5",
-              "name": "Harbinger of Despair",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Harbinger of Despair",
-                  "type": "ability",
-                  "description": "Once per battle round, at the start of a phase during your turn, you can select one enemy unit within 18\" of this model. That unit must make a Battle-shock test, subtracting 1 from the test when it does so."
-                }
-              ]
-            },
-            {
-              "id": "a03d-c6eb-7c78-1499",
-              "name": "Harbinger of Destruction",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Harbinger of Destruction",
-                  "type": "ability",
-                  "description": "Each time a model in this unit makes a ranged attack, an unmodified Hit roll of 5+ scores a Critical Hit."
-                }
-              ]
-            },
-            {
-              "id": "a901-70f3-ac2e-5817",
-              "name": "Living Lightning",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Living Lightning",
-                  "type": "ability",
-                  "description": "In your Shooting phase, select one enemy unit within 18\" of and visible to this model and roll 4 D6: for each 4+, that enemy unit suffers 1 mortal wound."
-                }
-              ]
-            },
-            {
-              "id": "0239-1d76-f450-d929",
-              "name": "Timesplinter Mantle",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Timesplinter Mantle",
-                  "type": "ability",
-                  "description": "While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll."
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": "247d-78d8-5da9-98e2",
           "name": "Shared abilties",
           "min": 0,
@@ -14708,163 +13777,9 @@
           "max": 1,
           "isExclusive": true,
           "defaultOptionIds": [
-            "a723-53ed-16ac-e79c"
+            "9c28-f044-15e7-b452"
           ],
           "options": [
-            {
-              "id": "a723-53ed-16ac-e79c",
-              "name": "Abyssal lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Abyssal lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "1",
-                  "BS": "4+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "4000-7272-d06c-1b8e",
-              "name": "Chronomancer's stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chronomancer's stave",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "D6",
-                  "BS": "4+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Blast"
-                },
-                {
-                  "name": "Blast",
-                  "type": "ability",
-                  "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "4ad7-41b0-9676-5d18",
-              "name": "Enmitic annihilator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic annihilator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "2",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Rapid Fire 2"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "a108-db30-66c9-4adc",
-              "name": "Enmitic exterminator",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Enmitic exterminator",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "36\"",
-                  "A": "6",
-                  "BS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": "Heavy, Rapid Fire 6, Sustained Hits 1"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Sustained Hits",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
-                },
-                {
-                  "name": "Rapid Fire",
-                  "type": "ability",
-                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
-                }
-              ]
-            },
-            {
-              "id": "453c-cb97-143c-0387",
-              "name": "Gauss cannon",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss cannon",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "24\"",
-                  "A": "3",
-                  "BS": "2+",
-                  "S": "5",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": "Lethal Hits"
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
-            {
-              "id": "4a08-f125-d9bb-849d",
-              "name": "Gauss destructor",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Gauss destructor",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "48\"",
-                  "A": "1",
-                  "BS": "2+",
-                  "S": "14",
-                  "AP": "-4",
-                  "D": "6",
-                  "keywords": "Heavy, Lethal Hits"
-                },
-                {
-                  "name": "Heavy",
-                  "type": "ability",
-                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
-                },
-                {
-                  "name": "Lethal Hits",
-                  "type": "ability",
-                  "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
-                }
-              ]
-            },
             {
               "id": "9c28-f044-15e7-b452",
               "name": "Heat ray",
@@ -14994,25 +13909,6 @@
               ]
             },
             {
-              "id": "e362-eddb-0497-d653",
-              "name": "Plasmic lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasmic lance",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "18\"",
-                  "A": "3",
-                  "BS": "4+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "6b75-4491-3a94-024f",
               "name": "Relic gauss blaster",
               "maxCount": 1,
@@ -15112,48 +14008,10 @@
           "max": 2,
           "isExclusive": false,
           "defaultOptionIds": [
-            "1fb6-98ea-c83c-6352",
-            "b99c-f038-e0d9-4a16"
+            "11de-f0cf-17fa-a10c",
+            "762f-c689-905a-63bd"
           ],
           "options": [
-            {
-              "id": "1fb6-98ea-c83c-6352",
-              "name": "Abyssal lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Abyssal lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "1",
-                  "WS": "4+",
-                  "S": "6",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "b99c-f038-e0d9-4a16",
-              "name": "Chronomancer's stave",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Chronomancer's stave",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "3",
-                  "WS": "4+",
-                  "S": "5",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
             {
               "id": "11de-f0cf-17fa-a10c",
               "name": "Hyperphase sword",
@@ -15203,44 +14061,6 @@
               ]
             },
             {
-              "id": "8d59-31ef-e581-2e20",
-              "name": "Flensing claw",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Flensing claw",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "8",
-                  "WS": "2+",
-                  "S": "6",
-                  "AP": "-1",
-                  "D": "1",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "7b69-156f-b26e-75f3",
-              "name": "Hyperphase harvester",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Hyperphase harvester",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "2+",
-                  "S": "10",
-                  "AP": "-3",
-                  "D": "3",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "9fb7-d44f-92cd-4db3",
               "name": "Close combat weapon",
               "maxCount": 1,
@@ -15279,44 +14099,6 @@
               ]
             },
             {
-              "id": "2c1e-c642-db07-c3ed",
-              "name": "Skorpekh hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Skorpekh hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "4",
-                  "WS": "3+",
-                  "S": "7",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "a555-c631-3163-bebe",
-              "name": "Plasmic lance",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Plasmic lance",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "2",
-                  "WS": "4+",
-                  "S": "7",
-                  "AP": "-3",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "1557-ab8c-13d6-72d0",
               "name": "Rod of covenant",
               "maxCount": 1,
@@ -15329,25 +14111,6 @@
                   "A": "3",
                   "WS": "3+",
                   "S": "5",
-                  "AP": "-2",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
-              "id": "3bbb-5f05-b7e0-daba",
-              "name": "Ophydian hyperphase weapons",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Ophydian hyperphase weapons",
-                  "type": "melee",
-                  "count": 1,
-                  "range": "Melee",
-                  "A": "5",
-                  "WS": "3+",
-                  "S": "4",
                   "AP": "-2",
                   "D": "2",
                   "keywords": ""

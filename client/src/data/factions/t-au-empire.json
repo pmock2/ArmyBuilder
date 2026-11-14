@@ -1515,37 +1515,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         }
@@ -2077,37 +2046,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -2676,37 +2614,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         }
@@ -2926,37 +2833,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -3207,37 +3083,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -4369,25 +4214,6 @@
                   "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
                 }
               ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         }
@@ -4658,25 +4484,6 @@
                   "name": "Guardian Drone",
                   "type": "ability",
                   "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -5722,37 +5529,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         },
@@ -5997,7 +5773,7 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "a2c-25e-bb0c-50fc",
-            "87e6-9a39-44b3-c69a"
+            "6e7d-ce01-f36a-b91d"
           ],
           "options": [
             {
@@ -6026,25 +5802,6 @@
                   "name": "Assault",
                   "type": "ability",
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
-                }
-              ]
-            },
-            {
-              "id": "87e6-9a39-44b3-c69a",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             },
@@ -6421,7 +6178,7 @@
             {
               "id": "caf5-ab72-8da1-04a8",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -6450,63 +6207,12 @@
             {
               "id": "40f2-977d-aec0-f31d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
                   "type": "ability",
                   "description": "The bearer’s unit has the **^^Markerlight^^** keyword and can act as an Observer unit for another unit even if it Advanced this turn."
-                }
-              ]
-            },
-            {
-              "id": "bd61-6193-b238-6f21",
-              "name": "Shield Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Shield Drone",
-                  "type": "ability",
-                  "description": "Add 1 to the bearer’s Wounds characteristic."
-                }
-              ],
-              "statModifiers": [
-                {
-                  "target": "unit",
-                  "stat": "W",
-                  "type": "increment",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -7513,37 +7219,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         }
@@ -7755,7 +7430,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "a1d6-3f5c-85dc-50a0",
@@ -8982,18 +8658,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
                 }
               ]
             },
@@ -15423,37 +15087,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         }
@@ -15919,7 +15552,7 @@
             {
               "id": "caf5-ab72-8da1-04a8",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -15948,7 +15581,7 @@
             {
               "id": "40f2-977d-aec0-f31d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -15960,7 +15593,7 @@
             {
               "id": "bd61-6193-b238-6f21",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",
@@ -15976,37 +15609,6 @@
                   "value": 1
                 }
               ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
             }
           ]
         },
@@ -16018,13 +15620,13 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "a2c-25e-bb0c-50fc",
-            "87e6-9a39-44b3-c69a"
+            "6e7d-ce01-f36a-b91d"
           ],
           "options": [
             {
               "id": "a2c-25e-bb0c-50fc",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -16051,28 +15653,9 @@
               ]
             },
             {
-              "id": "87e6-9a39-44b3-c69a",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "6e7d-ce01-f36a-b91d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -16084,7 +15667,7 @@
             {
               "id": "3e61-1b73-7e00-4ef5",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",
@@ -16329,7 +15912,7 @@
             {
               "id": "caf5-ab72-8da1-04a8",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -16358,7 +15941,7 @@
             {
               "id": "40f2-977d-aec0-f31d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -16370,7 +15953,7 @@
             {
               "id": "bd61-6193-b238-6f21",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",
@@ -16384,37 +15967,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -16480,13 +16032,13 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "a2c-25e-bb0c-50fc",
-            "87e6-9a39-44b3-c69a"
+            "6e7d-ce01-f36a-b91d"
           ],
           "options": [
             {
               "id": "a2c-25e-bb0c-50fc",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -16513,28 +16065,9 @@
               ]
             },
             {
-              "id": "87e6-9a39-44b3-c69a",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "6e7d-ce01-f36a-b91d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -16546,7 +16079,7 @@
             {
               "id": "3e61-1b73-7e00-4ef5",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",
@@ -16809,7 +16342,7 @@
             {
               "id": "caf5-ab72-8da1-04a8",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -16838,7 +16371,7 @@
             {
               "id": "40f2-977d-aec0-f31d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -16850,7 +16383,7 @@
             {
               "id": "bd61-6193-b238-6f21",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",
@@ -16864,37 +16397,6 @@
                   "stat": "W",
                   "type": "increment",
                   "value": 1
-                }
-              ]
-            },
-            {
-              "id": "12f4-d656-7665-eb8c",
-              "name": "Guardian Drone",
-              "maxCount": 1,
-              "profiles": [
-                {
-                  "name": "Guardian Drone",
-                  "type": "ability",
-                  "description": "Each time a model makes a ranged attack that targets the bearer’s unit, subtract 1 from the Wound roll."
-                }
-              ]
-            },
-            {
-              "id": "a658-7737-2031-8e07",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
                 }
               ]
             }
@@ -16970,13 +16472,13 @@
           "isExclusive": false,
           "defaultOptionIds": [
             "a2c-25e-bb0c-50fc",
-            "87e6-9a39-44b3-c69a"
+            "6e7d-ce01-f36a-b91d"
           ],
           "options": [
             {
               "id": "a2c-25e-bb0c-50fc",
               "name": "Gun Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Twin pulse carbine",
@@ -17003,28 +16505,9 @@
               ]
             },
             {
-              "id": "87e6-9a39-44b3-c69a",
-              "name": "Missile Drone",
-              "maxCount": 2,
-              "profiles": [
-                {
-                  "name": "Missile pod",
-                  "type": "ranged",
-                  "count": 1,
-                  "range": "30\"",
-                  "A": "2",
-                  "BS": "5+",
-                  "S": "7",
-                  "AP": "-1",
-                  "D": "2",
-                  "keywords": ""
-                }
-              ]
-            },
-            {
               "id": "6e7d-ce01-f36a-b91d",
               "name": "Marker Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Marker Drone",
@@ -17036,7 +16519,7 @@
             {
               "id": "3e61-1b73-7e00-4ef5",
               "name": "Shield Drone",
-              "maxCount": 2,
+              "maxCount": 1,
               "profiles": [
                 {
                   "name": "Shield Drone",

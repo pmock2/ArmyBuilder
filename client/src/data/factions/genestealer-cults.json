@@ -2471,7 +2471,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "8263-4c12-faea-3210",
@@ -2556,7 +2557,8 @@
               ],
               "pts": 10
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6917,7 +6919,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -18558,7 +18561,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

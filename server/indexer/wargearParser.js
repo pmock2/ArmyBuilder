@@ -1,4 +1,4 @@
-const { shouldSkipWargearNode, getWargearMinMax } = require('./modifiersParser');
+const { shouldSkipWargearNode, isHiddenByAncestorModifiers, getWargearMinMax } = require('./modifiersParser');
 
 function createWargearParser({
   allEntriesById,
@@ -176,8 +176,24 @@ function createWargearParser({
     const groups = [];
     const visitedGroups = new Set();
 
-    function processContainer(container, contextLabel, parentModelOptional = false, modelScopeMax = 1) {
+    const addNodeAncestorIds = (node, set) => {
+      if (!node) return;
+      if (node.id) set.add(node.id);
+      if (node.targetId) set.add(node.targetId);
+      if (node.categoryLinks) {
+        for (const cl of node.categoryLinks) {
+          if (cl && cl.targetId) set.add(cl.targetId);
+        }
+      }
+    };
+
+    const rootAncestors = new Set();
+    addNodeAncestorIds(unitEntry, rootAncestors);
+
+    function processContainer(container, contextLabel, parentModelOptional = false, modelScopeMax = 1, ancestorIds = rootAncestors) {
       if (!container) return;
+      const currentAncestors = new Set(ancestorIds);
+      addNodeAncestorIds(container, currentAncestors);
 
       // 1. Direct optional upgrades in selectionEntries / entryLinks (non-models)
       const directEntries = [
@@ -192,9 +208,10 @@ function createWargearParser({
         if (shouldSkipWargearNode(item)) continue;
         const resolved = item.targetId ? allEntriesById.get(item.targetId) : item;
         if (!resolved || shouldSkipWargearNode(resolved)) continue;
+        if (isHiddenByAncestorModifiers(currentAncestors, item, resolved !== item ? resolved : null)) continue;
 
         const itemType = item.type === 'model' || resolved.type === 'model' ? 'model' : (resolved.type || item.type);
-        const { min, max } = getWargearMinMax(item, resolved);
+        const { min, max } = getWargearMinMax(item, resolved, currentAncestors);
 
         if (itemType === 'model') {
           childModels.push({ item, resolved, min, max });
@@ -244,6 +261,10 @@ function createWargearParser({
         if (shouldSkipWargearNode(rawG)) continue;
         const g = rawG.targetId ? (allEntriesById.get(rawG.targetId) || rawG) : rawG;
         if (!g || shouldSkipWargearNode(g)) continue;
+        if (isHiddenByAncestorModifiers(currentAncestors, rawG, g !== rawG ? g : null)) continue;
+        const groupAncestors = new Set(currentAncestors);
+        addNodeAncestorIds(rawG, groupAncestors);
+        addNodeAncestorIds(g, groupAncestors);
         const uniqueGroupId = rawG.id || g.id;
         if (visitedGroups.has(uniqueGroupId)) continue;
 
@@ -299,11 +320,15 @@ function createWargearParser({
             if (shouldSkipWargearNode(e)) continue;
             const res = e.targetId ? allEntriesById.get(e.targetId) : e;
             if (!res || shouldSkipWargearNode(res)) continue;
-            const { min: mMin, max: mMax } = getWargearMinMax(e, res);
+            const { min: mMin, max: mMax } = getWargearMinMax(e, res, groupAncestors);
             const isOptionalModel = mMin === 0 && gEntries.length > 1;
 
+            const modelAncestors = new Set(groupAncestors);
+            addNodeAncestorIds(e, modelAncestors);
+            addNodeAncestorIds(res, modelAncestors);
+
             const groupsBefore = groups.length;
-            processContainer(res, e.name || res.name, parentModelOptional || isOptionalModel, mMax || 1);
+            processContainer(res, e.name || res.name, parentModelOptional || isOptionalModel, mMax || 1, modelAncestors);
             const addedGroups = groups.slice(groupsBefore);
             const addedSubGroups = addedGroups.length > 0;
 
@@ -387,7 +412,7 @@ function createWargearParser({
         const hasSubGroups = (g.selectionEntryGroups && g.selectionEntryGroups.length > 0) ||
                              (g.entryLinks && g.entryLinks.some(l => l.type === 'selectionEntryGroup'));
 
-        const { min: gMin, max: gMax } = getWargearMinMax(rawG, g);
+        const { min: gMin, max: gMax } = getWargearMinMax(rawG, g, currentAncestors);
 
         // Only flatten a generic "Wargear" container when it has child groups or doesn't impose its own
         // choice constraints (e.g. Armiger Moirax: leaf "Wargear" group with min 2 / max 2 is a real choice).
@@ -396,11 +421,11 @@ function createWargearParser({
 
         if (isPlainWargearContainer || (hasSubGroups && gEntries.every(e => {
           const res = e.targetId ? allEntriesById.get(e.targetId) : e;
-          const m = getWargearMinMax(e, res);
+          const m = getWargearMinMax(e, res, groupAncestors);
           return m.min >= 1 && m.max === m.min;
         }))) {
           visitedGroups.add(uniqueGroupId);
-          processContainer(g, contextLabel, parentModelOptional);
+          processContainer(g, contextLabel, parentModelOptional, modelScopeMax, groupAncestors);
           continue;
         }
 
@@ -409,7 +434,8 @@ function createWargearParser({
           if (shouldSkipWargearNode(opt)) continue;
           const resOpt = opt.targetId ? allEntriesById.get(opt.targetId) : opt;
           if (!resOpt || shouldSkipWargearNode(resOpt)) continue;
-          const { min: oMin, max: oMax } = getWargearMinMax(opt, resOpt);
+          if (isHiddenByAncestorModifiers(groupAncestors, opt, resOpt !== opt ? resOpt : null)) continue;
+          const { min: oMin, max: oMax } = getWargearMinMax(opt, resOpt, groupAncestors);
           if (gMax === null && oMin >= 1 && oMax === oMin) continue;
 
           const profiles = extractOptionProfiles(opt);
@@ -484,14 +510,17 @@ function createWargearParser({
         }
 
         if (hasSubGroups) {
-          processContainer(g, contextLabel, parentModelOptional, modelScopeMax);
+          processContainer(g, contextLabel, parentModelOptional, modelScopeMax, groupAncestors);
         }
       }
 
       // 3. Recurse into direct child models
       for (const cm of childModels) {
         const isOpt = cm.min === 0 && childModels.length > 1;
-        processContainer(cm.resolved, cm.item.name || cm.resolved.name, parentModelOptional || isOpt, cm.max || 1);
+        const childAncestors = new Set(currentAncestors);
+        addNodeAncestorIds(cm.item, childAncestors);
+        addNodeAncestorIds(cm.resolved, childAncestors);
+        processContainer(cm.resolved, cm.item.name || cm.resolved.name, parentModelOptional || isOpt, cm.max || 1, childAncestors);
       }
     }
 
