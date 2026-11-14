@@ -248,10 +248,10 @@ export function computeUnitEquippedData(
   for (const group of wargearGroups) {
     const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
     if (selIds.length === 0) continue;
-    if (group.isExclusive && !group.perModel) {
-      const prefix = group.name.includes(' — ') ? group.name.split(' — ')[0] : group.id;
+    if (!group.perModel && group.name.includes(' — ') && !group.id.endsWith('-squad-options')) {
+      const prefix = group.name.split(' — ')[0].trim();
       activeSingleModelPrefixes.add(prefix);
-    } else if (!group.isExclusive) {
+    } else if (!group.isExclusive && group.id.endsWith('-squad-options')) {
       nonExclusiveSpecialistCount += selIds.length;
     }
   }
@@ -616,12 +616,13 @@ export function computeUnitEquippedData(
     .filter((es) => !consumedExtraStatNames.has((es.name || '').toLowerCase()))
     .map((es) => ({
       name: es.name || unit.name,
+      count: 1,
       Base: es.Base,
       ...buildProfileStats(es, activeStatModifiers)
     }))
     .filter((esProfile) => statSignature(esProfile) !== primarySignature);
 
-  const primaryCount = currentModels - subModelProfiles.length;
+  const primaryCount = currentModels - subModelProfiles.length - extraStatProfiles.length;
   const rawStatProfiles: ComputedStatProfile[] = [
     ...(primaryCount > 0 || subModelProfiles.length === 0
       ? [{

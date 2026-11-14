@@ -5763,7 +5763,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "ee0f-4b5e-11f9-233a",
@@ -5837,7 +5838,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -6047,7 +6049,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "5429-90b5-398b-9e2d-optional-wargear",
@@ -6071,7 +6074,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "1051-a2a2-9c34-e570-optional-wargear",
@@ -7467,7 +7471,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -8150,7 +8155,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "5068-3b7e-4bf0-a83d-optional-wargear",
@@ -8199,7 +8205,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "b05f-dadf-e0a2-eaf4",
@@ -8358,7 +8365,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "e56e-6333-6b23-8033",
@@ -15684,7 +15692,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -16022,7 +16031,8 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "3a3c-5ce9-5a05-7c6e",
@@ -16096,7 +16106,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [
@@ -16462,7 +16473,8 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "perModel": true
         },
         {
           "id": "d98e-bf62-b4c6-e435",
@@ -16536,7 +16548,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "perModel": true
         }
       ],
       "baseProfileNames": [

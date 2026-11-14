@@ -239,7 +239,7 @@ function createWargearParser({
         const groupId = `${container.id}-optional-wargear`;
         if (!visitedGroups.has(groupId)) {
           visitedGroups.add(groupId);
-          groups.push({
+          const groupObj = {
             id: groupId,
             name: contextLabel ? `${contextLabel} — Optional Wargear` : 'Optional Wargear',
             min: 0,
@@ -247,7 +247,11 @@ function createWargearParser({
             isExclusive: false,
             defaultOptionIds: optionalUpgrades.filter(o => !o.pts).map(o => o.id),
             options: optionalUpgrades
-          });
+          };
+          if (modelScopeMax > 1) {
+            groupObj.perModel = true;
+          }
+          groups.push(groupObj);
         }
       }
 
@@ -503,7 +507,7 @@ function createWargearParser({
             defaultOptionIds,
             options
           };
-          if (isExclusive && modelScopeMax > 1) {
+          if (modelScopeMax > 1) {
             groupObj.perModel = true;
           }
           groups.push(groupObj);
