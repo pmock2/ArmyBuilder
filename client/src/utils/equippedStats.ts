@@ -299,7 +299,19 @@ export function computeUnitEquippedData(
             sourceType: 'wargear'
           });
           if (p.type === 'ability' && !baseProfileSet.has(p.name)) {
-            abilitySourceMap[p.name] = { label: `Wargear • ${opt.name}`, type: 'wargear' };
+            const existing = abilitySourceMap[p.name];
+            if (isSubModelScoped) {
+              const prevModels = existing?.label.includes('(') && existing.label.endsWith(')')
+                ? existing.label.slice(existing.label.lastIndexOf('(') + 1, -1).split(', ')
+                : [];
+              const models = prevModels.includes(groupPrefix) ? prevModels : [...prevModels, groupPrefix];
+              abilitySourceMap[p.name] = {
+                label: `Wargear • ${opt.name} (${models.join(', ')})`,
+                type: 'wargear'
+              };
+            } else if (!existing) {
+              abilitySourceMap[p.name] = { label: `Wargear • ${opt.name}`, type: 'wargear' };
+            }
           }
           if (p.type === 'ranged' || p.type === 'melee') {
             const effectiveOptCount = group.perModel && optCount > 0 ? perModelCount : optCount;
@@ -675,6 +687,43 @@ export function computeUnitEquippedData(
       .map((m) => ({ kw: String(m.mod.value), source: m.source })),
     weaponSource: weaponSourceMap[w.name]
   }));
+
+  const ARMY_RULE_NAMES = new Set([
+    'for the greater good',
+    'combat doctrines',
+    'oath of moment',
+    'reanimation protocols',
+    'waaagh!',
+    'synapse',
+    'shadow in the warp',
+    'dark pacts',
+    'acts of faith',
+    'blessings of khorne',
+    "nurgle's gift",
+    'cult ambush',
+    'power from pain',
+    'strands of fate',
+    'battle focus',
+    "martial ka'tah",
+    'cabal of sorcerers',
+    'voice of command',
+    'prioritised efficiency',
+    'harbingers of dread',
+    'super-heavy walker',
+    'code chivalric',
+    'thrill seekers',
+    'gate of infinity',
+    'teleport assault',
+    'doctrina imperatives',
+    'assigned agents'
+  ]);
+
+  equippedAbilitiesRaw.sort((a, b) => {
+    const aIsArmy = ARMY_RULE_NAMES.has(a.name.toLowerCase()) && !abilitySourceMap[a.name];
+    const bIsArmy = ARMY_RULE_NAMES.has(b.name.toLowerCase()) && !abilitySourceMap[b.name];
+    if (aIsArmy === bIsArmy) return 0;
+    return aIsArmy ? 1 : -1;
+  });
 
   const computedAbilities: ComputedAbility[] = equippedAbilitiesRaw.map((ab) => ({
     ...ab,
