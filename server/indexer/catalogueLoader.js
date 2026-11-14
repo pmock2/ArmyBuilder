@@ -103,12 +103,33 @@ function loadCatalogues(dataDir) {
         profiles.push(p);
       }
     }
+    const isUnitOrModel = entry.type === 'unit' || entry.type === 'model';
+    if (isUnitOrModel && entry.rules) {
+      for (const r of entry.rules) {
+        if (r && !r.hidden && r.name && r.description !== undefined) {
+          profiles.push({
+            name: r.name,
+            typeName: 'Abilities',
+            characteristics: [{ name: 'Description', $text: r.description || '' }]
+          });
+        }
+      }
+    }
     if (entry.infoLinks) {
       for (const il of entry.infoLinks) {
+        if (il.hidden) continue;
         if (il.targetId && allEntriesById.has(il.targetId)) {
           const target = allEntriesById.get(il.targetId);
-          if (target && target.typeName) {
-            profiles.push(target);
+          if (target && !target.hidden) {
+            if (target.typeName) {
+              profiles.push(target);
+            } else if (isUnitOrModel && target.name && target.description !== undefined) {
+              profiles.push({
+                name: il.name || target.name,
+                typeName: 'Abilities',
+                characteristics: [{ name: 'Description', $text: target.description || '' }]
+              });
+            }
           }
         }
       }
