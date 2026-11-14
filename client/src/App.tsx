@@ -106,6 +106,8 @@ export const App: React.FC = () => {
         const newWgJson = JSON.stringify(freshDs.wargearGroups || []);
         if (
           oldWgJson !== newWgJson ||
+          JSON.stringify(u.datasheet.abilities || []) !== JSON.stringify(freshDs.abilities || []) ||
+          JSON.stringify(u.datasheet.extraStats || []) !== JSON.stringify(freshDs.extraStats || []) ||
           !u.datasheet.baseProfileNames ||
           !u.datasheet.baseWeaponCounts ||
           JSON.stringify(u.datasheet.enhancementGroupIds || []) !== JSON.stringify(freshDs.enhancementGroupIds || []) ||
