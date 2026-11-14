@@ -235,7 +235,9 @@ export function computeUnitEquippedData(
   const abilitySourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
   const weaponSourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
   const activeStatModifiers: SourcedStatModifier[] = [];
-  const subModelModifiersMap: Record<string, SourcedStatModifier[]> = {};
+  const modelGroupPrefixes = new Map<string, { displayName: string; perModel: boolean }>();
+  const modelPrefixModifiersMap: Record<string, SourcedStatModifier[]> = {};
+  const squadOptionStatBatches: { name: string; count: number; mods: SourcedStatModifier[] }[] = [];
   const selectedOptionCountSum: Record<string, number> = {};
   const selectedOptionCountMax: Record<string, number> = {};
 
@@ -250,7 +252,9 @@ export function computeUnitEquippedData(
     if (selIds.length === 0) continue;
     if (!group.perModel && group.name.includes(' — ') && !group.id.endsWith('-squad-options')) {
       const prefix = group.name.split(' — ')[0].trim();
-      activeSingleModelPrefixes.add(prefix);
+      if (prefix.toLowerCase() !== unit.name.toLowerCase()) {
+        activeSingleModelPrefixes.add(prefix);
+      }
     } else if (!group.isExclusive && group.id.endsWith('-squad-options')) {
       nonExclusiveSpecialistCount += selIds.length;
     }
@@ -261,31 +265,64 @@ export function computeUnitEquippedData(
     const rawSelectedIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
     const isMultiModelUnit = (unit.maxModels || 1) > 1;
     const groupPrefix = group.name.includes(' — ') ? group.name.split(' — ')[0].trim() : '';
-    const isSubModelScoped =
+    const groupPrefixKey = groupPrefix.toLowerCase();
+    const isSquadOptionsGroup = group.id.endsWith('-squad-options');
+    const isModelScoped =
       isMultiModelUnit &&
-      !group.perModel &&
       Boolean(groupPrefix) &&
-      groupPrefix.toLowerCase() !== unit.name.toLowerCase();
+      groupPrefixKey !== unit.name.toLowerCase();
+    const isSubModelScoped = isModelScoped && !group.perModel;
+
+    if (isModelScoped && !isSquadOptionsGroup) {
+      const existingPrefix = modelGroupPrefixes.get(groupPrefixKey);
+      modelGroupPrefixes.set(groupPrefixKey, {
+        displayName: existingPrefix?.displayName || groupPrefix,
+        perModel: Boolean(existingPrefix?.perModel || group.perModel)
+      });
+    }
 
     for (const opt of group.options) {
       const optCount = rawSelectedIds.filter((id) => id === opt.id).length;
       const isSelected = optCount > 0;
       if (isSelected && opt.statModifiers) {
-        for (const sm of opt.statModifiers) {
-          const repeatCount = sm.type === 'increment' ? optCount : 1;
-          for (let r = 0; r < repeatCount; r++) {
+        if (isModelScoped && isSquadOptionsGroup) {
+          const unitModsForOpt: SourcedStatModifier[] = [];
+          for (const sm of opt.statModifiers) {
             const sourced: SourcedStatModifier = {
               mod: sm,
               source: `Wargear: ${opt.name}`,
               sourceType: 'wargear'
             };
-            if (isSubModelScoped && sm.target === 'unit') {
-              if (!subModelModifiersMap[groupPrefix]) {
-                subModelModifiersMap[groupPrefix] = [];
-              }
-              subModelModifiersMap[groupPrefix].push(sourced);
+            if (sm.target === 'unit') {
+              unitModsForOpt.push(sourced);
             } else {
               activeStatModifiers.push(sourced);
+            }
+          }
+          if (unitModsForOpt.length > 0) {
+            squadOptionStatBatches.push({
+              name: opt.name,
+              count: optCount,
+              mods: unitModsForOpt
+            });
+          }
+        } else {
+          for (const sm of opt.statModifiers) {
+            const repeatCount = sm.type === 'increment' ? optCount : 1;
+            for (let r = 0; r < repeatCount; r++) {
+              const sourced: SourcedStatModifier = {
+                mod: sm,
+                source: `Wargear: ${opt.name}`,
+                sourceType: 'wargear'
+              };
+              if (isModelScoped && sm.target === 'unit') {
+                if (!modelPrefixModifiersMap[groupPrefixKey]) {
+                  modelPrefixModifiersMap[groupPrefixKey] = [];
+                }
+                modelPrefixModifiersMap[groupPrefixKey].push(sourced);
+              } else {
+                activeStatModifiers.push(sourced);
+              }
             }
           }
         }
@@ -573,58 +610,97 @@ export function computeUnitEquippedData(
     InSv: computeModifiedStat(base.InSv, 'InSv', mods, 'unit')
   });
 
-  const primaryStats = buildProfileStats(unit.stats, activeStatModifiers);
+  const statSignature = (sp: Pick<ComputedStatProfile, 'M' | 'T' | 'Sv' | 'W' | 'Ld' | 'OC' | 'InSv' | 'Base'>) =>
+    [sp.M.value, sp.T.value, sp.Sv.value, sp.W.value, sp.Ld.value, sp.OC.value, sp.InSv.value, sp.Base || ''].join('|');
+
+  const primaryKey = (unit.stats.name || unit.name).toLowerCase();
+  const primaryMods = [
+    ...activeStatModifiers,
+    ...(modelPrefixModifiersMap[primaryKey] || [])
+  ];
+  const primaryStats = buildProfileStats(unit.stats, primaryMods);
   const { M: modM, T: modT, Sv: modSv, W: modW, Ld: modLd, OC: modOC, InSv: modInSv } = primaryStats;
+  const primarySignature = statSignature({ ...primaryStats, Base: unit.stats.Base });
+
+  const extraStatsList = unit.extraStats || [];
+  const isPrimarySingleLeader =
+    currentModels > 1 &&
+    extraStatsList.length > 0 &&
+    !modelGroupPrefixes.get(primaryKey)?.perModel &&
+    modelGroupPrefixes.has(primaryKey) &&
+    extraStatsList.some((es) => {
+      const esKey = (es.name || '').toLowerCase();
+      return esKey === unit.name.toLowerCase() || Boolean(modelGroupPrefixes.get(esKey)?.perModel);
+    });
+
+  const handledKeys = new Set<string>([primaryKey]);
+  const squadOptionProfiles: ComputedStatProfile[] = [];
+  for (const batch of squadOptionStatBatches) {
+    const batchStats = buildProfileStats(unit.stats, [...activeStatModifiers, ...batch.mods]);
+    if (statSignature({ ...batchStats, Base: unit.stats.Base }) !== primarySignature) {
+      squadOptionProfiles.push({
+        name: batch.name,
+        count: batch.count,
+        Base: unit.stats.Base,
+        ...batchStats
+      });
+    }
+  }
+
+  const extraStatProfiles: ComputedStatProfile[] = extraStatsList.map((es) => {
+    const esKey = (es.name || unit.name).toLowerCase();
+    handledKeys.add(esKey);
+    const esMods = [
+      ...activeStatModifiers,
+      ...(modelPrefixModifiersMap[esKey] || [])
+    ];
+    return {
+      name: es.name || unit.name,
+      count: 1,
+      Base: es.Base,
+      ...buildProfileStats(es, esMods)
+    };
+  });
 
   const subModelProfiles: ComputedStatProfile[] = [];
-  const consumedExtraStatNames = new Set<string>();
-  for (const [subName, subMods] of Object.entries(subModelModifiersMap)) {
-    const matchingExtra = (unit.extraStats || []).find(
-      (es) => (es.name || '').toLowerCase() === subName.toLowerCase()
-    );
-    const subBase = matchingExtra || unit.stats;
-    const combinedMods = [...activeStatModifiers, ...subMods];
-    const subStats = buildProfileStats(subBase, combinedMods);
-    const differsFromPrimary =
-      subStats.M.value !== modM.value ||
-      subStats.T.value !== modT.value ||
-      subStats.Sv.value !== modSv.value ||
-      subStats.W.value !== modW.value ||
-      subStats.Ld.value !== modLd.value ||
-      subStats.OC.value !== modOC.value ||
-      subStats.InSv.value !== modInSv.value;
-
-    if (differsFromPrimary) {
-      if (matchingExtra) {
-        consumedExtraStatNames.add(subName.toLowerCase());
-      }
+  for (const [prefixKey, info] of modelGroupPrefixes.entries()) {
+    if (handledKeys.has(prefixKey)) continue;
+    handledKeys.add(prefixKey);
+    const subMods = [
+      ...activeStatModifiers,
+      ...(modelPrefixModifiersMap[prefixKey] || [])
+    ];
+    const subStats = buildProfileStats(unit.stats, subMods);
+    if (statSignature({ ...subStats, Base: unit.stats.Base }) !== primarySignature) {
       subModelProfiles.push({
-        name: subName,
+        name: info.displayName,
         count: 1,
-        Base: subBase.Base,
+        Base: unit.stats.Base,
         ...subStats
       });
     }
   }
 
-  const statSignature = (sp: Pick<ComputedStatProfile, 'M' | 'T' | 'Sv' | 'W' | 'Ld' | 'OC' | 'InSv' | 'Base'>) =>
-    [sp.M.value, sp.T.value, sp.Sv.value, sp.W.value, sp.Ld.value, sp.OC.value, sp.InSv.value, sp.Base || ''].join('|');
+  const squadOptionAssignedCount = squadOptionProfiles.reduce((acc, p) => acc + (p.count || 1), 0);
+  const nonExtraOtherCount = subModelProfiles.length + squadOptionAssignedCount;
 
-  const primarySignature = statSignature({ ...primaryStats, Base: unit.stats.Base });
+  if (isPrimarySingleLeader && extraStatProfiles.length > 0) {
+    const bulkIdx = extraStatProfiles.findIndex((ep) => {
+      const k = ep.name.toLowerCase();
+      return k === unit.name.toLowerCase() || Boolean(modelGroupPrefixes.get(k)?.perModel);
+    });
+    const targetIdx = bulkIdx >= 0 ? bulkIdx : 0;
+    const bulkCount = Math.max(1, currentModels - 1 - nonExtraOtherCount - (extraStatProfiles.length - 1));
+    extraStatProfiles[targetIdx] = { ...extraStatProfiles[targetIdx], count: bulkCount };
+  }
 
-  const extraStatProfiles: ComputedStatProfile[] = (unit.extraStats || [])
-    .filter((es) => !consumedExtraStatNames.has((es.name || '').toLowerCase()))
-    .map((es) => ({
-      name: es.name || unit.name,
-      count: 1,
-      Base: es.Base,
-      ...buildProfileStats(es, activeStatModifiers)
-    }))
-    .filter((esProfile) => statSignature(esProfile) !== primarySignature);
+  const primaryCount = isPrimarySingleLeader
+    ? 1
+    : currentModels - nonExtraOtherCount - extraStatProfiles.length;
 
-  const primaryCount = currentModels - subModelProfiles.length - extraStatProfiles.length;
+  const hasOtherProfiles = subModelProfiles.length > 0 || squadOptionProfiles.length > 0 || extraStatProfiles.length > 0;
   const rawStatProfiles: ComputedStatProfile[] = [
-    ...(primaryCount > 0 || subModelProfiles.length === 0
+    ...(primaryCount > 0 || !hasOtherProfiles
       ? [{
           name: unit.stats.name || unit.name,
           count: Math.max(1, primaryCount),
@@ -632,6 +708,7 @@ export function computeUnitEquippedData(
           ...primaryStats
         }]
       : []),
+    ...squadOptionProfiles,
     ...subModelProfiles,
     ...extraStatProfiles
   ];
