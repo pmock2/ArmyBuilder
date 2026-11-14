@@ -4596,7 +4596,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "e29-840d-814b-fe7c-squad-options",
+            "optionId": "3095-279e-8a92-446c"
+          }
         },
         {
           "id": "6413-b44e-624b-b994",
@@ -4638,7 +4642,107 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "e29-840d-814b-fe7c-squad-options",
+            "optionId": "8c2-3607-9b28-8c43"
+          }
+        },
+        {
+          "id": "e29-840d-814b-fe7c-squad-options",
+          "name": "2-5 Reavers — Optional Wargear",
+          "min": 0,
+          "max": 5,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "3095-279e-8a92-446c",
+              "name": "Reaver with Blaster",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Splinter Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "2",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Anti-Infantry 3+, Assault, Pistol"
+                },
+                {
+                  "name": "Bladevanes",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Lance"
+                },
+                {
+                  "name": "Blaster",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "8",
+                  "AP": "-4",
+                  "D": "D6+1",
+                  "keywords": "Assault"
+                }
+              ]
+            },
+            {
+              "id": "8c2-3607-9b28-8c43",
+              "name": "Reaver with Heat Lance",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Splinter Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "2",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Anti-Infantry 3+, Assault, Pistol"
+                },
+                {
+                  "name": "Bladevanes",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Lance"
+                },
+                {
+                  "name": "Heat Lance",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "14",
+                  "AP": "-4",
+                  "D": "D6",
+                  "keywords": "Assault, Melta 3"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "921d-37d4-2243-fef9",
@@ -7515,7 +7619,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "b3ab-c0f4-3253-859c-squad-options",
+            "optionId": "6184-261f-65bd-1cd1"
+          }
         },
         {
           "id": "b3ab-c0f4-3253-859c-squad-options",
@@ -7526,9 +7634,29 @@
           "defaultOptionIds": [
             "fcf9-7d09-a246-b925",
             "fcf9-7d09-a246-b925",
+            "fcf9-7d09-a246-b925",
             "fcf9-7d09-a246-b925"
           ],
           "options": [
+            {
+              "id": "6184-261f-65bd-1cd1",
+              "name": "Voidreaver with Heavy weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
             {
               "id": "fcf9-7d09-a246-b925",
               "name": "Voidreaver with Shuriken rifle",
@@ -9667,7 +9795,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ee36-1cbf-1933-2c96-squad-options",
+            "optionId": "1fa6-f9a2-a56e-1317"
+          }
         },
         {
           "id": "5b79-87bb-880e-437e",
@@ -9727,7 +9859,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ee36-1cbf-1933-2c96-squad-options",
+            "optionId": "c69e-69e8-9b0d-bead"
+          }
         },
         {
           "id": "ee36-1cbf-1933-2c96-squad-options",
@@ -9736,6 +9872,8 @@
           "max": 11,
           "isExclusive": false,
           "defaultOptionIds": [
+            "69be-de22-4d8-ebe3",
+            "69be-de22-4d8-ebe3",
             "69be-de22-4d8-ebe3",
             "69be-de22-4d8-ebe3"
           ],
@@ -9829,6 +9967,74 @@
                   "name": "Devastating Wounds",
                   "type": "ability",
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
+                }
+              ]
+            },
+            {
+              "id": "1fa6-f9a2-a56e-1317",
+              "name": "Player with Fusion Pistol",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Fusion Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "6\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "8",
+                  "AP": "-4",
+                  "D": "D6",
+                  "keywords": "Assault, Melta 2, Pistol"
+                },
+                {
+                  "name": "Assault",
+                  "type": "ability",
+                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
+                },
+                {
+                  "name": "Melta",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                }
+              ]
+            },
+            {
+              "id": "c69e-69e8-9b0d-bead",
+              "name": "Player with Neuro Disruptor",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Neuro Disruptor",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-2",
+                  "D": "1",
+                  "keywords": "Anti-infantry 2+, Assault, Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Anti",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Assault",
+                  "type": "ability",
+                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
                 }
               ]
             }
@@ -11403,7 +11609,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "6209-95a3-61cf-fd98-squad-options",
+            "optionId": "1ff3-baf8-51be-2cf2"
+          }
         },
         {
           "id": "6209-95a3-61cf-fd98-squad-options",
@@ -11469,6 +11679,59 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": "Assault, Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                }
+              ]
+            },
+            {
+              "id": "1ff3-baf8-51be-2cf2",
+              "name": "Reaver w/ sparglaive",
+              "maxCount": 10,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Spar glaive",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Brace of pistols",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault, Pistol"
+                },
+                {
+                  "name": "Assault",
+                  "type": "ability",
+                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
                 },
                 {
                   "name": "Pistol",
@@ -12471,7 +12734,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "3443-4ec6-9e1f-c970-squad-options",
+            "optionId": "5816-884a-9cd5-7e32"
+          }
         },
         {
           "id": "6e58-55e1-2611-7244",
@@ -12541,7 +12808,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "3443-4ec6-9e1f-c970-squad-options",
+            "optionId": "1bb6-d558-140b-e405"
+          }
         },
         {
           "id": "3443-4ec6-9e1f-c970-squad-options",
@@ -12550,6 +12821,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "a42b-683e-4a0b-20b0",
+            "a42b-683e-4a0b-20b0",
             "a42b-683e-4a0b-20b0",
             "a42b-683e-4a0b-20b0",
             "a42b-683e-4a0b-20b0",
@@ -12627,6 +12900,44 @@
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
                 },
+                {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "5816-884a-9cd5-7e32",
+              "name": "Kabalite Agent with special weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "1bb6-d558-140b-e405",
+              "name": "Kabalite Agent with heavy weapon",
+              "maxCount": 1,
+              "profiles": [
                 {
                   "name": "Close Combat Weapon",
                   "type": "melee",
@@ -13084,6 +13395,39 @@
                   "name": "Assault",
                   "type": "ability",
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
+                }
+              ]
+            }
+          ],
+          "requiresOption": {
+            "groupId": "20a2-d24f-b741-9b5c-squad-options",
+            "optionId": "313f-6619-806f-c4c7"
+          }
+        },
+        {
+          "id": "20a2-d24f-b741-9b5c-squad-options",
+          "name": "Scourge w/ special weapon — Optional Wargear",
+          "min": 0,
+          "max": 4,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "313f-6619-806f-c4c7",
+              "name": "Scourge with Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -22664,6 +23008,18 @@
               "maxCount": 2,
               "profiles": [
                 {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
                   "name": "Flamer",
                   "type": "ranged",
                   "count": 1,
@@ -22693,6 +23049,18 @@
               "maxCount": 2,
               "profiles": [
                 {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
                   "name": "Fusion gun",
                   "type": "ranged",
                   "count": 1,
@@ -22716,6 +23084,18 @@
               "name": "Storm Guardian with Power Sword",
               "maxCount": 2,
               "profiles": [
+                {
+                  "name": "Shuriken Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Pistol"
+                },
                 {
                   "name": "Power sword",
                   "type": "melee",
@@ -34772,7 +35152,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "c749-f83a-7a81-8c41-squad-options",
+            "optionId": "26bf-b7d3-80f0-2ab7"
+          }
         },
         {
           "id": "4040-07ef-56ab-eb31",
@@ -34810,6 +35194,111 @@
                   "name": "Lethal Hits",
                   "type": "ability",
                   "description": "Each time an attack made with a **[LETHAL HITS]** weapon results in a **critical hit**, you can choose for that attack to automatically wound the target. \n***Designer’s Note:** Choosing to automatically wound the target means that no **wound roll** is made for that attack. You may decide against this, as it means that attack cannot result in a **critical wound** and so cannot trigger other abilities such as [DEVASTATING WOUNDS].*"
+                }
+              ]
+            }
+          ],
+          "requiresOption": {
+            "groupId": "c749-f83a-7a81-8c41-squad-options",
+            "optionId": "f427-9992-bcb2-4836"
+          }
+        },
+        {
+          "id": "c749-f83a-7a81-8c41-squad-options",
+          "name": "2-5 Reavers — Optional Wargear",
+          "min": 0,
+          "max": 5,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "26bf-b7d3-80f0-2ab7",
+              "name": "Reaver with Blaster",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Blaster",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "8",
+                  "AP": "-4",
+                  "D": "D6+1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Splinter Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "2",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Anti-Infantry 3+, Assault, Pistol"
+                },
+                {
+                  "name": "Bladevanes",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "f427-9992-bcb2-4836",
+              "name": "Reaver with Heat Lance",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Splinter Pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "2",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Anti-Infantry 3+, Assault, Pistol"
+                },
+                {
+                  "name": "Heat Lance",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "14",
+                  "AP": "-4",
+                  "D": "D6",
+                  "keywords": "Assault, Melta 3"
+                },
+                {
+                  "name": "Melta",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
+                },
+                {
+                  "name": "Bladevanes",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }

@@ -33865,7 +33865,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "8ff0-d411-a894-83b8-squad-options",
+            "optionId": "e32f-a7e9-6e5c-f2b3"
+          }
         },
         {
           "id": "8ff0-d411-a894-83b8-squad-options",
@@ -33874,6 +33878,7 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "5b0b-fb3-69ec-310f",
             "5b0b-fb3-69ec-310f",
             "5b0b-fb3-69ec-310f",
             "5b0b-fb3-69ec-310f"
@@ -34045,6 +34050,42 @@
                   "type": "ability",
                   "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
                 },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "e32f-a7e9-6e5c-f2b3",
+              "name": "Legionary w/ other weapon",
+              "maxCount": 2,
+              "profiles": [
                 {
                   "name": "Bolt pistol",
                   "type": "ranged",
@@ -34751,7 +34792,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "9977-c11-280e-fb88-squad-options",
+            "optionId": "fb50-52da-26d0-b692"
+          }
         },
         {
           "id": "26e5-2cdb-5f82-8a8f",
@@ -34826,7 +34871,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "9977-c11-280e-fb88-squad-options",
+            "optionId": "fb50-52da-26d0-b692"
+          }
         },
         {
           "id": "9977-c11-280e-fb88-squad-options",
@@ -34835,6 +34884,7 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "d30b-b831-35ff-d173",
             "d30b-b831-35ff-d173",
             "d30b-b831-35ff-d173",
             "d30b-b831-35ff-d173"
@@ -35008,6 +35058,12 @@
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 }
               ]
+            },
+            {
+              "id": "fb50-52da-26d0-b692",
+              "name": "Heavy weapon",
+              "maxCount": 2,
+              "profiles": []
             },
             {
               "id": "c8ef-5f11-beec-4598",
@@ -37234,6 +37290,18 @@
                   "AP": "-2",
                   "D": "3",
                   "keywords": "Ignores Cover"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -63181,7 +63249,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ba84-53a5-716c-bc48-squad-options",
+            "optionId": "bf36-b035-9bce-5250"
+          }
         },
         {
           "id": "e2c1-6079-26be-b720",
@@ -63287,7 +63359,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ba84-53a5-716c-bc48-squad-options",
+            "optionId": "57b0-18a4-ceb0-2def"
+          }
         },
         {
           "id": "ba84-53a5-716c-bc48-squad-options",
@@ -63296,6 +63372,8 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "61da-b89e-f4be-859e",
+            "61da-b89e-f4be-859e",
             "61da-b89e-f4be-859e",
             "61da-b89e-f4be-859e"
           ],
@@ -63365,6 +63443,78 @@
                   "D": "1",
                   "keywords": ""
                 },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "bf36-b035-9bce-5250",
+              "name": "Legionary w/ heavy weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "57b0-18a4-ceb0-2def",
+              "name": "Legionary w/ special weapon",
+              "maxCount": 1,
+              "profiles": [
                 {
                   "name": "Bolt pistol",
                   "type": "ranged",

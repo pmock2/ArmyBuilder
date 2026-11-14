@@ -4676,6 +4676,18 @@
                   "name": "Blast",
                   "type": "ability",
                   "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -6075,7 +6087,62 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "a463-a329-d423-f948-squad-options",
+            "optionId": "5429-90b5-398b-9e2d"
+          }
+        },
+        {
+          "id": "a463-a329-d423-f948-squad-options",
+          "name": "4 Stealth Shas'ui — Optional Wargear",
+          "min": 0,
+          "max": 4,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "5429-90b5-398b-9e2d",
+              "name": "Stealth Shas'ui w/ fusion blaster",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Battlesuit fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "5+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Fusion blaster",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "9",
+                  "AP": "-4",
+                  "D": "D6",
+                  "keywords": "Melta 2"
+                },
+                {
+                  "name": "Melta",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
+                },
+                {
+                  "name": "Homing Beacon",
+                  "type": "ability",
+                  "description": "Once per battle, you can use the Rapid Ingress Stratagem for 0CP. The target must be set up within 3\" of the bearer’s unit and more than 8\" away from all enemy units.\n**Designer’s Note:** *Place a Homing Beacon token next to this unit, removing it once this ability is used.*"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "1051-a2a2-9c34-e570-optional-wargear",
@@ -7021,6 +7088,42 @@
                   "name": "Devastating Wounds",
                   "type": "ability",
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
+                },
+                {
+                  "name": "Pulse pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "5+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Pulse carbine",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "20\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -7681,6 +7784,18 @@
                   "name": "Ignores Cover",
                   "type": "ability",
                   "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
+                },
+                {
+                  "name": "Stingwing claws",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -7710,6 +7825,18 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Stingwing claws",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -7734,6 +7861,18 @@
                   "name": "Devastating Wounds",
                   "type": "ability",
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
+                },
+                {
+                  "name": "Stingwing claws",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -11352,6 +11491,42 @@
                   "name": "Pech'ra",
                   "type": "ability",
                   "description": "Ranged weapons equipped by the bearer’s unit have the **[IGNORES COVER]** ability."
+                },
+                {
+                  "name": "Kroot pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Farstalker firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ],
               "statModifiers": [

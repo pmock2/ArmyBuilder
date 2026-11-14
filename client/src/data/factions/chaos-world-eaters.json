@@ -2237,7 +2237,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ad01-52b6-735a-8b6b-squad-options",
+            "optionId": "5f1f-f3bb-d6dd-6714"
+          }
         },
         {
           "id": "429d-d402-0672-086d",
@@ -2312,7 +2316,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "ad01-52b6-735a-8b6b-squad-options",
+            "optionId": "5f1f-f3bb-d6dd-6714"
+          }
         },
         {
           "id": "ad01-52b6-735a-8b6b-squad-options",
@@ -2321,6 +2329,7 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "cfd2-df58-3637-0a6c",
             "cfd2-df58-3637-0a6c",
             "cfd2-df58-3637-0a6c",
             "cfd2-df58-3637-0a6c"
@@ -2600,6 +2609,12 @@
                   "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
                 }
               ]
+            },
+            {
+              "id": "5f1f-f3bb-d6dd-6714",
+              "name": "Heavy weapon",
+              "maxCount": 1,
+              "profiles": []
             }
           ]
         },
@@ -16714,6 +16729,61 @@
                   "name": "Sustained Hits",
                   "type": "ability",
                   "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
+                },
+                {
+                  "name": "Autopistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "0b15-1ee8-d59b-f5e1",
+              "name": "Goremonger w/ 2 pistols",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Autopistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }

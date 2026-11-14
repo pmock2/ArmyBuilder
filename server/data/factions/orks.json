@@ -8246,6 +8246,49 @@
           "defaultOptionIds": [],
           "options": [
             {
+              "id": "3697-d01c-ebcd-835d",
+              "name": "Tankbusta w/ Two Busta Rokkit Launchas",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "➤ Busta Rokkit Launcha - Hunter (Hunter: MONSTER/VEHICLE)",
+                  "type": "ranged",
+                  "count": 2,
+                  "range": "24\"",
+                  "A": "3",
+                  "BS": "4+",
+                  "S": "12",
+                  "AP": "-2",
+                  "D": "3",
+                  "keywords": "\n"
+                },
+                {
+                  "name": "➤ Busta Rokkit Launcha - Standard",
+                  "type": "ranged",
+                  "count": 2,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "10",
+                  "AP": "-2",
+                  "D": "3",
+                  "keywords": "\n"
+                },
+                {
+                  "name": "Gitstikka",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
               "id": "f3be-f9fd-a145-5aa9",
               "name": "Tankbusta w/ Pulsa rokkit",
               "maxCount": 1,
@@ -8254,6 +8297,42 @@
                   "name": "Pulsa Rokkit (Once per battle, per unit)",
                   "type": "ability",
                   "description": "In your Shooting phase, when this unit is **selected to shoot**, you can select one enemy **MONSTER/VEHICLE** unit within 24\" of this unit. If you do, this unit's attacks that target that unit have:\n- +1 **AP**.\n- **[LETHAL HITS]**."
+                },
+                {
+                  "name": "Gitstikka",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "➤ Busta Rokkit Launcha - Hunter (Hunter: MONSTER/VEHICLE)",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "3",
+                  "BS": "4+",
+                  "S": "12",
+                  "AP": "-2",
+                  "D": "3",
+                  "keywords": "\n"
+                },
+                {
+                  "name": "➤ Busta Rokkit Launcha - Standard",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "10",
+                  "AP": "-2",
+                  "D": "3",
+                  "keywords": "\n"
                 }
               ]
             }
@@ -13185,6 +13264,42 @@
                   "AP": "0",
                   "D": "2",
                   "keywords": "ANTI-MONSTER/VEHICLE 4+"
+                },
+                {
+                  "name": "➤ Choppa - Standard",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "➤ Choppa - Hunter (Hunter: MONSTER/VEHICLE)",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "6",
+                  "AP": "-2",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Slugga",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "5+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "CLOSE-QUARTERS, LETHAL HITS: non-MONSTER/VEHICLE"
                 }
               ]
             }

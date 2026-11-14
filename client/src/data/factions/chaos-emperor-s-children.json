@@ -2620,6 +2620,18 @@
                   "name": "Precision",
                   "type": "ability",
                   "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -2649,6 +2661,18 @@
                   "name": "Precision",
                   "type": "ability",
                   "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -3516,7 +3540,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "7059-5f21-88e3-3c6b-squad-options",
+            "optionId": "a6f3-e4f2-481d-7cf5"
+          }
         },
         {
           "id": "a186-c722-12f3-0283",
@@ -3590,7 +3618,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "7059-5f21-88e3-3c6b-squad-options",
+            "optionId": "a6f3-e4f2-481d-7cf5"
+          }
         },
         {
           "id": "7059-5f21-88e3-3c6b-squad-options",
@@ -3599,6 +3631,7 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "4a52-6694-b18b-54aa",
             "4a52-6694-b18b-54aa",
             "4a52-6694-b18b-54aa",
             "4a52-6694-b18b-54aa"
@@ -3772,6 +3805,12 @@
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 }
               ]
+            },
+            {
+              "id": "a6f3-e4f2-481d-7cf5",
+              "name": "Heavy weapon",
+              "maxCount": 1,
+              "profiles": []
             },
             {
               "id": "0008-11d1-562a-f3cb",
@@ -4707,6 +4746,18 @@
                   "AP": "-2",
                   "D": "3",
                   "keywords": "Ignores Cover"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }

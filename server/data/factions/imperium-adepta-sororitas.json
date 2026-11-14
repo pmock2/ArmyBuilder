@@ -1359,7 +1359,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "6dd7-c429-9056-8e88-squad-options",
+            "optionId": "c24e-b34f-1f45-d364"
+          }
         },
         {
           "id": "54b7-4ea0-fc9a-aa1c",
@@ -1453,7 +1457,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "6dd7-c429-9056-8e88-squad-options",
+            "optionId": "c24e-b34f-1f45-d364"
+          }
         },
         {
           "id": "3dcf-893a-6989-4d7",
@@ -1542,7 +1550,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "6dd7-c429-9056-8e88-squad-options",
+            "optionId": "b9ca-9321-2490-8232"
+          }
         },
         {
           "id": "6dd7-c429-9056-8e88-squad-options",
@@ -1558,9 +1570,107 @@
               "maxCount": 1,
               "profiles": [
                 {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "At the end of your Command phase, for each objective marker you control that has one or more units from your army with this ability within range of it, roll one D6: on a 4+, you gain 1 Miracle dice showing a value equal to that result."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "c24e-b34f-1f45-d364",
+              "name": "Battle Sister w/ Special or Heavy Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "b9ca-9321-2490-8232",
+              "name": "Battle Sister w/ Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -3582,15 +3692,21 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "f4c7-9742-3061-53a2-squad-options",
+            "optionId": "4230-7ed8-fd90-b9b6"
+          }
         },
         {
           "id": "f4c7-9742-3061-53a2-squad-options",
-          "name": "Dominions — Optional Wargear",
-          "min": 0,
+          "name": "Dominions — Loadout Options",
+          "min": 1,
           "max": 9,
           "isExclusive": false,
-          "defaultOptionIds": [],
+          "defaultOptionIds": [
+            "f0bc-a7dc-a866-a19c"
+          ],
           "options": [
             {
               "id": "f0bc-a7dc-a866-a19c",
@@ -3598,9 +3714,76 @@
               "maxCount": 1,
               "profiles": [
                 {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "At the end of your Command phase, for each objective marker you control that has one or more units from your army with this ability within range of it, roll one D6: on a 4+, you gain 1 Miracle dice showing a value equal to that result."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "4230-7ed8-fd90-b9b6",
+              "name": "Dominion w/ Special Weapon",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -7951,7 +8134,43 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "1966-1b51-9554-27a2-squad-options",
+            "optionId": "ee1b-1ac8-3c19-6190"
+          }
+        },
+        {
+          "id": "1966-1b51-9554-27a2-squad-options",
+          "name": "Seraphim — Loadout Options",
+          "min": 1,
+          "max": 9,
+          "isExclusive": false,
+          "defaultOptionIds": [
+            "ee1b-1ac8-3c19-6190",
+            "ee1b-1ac8-3c19-6190"
+          ],
+          "options": [
+            {
+              "id": "ee1b-1ac8-3c19-6190",
+              "name": "Seraphim with Special Weapons",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "bc47-a31c-bed2-c8cc",
@@ -10733,7 +10952,7 @@
           "id": "de94-3606-7e65-2a89-squad-options",
           "name": "Sanctifiers — Optional Wargear",
           "min": 0,
-          "max": 1,
+          "max": 2,
           "isExclusive": false,
           "defaultOptionIds": [],
           "options": [
@@ -10743,9 +10962,33 @@
               "maxCount": 1,
               "profiles": [
                 {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "At the end of your Command phase, for each objective marker you control that has one or more units from your army with this ability within range of it, roll one D6: on a 4+, you gain 1 Miracle dice showing a value equal to that result."
+                },
+                {
+                  "name": "Ministorum hand flamer",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "D6",
+                  "BS": "N/A",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Ignores Cover, Pistol, Torrent"
                 }
               ],
               "statModifiers": [
@@ -10754,6 +10997,37 @@
                   "stat": "Ld",
                   "type": "decrement",
                   "value": 1
+                }
+              ]
+            },
+            {
+              "id": "0d2d-f123-bba2-3429",
+              "name": "Sanctifier w/ two hand flamers",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Ministorum hand flamer",
+                  "type": "ranged",
+                  "count": 2,
+                  "range": "12\"",
+                  "A": "D6",
+                  "BS": "N/A",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Ignores Cover, Pistol, Torrent"
                 }
               ]
             }
@@ -10988,6 +11262,18 @@
                   "name": "Torrent",
                   "type": "ability",
                   "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
+                },
+                {
+                  "name": "Null mace",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Anti-PSYKER 4+, Devastating Wounds"
                 }
               ]
             },
@@ -11043,6 +11329,18 @@
                   "name": "Denuncia Oratory",
                   "type": "ability",
                   "description": "Each time the bearer’s unit’s quarry is destroyed, you can select a new unit from your opponent’s army to be its quarry."
+                },
+                {
+                  "name": "Null mace",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Anti-PSYKER 4+, Devastating Wounds"
                 }
               ]
             },
@@ -11055,6 +11353,30 @@
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "At the end of your Command phase, for each objective marker you control that has one or more units from your army with this ability within range of it, roll one D6: on a 4+, you gain 1 Miracle dice showing a value equal to that result."
+                },
+                {
+                  "name": "Null mace",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Anti-PSYKER 4+, Devastating Wounds"
+                },
+                {
+                  "name": "Condemnor bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Anti-PSYKER 4+, Devastating Wounds, Pistol"
                 }
               ]
             }
@@ -22488,6 +22810,18 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -22529,6 +22863,18 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -23024,6 +23370,42 @@
                   "name": "Feel No Pain",
                   "type": "ability",
                   "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -23043,6 +23425,42 @@
                   "AP": "-1",
                   "D": "2",
                   "keywords": ""
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -23060,6 +23478,42 @@
                   "name": "Ignores Cover",
                   "type": "ability",
                   "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ],
               "statModifiers": [
@@ -25087,7 +25541,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "971e-e52f-255e-4cb-squad-options",
+            "optionId": "2d15-f4e1-3d0f-d226"
+          }
         },
         {
           "id": "73ef-2ceb-76e3-aca3",
@@ -25190,6 +25648,58 @@
                   "name": "Melta",
                   "type": "ability",
                   "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
+                }
+              ]
+            }
+          ],
+          "requiresOption": {
+            "groupId": "971e-e52f-255e-4cb-squad-options",
+            "optionId": "2149-1376-5cea-acbd"
+          }
+        },
+        {
+          "id": "971e-e52f-255e-4cb-squad-options",
+          "name": "4-9 Legionnaires — Optional Wargear",
+          "min": 0,
+          "max": 9,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "2d15-f4e1-3d0f-d226",
+              "name": "Legionnaire w/ heavy weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "2149-1376-5cea-acbd",
+              "name": "Legionnaire w/ special weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -26418,6 +26928,30 @@
                   "name": "Hazardous",
                   "type": "ability",
                   "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -26442,6 +26976,30 @@
                   "name": "Devastating Wounds",
                   "type": "ability",
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -26471,6 +27029,30 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             }
@@ -26900,7 +27482,11 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "773d-7091-408f-67a7-squad-options",
+            "optionId": "6026-a6c1-6ab5-7744"
+          }
         },
         {
           "id": "773d-7091-408f-67a7-squad-options",
@@ -26909,6 +27495,7 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "c44d-6380-a431-c369",
             "c44d-6380-a431-c369",
             "c44d-6380-a431-c369",
             "c44d-6380-a431-c369"
@@ -26936,6 +27523,30 @@
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 },
+                {
+                  "name": "Nemesis force weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "6",
+                  "AP": "-2",
+                  "D": "2",
+                  "keywords": "Psychic"
+                },
+                {
+                  "name": "Psychic",
+                  "type": "ability",
+                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
+                }
+              ]
+            },
+            {
+              "id": "6026-a6c1-6ab5-7744",
+              "name": "Terminator w/ heavy weapon",
+              "maxCount": 1,
+              "profiles": [
                 {
                   "name": "Nemesis force weapon",
                   "type": "melee",
@@ -28054,7 +28665,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "533d-0199-bf20-fc31-squad-options",
+            "optionId": "45e3-1e76-454a-978a"
+          }
         },
         {
           "id": "dd06-3804-ed36-3e20",
@@ -28143,7 +28758,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "533d-0199-bf20-fc31-squad-options",
+            "optionId": "92aa-5976-6bbe-3376"
+          }
         },
         {
           "id": "533d-0199-bf20-fc31-squad-options",
@@ -28162,6 +28781,42 @@
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "Improve the Leadership characteristic of models in the bearer's unit by 1."
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ],
               "statModifiers": [
@@ -28170,6 +28825,68 @@
                   "stat": "Ld",
                   "type": "decrement",
                   "value": 1
+                }
+              ]
+            },
+            {
+              "id": "45e3-1e76-454a-978a",
+              "name": "Battle Sister w/ Special or Heavy Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "92aa-5976-6bbe-3376",
+              "name": "Battle Sister w/ Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -31039,7 +31756,31 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "19c2-4e30-0044-49ac-squad-options",
+            "optionId": "19a3-fdf1-1d30-6ba2"
+          }
+        },
+        {
+          "id": "19c2-4e30-0044-49ac-squad-options",
+          "name": "Deathwatch Terminators — Loadout Options",
+          "min": 1,
+          "max": 9,
+          "isExclusive": false,
+          "defaultOptionIds": [
+            "19a3-fdf1-1d30-6ba2",
+            "19a3-fdf1-1d30-6ba2",
+            "19a3-fdf1-1d30-6ba2"
+          ],
+          "options": [
+            {
+              "id": "19a3-fdf1-1d30-6ba2",
+              "name": "Deathwatch Terminator w/ Heavy Weapon",
+              "maxCount": 3,
+              "profiles": []
+            }
+          ]
         },
         {
           "id": "4a6a-3ff2-5307-ca55",
@@ -31605,7 +32346,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "1512-1774-90d3-5633-squad-options",
+            "optionId": "4c3e-06d1-9fe6-9af6"
+          }
         },
         {
           "id": "5aa1-f527-0d3b-ee76",
@@ -31674,7 +32419,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "1512-1774-90d3-5633-squad-options",
+            "optionId": "cae2-bbbc-152d-4704"
+          }
         },
         {
           "id": "1512-1774-90d3-5633-squad-options",
@@ -31683,6 +32432,8 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "a79f-07df-7641-174d",
+            "a79f-07df-7641-174d",
             "a79f-07df-7641-174d",
             "a79f-07df-7641-174d",
             "a79f-07df-7641-174d"
@@ -31743,6 +32494,88 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "4c3e-06d1-9fe6-9af6",
+              "name": "Kill Team Intercessor w/ Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                }
+              ]
+            },
+            {
+              "id": "cae2-bbbc-152d-4704",
+              "name": "Kill Team Intercessor w/ Melee Option",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt Rifle",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Heavy"
+                },
+                {
+                  "name": "Assault",
+                  "type": "ability",
+                  "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
+                },
+                {
+                  "name": "Heavy",
+                  "type": "ability",
+                  "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
                 }
               ]
             },
@@ -32971,7 +33804,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "c7d5-ef2f-d262-cbea-squad-options",
+            "optionId": "c43c-4e45-28b9-959b"
+          }
         },
         {
           "id": "2a7d-60a7-2a46-0065",
@@ -33066,7 +33903,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "c7d5-ef2f-d262-cbea-squad-options",
+            "optionId": "8006-f951-b05e-0fdb"
+          }
         },
         {
           "id": "c7d5-ef2f-d262-cbea-squad-options",
@@ -33099,6 +33940,30 @@
                   "AP": "-1",
                   "D": "2",
                   "keywords": "Heavy"
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -33145,6 +34010,73 @@
                   "name": "Sustained Hits",
                   "type": "ability",
                   "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                }
+              ]
+            },
+            {
+              "id": "c43c-4e45-28b9-959b",
+              "name": "Kill Team Infiltrator w/ combat knife",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Special-issue bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol, Precision"
+                },
+                {
+                  "name": "Precision",
+                  "type": "ability",
+                  "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
+                }
+              ]
+            },
+            {
+              "id": "8006-f951-b05e-0fdb",
+              "name": "Kill Team Infiltrator w/ Bolt sniper rifle",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -33571,7 +34503,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "44d3-d210-78bf-09fd-squad-options",
+            "optionId": "a3b8-07ce-1710-f2f4"
+          }
         },
         {
           "id": "0b2e-b07e-c906-f05d",
@@ -33758,7 +34694,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "44d3-d210-78bf-09fd-squad-options",
+            "optionId": "7284-2777-4a6e-c62f"
+          }
         },
         {
           "id": "690e-9b37-0f5f-ef86",
@@ -34391,18 +35331,82 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "44d3-d210-78bf-09fd-squad-options",
+            "optionId": "da66-9d97-5ad4-2e2e"
+          }
         },
         {
           "id": "44d3-d210-78bf-09fd-squad-options",
           "name": "Additional — Loadout Options",
           "min": 1,
-          "max": 4,
+          "max": 13,
           "isExclusive": false,
           "defaultOptionIds": [
             "a74e-0fb8-9c79-4881"
           ],
           "options": [
+            {
+              "id": "a3b8-07ce-1710-f2f4",
+              "name": "Kill Team Biker",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Twin boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Twin-Linked"
+                },
+                {
+                  "name": "Twin-linked",
+                  "type": "ability",
+                  "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
+                }
+              ]
+            },
+            {
+              "id": "7284-2777-4a6e-c62f",
+              "name": "Kill Team Terminator",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Invulnerable Save",
+                  "type": "ability",
+                  "description": "4+"
+                }
+              ]
+            },
+            {
+              "id": "da66-9d97-5ad4-2e2e",
+              "name": "Kill Team Terminator w/ Heavy Weapon",
+              "maxCount": 3,
+              "profiles": [
+                {
+                  "name": "Invulnerable Save",
+                  "type": "ability",
+                  "description": "4+"
+                }
+              ]
+            },
             {
               "id": "a74e-0fb8-9c79-4881",
               "name": "Kill Team Veteran w/ Jump Pack",
@@ -34605,7 +35609,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "04e3-3ffa-8e46-0e7a-squad-options",
+            "optionId": "b8e7-aca0-51c5-e83e"
+          }
         },
         {
           "id": "7389-29a6-1898-b9a2",
@@ -34727,7 +35735,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "04e3-3ffa-8e46-0e7a-squad-options",
+            "optionId": "ff22-3778-444d-167f"
+          }
         },
         {
           "id": "04e3-3ffa-8e46-0e7a-squad-options",
@@ -34738,9 +35750,16 @@
           "defaultOptionIds": [
             "64ea-9061-6196-a72b",
             "64ea-9061-6196-a72b",
+            "64ea-9061-6196-a72b",
             "64ea-9061-6196-a72b"
           ],
           "options": [
+            {
+              "id": "b8e7-aca0-51c5-e83e",
+              "name": "Kill Team Veteran",
+              "maxCount": 10,
+              "profiles": []
+            },
             {
               "id": "64ea-9061-6196-a72b",
               "name": "Kill Team Veteran w/ Deathwatch Thunder Hammer",
@@ -34764,6 +35783,12 @@
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
                 }
               ]
+            },
+            {
+              "id": "ff22-3778-444d-167f",
+              "name": "Kill Team Veteran w/ Heavy Weapon",
+              "maxCount": 4,
+              "profiles": []
             }
           ]
         }

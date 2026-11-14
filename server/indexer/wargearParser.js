@@ -153,6 +153,7 @@ function createWargearParser({
       if (node.entryLinks) {
         node.entryLinks.forEach(l => {
           if (shouldSkipWargearNode(l)) return;
+          if (l.type === 'selectionEntryGroup') return;
           const lRes = l.targetId ? allEntriesById.get(l.targetId) : l;
           const lType = l.type === 'model' || (lRes && lRes.type === 'model') ? 'model' : ((lRes && lRes.type) || l.type);
           const { min: lMin, max: lMax } = getWargearMinMax(l, lRes);
@@ -284,9 +285,11 @@ function createWargearParser({
 
         if (hasModelChildren) {
           visitedGroups.add(uniqueGroupId);
+          const squadGroupId = `${uniqueGroupId}-squad-options`;
 
-          // Identify profiles that are already mandatory on min >= 1 models in this squad group
-          const mandatoryModelProfileNames = new Set();
+          // Identify ability profiles already provided on min >= 1 mandatory models in this squad group
+          // (keep weapon profiles so every model variant accurately reflects its own carried weapons).
+          const mandatoryModelAbilityNames = new Set();
           let mandatoryModelEntriesCount = 0;
           let mandatoryModelMinSum = 0;
 
@@ -298,7 +301,6 @@ function createWargearParser({
             if (mMin >= 1 || gEntries.length === 1) {
               mandatoryModelEntriesCount++;
               mandatoryModelMinSum += Math.max(1, mMin);
-              // Collect profiles from direct mandatory (min >= 1) wargear on this mandatory model
               const mDirect = [
                 ...(res.selectionEntries || []),
                 ...(res.entryLinks || []).filter(l => l.type === 'selectionEntry')
@@ -310,7 +312,9 @@ function createWargearParser({
                 const { min: wMin } = getWargearMinMax(md, mdRes);
                 if (wMin >= 1) {
                   for (const p of extractOptionProfiles(md)) {
-                    mandatoryModelProfileNames.add(p.name);
+                    if (p.type === 'ability') {
+                      mandatoryModelAbilityNames.add(p.name);
+                    }
                   }
                 }
               }
@@ -318,7 +322,6 @@ function createWargearParser({
           }
 
           const squadModelOptions = [];
-          let optionalSubGroupModelsCount = 0;
 
           for (const e of gEntries) {
             if (shouldSkipWargearNode(e)) continue;
@@ -337,20 +340,24 @@ function createWargearParser({
             const addedSubGroups = addedGroups.length > 0;
 
             if (isOptionalModel && addedSubGroups) {
-              const hasActiveExclusiveSubGroup = addedGroups.some(
-                ag => ag.isExclusive && ag.defaultOptionIds && ag.defaultOptionIds.length > 0
-              );
-              if (hasActiveExclusiveSubGroup) {
-                optionalSubGroupModelsCount += 1;
+              for (const ag of addedGroups) {
+                ag.requiresOption = { groupId: squadGroupId, optionId: e.id };
               }
             }
 
-            if (isOptionalModel && !addedSubGroups) {
+            if (isOptionalModel) {
               const allModelProfiles = extractOptionProfiles(e);
-              const uniqueProfiles = allModelProfiles.filter(p => !mandatoryModelProfileNames.has(p.name));
+              const uniqueProfiles = allModelProfiles.filter(
+                p => p.type !== 'ability' || !mandatoryModelAbilityNames.has(p.name)
+              );
               const statModifiers = extractStatAndRuleModifiers(e, uniqueProfiles);
               const pts = extractOptionPts(e);
               let effectiveSquadMax = mMax || 1;
+              const maxConstraintIds = new Set(
+                [...(e.constraints || []), ...(res && res !== e && res.constraints ? res.constraints : [])]
+                  .filter(c => c.type === 'max' && c.field === 'selections' && c.id)
+                  .map(c => c.id)
+              );
               const allMods = [...(e.modifiers || [])];
               if (res && res !== e && res.modifiers) {
                 allMods.push(...res.modifiers);
@@ -358,15 +365,18 @@ function createWargearParser({
               for (const mod of allMods) {
                 if (mod.type === 'increment' && Number(mod.value) > 0) {
                   effectiveSquadMax += Number(mod.value);
+                } else if (mod.type === 'set' && maxConstraintIds.has(mod.field) && Number(mod.value) > effectiveSquadMax) {
+                  effectiveSquadMax = Number(mod.value);
                 }
               }
 
-              if (uniqueProfiles.length > 0 || statModifiers.length > 0 || pts > 0) {
+              if (addedSubGroups || uniqueProfiles.length > 0 || statModifiers.length > 0 || pts > 0) {
                 const optObj = {
                   id: e.id,
                   name: e.name || res.name,
                   maxCount: effectiveSquadMax,
-                  profiles: uniqueProfiles
+                  profiles: uniqueProfiles,
+                  ...(addedSubGroups ? { _hasSubGroups: true } : {})
                 };
                 if (pts > 0) optObj.pts = pts;
                 if (statModifiers.length > 0) optObj.statModifiers = statModifiers;
@@ -376,12 +386,13 @@ function createWargearParser({
           }
 
           if (squadModelOptions.length > 0) {
-            const squadGroupId = `${uniqueGroupId}-squad-options`;
             if (!visitedGroups.has(squadGroupId)) {
               visitedGroups.add(squadGroupId);
               const groupName = rawG.name || g.name;
               const isSpecialistUpgrade = mandatoryModelEntriesCount >= 2 || squadModelOptions.every(o => o.maxCount <= 2);
-              const freeSquadOpts = squadModelOptions.filter(o => !o.pts);
+              const baseSquadOpts = squadModelOptions.filter(o => !o._hasSubGroups);
+              const candidatePool = baseSquadOpts.length > 0 ? baseSquadOpts : squadModelOptions;
+              const freeSquadOpts = candidatePool.filter(o => !o.pts);
               let gMax = squadModelOptions.reduce((acc, o) => acc + (o.maxCount || 1), 0);
               if (rawG.constraints) {
                 const gMaxC = rawG.constraints.find(c => c.type === 'max' && c.field === 'selections');
@@ -389,14 +400,14 @@ function createWargearParser({
               }
               const { min: groupMinModels } = getWargearMinMax(rawG, g);
               const defEntryId = rawG.defaultSelectionEntryId || g.defaultSelectionEntryId;
-              const preferredDef = defEntryId && squadModelOptions.find(o => o.id === defEntryId);
+              const preferredDef = defEntryId && candidatePool.find(o => o.id === defEntryId);
               const defaultOpt = (preferredDef && !preferredDef.pts)
                 ? preferredDef
-                : (freeSquadOpts[0] || squadModelOptions[0]);
-              const accountedModels = mandatoryModelMinSum + optionalSubGroupModelsCount;
-              const targetDefaultCount = Math.max(1, (groupMinModels || 1) - accountedModels);
+                : (freeSquadOpts[0] || candidatePool[0]);
+              const targetDefaultCount = Math.max(1, (groupMinModels || 1) - mandatoryModelMinSum);
               const clampedDefaultCount = Math.min(targetDefaultCount, defaultOpt.maxCount || targetDefaultCount);
 
+              const cleanOptions = squadModelOptions.map(({ _hasSubGroups, ...rest }) => rest);
               groups.push({
                 id: squadGroupId,
                 name: isSpecialistUpgrade ? `${groupName} — Optional Wargear` : `${groupName} — Loadout Options`,
@@ -406,7 +417,7 @@ function createWargearParser({
                 defaultOptionIds: isSpecialistUpgrade
                   ? []
                   : Array(clampedDefaultCount).fill(defaultOpt.id),
-                options: squadModelOptions
+                options: cleanOptions
               });
             }
           }

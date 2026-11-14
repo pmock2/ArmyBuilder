@@ -4038,6 +4038,18 @@
                   "name": "Blast",
                   "type": "ability",
                   "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
+                },
+                {
+                  "name": "Chitinous claws and teeth",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -4062,6 +4074,18 @@
                   "name": "Heavy",
                   "type": "ability",
                   "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
+                },
+                {
+                  "name": "Chitinous claws and teeth",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -4096,6 +4120,18 @@
                   "name": "Torrent",
                   "type": "ability",
                   "description": "Each time an attack is made with a **[TORRENT]** weapon, that attack automatically hits the target."
+                },
+                {
+                  "name": "Chitinous claws and teeth",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }

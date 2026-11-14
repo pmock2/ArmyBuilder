@@ -243,14 +243,23 @@ export function computeUnitEquippedData(
 
   const currentModels = Math.max(unit.minModels || 1, selectedUnit?.modelsCount || unit.minModels || 1);
 
+  const getGroupRequiredCount = (group: typeof wargearGroups[number]): number => {
+    if (!group.requiresOption) return 1;
+    const reqGroup = wargearGroups.find((wg) => wg.id === group.requiresOption!.groupId);
+    if (!reqGroup) return 0;
+    const reqSelIds = getGroupSelectedIds(reqGroup.id, reqGroup.defaultOptionIds);
+    return reqSelIds.filter((id) => id === group.requiresOption!.optionId).length;
+  };
+
   // Count distinct single-model scopes (e.g. Sergeant, or optional specialist models)
   // so `perModel` exclusive groups (e.g. "Aggressors — Weapon Option") scale to the remaining models.
   const activeSingleModelPrefixes = new Set<string>();
   let nonExclusiveSpecialistCount = 0;
   for (const group of wargearGroups) {
+    if (getGroupRequiredCount(group) === 0) continue;
     const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
     if (selIds.length === 0) continue;
-    if (!group.perModel && group.name.includes(' — ') && !group.id.endsWith('-squad-options')) {
+    if (!group.perModel && group.name.includes(' — ') && !group.id.endsWith('-squad-options') && !group.requiresOption) {
       const prefix = group.name.split(' — ')[0].trim();
       if (prefix.toLowerCase() !== unit.name.toLowerCase()) {
         activeSingleModelPrefixes.add(prefix);
@@ -260,8 +269,19 @@ export function computeUnitEquippedData(
     }
   }
   const perModelCount = Math.max(1, currentModels - activeSingleModelPrefixes.size - nonExclusiveSpecialistCount);
+  const squadLoadoutWeaponKeys = new Set<string>();
 
   for (const group of wargearGroups) {
+    const requiredCount = getGroupRequiredCount(group);
+    if (requiredCount === 0) {
+      for (const opt of group.options) {
+        for (const p of opt.profiles || []) {
+          unselectedProfileSet.add(p.name);
+        }
+      }
+      continue;
+    }
+
     const rawSelectedIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
     const isMultiModelUnit = (unit.maxModels || 1) > 1;
     const groupPrefix = group.name.includes(' — ') ? group.name.split(' — ')[0].trim() : '';
@@ -273,7 +293,18 @@ export function computeUnitEquippedData(
       groupPrefixKey !== unit.name.toLowerCase();
     const isSubModelScoped = isModelScoped && !group.perModel;
 
-    if (isModelScoped && !isSquadOptionsGroup) {
+    if (isSquadOptionsGroup && group.min >= 1) {
+      for (const opt of group.options) {
+        for (const p of opt.profiles || []) {
+          if (p.type === 'ranged' || p.type === 'melee') {
+            squadLoadoutWeaponKeys.add(`${p.type}:${p.name}`);
+            squadLoadoutWeaponKeys.add(p.name);
+          }
+        }
+      }
+    }
+
+    if (isModelScoped && !isSquadOptionsGroup && !group.requiresOption) {
       const existingPrefix = modelGroupPrefixes.get(groupPrefixKey);
       modelGroupPrefixes.set(groupPrefixKey, {
         displayName: existingPrefix?.displayName || groupPrefix,
@@ -351,7 +382,9 @@ export function computeUnitEquippedData(
             }
           }
           if (p.type === 'ranged' || p.type === 'melee') {
-            const effectiveOptCount = group.perModel ? optCount * perModelCount : optCount;
+            const effectiveOptCount = group.requiresOption
+              ? optCount * requiredCount
+              : (group.perModel ? optCount * perModelCount : optCount);
             const c = (p.count || 1) * effectiveOptCount;
             const typedKey = `${p.type}:${p.name}`;
             selectedOptionCountSum[typedKey] = (selectedOptionCountSum[typedKey] || 0) + c;
@@ -504,12 +537,36 @@ export function computeUnitEquippedData(
         : (unit.baseWeaponCounts?.[weaponName] || 1);
       totalCount = optSum > 0 ? optSum : baseCount;
     } else {
-      // Multi-model squad (e.g. 5 Intercessors, 3 Eradicators, 10 Boyz)
-      if (isBaseWeapon) {
+      // Multi-model squad (e.g. 5 Intercessors, 3 Eradicators, 10 Boyz, 5 Terminators)
+      if (isBaseWeapon && ((typedKey && squadLoadoutWeaponKeys.has(typedKey)) || squadLoadoutWeaponKeys.has(weaponName))) {
+        // Explicit squad loadout group defines each non-leader model's carried weapons
+        // (e.g. Terminator w/ Power Fist carries Storm bolter, Terminator w/ Heavy Weapon does not).
+        const mandatoryBaseCount = (typedKey && unit.baseWeaponCounts?.[typedKey] !== undefined)
+          ? unit.baseWeaponCounts[typedKey]
+          : (unit.baseWeaponCounts?.[weaponName] || 0);
+        let exclusiveReplacements = 0;
+        for (const group of wargearGroups) {
+          if (getGroupRequiredCount(group) === 0 || !group.isExclusive) continue;
+          const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
+          const defaultOpts = group.options.filter(o => (group.defaultOptionIds || []).includes(o.id));
+          const defaultHadThisWeapon = defaultOpts.some(o =>
+            o.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase())
+          );
+          const currentlyHasThisWeapon = selIds.some(id => {
+            const opt = group.options.find(o => o.id === id);
+            return opt?.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase());
+          });
+          if (defaultHadThisWeapon && !currentlyHasThisWeapon) {
+            exclusiveReplacements += 1;
+          }
+        }
+        totalCount = Math.max(0, mandatoryBaseCount - exclusiveReplacements + optSum);
+      } else if (isBaseWeapon) {
         // Base squad weapon: default count is currentModels
         // Minus any models that replaced this base weapon in a specialist or sergeant loadout
         let replacements = 0;
         for (const group of wargearGroups) {
+          if (getGroupRequiredCount(group) === 0) continue;
           const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
 
           if (group.isExclusive) {

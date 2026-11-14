@@ -82,6 +82,10 @@ export interface WargearGroup {
   max: number;
   isExclusive: boolean;
   perModel?: boolean;
+  requiresOption?: {
+    groupId: string;
+    optionId: string;
+  };
   defaultOptionIds: string[];
   options: WargearOption[];
 }
@@ -292,18 +296,32 @@ export function getUnitWargearPts(
 ): number {
   const ds = datasheetOverride || unit?.datasheet;
   if (!ds || !ds.wargearGroups) return 0;
+
+  const resolveGroupSelected = (group: WargearGroup): string[] => {
+    if (unit?.selectedOptions && unit.selectedOptions[group.id] !== undefined) {
+      return unit.selectedOptions[group.id];
+    }
+    if (!unit && previewSelectedOptions && previewSelectedOptions[group.id] !== undefined) {
+      return previewSelectedOptions[group.id];
+    }
+    return group.defaultOptionIds || [];
+  };
+
   let wargearPts = 0;
   for (const g of ds.wargearGroups) {
-    let selectedIds: string[] = g.defaultOptionIds || [];
-    if (unit?.selectedOptions && unit.selectedOptions[g.id] !== undefined) {
-      selectedIds = unit.selectedOptions[g.id];
-    } else if (!unit && previewSelectedOptions && previewSelectedOptions[g.id] !== undefined) {
-      selectedIds = previewSelectedOptions[g.id];
+    let requiredMult = 1;
+    if (g.requiresOption) {
+      const reqGroup = ds.wargearGroups.find(wg => wg.id === g.requiresOption!.groupId);
+      const reqSelected = reqGroup ? resolveGroupSelected(reqGroup) : [];
+      requiredMult = reqSelected.filter(id => id === g.requiresOption!.optionId).length;
+      if (requiredMult === 0) continue;
     }
+
+    const selectedIds = resolveGroupSelected(g);
     for (const opt of g.options) {
       const count = selectedIds.filter(id => id === opt.id).length;
       if (count > 0 && opt.pts && opt.pts > 0) {
-        wargearPts += Number(opt.pts) * count;
+        wargearPts += Number(opt.pts) * count * requiredMult;
       }
     }
   }

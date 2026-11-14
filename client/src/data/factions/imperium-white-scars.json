@@ -7241,12 +7241,70 @@
       "wargearGroups": [
         {
           "id": "f59c-c864-bd59-1759-squad-options",
-          "name": "Eradicators — Optional Wargear",
-          "min": 0,
+          "name": "Eradicators — Loadout Options",
+          "min": 1,
           "max": 6,
           "isExclusive": false,
-          "defaultOptionIds": [],
+          "defaultOptionIds": [
+            "ab61-e814-8c4d-1cb",
+            "ab61-e814-8c4d-1cb"
+          ],
           "options": [
+            {
+              "id": "ab61-e814-8c4d-1cb",
+              "name": "Eradicator",
+              "maxCount": 5,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Ceramite Fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "➤ Melta Rifle HUNTER:Monster/Vehicle",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "2+",
+                  "S": "12",
+                  "AP": "-3",
+                  "D": "D3+2",
+                  "keywords": "Melta 2"
+                },
+                {
+                  "name": "➤ Melta Rifle",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "10",
+                  "AP": "-3",
+                  "D": "D3+2",
+                  "keywords": "Melta 2"
+                }
+              ]
+            },
             {
               "id": "eba8-6f8c-759-4e22",
               "name": "Eradicator with Multi-melta",
@@ -7275,6 +7333,30 @@
                   "AP": "-3",
                   "D": "D3+2",
                   "keywords": "Melta 3"
+                },
+                {
+                  "name": "Ceramite Fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
                 }
               ]
             }
@@ -8251,6 +8333,30 @@
                   "name": "Sustained Hits",
                   "type": "ability",
                   "description": "This ability always takes the form **[SUSTAINED HITS X]**. Each time an attack made with a **[SUSTAINED HITS]** weapon results in a **critical hit**, that attack results in a number of additional hits on the target as denoted by **X**.\n***Example:** An attack made with a **[SUSTAINED HITS 2]** weapon results in a **critical hit**. That attack therefore hits the target three times (once from the **critical hit**, and twice more from the **[SUSTAINED HITS 2]** ability).*"
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Ceramite Fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -10277,6 +10383,54 @@
               "name": "Intercessor w/ Grenade Launcher",
               "maxCount": 2,
               "profiles": [
+                {
+                  "name": "Knives and Fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "➤ Bolt Rifle - Focused Fire",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "6",
+                  "AP": "-1",
+                  "D": "2",
+                  "keywords": "Heavy, Rapid Fire 1"
+                },
+                {
+                  "name": "➤ Bolt Rifle - Saturation",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Rapid Fire 1"
+                },
                 {
                   "name": "➤ Grenade Launcher - Krak",
                   "type": "ranged",
@@ -13531,6 +13685,30 @@
               "maxCount": 2,
               "profiles": [
                 {
+                  "name": "Chainsword",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Twin bolt rifle",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "2+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Rapid Fire 2, Twin-linked"
+                },
+                {
                   "name": "➤ Plasma pistol (Supercharge)",
                   "type": "ranged",
                   "count": 1,
@@ -14321,6 +14499,30 @@
               "maxCount": 5,
               "profiles": [
                 {
+                  "name": "Combat Knife",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Blast 1"
+                },
+                {
                   "name": "➤ Grenade Launcher - Krak",
                   "type": "ranged",
                   "count": 1,
@@ -14357,6 +14559,18 @@
               "maxCount": 5,
               "profiles": [
                 {
+                  "name": "Combat Knife",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
                   "name": "Twin boltgun",
                   "type": "ranged",
                   "count": 1,
@@ -14372,6 +14586,18 @@
                   "name": "Twin-linked",
                   "type": "ability",
                   "description": "Each time an attack is made with a **[TWIN-LINKED]** weapon, you can re-roll the **wound roll**."
+                },
+                {
+                  "name": "Shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Blast 1"
                 }
               ]
             }
@@ -18248,7 +18474,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "d0cd-b8dc-82e-5eb8-squad-options",
+            "optionId": "9ed8-177c-3a9-f928"
+          }
         },
         {
           "id": "d0cd-b8dc-82e-5eb8-squad-options",
@@ -18257,6 +18487,7 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "1008-b543-bfc2-4959",
             "1008-b543-bfc2-4959",
             "1008-b543-bfc2-4959",
             "1008-b543-bfc2-4959"
@@ -18295,6 +18526,18 @@
                   "name": "Rapid Fire",
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
                 }
               ]
             },
@@ -18326,6 +18569,49 @@
                   "description": "Units containing one or more models with an **[ASSAULT]** weapon can shoot using **assault shooting** (10.05)."
                 },
                 {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Combat Knife",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "9ed8-177c-3a9-f928",
+              "name": "Scout w/ Heavy Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
                   "name": "Combat Knife",
                   "type": "melee",
                   "count": 1,
@@ -18342,7 +18628,7 @@
             {
               "id": "428c-bf14-96d3-4692",
               "name": "Scout w/ Sniper Rifle",
-              "maxCount": 1,
+              "maxCount": 2,
               "profiles": [
                 {
                   "name": "Sniper Rifle",
@@ -18377,6 +18663,18 @@
                   "AP": "-1",
                   "D": "1",
                   "keywords": ""
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
                 }
               ]
             }
@@ -18775,7 +19073,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "7f44-894b-1c97-a2dc-squad-options",
+            "optionId": "b3c5-2c6-4592-ba51"
+          }
         },
         {
           "id": "7089-ff75-d1ab-f0c5",
@@ -18837,7 +19139,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "7f44-894b-1c97-a2dc-squad-options",
+            "optionId": "b3c5-2c6-4592-ba51"
+          }
         },
         {
           "id": "7f44-894b-1c97-a2dc-squad-options",
@@ -18846,6 +19152,7 @@
           "max": 10,
           "isExclusive": false,
           "defaultOptionIds": [
+            "2-e9c0-140-a1ef",
             "2-e9c0-140-a1ef",
             "2-e9c0-140-a1ef",
             "2-e9c0-140-a1ef"
@@ -18867,6 +19174,18 @@
                   "AP": "-2",
                   "D": "2",
                   "keywords": ""
+                },
+                {
+                  "name": "Storm bolter",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Rapid Fire 2"
                 }
               ]
             },
@@ -18875,6 +19194,18 @@
               "name": "Terminator w/ Chain Fist",
               "maxCount": 9,
               "profiles": [
+                {
+                  "name": "Storm bolter",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Rapid Fire 2"
+                },
                 {
                   "name": "➤ Chainfist - Standard",
                   "type": "melee",
@@ -18900,6 +19231,12 @@
                   "keywords": ""
                 }
               ]
+            },
+            {
+              "id": "b3c5-2c6-4592-ba51",
+              "name": "Terminator w/ Heavy Weapon",
+              "maxCount": 2,
+              "profiles": []
             }
           ]
         }
@@ -21516,7 +21853,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "86de-e2b-99f0-1548-squad-options",
+            "optionId": "4e9-6371-352c-5076"
+          }
         },
         {
           "id": "4805-d264-c6b8-e9fe",
@@ -21846,6 +22187,82 @@
                   "name": "Heavy",
                   "type": "ability",
                   "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
+                }
+              ]
+            }
+          ],
+          "requiresOption": {
+            "groupId": "86de-e2b-99f0-1548-squad-options",
+            "optionId": "2e9d-b9a6-73ab-7ab3"
+          }
+        },
+        {
+          "id": "86de-e2b-99f0-1548-squad-options",
+          "name": "Tactical Marines — Optional Wargear",
+          "min": 0,
+          "max": 10,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "4e9-6371-352c-5076",
+              "name": "Tactical Marine w/Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "2e9d-b9a6-73ab-7ab3",
+              "name": "Tactical Marine w/Heavy or Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -22477,7 +22894,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "edfc-d6af-480a-d5fc-squad-options",
+            "optionId": "afda-2132-147f-d0f1"
+          }
         },
         {
           "id": "edfc-d6af-480a-d5fc-squad-options",
@@ -22488,6 +22909,7 @@
           "defaultOptionIds": [
             "5700-4122-349a-e5da",
             "5700-4122-349a-e5da",
+            "5700-4122-349a-e5da",
             "5700-4122-349a-e5da"
           ],
           "options": [
@@ -22496,6 +22918,85 @@
               "name": "Sternguard Veteran w/ Artificer Firearm",
               "maxCount": 9,
               "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "➤ Artificer Firearm - Infernus",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Assault, Rapid Fire 2"
+                },
+                {
+                  "name": "➤ Artificer Firearm - Purgatus",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "7",
+                  "AP": "-2",
+                  "D": "2",
+                  "keywords": "Assault, Rapid Fire 1"
+                },
+                {
+                  "name": "➤ Artificer Firearm - Damnatus",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "9",
+                  "AP": "-3",
+                  "D": "D3+2",
+                  "keywords": "Assault, Melta 2"
+                },
+                {
+                  "name": "Ceramite Fists",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "afda-2132-147f-d0f1",
+              "name": "Sternguard Veteran w/ Special Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
                 {
                   "name": "Ceramite Fists",
                   "type": "melee",
@@ -27891,7 +28392,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "2cdd-be22-d95d-aacb-squad-options",
+            "optionId": "624c-c49c-b0a5-9cd4"
+          }
         },
         {
           "id": "2cdd-be22-d95d-aacb-squad-options",
@@ -27900,6 +28405,7 @@
           "max": 9,
           "isExclusive": false,
           "defaultOptionIds": [
+            "9724-313-f5d0-e06c",
             "9724-313-f5d0-e06c",
             "9724-313-f5d0-e06c",
             "9724-313-f5d0-e06c"
@@ -27950,6 +28456,42 @@
                   "name": "Close-quarters",
                   "type": "ability",
                   "description": "Units containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                }
+              ]
+            },
+            {
+              "id": "624c-c49c-b0a5-9cd4",
+              "name": "Devastator Marine w/ Heavy Weapon",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
+                },
+                {
+                  "name": "Close-quarters",
+                  "type": "ability",
+                  "description": "Units containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -30238,6 +30780,18 @@
               "name": "Assault Intercessors with Jump Pack w/ Plasma Pistol",
               "maxCount": 2,
               "profiles": [
+                {
+                  "name": "Chainsword",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                },
                 {
                   "name": "➤ Plasma pistol (Supercharge)",
                   "type": "ranged",
@@ -39018,6 +39572,30 @@
                   "name": "Blast",
                   "type": "ability",
                   "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Close-quarters"
                 }
               ]
             }
@@ -39537,7 +40115,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "e165-675e-79b2-120d-squad-options",
+            "optionId": "709d-da50-e020-1885"
+          }
         },
         {
           "id": "6d3f-6bce-8e46-d9f0",
@@ -39611,7 +40193,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "e165-675e-79b2-120d-squad-options",
+            "optionId": "709d-da50-e020-1885"
+          }
         },
         {
           "id": "e165-675e-79b2-120d-squad-options",
@@ -39757,6 +40343,12 @@
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
                 }
               ]
+            },
+            {
+              "id": "709d-da50-e020-1885",
+              "name": "Relic Terminator w/ Heavy Weapon",
+              "maxCount": 2,
+              "profiles": []
             }
           ]
         }
@@ -40879,7 +41471,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "69fc-472b-e77b-fab8-squad-options",
+            "optionId": "50c2-3ed4-ef56-6fac"
+          }
         },
         {
           "id": "1138-5c30-809d-a129",
@@ -41039,7 +41635,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "69fc-472b-e77b-fab8-squad-options",
+            "optionId": "1a01-caad-fc9f-6feb"
+          }
         },
         {
           "id": "69fc-472b-e77b-fab8-squad-options",
@@ -41049,6 +41649,36 @@
           "isExclusive": false,
           "defaultOptionIds": [],
           "options": [
+            {
+              "id": "50c2-3ed4-ef56-6fac",
+              "name": "Assault Marine w/ Eviscerator",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Eviscerator",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "7",
+                  "AP": "-2",
+                  "D": "2",
+                  "keywords": "Cleave 1"
+                },
+                {
+                  "name": "Cleave",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[CLEAVE X]**. Each time you gather **attack dice** for a **[CLEAVE]** weapon, if you only selected one target for all of that weapon’s attacks, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). \n***Example: If a **[CLEAVE 1]** weapon with an **A** characteristic of 3 targets one unit containing 16 models, you would gather three additional **attack dice** for that weapon (for a total of six for that weapon).*"
+                }
+              ]
+            },
+            {
+              "id": "1a01-caad-fc9f-6feb",
+              "name": "Assault Marine w/ Special Weapon",
+              "maxCount": 2,
+              "profiles": []
+            },
             {
               "id": "da46-4e78-bf9a-6eac",
               "name": "Assault Marine",
@@ -41761,7 +42391,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "220a-fd5c-42e7-2e65-squad-options",
+            "optionId": "59bf-237-f76f-37d5"
+          }
         },
         {
           "id": "c9e0-e20c-b73d-f0c9",
@@ -41921,7 +42555,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "220a-fd5c-42e7-2e65-squad-options",
+            "optionId": "9691-5615-41a3-5e94"
+          }
         },
         {
           "id": "220a-fd5c-42e7-2e65-squad-options",
@@ -41931,6 +42569,36 @@
           "isExclusive": false,
           "defaultOptionIds": [],
           "options": [
+            {
+              "id": "59bf-237-f76f-37d5",
+              "name": "Assault Marine with Jump Pack w/ Eviscerator",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Eviscerator",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "7",
+                  "AP": "-2",
+                  "D": "2",
+                  "keywords": "Cleave 1"
+                },
+                {
+                  "name": "Cleave",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[CLEAVE X]**. Each time you gather **attack dice** for a **[CLEAVE]** weapon, if you only selected one target for all of that weapon’s attacks, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). \n***Example: If a **[CLEAVE 1]** weapon with an **A** characteristic of 3 targets one unit containing 16 models, you would gather three additional **attack dice** for that weapon (for a total of six for that weapon).*"
+                }
+              ]
+            },
+            {
+              "id": "9691-5615-41a3-5e94",
+              "name": "Assault Marine with Jump Pack w/ Special Weapon",
+              "maxCount": 2,
+              "profiles": []
+            },
             {
               "id": "c862-d76a-95ea-2140",
               "name": "Assault Marine with Jump Pack",
@@ -42782,7 +43450,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "89e4-6018-5660-fe73-squad-options",
+            "optionId": "37e7-aeb-4798-51cc"
+          }
         },
         {
           "id": "89e4-6018-5660-fe73-squad-options",
@@ -42791,6 +43463,7 @@
           "max": 6,
           "isExclusive": false,
           "defaultOptionIds": [
+            "48aa-6991-b817-11ac",
             "48aa-6991-b817-11ac"
           ],
           "options": [
@@ -42815,6 +43488,30 @@
                   "name": "Close-quarters",
                   "type": "ability",
                   "description": "Units containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Twin boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Twin-linked"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -42824,6 +43521,30 @@
               "maxCount": 5,
               "profiles": [
                 {
+                  "name": "Twin boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Twin-linked"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
                   "name": "Astartes Chainsword",
                   "type": "melee",
                   "count": 1,
@@ -42832,6 +43553,37 @@
                   "WS": "3+",
                   "S": "4",
                   "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "37e7-aeb-4798-51cc",
+              "name": "Space Marine Bikers w/  Special Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Twin boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "2",
+                  "BS": "3+",
+                  "S": "5",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Twin-linked"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
                   "D": "1",
                   "keywords": ""
                 }
@@ -45343,7 +46095,40 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "a355-953b-1ec-ab45-squad-options",
+            "optionId": "9b-de6b-32bc-392e"
+          }
+        },
+        {
+          "id": "a355-953b-1ec-ab45-squad-options",
+          "name": "Astartes Servitors — Optional Wargear",
+          "min": 0,
+          "max": 4,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "9b-de6b-32bc-392e",
+              "name": "Astartes Servitor w/ Heavy Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Close Combat Weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "5+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            }
+          ]
         }
       ],
       "baseProfileNames": [
@@ -54442,6 +55227,18 @@
                   "AP": "-2",
                   "D": "1",
                   "keywords": ""
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -54483,6 +55280,18 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -54978,6 +55787,42 @@
                   "name": "Feel No Pain",
                   "type": "ability",
                   "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -54997,6 +55842,42 @@
                   "AP": "-1",
                   "D": "2",
                   "keywords": ""
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -55014,6 +55895,42 @@
                   "name": "Ignores Cover",
                   "type": "ability",
                   "description": "Each time an attack is made with an **[IGNORES COVER]** weapon, the target cannot have the **benefit of cover** against that attack (13.08), including from rules that give a model or unit the **benefit of cover** (e.g. **Stealth**)."
+                },
+                {
+                  "name": "Arbites combat shotgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "18\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Arbites shotpistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ],
               "statModifiers": [
@@ -57041,7 +57958,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "971e-e52f-255e-4cb-squad-options",
+            "optionId": "2d15-f4e1-3d0f-d226"
+          }
         },
         {
           "id": "73ef-2ceb-76e3-aca3",
@@ -57144,6 +58065,58 @@
                   "name": "Melta",
                   "type": "ability",
                   "description": "This ability always takes the form **[MELTA X]**. Each time a model makes an attack with a **[MELTA]** weapon, if the target unit was within half range of that weapon in the Select Targets step, until the attacking unit’s attacks have been resolved, add **X** to that weapon’s **D** characteristic. \n***Example:** A model targets a unit that is within half range of a **[MELTA 2]** weapon with a **D** characteristic of D6. While resolving those attacks, that weapon has a **D** characteristic of **D6+2**.*"
+                }
+              ]
+            }
+          ],
+          "requiresOption": {
+            "groupId": "971e-e52f-255e-4cb-squad-options",
+            "optionId": "2149-1376-5cea-acbd"
+          }
+        },
+        {
+          "id": "971e-e52f-255e-4cb-squad-options",
+          "name": "4-9 Legionnaires — Optional Wargear",
+          "min": 0,
+          "max": 9,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "2d15-f4e1-3d0f-d226",
+              "name": "Legionnaire w/ heavy weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "2149-1376-5cea-acbd",
+              "name": "Legionnaire w/ special weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -58372,6 +59345,30 @@
                   "name": "Hazardous",
                   "type": "ability",
                   "description": "Each time a unit is **selected to shoot** or **selected to fight**, after that unit has resolved all of its attacks, make a number of **hazard rolls** (06.03) for that unit equal to the number of **[HAZARDOUS]** weapons you selected in the Select Weapons step."
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -58396,6 +59393,30 @@
                   "name": "Devastating Wounds",
                   "type": "ability",
                   "description": "Each time an attack made with a **[DEVASTATING WOUNDS]** weapon results in a **critical wound**, the attack sequence for that attack ends and the target unit suffers a number of **mortal wounds** equal to the **D** characteristic of that weapon. These are inflicted after resolving any normal damage inflicted by those attacks. \n**Mortal wounds** inflicted by **[DEVASTATING WOUNDS]** weapons can damage a maximum of one model for each **critical wound**; any remaining **mortal wounds** inflicted by that attack are lost. \n***Example:** An attack made with a **[DEVASTATING WOUNDS]** weapon with a **D** characteristic of 3 results in a **critical wound** against an Intercessor Squad, so inflicts 3 **mortal wounds**. The first 2 **mortal wounds** are sufficient to **destroy** 1 Intercessor model, so the remaining **mortal wound** is lost.*"
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             },
@@ -58425,6 +59446,30 @@
                   "name": "Anti",
                   "type": "ability",
                   "description": "This ability always takes the form **[ANTI-X Y+]**. Each time an attack is made with an **[ANTI]** weapon, if the target unit has the keyword denoted by **X**, an unmodified **wound roll** of **Y+** is a **critical wound**.\n***Example:** An attack made with an **[ANTI-VEHICLE 4+]** weapon against a ^^**Vehicle**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 4+, while an attack made with an **[ANTI-PSYKER 2+]** weapon against a ^^**Psyker**^^ unit will result in a **critical wound** on an unmodified **wound roll** of 2+.*"
+                },
+                {
+                  "name": "Agent melee weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "3",
+                  "WS": "3+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Agent firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
                 }
               ]
             }
@@ -58854,7 +59899,11 @@
               ],
               "pts": 5
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "773d-7091-408f-67a7-squad-options",
+            "optionId": "6026-a6c1-6ab5-7744"
+          }
         },
         {
           "id": "773d-7091-408f-67a7-squad-options",
@@ -58863,6 +59912,7 @@
           "max": 4,
           "isExclusive": false,
           "defaultOptionIds": [
+            "c44d-6380-a431-c369",
             "c44d-6380-a431-c369",
             "c44d-6380-a431-c369",
             "c44d-6380-a431-c369"
@@ -58890,6 +59940,30 @@
                   "type": "ability",
                   "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 },
+                {
+                  "name": "Nemesis force weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "4",
+                  "WS": "3+",
+                  "S": "6",
+                  "AP": "-2",
+                  "D": "2",
+                  "keywords": "Psychic"
+                },
+                {
+                  "name": "Psychic",
+                  "type": "ability",
+                  "description": "Each time an attack is made with a **[PSYCHIC]** weapon, you can ignore any or all modifiers to that attack’s **BS** or **WS** characteristic and any or all modifiers to the **hit roll**. Attacks made with **[PSYCHIC]** weapons are known as **psychic attacks** (this can be important for the triggering of other rules)."
+                }
+              ]
+            },
+            {
+              "id": "6026-a6c1-6ab5-7744",
+              "name": "Terminator w/ heavy weapon",
+              "maxCount": 1,
+              "profiles": [
                 {
                   "name": "Nemesis force weapon",
                   "type": "melee",
@@ -60008,7 +61082,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "533d-0199-bf20-fc31-squad-options",
+            "optionId": "45e3-1e76-454a-978a"
+          }
         },
         {
           "id": "dd06-3804-ed36-3e20",
@@ -60097,7 +61175,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "533d-0199-bf20-fc31-squad-options",
+            "optionId": "92aa-5976-6bbe-3376"
+          }
         },
         {
           "id": "533d-0199-bf20-fc31-squad-options",
@@ -60116,6 +61198,42 @@
                   "name": "Simulacrum Imperialis",
                   "type": "ability",
                   "description": "Improve the Leadership characteristic of models in the bearer's unit by 1."
+                },
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Boltgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ],
               "statModifiers": [
@@ -60124,6 +61242,68 @@
                   "stat": "Ld",
                   "type": "decrement",
                   "value": 1
+                }
+              ]
+            },
+            {
+              "id": "45e3-1e76-454a-978a",
+              "name": "Battle Sister w/ Special or Heavy Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "92aa-5976-6bbe-3376",
+              "name": "Battle Sister w/ Special Weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Bolt pistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }

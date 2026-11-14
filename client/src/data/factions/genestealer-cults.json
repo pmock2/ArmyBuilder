@@ -2923,6 +2923,18 @@
                   "name": "Blast",
                   "type": "ability",
                   "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -2931,6 +2943,18 @@
               "name": "Atalan Jackal w/ Atalan power weapon",
               "maxCount": 4,
               "profiles": [
+                {
+                  "name": "Atalan small arms",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "2",
+                  "BS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
                 {
                   "name": "Atalan power weapon",
                   "type": "melee",
@@ -4934,7 +4958,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "72c1-ad8a-b2ea-3193-squad-options",
+            "optionId": "ab27-9a21-6d9c-ae53"
+          }
         },
         {
           "id": "b755-8c54-5db9-14c4",
@@ -5040,7 +5068,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "72c1-ad8a-b2ea-3193-squad-options",
+            "optionId": "9346-d64d-f46-e19f"
+          }
         },
         {
           "id": "72c1-ad8a-b2ea-3193-squad-options",
@@ -5059,6 +5091,104 @@
                   "name": "Cult Icon",
                   "type": "ability",
                   "description": "In your Command phase, you can return up to 3 destroyed models to the bearer’s unit. If the bearer’s unit is within range of an objective marker you control, you can return up to D3+3 destroyed models to that unit instead. This ability cannot be used to return destroyed CHARACTER models in Attached units and any [ONE SHOT] weapons equipped with by returned models that were shot before they were destroyed are still considered to have been shot."
+                },
+                {
+                  "name": "Hybrid firearm",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Autopistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "ab27-9a21-6d9c-ae53",
+              "name": "Neophyte Hybrid w/ Heavy Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Autopistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                }
+              ]
+            },
+            {
+              "id": "9346-d64d-f46-e19f",
+              "name": "Neophyte Hybrid w/ Special Weapon",
+              "maxCount": 2,
+              "profiles": [
+                {
+                  "name": "Autopistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -7086,6 +7216,30 @@
               "maxCount": 1,
               "profiles": [
                 {
+                  "name": "Laspistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Lasgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
                   "name": "Goad lance",
                   "type": "melee",
                   "count": 1,
@@ -7096,6 +7250,18 @@
                   "AP": "-2",
                   "D": "2",
                   "keywords": "Lance"
+                },
+                {
+                  "name": "Steed's hooves",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "4",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Extra Attacks"
                 }
               ]
             }
@@ -13638,6 +13804,18 @@
                   "name": "Precision",
                   "type": "ability",
                   "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -13650,6 +13828,18 @@
                   "name": "Melta mine",
                   "type": "ability",
                   "description": "Once per battle, at the start of any phase, you can select one enemy unit within 3\" of the bearer and roll one D6: on a 2+, that enemy unit suffers D3 mortal wounds, or 2D3 mortal wounds instead if it is a **^^Vehicle^^** unit."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 },
                 {
                   "name": "Hot-shot laspistol",
@@ -13675,6 +13865,30 @@
               "name": "Kasrkin Trooper w/ Vox-caster",
               "maxCount": 1,
               "profiles": [
+                {
+                  "name": "Hot-shot lasgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
                 {
                   "name": "Vox-caster",
                   "type": "ability",
@@ -27770,6 +27984,18 @@
               "name": "Heavy Weapons Team",
               "maxCount": 1,
               "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
                 {
                   "name": "Heavy flamer",
                   "type": "ranged",
@@ -48820,6 +49046,18 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": "Rapid Fire 3"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -48837,6 +49075,30 @@
                   "name": "Vox-relay beacon",
                   "type": "ability",
                   "description": "At the start of the battle, you can set up one Vox‑relay Beacon token for this unit anywhere on the battlefield that is not in your opponent’s deployment zone. While a friendly **^^Astra Militarum Regiment^^** unit is within 6\" of that token, **^^Officer^^** units from your army can issue orders to that **^^Regiment^^** unit as if the **^^Officer^^** unit was within 6\" of it. At the end of every phase, If an enemy unit is within 1\" of a Vox‑relay Beacon token you set up, that token is removed from the battlefield."
+                },
+                {
+                  "name": "Lasgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": "Assault, Rapid Fire 1"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -48866,6 +49128,18 @@
                   "name": "Heavy",
                   "type": "ability",
                   "description": "In your Shooting phase, each time an attack is made with a **[HEAVY]** weapon, add 1 to the **hit roll** if all of the following apply to the attacking unit: \n- That unit is **unengaged**. \n- That unit was not set up on the battlefield this turn. \n- No model in that unit has moved more than 3\" this turn."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -48907,6 +49181,18 @@
                   "name": "Blast",
                   "type": "ability",
                   "description": "Each time you gather attack dice for a **[BLAST]** weapon, add one additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down). If this ability takes the form **[BLAST X]**, each time you gather **attack dice** for such a weapon, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down) instead. \n***Example:** If a **[BLAST 2]** weapon with an **A** characteristic of 3 targets a unit containing 12 models, you would gather four additional **attack dice** for that weapon (for a total of seven for that weapon).*"
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 },
                 {
                   "name": "Laspistol",
@@ -56454,7 +56740,11 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "fde9-a8a-9827-674a-squad-options",
+            "optionId": "fd99-ed-646c-8f3a"
+          }
         },
         {
           "id": "1346-7fbc-d56a-103e-optional-wargear",
@@ -56490,16 +56780,41 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "fde9-a8a-9827-674a-squad-options",
+            "optionId": "1346-7fbc-d56a-103e"
+          }
         },
         {
           "id": "fde9-a8a-9827-674a-squad-options",
-          "name": "Tempestus Scions — Optional Wargear",
-          "min": 0,
+          "name": "Tempestus Scions — Loadout Options",
+          "min": 1,
           "max": 4,
           "isExclusive": false,
-          "defaultOptionIds": [],
+          "defaultOptionIds": [
+            "28f4-7031-b486-e3ef"
+          ],
           "options": [
+            {
+              "id": "fd99-ed-646c-8f3a",
+              "name": "Tempestus Scion",
+              "maxCount": 4,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
             {
               "id": "28f4-7031-b486-e3ef",
               "name": "Tempestus Scion w/ Regimental Standard",
@@ -56587,6 +56902,64 @@
                   "AP": "0",
                   "D": "1",
                   "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "1346-7fbc-d56a-103e",
+              "name": "Tempestus Scion w/ Medi-pack",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Medi-pack",
+                  "type": "ability",
+                  "description": "At the start of your Command phase, if the bearer's unit is below its Starting Strength, you can return up to D3 destroyed Tempestus Scions models to this unit."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
+                {
+                  "name": "Hot-shot laspistol",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "12\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Pistol"
+                },
+                {
+                  "name": "Pistol",
+                  "type": "ability",
+                  "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Hot-shot lasgun",
+                  "type": "ranged",
+                  "count": 1,
+                  "range": "24\"",
+                  "A": "1",
+                  "BS": "3+",
+                  "S": "3",
+                  "AP": "-1",
+                  "D": "1",
+                  "keywords": "Rapid Fire 1"
+                },
+                {
+                  "name": "Rapid Fire",
+                  "type": "ability",
+                  "description": "This ability always takes the form **[RAPID FIRE X]**. Each time you gather **attack dice** for a **[RAPID FIRE]** weapon, add **X** additional **attack dice** if the target unit was within half range of that weapon in the Select Targets step. \n***Example:** If a **[RAPID FIRE 1]** weapon with an **A** characteristic of 1 targets a unit that is within half range, you would gather one additional **attack dice** for that weapon (for a total of two for that weapon).*"
                 }
               ]
             }
@@ -56920,7 +57293,27 @@
               ]
             }
           ],
-          "perModel": true
+          "perModel": true,
+          "requiresOption": {
+            "groupId": "13fc-c701-a60e-7f27-squad-options",
+            "optionId": "7d97-1421-c456-d7b8"
+          }
+        },
+        {
+          "id": "13fc-c701-a60e-7f27-squad-options",
+          "name": "4 Munitorum Servitors — Optional Wargear",
+          "min": 0,
+          "max": 4,
+          "isExclusive": false,
+          "defaultOptionIds": [],
+          "options": [
+            {
+              "id": "7d97-1421-c456-d7b8",
+              "name": "Munitorum Servitor w/ Special Weapon",
+              "maxCount": 2,
+              "profiles": []
+            }
+          ]
         }
       ],
       "baseProfileNames": [
@@ -59742,7 +60135,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "requiresOption": {
+            "groupId": "a4d6-8fd0-9492-c5c1-squad-options",
+            "optionId": "4d0f-ad58-f3e3-917a"
+          }
         },
         {
           "id": "a4d6-8fd0-9492-c5c1-squad-options",
@@ -59773,6 +60170,18 @@
                   "name": "Pistol",
                   "type": "ability",
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -59797,6 +60206,18 @@
                   "name": "Pistol",
                   "type": "ability",
                   "description": "**[PISTOL]** and **[CLOSE-QUARTERS]** are identical for all rules purposes. \n\nUnits containing one or more models with a **[CLOSE-QUARTERS]** weapon can shoot using **close-quarters shooting** (10.06). When using another **shooting type**, for each model in that unit (excluding **MONSTER/VEHICLE** models), you can only select one of the following to make attacks with: \n- One or more of its **[CLOSE-QUARTERS]** weapons. \n- One or more of its other ranged weapons."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             },
@@ -59826,6 +60247,37 @@
                   "name": "Precision",
                   "type": "ability",
                   "description": "While resolving attacks made with one or more **[PRECISION]** weapons, at the start of the Allocation Order step (05.03), if the target unit contains one or more **CHARACTER** models **visible** to one or more of the attacking models, the active player can select one allocation group that contains one of those **visible CHARACTER** models. If they do, until those attacks are resolved, or until that **CHARACTER** group is **destroyed** (whichever happens first), that **CHARACTER** group is the current allocation group."
+                },
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                }
+              ]
+            },
+            {
+              "id": "4d0f-ad58-f3e3-917a",
+              "name": "Tempestus Aquilon w/ Special weapon",
+              "maxCount": 1,
+              "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "2",
+                  "WS": "4+",
+                  "S": "3",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
                 }
               ]
             }
@@ -60231,6 +60683,18 @@
               "name": "Ratling w/ tankstopper rifle",
               "maxCount": 1,
               "profiles": [
+                {
+                  "name": "Close combat weapon",
+                  "type": "melee",
+                  "count": 1,
+                  "range": "Melee",
+                  "A": "1",
+                  "WS": "5+",
+                  "S": "2",
+                  "AP": "0",
+                  "D": "1",
+                  "keywords": ""
+                },
                 {
                   "name": "Tankstopper rifle",
                   "type": "ranged",

@@ -820,8 +820,25 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
               {isWargearOpen && (
                 <div className="px-3.5 sm:px-4 pb-3.5 sm:pb-4 pt-1 border-t border-slate-800 space-y-3.5">
                   {wargearGroups.map((group) => {
+                    const reqGroup = group.requiresOption
+                      ? wargearGroups.find((g) => g.id === group.requiresOption!.groupId)
+                      : undefined;
+                    const reqCount = group.requiresOption && reqGroup
+                      ? getGroupSelectedIds(reqGroup.id, reqGroup.defaultOptionIds).filter(
+                          (id) => id === group.requiresOption!.optionId
+                        ).length
+                      : 1;
+                    if (reqCount === 0) return null;
+
                     const selectedIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
                     const canToggle = true;
+                    const isSquadLoadout = group.id.endsWith('-squad-options') && group.min >= 1;
+                    const defaultLoadoutLen = group.defaultOptionIds?.length || 0;
+                    const effectiveGroupMax =
+                      isSquadLoadout && group.max >= minSquadModels - 1
+                        ? Math.min(group.max, Math.max(group.min, currentModelsCount - Math.max(0, minSquadModels - defaultLoadoutLen)))
+                        : group.max;
+                    const effectiveGroupMin = group.requiresOption && group.isExclusive ? 1 : group.min;
 
                     return (
                       <div key={group.id} className="space-y-1.5">
@@ -831,7 +848,11 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                           </span>
                           <span className="text-[11px] font-mono text-slate-400 font-semibold">
                             {group.isExclusive
-                              ? 'Select 1'
+                              ? reqCount > 1
+                                ? `Select 1 (×${reqCount})`
+                                : 'Select 1'
+                              : isSquadLoadout && effectiveGroupMax > 0
+                              ? `${selectedIds.length}/${effectiveGroupMax} selected`
                               : `${selectedIds.length} selected`}
                           </span>
                         </div>
@@ -844,7 +865,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                             const currentCount = selectedIds.filter((id) => id === opt.id).length;
                             const isSelected = currentCount > 0;
                             const exceedsAllowance = currentCount >= effectiveMaxCurrent;
-                            const groupHasRoom = !group.max || group.max <= 0 || selectedIds.length < group.max;
+                            const groupHasRoom = !effectiveGroupMax || effectiveGroupMax <= 0 || selectedIds.length < effectiveGroupMax;
 
                             const canAddOption = !exceedsAllowance && groupHasRoom;
 
@@ -858,7 +879,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                                       opt.id,
                                       group.isExclusive,
                                       group.max,
-                                      group.min,
+                                      effectiveGroupMin,
                                       group.defaultOptionIds
                                     );
                                   }
@@ -885,7 +906,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                                             opt.id,
                                             group.isExclusive,
                                             group.max,
-                                            group.min,
+                                            effectiveGroupMin,
                                             group.defaultOptionIds
                                           );
                                         }
