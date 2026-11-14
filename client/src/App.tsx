@@ -336,28 +336,30 @@ export const App: React.FC = () => {
 
   // Rename Roster
   const handleRenameRoster = (newName: string) => {
-    if (!activeRoster) return;
     const trimmed = newName.trim();
     if (!trimmed) return;
-    const updated: ArmyRoster = {
-      ...activeRoster,
-      name: trimmed
-    };
-    setActiveRoster(updated);
-    const updatedList = saveRoster(updated);
-    setRosters(updatedList);
+    setActiveRoster(prev => {
+      if (!prev) return prev;
+      const updated: ArmyRoster = {
+        ...prev,
+        name: trimmed
+      };
+      setRosters(saveRoster(updated));
+      return updated;
+    });
   };
 
   // Set Custom Points Limit
   const handleSetCustomPointsLimit = (limit: number | null) => {
-    if (!activeRoster) return;
-    const updated: ArmyRoster = {
-      ...activeRoster,
-      customPointsLimit: limit
-    };
-    setActiveRoster(updated);
-    const updatedList = saveRoster(updated);
-    setRosters(updatedList);
+    setActiveRoster(prev => {
+      if (!prev) return prev;
+      const updated: ArmyRoster = {
+        ...prev,
+        customPointsLimit: limit
+      };
+      setRosters(saveRoster(updated));
+      return updated;
+    });
   };
 
   // Add Unit

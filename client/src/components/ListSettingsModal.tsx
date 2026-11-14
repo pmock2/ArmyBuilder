@@ -44,10 +44,9 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
       onRenameRoster(trimmed);
     }
     const parsedPts = parseInt(pointsDraft, 10);
-    if (!isNaN(parsedPts) && parsedPts > 0) {
-      if (parsedPts === defaultPointsLimit && !customPointsLimit) {
-        // unchanged default
-      } else if (parsedPts === defaultPointsLimit) {
+    const currentEffectiveLimit = customPointsLimit || defaultPointsLimit;
+    if (!isNaN(parsedPts) && parsedPts > 0 && parsedPts !== currentEffectiveLimit) {
+      if (parsedPts === defaultPointsLimit) {
         onSetCustomPointsLimit(null);
       } else {
         onSetCustomPointsLimit(parsedPts);
