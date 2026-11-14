@@ -105,6 +105,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     equippedRangedWeapons,
     equippedMeleeWeapons,
     equippedAbilities,
+    statProfiles,
     modM,
     modT,
     modSv,
@@ -1032,58 +1033,64 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
             </h3>
 
             <div className="rounded-xl border border-slate-750 bg-slate-850 p-2.5 sm:p-3 space-y-2">
-              <div className="text-xs font-bold text-slate-100 flex items-center justify-between">
-                <span>x{currentModelsCount} {unit.stats.name || unit.name}</span>
-                {unit.stats.Base && (
-                  <span className="text-[11px] font-mono text-slate-400 font-semibold">
-                    Base: {unit.stats.Base}
-                  </span>
-                )}
-              </div>
-
-              {/* Condensed 7-column stat grid spanning 100% width with zero horizontal scrolling */}
-              <div className="grid grid-cols-7 gap-1 sm:gap-1.5 text-center font-mono">
-                {[
-                  { key: 'M', stat: modM, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'T', stat: modT, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'SV', stat: modSv, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'W', stat: modW, defaultTextClass: 'text-sky-300', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'LD', stat: modLd, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'OC', stat: modOC, defaultTextClass: 'text-sky-300', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
-                  { key: 'INSV', stat: modInSv, defaultTextClass: 'text-sky-300', defaultBorder: 'border-sky-600/40', labelClass: 'text-sky-400' }
-                ].map(({ key, stat, defaultTextClass, defaultBorder, labelClass }) => (
-                  <div
-                    key={key}
-                    title={
-                      stat.isModified
-                        ? `Modified (${stat.baseValue || '—'} → ${stat.value || '—'}) • ${stat.sources.join(', ')}`
-                        : undefined
-                    }
-                    className={`py-1.5 px-0.5 rounded-lg border transition-colors ${
-                      stat.isModified
-                        ? 'bg-amber-950/25 border-amber-500/50'
-                        : `bg-slate-800/90 ${defaultBorder}`
-                    }`}
-                  >
-                    <span
-                      className={`text-[10px] font-sans font-bold block ${
-                        stat.isModified ? 'text-amber-400' : labelClass
-                      }`}
-                    >
-                      {key}
+              {statProfiles.map((sp, spIdx) => (
+                <div key={`${sp.name}-${spIdx}`} className={spIdx > 0 ? 'pt-2.5 border-t border-slate-800/80 space-y-2' : 'space-y-2'}>
+                  <div className="text-xs font-bold text-slate-100 flex items-center justify-between">
+                    <span>
+                      {sp.count !== undefined ? `x${sp.count} ` : ''}{sp.name}
                     </span>
-                    <span
-                      className={`text-xs sm:text-sm ${
-                        stat.isModified
-                          ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                          : `font-bold ${defaultTextClass}`
-                      }`}
-                    >
-                      {stat.value || '—'}
-                    </span>
+                    {sp.Base && (
+                      <span className="text-[11px] font-mono text-slate-400 font-semibold">
+                        Base: {sp.Base}
+                      </span>
+                    )}
                   </div>
-                ))}
-              </div>
+
+                  {/* Condensed 7-column stat grid spanning 100% width with zero horizontal scrolling */}
+                  <div className="grid grid-cols-7 gap-1 sm:gap-1.5 text-center font-mono">
+                    {[
+                      { key: 'M', stat: sp.M, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'T', stat: sp.T, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'SV', stat: sp.Sv, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'W', stat: sp.W, defaultTextClass: 'text-sky-300', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'LD', stat: sp.Ld, defaultTextClass: 'text-slate-100', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'OC', stat: sp.OC, defaultTextClass: 'text-sky-300', defaultBorder: 'border-slate-700/80', labelClass: 'text-slate-400' },
+                      { key: 'INSV', stat: sp.InSv, defaultTextClass: 'text-sky-300', defaultBorder: 'border-sky-600/40', labelClass: 'text-sky-400' }
+                    ].map(({ key, stat, defaultTextClass, defaultBorder, labelClass }) => (
+                      <div
+                        key={key}
+                        title={
+                          stat.isModified
+                            ? `Modified (${stat.baseValue || '—'} → ${stat.value || '—'}) • ${stat.sources.join(', ')}`
+                            : undefined
+                        }
+                        className={`py-1.5 px-0.5 rounded-lg border transition-colors ${
+                          stat.isModified
+                            ? 'bg-amber-950/25 border-amber-500/50'
+                            : `bg-slate-800/90 ${defaultBorder}`
+                        }`}
+                      >
+                        <span
+                          className={`text-[10px] font-sans font-bold block ${
+                            stat.isModified ? 'text-amber-400' : labelClass
+                          }`}
+                        >
+                          {key}
+                        </span>
+                        <span
+                          className={`text-xs sm:text-sm ${
+                            stat.isModified
+                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
+                              : `font-bold ${defaultTextClass}`
+                          }`}
+                        >
+                          {stat.value || '—'}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
 
               {unitModifiedStatEntries.length > 0 && (
                 <div className="pt-1 flex flex-wrap gap-1.5">

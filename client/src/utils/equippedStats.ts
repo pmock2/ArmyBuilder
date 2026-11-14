@@ -21,6 +21,19 @@ export interface ComputedStatValue {
   sources: string[];
 }
 
+export interface ComputedStatProfile {
+  name: string;
+  count?: number;
+  Base?: string;
+  M: ComputedStatValue;
+  T: ComputedStatValue;
+  Sv: ComputedStatValue;
+  W: ComputedStatValue;
+  Ld: ComputedStatValue;
+  OC: ComputedStatValue;
+  InSv: ComputedStatValue;
+}
+
 export interface ComputedWeaponProfile {
   name: string;
   displayName: string;
@@ -222,6 +235,7 @@ export function computeUnitEquippedData(
   const abilitySourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
   const weaponSourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
   const activeStatModifiers: SourcedStatModifier[] = [];
+  const subModelModifiersMap: Record<string, SourcedStatModifier[]> = {};
   const selectedOptionCountSum: Record<string, number> = {};
   const selectedOptionCountMax: Record<string, number> = {};
 
@@ -245,16 +259,36 @@ export function computeUnitEquippedData(
 
   for (const group of wargearGroups) {
     const rawSelectedIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
+    const isMultiModelUnit = (unit.maxModels || 1) > 1;
+    const groupPrefix = group.name.includes(' — ') ? group.name.split(' — ')[0].trim() : '';
+    const isSubModelScoped =
+      isMultiModelUnit &&
+      !group.perModel &&
+      Boolean(groupPrefix) &&
+      groupPrefix.toLowerCase() !== unit.name.toLowerCase() &&
+      groupPrefix.toLowerCase() !== (unit.stats.name || '').toLowerCase();
+
     for (const opt of group.options) {
       const optCount = rawSelectedIds.filter((id) => id === opt.id).length;
       const isSelected = optCount > 0;
       if (isSelected && opt.statModifiers) {
         for (const sm of opt.statModifiers) {
-          activeStatModifiers.push({
-            mod: sm,
-            source: `Wargear: ${opt.name}`,
-            sourceType: 'wargear'
-          });
+          const repeatCount = sm.type === 'increment' ? optCount : 1;
+          for (let r = 0; r < repeatCount; r++) {
+            const sourced: SourcedStatModifier = {
+              mod: sm,
+              source: `Wargear: ${opt.name}`,
+              sourceType: 'wargear'
+            };
+            if (isSubModelScoped && sm.target === 'unit') {
+              if (!subModelModifiersMap[groupPrefix]) {
+                subModelModifiersMap[groupPrefix] = [];
+              }
+              subModelModifiersMap[groupPrefix].push(sourced);
+            } else {
+              activeStatModifiers.push(sourced);
+            }
+          }
         }
       }
       for (const p of opt.profiles || []) {
@@ -518,13 +552,59 @@ export function computeUnitEquippedData(
     }
   }
 
-  const modM = computeModifiedStat(unit.stats.M, 'M', activeStatModifiers, 'unit');
-  const modT = computeModifiedStat(unit.stats.T, 'T', activeStatModifiers, 'unit');
-  const modSv = computeModifiedStat(unit.stats.Sv, 'Sv', activeStatModifiers, 'unit');
-  const modW = computeModifiedStat(unit.stats.W, 'W', activeStatModifiers, 'unit');
-  const modLd = computeModifiedStat(unit.stats.Ld, 'Ld', activeStatModifiers, 'unit');
-  const modOC = computeModifiedStat(unit.stats.OC, 'OC', activeStatModifiers, 'unit');
-  const modInSv = computeModifiedStat(unit.stats.InSv, 'InSv', activeStatModifiers, 'unit');
+  const buildProfileStats = (base: typeof unit.stats, mods: SourcedStatModifier[]) => ({
+    M: computeModifiedStat(base.M, 'M', mods, 'unit'),
+    T: computeModifiedStat(base.T, 'T', mods, 'unit'),
+    Sv: computeModifiedStat(base.Sv, 'Sv', mods, 'unit'),
+    W: computeModifiedStat(base.W, 'W', mods, 'unit'),
+    Ld: computeModifiedStat(base.Ld, 'Ld', mods, 'unit'),
+    OC: computeModifiedStat(base.OC, 'OC', mods, 'unit'),
+    InSv: computeModifiedStat(base.InSv, 'InSv', mods, 'unit')
+  });
+
+  const primaryStats = buildProfileStats(unit.stats, activeStatModifiers);
+  const { M: modM, T: modT, Sv: modSv, W: modW, Ld: modLd, OC: modOC, InSv: modInSv } = primaryStats;
+
+  const subModelProfiles: ComputedStatProfile[] = [];
+  for (const [subName, subMods] of Object.entries(subModelModifiersMap)) {
+    const combinedMods = [...activeStatModifiers, ...subMods];
+    const subStats = buildProfileStats(unit.stats, combinedMods);
+    const differsFromPrimary =
+      subStats.M.value !== modM.value ||
+      subStats.T.value !== modT.value ||
+      subStats.Sv.value !== modSv.value ||
+      subStats.W.value !== modW.value ||
+      subStats.Ld.value !== modLd.value ||
+      subStats.OC.value !== modOC.value ||
+      subStats.InSv.value !== modInSv.value;
+
+    if (differsFromPrimary) {
+      subModelProfiles.push({
+        name: subName,
+        count: 1,
+        Base: unit.stats.Base,
+        ...subStats
+      });
+    }
+  }
+
+  const extraStatProfiles: ComputedStatProfile[] = (unit.extraStats || []).map((es) => ({
+    name: es.name || unit.name,
+    Base: es.Base,
+    ...buildProfileStats(es, activeStatModifiers)
+  }));
+
+  const primaryCount = Math.max(1, currentModels - subModelProfiles.length);
+  const statProfiles: ComputedStatProfile[] = [
+    {
+      name: unit.stats.name || unit.name,
+      count: primaryCount,
+      Base: unit.stats.Base,
+      ...primaryStats
+    },
+    ...subModelProfiles,
+    ...extraStatProfiles
+  ];
 
   const computedRangedWeapons: ComputedWeaponProfile[] = equippedRangedRaw.map((w) => ({
     name: w.name,
@@ -576,6 +656,7 @@ export function computeUnitEquippedData(
     computedRangedWeapons,
     computedMeleeWeapons,
     computedAbilities,
+    statProfiles,
     modM,
     modT,
     modSv,

@@ -3304,6 +3304,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Ethereal Guard",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "4+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -4037,6 +4050,19 @@
         "OC": "2",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Fire Warrior Shas'ui",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Pulse carbine",
@@ -4446,6 +4472,19 @@
         "OC": "2",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Breacher Fire Warrior Shas'ui",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Pulse pistol",
@@ -5218,6 +5257,19 @@
         "OC": "2",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Crisis Shas’vre",
+          "M": "10\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin pulse carbine",
@@ -6099,6 +6151,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Stealth Shas'vre",
+          "M": "8\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Burst cannon",
@@ -7029,6 +7094,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Pathfinder Shas'ui",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Pulse pistol",
@@ -8157,6 +8235,19 @@
         "OC": "2",
         "Base": "60mm"
       },
+      "extraStats": [
+        {
+          "name": "Broadside Shas’vre",
+          "M": "5\"",
+          "T": "6",
+          "Sv": "2+",
+          "InSv": "",
+          "W": "8",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "60mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin pulse carbine",
@@ -11455,6 +11546,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Kroot Hounds",
+          "M": "12\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "0",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Farstalker firearm",
@@ -16070,6 +16174,19 @@
         "OC": "2",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Crisis Fireknife Shas’vre",
+          "M": "10\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin pulse carbine",
@@ -16517,6 +16634,19 @@
         "OC": "2",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Crisis Starscythe Shas’vre",
+          "M": "10\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin pulse carbine",

@@ -3280,6 +3280,19 @@
         "OC": "2",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Tyranid Warrior",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Deathspitter",
@@ -3699,6 +3712,19 @@
         "OC": "2",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Tyranid Warrior",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -5686,6 +5712,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Neurogaunt",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -10072,6 +10111,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Ravener",
+          "M": "10\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Venom bolt",

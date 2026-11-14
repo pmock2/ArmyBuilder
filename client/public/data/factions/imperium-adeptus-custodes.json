@@ -11670,6 +11670,19 @@
         "OC": "10",
         "Base": "170x109mm"
       },
+      "extraStats": [
+        {
+          "name": "Sir Hekhtur",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "5+",
+          "OC": "1",
+          "Base": "170x109mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Las-impulsor - high intensity",
@@ -18257,6 +18270,41 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Death Cult Assassin",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "4+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        },
+        {
+          "name": "Lectro-maester",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "4+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        },
+        {
+          "name": "Rejuvenant Adept",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "4+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Household pistol",
@@ -19184,6 +19232,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Exaction Squad",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Arbites shotpistol",
@@ -19634,6 +19695,19 @@
         "OC": "2",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Exaction Squad",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Arbites combat shotgun",
@@ -27735,6 +27809,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Kill Team Outrider",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt Rifle",
@@ -28406,6 +28493,30 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Kill Team Heavy Intercessor w/ Heavy Bolter",
+          "M": "5\"",
+          "T": "6",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Kill Team Heavy Intercessor w/ jump pack",
+          "M": "10\"",
+          "T": "6",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Heavy bolt rifle",
@@ -29103,6 +29214,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Kill Team Infiltrator w/ Jump pack",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Marksman bolt carbine",
@@ -29621,6 +29745,41 @@
         "OC": "2",
         "Base": "75x42mm"
       },
+      "extraStats": [
+        {
+          "name": "Kill Team Terminator",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "2+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Kill Team Veteran w/ Jump Pack",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        },
+        {
+          "name": "Kill Team Veteran",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin boltgun",
@@ -31188,6 +31347,19 @@
         "OC": "2",
         "Base": "75x42mm"
       },
+      "extraStats": [
+        {
+          "name": "Veteran Biker",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "75x42mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin boltgun",
@@ -31759,6 +31931,118 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Vael Donatus",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Zameon Gydrael",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Rodricus Grytt",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Antor Delassio",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Edryc Setorax",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Jensus Natorian",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Drenn Redblade",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Garran Branatar",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "2+",
+          "InSv": "4+",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "40mm"
+        },
+        {
+          "name": "Ennox Sorrlock",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Jetek Suberei",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "75x42mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -32402,6 +32686,19 @@
         "OC": "1",
         "Base": "~32mm"
       },
+      "extraStats": [
+        {
+          "name": "Stentor-I-52",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "~32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Inferno pistol",
@@ -32558,6 +32855,30 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Deathwatch Veteran",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        },
+        {
+          "name": "Gravis Veteran",
+          "M": "5\"",
+          "T": "6",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Plasma pistol - Standard",

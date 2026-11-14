@@ -40,13 +40,12 @@ function createUnitParser({
     // Gather all profiles (from entry and models)
     const allProfiles = extractProfiles(entry);
 
-    // Unit stat profile
-    const unitProfile = allProfiles.find(p => p.typeName === 'Unit');
-    let stats = null;
-    if (unitProfile) {
-      const chars = getCharacteristics(unitProfile);
-      stats = {
-        name: unitProfile.name || entry.name,
+    // Unit stat profiles (primary + any additional distinct model stat profiles)
+    const unitProfiles = allProfiles.filter(p => p.typeName === 'Unit');
+    const mapUnitProfile = (up) => {
+      const chars = getCharacteristics(up);
+      return {
+        name: up.name || entry.name,
         M: chars['M'] || chars['Movement'] || '-',
         T: chars['T'] || chars['Toughness'] || '-',
         Sv: chars['Sv'] || chars['Save'] || '-',
@@ -56,6 +55,22 @@ function createUnitParser({
         OC: chars['OC'] || chars['Objective Control'] || '-',
         Base: chars['Base'] || ''
       };
+    };
+
+    const unitProfile = unitProfiles[0];
+    let stats = null;
+    const extraStats = [];
+    if (unitProfile) {
+      stats = mapUnitProfile(unitProfile);
+      const seenStatNames = new Set([(stats.name || '').toLowerCase()]);
+      for (let i = 1; i < unitProfiles.length; i++) {
+        const mapped = mapUnitProfile(unitProfiles[i]);
+        const key = (mapped.name || '').toLowerCase();
+        if (!seenStatNames.has(key)) {
+          seenStatNames.add(key);
+          extraStats.push(mapped);
+        }
+      }
     } else {
       stats = {
         name: entry.name,
@@ -355,6 +370,7 @@ function createUnitParser({
       maxModels,
       costTiers,
       stats,
+      ...(extraStats.length > 0 ? { extraStats } : {}),
       rangedWeapons,
       meleeWeapons,
       abilities,

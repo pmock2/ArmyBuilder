@@ -5093,6 +5093,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Dark Reaper Exarch",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Reaper Launcher - Starshot",
@@ -5559,6 +5572,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Dire Avenger Exarch",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Avenger shuriken catapult",
@@ -6958,6 +6984,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Fire Dragon Exarch",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Dragon Fusion Gun",
@@ -7645,6 +7684,19 @@
         "OC": "2",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Heavy Weapon Platform",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "0",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Shuriken Catapult",
@@ -8069,6 +8121,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Howling Banshee Exarch",
+          "M": "8\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "4+* / 5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Shuriken Pistol",
@@ -9532,6 +9597,19 @@
         "OC": "2",
         "Base": "60mm Flying"
       },
+      "extraStats": [
+        {
+          "name": "Shining Spear Exarch",
+          "M": "14\"",
+          "T": "4",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "60mm Flying"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Twin Shuriken Catapult",
@@ -10694,6 +10772,19 @@
         "OC": "0",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Storm Guardian",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Shuriken Pistol",
@@ -11142,6 +11233,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Swooping Hawk Exarch",
+          "M": "14\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Lasblaster",
@@ -14385,6 +14489,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Warp Spider Exarch",
+          "M": "12\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Death spinner",
@@ -16352,6 +16469,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Striking Scorpion Exarch",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Shuriken pistol",
@@ -18590,6 +18720,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Shadow Spectre",
+          "M": "12\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "1",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Prism Rifle - dispersed",
@@ -22740,6 +22883,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Klaivex",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -31507,6 +31663,41 @@
         "OC": "1",
         "Base": "32mm Flying"
       },
+      "extraStats": [
+        {
+          "name": "Clawed Fiend",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "6+",
+          "InSv": "6+",
+          "W": "5",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Khymerae",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "6+",
+          "InSv": "6+",
+          "W": "2",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Razorwing Flock",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "6+",
+          "InSv": "6+",
+          "W": "3",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Splinter pods",
@@ -32836,6 +33027,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Klaivex",
+          "M": "7\"",
+          "T": "3",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {

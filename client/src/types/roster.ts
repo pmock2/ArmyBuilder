@@ -107,6 +107,7 @@ export interface Datasheet {
   maxModels: number;
   costTiers: CostTier[];
   stats: UnitStatProfile;
+  extraStats?: UnitStatProfile[];
   rangedWeapons: WeaponProfile[];
   meleeWeapons: WeaponProfile[];
   abilities: Ability[];

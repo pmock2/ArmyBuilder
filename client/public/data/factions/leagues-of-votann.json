@@ -2088,6 +2088,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "CORV",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "4+",
+          "W": "1",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Ancestral Wrath - witchfire",
@@ -2254,6 +2267,30 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "E-COG",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        },
+        {
+          "name": "Ironkin Assistant",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Graviton rifle",

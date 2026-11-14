@@ -2302,6 +2302,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Nob",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Slugga",
@@ -4992,6 +5005,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Nob",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Slugga",
@@ -7503,6 +7529,19 @@
         "OC": "2",
         "Base": "90x52.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Squighog Boyz",
+          "M": "10\"",
+          "T": "6",
+          "Sv": "4+",
+          "InSv": "6+",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "75x42mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Slugga",
@@ -7840,6 +7879,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Nob",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Slugga",
@@ -8015,6 +8067,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Tankbusta",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Rokkit pistol",
@@ -8535,6 +8600,19 @@
         "OC": "2",
         "Base": "75x42mm"
       },
+      "extraStats": [
+        {
+          "name": "Biker Nob",
+          "M": "12\"",
+          "T": "6",
+          "Sv": "4+",
+          "InSv": "6+",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "75x42mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Dual Dakkagun",
@@ -12519,6 +12597,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Nob",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Rokkit pistol",
@@ -12991,6 +13082,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Nob",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "5+",
+          "InSv": "6+",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Thump Gun",

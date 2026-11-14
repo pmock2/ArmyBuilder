@@ -8912,6 +8912,19 @@
         "OC": "6",
         "Base": "100mm"
       },
+      "extraStats": [
+        {
+          "name": "Triarchal Menhir",
+          "M": "8\"",
+          "T": "10",
+          "Sv": "2+",
+          "InSv": "4+",
+          "W": "5",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Sceptre of Eternal Glory",

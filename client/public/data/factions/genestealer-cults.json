@@ -2106,6 +2106,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Aberrant",
+          "M": "6\"",
+          "T": "6",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -2743,6 +2756,19 @@
         "OC": "1",
         "Base": "60x35.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Atalan Wolfquad",
+          "M": "12\"",
+          "T": "4",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "60mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Grenade launcher - frag",
@@ -3795,6 +3821,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Hybrid Leader",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Autopistol",
@@ -8968,6 +9007,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Cadian Veteran Guardsman",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Laspistol",
@@ -27540,6 +27592,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Heavy Weapons Team",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "50mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Hot-shot lasgun",
@@ -32842,6 +32907,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Medicae Servitors",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "8+",
+          "OC": "0",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Quartermaster's pistol",
@@ -35548,6 +35626,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Veteran Guardsman",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Plasma pistol - standard",
@@ -36277,6 +36368,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Catachan Commander",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Laspistol",
@@ -38187,6 +38291,19 @@
         "OC": "1",
         "Base": "50mm"
       },
+      "extraStats": [
+        {
+          "name": "Fire Coordinator",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Krieg heavy flamer",
@@ -39250,6 +39367,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Ravener",
+          "M": "10\"",
+          "T": "5",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Venom bolt",
@@ -55382,6 +55512,19 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Tanith Ghost",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "28.5mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -55914,6 +56057,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Tempestor Prime",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Flamer",
@@ -59036,6 +59192,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Raus",
+          "M": "6\"",
+          "T": "2",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "8+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Stub Pistol",
@@ -60688,6 +60857,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Lesk's Veterans",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "5+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",

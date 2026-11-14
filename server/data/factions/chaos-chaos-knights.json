@@ -891,6 +891,41 @@
         "OC": "1",
         "Base": "28.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Iconarch",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        },
+        {
+          "name": "Mindwitch",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        },
+        {
+          "name": "Cult Demagogue",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Autopistol",
@@ -1147,6 +1182,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Traitor Ogryn",
+          "M": "6\"",
+          "T": "6",
+          "Sv": "5+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -1781,6 +1829,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Nightmare Hulk",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Belly flamer",
@@ -2593,6 +2654,19 @@
         "OC": "1",
         "Base": "25mm"
       },
+      "extraStats": [
+        {
+          "name": "Cultist Champion",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -4808,6 +4882,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Chaos Mauler Hound",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -4994,6 +5081,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Mutant",
+          "M": "6\"",
+          "T": "4",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -17348,6 +17448,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Pink Horror",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "7+",
+          "InSv": "4+",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Coruscating Yellow flames (ref. only)",
@@ -19101,6 +19214,19 @@
         "OC": "1",
         "Base": "60x35.5mm"
       },
+      "extraStats": [
+        {
+          "name": "Heartseeker",
+          "M": "14\"",
+          "T": "4",
+          "Sv": "7+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "60x35.5mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -30364,6 +30490,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Surgeon Acolyte",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "6+",
+          "InSv": "",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Xyclos needler",
@@ -33110,6 +33249,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Dark Disciple",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "6+",
+          "InSv": "4+",
+          "W": "1",
+          "Ld": "7+",
+          "OC": "1",
+          "Base": "25mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -33331,6 +33483,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Legionaries",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -34528,6 +34693,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Terminator Champion",
+          "M": "5\"",
+          "T": "6",
+          "Sv": "2+",
+          "InSv": "4+",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Combi-bolter",
@@ -35965,6 +36143,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Chosen Champion",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -37097,6 +37288,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Noise Marines",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Screamer pistol",
@@ -37591,6 +37795,19 @@
         "OC": "2",
         "Base": "75x42mm"
       },
+      "extraStats": [
+        {
+          "name": "Biker Champion",
+          "M": "12\"",
+          "T": "6",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "75x42mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Combi-bolter",
@@ -38390,6 +38607,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Raptor Champion",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Bolt pistol",
@@ -39052,6 +39282,19 @@
         "OC": "1",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Warp Talons",
+          "M": "12\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [],
       "meleeWeapons": [
         {
@@ -39269,6 +39512,19 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Havocs",
+          "M": "5\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Plasma pistol - standard",
@@ -44921,6 +45177,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Khorne Berzerker",
+          "M": "8\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "2",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "➤ Plasma pistol - standard",
@@ -45212,6 +45481,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Aspiring Sorcerer",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "5+",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Malefic Curse",
@@ -63838,6 +64120,52 @@
         "OC": "1",
         "Base": "40mm"
       },
+      "extraStats": [
+        {
+          "name": "Garlon Souleater",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Katar Garrix",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "4",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "Captain Sargotta",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "40mm"
+        },
+        {
+          "name": "The Enforcer",
+          "M": "6\"",
+          "T": "3",
+          "Sv": "4+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "1",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Absolver bolt pistol",
@@ -64070,6 +64398,19 @@
         "OC": "2",
         "Base": "32mm"
       },
+      "extraStats": [
+        {
+          "name": "Red Corsairs Raider",
+          "M": "6\"",
+          "T": "5",
+          "Sv": "3+",
+          "InSv": "",
+          "W": "3",
+          "Ld": "6+",
+          "OC": "2",
+          "Base": "32mm"
+        }
+      ],
       "rangedWeapons": [
         {
           "name": "Boltgun",
