@@ -263,6 +263,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               onRostersChange={(next) => onRostersChange?.(next)}
               ownedModels={ownedModels}
               onUpdateOwnedModels={setOwnedModels}
+              onOpenAiSettings={onOpenAiSettings}
             />
           ) : activeNav === 'owned' ? (
             <OwnedModelsView

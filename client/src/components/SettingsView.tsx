@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Palette,
   Database,
@@ -9,11 +9,20 @@ import {
   AlertTriangle,
   Plus,
   Sparkles,
+  Wand2,
+  Loader2,
+  Sliders,
+  AlertCircle,
   Package,
   Layers,
   Key,
   Smartphone
 } from 'lucide-react';
+import { hasApiKey, setStoredApiKey } from '../services/geminiService';
+import {
+  generateThemeWithAi,
+  THEME_PROMPT_EXAMPLES
+} from '../services/aiThemeGenerator';
 import {
   isHapticsEnabled,
   setHapticsEnabled,
@@ -48,6 +57,7 @@ interface SettingsViewProps {
   onRostersChange: (rosters: ArmyRoster[]) => void;
   ownedModels: Record<string, OwnedFactionInventory>;
   onUpdateOwnedModels: (next: Record<string, OwnedFactionInventory>) => void;
+  onOpenAiSettings?: () => void;
 }
 
 function adjustHexBrightness(hex: string, amount: number): string {
@@ -64,7 +74,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   rosters,
   onRostersChange,
   ownedModels,
-  onUpdateOwnedModels
+  onUpdateOwnedModels,
+  onOpenAiSettings
 }) => {
   const [activeTab, setActiveTab] = useState<'theme' | 'data'>('theme');
 
@@ -80,16 +91,31 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   const [draft, setDraft] = useState<AppTheme>(() => ({ ...initialTheme }));
   const [customName, setCustomName] = useState<string>('');
   const [themeSavedMsg, setThemeSavedMsg] = useState<string | null>(null);
+  const [themeBuilderMode, setThemeBuilderMode] = useState<'manual' | 'ai'>('manual');
+  const [aiPrompt, setAiPrompt] = useState<string>('');
+  const [isGeneratingTheme, setIsGeneratingTheme] = useState<boolean>(false);
+  const [aiThemeError, setAiThemeError] = useState<string | null>(null);
+  const [hasAiGeneratedPreview, setHasAiGeneratedPreview] = useState<boolean>(false);
 
   // Data Manager State
   const [confirmClearAll, setConfirmClearAll] = useState(false);
-  const [hasGeminiKey, setHasGeminiKey] = useState<boolean>(
-    () => Boolean(localStorage.getItem('wh40k_gemini_api_key'))
-  );
+  const [hasGeminiKey, setHasGeminiKey] = useState<boolean>(() => hasApiKey());
   const [hapticsOn, setHapticsOn] = useState<boolean>(() => isHapticsEnabled());
   const vibrationSupported = isVibrationSupported();
 
+  useEffect(() => {
+    const syncKeyStatus = () => setHasGeminiKey(hasApiKey());
+    window.addEventListener('wh40k-ai-key-updated', syncKeyStatus);
+    window.addEventListener('storage', syncKeyStatus);
+    return () => {
+      window.removeEventListener('wh40k-ai-key-updated', syncKeyStatus);
+      window.removeEventListener('storage', syncKeyStatus);
+    };
+  }, []);
+
   const handleSelectTheme = (theme: AppTheme) => {
+    setHasAiGeneratedPreview(false);
+    setAiThemeError(null);
     setActiveTheme(theme);
     setActiveThemeIdState(theme.id);
     setDraft({ ...theme });
@@ -135,6 +161,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setActiveThemeIdState(savedTheme.id);
     setDraft(savedTheme);
     setCustomName(savedTheme.name);
+    setHasAiGeneratedPreview(false);
     setThemeSavedMsg(`Saved "${savedTheme.name}"`);
     setTimeout(() => setThemeSavedMsg(null), 2500);
   };
@@ -149,7 +176,40 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   };
 
   const handleResetDefaultTheme = () => {
+    setHasAiGeneratedPreview(false);
+    setAiThemeError(null);
     handleSelectTheme(DEFAULT_THEMES[0]);
+  };
+
+  const handleGenerateThemeWithAi = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!aiPrompt.trim() || isGeneratingTheme) return;
+
+    if (!hasApiKey()) {
+      setAiThemeError('Gemini API key is required to generate themes.');
+      onOpenAiSettings?.();
+      return;
+    }
+
+    setIsGeneratingTheme(true);
+    setAiThemeError(null);
+
+    try {
+      const generated = await generateThemeWithAi(aiPrompt, draft);
+      const previewTheme: AppTheme = {
+        ...generated,
+        id: `ai-draft-${Date.now()}`,
+        isDefault: false
+      };
+      setDraft(previewTheme);
+      setCustomName(generated.name);
+      setHasAiGeneratedPreview(true);
+      applyThemeToDocument(previewTheme);
+    } catch (err: any) {
+      setAiThemeError(err?.message || 'Failed to generate theme. Please try again.');
+    } finally {
+      setIsGeneratingTheme(false);
+    }
   };
 
   // Data Manager Handlers
@@ -194,9 +254,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   };
 
   const handleClearAiKey = () => {
+    setStoredApiKey('');
     localStorage.removeItem('wh40k_gemini_api_key');
     localStorage.removeItem('wh40k_gemini_model');
-    setHasGeminiKey(false);
+    setHasGeminiKey(hasApiKey());
   };
 
   const handleResetAllThemes = () => {
@@ -387,118 +448,311 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
           {/* Custom Theme Builder */}
           <section className="panel-theme-section space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <h3 className="text-sm font-bold text-theme-text flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-theme-accent-soft" />
                   <span>Customize &amp; Save Theme</span>
                 </h3>
                 <p className="text-xs text-theme-text-secondary">
-                  Changes preview live across the entire app. Save to keep your custom palette.
+                  {themeBuilderMode === 'ai'
+                    ? 'Describe a faction, mood, or palette and let AI design a complete theme for you.'
+                    : 'Changes preview live across the entire app. Save to keep your custom palette.'}
                 </p>
               </div>
-              {themeSavedMsg && (
-                <span className="text-xs font-semibold text-theme-success flex items-center gap-1">
-                  <Check className="w-3.5 h-3.5" />
-                  {themeSavedMsg}
-                </span>
-              )}
-            </div>
 
-            {/* Background & Gradient Controls */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-3 rounded-xl bg-theme-card border border-theme-border-subtle">
-              <div>
-                <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
-                  Primary Background
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="color"
-                    value={draft.bgColor}
-                    onChange={(e) => updateDraft({ bgColor: e.target.value })}
-                    className="w-9 h-9 rounded-lg border border-theme-border bg-transparent cursor-pointer"
-                  />
-                  <input
-                    type="text"
-                    value={draft.bgColor}
-                    onChange={(e) => updateDraft({ bgColor: e.target.value })}
-                    className="flex-1 bg-theme-elevated border border-theme-border rounded-lg px-2.5 py-1.5 text-xs font-mono text-theme-text"
-                  />
+              <div className="flex items-center gap-3 self-start sm:self-auto flex-wrap">
+                {themeSavedMsg && (
+                  <span className="text-xs font-semibold text-theme-success flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5" />
+                    {themeSavedMsg}
+                  </span>
+                )}
+
+                <div className="inline-flex bg-theme-surface border border-theme-border-subtle rounded-xl p-1">
+                  <button
+                    type="button"
+                    onClick={() => setThemeBuilderMode('manual')}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                      themeBuilderMode === 'manual'
+                        ? 'bg-theme-accent text-white shadow-sm'
+                        : 'text-theme-text-secondary hover:text-theme-text'
+                    }`}
+                  >
+                    <Sliders className="w-3.5 h-3.5" />
+                    <span>Manual</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setThemeBuilderMode('ai');
+                      setAiThemeError(null);
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                      themeBuilderMode === 'ai'
+                        ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-sm'
+                        : 'text-theme-text-secondary hover:text-theme-text'
+                    }`}
+                  >
+                    <Wand2 className="w-3.5 h-3.5" />
+                    <span>Create with AI</span>
+                  </button>
                 </div>
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
-                  Secondary Gradient Color
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="color"
-                    value={draft.bgSecondaryColor}
-                    disabled={draft.gradientDirection === 'none'}
-                    onChange={(e) => updateDraft({ bgSecondaryColor: e.target.value })}
-                    className="w-9 h-9 rounded-lg border border-theme-border bg-transparent cursor-pointer disabled:opacity-40"
-                  />
-                  <input
-                    type="text"
-                    value={draft.bgSecondaryColor}
-                    disabled={draft.gradientDirection === 'none'}
-                    onChange={(e) => updateDraft({ bgSecondaryColor: e.target.value })}
-                    className="flex-1 bg-theme-elevated border border-theme-border rounded-lg px-2.5 py-1.5 text-xs font-mono text-theme-text disabled:opacity-40"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
-                  Gradient Direction
-                </label>
-                <select
-                  value={draft.gradientDirection}
-                  onChange={(e) =>
-                    updateDraft({ gradientDirection: e.target.value as GradientDirection })
-                  }
-                  className="w-full h-9 bg-theme-elevated border border-theme-border rounded-lg px-2.5 text-xs text-theme-text"
-                >
-                  {GRADIENT_DIRECTION_OPTIONS.map((opt) => (
-                    <option key={opt.id} value={opt.id}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
               </div>
             </div>
 
-            {/* Surface / Card / Border / Text / Accent Color Pickers */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-              {[
-                { key: 'surfaceColor' as const, label: 'Panels & Header' },
-                { key: 'cardColor' as const, label: 'Cards' },
-                { key: 'borderColor' as const, label: 'Borders' },
-                { key: 'textColor' as const, label: 'Primary Text' },
-                { key: 'accentColor' as const, label: 'Accent Color' }
-              ].map(({ key, label }) => (
-                <div
-                  key={key}
-                  className="p-2.5 rounded-xl bg-theme-card border border-theme-border-subtle"
-                >
-                  <label className="text-[11px] font-semibold text-theme-text-secondary block mb-1.5">
-                    {label}
-                  </label>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="color"
-                      value={draft[key]}
-                      onChange={(e) => updateDraft({ [key]: e.target.value })}
-                      className="w-8 h-8 rounded-lg border border-theme-border bg-transparent cursor-pointer shrink-0"
-                    />
-                    <span className="text-[11px] font-mono text-theme-text truncate">
-                      {draft[key]}
-                    </span>
+            {themeBuilderMode === 'ai' ? (
+              <div className="space-y-3.5">
+                {!hasGeminiKey ? (
+                  <div className="p-4 rounded-xl bg-theme-card border border-theme-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-sky-500/15 border border-sky-400/35 flex items-center justify-center text-sky-400 shrink-0">
+                        <Key className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-bold text-theme-text">
+                          Gemini API Key Required
+                        </h4>
+                        <p className="text-xs text-theme-text-secondary mt-0.5">
+                          Add your free Google Gemini API key to generate custom themes from natural-language prompts.
+                        </p>
+                      </div>
+                    </div>
+                    {onOpenAiSettings && (
+                      <button
+                        type="button"
+                        onClick={onOpenAiSettings}
+                        className="btn-theme-primary px-3.5 py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 shrink-0"
+                      >
+                        <Key className="w-3.5 h-3.5" />
+                        <span>Configure API Key</span>
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <form onSubmit={handleGenerateThemeWithAi} className="space-y-3">
+                    <div className="p-3.5 rounded-xl bg-theme-card border border-theme-border-subtle space-y-3">
+                      <label
+                        htmlFor="ai-theme-prompt"
+                        className="text-xs font-semibold text-theme-text-secondary block"
+                      >
+                        Describe your theme
+                      </label>
+                      <textarea
+                        id="ai-theme-prompt"
+                        rows={2}
+                        value={aiPrompt}
+                        onChange={(e) => setAiPrompt(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                            handleGenerateThemeWithAi();
+                          }
+                        }}
+                        disabled={isGeneratingTheme}
+                        placeholder="e.g. 'Deep Necron blackstone & glowing tesseract emerald with radial aura' or 'Warm Imperial parchment light theme with crimson ink'"
+                        className="w-full bg-theme-elevated border border-theme-border rounded-xl px-3 py-2.5 text-xs sm:text-sm text-theme-text placeholder-theme-text-muted focus:outline-none focus:border-theme-accent resize-none"
+                      />
+
+                      <div className="space-y-1.5">
+                        <span className="text-[11px] font-semibold text-theme-text-muted block">
+                          Quick ideas (tap to use):
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {THEME_PROMPT_EXAMPLES.map((example) => (
+                            <button
+                              key={example}
+                              type="button"
+                              disabled={isGeneratingTheme}
+                              onClick={() => {
+                                setAiPrompt(example);
+                                setAiThemeError(null);
+                              }}
+                              className="text-[11px] px-2.5 py-1 rounded-lg bg-theme-elevated border border-theme-border-subtle text-theme-text-secondary hover:text-theme-text hover:border-theme-accent/60 transition-colors text-left disabled:opacity-50"
+                            >
+                              {example}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {aiThemeError && (
+                        <div className="p-2.5 rounded-lg bg-red-950/50 border border-red-700/60 text-xs text-red-200 flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                          <span>{aiThemeError}</span>
+                        </div>
+                      )}
+
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
+                        <span className="text-[11px] text-theme-text-muted">
+                          Tip: You can also ask to tweak colors after generating (e.g. &quot;make the accent brighter gold&quot;).
+                        </span>
+                        <button
+                          type="submit"
+                          disabled={isGeneratingTheme || !aiPrompt.trim()}
+                          className="min-h-[38px] px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-sm flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none shrink-0"
+                        >
+                          {isGeneratingTheme ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              <span>Designing Theme...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Wand2 className="w-4 h-4" />
+                              <span>Generate Theme</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+
+                    {hasAiGeneratedPreview && (
+                      <div className="p-3 rounded-xl bg-theme-card border border-theme-accent/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="space-y-1.5 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-xs font-bold text-theme-text">
+                              Live AI Preview: {customName || draft.name}
+                            </span>
+                            <span className="text-[11px] text-theme-text-muted font-mono">
+                              Gradient: {draft.gradientDirection}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            {[
+                              { label: 'Bg', color: draft.bgColor },
+                              { label: 'Grad', color: draft.bgSecondaryColor },
+                              { label: 'Panel', color: draft.surfaceColor },
+                              { label: 'Card', color: draft.cardColor },
+                              { label: 'Border', color: draft.borderColor },
+                              { label: 'Text', color: draft.textColor },
+                              { label: 'Accent', color: draft.accentColor }
+                            ].map((sw) => (
+                              <span
+                                key={sw.label}
+                                title={`${sw.label}: ${sw.color}`}
+                                className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-theme-elevated border border-theme-border-subtle text-[10px] font-mono text-theme-text-secondary"
+                              >
+                                <span
+                                  className="w-3 h-3 rounded-sm border border-white/20 shrink-0"
+                                  style={{ backgroundColor: sw.color }}
+                                />
+                                {sw.label}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => setThemeBuilderMode('manual')}
+                          className="btn-theme-secondary px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 shrink-0 self-start sm:self-center"
+                        >
+                          <Sliders className="w-3.5 h-3.5" />
+                          <span>Fine-tune Manually</span>
+                        </button>
+                      </div>
+                    )}
+                  </form>
+                )}
+              </div>
+            ) : (
+              <>
+                {/* Background & Gradient Controls */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-3 rounded-xl bg-theme-card border border-theme-border-subtle">
+                  <div>
+                    <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
+                      Primary Background
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={draft.bgColor}
+                        onChange={(e) => updateDraft({ bgColor: e.target.value })}
+                        className="w-9 h-9 rounded-lg border border-theme-border bg-transparent cursor-pointer"
+                      />
+                      <input
+                        type="text"
+                        value={draft.bgColor}
+                        onChange={(e) => updateDraft({ bgColor: e.target.value })}
+                        className="flex-1 bg-theme-elevated border border-theme-border rounded-lg px-2.5 py-1.5 text-xs font-mono text-theme-text"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
+                      Secondary Gradient Color
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={draft.bgSecondaryColor}
+                        disabled={draft.gradientDirection === 'none'}
+                        onChange={(e) => updateDraft({ bgSecondaryColor: e.target.value })}
+                        className="w-9 h-9 rounded-lg border border-theme-border bg-transparent cursor-pointer disabled:opacity-40"
+                      />
+                      <input
+                        type="text"
+                        value={draft.bgSecondaryColor}
+                        disabled={draft.gradientDirection === 'none'}
+                        onChange={(e) => updateDraft({ bgSecondaryColor: e.target.value })}
+                        className="flex-1 bg-theme-elevated border border-theme-border rounded-lg px-2.5 py-1.5 text-xs font-mono text-theme-text disabled:opacity-40"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-theme-text-secondary block mb-1.5">
+                      Gradient Direction
+                    </label>
+                    <select
+                      value={draft.gradientDirection}
+                      onChange={(e) =>
+                        updateDraft({ gradientDirection: e.target.value as GradientDirection })
+                      }
+                      className="w-full h-9 bg-theme-elevated border border-theme-border rounded-lg px-2.5 text-xs text-theme-text"
+                    >
+                      {GRADIENT_DIRECTION_OPTIONS.map((opt) => (
+                        <option key={opt.id} value={opt.id}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Surface / Card / Border / Text / Accent Color Pickers */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {[
+                    { key: 'surfaceColor' as const, label: 'Panels & Header' },
+                    { key: 'cardColor' as const, label: 'Cards' },
+                    { key: 'borderColor' as const, label: 'Borders' },
+                    { key: 'textColor' as const, label: 'Primary Text' },
+                    { key: 'accentColor' as const, label: 'Accent Color' }
+                  ].map(({ key, label }) => (
+                    <div
+                      key={key}
+                      className="p-2.5 rounded-xl bg-theme-card border border-theme-border-subtle"
+                    >
+                      <label className="text-[11px] font-semibold text-theme-text-secondary block mb-1.5">
+                        {label}
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={draft[key]}
+                          onChange={(e) => updateDraft({ [key]: e.target.value })}
+                          className="w-8 h-8 rounded-lg border border-theme-border bg-transparent cursor-pointer shrink-0"
+                        />
+                        <span className="text-[11px] font-mono text-theme-text truncate">
+                          {draft[key]}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
 
             {/* Save Custom Theme Bar */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2 border-t border-theme-border-subtle">
@@ -514,8 +768,16 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 onClick={handleSaveCustomTheme}
                 className="btn-theme-primary min-h-[38px] px-4 py-2 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2"
               >
-                {draft.isDefault ? <Plus className="w-4 h-4" /> : <Save className="w-4 h-4" />}
-                <span>{draft.isDefault ? 'Save as Custom Theme' : 'Update / Save Theme'}</span>
+                {draft.isDefault || !customThemes.some((t) => t.id === draft.id) ? (
+                  <Plus className="w-4 h-4" />
+                ) : (
+                  <Save className="w-4 h-4" />
+                )}
+                <span>
+                  {draft.isDefault || !customThemes.some((t) => t.id === draft.id)
+                    ? 'Save as Custom Theme'
+                    : 'Update / Save Theme'}
+                </span>
               </button>
             </div>
           </section>

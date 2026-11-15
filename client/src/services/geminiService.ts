@@ -22,6 +22,9 @@ export function setStoredApiKey(key: string): void {
     } else {
       localStorage.removeItem(GEMINI_API_KEY_STORAGE);
     }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('wh40k-ai-key-updated'));
+    }
   } catch (err) {
     console.error('Failed to save Gemini API key:', err);
   }
