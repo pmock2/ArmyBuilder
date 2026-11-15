@@ -53,6 +53,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const [previewSelectedOptions, setPreviewSelectedOptions] = useState<Record<string, string[]>>({});
   const [isWargearOpen, setIsWargearOpen] = useState(false);
   const [isEnhancementsOpen, setIsEnhancementsOpen] = useState(false);
+  const [isAbilitiesOpen, setIsAbilitiesOpen] = useState(false);
   const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
   const [eligibleStratIds, setEligibleStratIds] = useState<Set<string>>(new Set());
   const [expandedStratId, setExpandedStratId] = useState<string | null>(null);
@@ -63,6 +64,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   useEffect(() => {
     setIsWargearOpen(false);
     setIsEnhancementsOpen(false);
+    setIsAbilitiesOpen(false);
     setIsStratagemsOpen(false);
     setInspectingOption(null);
     setExpandedStratId(null);
@@ -1337,59 +1339,86 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
           </div>
 
           {/* 4. Abilities */}
-          <div>
-            <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-sky-400" />
-              <span>Abilities</span>
-            </h3>
+          <div className="rounded-xl bg-slate-850 border border-slate-750 overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setIsAbilitiesOpen((prev) => !prev)}
+              className="w-full p-3.5 sm:p-4 flex items-start justify-between gap-3 text-left hover:bg-slate-800/60 transition-colors"
+              aria-expanded={isAbilitiesOpen}
+            >
+              <div className="min-w-0 flex-1">
+                <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                  <span>Abilities</span>
+                </h3>
+                {!isAbilitiesOpen && (
+                  <p className="mt-1.5 text-xs sm:text-sm text-sky-300 font-medium leading-relaxed">
+                    {equippedAbilities.length > 0
+                      ? equippedAbilities.map((ab) => ab.name).join(', ')
+                      : 'No special abilities listed.'}
+                  </p>
+                )}
+              </div>
+              <span className="btn-theme-icon min-h-[30px] min-w-[30px] rounded-lg flex-shrink-0 pointer-events-none">
+                {isAbilitiesOpen ? (
+                  <ChevronDown className="w-4 h-4 stroke-[2.2]" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 stroke-[2.2]" />
+                )}
+              </span>
+            </button>
 
-            {equippedAbilities.length > 0 ? (
-              <div className="space-y-2.5">
-                {equippedAbilities.map((ab, idx) => {
-                  const sourceInfo = abilitySourceMap[ab.name];
-                  return (
-                    <div
-                      key={idx}
-                      className={`p-3 sm:p-4 rounded-xl bg-slate-850 border ${
-                        sourceInfo
-                          ? sourceInfo.type === 'enhancement'
-                            ? 'border-amber-500/45 bg-amber-950/10'
-                            : 'border-sky-600/45 bg-sky-950/10'
-                          : 'border-slate-750'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
-                        <h4
-                          className={`font-warhammer font-bold text-xs sm:text-sm ${
-                            sourceInfo && sourceInfo.type === 'enhancement'
-                              ? 'text-amber-300'
-                              : 'text-sky-300'
+            {isAbilitiesOpen && (
+              <div className="px-3.5 sm:px-4 pb-3.5 sm:pb-4 pt-2.5 border-t border-slate-800">
+                {equippedAbilities.length > 0 ? (
+                  <div className="space-y-2.5">
+                    {equippedAbilities.map((ab, idx) => {
+                      const sourceInfo = abilitySourceMap[ab.name];
+                      return (
+                        <div
+                          key={idx}
+                          className={`p-3 sm:p-4 rounded-xl bg-slate-900/70 border ${
+                            sourceInfo
+                              ? sourceInfo.type === 'enhancement'
+                                ? 'border-amber-500/45 bg-amber-950/10'
+                                : 'border-sky-600/45 bg-sky-950/10'
+                              : 'border-slate-750'
                           }`}
                         >
-                          {ab.name}
-                        </h4>
-                        {sourceInfo && (
-                          <span
-                            className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${
-                              sourceInfo.type === 'enhancement'
-                                ? 'bg-amber-950/60 text-amber-300 border-amber-500/40'
-                                : 'bg-sky-950/60 text-sky-300 border-sky-600/40'
-                            }`}
-                          >
-                            {sourceInfo.label}
-                          </span>
-                        )}
-                      </div>
-                      <FormattedText
-                        text={ab.description}
-                        className="text-slate-300 text-xs sm:text-sm font-sans"
-                      />
-                    </div>
-                  );
-                })}
+                          <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
+                            <h4
+                              className={`font-warhammer font-bold text-xs sm:text-sm ${
+                                sourceInfo && sourceInfo.type === 'enhancement'
+                                  ? 'text-amber-300'
+                                  : 'text-sky-300'
+                              }`}
+                            >
+                              {ab.name}
+                            </h4>
+                            {sourceInfo && (
+                              <span
+                                className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${
+                                  sourceInfo.type === 'enhancement'
+                                    ? 'bg-amber-950/60 text-amber-300 border-amber-500/40'
+                                    : 'bg-sky-950/60 text-sky-300 border-sky-600/40'
+                                }`}
+                              >
+                                {sourceInfo.label}
+                              </span>
+                            )}
+                          </div>
+                          <FormattedText
+                            text={ab.description}
+                            className="text-slate-300 text-xs sm:text-sm font-sans"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-slate-400 italic text-xs">No special abilities listed.</p>
+                )}
               </div>
-            ) : (
-              <p className="text-slate-400 italic text-xs">No special abilities listed.</p>
             )}
           </div>
 
