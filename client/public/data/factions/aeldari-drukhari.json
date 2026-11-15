@@ -6629,7 +6629,7 @@
           "cost": 55
         },
         {
-          "models": 10,
+          "models": 8,
           "cost": 90
         },
         {
@@ -7942,11 +7942,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 70,
-      "minModels": 2,
+      "minModels": 1,
       "maxModels": 10,
       "costTiers": [
         {
-          "models": 2,
+          "models": 1,
           "cost": 70
         },
         {
@@ -25794,6 +25794,10 @@
         {
           "models": 3,
           "cost": 80
+        },
+        {
+          "models": 6,
+          "cost": 170
         }
       ],
       "stats": {

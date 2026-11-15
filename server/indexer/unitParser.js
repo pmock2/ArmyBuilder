@@ -178,9 +178,12 @@ function createUnitParser({
     let totalGroupMin = 0;
     let totalGroupMax = 0;
     let hasModelGroup = false;
+    const sizeChildIds = new Set();
+    const upgradeSizeMap = new Map();
 
     if (entry.selectionEntryGroups) {
       for (const g of entry.selectionEntryGroups) {
+        if (g.id) sizeChildIds.add(g.id);
         const gEntries = (g.selectionEntries || []).concat(g.entryLinks || []);
         const modelEntries = gEntries.filter(e => {
           const res = e.targetId ? allEntriesById.get(e.targetId) : e;
@@ -192,25 +195,44 @@ function createUnitParser({
           const minC = g.constraints?.find(c => c.type === 'min' && c.field === 'selections');
           const maxC = g.constraints?.find(c => c.type === 'max' && c.field === 'selections');
 
-          if (minC || maxC) {
-            totalGroupMin += minC ? Number(minC.value) : 1;
-            totalGroupMax += maxC ? Number(maxC.value) : (minC ? Number(minC.value) : 1);
-          } else {
-            let childMinSum = 0;
-            let childMaxSum = 0;
-            for (const me of modelEntries) {
-              const res = me.targetId ? (allEntriesById.get(me.targetId) || me) : me;
-              const allC = [...(me.constraints || []), ...((res && res.constraints) || [])];
-              const cMin = allC.find(c => c.type === 'min' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
-              const cMax = allC.find(c => c.type === 'max' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
-              childMinSum += cMin ? Number(cMin.value) : 0;
-              childMaxSum += cMax ? Number(cMax.value) : (cMin ? Number(cMin.value) : 1);
-            }
-            totalGroupMin += Math.max(1, childMinSum);
-            totalGroupMax += Math.max(1, childMaxSum);
+          let childMinSum = 0;
+          let childMaxSum = 0;
+          for (const me of modelEntries) {
+            if (me.id) sizeChildIds.add(me.id);
+            if (me.targetId) sizeChildIds.add(me.targetId);
+            const res = me.targetId ? (allEntriesById.get(me.targetId) || me) : me;
+            const allC = [...(me.constraints || []), ...((res && res.constraints) || [])];
+            const cMin = allC.find(c => c.type === 'min' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
+            const cMax = allC.find(c => c.type === 'max' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
+            childMinSum += cMin ? Number(cMin.value) : 0;
+            childMaxSum += cMax ? Number(cMax.value) : (cMin ? Number(cMin.value) : 1);
           }
 
+          const gMin = minC ? Number(minC.value) : childMinSum;
+          const gMax = maxC ? Number(maxC.value) : Math.max(gMin, childMaxSum);
+          totalGroupMin += gMin;
+          totalGroupMax += gMax;
+
           modelEntries.forEach(inspectModelCost);
+        } else {
+          // Upgrade-based unit size selection (e.g. Aquila/Decimus Kill Team: "5 models", "10 models")
+          const matchedUpgrades = [];
+          for (const ue of gEntries) {
+            const res = ue.targetId ? (allEntriesById.get(ue.targetId) || ue) : ue;
+            const type = ue.type || (res && res.type);
+            const name = ue.name || (res && res.name) || '';
+            const m = typeof name === 'string' && name.match(/^\s*(\d+)\s+models?\s*$/i);
+            if (type === 'upgrade' && m) {
+              matchedUpgrades.push({ ue, res, count: Number(m[1]) });
+            }
+          }
+          if (matchedUpgrades.length >= 2) {
+            for (const item of matchedUpgrades) {
+              if (item.ue.id) upgradeSizeMap.set(item.ue.id, item.count);
+              if (item.ue.targetId) upgradeSizeMap.set(item.ue.targetId, item.count);
+              if (item.res && item.res.id) upgradeSizeMap.set(item.res.id, item.count);
+            }
+          }
         }
       }
     }
@@ -225,6 +247,8 @@ function createUnitParser({
 
     if (directModelChildren.length > 0) {
       for (const me of directModelChildren) {
+        if (me.id) sizeChildIds.add(me.id);
+        if (me.targetId) sizeChildIds.add(me.targetId);
         const res = me.targetId ? (allEntriesById.get(me.targetId) || me) : me;
         const allC = [...(me.constraints || []), ...((res && res.constraints) || [])];
         const cMin = allC.find(c => c.type === 'min' && c.field === 'selections' && (!c.scope || c.scope === 'parent'));
@@ -238,6 +262,10 @@ function createUnitParser({
     if (hasModelGroup || directModelChildren.length > 0) {
       minModels = Math.max(1, totalGroupMin + directMin);
       maxModels = Math.max(minModels, totalGroupMax + directMax);
+    } else if (upgradeSizeMap.size >= 2) {
+      const counts = [...upgradeSizeMap.values()];
+      minModels = Math.max(1, Math.min(...counts));
+      maxModels = Math.max(minModels, ...counts);
     }
 
     if (baseCost === 0 && perModelCost > 0) {
@@ -264,19 +292,154 @@ function createUnitParser({
       }
     }
 
+    // Extract threshold bounds from a flat list of AND conditions for a pts set/multiply modifier.
+    function extractBoundsFromConditions(conds) {
+      if (!conds || conds.length === 0) return null;
+      let lower = 0;
+      let explicitUpper = Infinity;
+      let hasExplicitUpper = false;
+      let hasPositiveModelCond = false;
+      let positiveTerms = 0;
+
+      for (const c of conds) {
+        // Ignore crusade / ally / chapter / force-wide overrides (not squad size brackets)
+        if (
+          c.type === 'instanceOf' ||
+          c.type === 'notInstanceOf' ||
+          c.field !== 'selections' ||
+          c.scope === 'force' ||
+          c.scope === 'primary-catalogue' ||
+          c.scope === 'roster'
+        ) {
+          return null;
+        }
+
+        const cVal = Number(c.value);
+        // Upper-zero check (e.g. "Warlock Skyrunners < 1" or "Hunting Wolves == 0")
+        if ((c.type === 'equalTo' && cVal === 0) || (c.type === 'lessThan' && cVal <= 1) || (c.type === 'atMost' && cVal === 0)) {
+          continue;
+        }
+
+        if (upgradeSizeMap.has(c.childId) && (c.type === 'atLeast' || c.type === 'equalTo') && cVal >= 1) {
+          const uModels = upgradeSizeMap.get(c.childId);
+          lower = Math.max(lower, uModels);
+          explicitUpper = Math.min(explicitUpper, uModels);
+          hasExplicitUpper = true;
+          hasPositiveModelCond = true;
+          positiveTerms++;
+          continue;
+        }
+
+        const isModelTarget = c.childId === 'model' || sizeChildIds.has(c.childId);
+        if (!isModelTarget) {
+          return null;
+        }
+
+        hasPositiveModelCond = true;
+        if (c.type === 'atLeast') {
+          positiveTerms++;
+          lower = positiveTerms > 1 ? lower + cVal : cVal;
+        } else if (c.type === 'greaterThan') {
+          positiveTerms++;
+          lower = positiveTerms > 1 ? lower + (cVal + 1) : (cVal + 1);
+        } else if (c.type === 'equalTo') {
+          positiveTerms++;
+          lower = positiveTerms > 1 ? lower + cVal : cVal;
+          explicitUpper = positiveTerms === 1 ? Math.min(explicitUpper, cVal) : Infinity;
+          hasExplicitUpper = positiveTerms === 1;
+        } else if (c.type === 'lessThan') {
+          explicitUpper = Math.min(explicitUpper, cVal - 1);
+          hasExplicitUpper = true;
+        } else if (c.type === 'atMost') {
+          explicitUpper = Math.min(explicitUpper, cVal);
+          hasExplicitUpper = true;
+        } else {
+          return null;
+        }
+      }
+
+      if (!hasPositiveModelCond || lower <= 0) return null;
+      return {
+        lower,
+        explicitUpper: hasExplicitUpper && Number.isFinite(explicitUpper) ? explicitUpper : null
+      };
+    }
+
+    function extractModifierTierBounds(mod) {
+      if (mod.conditions && mod.conditions.length > 0 && (!mod.conditionGroups || mod.conditionGroups.length === 0)) {
+        return extractBoundsFromConditions(mod.conditions);
+      }
+      if (mod.conditionGroups && mod.conditionGroups.length > 0) {
+        const grp = mod.conditionGroups[0];
+        // Reject if nested conditionGroups contain non-size rules (e.g. chapter primary-catalogue checks)
+        if (grp.type === 'and' && grp.conditions && (!grp.conditionGroups || grp.conditionGroups.length === 0)) {
+          return extractBoundsFromConditions([...(mod.conditions || []), ...grp.conditions]);
+        }
+        if (grp.type === 'or' && grp.conditionGroups && grp.conditionGroups.length > 0 && (!mod.conditions || mod.conditions.length === 0)) {
+          for (const branch of grp.conditionGroups) {
+            if (branch.type === 'and' && branch.conditions) {
+              const b = extractBoundsFromConditions(branch.conditions);
+              if (b) return b;
+            }
+          }
+        }
+      }
+      return null;
+    }
+
     // Modifiers for point scaling
     if (entry.modifiers) {
+      const rawTierMods = [];
       for (const m of entry.modifiers) {
-        if (m.field === '51b2-306e-1021-d207' && m.type === 'set') {
-          const val = Number(m.value) || 0;
-          if (m.conditions && m.conditions[0]) {
-            let condVal = Number(m.conditions[0].value) || maxModels;
-            if ((m.conditions[0].type === 'atLeast' || m.conditions[0].type === 'greaterThan') && condVal < maxModels && maxModels > minModels) {
-              condVal = maxModels;
-            }
-            if (val > 0 && !costTiers.some(t => t.cost === val)) {
-              costTiers.push({ models: condVal, cost: val });
-            }
+        if (m.field !== '51b2-306e-1021-d207') continue;
+        let val = 0;
+        if (m.type === 'set') {
+          val = Number(m.value) || 0;
+        } else if (m.type === 'multiply') {
+          val = Math.round(baseCost * (Number(m.value) || 0));
+        } else {
+          continue;
+        }
+        if (val <= 0 || val === baseCost) continue;
+
+        const bounds = extractModifierTierBounds(m);
+        if (bounds) {
+          rawTierMods.push({ ...bounds, cost: val });
+        }
+      }
+
+      if (rawTierMods.length > 0) {
+        // Ensure maxModels covers any explicit threshold modifier (e.g. Atalan Jackals atLeast 10)
+        const highestLower = Math.max(...rawTierMods.map(t => t.lower));
+        if (highestLower > maxModels) {
+          maxModels = highestLower;
+        }
+
+        // Sort ascending by minimum model threshold, and deduplicate identical thresholds
+        rawTierMods.sort((a, b) => a.lower - b.lower || (a.explicitUpper ?? Infinity) - (b.explicitUpper ?? Infinity) || a.cost - b.cost);
+        const dedupedMods = [];
+        for (const rm of rawTierMods) {
+          const existingIdx = dedupedMods.findIndex(x => x.lower === rm.lower);
+          if (existingIdx === -1) {
+            dedupedMods.push(rm);
+          }
+        }
+
+        for (let i = 0; i < dedupedMods.length; i++) {
+          const rm = dedupedMods[i];
+          if (costTiers.some(t => t.cost === rm.cost)) continue;
+
+          let tierModels;
+          if (rm.explicitUpper !== null) {
+            tierModels = Math.min(maxModels, Math.max(minModels, rm.explicitUpper));
+          } else if (i + 1 < dedupedMods.length && dedupedMods[i + 1].lower > rm.lower) {
+            tierModels = Math.min(maxModels, Math.max(minModels, dedupedMods[i + 1].lower - 1));
+          } else {
+            tierModels = maxModels;
+          }
+
+          if (!costTiers.some(t => t.models === tierModels)) {
+            costTiers.push({ models: tierModels, cost: rm.cost });
           }
         }
       }

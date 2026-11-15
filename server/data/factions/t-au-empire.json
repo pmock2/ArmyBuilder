@@ -8028,11 +8028,11 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 75,
-      "minModels": 2,
+      "minModels": 1,
       "maxModels": 3,
       "costTiers": [
         {
-          "models": 2,
+          "models": 1,
           "cost": 75
         },
         {

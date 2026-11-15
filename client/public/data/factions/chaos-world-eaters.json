@@ -2948,14 +2948,14 @@
       "canLead": [],
       "baseCost": 65,
       "minModels": 2,
-      "maxModels": 2,
+      "maxModels": 11,
       "costTiers": [
         {
           "models": 2,
           "cost": 65
         },
         {
-          "models": 10,
+          "models": 11,
           "cost": 120
         }
       ],

@@ -3350,7 +3350,7 @@
       "canLead": [],
       "baseCost": 155,
       "minModels": 5,
-      "maxModels": 5,
+      "maxModels": 6,
       "costTiers": [
         {
           "models": 5,

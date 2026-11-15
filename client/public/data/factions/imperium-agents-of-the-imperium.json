@@ -5852,12 +5852,12 @@
       "maxModels": 12,
       "costTiers": [
         {
-          "models": 1,
-          "cost": 60
-        },
-        {
           "models": 6,
           "cost": 50
+        },
+        {
+          "models": 12,
+          "cost": 100
         }
       ],
       "stats": {
@@ -11102,14 +11102,14 @@
       "canLead": [],
       "baseCost": 100,
       "minModels": 1,
-      "maxModels": 1,
+      "maxModels": 6,
       "costTiers": [
         {
           "models": 1,
           "cost": 100
         },
         {
-          "models": 5,
+          "models": 6,
           "cost": 200
         }
       ],
@@ -11877,14 +11877,14 @@
       "canLead": [],
       "baseCost": 120,
       "minModels": 1,
-      "maxModels": 1,
+      "maxModels": 6,
       "costTiers": [
         {
           "models": 1,
           "cost": 120
         },
         {
-          "models": 5,
+          "models": 6,
           "cost": 240
         }
       ],
@@ -13226,14 +13226,14 @@
       "canLead": [],
       "baseCost": 160,
       "minModels": 1,
-      "maxModels": 1,
+      "maxModels": 6,
       "costTiers": [
         {
           "models": 1,
           "cost": 160
         },
         {
-          "models": 5,
+          "models": 6,
           "cost": 320
         }
       ],
@@ -16422,15 +16422,15 @@
       "isSupport": false,
       "canLead": [],
       "baseCost": 110,
-      "minModels": 1,
-      "maxModels": 1,
+      "minModels": 5,
+      "maxModels": 10,
       "costTiers": [
         {
-          "models": 1,
+          "models": 5,
           "cost": 110
         },
         {
-          "models": 1,
+          "models": 10,
           "cost": 210
         }
       ],

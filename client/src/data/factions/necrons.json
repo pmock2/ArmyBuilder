@@ -5080,7 +5080,7 @@
       "canLead": [],
       "baseCost": 85,
       "minModels": 1,
-      "maxModels": 1,
+      "maxModels": 4,
       "costTiers": [
         {
           "models": 1,
@@ -6348,7 +6348,7 @@
       "canLead": [],
       "baseCost": 80,
       "minModels": 1,
-      "maxModels": 1,
+      "maxModels": 4,
       "costTiers": [
         {
           "models": 1,
@@ -7654,11 +7654,11 @@
           "cost": 40
         },
         {
-          "models": 6,
+          "models": 2,
           "cost": 55
         },
         {
-          "models": 6,
+          "models": 3,
           "cost": 80
         },
         {
