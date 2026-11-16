@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, MoreVertical } from 'lucide-react';
+import { AlertTriangle, Save, Printer, ArrowLeft, Settings, Swords, BookOpen, MoreVertical, Sparkles } from 'lucide-react';
 import { ArmyRoster, BattleSize, ValidationResult } from '../types/roster';
 
 interface NavbarProps {
@@ -14,6 +14,7 @@ interface NavbarProps {
   onToggleValidationDrawer: () => void;
   onOpenSettings: () => void;
   onOpenAiRules?: () => void;
+  onOpenAiEvaluate?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -27,7 +28,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onBackToDashboard,
   onToggleValidationDrawer,
   onOpenSettings,
-  onOpenAiRules
+  onOpenAiRules,
+  onOpenAiEvaluate
 }) => {
   // Points color
   let pointsColor = 'text-theme-text';
@@ -155,6 +157,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </button>
                     </>
                   )}
+                  {!isPlayMode && onOpenAiEvaluate && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        onOpenAiEvaluate();
+                      }}
+                      className="w-full px-3.5 py-2 text-left text-xs font-semibold text-sky-300 hover:bg-theme-elevated flex items-center gap-2.5"
+                    >
+                      <Sparkles className="w-4 h-4 text-sky-400" />
+                      <span>Evaluate List (AI)</span>
+                    </button>
+                  )}
                   {onOpenAiRules && (
                     <button
                       type="button"
@@ -235,6 +250,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-2 flex-shrink-0 ml-1">
+            {!isPlayMode && onOpenAiEvaluate && (
+              <button
+                type="button"
+                onClick={onOpenAiEvaluate}
+                className="btn-theme-secondary min-h-[34px] flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold text-sky-300 hover:text-sky-200 border-sky-500/40 shadow-sm transition-all"
+                title="Evaluate current army list with AI"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+                <span>Evaluate AI</span>
+              </button>
+            )}
+
             {onOpenAiRules && (
               <button
                 type="button"

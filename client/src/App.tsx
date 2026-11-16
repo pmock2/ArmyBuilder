@@ -16,6 +16,7 @@ import { ListSettingsModal } from './components/ListSettingsModal';
 import { AiSettingsModal } from './components/AiSettingsModal';
 import { AiArmyCreatorModal } from './components/AiArmyCreatorModal';
 import { AiRulesAssistant } from './components/AiRulesAssistant';
+import { AiListEvaluatorModal } from './components/AiListEvaluatorModal';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { useBackNavigation } from './utils/backNavigation';
 import { hasApiKey } from './services/geminiService';
@@ -43,7 +44,8 @@ export const App: React.FC = () => {
   const [isAiSettingsModalOpen, setIsAiSettingsModalOpen] = useState(false);
   const [isAiArmyCreatorOpen, setIsAiArmyCreatorOpen] = useState(false);
   const [isAiRulesAssistantOpen, setIsAiRulesAssistantOpen] = useState(false);
-  const [pendingAiFeature, setPendingAiFeature] = useState<'creator' | 'rules' | null>(null);
+  const [isAiEvaluatorOpen, setIsAiEvaluatorOpen] = useState(false);
+  const [pendingAiFeature, setPendingAiFeature] = useState<'creator' | 'rules' | 'evaluator' | null>(null);
 
   // Android / mobile hardware Back button navigation stack
   useBackNavigation(Boolean(activeRoster), () => {
@@ -60,6 +62,7 @@ export const App: React.FC = () => {
   useBackNavigation(isAiSettingsModalOpen, () => setIsAiSettingsModalOpen(false));
   useBackNavigation(isAiArmyCreatorOpen, () => setIsAiArmyCreatorOpen(false));
   useBackNavigation(isAiRulesAssistantOpen, () => setIsAiRulesAssistantOpen(false));
+  useBackNavigation(isAiEvaluatorOpen, () => setIsAiEvaluatorOpen(false));
 
   // 1. Persist Active Roster ID & Play Mode across mobile browser reloads / sleep wakeups
   useEffect(() => {
@@ -546,6 +549,15 @@ export const App: React.FC = () => {
     setIsAiRulesAssistantOpen(true);
   };
 
+  const handleOpenAiEvaluate = () => {
+    if (!hasApiKey()) {
+      setPendingAiFeature('evaluator');
+      setIsAiSettingsModalOpen(true);
+      return;
+    }
+    setIsAiEvaluatorOpen(true);
+  };
+
   const handleCloseAiSettings = () => {
     setIsAiSettingsModalOpen(false);
     setPendingAiFeature(null);
@@ -560,6 +572,8 @@ export const App: React.FC = () => {
         setIsAiArmyCreatorOpen(true);
       } else if (target === 'rules') {
         setIsAiRulesAssistantOpen(true);
+      } else if (target === 'evaluator') {
+        setIsAiEvaluatorOpen(true);
       }
     }
   };
@@ -679,6 +693,7 @@ export const App: React.FC = () => {
         onToggleValidationDrawer={() => setIsValidationDrawerOpen(true)}
         onOpenSettings={() => setIsSettingsModalOpen(true)}
         onOpenAiRules={handleOpenAiRules}
+        onOpenAiEvaluate={handleOpenAiEvaluate}
       />
 
       {/* Main Builder Scrollable Canvas */}
@@ -824,6 +839,19 @@ export const App: React.FC = () => {
           setIsAiSettingsModalOpen(true);
         }}
         activeRoster={activeRoster}
+      />
+
+      <AiListEvaluatorModal
+        isOpen={isAiEvaluatorOpen}
+        onClose={() => setIsAiEvaluatorOpen(false)}
+        onOpenSettings={() => {
+          setIsAiEvaluatorOpen(false);
+          setPendingAiFeature('evaluator');
+          setIsAiSettingsModalOpen(true);
+        }}
+        roster={activeRoster}
+        validation={validation}
+        factionData={factionData}
       />
 
       <InstallPromptBanner />
