@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Trash2, Copy, Eye } from 'lucide-react';
+import { Crown, Trash2, Copy, Eye } from 'lucide-react';
 import {
   SelectedUnit,
   Enhancement,
@@ -64,21 +64,24 @@ export const UnitCard: React.FC<UnitCardProps> = ({
         <div className="flex items-center justify-between gap-3">
           {/* Left: Name, Model Count, Badges */}
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-start gap-1.5 min-w-0">
               {unit.isWarlord && (
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-theme-accent/15 text-theme-accent-soft border border-theme-accent/35 flex items-center gap-1 font-mono tracking-wider">
-                  <Star className="w-2.5 h-2.5 fill-current" />
-                  <span>WARLORD</span>
+                <span
+                  title="Warlord"
+                  aria-label="Warlord"
+                  className="shrink-0 mt-0.5 text-amber-400"
+                >
+                  <Crown className="w-4 h-4 fill-amber-400/20 stroke-[2.2]" />
                 </span>
               )}
 
               {isLegendsUnit(unit) && (
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-theme-elevated text-theme-text-secondary border border-theme-border font-mono tracking-wider">
+                <span className="shrink-0 mt-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-theme-elevated text-theme-text-secondary border border-theme-border font-mono tracking-wider">
                   LEGENDS
                 </span>
               )}
 
-              <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide truncate">
+              <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide leading-snug line-clamp-2 min-w-0 flex-1">
                 {unit.name}
               </h4>
             </div>
