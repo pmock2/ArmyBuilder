@@ -866,6 +866,9 @@
       "groupId": "33fd-bb93-1bf4-f1c",
       "detachment": "Steel Hammer",
       "maxPerRoster": 1,
+      "addedKeywords": [
+        "Officer"
+      ],
       "profiles": [
         {
           "name": "Battalion Commander",

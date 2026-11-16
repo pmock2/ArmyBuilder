@@ -855,6 +855,9 @@
           "Catacomb Command Barge"
         ]
       ],
+      "addedKeywords": [
+        "Destroyer Cult"
+      ],
       "profiles": [
         {
           "name": "Destroyer Ankh",
@@ -888,6 +891,9 @@
       "maxPerRoster": 1,
       "requiredKeywords": [
         "Cryptek"
+      ],
+      "addedKeywords": [
+        "Destroyer Cult"
       ],
       "profiles": [
         {

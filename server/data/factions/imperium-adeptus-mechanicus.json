@@ -812,6 +812,9 @@
       "requiredKeywords": [
         "Cybernetica Datasmith"
       ],
+      "addedKeywords": [
+        "Mobile"
+      ],
       "profiles": [
         {
           "name": "Vingh's Wafers of Dynamism",
@@ -933,6 +936,9 @@
       "maxPerRoster": 1,
       "requiredKeywords": [
         "Tech-Priest"
+      ],
+      "addedKeywords": [
+        "Skitarii"
       ],
       "profiles": [
         {

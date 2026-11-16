@@ -1234,6 +1234,9 @@
       "excludedKeywords": [
         "Khorne"
       ],
+      "addedKeywords": [
+        "Psyker"
+      ],
       "profiles": [
         {
           "name": "Touched by the Warp",
@@ -1719,6 +1722,9 @@
       "excludedKeywords": [
         "Damned"
       ],
+      "addedKeywords": [
+        "Soul Forge"
+      ],
       "profiles": [
         {
           "name": "Cybinfernal Font",
@@ -1786,6 +1792,9 @@
       "maxPerRoster": 1,
       "requiredKeywords": [
         "Jump Pack"
+      ],
+      "addedKeywords": [
+        "Daemon"
       ],
       "profiles": [
         {

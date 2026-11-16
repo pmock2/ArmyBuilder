@@ -747,6 +747,9 @@
         "Faction: Raptors",
         "Faction: Tome Keepers"
       ],
+      "addedKeywords": [
+        "Wulfen"
+      ],
       "profiles": [
         {
           "name": "Wolf-Touched",

@@ -394,6 +394,9 @@
       "requiredKeywords": [
         "Battlesuit"
       ],
+      "addedKeywords": [
+        "Grenades"
+      ],
       "profiles": [
         {
           "name": "Internal Grenade Racks",

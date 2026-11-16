@@ -1,4 +1,11 @@
-import { ArmyRoster, BattleSizeConfig, ValidationIssue, ValidationResult, getUnitTotalPts } from '../types/roster';
+import {
+  ArmyRoster,
+  BattleSizeConfig,
+  ValidationIssue,
+  ValidationResult,
+  getUnitTotalPts,
+  canUnitLeadBodyguard
+} from '../types/roster';
 
 export const BATTLE_SIZE_CONFIGS: Record<string, BattleSizeConfig> = {
   incursion: {
@@ -243,7 +250,7 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
     }
   }
 
-  // 8. Bodyguard Slot Limits (1 Leader + 1 Support max)
+  // 8. Bodyguard Slot Limits (1 Leader + 1 Support max) & Attachment Eligibility
   const bodyguardSlots: Record<string, { leaders: number; supports: number }> = {};
   for (const u of units) {
     if (u.attachedToBodyguardId) {
@@ -251,6 +258,17 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
       bodyguardSlots[bgId] = bodyguardSlots[bgId] || { leaders: 0, supports: 0 };
       if (u.isLeader) bodyguardSlots[bgId].leaders += 1;
       if (u.isSupport) bodyguardSlots[bgId].supports += 1;
+
+      const bgUnit = units.find(x => x.instanceId === bgId);
+      if (bgUnit && !canUnitLeadBodyguard(u, bgUnit)) {
+        issues.push({
+          id: `ineligible-attachment-${u.instanceId}`,
+          severity: 'error',
+          title: `Ineligible Attachment: ${u.name}`,
+          message: `'${u.name}' cannot currently attach to '${bgUnit.name}'.`,
+          unitInstanceId: u.instanceId
+        });
+      }
     }
   }
 

@@ -319,6 +319,9 @@
         "Daemon Prince",
         "Faction: World Eaters"
       ],
+      "addedKeywords": [
+        "Mobile"
+      ],
       "profiles": [
         {
           "name": "Gateways to Glory",
@@ -438,6 +441,9 @@
       "maxPerRoster": 1,
       "requiredKeywords": [
         "Lord on Juggernaut"
+      ],
+      "addedKeywords": [
+        "Faction: Blood Legions"
       ],
       "profiles": [
         {
@@ -754,6 +760,9 @@
       "maxPerRoster": 3,
       "excludedKeywords": [
         "Maulerfiend"
+      ],
+      "addedKeywords": [
+        "Daemon"
       ],
       "profiles": [
         {

@@ -220,6 +220,55 @@ function createDetachmentEnhancementParser({
       return null;
     };
 
+    const extractAddedKeywords = (node, descText) => {
+      const added = [];
+      const seenLower = new Set();
+      const pushKw = (rawKw) => {
+        const cleaned = String(rawKw || '').replace(/[\*\^]/g, '').trim();
+        if (!cleaned || cleaned.length < 2) return;
+        // Skip internal BattleScribe helper modifier categories
+        if (/modifier/i.test(cleaned)) return;
+        const lower = cleaned.toLowerCase();
+        if (seenLower.has(lower)) return;
+        seenLower.add(lower);
+        // Normalize all-caps prose keywords (e.g. "DESTROYER CULT" -> "Destroyer Cult")
+        const normalized =
+          cleaned === cleaned.toUpperCase()
+            ? cleaned
+                .toLowerCase()
+                .replace(/\b([a-z])/g, (m) => m.toUpperCase())
+            : cleaned;
+        added.push(normalized);
+      };
+
+      const collectFromMods = (mods) => {
+        if (!mods) return;
+        for (const m of mods) {
+          if (m && m.field === 'category' && m.type === 'add' && m.value) {
+            const catObj = allEntriesById.get(m.value);
+            if (catObj && catObj.name) pushKw(catObj.name);
+          }
+        }
+      };
+
+      if (node) {
+        collectFromMods(node.modifiers);
+        for (const mg of node.modifierGroups || []) {
+          collectFromMods(mg.modifiers);
+        }
+      }
+
+      if (descText) {
+        const kwRegex = /the bearer has the\s+([^\.\,\n;]+?)\s+keyword\b/gi;
+        let match;
+        while ((match = kwRegex.exec(descText)) !== null) {
+          pushKw(match[1]);
+        }
+      }
+
+      return added;
+    };
+
     const parseEnhancementEntry = (rawEntry, topGroup, subGroup, subGroupLink = null, unitOwnerName = null) => {
       if (!rawEntry) return;
       const entry = rawEntry.targetId ? (allEntriesById.get(rawEntry.targetId) || rawEntry) : rawEntry;
@@ -405,6 +454,7 @@ function createDetachmentEnhancementParser({
       }
 
       const topGroupId = unitOwnerName ? undefined : (topGroup ? topGroup.id : undefined);
+      const addedKeywords = extractAddedKeywords(entry, desc);
       const isUpgrade = Boolean(unitOwnerName) ||
                         entry.name.toLowerCase().includes('(upgrade)') ||
                         maxPerRoster > 1 ||
@@ -424,6 +474,7 @@ function createDetachmentEnhancementParser({
           requiredKeywords: requiredKeywords.length > 0 ? requiredKeywords : undefined,
           anyOfKeywords: anyOfKeywords.length > 0 ? anyOfKeywords : undefined,
           excludedKeywords: excludedKeywords.length > 0 ? excludedKeywords : undefined,
+          addedKeywords: addedKeywords.length > 0 ? addedKeywords : undefined,
           profiles: profiles.length > 0 ? profiles : undefined,
           statModifiers: statModifiers.length > 0 ? statModifiers : undefined
         });
@@ -571,6 +622,8 @@ function createDetachmentEnhancementParser({
             desc = c['Description'] || '';
           }
 
+          const addedKeywords = extractAddedKeywords(e, desc);
+
           if (!enhancementsList.some(x => x.name === e.name && x.detachment === matchedDet)) {
             enhancementsList.push({
               id: e.id,
@@ -582,6 +635,7 @@ function createDetachmentEnhancementParser({
               detachment: matchedDet,
               maxPerRoster: 3,
               requiredKeywords: [u.name],
+              addedKeywords: addedKeywords.length > 0 ? addedKeywords : undefined,
               profiles: profiles.length > 0 ? profiles : undefined,
               statModifiers: statModifiers.length > 0 ? statModifiers : undefined
             });

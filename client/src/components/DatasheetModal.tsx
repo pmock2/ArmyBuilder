@@ -11,7 +11,10 @@ import {
   getUnitTotalPts,
   getEligibleEnhancementsForUnit,
   getUnitBaseCostForModelCount,
-  getEffectiveOptionMaxCount
+  getEffectiveOptionMaxCount,
+  getEffectiveUnitAddedKeywords,
+  getEffectiveCanLead,
+  canUnitLeadBodyguard
 } from '../types/roster';
 import { computeUnitEquippedData, computeModifiedStat } from '../utils/equippedStats';
 import { useBackNavigation } from '../utils/backNavigation';
@@ -278,12 +281,22 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const handleToggleEnhancement = (enh: Enhancement) => {
     if (!selectedUnit || !onUpdateUnit) return;
     const isCurrentlySelected = selectedUnit.enhancement?.id === enh.id;
-    if (isCurrentlySelected) {
-      const { enhancement, ...rest } = selectedUnit;
-      onUpdateUnit({ ...rest, enhancement: undefined });
-    } else {
-      onUpdateUnit({ ...selectedUnit, enhancement: enh });
+    const nextUnit: SelectedUnit = isCurrentlySelected
+      ? (() => {
+          const { enhancement: _removed, ...rest } = selectedUnit;
+          return { ...rest, enhancement: undefined };
+        })()
+      : { ...selectedUnit, enhancement: enh };
+
+    // If losing/switching an enhancement revokes eligibility for the currently attached bodyguard, detach cleanly
+    if (nextUnit.attachedToBodyguardId) {
+      const currentBg = allUnitsInRoster.find((u) => u.instanceId === nextUnit.attachedToBodyguardId);
+      if (currentBg && !canUnitLeadBodyguard(nextUnit, currentBg)) {
+        nextUnit.attachedToBodyguardId = undefined;
+      }
     }
+
+    onUpdateUnit(nextUnit);
   };
 
   const handleInspectEnhancement = (enh: Enhancement) => {
@@ -313,31 +326,18 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     { label: 'INSV', stat: modInSv }
   ].filter((x) => x.stat.isModified);
 
-  const matchesBodyguardTarget = (target: string): boolean => {
-    const uName = unit.name.toUpperCase();
-    const tName = target.toUpperCase();
-    if (uName === tName || uName.includes(tName) || tName.includes(uName)) return true;
-    if (tName.includes('BATTLELINE') && unit.isBattleline) return true;
-    return false;
-  };
+  // Eligible leaders in roster that can attach to this bodyguard (including enhancement-unlocked keywords)
+  const eligibleLeaders = allUnitsInRoster.filter(
+    (u) => u.isLeader && Boolean(selectedUnit) && canUnitLeadBodyguard(u, selectedUnit!)
+  );
 
-  // Eligible leaders in roster that can attach to this bodyguard
-  const eligibleLeaders = allUnitsInRoster.filter((u) => {
-    if (!u.isLeader || !selectedUnit || u.instanceId === selectedUnit.instanceId) return false;
-    if (u.datasheet.canLead && u.datasheet.canLead.length > 0) {
-      return u.datasheet.canLead.some((target) => matchesBodyguardTarget(target));
-    }
-    return false;
-  });
+  // Eligible supports in roster that can attach to this bodyguard (including enhancement-unlocked keywords)
+  const eligibleSupports = allUnitsInRoster.filter(
+    (u) => u.isSupport && Boolean(selectedUnit) && canUnitLeadBodyguard(u, selectedUnit!)
+  );
 
-  // Eligible supports in roster that can attach to this bodyguard
-  const eligibleSupports = allUnitsInRoster.filter((u) => {
-    if (!u.isSupport || !selectedUnit || u.instanceId === selectedUnit.instanceId) return false;
-    if (u.datasheet.canLead && u.datasheet.canLead.length > 0) {
-      return u.datasheet.canLead.some((target) => matchesBodyguardTarget(target));
-    }
-    return false;
-  });
+  const effectiveAddedCategories = getEffectiveUnitAddedKeywords(selectedUnit || unit);
+  const effectiveCanLeadInfo = getEffectiveCanLead(selectedUnit || unit);
 
   // Eligible enhancements for this unit based on active detachments & unit restrictions
   const eligibleEnhancements = getEligibleEnhancementsForUnit(
@@ -1423,7 +1423,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
           </div>
 
           {/* 5. Leader / Support Attachment Eligibility (Hidden in Play Mode) */}
-          {!isPlayMode && (unit.isLeader || unit.isSupport) && unit.canLead.length > 0 && (
+          {!isPlayMode && (unit.isLeader || unit.isSupport) && effectiveCanLeadInfo.targets.length > 0 && (
             <div className="p-3 sm:p-4 rounded-xl bg-slate-850 border border-sky-700/40">
               <h4 className="font-warhammer font-bold text-sky-300 text-xs sm:text-sm mb-1.5">
                 Eligible Bodyguard Units
@@ -1432,11 +1432,31 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                 This {unit.isSupport && !unit.isLeader ? 'Support unit' : 'Leader'} can attach to any of the following units to form an Attached Unit (1 Leader + 1 Support max):
               </p>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {unit.canLead.map((target, i) => (
-                  <span key={i} className="min-h-[28px] inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-lg bg-slate-800 border border-slate-700 text-sky-200">
-                    {target}
-                  </span>
-                ))}
+                {effectiveCanLeadInfo.targets.map((target, i) => {
+                  const isUnlocked = effectiveCanLeadInfo.unlockedTargets.includes(target);
+                  return (
+                    <span
+                      key={i}
+                      title={
+                        isUnlocked && selectedUnit?.enhancement
+                          ? `Unlocked by ${selectedUnit.enhancement.name}`
+                          : undefined
+                      }
+                      className={`min-h-[28px] inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-lg border ${
+                        isUnlocked
+                          ? 'bg-amber-950/60 border-amber-500/50 text-amber-200'
+                          : 'bg-slate-800 border-slate-700 text-sky-200'
+                      }`}
+                    >
+                      <span>{target}</span>
+                      {isUnlocked && selectedUnit?.enhancement && (
+                        <span className="text-[10px] text-amber-300/90 font-normal">
+                          ({selectedUnit.enhancement.name})
+                        </span>
+                      )}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -1459,6 +1479,18 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                   }`}
                 >
                   <KeywordTooltip keyword={cat}>{cat}</KeywordTooltip>
+                </span>
+              ))}
+              {effectiveAddedCategories.map((ak, i) => (
+                <span
+                  key={`added-${i}`}
+                  title={`Granted by ${ak.source}`}
+                  className="min-h-[28px] inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-lg border font-semibold bg-amber-950/60 text-amber-200 border-amber-500/50"
+                >
+                  <KeywordTooltip keyword={ak.kw}>{ak.kw}</KeywordTooltip>
+                  <span className="text-[10px] text-amber-300/90 font-normal">
+                    ({ak.source.replace(/^Enhancement:\s*/, '')})
+                  </span>
                 </span>
               ))}
             </div>

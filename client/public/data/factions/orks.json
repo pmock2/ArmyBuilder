@@ -1098,6 +1098,9 @@
       "groupId": "ebea-74c4-f3db-183d",
       "detachment": "Flyboyz",
       "maxPerRoster": 3,
+      "addedKeywords": [
+        "Character"
+      ],
       "profiles": [
         {
           "name": "Flyboss",

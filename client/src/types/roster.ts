@@ -213,6 +213,7 @@ export interface Enhancement {
   requiredKeywords?: string[];
   anyOfKeywords?: string[][];
   excludedKeywords?: string[];
+  addedKeywords?: string[];
   profiles?: WargearProfile[];
   statModifiers?: StatModifier[];
 }
@@ -423,6 +424,154 @@ export function getEligibleEnhancementsForUnit(
 ): Enhancement[] {
   if (!allEnhancements || allEnhancements.length === 0) return [];
   return allEnhancements.filter(enh => isEnhancementEligibleForUnit(unitOrDatasheet, enh, activeDetachments));
+}
+
+export const DESTROYER_CULT_BODYGUARD_TARGETS = [
+  'SKORPEKH DESTROYERS',
+  'OPHYDIAN DESTROYERS',
+  'LOKHUST DESTROYERS',
+  'LOKHUST HEAVY DESTROYERS'
+];
+
+/**
+ * Extracts keywords added to the bearer by an Enhancement (from indexed
+ * `addedKeywords`, plus a prose fallback for legacy cached enhancements).
+ */
+export function getEnhancementAddedKeywords(enh?: Enhancement | null): string[] {
+  if (!enh) return [];
+  const result: string[] = [];
+  const seenLower = new Set<string>();
+  const pushKw = (raw: string) => {
+    const cleaned = String(raw || '').replace(/[\*\^]/g, '').trim();
+    if (!cleaned || cleaned.length < 2) return;
+    const lower = cleaned.toLowerCase();
+    if (seenLower.has(lower)) return;
+    seenLower.add(lower);
+    const normalized =
+      cleaned === cleaned.toUpperCase()
+        ? cleaned.toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase())
+        : cleaned;
+    result.push(normalized);
+  };
+
+  for (const kw of enh.addedKeywords || []) {
+    pushKw(kw);
+  }
+
+  const textParts = [enh.description || '', ...(enh.profiles || []).map((p) => p.description || '')];
+  for (const txt of textParts) {
+    const regex = /the bearer has the\s+([^\.\,\n;]+?)\s+keyword\b/gi;
+    let m: RegExpExecArray | null;
+    while ((m = regex.exec(txt)) !== null) {
+      pushKw(m[1]);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Returns enhancement-granted keywords on a unit along with their source label,
+ * excluding keywords the unit already natively possesses.
+ */
+export function getEffectiveUnitAddedKeywords(
+  unitOrDatasheet: Datasheet | SelectedUnit,
+  enhancementOverride?: Enhancement | null
+): { kw: string; source: string }[] {
+  const d: Datasheet = 'datasheet' in unitOrDatasheet ? unitOrDatasheet.datasheet : unitOrDatasheet;
+  const enh =
+    enhancementOverride !== undefined
+      ? enhancementOverride
+      : 'enhancement' in unitOrDatasheet
+      ? unitOrDatasheet.enhancement
+      : undefined;
+  if (!enh) return [];
+
+  const nativeLower = new Set((d.categories || []).map((c) => c.toLowerCase()));
+  const kws = getEnhancementAddedKeywords(enh);
+  return kws
+    .filter((kw) => !nativeLower.has(kw.toLowerCase()))
+    .map((kw) => ({ kw, source: `Enhancement: ${enh.name}` }));
+}
+
+export function getEffectiveUnitCategories(
+  unitOrDatasheet: Datasheet | SelectedUnit,
+  enhancementOverride?: Enhancement | null
+): string[] {
+  const d: Datasheet = 'datasheet' in unitOrDatasheet ? unitOrDatasheet.datasheet : unitOrDatasheet;
+  const base = d.categories || [];
+  const added = getEffectiveUnitAddedKeywords(unitOrDatasheet, enhancementOverride).map((x) => x.kw);
+  return added.length > 0 ? [...base, ...added] : base;
+}
+
+/**
+ * Computes effective bodyguard targets a character unit can lead/support,
+ * combining its native `canLead` list with any targets unlocked by equipped
+ * enhancement keywords (e.g. Cursed Legion enhancements granting Destroyer Cult).
+ */
+export function getEffectiveCanLead(
+  unitOrDatasheet: Datasheet | SelectedUnit,
+  enhancementOverride?: Enhancement | null
+): { targets: string[]; unlockedTargets: string[] } {
+  const d: Datasheet = 'datasheet' in unitOrDatasheet ? unitOrDatasheet.datasheet : unitOrDatasheet;
+  const isCharLeadOrSupport =
+    ('isLeader' in unitOrDatasheet ? unitOrDatasheet.isLeader : d.isLeader) ||
+    ('isSupport' in unitOrDatasheet ? unitOrDatasheet.isSupport : d.isSupport);
+
+  const baseTargets = [...(d.canLead || [])];
+  if (!isCharLeadOrSupport) {
+    return { targets: baseTargets, unlockedTargets: [] };
+  }
+
+  const enh =
+    enhancementOverride !== undefined
+      ? enhancementOverride
+      : 'enhancement' in unitOrDatasheet
+      ? unitOrDatasheet.enhancement
+      : undefined;
+
+  const addedFromEnh = getEnhancementAddedKeywords(enh).map((k) => k.toLowerCase());
+  const unlockedTargets: string[] = [];
+
+  if (addedFromEnh.includes('destroyer cult')) {
+    const existingUpper = new Set(baseTargets.map((t) => t.toUpperCase()));
+    for (const dt of DESTROYER_CULT_BODYGUARD_TARGETS) {
+      if (!existingUpper.has(dt)) {
+        existingUpper.add(dt);
+        unlockedTargets.push(dt);
+      }
+    }
+  }
+
+  return {
+    targets: [...baseTargets, ...unlockedTargets],
+    unlockedTargets
+  };
+}
+
+export function matchesBodyguardTarget(
+  bodyguardUnit: Datasheet | SelectedUnit,
+  target: string
+): boolean {
+  const d: Datasheet = 'datasheet' in bodyguardUnit ? bodyguardUnit.datasheet : bodyguardUnit;
+  const uName = (bodyguardUnit.name || d.name || '').toUpperCase();
+  const tName = target.toUpperCase();
+  if (uName === tName || uName.includes(tName) || tName.includes(uName)) return true;
+  const isBattleline = 'isBattleline' in bodyguardUnit ? bodyguardUnit.isBattleline : d.isBattleline;
+  if (tName.includes('BATTLELINE') && isBattleline) return true;
+  return false;
+}
+
+export function canUnitLeadBodyguard(
+  characterUnit: SelectedUnit,
+  bodyguardUnit: SelectedUnit
+): boolean {
+  if (!characterUnit || !bodyguardUnit) return false;
+  if ((!characterUnit.isLeader && !characterUnit.isSupport) || characterUnit.instanceId === bodyguardUnit.instanceId) {
+    return false;
+  }
+  const { targets } = getEffectiveCanLead(characterUnit);
+  return targets.some((t) => matchesBodyguardTarget(bodyguardUnit, t));
 }
 
 export interface SelectedUnit {

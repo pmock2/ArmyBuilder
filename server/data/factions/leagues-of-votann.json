@@ -864,6 +864,9 @@
       "requiredKeywords": [
         "Sagitaur"
       ],
+      "addedKeywords": [
+        "Mobile"
+      ],
       "profiles": [
         {
           "name": "Optimised Attack Lines",

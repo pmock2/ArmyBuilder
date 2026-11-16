@@ -766,6 +766,9 @@
       "groupId": "185a-a9e3-9df5-c62f",
       "detachment": "Throne-bonded Outriders",
       "maxPerRoster": 3,
+      "addedKeywords": [
+        "Mobile"
+      ],
       "profiles": [
         {
           "name": "Gyro-optimised Actuators",
