@@ -783,6 +783,8 @@ export const App: React.FC = () => {
       <ListSettingsModal
         isOpen={isSettingsModalOpen}
         onClose={() => setIsSettingsModalOpen(false)}
+        battleSize={activeRoster.battleSize}
+        onUpdateBattleSize={handleUpdateBattleSize}
         includeLegends={activeRoster.includeLegends || false}
         onToggleLegends={handleToggleLegends}
         rosterName={activeRoster.name}

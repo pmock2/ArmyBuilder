@@ -228,11 +228,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
             <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               5. Battle Size
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {[
                 { id: 'incursion', name: 'Incursion', points: 1000, dp: 2, desc: 'Quick patrol & skirmish' },
-                { id: 'strike-force', name: 'Strike Force', points: 2000, dp: 3, desc: 'Standard tournament size' },
-                { id: 'onslaught', name: 'Onslaught', points: 3000, dp: 4, desc: 'Massive battle array' }
+                { id: 'strike-force', name: 'Strike Force', points: 2000, dp: 3, desc: 'Standard tournament size' }
               ].map((bs) => {
                 const isSelected = battleSize === bs.id;
                 return (
