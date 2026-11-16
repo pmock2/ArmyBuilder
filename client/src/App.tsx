@@ -7,6 +7,7 @@ import { LandingPage } from './components/LandingPage';
 import CreateArmyModal from './components/CreateArmyModal';
 import { Navbar } from './components/Navbar';
 import { DetachmentSelector } from './components/DetachmentSelector';
+import { getUnlockedDispositions } from './components/ForceDispositionSelector';
 import { UnitSection } from './components/UnitSection';
 import { UnitBrowserModal } from './components/UnitBrowserModal';
 import { ValidationDrawer } from './components/ValidationDrawer';
@@ -282,10 +283,8 @@ export const App: React.FC = () => {
     // Check if current force disposition is still supported by the new detachments
     let newDisposition = activeRoster.forceDisposition;
     if (newDisposition) {
-      const stillSupported = newDetachments.some(d =>
-        d.tags?.some(t => t.toUpperCase() === newDisposition!.toUpperCase())
-      );
-      if (!stillSupported) {
+      const unlocked = getUnlockedDispositions(newDetachments);
+      if (!unlocked.some((d) => d.meta.key === newDisposition)) {
         newDisposition = null;
       }
     }

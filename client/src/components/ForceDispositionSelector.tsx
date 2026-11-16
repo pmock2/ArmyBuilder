@@ -8,7 +8,7 @@ interface ForceDispositionSelectorProps {
   onSelectDisposition: (disposition: string | null) => void;
 }
 
-interface DispositionMeta {
+export interface DispositionMeta {
   key: string;
   tag: string;
   altTags?: string[];
@@ -16,55 +16,59 @@ interface DispositionMeta {
   icon: React.ReactNode;
 }
 
-const KNOWN_DISPOSITIONS: DispositionMeta[] = [
+export interface UnlockedDisposition {
+  meta: DispositionMeta;
+  sourceDetachments: string[];
+}
+
+export const KNOWN_DISPOSITIONS: DispositionMeta[] = [
   {
     key: 'Priority Assets',
     tag: 'PRIORITY ASSETS',
     name: 'Priority Assets',
-    icon: <Target className="w-5 h-5 text-sky-400" />
+    icon: <Target className="w-4 h-4 text-sky-400" />
   },
   {
     key: 'Purge the Foe',
     tag: 'PURGE THE FOE',
     name: 'Purge the Foe',
-    icon: <Crosshair className="w-5 h-5 text-red-400" />
+    icon: <Crosshair className="w-4 h-4 text-red-400" />
   },
   {
     key: 'Take and Hold',
     tag: 'TAKE AND HOLD',
     name: 'Take and Hold',
-    icon: <Shield className="w-5 h-5 text-blue-400" />
+    icon: <Shield className="w-4 h-4 text-blue-400" />
   },
   {
     key: 'Reconnaissance',
     tag: 'RECONNAISSANCE',
     altTags: ['RECON'],
     name: 'Reconnaissance',
-    icon: <Zap className="w-5 h-5 text-emerald-400" />
+    icon: <Zap className="w-4 h-4 text-emerald-400" />
   },
   {
     key: 'Disruption',
     tag: 'DISRUPTION',
     name: 'Disruption',
-    icon: <Sparkles className="w-5 h-5 text-purple-400" />
+    icon: <Sparkles className="w-4 h-4 text-purple-400" />
   }
 ];
 
-export const ForceDispositionSelector: React.FC<ForceDispositionSelectorProps> = ({
-  selectedDetachments,
-  currentDisposition,
-  onSelectDisposition
-}) => {
-  // Extract all disposition tags present across all selected detachments
+export function getUnlockedDispositions(
+  selectedDetachments: SelectedDetachment[]
+): UnlockedDisposition[] {
   const unlockedMap = new Map<string, string[]>();
 
   for (const det of selectedDetachments) {
     const tags = det.tags || [];
     for (const disp of KNOWN_DISPOSITIONS) {
-      if (tags.some(t => {
-        const up = t.toUpperCase();
-        return up === disp.tag || (disp.altTags && disp.altTags.includes(up));
-      })) {
+      if (
+        tags.some((t) => {
+          const up = t.toUpperCase();
+          return up === disp.tag || (disp.altTags && disp.altTags.includes(up));
+        })
+      ) {
         const existing = unlockedMap.get(disp.key) || [];
         if (!existing.includes(det.name)) {
           existing.push(det.name);
@@ -74,7 +78,18 @@ export const ForceDispositionSelector: React.FC<ForceDispositionSelectorProps> =
     }
   }
 
-  const unlockedDispositions = KNOWN_DISPOSITIONS.filter(d => unlockedMap.has(d.key));
+  return KNOWN_DISPOSITIONS.filter((d) => unlockedMap.has(d.key)).map((meta) => ({
+    meta,
+    sourceDetachments: unlockedMap.get(meta.key) || []
+  }));
+}
+
+export const ForceDispositionSelector: React.FC<ForceDispositionSelectorProps> = ({
+  selectedDetachments,
+  currentDisposition,
+  onSelectDisposition
+}) => {
+  const unlockedDispositions = getUnlockedDispositions(selectedDetachments);
 
   return (
     <div className="bg-slate-850/80 border border-slate-750 rounded-2xl p-4 sm:p-5 mb-5 shadow-sm">
@@ -127,9 +142,8 @@ export const ForceDispositionSelector: React.FC<ForceDispositionSelectorProps> =
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-          {unlockedDispositions.map((disp) => {
+          {unlockedDispositions.map(({ meta: disp, sourceDetachments }) => {
             const isSelected = currentDisposition === disp.key;
-            const sourceDetachments = unlockedMap.get(disp.key) || [];
 
             return (
               <div

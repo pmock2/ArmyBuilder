@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Plus, Eye, Trash2 } from 'lucide-react';
+import { Plus, Eye, Trash2, Compass, Check } from 'lucide-react';
 import { SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
 import { DetachmentBrowserModal } from './DetachmentBrowserModal';
 import { DetachmentModal } from './DetachmentModal';
 import { StratagemsModal } from './StratagemsModal';
+import { getUnlockedDispositions } from './ForceDispositionSelector';
 import { useBackNavigation } from '../utils/backNavigation';
 
 interface DetachmentSelectorProps {
@@ -30,8 +31,10 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   subFactionName,
   subFactionId,
   rosterUnits = [],
+  currentDisposition,
   isPlayMode = false,
-  onToggleDetachment
+  onToggleDetachment,
+  onSelectDisposition
 }) => {
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [inspectDetachment, setInspectDetachment] = useState<SelectedDetachment | null>(null);
@@ -42,6 +45,7 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   useBackNavigation(isStratagemsOpen, () => setIsStratagemsOpen(false));
 
   const hasDetachments = selectedDetachments.length > 0;
+  const unlockedDispositions = getUnlockedDispositions(selectedDetachments);
 
   return (
     <div className="space-y-3 mb-3">
@@ -126,6 +130,88 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Force Disposition Selector (Sourced from Chosen Detachments) */}
+        {hasDetachments && (
+          <div className="mt-3 pt-3 border-t border-theme-border-subtle space-y-2">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2 min-w-0">
+                <Compass className="w-3.5 h-3.5 text-theme-accent-soft shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider text-theme-text-secondary">
+                  Force Disposition
+                </span>
+                {currentDisposition ? (
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-theme-accent/20 border border-theme-accent/50 text-theme-accent-soft font-semibold font-mono truncate">
+                    {currentDisposition}
+                  </span>
+                ) : (
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-theme-surface border border-theme-border-subtle text-theme-text-muted font-mono">
+                    None selected
+                  </span>
+                )}
+              </div>
+
+              {!isPlayMode && currentDisposition && onSelectDisposition && (
+                <button
+                  type="button"
+                  onClick={() => onSelectDisposition(null)}
+                  className="text-[11px] font-semibold text-theme-text-muted hover:text-theme-accent-soft underline transition-colors"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            {unlockedDispositions.length === 0 ? (
+              <p className="text-xs text-theme-text-muted italic">
+                Selected detachments do not grant any Force Dispositions.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {unlockedDispositions.map(({ meta: disp, sourceDetachments }) => {
+                  const isSelected = currentDisposition === disp.key;
+                  return (
+                    <button
+                      key={disp.key}
+                      type="button"
+                      disabled={isPlayMode || !onSelectDisposition}
+                      onClick={() => onSelectDisposition?.(isSelected ? null : disp.key)}
+                      className={`text-left px-3 py-2 rounded-xl border transition-all flex items-center justify-between gap-2.5 ${
+                        isSelected
+                          ? 'bg-theme-accent/20 border-theme-accent text-theme-text shadow-sm'
+                          : 'bg-theme-card/80 border-theme-border-subtle hover:border-theme-accent/60 text-theme-text-secondary hover:text-theme-text'
+                      } ${isPlayMode ? 'cursor-default opacity-90' : 'cursor-pointer active:scale-[0.99]'}`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="p-1.5 rounded-lg bg-theme-surface border border-theme-border-subtle shrink-0">
+                          {disp.icon}
+                        </span>
+                        <div className="min-w-0">
+                          <span className="font-warhammer text-xs sm:text-sm font-bold text-theme-text block truncate">
+                            {disp.name}
+                          </span>
+                          <span className="text-[10px] text-theme-text-muted block truncate">
+                            Via {sourceDetachments.join(', ')}
+                          </span>
+                        </div>
+                      </div>
+
+                      <span
+                        className={`w-5 h-5 rounded-md flex items-center justify-center border shrink-0 transition-colors ${
+                          isSelected
+                            ? 'bg-theme-accent border-theme-accent text-white'
+                            : 'bg-theme-surface border-theme-border-subtle text-transparent'
+                        }`}
+                      >
+                        <Check className={`w-3.5 h-3.5 stroke-[3] ${isSelected ? 'block' : 'hidden'}`} />
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </section>
