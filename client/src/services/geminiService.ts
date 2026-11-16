@@ -34,8 +34,8 @@ export function hasApiKey(): boolean {
   return Boolean(getStoredApiKey());
 }
 
-const PRIMARY_MODEL = 'gemini-2.5-flash';
-const FALLBACK_MODEL = 'gemini-1.5-flash';
+const PRIMARY_MODEL = 'gemini-4-hydrogen';
+const FALLBACK_MODEL = 'gemini-2.5-flash';
 
 export async function validateApiKey(apiKey: string): Promise<{ valid: boolean; error?: string }> {
   const cleanKey = apiKey.trim();
