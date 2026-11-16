@@ -54,57 +54,57 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   const unlockedDispositions = getUnlockedDispositions(selectedDetachments);
 
   return (
-    <div className="space-y-3 mb-3">
-      {/* 0. Army Ability Card (Above Detachments) */}
+    <div className="space-y-2 mb-4 pb-3 border-b border-theme-border-subtle/50">
+      {/* 0. Army Ability Strip (Above Detachments — Amber Command Ledger Style) */}
       {armyRules.length > 0 && (
-        <section className="panel-theme-meta">
-          <div className="section-theme-meta-header mb-2.5">
-            <h3 className="section-theme-meta-title flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-theme-text-muted" />
+        <section
+          onClick={() => setIsArmyRuleOpen(true)}
+          className="ledger-theme-panel hover:bg-amber-500/[0.1] hover:border-amber-400/50 px-3.5 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.998] group"
+        >
+          <div className="flex items-center gap-2.5 min-w-0 flex-wrap">
+            <span className="ledger-theme-label flex items-center gap-1.5 shrink-0">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>Army Ability</span>
-            </h3>
+            </span>
+            <span className="text-amber-500/40 hidden sm:inline">•</span>
+            <h4 className="font-warhammer text-xs sm:text-sm font-bold text-theme-text group-hover:text-amber-300 transition-colors tracking-wide truncate">
+              {armyRules.map((r) => r.name).join(' • ')}
+            </h4>
           </div>
 
-          <div
-            onClick={() => setIsArmyRuleOpen(true)}
-            className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsArmyRuleOpen(true);
+            }}
+            className="min-h-[30px] min-w-[30px] rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center justify-center flex-shrink-0 transition-colors"
+            title="View Army Ability"
+            aria-label="View Army Ability"
           >
-            <div className="min-w-0 flex-1">
-              <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
-                {armyRules.map((r) => r.name).join(' • ')}
-              </h4>
-            </div>
-
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsArmyRuleOpen(true);
-              }}
-              className="btn-theme-icon min-h-[32px] min-w-[32px] rounded-lg flex-shrink-0"
-              title="View Army Ability"
-              aria-label="View Army Ability"
-            >
-              <Eye className="w-3.5 h-3.5 stroke-[2]" />
-            </button>
-          </div>
+            <Eye className="w-3.5 h-3.5 stroke-[2]" />
+          </button>
         </section>
       )}
 
-      {/* 1. Detachments Section */}
+      {/* 1. Detachments Ledger Section */}
       <section
         className={
           hasDetachments
-            ? 'panel-theme-meta'
-            : 'bg-theme-surface/35 border border-dashed border-theme-border-subtle/60 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-theme-surface/55'
+            ? 'ledger-theme-panel px-3.5 py-2.5 space-y-2'
+            : 'rounded-xl bg-amber-500/[0.04] border border-dashed border-amber-500/25 px-3.5 py-2 transition-colors hover:bg-amber-500/[0.08]'
         }
       >
-        <div className="section-theme-meta-header">
+        <div
+          className={`flex items-center justify-between gap-2 ${
+            hasDetachments ? 'pb-2 border-b border-amber-500/20' : ''
+          }`}
+        >
           <div className="flex items-center gap-2 min-w-0">
-            <h3 className="section-theme-meta-title truncate">
+            <h3 className="ledger-theme-label truncate">
               Detachments
             </h3>
-            <span className="text-xs font-mono font-semibold text-theme-text-muted">
+            <span className="text-xs font-mono font-semibold text-amber-400/75">
               ({selectedDetachments.length})
             </span>
             <span className="text-xs font-mono text-theme-text-secondary font-semibold">
@@ -116,59 +116,57 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
             <button
               type="button"
               onClick={() => setIsBrowserOpen(true)}
-              className="btn-theme-secondary min-h-[28px] px-2.5 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0"
+              className="min-h-[28px] px-2.5 py-1 rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0 transition-colors"
               title="Add Detachment"
               aria-label="Add Detachment"
             >
-              <Plus className="w-3.5 h-3.5 text-theme-text-secondary stroke-[2.5]" />
+              <Plus className="w-3.5 h-3.5 text-amber-400 stroke-[2.5]" />
               <span>Add</span>
             </button>
           )}
         </div>
 
-        {/* Chosen Detachment Cards (Stacked in line breaks) */}
+        {/* Chosen Detachment Ledger Rows (Flat hairline rows, no nested unit card boxes) */}
         {hasDetachments && (
-          <div className="space-y-2 mt-2.5">
+          <div className="divide-y divide-amber-500/15">
             {selectedDetachments.map((det) => (
               <div
                 key={det.id || det.name}
                 onClick={() => setInspectDetachment(det)}
-                className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex flex-col gap-2 active:scale-[0.995] group"
+                className="py-1.5 first:pt-0.5 last:pb-0.5 cursor-pointer flex items-center justify-between gap-3 group"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
-                      {det.name}
-                    </h4>
-                  </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-warhammer text-xs sm:text-sm font-bold text-theme-text group-hover:text-amber-300 transition-colors tracking-wide truncate">
+                    {det.name}
+                  </h4>
+                </div>
 
-                  <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                    <span className="font-mono text-xs sm:text-sm font-semibold text-theme-text-secondary whitespace-nowrap mr-0.5">
-                      {det.dpCost} <span className="text-[11px] font-normal text-theme-text-muted">DP</span>
-                    </span>
+                <div className="flex items-center gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                  <span className="font-mono text-xs font-semibold text-amber-200/85 whitespace-nowrap">
+                    {det.dpCost} <span className="text-[10px] font-normal text-theme-text-muted">DP</span>
+                  </span>
 
+                  <button
+                    type="button"
+                    onClick={() => setInspectDetachment(det)}
+                    className="min-h-[30px] min-w-[30px] rounded-lg border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center justify-center transition-colors"
+                    title="Inspect Detachment Rules"
+                    aria-label={`Inspect ${det.name} rules`}
+                  >
+                    <Eye className="w-3.5 h-3.5 stroke-[2]" />
+                  </button>
+
+                  {!isPlayMode && (
                     <button
                       type="button"
-                      onClick={() => setInspectDetachment(det)}
-                      className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-lg"
-                      title="Inspect Detachment Rules"
-                      aria-label={`Inspect ${det.name} rules`}
+                      onClick={() => onToggleDetachment(det)}
+                      className="btn-theme-danger-icon min-h-[30px] min-w-[30px] rounded-lg"
+                      title="Remove Detachment"
+                      aria-label={`Remove ${det.name}`}
                     >
-                      <Eye className="w-3.5 h-3.5 stroke-[2]" />
+                      <Trash2 className="w-3.5 h-3.5 stroke-[2]" />
                     </button>
-
-                    {!isPlayMode && (
-                      <button
-                        type="button"
-                        onClick={() => onToggleDetachment(det)}
-                        className="btn-theme-danger-icon min-h-[34px] min-w-[34px] rounded-lg"
-                        title="Remove Detachment"
-                        aria-label={`Remove ${det.name}`}
-                      >
-                        <Trash2 className="w-3.5 h-3.5 stroke-[2]" />
-                      </button>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -178,15 +176,15 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
         {/* Force Disposition Selector (Compact in Play Mode, Interactive Grid in Build Mode) */}
         {hasDetachments && (
           isPlayMode ? (
-            <div className="mt-2.5 pt-2.5 border-t border-theme-border-subtle flex items-center justify-between gap-2 flex-wrap">
+            <div className="mt-2 pt-2 border-t border-amber-500/20 flex items-center justify-between gap-2 flex-wrap">
               <div className="flex items-center gap-1.5 min-w-0">
-                <Compass className="w-3.5 h-3.5 text-theme-accent-soft shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-wider text-theme-text-secondary">
+                <Compass className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="ledger-theme-label">
                   Force Disposition
                 </span>
               </div>
               {currentDisposition ? (
-                <span className="inline-flex items-center gap-1.5 text-xs px-2.5 py-0.5 rounded-full bg-theme-accent/20 border border-theme-accent/50 text-theme-accent-soft font-semibold">
+                <span className="inline-flex items-center gap-1.5 text-xs px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-200 font-semibold">
                   {unlockedDispositions.find((d) => d.meta.key === currentDisposition)?.meta.icon}
                   <span>{currentDisposition}</span>
                 </span>
@@ -197,11 +195,11 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
               )}
             </div>
           ) : (
-            <div className="mt-3 pt-3 border-t border-theme-border-subtle space-y-2">
+            <div className="mt-2.5 pt-2.5 border-t border-amber-500/20 space-y-2">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2 min-w-0">
-                  <Compass className="w-3.5 h-3.5 text-theme-accent-soft shrink-0" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-theme-text-secondary">
+                  <Compass className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span className="ledger-theme-label">
                     Force Disposition
                   </span>
                   {currentDisposition ? (
@@ -279,40 +277,33 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
         )}
       </section>
 
-      {/* 2. Stratagems Section (Simple Card with Eye Icon underneath Detachments) */}
-      <section className="panel-theme-meta">
-        <div className="section-theme-meta-header mb-2.5">
-          <h3 className="section-theme-meta-title">
+      {/* 2. Stratagems Strip (Underneath Detachments — Amber Command Ledger Style) */}
+      <section
+        onClick={() => setIsStratagemsOpen(true)}
+        className="ledger-theme-panel hover:bg-amber-500/[0.1] hover:border-amber-400/50 px-3.5 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.998] group"
+      >
+        <div className="flex items-center gap-2.5 min-w-0 flex-wrap">
+          <span className="ledger-theme-label shrink-0">
             Stratagems
-          </h3>
+          </span>
+          <span className="text-amber-500/40 hidden sm:inline">•</span>
+          <span className="text-xs sm:text-sm font-medium text-theme-text-secondary group-hover:text-amber-300 transition-colors truncate">
+            Detachment &amp; Core Stratagems
+          </span>
         </div>
 
-        <div
-          onClick={() => setIsStratagemsOpen(true)}
-          className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsStratagemsOpen(true);
+          }}
+          className="min-h-[30px] min-w-[30px] rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center justify-center flex-shrink-0 transition-colors"
+          title="View Stratagems"
+          aria-label="View Stratagems"
         >
-          <div className="min-w-0 flex-1">
-            <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
-              Stratagems
-            </h4>
-            <p className="text-[11px] text-theme-text-muted font-medium mt-0.5 truncate">
-              Detachment &amp; Core Stratagems
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsStratagemsOpen(true);
-            }}
-            className="btn-theme-icon min-h-[32px] min-w-[32px] rounded-lg flex-shrink-0"
-            title="View Stratagems"
-            aria-label="View Stratagems"
-          >
-            <Eye className="w-3.5 h-3.5 stroke-[2]" />
-          </button>
-        </div>
+          <Eye className="w-3.5 h-3.5 stroke-[2]" />
+        </button>
       </section>
 
       {/* Detachment Browser Modal */}
