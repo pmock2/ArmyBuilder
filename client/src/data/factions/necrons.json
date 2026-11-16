@@ -600,7 +600,7 @@
           "description": "NECRONS model only. The bearer has the Feel No Pain 4+ ability."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 4+",
           "type": "ability",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
@@ -1626,7 +1626,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 4+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -1736,7 +1736,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 4+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -1860,7 +1860,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 4+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -2491,7 +2491,7 @@
                   "description": "The bearer has the Feel No Pain 5+ ability."
                 },
                 {
-                  "name": "Feel No Pain",
+                  "name": "Feel No Pain 5+",
                   "type": "ability",
                   "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
                 }
@@ -2912,7 +2912,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -3590,7 +3590,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -4053,7 +4053,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -4266,7 +4266,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -4439,7 +4439,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 4+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -5125,7 +5125,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -5306,11 +5306,11 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 8\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         }
       ],
@@ -5524,7 +5524,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -5540,7 +5540,7 @@
           "description": "This model cannot be your WARLORD."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -5675,7 +5675,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -5687,7 +5687,7 @@
           "description": "This model cannot be your WARLORD."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -5842,7 +5842,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -5854,7 +5854,7 @@
           "description": "This model cannot be your WARLORD."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -5991,7 +5991,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -6007,7 +6007,7 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -6130,7 +6130,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -6397,7 +6397,7 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
@@ -6568,7 +6568,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 9\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         },
         {
@@ -7095,7 +7095,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -7404,7 +7404,7 @@
           "description": "In your Shooting phase, each time you select a target for this model’s twin tesla destructor, roll one D6 for the target unit and one D6 for every other enemy unit within 3\" of the target unit. On a 5+, the unit being rolled for is struck by arcing energies; after resolving all of this model’s attacks against the target unit, each unit struck by arcing energies suffers D3 mortal wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -7584,7 +7584,7 @@
           "description": "In your Movement phase, if this model Remains Stationary, until the end of the turn, its doomsday cannon has the [DEVASTATING WOUNDS] ability."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -7711,7 +7711,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -7827,7 +7827,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -8039,7 +8039,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -8151,7 +8151,7 @@
           "description": "Once per turn, just after an enemy unit finishes making its attacks, if one or more friendly NECRON WARRIORS units within 3\" of this model lost one or more wounds as a result of those attacks, this model can use this ability. If it does, select one of those NECRON WARRIORS units; that unit’s Reanimation Protocols activate. The same NECRON WARRIORS unit cannot be selected for this ability more than once per turn."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -8268,7 +8268,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -8397,7 +8397,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -8514,7 +8514,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -8634,7 +8634,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6+3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -8774,7 +8774,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -8999,7 +8999,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6+3 (Szarekh model only)",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -9600,7 +9600,7 @@
           "description": "Each time an enemy unit selects this model as the target of a charge, subtract 2 from the Charge roll (this is not cumulative with any other reductions to that Charge roll)."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -9845,7 +9845,7 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6+2",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -10035,7 +10035,7 @@
           "description": "While this model has 1-7 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6+2",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -10161,7 +10161,7 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -10347,7 +10347,7 @@
           "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -10584,7 +10584,7 @@
           "description": "While an enemy unit (excluding ^^**Monsters^^** and ^^**Vehicles^^**) is within 3\" of this unit, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 8\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         },
         {
@@ -13659,11 +13659,11 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 8\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         },
         {
@@ -14326,7 +14326,7 @@
           "description": "While an enemy unit is only within Engagement Range of one or more ^^**Fortifications**^^ from your army:\n- That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n- Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 3D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -14649,7 +14649,7 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -14762,11 +14762,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -15023,11 +15023,11 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -15332,11 +15332,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         }
       ],
@@ -15490,7 +15490,7 @@
           "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -15614,11 +15614,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -15757,11 +15757,11 @@
           "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -15985,7 +15985,7 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -16419,7 +16419,7 @@
           "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -16521,7 +16521,7 @@
           "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -16744,7 +16744,7 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -16906,7 +16906,7 @@
           "description": "While an enemy unit is only within Engagement Range of one or more ^^**Fortifications**^^ from your army:\n- That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n- Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -17012,11 +17012,11 @@
           "description": "While this model has 1-10 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -17171,7 +17171,7 @@
           "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 6",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -17183,7 +17183,7 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -17542,11 +17542,11 @@
           "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 30",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 3D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -17885,11 +17885,11 @@
           "description": "You can only include this FORTIFICATION in your army in games of Onslaught size or greater."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 3D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 45",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {

@@ -809,7 +809,7 @@
           "description": "**ORKS PSYKER** model only. This model:\n- Has **psyker level 2**.\n- Has **Deadly Demise D6**.\n- Can re-roll **psychic rolls**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "type": "ability",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
@@ -1215,7 +1215,7 @@
           "description": "In your Command phase, select one Throttlerokkit Shokka Engine ability. This unit has that ability until the start of your next Command phase."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -1836,11 +1836,11 @@
           "description": "When an attack targets a unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 11",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -1964,11 +1964,11 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -2894,7 +2894,7 @@
           "description": "At the end of your opponent’s Fight phase, you can select one **visible** enemy unit (excluding **Lone Operative** and **MONSTER/VEHICLE** units) within 36\" of this unit, and roll one D6 for that units. On a 2+:\n- That enemy unit suffers D3 **mortal wounds**.\n- That enemy unit cannot be **hidden** until the end of your next turn.\n- Ranged attacks that target that enemy unit have **[IGNORES COVER]** until the end of your next turn."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -2902,7 +2902,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -3040,7 +3040,7 @@
           "description": "In your Shooting phase, this unit's ranged attacks that target a unit (excluding **FLY** units) have +1 to **hit rolls**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -3048,7 +3048,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -3197,7 +3197,7 @@
           "description": "Attacks that target this unit have -1 **D**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -3561,7 +3561,7 @@
           "description": "This model can be attached to the following unit:\n- **WARBIKERS**\n"
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -4176,7 +4176,7 @@
           "description": "This unit's melee attacks can re-roll **hit rolls** of 1."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 7",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -4192,7 +4192,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -4459,7 +4459,7 @@
           "description": "This unit's Butcha Boyz weapon has +2 **A** for each model embarked within this unit (to a maximum of +22 **A**)."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -4467,7 +4467,7 @@
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 11",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -4475,7 +4475,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -4769,7 +4769,7 @@
           "description": "This model has the **psychic abilities** listed in the Psychic Abilities section."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -4785,7 +4785,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -4926,7 +4926,7 @@
           "description": "This unit's attacks that target a unit that has no models with a **T** of 7+ have +1 to **hit rolls**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -6572,7 +6572,7 @@
           "description": "In your Shooting phase, this unit's ranged attacks can re-roll **hit rolls** of 1."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 7",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -6580,7 +6580,7 @@
           "description": "Each time a unit with this ability makes a **normal**, **advance** or **fall-back move**: \n- Models in that unit can move through models (including **MONSTER/VEHICLE** models, but excluding **TITANIC** models) and can move horizontally through sections of **terrain features** that are 4\" or less in height. \n- Before moving that unit, you can select for all models in that unit to have the **MOBILE** keyword until that move ends. If you do, when that move ends, roll one D6: on a 1, that unit is battle-shocked. \n***Designer’s Note:** Gaining the **MOBILE** keyword for the duration of a move will enable models in that unit to move horizontally through **dense terrain features** (13.06).*\n"
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -7445,7 +7445,7 @@
           "description": "In your Shooting phase, when this unit has shot, select one enemy unit (excluding **MONSTER/VEHICLE** units) hit by this unit's Squig Launchas weapons. That enemy unit is **covered in Squigs** until the start of your next turn:\n- While a unit is **covered in Squigs**, that unit's attacks have -1 to **hit rolls**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -7779,7 +7779,7 @@
           "description": "In your Movement phase, when a unit embarked within this unit is selected to make a **disembark move**, that unit is **riled up** until the start of your next turn."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 10",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -7791,7 +7791,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -8486,11 +8486,11 @@
           "description": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this model, units embarked within this model can make a **disembark move** using the **rapid disembark mode**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 12",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -9333,7 +9333,7 @@
           "description": "In your Shooting phase, this unit's ranged attacks that target a **MONSTER/VEHICLE** unit have +1 to **wound rolls**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -9341,7 +9341,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -9558,7 +9558,7 @@
           "description": "This model can be attached to the following unit:\n- **BEAST SNAGGA BOYZ**\n\n- **BOYZ**\n"
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -9767,7 +9767,7 @@
           "description": "While an enemy unit is **engaged** with only **FORTIFICATION** units:\n- That enemy unit can be selected as a target of ranged attacks.\n- When shooting that enemy unit, those ranged attacks have -1 to **hit rolls** (excluding **[CLOSE-QUARTERS]** attacks).\n- When that enemy unit is selected to make a **fall-back move**, if that enemy unit is only **engaged** with **FORTIFICATION** units, and that enemy unit is not **battle-shocked**, **hazard rolls** made for that enemy unit are automatically passed."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -9919,7 +9919,7 @@
           "description": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can make a **normal move** of up to 6\"."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -10200,7 +10200,7 @@
           "description": "Attacks that target this unit have -1 **AP**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -10208,7 +10208,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -10452,11 +10452,11 @@
           "description": "This unit's attacks can ignore modifiers to:\n- BS/WS\n- Hit rolls"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 11",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -10468,7 +10468,7 @@
           "description": "Each time a unit with this ability makes a **normal**, **advance** or **fall-back move**: \n- Models in that unit can move through models (including **MONSTER/VEHICLE** models, but excluding **TITANIC** models) and can move horizontally through sections of **terrain features** that are 4\" or less in height. \n- Before moving that unit, you can select for all models in that unit to have the **MOBILE** keyword until that move ends. If you do, when that move ends, roll one D6: on a 1, that unit is battle-shocked. \n***Designer’s Note:** Gaining the **MOBILE** keyword for the duration of a move will enable models in that unit to move horizontally through **dense terrain features** (13.06).*\n"
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 10",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         }
       ],
@@ -10735,7 +10735,7 @@
           "description": "When an attack targets a friendly **ORKS** unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -10743,11 +10743,11 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 12",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         }
       ],
@@ -11069,11 +11069,11 @@
           "description": "When this unit ends a **charge move**, you can select one enemy unit **engaged**with this unit. If you do, roll one D6:\n- On a 2-5, that enemy unit suffers D3 **mortal wounds**.\n- On a 6, that enemy unit suffers 3 **mortal wounds**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 4",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
@@ -11081,7 +11081,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 12",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         }
       ],
@@ -11629,7 +11629,7 @@
           "description": "In your Movement phase, you can select one **visible** enemy unit (excluding **MONSTER/VEHICLE** units) within 6\" of this unit:\n- That enemy unit cannot be targeted with the **Fire Overwatch stratagem** until the end of the turn."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -12090,11 +12090,11 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -12368,11 +12368,11 @@
           "description": "Unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within 12\" of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within 12\" of this unit. \nIf this ability takes the form **Lone Operative X\"**, unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within **X\"** of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within **X\"** of this unit."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
-          "name": "Scouts",
+          "name": "Scouts D6+4\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         }
       ],
@@ -13003,11 +13003,11 @@
           "description": "Ranged attacks that target this unit have -1 **D**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 11",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -13015,7 +13015,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         }
       ],
@@ -13542,7 +13542,7 @@
           "description": "Unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within 12\" of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within 12\" of this unit. \nIf this ability takes the form **Lone Operative X\"**, unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within **X\"** of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within **X\"** of this unit."
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 6\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         },
         {
@@ -13550,7 +13550,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -13659,7 +13659,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -13667,7 +13667,7 @@
           "description": "Unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within 12\" of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within 12\" of this unit. \nIf this ability takes the form **Lone Operative X\"**, unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within **X\"** of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within **X\"** of this unit."
         },
         {
-          "name": "Scouts",
+          "name": "Scouts 6\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         }
       ],
@@ -15579,7 +15579,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -18179,7 +18179,7 @@
           "description": "In your Shooting phase, if this unit's Blitzkannon weapon targets a unit (excluding **MONSTER/VEHICLE** units), that weapon has +6 **A**."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 1",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -18748,7 +18748,7 @@
           "description": "In your Shooting phase, this unit's ranged attacks can re-roll **hit rolls** of 1."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -18756,7 +18756,7 @@
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
         },
         {
-          "name": "Damaged",
+          "name": "Damaged 6",
           "description": "This ability always takes the form **Damaged X**. While a model's remaining wounds are equal to or less than **X**, that model is **damaged**:\n- While a model is **damaged**, that model's attacks have -1 to **hit rolls**."
         }
       ],
@@ -19185,7 +19185,7 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -19298,11 +19298,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -19559,11 +19559,11 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -19868,11 +19868,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         }
       ],
@@ -20026,7 +20026,7 @@
           "description": "While a friendly **^^Spindle Drones^^** unit is within 6\" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll."
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -20150,11 +20150,11 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         }
       ],
@@ -20293,11 +20293,11 @@
           "description": "Each time this FORTIFICATION suffers a mortal wound as the result of a failed Hazardous test, roll one D6: on a 4+, that wound is not lost."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 10",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -20521,7 +20521,7 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -20955,7 +20955,7 @@
           "description": "At the end of your Movement phase, if there is a friendly Aircraft model on top of this Fortification, that Aircraft regains up to D3 lost wounds"
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -21057,7 +21057,7 @@
           "description": "Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength"
         },
         {
-          "name": "Feel No Pain",
+          "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
@@ -21280,7 +21280,7 @@
           "description": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this FORTIFICATION, that model has the Benefit of Cover against that attack."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -21442,7 +21442,7 @@
           "description": "While an enemy unit is only within Engagement Range of one or more ^^**Fortifications**^^ from your army:\n- That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n- Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -21548,11 +21548,11 @@
           "description": "While this model has 1-10 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 15",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 2D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -21707,7 +21707,7 @@
           "description": "Each time an attack is allocated to this Fortification, subtract 1 from the Damage characteristic of that attack."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 6",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
@@ -21719,7 +21719,7 @@
           "description": "Friendly INFANTRY models can be set up or end any type of move on top of the roof section of this FORTIFICATION."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -22078,11 +22078,11 @@
           "description": "When this FORTIFICATION is set up, all parts of it must be set up in contact with another part."
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 30",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 3D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
@@ -22421,11 +22421,11 @@
           "description": "You can only include this FORTIFICATION in your army in games of Onslaught size or greater."
         },
         {
-          "name": "Deadly Demise",
+          "name": "Deadly Demise 3D6",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Firing Deck",
+          "name": "Firing Deck 45",
           "description": "This ability always takes the form **Firing Deck X**. In your Shooting phase, each time this **TRANSPORT** is **selected to shoot**, if one or more units are embarked within it, resolve the following sequence: \n1. Select up to **X** models embarked within this **TRANSPORT** (excluding models whose units have already been **selected to shoot** this phase). \n2. For each selected model, select one of its ranged weapons (excluding **[ONE SHOT]** weapons). \n3. Until this **TRANSPORT** has resolved all of its attacks, it has all of those selected weapons in addition to its other weapons. \n4. Until the end of the turn, units embarked within this **TRANSPORT** are not eligible to shoot. "
         },
         {

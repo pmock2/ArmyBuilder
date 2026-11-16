@@ -1,4 +1,5 @@
 const { shouldSkipWargearNode, isHiddenByAncestorModifiers, getWargearMinMax } = require('./modifiersParser');
+const { resolveInfoLinkName } = require('./catalogueLoader');
 
 function createWargearParser({
   allEntriesById,
@@ -135,8 +136,25 @@ function createWargearParser({
       }
       if (node.infoLinks) {
         for (const il of node.infoLinks) {
+          if (il.hidden) continue;
           if (il.targetId && allEntriesById.has(il.targetId)) {
-            walk(allEntriesById.get(il.targetId), wVisited, mult);
+            const target = allEntriesById.get(il.targetId);
+            if (!target || target.hidden) continue;
+            const resolvedName = resolveInfoLinkName(il, target);
+            if (!target.typeName && target.name && target.description !== undefined && !target.type) {
+              const key = `${resolvedName}|rule`;
+              if (!seen.has(key)) {
+                const created = {
+                  name: resolvedName,
+                  type: 'ability',
+                  description: target.description || ''
+                };
+                seen.set(key, created);
+                profiles.push(created);
+              }
+            } else {
+              walk(target, wVisited, mult);
+            }
           }
         }
       }

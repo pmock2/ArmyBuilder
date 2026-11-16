@@ -121,11 +121,12 @@ function loadCatalogues(dataDir) {
         if (il.targetId && allEntriesById.has(il.targetId)) {
           const target = allEntriesById.get(il.targetId);
           if (target && !target.hidden) {
+            const resolvedName = resolveInfoLinkName(il, target);
             if (target.typeName) {
-              profiles.push(target);
+              profiles.push(resolvedName !== target.name ? { ...target, name: resolvedName } : target);
             } else if (isUnitOrModel && target.name && target.description !== undefined) {
               profiles.push({
-                name: il.name || target.name,
+                name: resolvedName,
                 typeName: 'Abilities',
                 characteristics: [{ name: 'Description', $text: target.description || '' }]
               });
@@ -216,7 +217,58 @@ function loadCatalogues(dataDir) {
   };
 }
 
+function applyNameModifier(name, m) {
+  const val = m.value !== undefined && m.value !== null ? String(m.value) : '';
+  if (!val) return name;
+  if (m.type === 'set') return val;
+  if (m.type === 'append') {
+    const joiner = m.join !== undefined ? String(m.join).replace(/\u00a0/g, ' ') : ' ';
+    return `${name}${joiner}${val}`;
+  }
+  if (m.type === 'prepend') {
+    const joiner = m.join !== undefined ? String(m.join).replace(/\u00a0/g, ' ') : ' ';
+    return `${val}${joiner}${name}`;
+  }
+  return name;
+}
+
+function isDefaultFallbackNameCondition(m) {
+  if (!m.conditions || m.conditions.length === 0 || (m.conditionGroups && m.conditionGroups.length > 0)) {
+    return false;
+  }
+  return m.conditions.every(
+    (c) =>
+      (c.childId === 'any' && c.type === 'atLeast' && Number(c.value) >= 1) ||
+      (c.type === 'lessThan' && Number(c.value) <= 1) ||
+      (c.type === 'equalTo' && Number(c.value) === 0)
+  );
+}
+
+function resolveInfoLinkName(il, target) {
+  let name = (il && il.name) || (target && target.name) || '';
+  if (!name || !il || !Array.isArray(il.modifiers)) return name;
+
+  const nameMods = il.modifiers.filter((m) => m.field === 'name');
+  const unconditionalMods = nameMods.filter(
+    (m) => (!m.conditions || m.conditions.length === 0) && (!m.conditionGroups || m.conditionGroups.length === 0)
+  );
+
+  if (unconditionalMods.length > 0) {
+    for (const m of unconditionalMods) {
+      name = applyNameModifier(name, m);
+    }
+  } else {
+    const defaultMod = nameMods.find(isDefaultFallbackNameCondition);
+    if (defaultMod) {
+      name = applyNameModifier(name, defaultMod);
+    }
+  }
+
+  return name.replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 module.exports = {
-  loadCatalogues
+  loadCatalogues,
+  resolveInfoLinkName
 };
 
