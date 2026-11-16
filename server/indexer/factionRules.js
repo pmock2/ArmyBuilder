@@ -129,11 +129,69 @@ function isUnitAllowedForFaction(parsed, faction) {
   return true;
 }
 
+const KNOWN_ARMY_RULE_NAMES = new Set([
+  'Combat Doctrines',
+  'Oath of Moment',
+  'Battle Focus',
+  'Power from Pain',
+  'Reanimation Protocols',
+  'Waaagh!',
+  'For The Greater Good',
+  'Acts of Faith',
+  "Martial Ka'tah",
+  'Doctrina Imperatives',
+  'Assigned Agents',
+  'Voice Of Command',
+  'Gate of Infinity',
+  'Code Chivalric',
+  'Harbingers of Dread',
+  'The Shadow of Chaos',
+  'Dark Pacts',
+  "Nurgle's Gift (Aura)",
+  'Thrill Seekers',
+  'Cabal of Sorcerers',
+  'Blessings of Khorne',
+  'Prioritised Efficiency',
+  'Cult Ambush',
+  'Synapse',
+  'Shadow in the Warp',
+  'Towering Example'
+]);
+
+function extractFactionArmyRules(allowedCats, faction, allEntriesById) {
+  const found = new Map();
+
+  for (const c of allowedCats) {
+    if (faction.id === 'genestealer-cults' && (c.name || '').toLowerCase().includes('tyranids')) {
+      continue;
+    }
+    for (const r of [...(c.rules || []), ...(c.sharedRules || [])]) {
+      if (!r || r.hidden || !r.name || !r.description) continue;
+      if (faction.id === 'aeldari-craftworlds' && r.name === 'Power from Pain') continue;
+      if (faction.id === 'aeldari-drukhari' && r.name === 'Battle Focus') continue;
+      if (KNOWN_ARMY_RULE_NAMES.has(r.name) && !found.has(r.name)) {
+        found.set(r.name, r.description);
+      }
+    }
+    for (const il of c.infoLinks || []) {
+      if (!il || il.hidden || !il.targetId) continue;
+      const t = allEntriesById.get(il.targetId);
+      const name = il.name || (t && t.name);
+      if (t && !t.hidden && name && KNOWN_ARMY_RULE_NAMES.has(name) && !found.has(name)) {
+        found.set(name, t.description || '');
+      }
+    }
+  }
+
+  return [...found.entries()].map(([name, description]) => ({ name, description }));
+}
+
 module.exports = {
   CHAPTER_KEYWORDS,
   ALL_CHAPTER_KEYWORDS,
   buildPlayableFactions,
   isDetachmentCatalogueAllowed,
-  isUnitAllowedForFaction
+  isUnitAllowedForFaction,
+  extractFactionArmyRules
 };
 

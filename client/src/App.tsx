@@ -695,6 +695,7 @@ export const App: React.FC = () => {
           <>
             {/* 1. Detachments & Force Disposition (Unified Compact Header) */}
             <DetachmentSelector
+              armyRules={factionData.armyRules}
               availableDetachments={factionData.detachments}
               selectedDetachments={activeRoster.detachments}
               allEnhancements={factionData.enhancements}

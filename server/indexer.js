@@ -9,7 +9,8 @@ const { createDetachmentEnhancementParser } = require('./indexer/detachmentEnhan
 const {
   buildPlayableFactions,
   isDetachmentCatalogueAllowed,
-  isUnitAllowedForFaction
+  isUnitAllowedForFaction,
+  extractFactionArmyRules
 } = require('./indexer/factionRules');
 
 const dataDir = path.resolve(__dirname, '..', 'data_repo');
@@ -132,7 +133,8 @@ for (const faction of playableFactions) {
     }
   }
 
-  // Extract faction detachments & enhancements
+  // Extract faction army rules, detachments & enhancements
+  const armyRules = extractFactionArmyRules(allowedCats, faction, allEntriesById);
   const detachmentsMap = extractFactionDetachments(allowedCats, primaryCat);
   const enhancementsList = extractFactionEnhancements(allowedCats, detachmentsMap, primaryCat, parentCat);
 
@@ -152,6 +154,7 @@ for (const faction of playableFactions) {
       parentFaction: faction.parentFaction,
       file: faction.file
     },
+    armyRules,
     detachments: [...detachmentsMap.values()],
     enhancements: enhancementsList,
     units

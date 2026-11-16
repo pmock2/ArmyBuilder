@@ -9,6 +9,12 @@
     "parentFaction": null,
     "file": "Aeldari - Craftworlds.json"
   },
+  "armyRules": [
+    {
+      "name": "Battle Focus",
+      "description": "If your Army Faction is **^^Asuryani^^**, at the start of the battle round, you receive a number of Battle Focus tokens based on the battle size, as shown below:\n\n■ Incursion - 2\n■ Strike Force - 4\n■ Onslaught - 6\n\nEach time one of the triggers shown in the Agile Manoeuvres section of your codex occurs, you can spend one Battle focus token to enable the relevant eligible unit to perform that Agile Manoeuvre. A unit is eligible to perform an Agile Manoeuvre if it has this ability and has not already performed an Agile Manoeuvre in the same phase. Unless otherwise stated, you cannot trigger the same Agile Manoeuvre more than once per phase. At the end of the battle round, all unspent Battle Focus tokens are lost."
+    }
+  ],
   "detachments": [
     {
       "id": "3c31-6fac-9914-827a",

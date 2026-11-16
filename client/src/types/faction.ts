@@ -11,6 +11,11 @@ export interface FactionSummary {
   subFactions: { id: string; name: string }[];
 }
 
+export interface FactionArmyRule {
+  name: string;
+  description: string;
+}
+
 export interface FactionDetail {
   faction: {
     id: string;
@@ -22,6 +27,7 @@ export interface FactionDetail {
     parentFaction: string | null;
     file: string;
   };
+  armyRules?: FactionArmyRule[];
   detachments: SelectedDetachment[];
   enhancements: Enhancement[];
   units: Datasheet[];

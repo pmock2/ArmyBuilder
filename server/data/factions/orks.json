@@ -9,6 +9,12 @@
     "parentFaction": null,
     "file": "Orks.json"
   },
+  "armyRules": [
+    {
+      "name": "Waaagh!",
+      "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
+    }
+  ],
   "detachments": [
     {
       "id": "496c-ddb9-3e71-e0b3",

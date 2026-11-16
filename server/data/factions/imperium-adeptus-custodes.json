@@ -9,6 +9,12 @@
     "parentFaction": null,
     "file": "Imperium - Adeptus Custodes.json"
   },
+  "armyRules": [
+    {
+      "name": "Martial Ka'tah",
+      "description": "At the start of your Command phase, friendly ^^**Adeptus Custodes**^^ units with this ability are **readied**. While a friendly unit is **readied**, you can select one of the **ka-tah abilities** for that unit to use. If you do, that unit is no longer **readied**.\n\nEach **ka-tah ability** will tell you when that **ka-tah ability** can be used and the effects that **ka-tah ability** has on the unit using it."
+    }
+  ],
   "detachments": [
     {
       "id": "d3ee-47e1-4540-dfe5",

@@ -9,6 +9,12 @@
     "parentFaction": null,
     "file": "Necrons.json"
   },
+  "armyRules": [
+    {
+      "name": "Reanimation Protocols",
+      "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
+    }
+  ],
   "detachments": [
     {
       "id": "9ebf-2bbd-6059-1d40",

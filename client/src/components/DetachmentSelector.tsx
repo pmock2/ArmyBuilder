@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Plus, Eye, Trash2, Compass, Check } from 'lucide-react';
+import { Plus, Eye, Trash2, Compass, Check, Sparkles, X } from 'lucide-react';
 import { SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
+import { FactionArmyRule } from '../types/faction';
 import { DetachmentBrowserModal } from './DetachmentBrowserModal';
 import { DetachmentModal } from './DetachmentModal';
 import { StratagemsModal } from './StratagemsModal';
+import { FormattedText } from './FormattedText';
 import { getUnlockedDispositions } from './ForceDispositionSelector';
 import { useBackNavigation } from '../utils/backNavigation';
 
 interface DetachmentSelectorProps {
+  armyRules?: FactionArmyRule[];
   availableDetachments: SelectedDetachment[];
   selectedDetachments: SelectedDetachment[];
   allEnhancements?: Enhancement[];
@@ -23,6 +26,7 @@ interface DetachmentSelectorProps {
 }
 
 export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
+  armyRules = [],
   availableDetachments,
   selectedDetachments,
   allEnhancements = [],
@@ -39,16 +43,54 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [inspectDetachment, setInspectDetachment] = useState<SelectedDetachment | null>(null);
   const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
+  const [isArmyRuleOpen, setIsArmyRuleOpen] = useState(false);
 
   useBackNavigation(isBrowserOpen, () => setIsBrowserOpen(false));
   useBackNavigation(Boolean(inspectDetachment), () => setInspectDetachment(null));
   useBackNavigation(isStratagemsOpen, () => setIsStratagemsOpen(false));
+  useBackNavigation(isArmyRuleOpen, () => setIsArmyRuleOpen(false));
 
   const hasDetachments = selectedDetachments.length > 0;
   const unlockedDispositions = getUnlockedDispositions(selectedDetachments);
 
   return (
     <div className="space-y-3 mb-3">
+      {/* 0. Army Ability Card (Above Detachments) */}
+      {armyRules.length > 0 && (
+        <section className="panel-theme-section">
+          <div className="section-theme-header mb-3">
+            <h3 className="section-theme-title flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-theme-accent-soft" />
+              <span>Army Ability</span>
+            </h3>
+          </div>
+
+          <div
+            onClick={() => setIsArmyRuleOpen(true)}
+            className="card-theme-item px-3.5 sm:px-4 py-3 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
+          >
+            <div className="min-w-0 flex-1">
+              <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide truncate">
+                {armyRules.map((r) => r.name).join(' • ')}
+              </h4>
+            </div>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsArmyRuleOpen(true);
+              }}
+              className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-lg flex-shrink-0"
+              title="View Army Ability"
+              aria-label="View Army Ability"
+            >
+              <Eye className="w-3.5 h-3.5 stroke-[2]" />
+            </button>
+          </div>
+        </section>
+      )}
+
       {/* 1. Detachments Section */}
       <section
         className={
@@ -284,6 +326,53 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
         onClose={() => setIsStratagemsOpen(false)}
         selectedDetachments={selectedDetachments}
       />
+
+      {/* Army Ability Modal */}
+      {isArmyRuleOpen && armyRules.length > 0 && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-150"
+          onClick={() => setIsArmyRuleOpen(false)}
+        >
+          <div
+            className="w-full max-w-2xl bg-theme-surface border border-theme-border rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-theme-border-subtle bg-theme-card">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <Sparkles className="w-4 h-4 text-theme-accent-soft shrink-0" />
+                <h2 className="font-warhammer text-base sm:text-lg font-bold text-theme-text tracking-wide truncate">
+                  Army Ability
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsArmyRuleOpen(false)}
+                className="btn-theme-icon min-w-[32px] min-h-[32px] rounded-lg"
+                aria-label="Close Army Ability"
+              >
+                <X className="w-4 h-4 stroke-[2]" />
+              </button>
+            </div>
+
+            <div className="p-4 sm:p-5 overflow-y-auto space-y-4">
+              {armyRules.map((rule) => (
+                <div
+                  key={rule.name}
+                  className="p-3.5 sm:p-4 rounded-xl bg-theme-card border border-theme-border-subtle space-y-2"
+                >
+                  <h3 className="font-warhammer text-sm sm:text-base font-bold text-theme-accent-soft">
+                    {rule.name}
+                  </h3>
+                  <FormattedText
+                    text={rule.description}
+                    className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

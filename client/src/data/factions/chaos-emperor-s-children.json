@@ -9,6 +9,12 @@
     "parentFaction": null,
     "file": "Chaos - Emperor's Children.json"
   },
+  "armyRules": [
+    {
+      "name": "Thrill Seekers",
+      "description": "If your Army Faction is **^^Emperor's Children^^**, this unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back, but when doing so:\n- It cannot target a unit it was within Engagement Range of at the start of the turn\n- It cannot target a unit that was the target of another unit's charge or attack this phase."
+    }
+  ],
   "detachments": [
     {
       "id": "8635-b1cc-e7bb-e8a1",
