@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Plus, Upload, Trash2, Copy, Shield, AlertTriangle, Skull, Sparkles, BookOpen, Key, Package, Layers, PanelLeftOpen, PanelLeftClose, Settings } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
-import { parseRosterJSON } from '../utils/storage';
 import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
 import { SettingsView } from './SettingsView';
+import { ImportRosterModal } from './ImportRosterModal';
 import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
 import { useBackNavigation } from '../utils/backNavigation';
 
@@ -33,30 +33,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenAiRules,
   onOpenAiSettings
 }) => {
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [activeNav, setActiveNav] = useState<'armies' | 'owned' | 'settings'>('armies');
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
 
   useBackNavigation(activeNav !== 'armies', () => setActiveNav('armies'));
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const content = event.target?.result as string;
-        const parsed = parseRosterJSON(content);
-        onImportRoster(parsed);
-      } catch (err: any) {
-        alert(`Error importing roster: ${err.message}`);
-      }
-    };
-    reader.readAsText(file);
-    if (e.target) e.target.value = '';
-  };
 
   return (
     <div className="min-h-screen bg-transparent flex flex-col text-theme-text">
@@ -78,18 +61,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileUpload}
-              accept=".json"
-              className="hidden"
-            />
             <button
-              onClick={() => fileInputRef.current?.click()}
+              type="button"
+              onClick={() => setIsImportModalOpen(true)}
               className="btn-theme-secondary min-h-[38px] flex items-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold"
-              title="Import Roster JSON"
-              aria-label="Import Roster JSON"
+              title="Import Roster (GW Text or JSON)"
+              aria-label="Import Roster"
             >
               <Upload className="w-4 h-4 text-theme-text-secondary" />
               <span className="hidden sm:inline">Import</span>
@@ -301,11 +278,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <span>Manual Builder</span>
               </button>
               <button
-                onClick={() => fileInputRef.current?.click()}
+                type="button"
+                onClick={() => setIsImportModalOpen(true)}
                 className="btn-theme-secondary flex-1 min-h-[44px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold"
               >
                 <Upload className="w-4 h-4 text-theme-text-secondary" />
-                <span>Import JSON</span>
+                <span>Import List</span>
               </button>
             </div>
           </div>
@@ -410,6 +388,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </footer>
         </div>
       </div>
+
+      <ImportRosterModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onImportRoster={onImportRoster}
+      />
     </div>
   );
 };
