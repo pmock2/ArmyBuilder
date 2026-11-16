@@ -13,8 +13,10 @@ interface InlineToken {
 
 type Block =
   | { type: 'heading'; level: number; content: string }
+  | { type: 'hr' }
+  | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'blockquote'; content: string }
-  | { type: 'ul'; items: string[] }
+  | { type: 'ul'; items: { text: string; nested: boolean }[] }
   | { type: 'ol'; items: { num: string; content: string }[] }
   | { type: 'paragraph'; content: string };
 
@@ -105,10 +107,26 @@ const renderInline = (content: string): React.ReactNode => {
   });
 };
 
+function parseTableRow(line: string): string[] {
+  return line
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function isTableSeparator(line: string): boolean {
+  return /^\|?[\s:-]+(?:\|[\s:-]+)+\|?$/.test(line.trim());
+}
+
 function parseBlocks(markdown: string): Block[] {
-  const lines = markdown.split('\n');
+  const lines = markdown.split(/\r?\n/);
   const blocks: Block[] = [];
-  let currentList: { type: 'ul'; items: string[] } | { type: 'ol'; items: { num: string; content: string }[] } | null = null;
+  let currentList:
+    | { type: 'ul'; items: { text: string; nested: boolean }[] }
+    | { type: 'ol'; items: { num: string; content: string }[] }
+    | null = null;
 
   const flushList = () => {
     if (currentList) {
@@ -123,6 +141,28 @@ function parseBlocks(markdown: string): Block[] {
 
     if (!trimmed) {
       flushList();
+      continue;
+    }
+
+    // Horizontal Rule (---, ***, ___)
+    if (/^(?:[-*_]){3,}$/.test(trimmed)) {
+      flushList();
+      blocks.push({ type: 'hr' });
+      continue;
+    }
+
+    // Markdown Table (| col | col |)
+    if (trimmed.includes('|') && i + 1 < lines.length && isTableSeparator(lines[i + 1])) {
+      flushList();
+      const headers = parseTableRow(trimmed);
+      const rows: string[][] = [];
+      i += 2;
+      while (i < lines.length && lines[i].trim().includes('|')) {
+        rows.push(parseTableRow(lines[i]));
+        i++;
+      }
+      i--;
+      blocks.push({ type: 'table', headers, rows });
       continue;
     }
 
@@ -149,14 +189,17 @@ function parseBlocks(markdown: string): Block[] {
       continue;
     }
 
-    // Unordered List (* ... or - ...)
-    const ulMatch = trimmed.match(/^[\*\-]\s+(.+)$/);
+    // Unordered List (* ..., - ..., or • ...)
+    const ulMatch = rawLine.match(/^(\s*)[\*\-•◦]\s+(.+)$/);
     if (ulMatch) {
       if (!currentList || currentList.type !== 'ul') {
         flushList();
         currentList = { type: 'ul', items: [] };
       }
-      currentList.items.push(ulMatch[1]);
+      currentList.items.push({
+        nested: ulMatch[1].length >= 2,
+        text: ulMatch[2].trim()
+      });
       continue;
     }
 
@@ -190,7 +233,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
   const blocks = parseBlocks(content);
 
   return (
-    <div className={`space-y-2.5 text-xs sm:text-sm leading-relaxed text-slate-200 ${className}`}>
+    <div className={`space-y-3 text-sm leading-relaxed text-slate-200 ${className}`}>
       {blocks.map((block, idx) => {
         switch (block.type) {
           case 'heading': {
@@ -198,7 +241,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
               return (
                 <h3
                   key={idx}
-                  className="font-warhammer text-base font-bold text-amber-400 mt-3 mb-1 pb-1 border-b border-amber-500/20"
+                  className="font-warhammer text-base sm:text-lg font-bold text-amber-400 mt-4 first:mt-0 mb-1.5 pb-1.5 border-b border-amber-500/25"
                 >
                   {renderInline(block.content)}
                 </h3>
@@ -208,28 +251,69 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
               return (
                 <h4
                   key={idx}
-                  className="font-warhammer text-sm font-bold text-amber-300 mt-2.5 mb-1"
+                  className="font-warhammer text-sm sm:text-base font-bold text-amber-300 mt-4 first:mt-0 pt-2 first:pt-0 border-t border-slate-700/60 first:border-t-0 mb-1"
                 >
                   {renderInline(block.content)}
                 </h4>
               );
             }
+            if (block.level === 3) {
+              return (
+                <h5
+                  key={idx}
+                  className="font-warhammer text-sm font-bold text-sky-300 flex items-center gap-1.5 mt-4 first:mt-0 pt-2.5 first:pt-0 border-t border-slate-700/50 first:border-t-0 mb-1"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>{renderInline(block.content)}</span>
+                </h5>
+              );
+            }
             return (
-              <h5
+              <h6
                 key={idx}
-                className="font-semibold text-xs sm:text-sm text-slate-100 flex items-center gap-1.5 mt-2 mb-0.5"
+                className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-slate-300 mt-2.5 mb-0.5"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>{renderInline(block.content)}</span>
-              </h5>
+                {renderInline(block.content)}
+              </h6>
             );
           }
+
+          case 'hr':
+            return <hr key={idx} className="border-slate-700/60 my-3" />;
+
+          case 'table':
+            return (
+              <div key={idx} className="overflow-x-auto rounded-lg border border-slate-700/70 my-2">
+                <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                  <thead className="bg-slate-800/80 text-amber-300">
+                    <tr>
+                      {block.headers.map((h, hIdx) => (
+                        <th key={hIdx} className="px-3 py-2 font-semibold border-b border-slate-700">
+                          {renderInline(h)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800">
+                    {block.rows.map((row, rIdx) => (
+                      <tr key={rIdx} className="bg-slate-900/35">
+                        {row.map((cell, cIdx) => (
+                          <td key={cIdx} className="px-3 py-2 text-slate-200">
+                            {renderInline(cell)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
 
           case 'blockquote':
             return (
               <blockquote
                 key={idx}
-                className="border-l-2 border-amber-500/70 bg-amber-500/10 px-3 py-2 rounded-r-lg text-amber-200/95 italic my-2 shadow-inner"
+                className="border-l-2 border-amber-500/70 bg-amber-500/10 px-3.5 py-2.5 rounded-r-lg text-amber-200/95 italic my-2 shadow-inner"
               >
                 {renderInline(block.content)}
               </blockquote>
@@ -237,12 +321,21 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 
           case 'ul':
             return (
-              <ul key={idx} className="space-y-2 my-1.5 pl-0.5">
+              <ul key={idx} className="space-y-2.5 my-2 pl-0.5">
                 {block.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="flex items-start gap-2.5 text-slate-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 flex-shrink-0 shadow-sm shadow-amber-400/50" />
+                  <li
+                    key={itemIdx}
+                    className={`flex items-start gap-2.5 text-slate-200 ${item.nested ? 'ml-5' : ''}`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${
+                        item.nested
+                          ? 'bg-sky-400/80'
+                          : 'bg-amber-400 shadow-sm shadow-amber-400/50'
+                      }`}
+                    />
                     <div className="flex-1 leading-relaxed">
-                      {renderInline(item)}
+                      {renderInline(item.text)}
                     </div>
                   </li>
                 ))}

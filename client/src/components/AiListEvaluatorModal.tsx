@@ -215,7 +215,7 @@ export const AiListEvaluatorModal: React.FC<AiListEvaluatorModalProps> = ({
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
               {isEvaluating ? (
                 <div className="py-12 flex flex-col items-center justify-center text-center space-y-3">
                   <Loader2 className="w-8 h-8 text-sky-400 animate-spin" />
@@ -234,11 +234,22 @@ export const AiListEvaluatorModal: React.FC<AiListEvaluatorModalProps> = ({
                   <span>{errorMsg}</span>
                 </div>
               ) : evaluationText ? (
-                <div className="p-4 sm:p-5 rounded-xl bg-theme-card border border-theme-border-subtle">
-                  <MarkdownRenderer
-                    content={evaluationText}
-                    className="text-xs sm:text-sm text-theme-text leading-relaxed"
-                  />
+                <div className="space-y-3.5">
+                  {evaluationText
+                    .split(/\n(?=#{2,3}\s+)/)
+                    .map((section) => section.trim())
+                    .filter(Boolean)
+                    .map((section, idx) => (
+                      <div
+                        key={idx}
+                        className="p-4 sm:p-5 rounded-xl bg-theme-card/90 border border-theme-border-subtle shadow-sm"
+                      >
+                        <MarkdownRenderer
+                          content={section}
+                          className="text-sm text-theme-text leading-relaxed"
+                        />
+                      </div>
+                    ))}
                 </div>
               ) : null}
             </div>
@@ -271,3 +282,4 @@ export const AiListEvaluatorModal: React.FC<AiListEvaluatorModalProps> = ({
     </div>
   );
 };
+

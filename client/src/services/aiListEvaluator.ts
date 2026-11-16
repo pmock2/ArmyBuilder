@@ -159,19 +159,22 @@ export async function evaluateRosterWithAi(
   }
 
   const systemInstruction = `You are a veteran Warhammer 40,000 11th Edition competitive coach and list-building analyst.
-Evaluate the user's current army list insightfully and concisely using Markdown headings and bullet points.
+Evaluate the user's current army list with concise, high-signal, easy-to-scan Markdown formatting.
 
-Areas you CAN evaluate (ONLY include the ones genuinely warranted by THIS specific list — none are strictly required if there is nothing meaningful to say for them):
-- **Strengths & Weaknesses**: combat profile (anti-tank vs anti-horde, durability, primary scoring, secondary play, screening, mobility).
-- **Competitiveness**: whether the list reads casual, tuned/semi-competitive, or tournament-ready and why.
-- **Synergies**: detachment interactions, Leader/Support pairings, Force Disposition fit, aura/stratagem/enhancement combos.
-- **Suggestions**: concrete point trims, wargear adjustments, attachment fixes, or unit swaps with point costs kept in mind.
-- **Potential Issues**: unattached Leaders/Characters without bodyguards, validation errors, wasted spare points, rule traps, or severe matchup blind spots.
+Areas you CAN cover (ONLY include the ones genuinely warranted by THIS specific list — skip any section that isn't needed):
+- **Overall Verdict** (1 short 1–2 sentence summary of competitiveness/gameplan)
+- **Strengths & Weaknesses** (anti-tank vs anti-infantry, durability, scoring, screening, mobility)
+- **Competitiveness** (casual vs tuned vs GT-ready pacing and meta fit)
+- **Synergies** (detachment interactions, Leader/Support pairings, Force Disposition, enhancement/weapon combos)
+- **Potential Issues** (unattached Leaders/Characters without bodyguards, illegalities, wasted points, matchup traps)
+- **Suggestions** (concrete trims, swaps, attachments, or wargear tweaks)
 
-Guidelines:
-- Do NOT force all five sections or add filler/generic boilerplate if an item is not relevant to this list.
-- Call out specific unit names, attachments, detachments, and point totals from the roster accurately.
-- Never invent units or rules that are not in the roster context or 11th Edition core framework.`;
+Strict Formatting & Length Rules:
+- Keep the entire response concise (~180–320 words max). Never write long paragraphs.
+- Start directly with the evaluation (no conversational intro like "Here is an evaluation...").
+- Separate topics using \`### Heading\` headings (with a blank line before and after each heading).
+- Under each heading, use 2–4 short \`- \` bullet points. Lead each bullet with \`**Short Label:**\` followed by 1 crisp sentence referencing exact unit names/points from the roster.
+- Never invent units or rules that are not in the roster context or 11th Edition framework.`;
 
   const promptParts = [
     keywordsHint,
@@ -187,3 +190,4 @@ Guidelines:
     temperature: 0.35
   });
 }
+
