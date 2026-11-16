@@ -79,14 +79,14 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-theme-surface border border-theme-border w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/95">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-theme-border-subtle bg-theme-card">
           <div className="flex items-center gap-2.5">
-            <Swords className="w-5 h-5 text-sky-400" />
-            <h2 className="font-warhammer text-base sm:text-lg font-bold text-slate-100 tracking-wide">
+            <Swords className="w-5 h-5 text-theme-accent-soft" />
+            <h2 className="font-warhammer text-base sm:text-lg font-bold text-theme-text tracking-wide">
               Muster a New Army
             </h2>
           </div>
@@ -103,10 +103,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
         <form onSubmit={handleCreate} className="p-4 sm:p-6 overflow-y-auto space-y-5 flex-1 text-xs sm:text-sm">
           
           {onOpenAiCreator && (
-            <div className="p-3 rounded-xl bg-gradient-to-r from-sky-950/70 via-indigo-950/60 to-purple-950/60 border border-sky-500/40 flex items-center justify-between gap-3">
+            <div className="p-3 rounded-xl bg-theme-accent/15 border border-theme-accent/40 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <Sparkles className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                <span className="text-xs text-slate-200 font-medium">
+                <Sparkles className="w-4 h-4 text-theme-accent-soft flex-shrink-0" />
+                <span className="text-xs text-theme-text font-medium">
                   Have a specific army concept in mind? Let the AI build it from your prompt.
                 </span>
               </div>
@@ -116,7 +116,7 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                   onClose();
                   onOpenAiCreator();
                 }}
-                className="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex-shrink-0 transition-colors shadow-sm"
+                className="btn-theme-primary px-3 py-1.5 rounded-lg text-xs flex-shrink-0"
               >
                 AI Prompt
               </button>
@@ -125,7 +125,7 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 1: Army Name */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
+            <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               1. Army Name
             </label>
             <input
@@ -134,13 +134,13 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. 1st Company Strike Force"
-              className="w-full min-h-[46px] px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 text-base sm:text-sm font-medium transition-all"
+              className="w-full min-h-[46px] px-4 py-2.5 rounded-xl bg-theme-bg border border-theme-border text-theme-text placeholder-theme-text-muted focus:outline-none focus:border-theme-accent text-base sm:text-sm font-medium transition-all"
             />
           </div>
 
           {/* Step 2: Super-Faction Filter */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
+            <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               2. Allegiance / Super-Faction
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -151,8 +151,8 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                   onClick={() => setSelectedSuperFaction(sf)}
                   className={`min-h-[44px] py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center active:scale-95 ${
                     selectedSuperFaction.toLowerCase() === sf.toLowerCase()
-                      ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
-                      : 'bg-slate-850 text-slate-300 border-slate-750 hover:border-slate-600 hover:text-white'
+                      ? 'bg-theme-accent text-white border-theme-accent shadow-sm'
+                      : 'bg-theme-card text-theme-text-secondary border-theme-border-subtle hover:border-theme-accent/60 hover:text-theme-text'
                   }`}
                 >
                   {sf}
@@ -163,10 +163,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 3: Main Faction */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
+            <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               3. Primary Faction
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-1.5 bg-slate-950 rounded-xl border border-slate-750">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-1.5 bg-theme-bg rounded-xl border border-theme-border-subtle">
               {availableFactions.map((fac) => {
                 const isSelected = selectedFactionId === fac.id;
                 return (
@@ -176,12 +176,12 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                     onClick={() => handleFactionSelect(fac.id)}
                     className={`min-h-[46px] p-3 rounded-lg border text-left transition-all flex items-center justify-between text-xs sm:text-sm active:scale-95 ${
                       isSelected
-                        ? 'bg-sky-950/80 border-sky-600 text-sky-200 font-semibold'
-                        : 'bg-slate-850 border-slate-750 text-slate-300 hover:bg-slate-800 hover:text-white'
+                        ? 'bg-theme-accent/20 border-theme-accent text-theme-accent-soft font-semibold'
+                        : 'bg-theme-card border-theme-border-subtle text-theme-text-secondary hover:bg-theme-elevated hover:text-theme-text'
                     }`}
                   >
                     <span className="truncate">{fac.name}</span>
-                    {isSelected && <Check className="w-4 h-4 text-sky-400 flex-shrink-0 ml-1.5" />}
+                    {isSelected && <Check className="w-4 h-4 text-theme-accent-soft flex-shrink-0 ml-1.5" />}
                   </button>
                 );
               })}
@@ -190,14 +190,14 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 4: Sub-Faction / Chapter (if applicable) */}
           {subFactions.length > 0 && (
-            <div className="p-4 rounded-xl bg-slate-850 border border-slate-700">
+            <div className="p-4 rounded-xl bg-theme-card border border-theme-border">
               <div className="flex items-center gap-1.5 mb-1.5">
-                <Sparkles className="w-4 h-4 text-sky-400" />
-                <label className="text-sky-300 font-semibold uppercase tracking-wider text-xs">
+                <Sparkles className="w-4 h-4 text-theme-accent-soft" />
+                <label className="text-theme-accent-soft font-semibold uppercase tracking-wider text-xs">
                   4. Select Chapter / Sub-Faction
                 </label>
               </div>
-              <p className="text-xs text-slate-400 mb-3">
+              <p className="text-xs text-theme-text-muted mb-3">
                 Unlocks Chapter-specific heroes, unique units, and chapter detachments (like Salamanders' Forgefather's Seekers).
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-40 overflow-y-auto">
@@ -210,8 +210,8 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                       onClick={() => setSelectedSubFactionId(sub.id)}
                       className={`min-h-[44px] p-2.5 rounded-lg border text-left text-xs sm:text-sm transition-all flex items-center justify-between active:scale-95 ${
                         isSelected
-                          ? 'bg-blue-600 text-white border-blue-500 font-semibold shadow-sm'
-                          : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-750 hover:text-white'
+                          ? 'bg-theme-accent text-white border-theme-accent font-semibold shadow-sm'
+                          : 'bg-theme-elevated border-theme-border text-theme-text-secondary hover:border-theme-accent/60 hover:text-theme-text'
                       }`}
                     >
                       <span className="truncate">{sub.name}</span>
@@ -225,7 +225,7 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
 
           {/* Step 5: Battle Size */}
           <div>
-            <label className="block text-slate-300 font-semibold mb-2 uppercase tracking-wider text-xs">
+            <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               5. Battle Size
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -242,20 +242,20 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
                     onClick={() => setBattleSize(bs.id as BattleSize)}
                     className={`min-h-[70px] p-3.5 rounded-xl border text-left transition-all active:scale-95 ${
                       isSelected
-                        ? 'bg-sky-950/70 border-sky-600 shadow-sm ring-1 ring-sky-500/50'
-                        : 'bg-slate-850 border-slate-750 hover:border-slate-650'
+                        ? 'bg-theme-accent/20 border-theme-accent shadow-sm ring-1 ring-theme-accent/50'
+                        : 'bg-theme-card border-theme-border-subtle hover:border-theme-border'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`font-warhammer text-xs sm:text-sm font-semibold ${isSelected ? 'text-sky-300' : 'text-slate-200'}`}>
+                      <span className={`font-warhammer text-xs sm:text-sm font-semibold ${isSelected ? 'text-theme-accent-soft' : 'text-theme-text'}`}>
                         {bs.name}
                       </span>
-                      {isSelected && <Shield className="w-4 h-4 text-sky-400" />}
+                      {isSelected && <Shield className="w-4 h-4 text-theme-accent-soft" />}
                     </div>
-                    <div className="font-mono text-sky-400 font-bold text-xs sm:text-sm">
-                      {bs.points} pts <span className="text-slate-400 font-normal">| {bs.dp} DP</span>
+                    <div className="font-mono text-theme-accent-soft font-bold text-xs sm:text-sm">
+                      {bs.points} pts <span className="text-theme-text-muted font-normal">| {bs.dp} DP</span>
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">
+                    <div className="text-xs text-theme-text-muted mt-1">
                       {bs.desc}
                     </div>
                   </button>
@@ -265,7 +265,7 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Modal Footer */}
-          <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-theme-border-subtle flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
