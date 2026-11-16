@@ -26,6 +26,8 @@ interface ParsedUnitBlock {
   format: 'gw' | 'nr';
   isWarlord: boolean;
   bullets: ParsedBullet[];
+  leadingTargets: string[];
+  ledByTargets: string[];
 }
 
 export interface GwImportResult {
@@ -76,7 +78,9 @@ function parseCountAndName(raw: string): { count: number; name: string } {
 }
 
 function parseBulletLine(rawText: string): ParsedBullet {
-  const text = rawText.trim();
+  const text = rawText
+    .replace(/\s*\[\d+\s*(?:points?|pts?)\]\s*$/i, '')
+    .trim();
   if (/^warlord$/i.test(text)) {
     return { count: 1, name: 'Warlord', isWarlord: true, isEnhancement: false, subBullets: [] };
   }
@@ -181,7 +185,9 @@ function parseListSections(text: string): {
         section: currentSection,
         format: isNrUnit ? 'nr' : 'gw',
         isWarlord: Boolean(unitHeaderMatch[4]),
-        bullets: []
+        bullets: [],
+        leadingTargets: [],
+        ledByTargets: []
       };
       units.push(currentUnit);
       currentTopBullet = null;
@@ -199,6 +205,18 @@ function parseListSections(text: string): {
     const isSubBullet = /^◦/.test(trimmed) || (/^\s{3,}/.test(rawLine) && /^[*\-◦]/.test(trimmed));
     const cleanBulletText = trimmed.replace(/^[•◦*\-]\s*/, '').trim();
     if (!cleanBulletText) continue;
+
+    // Leader / Bodyguard attachment lines in NR exports (do NOT treat as models or wargear!)
+    const leadingMatch = cleanBulletText.match(/^leading\s*:\s*(.+)$/i);
+    if (leadingMatch) {
+      currentUnit.leadingTargets.push(leadingMatch[1].trim());
+      continue;
+    }
+    const ledByMatch = cleanBulletText.match(/^led\s+by\s*:\s*(.+)$/i);
+    if (ledByMatch) {
+      currentUnit.ledByTargets.push(ledByMatch[1].trim());
+      continue;
+    }
 
     // In NR verbose exports, bullets can carry inline loadouts after a colon:
     // e.g. "1x Captain: Warlord, Master-crafted Bolter, Power Weapon"
@@ -319,7 +337,8 @@ function inferModelCount(block: ParsedUnitBlock, ds: Datasheet): number {
 
 function inferSelectedOptions(
   block: ParsedUnitBlock,
-  ds: Datasheet
+  ds: Datasheet,
+  baseCostForModels: number
 ): Record<string, string[]> {
   const selectedOptions: Record<string, string[]> = {};
   if (!ds.wargearGroups || ds.wargearGroups.length === 0) return selectedOptions;
@@ -330,6 +349,12 @@ function inferSelectedOptions(
     const norm = normalizeText(name);
     if (!norm) return;
     mentionedCounts.set(norm, (mentionedCounts.get(norm) || 0) + count);
+    // Also index suffix after "w/" or "with" (e.g. "Eradicator with Multi-melta" -> "multi-melta")
+    const withMatch = norm.match(/\b(?:w\/|with)\s+(.+)$/);
+    if (withMatch && withMatch[1]) {
+      const wNorm = withMatch[1].trim();
+      mentionedCounts.set(wNorm, (mentionedCounts.get(wNorm) || 0) + count);
+    }
   };
 
   for (const b of block.bullets) {
@@ -366,6 +391,34 @@ function inferSelectedOptions(
       selectedOptions[group.id] = group.isExclusive ? [matchedIds[0]] : matchedIds;
     } else if (group.defaultOptionIds && group.defaultOptionIds.length > 0) {
       selectedOptions[group.id] = [...group.defaultOptionIds];
+    }
+  }
+
+  // If compact export omitted weapon names (e.g. Invader ATVs [70 pts] with +5 pts Multi-melta),
+  // check if there is a unique paid wargear option matching the exact point delta.
+  const ptsDiff = block.points - baseCostForModels;
+  if (ptsDiff > 0) {
+    let currentWargearPts = 0;
+    for (const group of ds.wargearGroups) {
+      for (const optId of selectedOptions[group.id] || []) {
+        const opt = group.options.find((o) => o.id === optId);
+        if (opt?.pts) currentWargearPts += opt.pts;
+      }
+    }
+    const remainingDelta = ptsDiff - currentWargearPts;
+    if (remainingDelta > 0) {
+      const matchingPaid: { groupId: string; optionId: string }[] = [];
+      for (const group of ds.wargearGroups) {
+        if (!group.isExclusive && group.max !== 1) continue;
+        for (const opt of group.options) {
+          if (opt.pts === remainingDelta && !(selectedOptions[group.id] || []).includes(opt.id)) {
+            matchingPaid.push({ groupId: group.id, optionId: opt.id });
+          }
+        }
+      }
+      if (matchingPaid.length === 1) {
+        selectedOptions[matchingPaid[0].groupId] = [matchingPaid[0].optionId];
+      }
     }
   }
 
@@ -542,6 +595,7 @@ export async function parseGwTextRoster(
   }
 
   const selectedUnits: SelectedUnit[] = [];
+  const blockUnitPairs: { block: ParsedUnitBlock; unit: SelectedUnit }[] = [];
   let hasWarlord = false;
 
   for (const block of parsedUnits) {
@@ -553,7 +607,7 @@ export async function parseGwTextRoster(
 
     const modelsCount = inferModelCount(block, ds);
     const cost = getUnitBaseCostForModelCount(ds, modelsCount);
-    const selectedOptions = inferSelectedOptions(block, ds);
+    const selectedOptions = inferSelectedOptions(block, ds, cost);
 
     let enhancement: Enhancement | undefined;
     const allBullets = [...block.bullets, ...block.bullets.flatMap((b) => b.subBullets)];
@@ -565,7 +619,7 @@ export async function parseGwTextRoster(
 
     if (block.isWarlord) hasWarlord = true;
 
-    selectedUnits.push({
+    const unitObj: SelectedUnit = {
       instanceId: `unit-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       datasheetId: ds.id,
       name: ds.name,
@@ -581,7 +635,66 @@ export async function parseGwTextRoster(
       selectedOptions,
       enhancement,
       datasheet: ds
-    });
+    };
+    let wargearPts = 0;
+    for (const g of ds.wargearGroups || []) {
+      const ids = selectedOptions[g.id] || [];
+      for (const id of ids) {
+        const opt = g.options.find((o) => o.id === id);
+        if (opt?.pts) wargearPts += opt.pts;
+      }
+    }
+    const importedUnitPts = cost + wargearPts + (enhancement?.pts || 0);
+    if (block.points > importedUnitPts) {
+      warnings.push(
+        `"${ds.name}" imported as ${importedUnitPts} pts (source had ${block.points} pts; compact export may omit +${block.points - importedUnitPts} pts enhancement/upgrade).`
+      );
+    }
+
+    selectedUnits.push(unitObj);
+    blockUnitPairs.push({ block, unit: unitObj });
+  }
+
+  // Link Leaders/Support units to Bodyguards parsed from "Leading:" / "Led by:" lines
+  const attachLeaderPair = (leader: SelectedUnit, bodyguard: SelectedUnit) => {
+    if (leader.instanceId === bodyguard.instanceId || leader.attachedToBodyguardId) return;
+    if (leader.isSupport && !leader.isLeader) {
+      if (!bodyguard.attachedSupportId) {
+        bodyguard.attachedSupportId = leader.instanceId;
+        leader.attachedToBodyguardId = bodyguard.instanceId;
+      }
+    } else if (!bodyguard.attachedLeaderId) {
+      bodyguard.attachedLeaderId = leader.instanceId;
+      leader.attachedToBodyguardId = bodyguard.instanceId;
+    }
+  };
+
+  for (const { block, unit } of blockUnitPairs) {
+    for (const targetName of block.leadingTargets) {
+      const targetNorm = normalizeText(targetName);
+      const bodyguard = selectedUnits.find(
+        (u) =>
+          u.instanceId !== unit.instanceId &&
+          !u.isLeader &&
+          normalizeText(u.name) === targetNorm &&
+          (unit.isSupport && !unit.isLeader ? !u.attachedSupportId : !u.attachedLeaderId)
+      );
+      if (bodyguard) attachLeaderPair(unit, bodyguard);
+    }
+  }
+
+  for (const { block, unit } of blockUnitPairs) {
+    for (const leaderName of block.ledByTargets) {
+      const leaderNorm = normalizeText(leaderName);
+      const leader = selectedUnits.find(
+        (u) =>
+          u.instanceId !== unit.instanceId &&
+          (u.isLeader || u.isSupport) &&
+          !u.attachedToBodyguardId &&
+          normalizeText(u.name) === leaderNorm
+      );
+      if (leader) attachLeaderPair(leader, unit);
+    }
   }
 
   if (selectedUnits.length === 0) {
