@@ -57,20 +57,20 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
     <div className="space-y-3 mb-3">
       {/* 0. Army Ability Card (Above Detachments) */}
       {armyRules.length > 0 && (
-        <section className="panel-theme-section">
-          <div className="section-theme-header mb-3">
-            <h3 className="section-theme-title flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-theme-accent-soft" />
+        <section className="panel-theme-meta">
+          <div className="section-theme-meta-header mb-2.5">
+            <h3 className="section-theme-meta-title flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-theme-text-muted" />
               <span>Army Ability</span>
             </h3>
           </div>
 
           <div
             onClick={() => setIsArmyRuleOpen(true)}
-            className="card-theme-item px-3.5 sm:px-4 py-3 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
+            className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
           >
             <div className="min-w-0 flex-1">
-              <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide truncate">
+              <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
                 {armyRules.map((r) => r.name).join(' • ')}
               </h4>
             </div>
@@ -81,7 +81,7 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
                 e.stopPropagation();
                 setIsArmyRuleOpen(true);
               }}
-              className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-lg flex-shrink-0"
+              className="btn-theme-icon min-h-[32px] min-w-[32px] rounded-lg flex-shrink-0"
               title="View Army Ability"
               aria-label="View Army Ability"
             >
@@ -95,19 +95,19 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
       <section
         className={
           hasDetachments
-            ? 'panel-theme-section'
-            : 'bg-theme-surface/40 border border-theme-border-subtle/60 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-theme-surface/70'
+            ? 'panel-theme-meta'
+            : 'bg-theme-surface/35 border border-dashed border-theme-border-subtle/60 rounded-xl px-3.5 py-2.5 transition-colors hover:bg-theme-surface/55'
         }
       >
-        <div className="section-theme-header">
+        <div className="section-theme-meta-header">
           <div className="flex items-center gap-2 min-w-0">
-            <h3 className="section-theme-title truncate">
+            <h3 className="section-theme-meta-title truncate">
               Detachments
             </h3>
-            <span className="text-xs font-mono font-semibold text-theme-accent-soft/80">
+            <span className="text-xs font-mono font-semibold text-theme-text-muted">
               ({selectedDetachments.length})
             </span>
-            <span className="text-xs sm:text-sm font-mono text-theme-text font-bold">
+            <span className="text-xs font-mono text-theme-text-secondary font-semibold">
               • {totalDP}/{dpLimit} DP
             </span>
           </div>
@@ -116,11 +116,11 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
             <button
               type="button"
               onClick={() => setIsBrowserOpen(true)}
-              className="btn-theme-secondary min-h-[30px] px-2.5 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0"
+              className="btn-theme-secondary min-h-[28px] px-2.5 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold tracking-wide shrink-0"
               title="Add Detachment"
               aria-label="Add Detachment"
             >
-              <Plus className="w-3.5 h-3.5 text-theme-accent-soft stroke-[2.5]" />
+              <Plus className="w-3.5 h-3.5 text-theme-text-secondary stroke-[2.5]" />
               <span>Add</span>
             </button>
           )}
@@ -128,23 +128,23 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
         {/* Chosen Detachment Cards (Stacked in line breaks) */}
         {hasDetachments && (
-          <div className="space-y-2 mt-3">
+          <div className="space-y-2 mt-2.5">
             {selectedDetachments.map((det) => (
               <div
                 key={det.id || det.name}
                 onClick={() => setInspectDetachment(det)}
-                className="card-theme-item px-3.5 sm:px-4 py-3 cursor-pointer flex flex-col gap-2.5 active:scale-[0.995] group"
+                className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex flex-col gap-2 active:scale-[0.995] group"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide truncate">
+                    <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
                       {det.name}
                     </h4>
                   </div>
 
                   <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                    <span className="font-mono text-sm sm:text-base font-bold text-theme-text whitespace-nowrap mr-0.5">
-                      {det.dpCost} <span className="text-xs font-normal text-theme-text-secondary">DP</span>
+                    <span className="font-mono text-xs sm:text-sm font-semibold text-theme-text-secondary whitespace-nowrap mr-0.5">
+                      {det.dpCost} <span className="text-[11px] font-normal text-theme-text-muted">DP</span>
                     </span>
 
                     <button
@@ -280,22 +280,22 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
       </section>
 
       {/* 2. Stratagems Section (Simple Card with Eye Icon underneath Detachments) */}
-      <section className="panel-theme-section">
-        <div className="section-theme-header mb-3">
-          <h3 className="section-theme-title">
+      <section className="panel-theme-meta">
+        <div className="section-theme-meta-header mb-2.5">
+          <h3 className="section-theme-meta-title">
             Stratagems
           </h3>
         </div>
 
         <div
           onClick={() => setIsStratagemsOpen(true)}
-          className="card-theme-item px-3.5 sm:px-4 py-3 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
+          className="card-theme-meta px-3.5 sm:px-4 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.995] group"
         >
           <div className="min-w-0 flex-1">
-            <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide truncate">
+            <h4 className="font-warhammer text-xs sm:text-sm font-semibold text-theme-text-secondary group-hover:text-theme-text transition-colors tracking-wide truncate">
               Stratagems
             </h4>
-            <p className="text-xs text-theme-text-secondary font-medium mt-0.5 truncate">
+            <p className="text-[11px] text-theme-text-muted font-medium mt-0.5 truncate">
               Detachment &amp; Core Stratagems
             </p>
           </div>
@@ -306,7 +306,7 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
               e.stopPropagation();
               setIsStratagemsOpen(true);
             }}
-            className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-lg flex-shrink-0"
+            className="btn-theme-icon min-h-[32px] min-w-[32px] rounded-lg flex-shrink-0"
             title="View Stratagems"
             aria-label="View Stratagems"
           >

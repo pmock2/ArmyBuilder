@@ -78,6 +78,24 @@
   .section-theme-title {
     @apply font-warhammer text-xs sm:text-sm font-extrabold tracking-wider uppercase text-theme-accent-soft;
   }
+
+  /* Subdued Meta/Reference Containers & Cards (Army Ability, Detachments, Stratagems)
+     Visually recedes so high-contrast Unit Cards stand out as the focal point */
+  .panel-theme-meta {
+    @apply bg-theme-surface/55 border border-theme-border-subtle/80 rounded-2xl p-3 sm:p-3.5;
+  }
+
+  .section-theme-meta-header {
+    @apply flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg bg-theme-elevated/45 border border-theme-border-subtle/80;
+  }
+
+  .section-theme-meta-title {
+    @apply font-warhammer text-[11px] sm:text-xs font-bold tracking-widest uppercase text-theme-text-secondary;
+  }
+
+  .card-theme-meta {
+    @apply bg-theme-surface/75 hover:bg-theme-card/80 border border-dashed border-theme-border/75 hover:border-theme-border rounded-xl transition-all;
+  }
 }
 
 /* Custom Scrollbars */
