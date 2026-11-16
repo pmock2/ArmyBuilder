@@ -309,7 +309,7 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
           });
         }
         const requiresCharacter = !enh.requiredKeywords || enh.requiredKeywords.some(k => k.toLowerCase() === 'character');
-        if (requiresCharacter && !u.isCharacter) {
+        if (requiresCharacter && !u.isCharacter && !u.datasheet?.hasCharacterModel) {
           issues.push({
             id: `non-character-enhancement-${u.name}`,
             severity: 'error',

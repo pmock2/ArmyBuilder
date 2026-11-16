@@ -103,6 +103,8 @@ export interface Datasheet {
   isDedicatedTransport: boolean;
   isLeader: boolean;
   isSupport: boolean;
+  hasCharacterModel?: boolean;
+  characterKeywords?: string[];
   canLead: string[];
   canBeLed?: boolean;
   canHaveSupport?: boolean;
@@ -335,12 +337,16 @@ export function getUnitTotalPts(unit: SelectedUnit): number {
 export function unitMatchesEnhancementKeyword(d: Datasheet, keyword: string): boolean {
   const kwNorm = keyword.trim().toLowerCase();
   if (!kwNorm) return true;
-  if (kwNorm === 'character' && d.isCharacter) return true;
+  if (kwNorm === 'character' && (d.isCharacter || d.hasCharacterModel)) return true;
   if (kwNorm === 'epic hero' && d.isEpicHero) return true;
   if (kwNorm === 'battleline' && d.isBattleline) return true;
   if (kwNorm === 'dedicated transport' && d.isDedicatedTransport) return true;
   if (kwNorm === 'leader' && d.isLeader) return true;
   if (kwNorm === 'support' && d.isSupport) return true;
+
+  for (const ck of d.characterKeywords || []) {
+    if (ck.toLowerCase() === kwNorm) return true;
+  }
 
   const cats = d.categories || [];
   for (const c of cats) {
@@ -376,7 +382,7 @@ export function isEnhancementEligibleForUnit(
     if (enh.groupId && !d.enhancementGroupIds.includes(enh.groupId)) return false;
   } else {
     // Fallback for legacy stored units before hydration
-    if (!d.isCharacter && !enh.isUpgrade) return false;
+    if (!d.isCharacter && !d.hasCharacterModel && !enh.isUpgrade) return false;
   }
 
   // Every enhancement must belong to an active detachment
@@ -392,7 +398,7 @@ export function isEnhancementEligibleForUnit(
       if (!unitMatchesEnhancementKeyword(d, rk)) return false;
     }
   } else if (!enh.anyOfKeywords && !enh.isUpgrade) {
-    if (!d.isCharacter) return false;
+    if (!d.isCharacter && !d.hasCharacterModel) return false;
   }
 
   // Check any-of keyword groups (at least one keyword in each group must match)

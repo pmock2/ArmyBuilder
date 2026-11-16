@@ -4802,6 +4802,13 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Infantry",
+        "Great Devourer",
+        "Lictor",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
       "canLead": [],
       "baseCost": 60,
       "minModels": 1,
@@ -6367,6 +6374,13 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Trygon",
+        "Monster",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Vanguard Invader"
+      ],
       "canLead": [],
       "baseCost": 135,
       "minModels": 1,
@@ -9724,6 +9738,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Infantry",
+        "Great Devourer",
+        "Neurolictor",
+        "Vanguard Invader",
+        "Faction: Tyranids",
+        "Synapse"
+      ],
       "canLead": [],
       "baseCost": 80,
       "minModels": 1,
@@ -9844,6 +9866,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Monster",
+        "Psyker",
+        "Great Devourer",
+        "Faction: Tyranids",
+        "Synapse",
+        "Norn Emissary"
+      ],
       "canLead": [],
       "baseCost": 250,
       "minModels": 1,
@@ -10008,6 +10038,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Monster",
+        "Great Devourer",
+        "Synapse",
+        "Norn Assimilator",
+        "Faction: Tyranids",
+        "Harvester"
+      ],
       "canLead": [],
       "baseCost": 250,
       "minModels": 1,

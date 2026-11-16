@@ -320,7 +320,7 @@ function validateRoster(roster, factionData) {
           });
         }
         const requiresCharacter = !enh.requiredKeywords || enh.requiredKeywords.some(k => k.toLowerCase() === 'character');
-        if (requiresCharacter && !u.isCharacter) {
+        if (requiresCharacter && !u.isCharacter && !(u.datasheet && u.datasheet.hasCharacterModel)) {
           issues.push({
             id: `non-character-enhancement-${u.name}`,
             severity: 'error',

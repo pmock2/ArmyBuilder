@@ -512,6 +512,49 @@ function createUnitParser({
       enhancementGroupIds.push(entry.id);
     }
 
+    // Collect embedded Character model keywords (e.g. Company Heroes includes an Ancient Character model eligible for Character Enhancements)
+    let hasCharacterModel = false;
+    const characterKeywordsSet = new Set();
+    if (!isCharacter && !isEpicHero) {
+      const inspectChildModelsForChar = (node, visited = new Set()) => {
+        if (!node || typeof node !== 'object') return;
+        const nid = node.id || node.targetId;
+        if (nid) {
+          if (visited.has(nid)) return;
+          visited.add(nid);
+        }
+        const resolved = node.targetId ? (allEntriesById.get(node.targetId) || node) : node;
+        const isModelNode = node.type === 'model' || (resolved && resolved.type === 'model');
+        if (isModelNode) {
+          const modelCats = [
+            ...(node.categoryLinks || []),
+            ...((resolved && resolved.categoryLinks) || [])
+          ].map(c => c.name).filter(Boolean);
+          const hasCharCat = modelCats.some(c => c.toLowerCase() === 'character');
+          const modelHasEnhLink = [
+            ...(node.entryLinks || []),
+            ...((resolved && resolved.entryLinks) || [])
+          ].some(l => (l.name || '').includes('Enhancement'));
+          if (hasCharCat || modelHasEnhLink) {
+            if (hasCharCat) hasCharacterModel = true;
+            for (const c of modelCats) characterKeywordsSet.add(c);
+          }
+        }
+        for (const k of ['selectionEntries', 'entryLinks', 'selectionEntryGroups']) {
+          for (const child of (node[k] || [])) {
+            inspectChildModelsForChar(child, visited);
+          }
+          if (resolved && resolved !== node) {
+            for (const child of (resolved[k] || [])) {
+              inspectChildModelsForChar(child, visited);
+            }
+          }
+        }
+      };
+      inspectChildModelsForChar(entry);
+    }
+    const characterKeywords = [...characterKeywordsSet];
+
     const parsedUnit = {
       id: entry.id,
       name: entry.name,
@@ -525,6 +568,8 @@ function createUnitParser({
       isDedicatedTransport,
       isLeader: effectiveIsLeader,
       isSupport: effectiveIsSupport,
+      ...(hasCharacterModel ? { hasCharacterModel: true } : {}),
+      ...(characterKeywords.length > 0 ? { characterKeywords } : {}),
       canLead,
       baseCost,
       minModels,

@@ -1905,6 +1905,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Aircraft",
+        "Fly",
+        "Blitza-bommer",
+        "Faction: Orks",
+        "Speed Freeks"
+      ],
       "canLead": [],
       "baseCost": 115,
       "minModels": 1,
@@ -2829,6 +2837,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Fly",
+        "Aircraft",
+        "Burna-bommer",
+        "Faction: Orks",
+        "Speed Freeks"
+      ],
       "canLead": [],
       "baseCost": 125,
       "minModels": 1,
@@ -2995,6 +3011,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Fly",
+        "Aircraft",
+        "Dakkajet",
+        "Faction: Orks",
+        "Speed Freeks"
+      ],
       "canLead": [],
       "baseCost": 125,
       "minModels": 1,
@@ -4380,6 +4404,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Transport",
+        "Beast Snagga",
+        "Hunta Rig",
+        "Faction: Orks",
+        "Monster",
+        "Wagon"
+      ],
       "canLead": [],
       "baseCost": 165,
       "minModels": 1,
@@ -4684,6 +4716,15 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Transport",
+        "Psyker",
+        "Beast Snagga",
+        "Kill Rig",
+        "Faction: Orks",
+        "Monster",
+        "Wagon"
+      ],
       "canLead": [],
       "baseCost": 175,
       "minModels": 1,
@@ -8401,6 +8442,15 @@
       "isDedicatedTransport": true,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Dedicated Transport",
+        "Vehicle",
+        "Transport",
+        "Trukk",
+        "Faction: Orks",
+        "Frame",
+        "Speed Freeks"
+      ],
       "canLead": [],
       "baseCost": 60,
       "minModels": 1,
@@ -9258,6 +9308,15 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Aircraft",
+        "Fly",
+        "Wazbom Blastajet",
+        "Faction: Orks",
+        "Speed Freeks",
+        "Smoke"
+      ],
       "canLead": [],
       "baseCost": 215,
       "minModels": 1,
@@ -10586,6 +10645,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Transport",
+        "Kill Tank",
+        "Faction: Orks",
+        "Wagon",
+        "Frame"
+      ],
       "canLead": [],
       "baseCost": 300,
       "minModels": 1,
@@ -11991,6 +12058,13 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Lifta Wagon",
+        "Faction: Orks",
+        "Frame",
+        "Wagon"
+      ],
       "canLead": [],
       "baseCost": 135,
       "minModels": 1,
@@ -12938,6 +13012,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Transport",
+        "Faction: Orks",
+        "Battlewagon",
+        "Frame",
+        "Wagon"
+      ],
       "canLead": [],
       "baseCost": 160,
       "minModels": 1,
@@ -18633,6 +18715,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Transport",
+        "Faction: Orks",
+        "Frame",
+        "Wagon",
+        "Gunwagon"
+      ],
       "canLead": [],
       "baseCost": 150,
       "minModels": 1,

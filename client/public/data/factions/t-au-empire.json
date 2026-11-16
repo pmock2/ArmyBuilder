@@ -6348,6 +6348,16 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Walker",
+        "Fly",
+        "Smoke",
+        "Battlesuit",
+        "Ghostkeel",
+        "Faction: T'au Empire",
+        "Non-Kroot"
+      ],
       "canLead": [],
       "baseCost": 150,
       "minModels": 1,

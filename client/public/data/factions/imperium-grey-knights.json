@@ -14293,6 +14293,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Walker",
+        "Imperium",
+        "Faction: Imperial Knights",
+        "Warglaive",
+        "Armiger"
+      ],
       "canLead": [],
       "baseCost": 140,
       "minModels": 1,
@@ -14506,6 +14514,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Walker",
+        "Imperium",
+        "Faction: Imperial Knights",
+        "Helverin",
+        "Armiger"
+      ],
       "canLead": [],
       "baseCost": 140,
       "minModels": 1,
@@ -19568,6 +19584,14 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "characterKeywords": [
+        "Vehicle",
+        "Walker",
+        "Imperium",
+        "Faction: Imperial Knights",
+        "Armiger",
+        "Moirax"
+      ],
       "canLead": [],
       "baseCost": 150,
       "minModels": 1,
@@ -35096,6 +35120,11 @@
       "isDedicatedTransport": false,
       "isLeader": false,
       "isSupport": false,
+      "hasCharacterModel": true,
+      "characterKeywords": [
+        "Epic Hero",
+        "Character"
+      ],
       "canLead": [],
       "baseCost": 220,
       "minModels": 11,
