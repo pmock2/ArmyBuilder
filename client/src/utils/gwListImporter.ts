@@ -23,6 +23,7 @@ interface ParsedUnitBlock {
   name: string;
   points: number;
   section: string;
+  format: 'gw' | 'nr';
   isWarlord: boolean;
   bullets: ParsedBullet[];
 }
@@ -33,17 +34,24 @@ export interface GwImportResult {
 }
 
 const SECTION_HEADERS = new Set([
+  'CHARACTER',
   'CHARACTERS',
+  'EPIC HERO',
   'EPIC HEROES',
   'BATTLELINE',
+  'DEDICATED TRANSPORT',
   'DEDICATED TRANSPORTS',
   'OTHER DATASHEETS',
+  'ALLIED UNIT',
   'ALLIED UNITS',
   'INFANTRY',
   'MOUNTED',
+  'MONSTER',
   'MONSTERS',
+  'VEHICLE',
   'VEHICLES',
   'AIRCRAFT',
+  'FORTIFICATION',
   'FORTIFICATIONS'
 ]);
 
@@ -72,7 +80,7 @@ function parseBulletLine(rawText: string): ParsedBullet {
   if (/^warlord$/i.test(text)) {
     return { count: 1, name: 'Warlord', isWarlord: true, isEnhancement: false, subBullets: [] };
   }
-  const enhMatch = text.match(/^enhancements?\s*:\s*(.+?)(?:\s*\(\+?\d+\s*pts?\))?$/i);
+  const enhMatch = text.match(/^enhancements?\s*:\s*(.+?)(?:\s*[\[(]\+?\d+\s*pts?[\])])?$/i);
   if (enhMatch) {
     return {
       count: 1,
@@ -87,54 +95,97 @@ function parseBulletLine(rawText: string): ParsedBullet {
   return { count, name, isWarlord: false, isEnhancement: false, subBullets: [] };
 }
 
-function parseGwSections(text: string): {
+function parseListSections(text: string): {
   headerLines: string[];
+  configLines: string[];
   units: ParsedUnitBlock[];
   totalPointsHint: number;
+  detectedFormat: 'gw' | 'nr';
 } {
   const lines = text.split(/\r?\n/);
   const headerLines: string[] = [];
+  const configLines: string[] = [];
   const units: ParsedUnitBlock[] = [];
   let currentSection = '';
+  let inConfigSection = false;
   let currentUnit: ParsedUnitBlock | null = null;
   let currentTopBullet: ParsedBullet | null = null;
   let startedSections = false;
+  let hasNrMarkers = /\[\d+\s*(?:points?|pts?)\]/i.test(text) || /^\s*#\s*\+\+\s*Army Roster/im.test(text);
 
   for (const rawLine of lines) {
     const trimmed = rawLine.trim();
     if (!trimmed) continue;
 
-    // Ignore New Recruit / GW App export footer
-    if (/^exported with\b/i.test(trimmed)) continue;
+    // Ignore New Recruit / GW App export footers
+    if (/^(?:exported with|created with)\b/i.test(trimmed)) continue;
 
-    const upper = trimmed.replace(/:$/, '').toUpperCase();
-    if (SECTION_HEADERS.has(upper)) {
-      startedSections = true;
-      currentSection = upper;
+    // Ignore NR top army title banner like "# ++ Army Roster ++ [4630 pts]"
+    if (/^#\s*\+\+.*\+\+/i.test(trimmed)) {
+      hasNrMarkers = true;
+      const ptsMatch = trimmed.match(/\[(\d+)\s*(?:points?|pts?)\]/i);
+      if (ptsMatch && !startedSections) {
+        headerLines.push(trimmed.replace(/^#+\s*/, ''));
+      }
+      continue;
+    }
+
+    // Check NR configuration section heading ("## Configuration" / "## ++ Configuration ++")
+    const strippedHeading = trimmed
+      .replace(/^#+\s*/, '')
+      .replace(/\s*\[\d+\s*(?:points?|pts?)\]\s*$/i, '')
+      .replace(/^\+\+\s*|\s*\+\+$/g, '')
+      .replace(/:$/, '')
+      .trim()
+      .toUpperCase();
+
+    if (strippedHeading === 'CONFIGURATION') {
+      inConfigSection = true;
       currentUnit = null;
       currentTopBullet = null;
       continue;
     }
 
-    // Check if this is a unit header line like "Adrax Agatone (90 Points)" or "Captain (90 pts)"
+    if (SECTION_HEADERS.has(strippedHeading)) {
+      startedSections = true;
+      inConfigSection = false;
+      currentSection = strippedHeading;
+      currentUnit = null;
+      currentTopBullet = null;
+      if (trimmed.startsWith('#') || /\[\d+\s*pts?\]/i.test(trimmed)) {
+        hasNrMarkers = true;
+      }
+      continue;
+    }
+
+    if (inConfigSection) {
+      configLines.push(trimmed.replace(/^[•◦*\-]\s*/, '').trim());
+      continue;
+    }
+
+    // Check if this is a unit header line:
+    // GW style: "Adrax Agatone (90 Points)" or "Captain (90 pts)"
+    // NR style: "Adrax Agatone [90 pts]" or "Assault Intercessor Squad [85 pts]:"
     const isBulletChar = /^[•◦*\-]/.test(trimmed);
     const unitHeaderMatch = !isBulletChar
-      ? trimmed.match(/^(.+?)\s*\((\d+)\s*(?:points?|pts?)\)\s*(\[warlord\])?\s*$/i)
+      ? trimmed.match(/^(.+?)\s*(?:\((\d+)\s*(?:points?|pts?)\)|\[(\d+)\s*(?:points?|pts?)\])\s*(\[warlord\])?\s*:?\s*$/i)
       : null;
 
-    if (unitHeaderMatch && (startedSections || !/^(strike force|incursion|onslaught)\b/i.test(unitHeaderMatch[1]))) {
-      if (startedSections) {
-        currentUnit = {
-          name: unitHeaderMatch[1].trim(),
-          points: parseInt(unitHeaderMatch[2], 10) || 0,
-          section: currentSection,
-          isWarlord: Boolean(unitHeaderMatch[3]),
-          bullets: []
-        };
-        units.push(currentUnit);
-        currentTopBullet = null;
-        continue;
-      }
+    if (unitHeaderMatch && startedSections) {
+      const unitPts = parseInt(unitHeaderMatch[2] || unitHeaderMatch[3], 10) || 0;
+      const isNrUnit = Boolean(unitHeaderMatch[3]) || hasNrMarkers;
+      if (unitHeaderMatch[3]) hasNrMarkers = true;
+      currentUnit = {
+        name: unitHeaderMatch[1].trim(),
+        points: unitPts,
+        section: currentSection,
+        format: isNrUnit ? 'nr' : 'gw',
+        isWarlord: Boolean(unitHeaderMatch[4]),
+        bullets: []
+      };
+      units.push(currentUnit);
+      currentTopBullet = null;
+      continue;
     }
 
     if (!startedSections) {
@@ -148,6 +199,26 @@ function parseGwSections(text: string): {
     const isSubBullet = /^◦/.test(trimmed) || (/^\s{3,}/.test(rawLine) && /^[*\-◦]/.test(trimmed));
     const cleanBulletText = trimmed.replace(/^[•◦*\-]\s*/, '').trim();
     if (!cleanBulletText) continue;
+
+    // In NR verbose exports, bullets can carry inline loadouts after a colon:
+    // e.g. "1x Captain: Warlord, Master-crafted Bolter, Power Weapon"
+    const colonSplit = currentUnit.format === 'nr' && !/^enhancements?\s*:/i.test(cleanBulletText)
+      ? cleanBulletText.match(/^([^:]+):\s*(.+)$/)
+      : null;
+
+    if (colonSplit) {
+      const parsedMain = parseBulletLine(colonSplit[1]);
+      if (parsedMain.isWarlord) currentUnit.isWarlord = true;
+      const parts = colonSplit[2].split(',').map((p) => p.trim()).filter(Boolean);
+      for (const part of parts) {
+        const sub = parseBulletLine(part);
+        if (sub.isWarlord) currentUnit.isWarlord = true;
+        parsedMain.subBullets.push(sub);
+      }
+      currentTopBullet = parsedMain;
+      currentUnit.bullets.push(parsedMain);
+      continue;
+    }
 
     const parsedBullet = parseBulletLine(cleanBulletText);
     if (parsedBullet.isWarlord) {
@@ -163,7 +234,13 @@ function parseGwSections(text: string): {
   }
 
   const totalPointsHint = units.reduce((sum, u) => sum + u.points, 0);
-  return { headerLines, units, totalPointsHint };
+  return {
+    headerLines,
+    configLines,
+    units,
+    totalPointsHint,
+    detectedFormat: hasNrMarkers ? 'nr' : 'gw'
+  };
 }
 
 function findBestDatasheetMatch(unitName: string, datasheets: Datasheet[]): Datasheet | null {
@@ -201,7 +278,18 @@ function inferModelCount(block: ParsedUnitBlock, ds: Datasheet): number {
     return Math.min(Math.max(sum, minModels), maxModels);
   }
 
-  // 2. Bullets matching stat profile model names
+  // 2. In NR compact format ("4x Intercessor", "1x Intercessor Sergeant"), top-level bullets ARE models
+  if (block.format === 'nr' && block.bullets.length > 0) {
+    const nrModelBullets = block.bullets.filter((b) => !b.isWarlord && !b.isEnhancement);
+    if (nrModelBullets.length > 0) {
+      const sum = nrModelBullets.reduce((acc, b) => acc + b.count, 0);
+      if (sum >= minModels && sum <= maxModels) {
+        return sum;
+      }
+    }
+  }
+
+  // 3. Bullets matching stat profile model names
   const profileNames = [
     ds.stats?.name,
     ...(ds.extraStats || []).map((p) => p.name),
@@ -220,7 +308,7 @@ function inferModelCount(block: ParsedUnitBlock, ds: Datasheet): number {
     }
   }
 
-  // 3. Match unit points against costTiers
+  // 4. Match unit points against costTiers
   if (block.points > 0 && ds.costTiers && ds.costTiers.length > 0) {
     const exactTier = ds.costTiers.find((t) => t.cost === block.points);
     if (exactTier) return exactTier.models;
@@ -236,7 +324,7 @@ function inferSelectedOptions(
   const selectedOptions: Record<string, string[]> = {};
   if (!ds.wargearGroups || ds.wargearGroups.length === 0) return selectedOptions;
 
-  // Collect all wargear/weapon bullet counts (both top-level and sub-bullets)
+  // Collect all mentioned bullet/sub-bullet counts (including NR "4x Terminator w/ Power Fist" style names)
   const mentionedCounts = new Map<string, number>();
   const addMention = (name: string, count: number) => {
     const norm = normalizeText(name);
@@ -246,12 +334,9 @@ function inferSelectedOptions(
 
   for (const b of block.bullets) {
     if (b.isWarlord || b.isEnhancement) continue;
-    if (b.subBullets.length > 0) {
-      for (const sb of b.subBullets) {
-        if (!sb.isWarlord && !sb.isEnhancement) addMention(sb.name, sb.count);
-      }
-    } else {
-      addMention(b.name, b.count);
+    addMention(b.name, b.count);
+    for (const sb of b.subBullets) {
+      if (!sb.isWarlord && !sb.isEnhancement) addMention(sb.name, sb.count);
     }
   }
 
@@ -300,21 +385,46 @@ async function defaultLoadFactionDetail(factionId: string): Promise<FactionDetai
   return data;
 }
 
+function matchHeaderToFaction(
+  headerLines: string[],
+  factionsIndex: FactionSummary[]
+): { faction: FactionSummary; extractedRosterName?: string } | null {
+  // Check exact faction or NR title format: "<rawName> - <Roster Name> - [4630 pts]"
+  const sortedByRawLen = [...factionsIndex].sort((a, b) => b.rawName.length - a.rawName.length);
+
+  for (const line of headerLines) {
+    const cleanLine = line.replace(/\s*[\[(]\d+\s*(?:points?|pts?)[\])]\s*$/i, '').trim();
+    const normLine = normalizeText(cleanLine);
+
+    for (const f of sortedByRawLen) {
+      const normRaw = normalizeText(f.rawName);
+      if (normLine === normRaw || normLine === normalizeText(f.name)) {
+        return { faction: f };
+      }
+      if (normLine.startsWith(`${normRaw} - `)) {
+        const rest = cleanLine
+          .slice(f.rawName.length)
+          .replace(/^\s*-\s*/, '')
+          .replace(/\s*-\s*$/, '')
+          .trim();
+        return { faction: f, extractedRosterName: rest || undefined };
+      }
+    }
+  }
+  return null;
+}
+
 async function detectFaction(
   headerLines: string[],
   parsedUnits: ParsedUnitBlock[],
   factionsIndex: FactionSummary[],
   loadFaction: (id: string) => Promise<FactionDetail>
-): Promise<FactionDetail> {
-  // 1. Check if header explicitly names a faction
-  for (const line of headerLines) {
-    const clean = normalizeText(line.replace(/\(\d+\s*(?:points?|pts?)\)/i, ''));
-    const direct = factionsIndex.find(
-      (f) => normalizeText(f.name) === clean || normalizeText(f.rawName) === clean
-    );
-    if (direct) {
-      return await loadFaction(direct.id);
-    }
+): Promise<{ detail: FactionDetail; extractedRosterName?: string }> {
+  // 1. Check if header explicitly names a faction (supports NR "<rawName> - <Roster Name> - [pts]")
+  const headerMatch = matchHeaderToFaction(headerLines, factionsIndex);
+  if (headerMatch) {
+    const detail = await loadFaction(headerMatch.faction.id);
+    return { detail, extractedRosterName: headerMatch.extractedRosterName };
   }
 
   // 2. Score all factions by how many units match
@@ -344,7 +454,6 @@ async function detectFaction(
       }
     }
 
-    // Check if any header line matches a detachment in this faction
     let detBonus = 0;
     for (const line of headerLines) {
       const normLine = normalizeDetachmentName(line);
@@ -363,15 +472,17 @@ async function detectFaction(
     throw new Error('Could not match the pasted units to any Warhammer 40,000 faction.');
   }
 
-  return best.detail;
+  return { detail: best.detail };
 }
 
-export function isProbablyGwTextList(text: string): boolean {
+export function isProbablySupportedTextList(text: string): boolean {
   const trimmed = text.trim();
   if (!trimmed || trimmed.startsWith('{') || trimmed.startsWith('[')) return false;
   return (
-    /(?:CHARACTERS|BATTLELINE|OTHER DATASHEETS|DEDICATED TRANSPORTS|EPIC HEROES)/i.test(trimmed) ||
-    /\(\d+\s*(?:points?|pts?)\)/i.test(trimmed)
+    /(?:CHARACTERS?|EPIC HEROES?|BATTLELINE|INFANTRY|VEHICLE|DEDICATED TRANSPORTS?|OTHER DATASHEETS)/i.test(trimmed) ||
+    /\(\d+\s*(?:points?|pts?)\)/i.test(trimmed) ||
+    /\[\d+\s*(?:points?|pts?)\]/i.test(trimmed) ||
+    /^\s*#\s*\+\+\s*Army Roster/im.test(trimmed)
   );
 }
 
@@ -380,38 +491,50 @@ export async function parseGwTextRoster(
   factionsIndex: FactionSummary[],
   loadFaction: (id: string) => Promise<FactionDetail> = defaultLoadFactionDetail
 ): Promise<GwImportResult> {
-  const { headerLines, units: parsedUnits, totalPointsHint } = parseGwSections(rawText);
+  const { headerLines, configLines, units: parsedUnits, totalPointsHint } = parseListSections(rawText);
 
   if (parsedUnits.length === 0) {
-    throw new Error('No units were detected. Make sure units follow the format "Unit Name (90 Points)".');
+    throw new Error('No units were detected. Supports GW ("Unit (90 Points)") and New Recruit ("Unit [90 pts]") text formats.');
   }
 
-  const factionData = await detectFaction(headerLines, parsedUnits, factionsIndex, loadFaction);
+  const { detail: factionData, extractedRosterName } = await detectFaction(
+    headerLines,
+    parsedUnits,
+    factionsIndex,
+    loadFaction
+  );
   const warnings: string[] = [];
 
-  // Detect detachments & battle size from header lines if present
+  const allMetaLines = [...headerLines, ...configLines];
   const matchedDetachments: SelectedDetachment[] = [];
   let battleSize: BattleSize =
     totalPointsHint <= 1000 ? 'incursion' : totalPointsHint <= 2000 ? 'strike-force' : 'onslaught';
-  let rosterName = `${factionData.faction.name} Import`;
+  let rosterName = extractedRosterName || `${factionData.faction.name} Import`;
 
-  for (const line of headerLines) {
+  for (const line of allMetaLines) {
     if (/incursion/i.test(line)) battleSize = 'incursion';
     else if (/strike force/i.test(line)) battleSize = 'strike-force';
     else if (/onslaught/i.test(line)) battleSize = 'onslaught';
 
-    const cleanDet = normalizeDetachmentName(line.replace(/^detachment\s*:\s*/i, ''));
+    const cleanDet = normalizeDetachmentName(
+      line.replace(/^detachment(?:\s+choice)?\s*:\s*/i, '')
+    );
     const det = factionData.detachments.find((d) => normalizeDetachmentName(d.name) === cleanDet);
     if (det && !matchedDetachments.some((x) => x.name === det.name)) {
       matchedDetachments.push(det);
     }
   }
 
-  if (headerLines.length > 0) {
-    const firstClean = headerLines[0].replace(/\s*\(\d+\s*(?:points?|pts?)\)\s*$/i, '').trim();
+  if (!extractedRosterName && headerLines.length > 0) {
+    const firstClean = headerLines[0]
+      .replace(/\s*[\[(]\d+\s*(?:points?|pts?)[\])]\s*$/i, '')
+      .replace(/^\+\+\s*|\s*\+\+$/g, '')
+      .trim();
     if (
       firstClean &&
+      !/^army roster$/i.test(firstClean) &&
       normalizeText(firstClean) !== normalizeText(factionData.faction.name) &&
+      normalizeText(firstClean) !== normalizeText(factionData.faction.rawName) &&
       !matchedDetachments.some((d) => normalizeDetachmentName(d.name) === normalizeDetachmentName(firstClean))
     ) {
       rosterName = firstClean;
@@ -432,7 +555,6 @@ export async function parseGwTextRoster(
     const cost = getUnitBaseCostForModelCount(ds, modelsCount);
     const selectedOptions = inferSelectedOptions(block, ds);
 
-    // Enhancement matching
     let enhancement: Enhancement | undefined;
     const allBullets = [...block.bullets, ...block.bullets.flatMap((b) => b.subBullets)];
     const enhBullet = allBullets.find((b) => b.isEnhancement && b.enhancementName);
@@ -466,7 +588,6 @@ export async function parseGwTextRoster(
     throw new Error('None of the units in the pasted list matched any known datasheets.');
   }
 
-  // Ensure a Character/Epic Hero is marked Warlord if none was tagged in text
   if (!hasWarlord) {
     const firstChar = selectedUnits.find((u) => {
       const cats = u.datasheet.categories.map((c) => c.toLowerCase());

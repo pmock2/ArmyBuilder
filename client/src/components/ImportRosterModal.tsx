@@ -3,7 +3,7 @@ import { X, Upload, FileText, Loader2, AlertCircle, Sparkles } from 'lucide-reac
 import { ArmyRoster } from '../types/roster';
 import { FactionSummary } from '../types/faction';
 import { parseRosterJSON } from '../utils/storage';
-import { isProbablyGwTextList, parseGwTextRoster } from '../utils/gwListImporter';
+import { isProbablySupportedTextList, parseGwTextRoster } from '../utils/gwListImporter';
 import { useBackNavigation } from '../utils/backNavigation';
 import factionsIndexData from '../data/factions_index.json';
 
@@ -48,7 +48,7 @@ export const ImportRosterModal: React.FC<ImportRosterModalProps> = ({
         return;
       }
 
-      if (!isProbablyGwTextList(trimmed)) {
+      if (!isProbablySupportedTextList(trimmed)) {
         throw new Error('Unrecognized list format. Paste a GW App / New Recruit export or upload a .json roster file.');
       }
 
@@ -208,3 +208,4 @@ export const ImportRosterModal: React.FC<ImportRosterModalProps> = ({
     </div>
   );
 };
+
