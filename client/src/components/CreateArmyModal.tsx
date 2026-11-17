@@ -143,8 +143,8 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
             <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
               2. Allegiance / Super-Faction
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {['Imperium', 'Chaos', 'Xenos', 'Aeldari'].map((sf) => (
+            <div className="grid grid-cols-3 gap-2">
+              {['Imperium', 'Chaos', 'Xenos'].map((sf) => (
                 <button
                   type="button"
                   key={sf}

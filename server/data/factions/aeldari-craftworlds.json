@@ -4,7 +4,7 @@
     "catalogueId": "34a5-8c7e-f468-82d1",
     "name": "Aeldari",
     "rawName": "Xenos - Aeldari",
-    "superFaction": "Aeldari",
+    "superFaction": "Xenos",
     "isSubFaction": false,
     "parentFaction": null,
     "file": "Aeldari - Craftworlds.json"

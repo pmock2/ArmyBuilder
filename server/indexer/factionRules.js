@@ -40,8 +40,6 @@ function buildPlayableFactions(allCatalogues) {
       superFaction = 'Imperium';
     } else if (file.startsWith('Chaos') || cat.name.includes('Chaos')) {
       superFaction = 'Chaos';
-    } else if (file.startsWith('Aeldari')) {
-      superFaction = 'Aeldari';
     } else if (file.includes('Unaligned')) {
       superFaction = 'Unaligned';
     }

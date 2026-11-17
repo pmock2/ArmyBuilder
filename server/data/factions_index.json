@@ -4,7 +4,7 @@
     "catalogueId": "34a5-8c7e-f468-82d1",
     "name": "Aeldari",
     "rawName": "Xenos - Aeldari",
-    "superFaction": "Aeldari",
+    "superFaction": "Xenos",
     "isSubFaction": false,
     "parentFaction": null,
     "subFactions": []
@@ -14,7 +14,7 @@
     "catalogueId": "38de-521f-1ce0-44a0",
     "name": "Drukhari",
     "rawName": "Xenos - Drukhari",
-    "superFaction": "Aeldari",
+    "superFaction": "Xenos",
     "isSubFaction": false,
     "parentFaction": null,
     "subFactions": []

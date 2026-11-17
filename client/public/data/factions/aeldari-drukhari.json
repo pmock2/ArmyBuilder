@@ -4,7 +4,7 @@
     "catalogueId": "38de-521f-1ce0-44a0",
     "name": "Drukhari",
     "rawName": "Xenos - Drukhari",
-    "superFaction": "Aeldari",
+    "superFaction": "Xenos",
     "isSubFaction": false,
     "parentFaction": null,
     "file": "Aeldari - Drukhari.json"
