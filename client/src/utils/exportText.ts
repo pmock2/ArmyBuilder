@@ -100,6 +100,13 @@ export function generateShareableText(roster: ArmyRoster): string {
         }
       }
 
+      if (u.attachedRetinueId) {
+        const retinue = roster.units.find(x => x.instanceId === u.attachedRetinueId);
+        if (retinue) {
+          out += `  ↳ Retinue: ${retinue.name}\n`;
+        }
+      }
+
       if (u.attachedToBodyguardId) {
         const bg = roster.units.find(x => x.instanceId === u.attachedToBodyguardId);
         if (bg) {
@@ -204,6 +211,13 @@ export function generateTournamentText(roster: ArmyRoster): string {
           const support = roster.units.find(x => x.instanceId === u.attachedSupportId);
           if (support) {
             out += `    - Attached Support: ${support.name}${support.enhancement ? ` (${support.enhancement.name})` : ''}\n`;
+          }
+        }
+
+        if (u.attachedRetinueId) {
+          const retinue = roster.units.find(x => x.instanceId === u.attachedRetinueId);
+          if (retinue) {
+            out += `    - Attached Retinue: ${retinue.name}\n`;
           }
         }
       }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, normalizeDetachmentName } from './types/roster';
+import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, normalizeDetachmentName, isRetinueUnit, hasAttachedCryptek } from './types/roster';
 import { FactionDetail } from './types/faction';
 import { loadAllRosters, saveRoster, deleteRoster, duplicateRoster, loadActiveRosterId, saveActiveRosterId, loadPlayMode, savePlayMode } from './utils/storage';
 import { validateClientRoster, BATTLE_SIZE_CONFIGS } from './utils/validator';
@@ -451,25 +451,62 @@ export const App: React.FC = () => {
       });
     }
 
-    // 3. If attachedToBodyguardId changed on a Leader/Support
+    // 3. If attachedRetinueId changed on a bodyguard
+    if (oldUnit && oldUnit.attachedRetinueId !== updatedUnit.attachedRetinueId) {
+      const oldRetinueId = oldUnit.attachedRetinueId;
+      const newRetinueId = updatedUnit.attachedRetinueId;
+      updatedUnits = updatedUnits.map(u => {
+        if (oldRetinueId && u.instanceId === oldRetinueId) {
+          return { ...u, attachedToBodyguardId: undefined };
+        }
+        if (newRetinueId && u.instanceId === newRetinueId) {
+          return { ...u, attachedToBodyguardId: updatedUnit.instanceId };
+        }
+        // Clear any other bodyguard that previously pointed to newRetinueId
+        if (newRetinueId && u.instanceId !== updatedUnit.instanceId && u.attachedRetinueId === newRetinueId) {
+          return { ...u, attachedRetinueId: undefined };
+        }
+        return u;
+      });
+    }
+
+    // 4. If attachedToBodyguardId changed on a Leader/Support/Retinue
     if (oldUnit && oldUnit.attachedToBodyguardId !== updatedUnit.attachedToBodyguardId) {
       const oldBgId = oldUnit.attachedToBodyguardId;
       const newBgId = updatedUnit.attachedToBodyguardId;
+      const isRet = isRetinueUnit(updatedUnit);
       updatedUnits = updatedUnits.map(u => {
         if (oldBgId && u.instanceId === oldBgId) {
           const uCopy = { ...u };
           if (uCopy.attachedLeaderId === updatedUnit.instanceId) uCopy.attachedLeaderId = undefined;
           if (uCopy.attachedSupportId === updatedUnit.instanceId) uCopy.attachedSupportId = undefined;
+          if (uCopy.attachedRetinueId === updatedUnit.instanceId) uCopy.attachedRetinueId = undefined;
           return uCopy;
         }
         if (newBgId && u.instanceId === newBgId) {
           const uCopy = { ...u };
-          if (updatedUnit.isLeader) uCopy.attachedLeaderId = updatedUnit.instanceId;
+          if (isRet) uCopy.attachedRetinueId = updatedUnit.instanceId;
+          else if (updatedUnit.isLeader) uCopy.attachedLeaderId = updatedUnit.instanceId;
           else if (updatedUnit.isSupport) uCopy.attachedSupportId = updatedUnit.instanceId;
           return uCopy;
         }
         return u;
       });
+    }
+
+    // 5. Ensure any Retinue unit attached to a bodyguard without an active Cryptek is unlinked cleanly
+    const orphanedRetinueIds = new Set<string>();
+    updatedUnits = updatedUnits.map(u => {
+      if (u.attachedRetinueId && !hasAttachedCryptek(u, updatedUnits)) {
+        orphanedRetinueIds.add(u.attachedRetinueId);
+        return { ...u, attachedRetinueId: undefined };
+      }
+      return u;
+    });
+    if (orphanedRetinueIds.size > 0) {
+      updatedUnits = updatedUnits.map(u =>
+        orphanedRetinueIds.has(u.instanceId) ? { ...u, attachedToBodyguardId: undefined } : u
+      );
     }
 
     const updated = { ...activeRoster, units: updatedUnits };
@@ -480,13 +517,31 @@ export const App: React.FC = () => {
   // Remove Unit
   const handleRemoveUnit = (instanceId: string) => {
     if (!activeRoster) return;
-    const updatedUnits = activeRoster.units.filter(u => u.instanceId !== instanceId);
+    let updatedUnits = activeRoster.units.filter(u => u.instanceId !== instanceId);
     // Unlink any attachments pointing to this unit
-    updatedUnits.forEach(u => {
-      if (u.attachedToBodyguardId === instanceId) u.attachedToBodyguardId = undefined;
-      if (u.attachedLeaderId === instanceId) u.attachedLeaderId = undefined;
-      if (u.attachedSupportId === instanceId) u.attachedSupportId = undefined;
+    updatedUnits = updatedUnits.map(u => {
+      const copy = { ...u };
+      if (copy.attachedToBodyguardId === instanceId) copy.attachedToBodyguardId = undefined;
+      if (copy.attachedLeaderId === instanceId) copy.attachedLeaderId = undefined;
+      if (copy.attachedSupportId === instanceId) copy.attachedSupportId = undefined;
+      if (copy.attachedRetinueId === instanceId) copy.attachedRetinueId = undefined;
+      return copy;
     });
+
+    // If removing a Cryptek left a bodyguard without any Cryptek, unlink its Retinue
+    const orphanedRetinueIds = new Set<string>();
+    updatedUnits = updatedUnits.map(u => {
+      if (u.attachedRetinueId && !hasAttachedCryptek(u, updatedUnits)) {
+        orphanedRetinueIds.add(u.attachedRetinueId);
+        return { ...u, attachedRetinueId: undefined };
+      }
+      return u;
+    });
+    if (orphanedRetinueIds.size > 0) {
+      updatedUnits = updatedUnits.map(u =>
+        orphanedRetinueIds.has(u.instanceId) ? { ...u, attachedToBodyguardId: undefined } : u
+      );
+    }
 
     const updated = { ...activeRoster, units: updatedUnits };
     setActiveRoster(updated);
@@ -502,7 +557,8 @@ export const App: React.FC = () => {
       isWarlord: false,
       attachedToBodyguardId: undefined,
       attachedLeaderId: undefined,
-      attachedSupportId: undefined
+      attachedSupportId: undefined,
+      attachedRetinueId: undefined
     };
     const updated = {
       ...activeRoster,

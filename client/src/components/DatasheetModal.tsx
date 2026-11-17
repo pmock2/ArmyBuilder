@@ -14,7 +14,11 @@ import {
   getEffectiveOptionMaxCount,
   getEffectiveUnitAddedKeywords,
   getEffectiveCanLead,
-  canUnitLeadBodyguard
+  canUnitLeadBodyguard,
+  isRetinueUnit,
+  hasAttachedCryptek,
+  getAttachedCryptekForBodyguard,
+  canRetinueAttachToBodyguard
 } from '../types/roster';
 import { computeUnitEquippedData, computeModifiedStat } from '../utils/equippedStats';
 import { useBackNavigation } from '../utils/backNavigation';
@@ -80,6 +84,9 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     }
     if (bodyguard.attachedSupportId) {
       pushUnique(allUnitsInRoster.find((u) => u.instanceId === bodyguard.attachedSupportId));
+    }
+    if (bodyguard.attachedRetinueId) {
+      pushUnique(allUnitsInRoster.find((u) => u.instanceId === bodyguard.attachedRetinueId));
     }
     for (const u of allUnitsInRoster) {
       if (u.attachedToBodyguardId === bodyguard.instanceId) {
@@ -159,22 +166,24 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     ? attachedUnitMembers.reduce((sum, m) => sum + Math.max(m.datasheet.minModels || 1, m.modelsCount || 1), 0)
     : currentModelsCount;
 
-  const getAttachedMemberRole = (m: SelectedUnit, idx: number): 'Bodyguard' | 'Leader' | 'Support' => {
+  const getAttachedMemberRole = (m: SelectedUnit, idx: number): 'Bodyguard' | 'Leader' | 'Support' | 'Retinue' => {
     if (idx === 0) return 'Bodyguard';
+    if (isRetinueUnit(m)) return 'Retinue';
     if (m.isSupport && !m.isLeader) return 'Support';
     return 'Leader';
   };
 
-  const getMemberRoleBadgeClass = (role: 'Bodyguard' | 'Leader' | 'Support'): string => {
+  const getMemberRoleBadgeClass = (role: 'Bodyguard' | 'Leader' | 'Support' | 'Retinue'): string => {
     if (role === 'Leader') return 'bg-indigo-950/70 text-indigo-300 border-indigo-600/50';
     if (role === 'Support') return 'bg-emerald-950/70 text-emerald-300 border-emerald-600/50';
+    if (role === 'Retinue') return 'bg-teal-950/70 text-teal-300 border-teal-600/50';
     return 'bg-sky-950/70 text-sky-300 border-sky-700/50';
   };
 
   type DisplayMemberBundle = {
     key: string;
     name: string;
-    role: 'Bodyguard' | 'Leader' | 'Support';
+    role: 'Bodyguard' | 'Leader' | 'Support' | 'Retinue';
     modelsCount: number;
     cost: number;
     datasheet: Datasheet;
@@ -451,7 +460,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
       description: string;
       sourceInfo?: { label: string; type: 'wargear' | 'enhancement' };
       ownerName: string;
-      ownerRole: 'Bodyguard' | 'Leader' | 'Support';
+      ownerRole: 'Bodyguard' | 'Leader' | 'Support' | 'Retinue';
     }[] = [];
     const seenCoreBySignature = new Set<string>();
 
@@ -492,6 +501,33 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     return otherEquippedCount < maxAllowed;
   });
 
+  const unitIsRetinue = isRetinueUnit(selectedUnit || unit);
+  const unitHasCryptek = Boolean(selectedUnit && hasAttachedCryptek(selectedUnit, allUnitsInRoster));
+
+  // Retinue units (e.g. Cryptothralls, Canoptek Tomb Crawlers) eligible to join this Cryptek-led Bodyguard
+  const eligibleRetinues =
+    selectedUnit && unitHasCryptek
+      ? allUnitsInRoster.filter(
+          (u) =>
+            isRetinueUnit(u) &&
+            u.instanceId !== selectedUnit.instanceId &&
+            (!u.attachedToBodyguardId || u.attachedToBodyguardId === selectedUnit.instanceId)
+        )
+      : [];
+
+  // Cryptek-led Bodyguard units in roster that a Retinue unit can join
+  const eligibleRetinueBodyguards =
+    selectedUnit && unitIsRetinue
+      ? allUnitsInRoster.filter(
+          (bg) =>
+            canRetinueAttachToBodyguard(selectedUnit, bg, allUnitsInRoster) &&
+            (!bg.attachedRetinueId || bg.attachedRetinueId === selectedUnit.instanceId)
+        )
+      : [];
+
+  const canUnitHaveRetinue = Boolean(
+    !unitIsRetinue && !unit.isLeader && !unit.isSupport && (unitHasCryptek || selectedUnit?.attachedRetinueId)
+  );
   const canUnitBeLed = Boolean(unit.canBeLed || eligibleLeaders.length > 0 || selectedUnit?.attachedLeaderId);
   const canUnitHaveSupport = Boolean(unit.canHaveSupport || eligibleSupports.length > 0 || selectedUnit?.attachedSupportId);
   const hasSquadSizeChoices = Boolean((unit.maxModels || 1) > (unit.minModels || 1) || (unit.costTiers && unit.costTiers.length > 1));
@@ -505,8 +541,9 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     selectedUnit &&
       onUpdateUnit &&
       (selectedUnit.isCharacter ||
+        unitIsRetinue ||
         hasSquadSizeChoices ||
-        (!selectedUnit.isLeader && !selectedUnit.isSupport && (canUnitBeLed || canUnitHaveSupport)) ||
+        (!selectedUnit.isLeader && !selectedUnit.isSupport && (canUnitBeLed || canUnitHaveSupport || canUnitHaveRetinue)) ||
         selectedUnit.attachedToBodyguardId)
   );
 
@@ -791,8 +828,8 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                 </div>
               )}
 
-              {/* Attachment Controls for Bodyguards (only rendered if this unit can be led or supported) */}
-              {!selectedUnit.isLeader && !selectedUnit.isSupport && (canUnitBeLed || canUnitHaveSupport) && (
+              {/* Attachment Controls for Bodyguards (Leader, Support, and Cryptek-led Retinue) */}
+              {!selectedUnit.isLeader && !selectedUnit.isSupport && !unitIsRetinue && (canUnitBeLed || canUnitHaveSupport || canUnitHaveRetinue) && (
                 <div className={`grid grid-cols-1 ${canUnitBeLed && canUnitHaveSupport ? 'sm:grid-cols-2' : ''} gap-3 pt-1`}>
                   {canUnitBeLed && (
                     <div>
@@ -843,11 +880,71 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                       </select>
                     </div>
                   )}
+
+                  {canUnitHaveRetinue && (
+                    <div className={canUnitBeLed && canUnitHaveSupport ? 'sm:col-span-2' : ''}>
+                      <label className="text-xs font-bold text-teal-300 block mb-1.5">
+                        Attached Cryptek Retinue (Max 1 • Cryptothralls / Canoptek Tomb Crawlers):
+                      </label>
+                      <select
+                        value={selectedUnit.attachedRetinueId || ''}
+                        onChange={(e) => {
+                          onUpdateUnit({
+                            ...selectedUnit,
+                            attachedRetinueId: e.target.value || undefined
+                          });
+                        }}
+                        className="w-full min-h-[42px] px-3 py-2 rounded-lg bg-slate-800 border border-teal-700/60 text-slate-100 text-sm focus:outline-none focus:border-teal-500"
+                      >
+                        <option value="">No Retinue Attached</option>
+                        {eligibleRetinues.map((r) => (
+                          <option key={r.instanceId} value={r.instanceId}>
+                            {r.name} ({r.cost} pts)
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                 </div>
               )}
 
-              {/* Detach option if attached to a Bodyguard */}
-              {selectedUnit.attachedToBodyguardId && (
+              {/* Join Cryptek-Led Unit selector for Retinue units (Cryptothralls / Canoptek Tomb Crawlers) */}
+              {unitIsRetinue && (
+                <div className="pt-1 space-y-1.5">
+                  <label className="text-xs font-bold text-teal-300 block">
+                    Join Cryptek-Led Unit (Max 1):
+                  </label>
+                  {eligibleRetinueBodyguards.length > 0 ? (
+                    <select
+                      value={selectedUnit.attachedToBodyguardId || ''}
+                      onChange={(e) => {
+                        onUpdateUnit({
+                          ...selectedUnit,
+                          attachedToBodyguardId: e.target.value || undefined
+                        });
+                      }}
+                      className="w-full min-h-[42px] px-3 py-2 rounded-lg bg-slate-800 border border-teal-700/60 text-slate-100 text-sm focus:outline-none focus:border-teal-500"
+                    >
+                      <option value="">Standalone (Not Joined to a Unit)</option>
+                      {eligibleRetinueBodyguards.map((bg) => {
+                        const cryptek = getAttachedCryptekForBodyguard(bg, allUnitsInRoster);
+                        return (
+                          <option key={bg.instanceId} value={bg.instanceId}>
+                            {bg.name}{cryptek ? ` (Led by ${cryptek.name})` : ''} ({bg.cost} pts)
+                          </option>
+                        );
+                      })}
+                    </select>
+                  ) : (
+                    <p className="text-xs text-slate-400 italic p-2.5 rounded-lg bg-slate-800/70 border border-slate-700">
+                      Attach a Cryptek (e.g. Technomancer, Chronomancer, Plasmancer, Psychomancer, Geomancer, Orikan) to a Bodyguard unit first to join this Retinue to it.
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Detach option if attached to a Bodyguard (hidden for Retinue which uses selector above) */}
+              {!unitIsRetinue && selectedUnit.attachedToBodyguardId && (
                 <div className="pt-1 flex items-center justify-between text-xs p-2.5 rounded-lg bg-slate-800 border border-slate-700">
                   <span className="text-slate-300">
                     Currently attached to a bodyguard unit.

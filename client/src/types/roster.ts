@@ -591,11 +591,67 @@ export interface SelectedUnit {
   isWarlord: boolean;
   enhancement?: Enhancement;
   selectedOptions?: Record<string, string[]>;
-  attachedToBodyguardId?: string; // If this unit is a Leader/Support attached to a Bodyguard
+  attachedToBodyguardId?: string; // If this unit is a Leader/Support/Retinue attached to a Bodyguard
   attachedLeaderId?: string;     // If this is a Bodyguard with a Leader attached
   attachedSupportId?: string;    // If this is a Bodyguard with a Support attached
+  attachedRetinueId?: string;    // If this is a Bodyguard with a Retinue (e.g. Cryptothralls) joined
   embarkedUnitIds?: string[];    // If this is a Transport
   datasheet: Datasheet;
+}
+
+export function isCryptekUnit(unitOrDatasheet: Datasheet | SelectedUnit): boolean {
+  const d: Datasheet = 'datasheet' in unitOrDatasheet ? unitOrDatasheet.datasheet : unitOrDatasheet;
+  const cats = (d.categories || []).map((c) => c.toLowerCase());
+  const kws = (d.keywords || []).map((k) => k.toLowerCase());
+  return cats.includes('cryptek') || kws.includes('cryptek');
+}
+
+export function isRetinueUnit(unitOrDatasheet: Datasheet | SelectedUnit): boolean {
+  const d: Datasheet = 'datasheet' in unitOrDatasheet ? unitOrDatasheet.datasheet : unitOrDatasheet;
+  const cats = (d.categories || []).map((c) => c.toLowerCase());
+  if (cats.includes('canoptek retinue')) return true;
+  const abs = (d.abilities || []).map((a) => a.name.toLowerCase());
+  return abs.includes('cryptek retinue') || abs.includes('canoptek retinue');
+}
+
+export function getAttachedCryptekForBodyguard(
+  bodyguardUnit: SelectedUnit,
+  allUnitsInRoster: SelectedUnit[]
+): SelectedUnit | undefined {
+  const candidates: SelectedUnit[] = [];
+  if (bodyguardUnit.attachedLeaderId) {
+    const l = allUnitsInRoster.find((u) => u.instanceId === bodyguardUnit.attachedLeaderId);
+    if (l) candidates.push(l);
+  }
+  if (bodyguardUnit.attachedSupportId) {
+    const s = allUnitsInRoster.find((u) => u.instanceId === bodyguardUnit.attachedSupportId);
+    if (s) candidates.push(s);
+  }
+  for (const u of allUnitsInRoster) {
+    if (u.attachedToBodyguardId === bodyguardUnit.instanceId && (u.isLeader || u.isSupport)) {
+      candidates.push(u);
+    }
+  }
+  return candidates.find((c) => isCryptekUnit(c));
+}
+
+export function hasAttachedCryptek(
+  bodyguardUnit: SelectedUnit,
+  allUnitsInRoster: SelectedUnit[]
+): boolean {
+  return Boolean(getAttachedCryptekForBodyguard(bodyguardUnit, allUnitsInRoster));
+}
+
+export function canRetinueAttachToBodyguard(
+  retinueUnit: SelectedUnit,
+  bodyguardUnit: SelectedUnit,
+  allUnitsInRoster: SelectedUnit[]
+): boolean {
+  if (!retinueUnit || !bodyguardUnit) return false;
+  if (!isRetinueUnit(retinueUnit)) return false;
+  if (retinueUnit.instanceId === bodyguardUnit.instanceId) return false;
+  if (bodyguardUnit.isLeader || bodyguardUnit.isSupport || isRetinueUnit(bodyguardUnit)) return false;
+  return hasAttachedCryptek(bodyguardUnit, allUnitsInRoster);
 }
 
 export interface SelectedDetachment {

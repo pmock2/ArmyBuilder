@@ -4,7 +4,9 @@ import {
   ValidationIssue,
   ValidationResult,
   getUnitTotalPts,
-  canUnitLeadBodyguard
+  canUnitLeadBodyguard,
+  isRetinueUnit,
+  canRetinueAttachToBodyguard
 } from '../types/roster';
 
 export const BATTLE_SIZE_CONFIGS: Record<string, BattleSizeConfig> = {
@@ -250,24 +252,36 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
     }
   }
 
-  // 8. Bodyguard Slot Limits (1 Leader + 1 Support max) & Attachment Eligibility
-  const bodyguardSlots: Record<string, { leaders: number; supports: number }> = {};
+  // 8. Bodyguard Slot Limits (1 Leader + 1 Support + 1 Retinue max) & Attachment Eligibility
+  const bodyguardSlots: Record<string, { leaders: number; supports: number; retinues: number }> = {};
   for (const u of units) {
     if (u.attachedToBodyguardId) {
       const bgId = u.attachedToBodyguardId;
-      bodyguardSlots[bgId] = bodyguardSlots[bgId] || { leaders: 0, supports: 0 };
-      if (u.isLeader) bodyguardSlots[bgId].leaders += 1;
-      if (u.isSupport) bodyguardSlots[bgId].supports += 1;
+      bodyguardSlots[bgId] = bodyguardSlots[bgId] || { leaders: 0, supports: 0, retinues: 0 };
+      const uIsRetinue = isRetinueUnit(u);
+      if (uIsRetinue) bodyguardSlots[bgId].retinues += 1;
+      else if (u.isLeader) bodyguardSlots[bgId].leaders += 1;
+      else if (u.isSupport) bodyguardSlots[bgId].supports += 1;
 
       const bgUnit = units.find(x => x.instanceId === bgId);
-      if (bgUnit && !canUnitLeadBodyguard(u, bgUnit)) {
-        issues.push({
-          id: `ineligible-attachment-${u.instanceId}`,
-          severity: 'error',
-          title: `Ineligible Attachment: ${u.name}`,
-          message: `'${u.name}' cannot currently attach to '${bgUnit.name}'.`,
-          unitInstanceId: u.instanceId
-        });
+      if (bgUnit) {
+        if (uIsRetinue && !canRetinueAttachToBodyguard(u, bgUnit, units)) {
+          issues.push({
+            id: `ineligible-retinue-${u.instanceId}`,
+            severity: 'error',
+            title: `Ineligible Retinue Attachment: ${u.name}`,
+            message: `'${u.name}' can only join a unit being led by a CRYPTEK model.`,
+            unitInstanceId: u.instanceId
+          });
+        } else if (!uIsRetinue && !canUnitLeadBodyguard(u, bgUnit)) {
+          issues.push({
+            id: `ineligible-attachment-${u.instanceId}`,
+            severity: 'error',
+            title: `Ineligible Attachment: ${u.name}`,
+            message: `'${u.name}' cannot currently attach to '${bgUnit.name}'.`,
+            unitInstanceId: u.instanceId
+          });
+        }
       }
     }
   }
@@ -290,6 +304,15 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
         severity: 'error',
         title: `Excess Support Units on ${bgName}`,
         message: `'${bgName}' has ${att.supports} Support units attached (maximum 1 permitted).`,
+        unitInstanceId: bgId
+      });
+    }
+    if (att.retinues > 1) {
+      issues.push({
+        id: `excess-retinues-${bgId}`,
+        severity: 'error',
+        title: `Excess Retinue Units on ${bgName}`,
+        message: `'${bgName}' has ${att.retinues} Retinue units joined (maximum 1 Cryptothralls or Canoptek Tomb Crawlers permitted).`,
         unitInstanceId: bgId
       });
     }

@@ -42,6 +42,7 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   // Attached unit references for subtitles
   const attachedLeader = allUnitsInRoster.find((u) => u.instanceId === unit.attachedLeaderId);
   const attachedSupport = allUnitsInRoster.find((u) => u.instanceId === unit.attachedSupportId);
+  const attachedRetinue = allUnitsInRoster.find((u) => u.instanceId === unit.attachedRetinueId);
   const attachedToBodyguard = allUnitsInRoster.find((u) => u.instanceId === unit.attachedToBodyguardId);
 
   const leaderUnitEnhancement =
@@ -118,6 +119,12 @@ export const UnitCard: React.FC<UnitCardProps> = ({
               {attachedSupport && (
                 <span className="text-theme-text-secondary font-medium truncate max-w-[220px]">
                   • Support: {attachedSupport.name}
+                </span>
+              )}
+
+              {attachedRetinue && (
+                <span className="text-teal-300/90 font-medium truncate max-w-[220px]">
+                  • Retinue: {attachedRetinue.name}
                 </span>
               )}
 
