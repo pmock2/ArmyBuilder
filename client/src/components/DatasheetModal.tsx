@@ -61,6 +61,37 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const [eligibleStratIds, setEligibleStratIds] = useState<Set<string>>(new Set());
   const [expandedStratId, setExpandedStratId] = useState<string | null>(null);
 
+  const attachedUnitMembers: SelectedUnit[] = (() => {
+    if (!isPlayMode || !selectedUnit) return [];
+    const bodyguard = selectedUnit.attachedToBodyguardId
+      ? allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedToBodyguardId) || selectedUnit
+      : selectedUnit;
+    const members: SelectedUnit[] = [];
+    const seen = new Set<string>();
+    const pushUnique = (u?: SelectedUnit) => {
+      if (u && !seen.has(u.instanceId)) {
+        seen.add(u.instanceId);
+        members.push(u);
+      }
+    };
+    pushUnique(bodyguard);
+    if (bodyguard.attachedLeaderId) {
+      pushUnique(allUnitsInRoster.find((u) => u.instanceId === bodyguard.attachedLeaderId));
+    }
+    if (bodyguard.attachedSupportId) {
+      pushUnique(allUnitsInRoster.find((u) => u.instanceId === bodyguard.attachedSupportId));
+    }
+    for (const u of allUnitsInRoster) {
+      if (u.attachedToBodyguardId === bodyguard.instanceId) {
+        pushUnique(u);
+      }
+    }
+    return members;
+  })();
+
+  const isShowingAttachedUnit = isPlayMode && attachedUnitMembers.length > 1;
+  const attachedMemberNamesKey = attachedUnitMembers.map((m) => m.name).join('|');
+
   useBackNavigation(isOpen && Boolean(unit), onClose);
   useBackNavigation(isOpen && Boolean(unit) && Boolean(inspectingOption), () => setInspectingOption(null));
 
@@ -74,8 +105,17 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
 
     if (isOpen && unit?.name) {
       let active = true;
-      getEligibleStratagemIdsForUnit(unit.name).then((ids) => {
-        if (active) setEligibleStratIds(ids);
+      const targetNames =
+        isShowingAttachedUnit && attachedUnitMembers.length > 1
+          ? Array.from(new Set(attachedUnitMembers.map((m) => m.name)))
+          : [unit.name];
+      Promise.all(targetNames.map((n) => getEligibleStratagemIdsForUnit(n))).then((sets) => {
+        if (!active) return;
+        const merged = new Set<string>();
+        for (const s of sets) {
+          for (const id of s) merged.add(id);
+        }
+        setEligibleStratIds(merged);
       });
       return () => {
         active = false;
@@ -83,7 +123,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     } else {
       setEligibleStratIds(new Set());
     }
-  }, [unit?.id, unit?.name, selectedUnit?.instanceId, isOpen]);
+  }, [unit?.id, unit?.name, selectedUnit?.instanceId, isOpen, isShowingAttachedUnit, attachedMemberNamesKey]);
 
   if (!isOpen || !unit) return null;
 
@@ -100,25 +140,74 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
 
   const wargearGroups = unit.wargearGroups || [];
 
+  const primaryEquippedData = computeUnitEquippedData(unit, selectedUnit, previewSelectedOptions, allUnitsInRoster);
   const {
     getGroupSelectedIds,
-    getEquippedWeaponDisplayName,
-    activeStatModifiers,
-    inheritedLeaderEnhancements,
-    abilitySourceMap,
-    weaponSourceMap,
-    equippedRangedWeapons,
-    equippedMeleeWeapons,
-    equippedAbilities,
-    statProfiles,
-    modM,
-    modT,
-    modSv,
-    modW,
-    modLd,
-    modOC,
-    modInSv
-  } = computeUnitEquippedData(unit, selectedUnit, previewSelectedOptions, allUnitsInRoster);
+    inheritedLeaderEnhancements
+  } = primaryEquippedData;
+
+  const attachedPrimaryMember = isShowingAttachedUnit ? attachedUnitMembers[0] : selectedUnit || null;
+  const displayUnitName = isShowingAttachedUnit && attachedPrimaryMember ? attachedPrimaryMember.name : unit.name;
+  const displayPrimaryCategory =
+    isShowingAttachedUnit && attachedPrimaryMember
+      ? attachedPrimaryMember.datasheet.primaryCategory
+      : unit.primaryCategory;
+  const displayCurrentCost = isShowingAttachedUnit
+    ? attachedUnitMembers.reduce((sum, m) => sum + getUnitTotalPts(m), 0)
+    : currentCost;
+  const displayCurrentModelsCount = isShowingAttachedUnit
+    ? attachedUnitMembers.reduce((sum, m) => sum + Math.max(m.datasheet.minModels || 1, m.modelsCount || 1), 0)
+    : currentModelsCount;
+
+  const getAttachedMemberRole = (m: SelectedUnit, idx: number): 'Bodyguard' | 'Leader' | 'Support' => {
+    if (idx === 0) return 'Bodyguard';
+    if (m.isSupport && !m.isLeader) return 'Support';
+    return 'Leader';
+  };
+
+  const getMemberRoleBadgeClass = (role: 'Bodyguard' | 'Leader' | 'Support'): string => {
+    if (role === 'Leader') return 'bg-indigo-950/70 text-indigo-300 border-indigo-600/50';
+    if (role === 'Support') return 'bg-emerald-950/70 text-emerald-300 border-emerald-600/50';
+    return 'bg-sky-950/70 text-sky-300 border-sky-700/50';
+  };
+
+  type DisplayMemberBundle = {
+    key: string;
+    name: string;
+    role: 'Bodyguard' | 'Leader' | 'Support';
+    modelsCount: number;
+    cost: number;
+    datasheet: Datasheet;
+    selectedUnit?: SelectedUnit | null;
+    equipped: ReturnType<typeof computeUnitEquippedData>;
+  };
+
+  const displayMembers: DisplayMemberBundle[] = isShowingAttachedUnit
+    ? attachedUnitMembers.map((m, idx) => ({
+        key: m.instanceId,
+        name: m.name,
+        role: getAttachedMemberRole(m, idx),
+        modelsCount: Math.max(m.datasheet.minModels || 1, m.modelsCount || 1),
+        cost: getUnitTotalPts(m),
+        datasheet: m.datasheet,
+        selectedUnit: m,
+        equipped:
+          selectedUnit && m.instanceId === selectedUnit.instanceId
+            ? primaryEquippedData
+            : computeUnitEquippedData(m.datasheet, m, {}, allUnitsInRoster)
+      }))
+    : [
+        {
+          key: selectedUnit?.instanceId || unit.id,
+          name: unit.name,
+          role: 'Bodyguard',
+          modelsCount: currentModelsCount,
+          cost: currentCost,
+          datasheet: unit,
+          selectedUnit,
+          equipped: primaryEquippedData
+        }
+      ];
 
   const minSquadModels = unit.minModels || 1;
   const maxSquadModels = unit.maxModels || minSquadModels;
@@ -316,16 +405,6 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     });
   };
 
-  const unitModifiedStatEntries = [
-    { label: 'M', stat: modM },
-    { label: 'T', stat: modT },
-    { label: 'SV', stat: modSv },
-    { label: 'W', stat: modW },
-    { label: 'LD', stat: modLd },
-    { label: 'OC', stat: modOC },
-    { label: 'INSV', stat: modInSv }
-  ].filter((x) => x.stat.isModified);
-
   // Eligible leaders in roster that can attach to this bodyguard (including enhancement-unlocked keywords)
   const eligibleLeaders = allUnitsInRoster.filter(
     (u) => u.isLeader && Boolean(selectedUnit) && canUnitLeadBodyguard(u, selectedUnit!)
@@ -336,7 +415,67 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     (u) => u.isSupport && Boolean(selectedUnit) && canUnitLeadBodyguard(u, selectedUnit!)
   );
 
-  const effectiveAddedCategories = getEffectiveUnitAddedKeywords(selectedUnit || unit);
+  const effectiveAddedCategories = (() => {
+    const merged: { kw: string; source: string }[] = [];
+    const seen = new Set<string>();
+    for (const dm of displayMembers) {
+      for (const ak of getEffectiveUnitAddedKeywords(dm.selectedUnit || dm.datasheet)) {
+        const key = ak.kw.toLowerCase();
+        if (!seen.has(key)) {
+          seen.add(key);
+          merged.push(ak);
+        }
+      }
+    }
+    return merged;
+  })();
+
+  const mergedBaseCategories = (() => {
+    const merged: string[] = [];
+    const seen = new Set<string>();
+    for (const dm of displayMembers) {
+      for (const cat of dm.datasheet.categories) {
+        const key = cat.toLowerCase();
+        if (!seen.has(key)) {
+          seen.add(key);
+          merged.push(cat);
+        }
+      }
+    }
+    return merged;
+  })();
+
+  const mergedAbilities = (() => {
+    const list: {
+      name: string;
+      description: string;
+      sourceInfo?: { label: string; type: 'wargear' | 'enhancement' };
+      ownerName: string;
+      ownerRole: 'Bodyguard' | 'Leader' | 'Support';
+    }[] = [];
+    const seenCoreBySignature = new Set<string>();
+
+    for (const dm of displayMembers) {
+      for (const ab of dm.equipped.equippedAbilities) {
+        const sourceInfo = dm.equipped.abilitySourceMap[ab.name];
+        const normSig = `${ab.name.toLowerCase()}::${(ab.description || '').replace(/\s+/g, ' ').trim().toLowerCase()}`;
+        // Deduplicate identical shared rules (like Reanimation Protocols / Oath of Moment) across members
+        if (!sourceInfo && seenCoreBySignature.has(normSig)) {
+          continue;
+        }
+        seenCoreBySignature.add(normSig);
+        list.push({
+          name: ab.name,
+          description: ab.description,
+          sourceInfo,
+          ownerName: dm.name,
+          ownerRole: dm.role
+        });
+      }
+    }
+    return list;
+  })();
+
   const effectiveCanLeadInfo = getEffectiveCanLead(selectedUnit || unit);
 
   // Eligible enhancements for this unit based on active detachments & unit restrictions
@@ -412,31 +551,41 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
-                {unit.primaryCategory}
+                {displayPrimaryCategory}
               </span>
-              {isLegendsUnit(unit) && (
+              {isShowingAttachedUnit && (
+                <span className="text-xs font-bold px-2.5 py-0.5 rounded-md bg-amber-950/60 text-amber-300 border border-amber-500/45">
+                  Attached Unit ({displayMembers.length})
+                </span>
+              )}
+              {displayMembers.some((dm) => isLegendsUnit(dm.datasheet)) && (
                 <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-950/80 text-purple-300 border border-purple-600/50 font-mono">
                   LEGENDS
                 </span>
               )}
-              {unit.stats.Base && (
+              {!isShowingAttachedUnit && unit.stats.Base && (
                 <span className="text-xs font-mono text-slate-400 font-semibold">
                   Base: {unit.stats.Base}
                 </span>
               )}
             </div>
             <h2 className="font-warhammer text-lg sm:text-xl font-bold text-slate-100 mt-1">
-              {unit.name}
+              {displayUnitName}
             </h2>
+            {isShowingAttachedUnit && (
+              <p className="text-xs text-sky-300/90 font-medium mt-0.5">
+                + {displayMembers.slice(1).map((m) => m.name).join(' + ')}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
             <div className="text-right">
               <div className="font-mono text-sky-400 font-bold text-base sm:text-lg">
-                {currentCost} pts
+                {displayCurrentCost} pts
               </div>
               <div className="text-xs text-slate-400 font-medium">
-                {currentModelsCount} {currentModelsCount === 1 ? 'Model' : 'Models'}
+                {displayCurrentModelsCount} {displayCurrentModelsCount === 1 ? 'Model' : 'Models'}
               </div>
             </div>
 
@@ -455,36 +604,78 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
           
           {/* Unit Makeup & Attachment Status Header */}
           <div className="p-3 sm:p-3.5 rounded-xl bg-slate-850 border border-slate-750 flex flex-wrap items-center justify-between gap-2.5 text-xs sm:text-sm">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-sky-400 flex-shrink-0" />
-              <span className="text-slate-300 font-medium">Squad:</span>
-              <span className="font-bold text-slate-100">
-                {currentModelsCount}x {unit.stats.name || unit.name}
-              </span>
-            </div>
-
-            {selectedUnit && (
-              <div className="flex items-center gap-2 flex-wrap">
-                {selectedUnit.isWarlord && (
-                  <span className="text-xs px-2.5 py-1 rounded-md font-bold flex items-center gap-1 bg-indigo-950/80 text-indigo-300 border border-indigo-700/50">
-                    <Star className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
-                    <span>Warlord</span>
-                  </span>
-                )}
-                {selectedUnit.enhancement && (
-                  <span className="text-xs px-2.5 py-1 rounded-md font-semibold bg-amber-950/60 text-amber-300 border border-amber-600/50">
-                    Enhancement: {selectedUnit.enhancement.name} (+{selectedUnit.enhancement.pts} pts)
-                  </span>
-                )}
-                {inheritedLeaderEnhancements.map(({ enhancement: lEnh, leaderName }, idx) => (
-                  <span
-                    key={`${lEnh.id}-${idx}`}
-                    className="text-xs px-2.5 py-1 rounded-md font-semibold bg-amber-950/50 text-amber-300 border border-amber-500/45"
-                  >
-                    Leader Enhancement: {lEnh.name} (via {leaderName})
-                  </span>
-                ))}
+            {isShowingAttachedUnit ? (
+              <div className="w-full space-y-2">
+                <div className="flex items-center gap-2 text-slate-300 font-medium">
+                  <Users className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                  <span>Attached Unit Composition:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {displayMembers.map((dm) => (
+                    <div
+                      key={dm.key}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/75 border border-slate-700/80 flex-wrap"
+                    >
+                      <span
+                        className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded border ${getMemberRoleBadgeClass(dm.role)}`}
+                      >
+                        {dm.role}
+                      </span>
+                      <span className="font-bold text-slate-100">
+                        {dm.modelsCount}x {dm.name}
+                      </span>
+                      <span className="font-mono text-[11px] text-sky-400">
+                        ({dm.cost} pts)
+                      </span>
+                      {dm.selectedUnit?.isWarlord && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded font-bold flex items-center gap-1 bg-indigo-950/80 text-indigo-300 border border-indigo-700/50">
+                          <Star className="w-3 h-3 fill-indigo-400 text-indigo-400" />
+                          <span>Warlord</span>
+                        </span>
+                      )}
+                      {dm.selectedUnit?.enhancement && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded font-semibold bg-amber-950/60 text-amber-300 border border-amber-600/50">
+                          {dm.selectedUnit.enhancement.name}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                  <span className="text-slate-300 font-medium">Squad:</span>
+                  <span className="font-bold text-slate-100">
+                    {currentModelsCount}x {unit.stats.name || unit.name}
+                  </span>
+                </div>
+
+                {selectedUnit && (
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {selectedUnit.isWarlord && (
+                      <span className="text-xs px-2.5 py-1 rounded-md font-bold flex items-center gap-1 bg-indigo-950/80 text-indigo-300 border border-indigo-700/50">
+                        <Star className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
+                        <span>Warlord</span>
+                      </span>
+                    )}
+                    {selectedUnit.enhancement && (
+                      <span className="text-xs px-2.5 py-1 rounded-md font-semibold bg-amber-950/60 text-amber-300 border border-amber-600/50">
+                        Enhancement: {selectedUnit.enhancement.name} (+{selectedUnit.enhancement.pts} pts)
+                      </span>
+                    )}
+                    {inheritedLeaderEnhancements.map(({ enhancement: lEnh, leaderName }, idx) => (
+                      <span
+                        key={`${lEnh.id}-${idx}`}
+                        className="text-xs px-2.5 py-1 rounded-md font-semibold bg-amber-950/50 text-amber-300 border border-amber-500/45"
+                      >
+                        Leader Enhancement: {lEnh.name} (via {leaderName})
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -1035,12 +1226,30 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
               <span>Model Profiles</span>
             </h3>
 
-            <div className="rounded-xl border border-slate-750 bg-slate-850 p-2.5 sm:p-3 space-y-2">
-              {statProfiles.map((sp, spIdx) => (
-                <div key={`${sp.name}-${spIdx}`} className={spIdx > 0 ? 'pt-2.5 border-t border-slate-800/80 space-y-2' : 'space-y-2'}>
-                  <div className="text-xs font-bold text-slate-100 flex items-center justify-between">
-                    <span>
-                      {sp.count !== undefined ? `x${sp.count} ` : ''}{sp.name}
+            <div className="rounded-xl border border-slate-750 bg-slate-850 p-2.5 sm:p-3 space-y-2.5">
+              {displayMembers.flatMap((dm) =>
+                dm.equipped.statProfiles.map((sp, spIdx) => ({
+                  dm,
+                  sp,
+                  spIdx
+                }))
+              ).map(({ dm, sp, spIdx }, flatIdx) => (
+                <div
+                  key={`${dm.key}-${sp.name}-${spIdx}`}
+                  className={flatIdx > 0 ? 'pt-2.5 border-t border-slate-800/80 space-y-2' : 'space-y-2'}
+                >
+                  <div className="text-xs font-bold text-slate-100 flex items-center justify-between gap-2 flex-wrap">
+                    <span className="flex items-center gap-1.5 flex-wrap">
+                      {isShowingAttachedUnit && (
+                        <span
+                          className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded border ${getMemberRoleBadgeClass(dm.role)}`}
+                        >
+                          {dm.role}
+                        </span>
+                      )}
+                      <span>
+                        {sp.count !== undefined ? `x${sp.count} ` : ''}{sp.name}
+                      </span>
                     </span>
                     {sp.Base && (
                       <span className="text-[11px] font-mono text-slate-400 font-semibold">
@@ -1095,248 +1304,169 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                 </div>
               ))}
 
-              {unitModifiedStatEntries.length > 0 && (
-                <div className="pt-1 flex flex-wrap gap-1.5">
-                  {unitModifiedStatEntries.map(({ label, stat }) => (
-                    <span
-                      key={label}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-950/30 text-amber-300/95 border border-amber-500/35"
-                    >
-                      <strong>{label}</strong>: {stat.baseValue || '—'} → <strong>{stat.value}</strong> ({stat.sources.join(', ')})
-                    </span>
-                  ))}
-                </div>
-              )}
+              {(() => {
+                const modCallouts = displayMembers.flatMap((dm) =>
+                  [
+                    { label: 'M', stat: dm.equipped.modM },
+                    { label: 'T', stat: dm.equipped.modT },
+                    { label: 'SV', stat: dm.equipped.modSv },
+                    { label: 'W', stat: dm.equipped.modW },
+                    { label: 'LD', stat: dm.equipped.modLd },
+                    { label: 'OC', stat: dm.equipped.modOC },
+                    { label: 'INSV', stat: dm.equipped.modInSv }
+                  ]
+                    .filter((x) => x.stat.isModified)
+                    .map((x) => ({ ...x, ownerName: dm.name }))
+                );
+                if (modCallouts.length === 0) return null;
+                return (
+                  <div className="pt-1 flex flex-wrap gap-1.5">
+                    {modCallouts.map(({ label, stat, ownerName }, idx) => (
+                      <span
+                        key={`${ownerName}-${label}-${idx}`}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-950/30 text-amber-300/95 border border-amber-500/35"
+                      >
+                        {isShowingAttachedUnit ? <strong>{ownerName} • </strong> : null}
+                        <strong>{label}</strong>: {stat.baseValue || '—'} → <strong>{stat.value}</strong> ({stat.sources.join(', ')})
+                      </span>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </div>
 
-          {/* 2. Ranged Weapons (Condensed Table) */}
-          <div>
-            <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-2">
-              <Crosshair className="w-4 h-4 text-sky-400" />
-              <span>Ranged Weapons</span>
-            </h3>
+          {/* 2 & 3. Ranged and Melee Weapons (Unified Condensed Tables) */}
+          {(['ranged', 'melee'] as const).map((weaponType) => {
+            const isRanged = weaponType === 'ranged';
+            const memberWeaponSections = displayMembers
+              .map((dm) => ({
+                dm,
+                weapons: isRanged ? dm.equipped.equippedRangedWeapons : dm.equipped.equippedMeleeWeapons
+              }))
+              .filter((sec) => sec.weapons.length > 0);
 
-            {equippedRangedWeapons.length > 0 ? (
-              <div className="rounded-xl border border-slate-750 bg-slate-850 overflow-hidden divide-y divide-slate-800">
-                <div className="bg-slate-800/80 px-2.5 sm:px-3 py-1.5 grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  <span>Weapon</span>
-                  <span className="text-center">Rng</span>
-                  <span className="text-center">A</span>
-                  <span className="text-center">BS</span>
-                  <span className="text-center">S</span>
-                  <span className="text-center">AP</span>
-                  <span className="text-center">D</span>
-                </div>
+            return (
+              <div key={weaponType}>
+                <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-2">
+                  {isRanged ? (
+                    <Crosshair className="w-4 h-4 text-sky-400" />
+                  ) : (
+                    <Swords className="w-4 h-4 text-sky-400" />
+                  )}
+                  <span>{isRanged ? 'Ranged Weapons' : 'Melee Weapons'}</span>
+                </h3>
 
-                {equippedRangedWeapons.map((w, idx) => {
-                  const rRange = computeModifiedStat(w.range, 'range', activeStatModifiers, 'ranged', w.keywords);
-                  const rA = computeModifiedStat(w.A, 'A', activeStatModifiers, 'ranged', w.keywords);
-                  const rBS = computeModifiedStat(w.BS || '3+', 'BS', activeStatModifiers, 'ranged', w.keywords);
-                  const rS = computeModifiedStat(w.S, 'S', activeStatModifiers, 'ranged', w.keywords);
-                  const rAP = computeModifiedStat(w.AP, 'AP', activeStatModifiers, 'ranged', w.keywords);
-                  const rD = computeModifiedStat(w.D, 'D', activeStatModifiers, 'ranged', w.keywords);
-                  const addedKws = activeStatModifiers
-                    .filter((m) => m.mod.target === 'ranged' && m.mod.stat === 'keywords' && m.mod.type === 'append')
-                    .map((m) => ({ kw: String(m.mod.value), source: m.source }));
-                  const weaponSource = weaponSourceMap[w.name];
-
-                  return (
-                    <div key={idx} className="px-2.5 sm:px-3 py-2">
-                      <div className="grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center">
-                        <div className="min-w-0 pr-1 flex items-center gap-1.5 flex-wrap">
-                          <span className="font-warhammer text-xs sm:text-sm font-bold text-slate-100 leading-snug">
-                            {getEquippedWeaponDisplayName(w.name, 'ranged')}
-                          </span>
-                          {weaponSource && (
-                            <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-500/40">
-                              {weaponSource.label}
-                            </span>
-                          )}
-                        </div>
-                        <span
-                          title={rRange.isModified ? `Base: ${rRange.baseValue} → ${rRange.value} (${rRange.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-[11px] sm:text-xs ${
-                            rRange.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-medium text-slate-300'
-                          }`}
-                        >
-                          {rRange.value}
-                        </span>
-                        <span
-                          title={rA.isModified ? `Base: ${rA.baseValue} → ${rA.value} (${rA.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            rA.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-200'
-                          }`}
-                        >
-                          {rA.value}
-                        </span>
-                        <span
-                          title={rBS.isModified ? `Base: ${rBS.baseValue} → ${rBS.value} (${rBS.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            rBS.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-100'
-                          }`}
-                        >
-                          {rBS.value}
-                        </span>
-                        <span
-                          title={rS.isModified ? `Base: ${rS.baseValue} → ${rS.value} (${rS.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            rS.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-bold text-sky-300'
-                          }`}
-                        >
-                          {rS.value}
-                        </span>
-                        <span
-                          title={rAP.isModified ? `Base: ${rAP.baseValue} → ${rAP.value} (${rAP.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            rAP.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-200'
-                          }`}
-                        >
-                          {rAP.value}
-                        </span>
-                        <span
-                          title={rD.isModified ? `Base: ${rD.baseValue} → ${rD.value} (${rD.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            rD.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-bold text-sky-300'
-                          }`}
-                        >
-                          {rD.value}
-                        </span>
-                      </div>
-
-                      {(w.keywords || addedKws.length > 0) && renderKeywordsWithTooltips(w.keywords, addedKws)}
+                {memberWeaponSections.length > 0 ? (
+                  <div className="rounded-xl border border-slate-750 bg-slate-850 overflow-hidden divide-y divide-slate-800">
+                    <div className="bg-slate-800/80 px-2.5 sm:px-3 py-1.5 grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span>Weapon</span>
+                      <span className="text-center">Rng</span>
+                      <span className="text-center">A</span>
+                      <span className="text-center">{isRanged ? 'BS' : 'WS'}</span>
+                      <span className="text-center">S</span>
+                      <span className="text-center">AP</span>
+                      <span className="text-center">D</span>
                     </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <p className="text-slate-400 italic p-2.5 bg-slate-850 rounded-xl border border-slate-750 text-xs">
-                This unit has no ranged weapons equipped.
-              </p>
-            )}
-          </div>
 
-          {/* 3. Melee Weapons (Condensed Table) */}
-          <div>
-            <h3 className="font-warhammer text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-2">
-              <Swords className="w-4 h-4 text-sky-400" />
-              <span>Melee Weapons</span>
-            </h3>
-
-            {equippedMeleeWeapons.length > 0 ? (
-              <div className="rounded-xl border border-slate-750 bg-slate-850 overflow-hidden divide-y divide-slate-800">
-                <div className="bg-slate-800/80 px-2.5 sm:px-3 py-1.5 grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  <span>Weapon</span>
-                  <span className="text-center">Rng</span>
-                  <span className="text-center">A</span>
-                  <span className="text-center">WS</span>
-                  <span className="text-center">S</span>
-                  <span className="text-center">AP</span>
-                  <span className="text-center">D</span>
-                </div>
-
-                {equippedMeleeWeapons.map((w, idx) => {
-                  const mA = computeModifiedStat(w.A, 'A', activeStatModifiers, 'melee', w.keywords);
-                  const mWS = computeModifiedStat(w.WS || '3+', 'WS', activeStatModifiers, 'melee', w.keywords);
-                  const mS = computeModifiedStat(w.S, 'S', activeStatModifiers, 'melee', w.keywords);
-                  const mAP = computeModifiedStat(w.AP, 'AP', activeStatModifiers, 'melee', w.keywords);
-                  const mD = computeModifiedStat(w.D, 'D', activeStatModifiers, 'melee', w.keywords);
-                  const addedKws = activeStatModifiers
-                    .filter((m) => m.mod.target === 'melee' && m.mod.stat === 'keywords' && m.mod.type === 'append')
-                    .map((m) => ({ kw: String(m.mod.value), source: m.source }));
-                  const weaponSource = weaponSourceMap[w.name];
-
-                  return (
-                    <div key={idx} className="px-2.5 sm:px-3 py-2">
-                      <div className="grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center">
-                        <div className="min-w-0 pr-1 flex items-center gap-1.5 flex-wrap">
-                          <span className="font-warhammer text-xs sm:text-sm font-bold text-slate-100 leading-snug">
-                            {getEquippedWeaponDisplayName(w.name, 'melee')}
-                          </span>
-                          {weaponSource && (
-                            <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-500/40">
-                              {weaponSource.label}
+                    {memberWeaponSections.map(({ dm, weapons }) => (
+                      <React.Fragment key={dm.key}>
+                        {isShowingAttachedUnit && (
+                          <div className="px-2.5 sm:px-3 py-1 bg-slate-900/80 flex items-center gap-1.5">
+                            <span
+                              className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded border ${getMemberRoleBadgeClass(dm.role)}`}
+                            >
+                              {dm.role}
                             </span>
-                          )}
-                        </div>
-                        <span className="text-center font-mono text-[11px] sm:text-xs font-medium text-slate-400">
-                          Melee
-                        </span>
-                        <span
-                          title={mA.isModified ? `Base: ${mA.baseValue} → ${mA.value} (${mA.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            mA.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-200'
-                          }`}
-                        >
-                          {mA.value}
-                        </span>
-                        <span
-                          title={mWS.isModified ? `Base: ${mWS.baseValue} → ${mWS.value} (${mWS.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            mWS.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-100'
-                          }`}
-                        >
-                          {mWS.value}
-                        </span>
-                        <span
-                          title={mS.isModified ? `Base: ${mS.baseValue} → ${mS.value} (${mS.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            mS.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-bold text-sky-300'
-                          }`}
-                        >
-                          {mS.value}
-                        </span>
-                        <span
-                          title={mAP.isModified ? `Base: ${mAP.baseValue} → ${mAP.value} (${mAP.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            mAP.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-semibold text-slate-200'
-                          }`}
-                        >
-                          {mAP.value}
-                        </span>
-                        <span
-                          title={mD.isModified ? `Base: ${mD.baseValue} → ${mD.value} (${mD.sources.join(', ')})` : undefined}
-                          className={`text-center font-mono text-xs sm:text-sm ${
-                            mD.isModified
-                              ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
-                              : 'font-bold text-sky-300'
-                          }`}
-                        >
-                          {mD.value}
-                        </span>
-                      </div>
+                            <span className="text-xs font-bold text-slate-200">{dm.name}</span>
+                          </div>
+                        )}
+                        {weapons.map((w, idx) => {
+                          const mods = dm.equipped.activeStatModifiers;
+                          const rangeStat = isRanged
+                            ? computeModifiedStat((w as any).range, 'range', mods, 'ranged', w.keywords)
+                            : null;
+                          const aStat = computeModifiedStat(w.A, 'A', mods, weaponType, w.keywords);
+                          const skillStat = computeModifiedStat(
+                            isRanged ? (w as any).BS || '3+' : (w as any).WS || '3+',
+                            isRanged ? 'BS' : 'WS',
+                            mods,
+                            weaponType,
+                            w.keywords
+                          );
+                          const sStat = computeModifiedStat(w.S, 'S', mods, weaponType, w.keywords);
+                          const apStat = computeModifiedStat(w.AP, 'AP', mods, weaponType, w.keywords);
+                          const dStat = computeModifiedStat(w.D, 'D', mods, weaponType, w.keywords);
+                          const addedKws = mods
+                            .filter((m) => m.mod.target === weaponType && m.mod.stat === 'keywords' && m.mod.type === 'append')
+                            .map((m) => ({ kw: String(m.mod.value), source: m.source }));
+                          const weaponSource = dm.equipped.weaponSourceMap[w.name];
 
-                      {(w.keywords || addedKws.length > 0) && renderKeywordsWithTooltips(w.keywords, addedKws)}
-                    </div>
-                  );
-                })}
+                          return (
+                            <div key={`${dm.key}-${w.name}-${idx}`} className="px-2.5 sm:px-3 py-2">
+                              <div className="grid grid-cols-[1fr_repeat(6,2.1rem)] sm:grid-cols-[1fr_repeat(6,2.75rem)] gap-1 items-center">
+                                <div className="min-w-0 pr-1 flex items-center gap-1.5 flex-wrap">
+                                  <span className="font-warhammer text-xs sm:text-sm font-bold text-slate-100 leading-snug">
+                                    {dm.equipped.getEquippedWeaponDisplayName(w.name, weaponType)}
+                                  </span>
+                                  {weaponSource && (
+                                    <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-500/40">
+                                      {weaponSource.label}
+                                    </span>
+                                  )}
+                                </div>
+                                {rangeStat ? (
+                                  <span
+                                    title={rangeStat.isModified ? `Base: ${rangeStat.baseValue} → ${rangeStat.value} (${rangeStat.sources.join(', ')})` : undefined}
+                                    className={`text-center font-mono text-[11px] sm:text-xs ${
+                                      rangeStat.isModified
+                                        ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
+                                        : 'font-medium text-slate-300'
+                                    }`}
+                                  >
+                                    {rangeStat.value}
+                                  </span>
+                                ) : (
+                                  <span className="text-center font-mono text-[11px] sm:text-xs font-medium text-slate-400">
+                                    Melee
+                                  </span>
+                                )}
+                                {[
+                                  { stat: aStat, def: 'font-semibold text-slate-200' },
+                                  { stat: skillStat, def: 'font-semibold text-slate-100' },
+                                  { stat: sStat, def: 'font-bold text-sky-300' },
+                                  { stat: apStat, def: 'font-semibold text-slate-200' },
+                                  { stat: dStat, def: 'font-bold text-sky-300' }
+                                ].map(({ stat, def }, cIdx) => (
+                                  <span
+                                    key={cIdx}
+                                    title={stat.isModified ? `Base: ${stat.baseValue} → ${stat.value} (${stat.sources.join(', ')})` : undefined}
+                                    className={`text-center font-mono text-xs sm:text-sm ${
+                                      stat.isModified
+                                        ? 'font-extrabold text-amber-300 underline decoration-amber-400/60 decoration-dotted underline-offset-2'
+                                        : def
+                                    }`}
+                                  >
+                                    {stat.value}
+                                  </span>
+                                ))}
+                              </div>
+
+                              {(w.keywords || addedKws.length > 0) && renderKeywordsWithTooltips(w.keywords, addedKws)}
+                            </div>
+                          );
+                        })}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-slate-400 italic p-2.5 bg-slate-850 rounded-xl border border-slate-750 text-xs">
+                    {isRanged ? 'This unit has no ranged weapons equipped.' : 'This unit has no melee weapons equipped.'}
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-slate-400 italic p-2.5 bg-slate-850 rounded-xl border border-slate-750 text-xs">
-                This unit has no melee weapons equipped.
-              </p>
-            )}
-          </div>
+            );
+          })}
 
           {/* 4. Abilities */}
           <div className="rounded-xl bg-slate-850 border border-slate-750 overflow-hidden">
@@ -1353,8 +1483,8 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                 </h3>
                 {!isAbilitiesOpen && (
                   <p className="mt-1.5 text-xs sm:text-sm text-sky-300 font-medium leading-relaxed">
-                    {equippedAbilities.length > 0
-                      ? equippedAbilities.map((ab) => ab.name).join(', ')
+                    {mergedAbilities.length > 0
+                      ? mergedAbilities.map((ab) => ab.name).join(', ')
                       : 'No special abilities listed.'}
                   </p>
                 )}
@@ -1370,13 +1500,13 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
 
             {isAbilitiesOpen && (
               <div className="px-3.5 sm:px-4 pb-3.5 sm:pb-4 pt-2.5 border-t border-slate-800">
-                {equippedAbilities.length > 0 ? (
+                {mergedAbilities.length > 0 ? (
                   <div className="space-y-2.5">
-                    {equippedAbilities.map((ab, idx) => {
-                      const sourceInfo = abilitySourceMap[ab.name];
+                    {mergedAbilities.map((ab, idx) => {
+                      const sourceInfo = ab.sourceInfo;
                       return (
                         <div
-                          key={idx}
+                          key={`${ab.ownerName}-${ab.name}-${idx}`}
                           className={`p-3 sm:p-4 rounded-xl bg-slate-900/70 border ${
                             sourceInfo
                               ? sourceInfo.type === 'enhancement'
@@ -1395,17 +1525,26 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                             >
                               {ab.name}
                             </h4>
-                            {sourceInfo && (
-                              <span
-                                className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${
-                                  sourceInfo.type === 'enhancement'
-                                    ? 'bg-amber-950/60 text-amber-300 border-amber-500/40'
-                                    : 'bg-sky-950/60 text-sky-300 border-sky-600/40'
-                                }`}
-                              >
-                                {sourceInfo.label}
-                              </span>
-                            )}
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              {isShowingAttachedUnit && (
+                                <span
+                                  className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${getMemberRoleBadgeClass(ab.ownerRole)}`}
+                                >
+                                  {ab.ownerRole} • {ab.ownerName}
+                                </span>
+                              )}
+                              {sourceInfo && (
+                                <span
+                                  className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${
+                                    sourceInfo.type === 'enhancement'
+                                      ? 'bg-amber-950/60 text-amber-300 border-amber-500/40'
+                                      : 'bg-sky-950/60 text-sky-300 border-sky-600/40'
+                                  }`}
+                                >
+                                  {sourceInfo.label}
+                                </span>
+                              )}
+                            </div>
                           </div>
                           <FormattedText
                             text={ab.description}
@@ -1469,7 +1608,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
             </h3>
 
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
-              {unit.categories.map((cat, i) => (
+              {mergedBaseCategories.map((cat, i) => (
                 <span
                   key={i}
                   className={`min-h-[28px] inline-flex items-center text-xs px-2.5 py-0.5 rounded-lg border font-semibold ${
