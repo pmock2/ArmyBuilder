@@ -1548,10 +1548,6 @@
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
         {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
           "name": "Feel No Pain 3+*",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
@@ -1672,10 +1668,6 @@
         {
           "name": "Assault Vehicle",
           "description": "In your Movement phase, when this unit ends an **advance move**, units embarked within this unit can make a **shock disembark move**."
-        },
-        {
-          "name": "Creeping Dread (Aura)",
-          "description": "In the Battle-shock step of your opponent's Command phase, each enemy unit within 12\" of this unit that is a ^^**Psyker**^^ unit/below **starting strength** makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
         },
         {
           "name": "Deadly Demise D3",
@@ -2271,10 +2263,6 @@
           "description": "When an enemy unit (excluding MONSTERS/VEHICLES) **engaged** with this unit makes a **fall-back move**, that enemy unit must use the **desperate escape mode**. If that enemy unit is **battle-shocked**, -1 from those **hazard rolls**."
         },
         {
-          "name": "Creeping Dread (Aura)",
-          "description": "In the Battle-shock step of your opponent's Command phase, each enemy unit within 12\" of this unit that is a ^^**Psyker**^^ unit/below **starting strength** makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
-        },
-        {
           "name": "Scouts 7\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         },
@@ -2522,14 +2510,6 @@
         {
           "name": "Purity of Execution",
           "description": "In your Shooting phase, you can select one **visible** enemy unit within 18\" of this unit. That unit is **detected**.\n- While a unit is **detected**, that unit has +3\" **detection range**."
-        },
-        {
-          "name": "Creeping Dread (Aura)",
-          "description": "In the Battle-shock step of your opponent's Command phase, each enemy unit within 12\" of this unit that is a ^^**Psyker**^^ unit/below **starting strength** makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         },
         {
           "name": "Feel No Pain 3+*",
@@ -4362,14 +4342,6 @@
           "description": "Melee attacks that target this unit have -1 to **hit rolls**."
         },
         {
-          "name": "Creeping Dread (Aura)",
-          "description": "In the Battle-shock step of your opponent's Command phase, each enemy unit within 12\" of this unit that is a ^^**Psyker**^^ unit/below **starting strength** makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
           "name": "Feel No Pain 3+*",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         },
@@ -4477,16 +4449,8 @@
           "description": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. That enemy unit makes a **battle-shock roll* with -1 to that **battle-shock roll** if that enemy unit is a ^^**Psyker**^^ unit.."
         },
         {
-          "name": "Creeping Dread (Aura)",
-          "description": "In the Battle-shock step of your opponent's Command phase, each enemy unit within 12\" of this unit that is a ^^**Psyker**^^ unit/below **starting strength** makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
-        },
-        {
           "name": "Scouts 7\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         },
         {
           "name": "Feel No Pain 3+*",
@@ -5621,10 +5585,6 @@
           "description": "In your Shooting phase, when this unit has shot, you can use this ability. If you do:\n- This unit can make a **normal move** of up to D6\".\n- This unit is not **eligible to declare a charge** until the end of the turn."
         },
         {
-          "name": "Flare Shields",
-          "description": "This unit has a 4+ **InSv** against ranged attacks."
-        },
-        {
           "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
@@ -5836,10 +5796,6 @@
         {
           "name": "Destructor Optics",
           "description": "This unit's ranged attacks that target a unit (excluding MONSTER/VEHICLE) have +1 AP."
-        },
-        {
-          "name": "Flare Shields",
-          "description": "This unit has a 4+ **InSv** against ranged attacks."
         },
         {
           "name": "Deadly Demise D3",
@@ -6500,10 +6456,6 @@
         {
           "name": "Repulsor Suspensor Technology",
           "description": "(Once per phase, per unit)\nIn your opponent's Shooting phase, when an enemy unit has shot, if this unit lost a wound as a result of those attacks and is **unengaged**, this unit can make a **normal move* of up to D6\"."
-        },
-        {
-          "name": "Flare Shields",
-          "description": "This unit has a 4+ **InSv** against ranged attacks."
         },
         {
           "name": "Deadly Demise D6",
@@ -9641,10 +9593,6 @@
         {
           "name": "Advanced Firepower",
           "description": "This unit's ranged attacks that target a MONSTER/VEHICLE unit can:\n- Re-roll one **hit roll**.\n- Re-roll one **wound roll**.\n- Re-roll one **damage roll**."
-        },
-        {
-          "name": "Flare Shields",
-          "description": "This unit has a 4+ **InSv** against ranged attacks."
         },
         {
           "name": "Deadly Demise D3",

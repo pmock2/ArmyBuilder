@@ -4348,14 +4348,6 @@
         {
           "name": "Waaagh!",
           "description": "Friendly **ORKS** with this ability can:\n- Re-roll **advance rolls**.\n- Become **riled up**, as stated in other rules.\nWhile a unit is **riled up**:\n    - That unit has 5+ **InSv**.\n    - That unit's ranged attacks have **[ASSAULT]**.\n    - When that unit is selected to make an **advance move**, that **advance move** does not prevent that unit from being **eligible to declare a charge**."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
-        },
-        {
-          "name": "Infiltrators",
-          "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
         }
       ],
       "transportCapacity": null,
@@ -17142,14 +17134,6 @@
         {
           "name": "Crucible",
           "description": "A **^^Character^^** created using Crucible rules has the Crucible ability. Your army may include up to three units with the Crucible ability and these units cannot be given Enhancements."
-        },
-        {
-          "name": "Infiltrators",
-          "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         },
         {
           "name": "Rokkit Pack",

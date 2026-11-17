@@ -100,13 +100,15 @@ function loadCatalogues(dataDir) {
     const profiles = [];
     if (entry.profiles) {
       for (const p of entry.profiles) {
-        profiles.push(p);
+        if (!isHiddenByDefault(p)) {
+          profiles.push(p);
+        }
       }
     }
     const isUnitOrModel = entry.type === 'unit' || entry.type === 'model';
     if (isUnitOrModel && entry.rules) {
       for (const r of entry.rules) {
-        if (r && !r.hidden && r.name && r.description !== undefined) {
+        if (r && !isHiddenByDefault(r) && r.name && r.description !== undefined) {
           profiles.push({
             name: r.name,
             typeName: 'Abilities',
@@ -117,10 +119,10 @@ function loadCatalogues(dataDir) {
     }
     if (entry.infoLinks) {
       for (const il of entry.infoLinks) {
-        if (il.hidden) continue;
+        if (isHiddenByDefault(il)) continue;
         if (il.targetId && allEntriesById.has(il.targetId)) {
           const target = allEntriesById.get(il.targetId);
-          if (target && !target.hidden) {
+          if (target && !isHiddenByDefault(target)) {
             const resolvedName = resolveInfoLinkName(il, target);
             if (target.typeName) {
               profiles.push(resolvedName !== target.name ? { ...target, name: resolvedName } : target);
@@ -215,6 +217,78 @@ function loadCatalogues(dataDir) {
     getCharacteristics,
     extractProfiles
   };
+}
+
+function evalDefaultCondition(c) {
+  if (!c) return null;
+  if (c.type === 'instanceOf' || c.type === 'notInstanceOf') {
+    if (c.scope === 'force' || c.scope === 'roster') {
+      return c.type === 'notInstanceOf';
+    }
+    return null;
+  }
+  if (c.field !== 'associations' && c.field !== 'selections' && c.field !== 'forces') {
+    return null;
+  }
+  const target = Number(c.value);
+  if (Number.isNaN(target)) return null;
+  // In the default standalone datasheet state (no attached units, detachments, enhancements, or upgrades), count = 0
+  if (c.type === 'lessThan') return 0 < target;
+  if (c.type === 'atMost') return 0 <= target;
+  if (c.type === 'equalTo') return target === 0;
+  if (c.type === 'atLeast') return 0 >= target;
+  if (c.type === 'greaterThan') return 0 > target;
+  return null;
+}
+
+function evalDefaultConditionTree(node, fallbackType = 'and') {
+  if (!node) return true;
+  const results = [];
+  for (const c of node.conditions || []) {
+    results.push(evalDefaultCondition(c));
+  }
+  for (const cg of node.conditionGroups || []) {
+    results.push(evalDefaultConditionTree(cg, cg.type || 'and'));
+  }
+  if (results.length === 0) return true;
+  const mode = node.type || fallbackType;
+  if (mode === 'or') {
+    if (results.some((r) => r === true)) return true;
+    if (results.some((r) => r === null)) return null;
+    return false;
+  }
+  if (results.some((r) => r === false)) return false;
+  if (results.some((r) => r === null)) return null;
+  return true;
+}
+
+/**
+ * Returns true when a BSData profile, rule, or infoLink is hidden statically or
+ * via a `field: "hidden", type: "set", value: true` modifier whose conditions
+ * hold in a unit's standalone default state (e.g. requiring an attached Leader
+ * or detachment/enhancement that is not active by default).
+ */
+function isHiddenByDefault(node) {
+  if (!node) return false;
+  if (node.hidden === true || node.hidden === 'true') return true;
+
+  for (const m of node.modifiers || []) {
+    if (m && m.field === 'hidden' && m.type === 'set' && (m.value === true || m.value === 'true')) {
+      if (evalDefaultConditionTree(m) === true) return true;
+    }
+  }
+
+  for (const mg of node.modifierGroups || []) {
+    const groupApplies = evalDefaultConditionTree(mg);
+    if (groupApplies !== true) continue;
+    for (const m of mg.modifiers || []) {
+      if (m && m.field === 'hidden' && m.type === 'set' && (m.value === true || m.value === 'true')) {
+        if (evalDefaultConditionTree(m) === true) return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 function applyNameModifier(name, m) {

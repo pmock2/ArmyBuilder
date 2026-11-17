@@ -1746,14 +1746,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 4+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         }
       ],
       "transportCapacity": null,
@@ -1870,14 +1862,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 4+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         }
       ],
       "transportCapacity": null,
@@ -3600,10 +3584,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
       "transportCapacity": null,
@@ -4063,14 +4043,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         }
       ],
       "transportCapacity": null,
@@ -4276,14 +4248,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         }
       ],
       "transportCapacity": null,
@@ -4667,10 +4631,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Fights First",
-          "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
         },
         {
           "name": "Dispersion Shield",
@@ -5137,10 +5097,6 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
           "name": "Plasmacyte",
           "description": "Once per battle for each Plasmacyte this unit has, when this unit is selected to fight, you can use this ability. If you do, until the end of the phase, melee weapons equipped by models in this unit have the [DEVASTATING WOUNDS] ability."
         }
@@ -5560,10 +5516,6 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
-        },
-        {
           "name": "Lord of Deceit (Aura)",
           "description": "Each time your opponent targets a unit from their army with a Stratagem, if that unit is within 12\" of this model, increase the cost of that use of that Stratagem by 1CP."
         }
@@ -5705,10 +5657,6 @@
         {
           "name": "Deep Strike",
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-        },
-        {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
         },
         {
           "name": "Quantum Goad",
@@ -5874,10 +5822,6 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
-        },
-        {
           "name": "Animus Damper",
           "description": "Once per turn, at the start of your opponent’s Shooting phase, select one enemy ^^**Vehicle^^** unit visible to the bearer. That unit must take a Leadership test. Until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the Hit roll and, if that Leadership test was failed, subtract 1 from the Wound roll as well."
         }
@@ -6021,10 +5965,6 @@
         {
           "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
         },
         {
           "name": "Reletavistic Tether",
@@ -6409,10 +6349,6 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
           "name": "Plasmacyte",
           "description": "Once per battle for each Plasmacyte this unit has, when this unit is selected to fight, you can use this ability. If you do, until the end of the phase, melee weapons equipped by models in this unit have the [DEVASTATING WOUNDS] ability."
         }
@@ -6582,10 +6518,6 @@
         {
           "name": "Scouts 9\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-        },
-        {
-          "name": "Deep Strike",
-          "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
           "name": "Shieldvanes",
@@ -7105,10 +7037,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
       "transportCapacity": null,
@@ -7721,10 +7649,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
       "transportCapacity": null,
@@ -7837,10 +7761,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Feel No Pain 5+",
-          "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
         }
       ],
       "transportCapacity": null,
@@ -9247,10 +9167,6 @@
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
         },
         {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
-        },
-        {
           "name": "Gloom Prism (Aura)",
           "description": "While a friendly **^^Necrons^^** unit is within 6\" of the bearer, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks."
         }
@@ -9358,10 +9274,6 @@
         {
           "name": "Reanimation Protocols",
           "description": "If your Army Faction is NECRONS, at the end of your Command phase, each friendly unit with this ability that is on the battlefield activates its Reanimation Protocols: \n- When a unit’s Reanimation Protocols activate, that unit heals D3 wounds."
-        },
-        {
-          "name": "Distortion Fields (Aura)",
-          "description": "While an enemy unit is within 6\" of this unit, it is unravelling. While an enemy unit is unravelling, each time an attack targets that unit, improve the Armour Penetration characteristic of that attack by 1. \nAt the start of each phase, for each ^^**Necrons Monster^^** unit from your army, that unit can suffer 3 mortal wounds. If it does, until the end of the phase, the range of that unit’s Distortion Fields Aura ability is increased to 9\"."
         },
         {
           "name": "Gloom Prism (Aura)",

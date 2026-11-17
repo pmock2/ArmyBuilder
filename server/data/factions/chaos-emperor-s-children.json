@@ -1511,14 +1511,6 @@
         {
           "name": "Thrill Seekers",
           "description": "If your Army Faction is **^^Emperor's Children^^**, this unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back, but when doing so:\n- It cannot target a unit it was within Engagement Range of at the start of the turn\n- It cannot target a unit that was the target of another unit's charge or attack this phase."
-        },
-        {
-          "name": "Infiltrators",
-          "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-        },
-        {
-          "name": "Scouts 6\"",
-          "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         }
       ],
       "transportCapacity": null,
@@ -9933,22 +9925,6 @@
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
         },
         {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
           "name": "Collar of Khorne",
           "description": "This model has the Feel No Pain 3+ ability against Psychic Attacks."
         },
@@ -10460,22 +10436,6 @@
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
         },
         {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
           "name": "Collar of Khorne",
           "description": "This model has the Feel No Pain 3+ ability against Psychic Attacks."
         },
@@ -10982,22 +10942,6 @@
         {
           "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
         },
         {
           "name": "Collar of Khorne",
@@ -34292,10 +34236,6 @@
         {
           "name": "Damaged: 1-6 wounds remaining",
           "description": "While this model has 1-6 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Disciples of Be'lakor",
-          "description": "- This unit has the Dark Pacts army rule, and can use it as described in _Codex: Chaos Space Marines_, even though your Army Faction is not Heretic Astartes. If this unit is Be’lakor, it automatically passes the Leadership test required for Dark Pacts. \n- Shadow Legion Heretic Astartes models in this unit have the Deep Strike ability."
         }
       ],
       "transportCapacity": null,
@@ -34426,10 +34366,6 @@
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
         },
         {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
           "name": "Scouts 6\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
         }
@@ -34548,10 +34484,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         },
         {
           "name": "Instrument of Chaos",
@@ -34716,10 +34648,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         },
         {
           "name": "Instrument of Chaos",
@@ -34893,10 +34821,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -35082,10 +35006,6 @@
         {
           "name": "Greater Daemon of Khorne (Aura)",
           "description": "While a friendly ^^Khorne Legiones Daemonica^^ unit is within 6\" of this model, that unit is within your army’s Shadow of Chaos."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -35372,14 +35292,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -35536,14 +35448,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -35867,14 +35771,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -36016,16 +35912,8 @@
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
         },
         {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
           "name": "Fights First",
           "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -36166,10 +36054,6 @@
         {
           "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,
@@ -36350,10 +36234,6 @@
         {
           "name": "Deadly Demise D3",
           "description": "This ability always takes the form **Deadly Demise X**. Each time a model in this unit is **destroyed**, after the units embarked within it (if any) have made their **emergency disembark moves**, roll one D6. On a 6, that model suffers a **deadly demise**; each unit within 6\" of that model suffers a number of **mortal wounds** denoted by **X** (if this is a random number, roll separately for each unit within 6\"). \n***Example:** An Impulsor with a unit of Intercessors embarked within it is **destroyed** by ranged attacks. First, any unresolved attacks made by the attacking unit are resolved. Then the Intercessors make an **emergency disembark move**. Then the roll is made for the **Deadly Demise** ability, and on a 6, that ability is resolved. Finally, the Impulsor is removed from the battlefield.*"
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,
@@ -36506,16 +36386,8 @@
           "description": "If your Army Faction is LEGIONES DAEMONICA, certain areas of the battlefield are considered to be within your army’s Shadow of Chaos, as follows: \n■ Your deployment zone is always within your army’s Shadow of Chaos.\n■ At the start of any phase, if you control at least half of the objective markers within No Man’s Land, until the end of that phase, No Man’s Land is within your army’s Shadow of Chaos.\n■ At the start of any phase, if you control at least half of the objective markers within your opponent’s deployment zone, until the end of that phase, your opponent’s deployment zone is within your army’s Shadow of Chaos.\n\nDAEMONIC MANIFESTATION\nWhile a friendly LEGIONES DAEMONICA unit is within your army’s Shadow of Chaos, each time that unit makes a battle-shock roll, that unit has +1 to that battle-shock roll and, if that roll is successful, one model in that unit heals D3 wounds (if that unit is a BATTLELINE unit and that roll is successful, up to D3 destroyed models (excluding CHARACTER models) can be returned to that unit instead).\n\nDAEMONIC TERROR\nWhile an enemy unit is within your army’s Shadow of Chaos and/or it is within 6\" of one or more BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units from your army, each time that unit takes a Battle-shock test, subtract 1 from that test and, if that test is failed, that enemy unit suffers D3 mortal wounds."
         },
         {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
           "name": "Fights First",
           "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         },
         {
           "name": "Warp Rifts",
@@ -36841,14 +36713,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -36993,10 +36857,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -37163,14 +37023,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -37288,10 +37140,6 @@
         {
           "name": "Fortification",
           "description": "While an enemy unit is only within Engagement Range of one or more ^^**Fortifications**^^ from your army:\n- That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n- Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -37395,14 +37243,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -37523,14 +37363,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -37653,10 +37485,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         },
         {
           "name": "Collar of Khorne",
@@ -37813,10 +37641,6 @@
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
         },
         {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
           "name": "Stealth",
           "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
@@ -37934,26 +37758,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
         }
       ],
       "transportCapacity": null,
@@ -38123,26 +37927,6 @@
         {
           "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
         }
       ],
       "transportCapacity": null,
@@ -38393,10 +38177,6 @@
         {
           "name": "Greater Daemon of Nurgle (Aura)",
           "description": "While a friendly NURGLE LEGIONES DAEMONICA unit is within 6\" of this model, that unit is within your army’s Shadow of Chaos."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         },
         {
           "name": "Feel No Pain 6+",
@@ -38682,14 +38462,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -38839,14 +38611,6 @@
         {
           "name": "Scouts 9\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -39132,16 +38896,8 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
           "name": "Fights First",
           "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -39627,14 +39383,6 @@
           "description": "While a friendly ^^Slaanesh Legiones Daemonica^^ unit is within 6\" of this model, that unit is within your army’s Shadow of Chaos."
         },
         {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
           "name": "Shining aegis",
           "description": "The bearer has a Save Characteristic of 3+."
         }
@@ -39889,10 +39637,6 @@
         {
           "name": "Damaged: 1-5 wounds remaining",
           "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -40127,14 +39871,6 @@
         {
           "name": "Greater Daemon of Tzeentch (Aura)",
           "description": "While a friendly TZEENTCH LEGIONES DAEMONICA unit is within 6\" of this model, that unit is within your army’s Shadow of Chaos."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -40361,10 +40097,6 @@
         {
           "name": "Damaged: 1-5 wounds remaining",
           "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -40547,10 +40279,6 @@
         {
           "name": "Infiltrators",
           "description": "During deployment, if every model in a unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from your opponent’s deployment zone and all enemy units."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -40723,14 +40451,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         },
         {
           "name": "Daemonic Icon",
@@ -40928,10 +40648,6 @@
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
         },
         {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
           "name": "Daemonic Icon",
           "description": "Models in the bearer’s unit have a Leadership characteristic of 6+."
         },
@@ -41111,10 +40827,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -41223,10 +40935,6 @@
         {
           "name": "Deep Strike",
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         },
         {
           "name": "Daemonic Icon",
@@ -41410,10 +41118,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         },
         {
           "name": "Daemonic Icon",
@@ -41602,10 +41306,6 @@
         {
           "name": "Feel No Pain 5+",
           "description": "This ability always takes the form **Feel No Pain X+**. Each time a model with this ability would lose a wound, roll one D6: on an **X+**, that wound is not lost. "
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -41729,10 +41429,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -42158,14 +41854,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -42293,14 +41981,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -42448,14 +42128,6 @@
         {
           "name": "Scouts 9\"",
           "description": "This ability always takes the form **Scouts X\"**. In the Resolve Pre-battle Abilities step, if every model in a unit has this ability, you can do one of the following: \n- If that unit is in **strategic reserves**, you can set up that unit anywhere that is wholly within your deployment zone. \n- If that unit is wholly within your deployment zone, it can make a **scout move**. \n- If that unit is embarked within a **DEDICATED TRANSPORT** that is wholly within your deployment zone, and if every model embarked within that **DEDICATED TRANSPORT** has the Scouts ability, that **DEDICATED TRANSPORT** can make a **scout move**."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         },
         {
           "name": "Daemonic Icon",
@@ -42682,10 +42354,6 @@
         {
           "name": "Greater Daemon of Slaanesh (Aura)",
           "description": "While a friendly ^^Slaanesh Legiones Daemonica^^ unit is within 6\" of this model, that unit is within your army’s Shadow of Chaos."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,
@@ -42954,10 +42622,6 @@
         {
           "name": "Fortification",
           "description": "While an enemy unit is only within Engagement Range of one or more ^^**Fortifications**^^ from your army:\n- That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n- Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -43088,10 +42752,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -43229,10 +42889,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
         }
       ],
       "transportCapacity": null,
@@ -43514,14 +43170,6 @@
         {
           "name": "Damaged: 1-5 wounds remaining",
           "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -43710,10 +43358,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -43814,30 +43458,6 @@
         {
           "name": "The Shadow of Chaos",
           "description": "If your Army Faction is LEGIONES DAEMONICA, certain areas of the battlefield are considered to be within your army’s Shadow of Chaos, as follows: \n■ Your deployment zone is always within your army’s Shadow of Chaos.\n■ At the start of any phase, if you control at least half of the objective markers within No Man’s Land, until the end of that phase, No Man’s Land is within your army’s Shadow of Chaos.\n■ At the start of any phase, if you control at least half of the objective markers within your opponent’s deployment zone, until the end of that phase, your opponent’s deployment zone is within your army’s Shadow of Chaos.\n\nDAEMONIC MANIFESTATION\nWhile a friendly LEGIONES DAEMONICA unit is within your army’s Shadow of Chaos, each time that unit makes a battle-shock roll, that unit has +1 to that battle-shock roll and, if that roll is successful, one model in that unit heals D3 wounds (if that unit is a BATTLELINE unit and that roll is successful, up to D3 destroyed models (excluding CHARACTER models) can be returned to that unit instead).\n\nDAEMONIC TERROR\nWhile an enemy unit is within your army’s Shadow of Chaos and/or it is within 6\" of one or more BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units from your army, each time that unit takes a Battle-shock test, subtract 1 from that test and, if that test is failed, that enemy unit suffers D3 mortal wounds."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
-        },
-        {
-          "name": "Murderer's Cowl",
-          "description": "This unit is eligible to shoot and declare a charge in a turn in which it Advanced."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
         }
       ],
       "transportCapacity": null,
@@ -44040,10 +43660,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Gloam Rot",
-          "description": "Each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll."
         }
       ],
       "transportCapacity": null,
@@ -44212,10 +43828,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,
@@ -44619,10 +44231,6 @@
         {
           "name": "Lone Operative",
           "description": "Unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within 12\" of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within 12\" of this unit. \nIf this ability takes the form **Lone Operative X\"**, unless part of an **attached** unit, this unit is not **visible** to enemy models unless they are within **X\"** of this unit, and it cannot be targeted by **[INDIRECT FIRE]** weapons unless the attacking model is within **X\"** of this unit."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,
@@ -44775,14 +44383,6 @@
         {
           "name": "Warp Rifts",
           "description": "Each time a LEGIONES DAEMONICA unit from your army is set up on the battlefield using the Deep Strike ability, if it is set up wholly within your army’s Shadow of Chaos, and/or if it is set up wholly within 6\" of one or more friendly BLOODTHIRSTER, GREAT UNCLEAN ONE, KAIROS FATEWEAVER, KEEPER OF SECRETS, LORD OF CHANGE, ROTIGUS, SHALAXI HELBANE or SKARBRAND units with which it shares the KHORNE, TZEENTCH, NURGLE or SLAANESH keyword, it can be set up anywhere that is more than 6\" horizontally away from all enemy models, instead of more than 8\"."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -44922,16 +44522,8 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
-        },
-        {
           "name": "Fights First",
           "description": "While every model in a unit has this ability, that unit is a **Fights First** unit. \nSee the Resolve Fights First Combats step in the Fight phase (12.04)."
-        },
-        {
-          "name": "Shadow's Caress",
-          "description": "Enemy units cannot use the Fire Overwatch Stratagem to shoot at this unit."
         }
       ],
       "transportCapacity": null,
@@ -45089,14 +44681,6 @@
         {
           "name": "Damaged: 1-5 wounds remaining",
           "description": "While this model has 1-5 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Penumbral Puppetry",
-          "description": " This unit has **Stealth**. Each time a melee attack targets this unit, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Stealth",
-          "description": "If every model in a unit has this ability, each time a ranged attack targets that unit, that unit has the **benefit of cover** against that attack (13.08)."
         }
       ],
       "transportCapacity": null,
@@ -45314,10 +44898,6 @@
         {
           "name": "Damaged: 1-7 wounds remaining",
           "description": "While this model has 1-7 wounds remaining, each time this model makes an attack, subtract 1 from the Hit roll."
-        },
-        {
-          "name": "Seductive Gambit",
-          "description": "Each time this unit ends a Charge move, you can declare it will perform a Seductive Gambit. If you do, until the end of the turn, this unit does not have the Fights First ability, but instead, each time a model in this unit makes an attack, you can re‑roll the Hit roll and you can re‑roll a Wound roll of 1."
         }
       ],
       "transportCapacity": null,

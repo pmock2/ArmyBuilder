@@ -8056,10 +8056,6 @@
         {
           "name": "Deep Strike",
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
-        },
-        {
-          "name": "Condemnatory Psalms",
-          "description": "In your Shooting phase, this unit can select one **visible** enemy unit within 12\". That enemy unit is **condemned**:\n- While a unit is **condemned**, that unit has +3\" **detection range**."
         }
       ],
       "transportCapacity": null,
@@ -9474,10 +9470,6 @@
           "description": "Each time this unit makes an **ingress move** (20.04), if every model in this unit has this ability, it can be set up anywhere on the battlefield that is more than 8\" horizontally from all enemy units, even if that is within your opponent’s deployment zone."
         },
         {
-          "name": "Condemnatory Psalms",
-          "description": "In your Shooting phase, this unit can select one **visible** enemy unit within 12\". That enemy unit is **condemned**:\n- While a unit is **condemned**, that unit has +3\" **detection range**."
-        },
-        {
           "name": "Sacred Banner",
           "description": "You can re-roll Advance and Charge rolls made for the bearer’s unit."
         }
@@ -10137,10 +10129,6 @@
         {
           "name": "Sacred Command",
           "description": "Once per battle round, one unit from your army with this ability can use it when its unit is targeted with a Stratagem. If it does, reduce the CP cost of that use of that Stratagem by 1CP."
-        },
-        {
-          "name": "Condemnatory Psalms",
-          "description": "In your Shooting phase, this unit can select one **visible** enemy unit within 12\". That enemy unit is **condemned**:\n- While a unit is **condemned**, that unit has +3\" **detection range**."
         }
       ],
       "transportCapacity": null,
