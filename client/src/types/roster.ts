@@ -193,6 +193,7 @@ export function getUnitRole(unit: Datasheet | SelectedUnit): string {
   const cats = (d.categories || []).map(c => c.toLowerCase());
   if (cats.includes('aircraft')) return 'Aircraft';
   if (cats.includes('fortification')) return 'Fortification';
+  if (cats.includes('beast') || cats.includes('beasts')) return 'Beast';
   if (cats.includes('mounted')) return 'Mounted';
   if (cats.includes('monster')) return 'Monster';
   if (cats.includes('vehicle')) return 'Vehicle';

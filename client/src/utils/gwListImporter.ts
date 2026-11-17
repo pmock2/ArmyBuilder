@@ -48,6 +48,8 @@ const SECTION_HEADERS = new Set([
   'ALLIED UNITS',
   'INFANTRY',
   'MOUNTED',
+  'BEAST',
+  'BEASTS',
   'MONSTER',
   'MONSTERS',
   'VEHICLE',

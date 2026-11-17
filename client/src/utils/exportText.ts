@@ -7,6 +7,7 @@ const ROLE_SECTIONS: { key: string; label: string }[] = [
   { key: 'Battleline', label: 'BATTLELINE' },
   { key: 'Infantry', label: 'INFANTRY' },
   { key: 'Mounted', label: 'MOUNTED' },
+  { key: 'Beast', label: 'BEASTS' },
   { key: 'Monster', label: 'MONSTERS' },
   { key: 'Vehicle', label: 'VEHICLES' },
   { key: 'Dedicated Transport', label: 'DEDICATED TRANSPORTS' },

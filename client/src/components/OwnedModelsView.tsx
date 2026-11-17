@@ -39,6 +39,7 @@ const ROLE_ORDER = [
   'Battleline',
   'Infantry',
   'Mounted',
+  'Beast',
   'Monster',
   'Vehicle',
   'Dedicated Transport',
