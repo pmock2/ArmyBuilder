@@ -655,6 +655,7 @@ export const App: React.FC = () => {
       { key: 'Infantry', title: 'Infantry', limit: limits.unitLimit },
       { key: 'Mounted', title: 'Mounted', limit: limits.unitLimit },
       { key: 'Beast', title: 'Beasts', limit: limits.unitLimit },
+      { key: 'Swarm', title: 'Swarms', limit: limits.unitLimit },
       { key: 'Monster', title: 'Monsters', limit: limits.unitLimit },
       { key: 'Vehicle', title: 'Vehicles', limit: limits.unitLimit },
       { key: 'Dedicated Transport', title: 'Dedicated Transports', limit: limits.battlelineLimit },

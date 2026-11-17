@@ -50,6 +50,8 @@ const SECTION_HEADERS = new Set([
   'MOUNTED',
   'BEAST',
   'BEASTS',
+  'SWARM',
+  'SWARMS',
   'MONSTER',
   'MONSTERS',
   'VEHICLE',
