@@ -78,7 +78,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
             <div>
               <h1 className="font-warhammer text-lg sm:text-xl font-bold tracking-wider text-theme-text">
-                WARHAMMER 40,000
+                WARHAMMER 40k
               </h1>
               <p className="text-[11px] sm:text-xs text-theme-text-secondary tracking-wide font-medium">
                 11TH EDITION ARMY ROSTER BUILDER
