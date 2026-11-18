@@ -50,7 +50,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <img
                 src={`${import.meta.env.BASE_URL}icon-192.png`}
                 alt="Warhammer 40,000 Army Builder"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-[1.38]"
               />
             </div>
             <div>

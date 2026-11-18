@@ -743,6 +743,7 @@ export interface ArmyRoster {
   forceDisposition?: string | null;
   forceDispositions?: string[];
   includeLegends?: boolean;
+  themeId?: string | null;
   units: SelectedUnit[];
   notes?: string;
   createdAt: string;

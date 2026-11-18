@@ -19,6 +19,7 @@ import { AiRulesAssistant } from './components/AiRulesAssistant';
 import { AiListEvaluatorModal } from './components/AiListEvaluatorModal';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { useBackNavigation } from './utils/backNavigation';
+import { getAllThemes, applyThemeToDocument, initTheme } from './utils/themeStorage';
 import { hasApiKey } from './services/geminiService';
 import { Shield, Sparkles, BookOpen, Plus } from 'lucide-react';
 
@@ -72,6 +73,18 @@ export const App: React.FC = () => {
   useEffect(() => {
     savePlayMode(isPlayMode);
   }, [isPlayMode]);
+
+  // Apply per-roster UI theme when viewing an army list, or restore global theme on home page
+  useEffect(() => {
+    if (activeRoster?.themeId) {
+      const found = getAllThemes().find(t => t.id === activeRoster.themeId);
+      if (found) {
+        applyThemeToDocument(found);
+        return;
+      }
+    }
+    initTheme();
+  }, [activeRoster?.id, activeRoster?.themeId]);
 
   // 2. Fetch Faction Data when Active Roster Changes
   useEffect(() => {
@@ -383,6 +396,19 @@ export const App: React.FC = () => {
       const updated: ArmyRoster = {
         ...prev,
         customPointsLimit: limit
+      };
+      setRosters(saveRoster(updated));
+      return updated;
+    });
+  };
+
+  // Set Per-Roster UI Theme
+  const handleSetRosterTheme = (themeId: string | null) => {
+    setActiveRoster(prev => {
+      if (!prev) return prev;
+      const updated: ArmyRoster = {
+        ...prev,
+        themeId
       };
       setRosters(saveRoster(updated));
       return updated;
@@ -886,6 +912,8 @@ export const App: React.FC = () => {
             : 2000
         }
         onSetCustomPointsLimit={handleSetCustomPointsLimit}
+        themeId={activeRoster.themeId || null}
+        onSetThemeId={handleSetRosterTheme}
       />
 
       {/* Floating Rules AI Assistant Pill in Play Mode */}

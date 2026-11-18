@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Settings, Pencil, Coins, RotateCcw } from 'lucide-react';
+import { X, Settings, Pencil, Coins, RotateCcw, Palette, Check } from 'lucide-react';
 import { BattleSize } from '../types/roster';
+import { getAllThemes, AppTheme } from '../utils/themeStorage';
 
 interface ListSettingsModalProps {
   isOpen: boolean;
@@ -14,6 +15,8 @@ interface ListSettingsModalProps {
   customPointsLimit?: number | null;
   defaultPointsLimit: number;
   onSetCustomPointsLimit: (limit: number | null) => void;
+  themeId?: string | null;
+  onSetThemeId?: (themeId: string | null) => void;
 }
 
 export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
@@ -27,16 +30,20 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
   onRenameRoster,
   customPointsLimit,
   defaultPointsLimit,
-  onSetCustomPointsLimit
+  onSetCustomPointsLimit,
+  themeId = null,
+  onSetThemeId
 }) => {
   const [nameDraft, setNameDraft] = useState(rosterName);
   const [pointsDraft, setPointsDraft] = useState<string>(
     String(customPointsLimit || defaultPointsLimit)
   );
+  const [availableThemes, setAvailableThemes] = useState<AppTheme[]>(() => getAllThemes());
 
   useEffect(() => {
     if (isOpen) {
       setNameDraft(rosterName);
+      setAvailableThemes(getAllThemes());
     }
   }, [isOpen, rosterName]);
 
@@ -240,6 +247,75 @@ export const ListSettingsModal: React.FC<ListSettingsModalProps> = ({
               />
             </button>
           </div>
+
+          {/* Setting 4: Roster UI Theme */}
+          {onSetThemeId && (
+            <div className="bg-slate-850 border border-slate-750 rounded-2xl p-4 sm:p-5 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Palette className="w-4 h-4 text-theme-accent-soft" />
+                  <h3 className="font-warhammer text-sm sm:text-base font-bold text-slate-100">
+                    Roster UI Theme
+                  </h3>
+                </div>
+                {themeId && (
+                  <button
+                    type="button"
+                    onClick={() => onSetThemeId(null)}
+                    className="text-xs text-theme-text-secondary hover:text-theme-text flex items-center gap-1"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    <span>Use Global</span>
+                  </button>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => onSetThemeId(null)}
+                  className={`flex items-center justify-between gap-2 px-3 py-2 rounded-xl border text-left transition-colors ${
+                    !themeId
+                      ? 'bg-theme-accent/20 border-theme-accent/60 text-theme-accent-soft'
+                      : 'bg-slate-900 border-slate-700 text-slate-300 hover:border-slate-500'
+                  }`}
+                >
+                  <span className="text-xs font-semibold truncate">Global Default</span>
+                  {!themeId && <Check className="w-3.5 h-3.5 shrink-0" />}
+                </button>
+
+                {availableThemes.map((t) => {
+                  const isSelected = themeId === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => onSetThemeId(t.id)}
+                      className={`flex items-center justify-between gap-2 px-3 py-2 rounded-xl border text-left transition-colors ${
+                        isSelected
+                          ? 'bg-theme-accent/20 border-theme-accent/60 text-theme-accent-soft'
+                          : 'bg-slate-900 border-slate-700 text-slate-300 hover:border-slate-500'
+                      }`}
+                    >
+                      <span className="flex items-center gap-2 min-w-0">
+                        <span
+                          className="w-4 h-4 rounded-full border border-white/20 shrink-0 flex items-center justify-center"
+                          style={{ background: t.bgColor }}
+                        >
+                          <span
+                            className="w-2 h-2 rounded-full"
+                            style={{ background: t.accentColor }}
+                          />
+                        </span>
+                        <span className="text-xs font-semibold truncate">{t.name}</span>
+                      </span>
+                      {isSelected && <Check className="w-3.5 h-3.5 shrink-0" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
         </div>
 
