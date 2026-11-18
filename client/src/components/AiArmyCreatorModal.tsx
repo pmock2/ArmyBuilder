@@ -53,7 +53,9 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
       const idea = await generateAiPromptIdea();
       setPrompt(idea);
     } catch (err: any) {
-      setPrompt('Build a 2k competitive Salamanders Army');
+      const factions = factionsIndexData as FactionSummary[];
+      const randomFac = factions[Math.floor(Math.random() * factions.length)];
+      setPrompt(`Build a 2k competitive ${randomFac.name} Army`);
     } finally {
       setIsGeneratingIdea(false);
     }
@@ -200,11 +202,11 @@ export const AiArmyCreatorModal: React.FC<AiArmyCreatorModalProps> = ({
                 rows={3}
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="e.g. Build a 2k competitive Salamanders Army (or specify exact leaders, bodyguards, and detachments)..."
+                placeholder="Describe the army you want to build — specify a faction, target points (e.g. 1k or 2k), playstyle, or specific units, leaders, and detachments..."
                 className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs sm:text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 leading-relaxed"
               />
               <span className="text-[11px] text-slate-400 block">
-                Tip: You can enter generic goals like <span className="text-sky-300 font-mono">"Build a 2k competitive Salamanders Army"</span> and the AI will assemble a full battle-forged list to fill the points budget.
+                Tip: Include your faction, points budget, and preferred theme or playstyle (or click <span className="text-sky-300 font-semibold">Inspire Me (AI)</span> for an idea), and the AI will assemble a full battle-forged roster.
               </span>
             </div>
 
