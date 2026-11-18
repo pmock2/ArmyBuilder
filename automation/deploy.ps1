@@ -63,12 +63,18 @@ Write-Host "==> Building container image via Cloud Build: $imageUri"
 & $gcloud builds submit "$PSScriptRoot" --tag $imageUri
 
 Write-Host "==> Checking required Secret Manager secrets..."
-foreach ($secret in @("github-token", "github-webhook-secret")) {
+foreach ($secret in @("github-token", "github-webhook-secret", "promote-secret")) {
   $secExists = & $gcloud secrets list --filter="name~/$secret$" --format="value(name)"
   if (-not $secExists) {
     $val = Read-Host "Enter value for secret '$secret'" -AsSecureString
-    $plain = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($val))
-    $plain | & $gcloud secrets create $secret --data-file=-
+    $plain = ([Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($val))).Trim()
+    $tmp = [System.IO.Path]::GetTempFileName()
+    try {
+      [System.IO.File]::WriteAllText($tmp, $plain, (New-Object System.Text.UTF8Encoding($false)))
+      & $gcloud secrets create $secret --data-file=$tmp
+    } finally {
+      Remove-Item $tmp -Force -ErrorAction SilentlyContinue
+    }
   }
 }
 
@@ -95,8 +101,8 @@ Write-Host "==> Deploying Cloud Run Webhook Service: armybuilder-ai-webhook"
   --allow-unauthenticated `
   --cpu 1 `
   --memory 512Mi `
-  --set-env-vars "GOOGLE_CLOUD_PROJECT=$ProjectId,GOOGLE_CLOUD_LOCATION=$Region,CLOUD_RUN_JOB_NAME=armybuilder-ai-fixer" `
-  --set-secrets "GITHUB_WEBHOOK_SECRET=github-webhook-secret:latest" `
+  --set-env-vars "GOOGLE_CLOUD_PROJECT=$ProjectId,GOOGLE_CLOUD_LOCATION=$Region,CLOUD_RUN_JOB_NAME=armybuilder-ai-fixer,GITHUB_REPO=$GithubRepo" `
+  --set-secrets "GITHUB_WEBHOOK_SECRET=github-webhook-secret:latest,GITHUB_TOKEN=github-token:latest,PROMOTE_SECRET=promote-secret:latest" `
   --command "node" `
   --args "src/webhook.js"
 

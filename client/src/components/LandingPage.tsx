@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Plus, Upload, Trash2, Copy, Shield, Sparkles, BookOpen, Key, Package, Layers, Settings, MessageSquarePlus } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
 import { SettingsView } from './SettingsView';
 import { ImportRosterModal } from './ImportRosterModal';
+import { PromoteStagingModal } from './PromoteStagingModal';
+import { isStagingBuild } from './StagingBanner';
 import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
 import { useBackNavigation } from '../utils/backNavigation';
 
@@ -36,11 +38,27 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenFeedback
 }) => {
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [isPromoteModalOpen, setIsPromoteModalOpen] = useState(false);
   const [activeNav, setActiveNav] = useState<'armies' | 'owned' | 'settings'>('armies');
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
+  const logoClickTimestampsRef = useRef<number[]>([]);
 
   useBackNavigation(activeNav !== 'armies', () => setActiveNav('armies'));
+  useBackNavigation(isPromoteModalOpen, () => setIsPromoteModalOpen(false));
+
+  const handleLogoClick = () => {
+    if (!isStagingBuild) return;
+    const now = Date.now();
+    const recent = logoClickTimestampsRef.current.filter((t) => now - t < 1800);
+    recent.push(now);
+    if (recent.length >= 3) {
+      logoClickTimestampsRef.current = [];
+      setIsPromoteModalOpen(true);
+    } else {
+      logoClickTimestampsRef.current = recent;
+    }
+  };
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-transparent flex flex-col text-theme-text">
@@ -48,7 +66,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <header className="border-b border-theme-border-subtle bg-theme-surface/95 backdrop-blur-sm px-4 sm:px-6 py-3.5 sm:py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl overflow-hidden border border-theme-accent/30 bg-theme-accent/15 flex items-center justify-center flex-shrink-0">
+            <div
+              onClick={handleLogoClick}
+              className="w-10 h-10 rounded-xl overflow-hidden border border-theme-accent/30 bg-theme-accent/15 flex items-center justify-center flex-shrink-0"
+            >
               <img
                 src={`${import.meta.env.BASE_URL}icon-192.png`}
                 alt="Warhammer 40,000 Army Builder"
@@ -332,6 +353,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         onClose={() => setIsImportModalOpen(false)}
         onImportRoster={onImportRoster}
       />
+
+      {isStagingBuild && (
+        <PromoteStagingModal
+          isOpen={isPromoteModalOpen}
+          onClose={() => setIsPromoteModalOpen(false)}
+        />
+      )}
     </div>
   );
 };

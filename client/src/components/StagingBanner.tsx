@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AlertTriangle, X } from 'lucide-react';
 
-const isStagingBuild =
+export const isStagingBuild =
   (import.meta as any).env?.VITE_APP_ENV === 'staging' ||
   (typeof window !== 'undefined' && window.location.pathname.includes('/staging'));
 
