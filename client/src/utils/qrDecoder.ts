@@ -945,14 +945,14 @@ function tryDecodeTriple(
 
   for (const ver of candidateVersions) {
     const dim = ver * 4 + 17;
-    let H: number[] | null = null;
+    const homographies: number[][] = [];
 
     if (ver >= 2) {
       const estX = tr.x + bl.x - tl.x - (3 * (tr.x - tl.x + bl.x - tl.x)) / (dim - 7);
       const estY = tr.y + bl.y - tl.y - (3 * (tr.y - tl.y + bl.y - tl.y)) / (dim - 7);
       const align = findAlignmentPattern(bin, w, h, estX, estY, modSize);
       if (align) {
-        H = solveHomography(
+        const alignedH = solveHomography(
           [
             [3.5, 3.5],
             [dim - 3.5, 3.5],
@@ -966,47 +966,47 @@ function tryDecodeTriple(
             [align.x, align.y]
           ]
         );
+        if (alignedH) homographies.push(alignedH);
       }
     }
 
-    if (!H) {
-      const brX = tr.x + bl.x - tl.x;
-      const brY = tr.y + bl.y - tl.y;
-      H = solveHomography(
-        [
-          [3.5, 3.5],
-          [dim - 3.5, 3.5],
-          [3.5, dim - 3.5],
-          [dim - 3.5, dim - 3.5]
-        ],
-        [
-          [tl.x, tl.y],
-          [tr.x, tr.y],
-          [bl.x, bl.y],
-          [brX, brY]
-        ]
-      );
-    }
+    const brX = tr.x + bl.x - tl.x;
+    const brY = tr.y + bl.y - tl.y;
+    const fallbackH = solveHomography(
+      [
+        [3.5, 3.5],
+        [dim - 3.5, 3.5],
+        [3.5, dim - 3.5],
+        [dim - 3.5, dim - 3.5]
+      ],
+      [
+        [tl.x, tl.y],
+        [tr.x, tr.y],
+        [bl.x, bl.y],
+        [brX, brY]
+      ]
+    );
+    if (fallbackH) homographies.push(fallbackH);
 
-    if (!H) continue;
-
-    const matrix: boolean[][] = Array.from({ length: dim }, () => Array<boolean>(dim).fill(false));
-    for (let r = 0; r < dim; r++) {
-      const v = r + 0.5;
-      for (let col = 0; col < dim; col++) {
-        const u = col + 0.5;
-        const denom = H[6] * u + H[7] * v + H[8];
-        if (Math.abs(denom) < 1e-8) continue;
-        const px = Math.round((H[0] * u + H[1] * v + H[2]) / denom);
-        const py = Math.round((H[3] * u + H[4] * v + H[5]) / denom);
-        if (px >= 0 && px < w && py >= 0 && py < h) {
-          matrix[r][col] = bin[py * w + px] === 1;
+    for (const H of homographies) {
+      const matrix: boolean[][] = Array.from({ length: dim }, () => Array<boolean>(dim).fill(false));
+      for (let r = 0; r < dim; r++) {
+        const v = r + 0.5;
+        for (let col = 0; col < dim; col++) {
+          const u = col + 0.5;
+          const denom = H[6] * u + H[7] * v + H[8];
+          if (Math.abs(denom) < 1e-8) continue;
+          const px = Math.round((H[0] * u + H[1] * v + H[2]) / denom);
+          const py = Math.round((H[3] * u + H[4] * v + H[5]) / denom);
+          if (px >= 0 && px < w && py >= 0 && py < h) {
+            matrix[r][col] = bin[py * w + px] === 1;
+          }
         }
       }
-    }
 
-    const decoded = decodeMatrix(matrix);
-    if (decoded !== null) return decoded;
+      const decoded = decodeMatrix(matrix);
+      if (decoded !== null) return decoded;
+    }
   }
 
   return null;

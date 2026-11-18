@@ -197,7 +197,11 @@ export async function encodeRosterToShareCode(roster: ArmyRoster): Promise<strin
   if (roster.subFactionId && roster.subFactionId !== roster.factionId) {
     payload.sf = roster.subFactionId;
   }
-  if (roster.subFactionName && !roster.subFactionId) {
+  if (
+    roster.subFactionName &&
+    (!roster.subFactionId || roster.subFactionId === roster.factionId) &&
+    roster.subFactionName !== roster.factionName
+  ) {
     payload.sfn = roster.subFactionName;
   }
   if (typeof roster.customPointsLimit === 'number' && roster.customPointsLimit > 0) {
@@ -311,9 +315,11 @@ export async function decodeShareCodeToRoster(
 
   const detachments: SelectedDetachment[] = [];
   for (const detKey of compact.d || []) {
-    const found = factionData.detachments.find(
-      (d) => d.id === detKey || normalizeDetachmentName(d.name) === normalizeDetachmentName(detKey)
-    );
+    const found =
+      factionData.detachments.find((d) => d.id === detKey) ||
+      factionData.detachments.find(
+        (d) => normalizeDetachmentName(d.name) === normalizeDetachmentName(detKey)
+      );
     if (found) {
       if (!detachments.some((x) => x.id === found.id)) detachments.push(found);
     } else {
@@ -326,9 +332,9 @@ export async function decodeShareCodeToRoster(
   const compactIndexToUnit = new Map<number, SelectedUnit>();
 
   compact.u.forEach((cu, idx) => {
-    const ds: Datasheet | undefined = factionData.units.find(
-      (u) => u.id === cu.d || u.name.toLowerCase() === String(cu.d).toLowerCase()
-    );
+    const ds: Datasheet | undefined =
+      factionData.units.find((u) => u.id === cu.d) ||
+      factionData.units.find((u) => u.name.toLowerCase() === String(cu.d).toLowerCase());
     if (!ds) {
       warnings.push(`Unit "${cu.d}" was not found in ${factionData.faction.name}.`);
       return;
@@ -367,9 +373,11 @@ export async function decodeShareCodeToRoster(
 
     let enhancement: Enhancement | undefined;
     if (cu.e && factionData.enhancements) {
-      enhancement = factionData.enhancements.find(
-        (enh) => enh.id === cu.e || enh.name.toLowerCase() === String(cu.e).toLowerCase()
-      );
+      enhancement =
+        factionData.enhancements.find((enh) => enh.id === cu.e) ||
+        factionData.enhancements.find(
+          (enh) => enh.name.toLowerCase() === String(cu.e).toLowerCase()
+        );
       if (!enhancement) {
         warnings.push(`Enhancement "${cu.e}" on "${ds.name}" was not found.`);
       }
