@@ -92,15 +92,16 @@ export async function detectQRFromImageFile(file: File): Promise<string | null> 
     const scale = Math.min(1, maxDim / Math.max(img.naturalWidth || img.width, img.naturalHeight || img.height));
     const w = Math.max(1, Math.round((img.naturalWidth || img.width) * scale));
     const h = Math.max(1, Math.round((img.naturalHeight || img.height) * scale));
+    const pad = 24;
     const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
+    canvas.width = w + pad * 2;
+    canvas.height = h + pad * 2;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return null;
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-    ctx.drawImage(img, 0, 0, w, h);
-    const imageData = ctx.getImageData(0, 0, w, h);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, pad, pad, w, h);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     return decodeQRCodeFromImageData(imageData);
   } finally {
     URL.revokeObjectURL(url);
