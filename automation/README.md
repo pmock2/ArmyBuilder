@@ -4,7 +4,7 @@ ToS-compliant, scale-to-zero GCP pipeline that picks up GitHub issues labeled `a
 
 ## Architecture
 - **Webhook Receiver (`src/webhook.js`)** — Cloud Run Service verifying GitHub's `X-Hub-Signature-256` HMAC and triggering the Cloud Run Job when an issue receives the `ai-fix` label.
-- **Worker Job (`src/worker.js`)** — Ephemeral Cloud Run Job that clones `staging`, runs the Vertex AI Gemini tool-calling loop, verifies the production build, pushes `fix/issue-<N>`, and opens a Draft PR targeting `staging`.
+- **Worker Job (`src/worker.js`)** — Ephemeral Cloud Run Job that clones `staging`, runs the Vertex AI Gemini tool-calling loop, verifies the production build, opens a PR targeting `staging`, and auto-squashes/merges it into the single running `staging` branch (automatically deploying to `/staging/`).
 - **Pro Tier (Optional)** — Add both `ai-fix` and `ai-fix-pro` labels to use `gemini-2.5-pro` instead of `gemini-2.5-flash`.
 
 ## Prerequisites
