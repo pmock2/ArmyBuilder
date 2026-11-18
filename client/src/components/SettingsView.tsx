@@ -19,10 +19,7 @@ import {
   Smartphone
 } from 'lucide-react';
 import { hasApiKey, setStoredApiKey } from '../services/geminiService';
-import {
-  generateThemeWithAi,
-  THEME_PROMPT_EXAMPLES
-} from '../services/aiThemeGenerator';
+import { generateThemeWithAi } from '../services/aiThemeGenerator';
 import {
   isHapticsEnabled,
   setHapticsEnabled,
@@ -552,28 +549,6 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                         placeholder="e.g. 'Deep Necron blackstone & glowing tesseract emerald with radial aura' or 'Warm Imperial parchment light theme with crimson ink'"
                         className="w-full bg-theme-elevated border border-theme-border rounded-xl px-3 py-2.5 text-xs sm:text-sm text-theme-text placeholder-theme-text-muted focus:outline-none focus:border-theme-accent resize-none"
                       />
-
-                      <div className="space-y-1.5">
-                        <span className="text-[11px] font-semibold text-theme-text-muted block">
-                          Quick ideas (tap to use):
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {THEME_PROMPT_EXAMPLES.map((example) => (
-                            <button
-                              key={example}
-                              type="button"
-                              disabled={isGeneratingTheme}
-                              onClick={() => {
-                                setAiPrompt(example);
-                                setAiThemeError(null);
-                              }}
-                              className="text-[11px] px-2.5 py-1 rounded-lg bg-theme-elevated border border-theme-border-subtle text-theme-text-secondary hover:text-theme-text hover:border-theme-accent/60 transition-colors text-left disabled:opacity-50"
-                            >
-                              {example}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
 
                       {aiThemeError && (
                         <div className="p-2.5 rounded-lg bg-red-950/50 border border-red-700/60 text-xs text-red-200 flex items-center gap-2">
