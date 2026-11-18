@@ -9,7 +9,7 @@
     "start:worker": "node src/worker.js"
   },
   "dependencies": {
-    "@google/genai": "^0.14.0",
+    "@google/genai": "^3.5.0",
     "google-auth-library": "^9.15.1"
   }
 }
