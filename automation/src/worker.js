@@ -19,11 +19,44 @@ const LOCATION = process.env.VERTEX_LOCATION || 'global';
 if (!GITHUB_TOKEN) throw new Error('Missing GITHUB_TOKEN environment variable.');
 if (!PROJECT_ID) throw new Error('Missing GOOGLE_CLOUD_PROJECT environment variable.');
 
+const MODEL_CALL_TIMEOUT_MS = Number(process.env.MODEL_CALL_TIMEOUT_MS || 90000);
+
 const ai = new GoogleGenAI({
   vertexai: true,
   project: PROJECT_ID,
-  location: LOCATION
+  location: LOCATION,
+  httpOptions: { timeout: MODEL_CALL_TIMEOUT_MS }
 });
+
+async function generateWithRetry(params, issueNumber, turn) {
+  const maxAttempts = 3;
+  let lastErr;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await ai.models.generateContent({
+        ...params,
+        config: {
+          ...params.config,
+          abortSignal: AbortSignal.timeout(MODEL_CALL_TIMEOUT_MS)
+        }
+      });
+    } catch (err) {
+      lastErr = err;
+      const msg = err?.message || String(err);
+      const status = err?.status;
+      const retryable =
+        err?.name === 'TimeoutError' ||
+        err?.name === 'AbortError' ||
+        status === 429 ||
+        (typeof status === 'number' && status >= 500) ||
+        /timeout|aborted|ECONNRESET|ETIMEDOUT|fetch failed/i.test(msg);
+      console.warn(`[Issue #${issueNumber}] Turn ${turn + 1} attempt ${attempt}/${maxAttempts} failed: ${msg}`);
+      if (!retryable || attempt === maxAttempts) break;
+      await new Promise((r) => setTimeout(r, attempt * 2000));
+    }
+  }
+  throw lastErr;
+}
 
 async function ghApi(endpoint, options = {}) {
   const url = endpoint.startsWith('http') ? endpoint : `https://api.github.com${endpoint}`;
@@ -289,15 +322,21 @@ async function processIssue(issue) {
 
     let finalSummary = '';
     for (let turn = 0; turn < MAX_TURNS; turn++) {
-      const response = await ai.models.generateContent({
-        model: modelName,
-        contents,
-        config: {
-          systemInstruction,
-          temperature: 0.2,
-          tools: [{ functionDeclarations: tools.declarations }]
-        }
-      });
+      console.log(`[Issue #${issueNumber}] Requesting model turn ${turn + 1}...`);
+      const response = await generateWithRetry(
+        {
+          model: modelName,
+          contents,
+          config: {
+            systemInstruction,
+            temperature: 0.2,
+            tools: [{ functionDeclarations: tools.declarations }]
+          }
+        },
+        issueNumber,
+        turn
+      );
+      console.log(`[Issue #${issueNumber}] Model turn ${turn + 1} responded.`);
 
       const candidateContent = response.candidates?.[0]?.content;
       if (candidateContent) {
@@ -415,6 +454,21 @@ async function processIssue(issue) {
       );
     }
     await removeLabel(issueNumber, TRIGGER_LABEL);
+  } catch (err) {
+    try {
+      await commentIssue(
+        issueNumber,
+        `🤖 AI agent (${modelName}) encountered an error while working on this issue:\n\`\`\`\n${(err?.message || String(err)).slice(0, 1000)}\n\`\`\``
+      );
+    } catch {
+      // Ignore comment failure
+    }
+    try {
+      await removeLabel(issueNumber, TRIGGER_LABEL);
+    } catch {
+      // Ignore label cleanup failure
+    }
+    throw err;
   } finally {
     fs.rmSync(repoDir, { recursive: true, force: true });
     await removeLabel(issueNumber, IN_PROGRESS_LABEL);

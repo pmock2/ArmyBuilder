@@ -17,6 +17,11 @@ const ALLOWED_ORIGINS = new Set([
   'http://localhost:5173',
   'http://127.0.0.1:5173'
 ]);
+const VALID_ISSUE_CATEGORIES = new Set(['bug', 'enhancement', 'question']);
+const ISSUE_RATE_WINDOW_MS = 60 * 60 * 1000;
+const ISSUE_RATE_LIMIT_PUBLIC = 5;
+const ISSUE_RATE_LIMIT_ADMIN = 30;
+const issueSubmissionsByIp = new Map();
 
 const auth = new GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/cloud-platform']
@@ -140,6 +145,119 @@ async function checkCanPromote() {
   };
 }
 
+function getClientIp(req) {
+  const forwarded = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  return forwarded || req.socket?.remoteAddress || 'unknown';
+}
+
+function checkIssueRateLimit(ip, limit) {
+  const now = Date.now();
+  const cutoff = now - ISSUE_RATE_WINDOW_MS;
+  const recent = (issueSubmissionsByIp.get(ip) || []).filter((ts) => ts > cutoff);
+  if (recent.length >= limit) {
+    issueSubmissionsByIp.set(ip, recent);
+    const oldest = recent[0] || now;
+    return { allowed: false, retryAfterSec: Math.max(1, Math.ceil((oldest + ISSUE_RATE_WINDOW_MS - now) / 1000)) };
+  }
+  recent.push(now);
+  issueSubmissionsByIp.set(ip, recent);
+  if (issueSubmissionsByIp.size > 500) {
+    for (const [key, timestamps] of issueSubmissionsByIp.entries()) {
+      const active = timestamps.filter((ts) => ts > cutoff);
+      if (active.length === 0) issueSubmissionsByIp.delete(key);
+      else issueSubmissionsByIp.set(key, active);
+    }
+  }
+  return { allowed: true };
+}
+
+async function readRawBody(req, maxBytes = 64 * 1024) {
+  const chunks = [];
+  let total = 0;
+  for await (const chunk of req) {
+    total += chunk.length;
+    if (total > maxBytes) {
+      const err = new Error('Payload too large');
+      err.statusCode = 413;
+      throw err;
+    }
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+}
+
+async function handleCreateIssue(req, res) {
+  let payload;
+  try {
+    const rawBody = await readRawBody(req, 32 * 1024);
+    payload = JSON.parse(rawBody.toString('utf8'));
+  } catch (err) {
+    sendJson(res, err?.statusCode || 400, { error: err?.statusCode === 413 ? 'Payload too large.' : 'Invalid JSON payload.' });
+    return;
+  }
+
+  if (typeof payload?.website === 'string' && payload.website.trim().length > 0) {
+    sendJson(res, 400, { error: 'Invalid submission.' });
+    return;
+  }
+
+  const title = typeof payload?.title === 'string' ? payload.title.trim() : '';
+  const body = typeof payload?.body === 'string' ? payload.body.trim() : '';
+  const category = typeof payload?.category === 'string' ? payload.category.trim() : 'bug';
+  const requestAiFix = Boolean(payload?.requestAiFix);
+
+  if (title.length < 3 || title.length > 200) {
+    sendJson(res, 400, { error: 'Issue title must be between 3 and 200 characters.' });
+    return;
+  }
+  if (body.length < 5 || body.length > 12000) {
+    sendJson(res, 400, { error: 'Issue description must be between 5 and 12,000 characters.' });
+    return;
+  }
+  if (!VALID_ISSUE_CATEGORIES.has(category)) {
+    sendJson(res, 400, { error: 'Invalid issue category.' });
+    return;
+  }
+
+  const isAdmin = verifyPromoteSecret(req.headers['x-promote-secret']);
+  if (requestAiFix && !isAdmin) {
+    sendJson(res, 401, { error: 'Invalid or missing admin key for AI Auto-Fix.' });
+    return;
+  }
+
+  const rate = checkIssueRateLimit(
+    getClientIp(req),
+    isAdmin ? ISSUE_RATE_LIMIT_ADMIN : ISSUE_RATE_LIMIT_PUBLIC
+  );
+  if (!rate.allowed) {
+    res.setHeader('Retry-After', String(rate.retryAfterSec));
+    sendJson(res, 429, { error: 'Too many issue submissions from this address. Please try again later.' });
+    return;
+  }
+
+  const labels = requestAiFix ? [category, TRIGGER_LABEL] : [category];
+  try {
+    const issueRes = await ghApi(`/repos/${GITHUB_REPO}/issues`, {
+      method: 'POST',
+      body: JSON.stringify({ title, body, labels })
+    });
+    if (!issueRes.ok) {
+      sendJson(res, 502, { error: issueRes.data?.message || `GitHub issue creation failed (${issueRes.status})` });
+      return;
+    }
+    sendJson(res, 201, {
+      number: issueRes.data.number,
+      url: issueRes.data.html_url,
+      title: issueRes.data.title,
+      labels,
+      aiFixTriggered: requestAiFix
+    });
+  } catch (err) {
+    console.error('Create issue error:', err);
+    sendJson(res, 500, { error: err.message });
+  }
+}
+
 const server = http.createServer(async (req, res) => {
   setCorsHeaders(req, res);
 
@@ -219,15 +337,24 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'POST' && req.url === '/issues') {
+    await handleCreateIssue(req, res);
+    return;
+  }
+
   if (req.method !== 'POST' || req.url !== '/webhook') {
     res.writeHead(404);
     res.end('Not found');
     return;
   }
 
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  const rawBody = Buffer.concat(chunks);
+  let rawBody;
+  try {
+    rawBody = await readRawBody(req, 512 * 1024);
+  } catch (err) {
+    sendJson(res, err?.statusCode || 400, { error: err.message });
+    return;
+  }
 
   const sig = req.headers['x-hub-signature-256'];
   if (!verifyGithubSignature(rawBody, sig)) {
