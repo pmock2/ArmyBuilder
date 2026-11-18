@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { X, MessageSquarePlus, ExternalLink, Copy, Check, Bug, Lightbulb, HelpCircle, Sparkles } from 'lucide-react';
+import {
+  X,
+  MessageSquarePlus,
+  ExternalLink,
+  Copy,
+  Check,
+  Bug,
+  Lightbulb,
+  HelpCircle,
+  Sparkles,
+  Loader2,
+  CheckCircle2,
+  AlertTriangle,
+  KeyRound,
+  Send
+} from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
+import { AUTOMATION_ENDPOINT_BASE, ADMIN_SECRET_STORAGE_KEY } from '../utils/automationApi';
 
 type FeedbackCategory = 'bug' | 'enhancement' | 'question';
 
@@ -51,11 +67,23 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   const [factionOrUnit, setFactionOrUnit] = useState('');
   const [includeContext, setIncludeContext] = useState(true);
   const [requestAiFix, setRequestAiFix] = useState(false);
+  const [adminKey, setAdminKey] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [createdIssue, setCreatedIssue] = useState<{
+    number: number;
+    url: string;
+    aiFixTriggered: boolean;
+  } | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       setCopied(false);
+      setSubmitError('');
+      setCreatedIssue(null);
+      setAdminKey(localStorage.getItem(ADMIN_SECRET_STORAGE_KEY) || '');
       if (activeRoster && !factionOrUnit) {
         const fac = activeRoster.subFactionName
           ? `${activeRoster.factionName} (${activeRoster.subFactionName})`
@@ -102,22 +130,83 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
     return sections.join('\n\n');
   };
 
-  const canSubmit = Boolean(title.trim() && description.trim());
+  const canSubmit = Boolean(title.trim().length >= 3 && description.trim().length >= 5);
 
-  const handleOpenGithubIssue = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!canSubmit) return;
-
+  const buildGithubIssueUrl = (): string => {
     const labels = requestAiFix ? `${category},ai-fix` : category;
     const params = new URLSearchParams({
       title: title.trim(),
       body: buildIssueBody(),
       labels
     });
+    return `${GITHUB_REPO_URL}/issues/new?${params.toString()}`;
+  };
 
-    const url = `${GITHUB_REPO_URL}/issues/new?${params.toString()}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleOpenGithubFallback = () => {
+    if (!canSubmit) return;
+    window.open(buildGithubIssueUrl(), '_blank', 'noopener,noreferrer');
     onClose();
+  };
+
+  const handleSubmitIssue = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!canSubmit || isSubmitting) return;
+
+    const trimmedKey = adminKey.trim();
+    if (requestAiFix && !trimmedKey) {
+      setSubmitError('Enter your admin key to enable AI Auto-Fix, or uncheck it to file a regular issue.');
+      return;
+    }
+
+    setSubmitError('');
+    setIsSubmitting(true);
+    try {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (trimmedKey) {
+        headers['X-Promote-Secret'] = trimmedKey;
+      }
+
+      const res = await fetch(`${AUTOMATION_ENDPOINT_BASE}/issues`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          title: title.trim(),
+          body: buildIssueBody(),
+          category,
+          requestAiFix,
+          website: honeypot
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 401) {
+        localStorage.removeItem(ADMIN_SECRET_STORAGE_KEY);
+        setSubmitError(data?.error || 'Invalid admin key for AI Auto-Fix.');
+        return;
+      }
+      if (!res.ok) {
+        setSubmitError(data?.error || `Failed to create issue (${res.status}).`);
+        return;
+      }
+
+      if (trimmedKey) {
+        localStorage.setItem(ADMIN_SECRET_STORAGE_KEY, trimmedKey);
+      }
+
+      setCreatedIssue({
+        number: data.number,
+        url: data.url,
+        aiFixTriggered: Boolean(data.aiFixTriggered)
+      });
+      setTitle('');
+      setDescription('');
+      setStepsToReproduce('');
+      setExpectedBehavior('');
+    } catch (err: any) {
+      setSubmitError(err?.message || 'Network error while creating GitHub issue.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyMarkdown = async () => {
@@ -152,7 +241,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
                 Send Feedback
               </h2>
               <p className="text-xs text-theme-text-muted">
-                Opens a pre-filled GitHub issue on pmock2/ArmyBuilder
+                Creates a GitHub issue directly on pmock2/ArmyBuilder
               </p>
             </div>
           </div>
@@ -167,8 +256,62 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleOpenGithubIssue} className="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1 text-xs sm:text-sm">
+        {createdIssue ? (
+          <div className="p-5 sm:p-6 space-y-4 text-xs sm:text-sm">
+            <div className="flex items-start gap-3 p-4 rounded-xl bg-emerald-950/40 border border-emerald-700/50 text-emerald-200">
+              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <div className="space-y-1.5 min-w-0">
+                <p className="font-semibold text-sm text-emerald-100">
+                  Issue #{createdIssue.number} created on GitHub!
+                </p>
+                <p className="text-xs text-emerald-200/80 leading-relaxed">
+                  {createdIssue.aiFixTriggered
+                    ? 'AI Auto-Fix (ai-fix) has been triggered and will target the staging branch (~3 minutes).'
+                    : 'Your ticket has been logged in pmock2/ArmyBuilder.'}
+                </p>
+                <a
+                  href={createdIssue.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-300 hover:text-emerald-200 underline underline-offset-2 pt-1"
+                >
+                  <span>View Issue #{createdIssue.number} on GitHub</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-col-reverse sm:flex-row justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setCreatedIssue(null)}
+                className="btn-theme-secondary min-h-[40px] px-4 rounded-xl text-xs font-semibold"
+              >
+                Submit Another
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="btn-theme-primary min-h-[40px] px-5 rounded-xl text-xs sm:text-sm font-bold"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        ) : (
+        /* Form */
+        <form onSubmit={handleSubmitIssue} className="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1 text-xs sm:text-sm">
+          {/* Honeypot field for basic bot filtering */}
+          <input
+            type="text"
+            name="website"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="hidden"
+          />
           {/* Category */}
           <div>
             <label className="block text-theme-text-secondary font-semibold mb-2 uppercase tracking-wider text-xs">
@@ -301,7 +444,10 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
               <input
                 type="checkbox"
                 checked={requestAiFix}
-                onChange={(e) => setRequestAiFix(e.target.checked)}
+                onChange={(e) => {
+                  setRequestAiFix(e.target.checked);
+                  setSubmitError('');
+                }}
                 className="w-4 h-4 rounded border-theme-border bg-theme-bg accent-emerald-500"
               />
               <Sparkles className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -309,14 +455,53 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
                 Request AI Auto-Fix (<code className="font-mono text-[11px] bg-emerald-950/60 px-1 py-0.5 rounded border border-emerald-700/50">ai-fix</code> label)
               </span>
             </label>
+
+            {requestAiFix && (
+              <div className="pl-6 pt-1 space-y-1.5">
+                <label htmlFor="feedback-admin-key" className="flex items-center gap-1.5 text-[11px] text-theme-text-secondary font-semibold uppercase tracking-wider">
+                  <KeyRound className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Admin Key (required for AI Auto-Fix)</span>
+                </label>
+                <input
+                  id="feedback-admin-key"
+                  type="password"
+                  value={adminKey}
+                  onChange={(e) => {
+                    setAdminKey(e.target.value);
+                    if (submitError) setSubmitError('');
+                  }}
+                  placeholder="Enter admin / promote key..."
+                  className="w-full px-3 py-2 rounded-xl bg-theme-bg border border-theme-border text-theme-text placeholder-theme-text-muted focus:outline-none focus:border-emerald-500 text-xs"
+                />
+              </div>
+            )}
           </div>
+
+          {submitError && (
+            <div className="p-3 rounded-xl bg-red-950/40 border border-red-700/50 text-red-200 text-xs space-y-2">
+              <div className="flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                <span>{submitError}</span>
+              </div>
+              {canSubmit && (
+                <button
+                  type="button"
+                  onClick={handleOpenGithubFallback}
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-red-300 hover:text-red-100 underline underline-offset-2"
+                >
+                  <span>Open pre-filled issue on GitHub instead</span>
+                  <ExternalLink className="w-3 h-3" />
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Footer Actions */}
           <div className="pt-3 border-t border-theme-border-subtle flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2">
             <button
               type="button"
               onClick={handleCopyMarkdown}
-              disabled={!canSubmit}
+              disabled={!canSubmit || isSubmitting}
               className="btn-theme-secondary min-h-[40px] px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:pointer-events-none"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -325,14 +510,24 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
             <button
               type="submit"
-              disabled={!canSubmit}
+              disabled={!canSubmit || isSubmitting}
               className="btn-theme-primary min-h-[40px] px-5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
             >
-              <span>Create GitHub Issue</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Creating Issue...</span>
+                </>
+              ) : (
+                <>
+                  <span>Create GitHub Issue</span>
+                  <Send className="w-3.5 h-3.5" />
+                </>
+              )}
             </button>
           </div>
         </form>
+        )}
       </div>
     </div>
   );

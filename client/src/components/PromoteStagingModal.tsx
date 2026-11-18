@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { X, GitMerge, Loader2, CheckCircle2, AlertTriangle, KeyRound } from 'lucide-react';
+import { AUTOMATION_ENDPOINT_BASE, ADMIN_SECRET_STORAGE_KEY } from '../utils/automationApi';
 
-const PROMOTE_ENDPOINT_BASE = 'https://armybuilder-ai-webhook-vcacnrto3a-uc.a.run.app';
-const PROMOTE_SECRET_STORAGE_KEY = 'wh40k_11e_promote_secret';
+const PROMOTE_ENDPOINT_BASE = AUTOMATION_ENDPOINT_BASE;
+const PROMOTE_SECRET_STORAGE_KEY = ADMIN_SECRET_STORAGE_KEY;
 
 interface PromoteStagingModalProps {
   isOpen: boolean;
