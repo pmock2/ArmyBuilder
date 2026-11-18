@@ -88,7 +88,7 @@ Write-Host "==> Deploying Cloud Run Job: armybuilder-ai-fixer"
   --task-timeout 15m `
   --cpu 2 `
   --memory 2Gi `
-  --set-env-vars "GOOGLE_CLOUD_PROJECT=$ProjectId,GOOGLE_CLOUD_LOCATION=$Region,GITHUB_REPO=$GithubRepo,BASE_BRANCH=$BaseBranch" `
+  --set-env-vars "GOOGLE_CLOUD_PROJECT=$ProjectId,GOOGLE_CLOUD_LOCATION=$Region,VERTEX_LOCATION=global,GITHUB_REPO=$GithubRepo,BASE_BRANCH=$BaseBranch" `
   --set-secrets "GITHUB_TOKEN=github-token:latest" `
   --command "node" `
   --args "src/worker.js"

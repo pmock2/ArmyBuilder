@@ -8,13 +8,13 @@ const GITHUB_REPO = (process.env.GITHUB_REPO || 'pmock2/ArmyBuilder').trim();
 const BASE_BRANCH = (process.env.BASE_BRANCH || 'staging').trim();
 const TRIGGER_LABEL = process.env.TRIGGER_LABEL || 'ai-fix';
 const IN_PROGRESS_LABEL = 'ai-fix-in-progress';
-const DEFAULT_MODEL = process.env.VERTEX_MODEL || 'gemini-2.5-flash';
-const PRO_MODEL = process.env.VERTEX_PRO_MODEL || 'gemini-2.5-pro';
+const DEFAULT_MODEL = process.env.VERTEX_MODEL || 'gemini-4-hydrogen';
+const PRO_MODEL = process.env.VERTEX_PRO_MODEL || 'gemini-4-argon';
 const MAX_TURNS = Number(process.env.MAX_TURNS || 20);
 const ISSUE_NUMBER = process.env.ISSUE_NUMBER ? Number(process.env.ISSUE_NUMBER) : null;
 
 const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT;
-const LOCATION = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
+const LOCATION = process.env.VERTEX_LOCATION || 'global';
 
 if (!GITHUB_TOKEN) throw new Error('Missing GITHUB_TOKEN environment variable.');
 if (!PROJECT_ID) throw new Error('Missing GOOGLE_CLOUD_PROJECT environment variable.');
