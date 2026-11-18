@@ -40,7 +40,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({
   }, [isOpen, initialFormat]);
 
   useEffect(() => {
-    if (!isOpen || format !== 'qr') return;
+    if (!isOpen || format !== 'qr') {
+      setQrLoading(false);
+      return;
+    }
     let cancelled = false;
 
     const buildQr = async () => {

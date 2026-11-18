@@ -73,17 +73,81 @@ function fromBase64Url(str: string): Uint8Array {
   return bytes;
 }
 
+async function readAllChunks(readable: ReadableStream<Uint8Array>): Promise<Uint8Array> {
+  const reader = readable.getReader();
+  const chunks: Uint8Array[] = [];
+  let totalLength = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (value && value.byteLength > 0) {
+        chunks.push(value);
+        totalLength += value.byteLength;
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+  const result = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result;
+}
+
+async function runByteTransformStream(
+  stream: { readable: ReadableStream<Uint8Array>; writable: WritableStream<BufferSource> },
+  bytes: Uint8Array,
+  timeoutMs: number
+): Promise<Uint8Array> {
+  const copy = new Uint8Array(bytes.byteLength);
+  copy.set(bytes);
+
+  const readPromise = readAllChunks(stream.readable);
+  const writer = stream.writable.getWriter();
+  const writePromise = (async () => {
+    try {
+      await writer.write(copy);
+      await writer.close();
+    } catch (err) {
+      await writer.abort(err).catch(() => {});
+      throw err;
+    } finally {
+      try {
+        writer.releaseLock();
+      } catch {
+        // ignore if already released
+      }
+    }
+  })();
+
+  const workPromise = Promise.all([readPromise, writePromise]);
+  workPromise.catch(() => {});
+
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      void writer.abort(new Error('Stream transform timed out')).catch(() => {});
+      reject(new Error('Stream transform timed out'));
+    }, timeoutMs);
+  });
+
+  try {
+    const [result] = await Promise.race([workPromise, timeoutPromise]);
+    return result;
+  } finally {
+    if (timer !== undefined) clearTimeout(timer);
+  }
+}
+
 async function deflateRaw(bytes: Uint8Array): Promise<Uint8Array | null> {
   if (typeof CompressionStream === 'undefined') return null;
   try {
     const cs = new CompressionStream('deflate-raw');
-    const writer = cs.writable.getWriter();
-    const copy = new Uint8Array(bytes.byteLength);
-    copy.set(bytes);
-    await writer.write(copy);
-    await writer.close();
-    const buf = await new Response(cs.readable).arrayBuffer();
-    return new Uint8Array(buf);
+    return await runByteTransformStream(cs, bytes, 2000);
   } catch {
     return null;
   }
@@ -94,13 +158,7 @@ async function inflateRaw(bytes: Uint8Array): Promise<Uint8Array> {
     throw new Error('This browser does not support compressed QR codes (DecompressionStream unavailable).');
   }
   const ds = new DecompressionStream('deflate-raw');
-  const writer = ds.writable.getWriter();
-  const copy = new Uint8Array(bytes.byteLength);
-  copy.set(bytes);
-  await writer.write(copy);
-  await writer.close();
-  const buf = await new Response(ds.readable).arrayBuffer();
-  return new Uint8Array(buf);
+  return await runByteTransformStream(ds, bytes, 5000);
 }
 
 function arraysEqual(a: string[], b: string[]): boolean {
