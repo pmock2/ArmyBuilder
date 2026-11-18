@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:22-slim
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends git ca-certificates ripgrep \
@@ -11,5 +11,4 @@ RUN npm install --omit=dev
 
 COPY src ./src
 
-ENV NODE_ENV=production
 CMD ["node", "src/worker.js"]

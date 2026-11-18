@@ -82,7 +82,12 @@ function createRepoTools(repoDir) {
 
   const ensureClientDeps = () => {
     if (depsInstalled) return;
-    execFileSync('npm', ['ci', '--prefix', 'client'], { cwd: repoDir, stdio: 'pipe', timeout: 180000 });
+    execFileSync('npm', ['ci', '--prefix', 'client', '--include=dev'], {
+      cwd: repoDir,
+      stdio: 'pipe',
+      timeout: 180000,
+      env: { ...process.env, NODE_ENV: 'development' }
+    });
     depsInstalled = true;
   };
 
