@@ -41,7 +41,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   useBackNavigation(activeNav !== 'armies', () => setActiveNav('armies'));
 
   return (
-    <div className="h-screen h-[100dvh] overflow-hidden bg-transparent flex flex-col text-theme-text">
+    <div className="fixed inset-0 overflow-hidden bg-transparent flex flex-col text-theme-text">
       {/* Top Banner */}
       <header className="border-b border-theme-border-subtle bg-theme-surface/95 backdrop-blur-sm px-4 sm:px-6 py-3.5 sm:py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
@@ -272,15 +272,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                         )}
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-theme-text-secondary mt-0.5 min-w-0">
-                        <span className="font-medium truncate">
-                          {roster.factionName}
-                          {roster.subFactionName ? ` • ${roster.subFactionName}` : ''}
-                        </span>
-                        <span className="text-theme-text-muted shrink-0">•</span>
-                        <span className="font-mono font-semibold text-theme-text shrink-0">
-                          {validation.totalPoints}/{validation.pointsLimit} pts
-                        </span>
+                      <p className="text-[11px] sm:text-xs text-theme-text-secondary font-medium truncate mt-0.5">
+                        {roster.factionName}
+                        {roster.subFactionName ? ` • ${roster.subFactionName}` : ''}
+                      </p>
+
+                      <div className="text-[11px] sm:text-xs font-mono font-semibold text-theme-accent-soft mt-0.5">
+                        {validation.totalPoints}/{validation.pointsLimit} pts
                       </div>
                     </div>
 
