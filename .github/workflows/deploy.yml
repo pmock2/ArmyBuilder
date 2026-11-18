@@ -55,6 +55,8 @@ jobs:
 
       - name: Install & build staging
         if: steps.check-staging.outputs.exists == 'true'
+        env:
+          VITE_APP_ENV: staging
         run: |
           npm ci --prefix staging/client
           npm run build --prefix staging/client

@@ -18,6 +18,7 @@ import { AiArmyCreatorModal } from './components/AiArmyCreatorModal';
 import { AiRulesAssistant } from './components/AiRulesAssistant';
 import { AiListEvaluatorModal } from './components/AiListEvaluatorModal';
 import { FeedbackModal } from './components/FeedbackModal';
+import { StagingBanner } from './components/StagingBanner';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { useBackNavigation } from './utils/backNavigation';
 import { getAllThemes, applyThemeToDocument, initTheme } from './utils/themeStorage';
@@ -753,6 +754,7 @@ export const App: React.FC = () => {
           onClose={() => setIsFeedbackOpen(false)}
           activeRoster={null}
         />
+        <StagingBanner />
       </>
     );
   }
@@ -994,6 +996,7 @@ export const App: React.FC = () => {
       />
 
       <InstallPromptBanner />
+      <StagingBanner />
     </div>
   );
 };
