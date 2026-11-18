@@ -231,6 +231,41 @@ export function normalizeDetachmentName(name?: string | null): string {
   return String(name || '').replace(/[’‘]/g, "'").trim().toLowerCase();
 }
 
+function normalizeDetachmentTag(tag: string): string {
+  const upper = tag.trim().toUpperCase();
+  if (upper === 'AUXILIARIES') return 'AUXILIARY';
+  return upper;
+}
+
+export function getDetachmentConflictReason(
+  det: SelectedDetachment,
+  selectedDetachments: SelectedDetachment[]
+): string | null {
+  if (!det || !selectedDetachments || selectedDetachments.length === 0) return null;
+  if (selectedDetachments.some(d => d.name === det.name)) return null;
+
+  const myExcl = (det.constraints?.exclusiveTags || []).map(normalizeDetachmentTag);
+  const myAll = new Set([...(det.tags || []).map(normalizeDetachmentTag), ...myExcl]);
+
+  for (const selected of selectedDetachments) {
+    const selExcl = (selected.constraints?.exclusiveTags || []).map(normalizeDetachmentTag);
+    const selAll = new Set([...(selected.tags || []).map(normalizeDetachmentTag), ...selExcl]);
+
+    for (const tag of myAll) {
+      if (selExcl.includes(tag)) {
+        return `Conflicts with '${selected.name}' (shared exclusive tag: ${tag})`;
+      }
+    }
+    for (const tag of selAll) {
+      if (myExcl.includes(tag)) {
+        return `Conflicts with '${selected.name}' (shared exclusive tag: ${tag})`;
+      }
+    }
+  }
+
+  return null;
+}
+
 export function getUnitBaseCostForModelCount(
   datasheet: Datasheet,
   modelCount: number

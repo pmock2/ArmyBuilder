@@ -36,7 +36,7 @@ function createDetachmentEnhancementParser({
     const fullText = rawText.replace(/[\u00a0\s]+/g, ' ').replace(/[*^_]/g, '');
 
     // Tag exclusivity: "This detachment has the [TAG] tag and cannot be taken with another [TAG] detachment"
-    const tagRegex = /cannot be taken with (?:another|any other)\s+([A-Za-z0-9\-_]+)\s+detachment/gi;
+    const tagRegex = /cannot be taken with (?:another|any other)\s+([A-Za-z0-9\-_]+(?:\s+[A-Za-z0-9\-_]+)?)\s+detachment/gi;
     let match;
     while ((match = tagRegex.exec(fullText)) !== null) {
       const tag = match[1].trim().toUpperCase();

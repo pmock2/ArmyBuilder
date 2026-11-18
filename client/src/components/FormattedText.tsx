@@ -16,6 +16,7 @@ const TOKEN_REGEX = /(\[[^\]\n]+\])|(\^\^\*\*[^*]+?\*\*\^\^|\*\*\^\^[^^]+?\^\^\*
 
 export const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '', disableTooltips = false }) => {
   if (!text) return null;
+  const cleanText = text.replace(/\u00a0/g, ' ');
 
   const parseInlineTokens = (line: string, lineKeyPrefix: string | number): React.ReactNode[] => {
     let lastIndex = 0;
@@ -142,7 +143,7 @@ export const FormattedText: React.FC<FormattedTextProps> = ({ text, className = 
     return elements;
   };
 
-  const lines = text.split('\n');
+  const lines = cleanText.split('\n');
 
   return (
     <div className={`space-y-1.5 ${className}`}>

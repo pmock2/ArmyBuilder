@@ -17,6 +17,7 @@ import { AiSettingsModal } from './components/AiSettingsModal';
 import { AiArmyCreatorModal } from './components/AiArmyCreatorModal';
 import { AiRulesAssistant } from './components/AiRulesAssistant';
 import { AiListEvaluatorModal } from './components/AiListEvaluatorModal';
+import { FeedbackModal } from './components/FeedbackModal';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { useBackNavigation } from './utils/backNavigation';
 import { getAllThemes, applyThemeToDocument, initTheme } from './utils/themeStorage';
@@ -46,6 +47,7 @@ export const App: React.FC = () => {
   const [isAiArmyCreatorOpen, setIsAiArmyCreatorOpen] = useState(false);
   const [isAiRulesAssistantOpen, setIsAiRulesAssistantOpen] = useState(false);
   const [isAiEvaluatorOpen, setIsAiEvaluatorOpen] = useState(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [pendingAiFeature, setPendingAiFeature] = useState<'creator' | 'rules' | 'evaluator' | null>(null);
 
   // Android / mobile hardware Back button navigation stack
@@ -64,6 +66,7 @@ export const App: React.FC = () => {
   useBackNavigation(isAiArmyCreatorOpen, () => setIsAiArmyCreatorOpen(false));
   useBackNavigation(isAiRulesAssistantOpen, () => setIsAiRulesAssistantOpen(false));
   useBackNavigation(isAiEvaluatorOpen, () => setIsAiEvaluatorOpen(false));
+  useBackNavigation(isFeedbackOpen, () => setIsFeedbackOpen(false));
 
   // 1. Persist Active Roster ID & Play Mode across mobile browser reloads / sleep wakeups
   useEffect(() => {
@@ -705,6 +708,7 @@ export const App: React.FC = () => {
           onOpenAiArmyCreator={handleOpenAiArmyCreator}
           onOpenAiRules={handleOpenAiRules}
           onOpenAiSettings={() => setIsAiSettingsModalOpen(true)}
+          onOpenFeedback={() => setIsFeedbackOpen(true)}
         />
         <CreateArmyModal
           isOpen={isCreateModalOpen}
@@ -717,7 +721,13 @@ export const App: React.FC = () => {
           onClose={handleCloseAiSettings}
           onKeySaved={handleAiKeySaved}
         />
-        <InstallPromptBanner />
+        <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+        activeRoster={activeRoster}
+      />
+
+      <InstallPromptBanner />
         <AiArmyCreatorModal
           isOpen={isAiArmyCreatorOpen}
           onClose={() => setIsAiArmyCreatorOpen(false)}
@@ -736,6 +746,11 @@ export const App: React.FC = () => {
             setPendingAiFeature('rules');
             setIsAiSettingsModalOpen(true);
           }}
+          activeRoster={null}
+        />
+        <FeedbackModal
+          isOpen={isFeedbackOpen}
+          onClose={() => setIsFeedbackOpen(false)}
           activeRoster={null}
         />
       </>
@@ -970,6 +985,12 @@ export const App: React.FC = () => {
         roster={activeRoster}
         validation={validation}
         factionData={factionData}
+      />
+
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+        activeRoster={activeRoster}
       />
 
       <InstallPromptBanner />

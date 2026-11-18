@@ -122,24 +122,30 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
 
   // 3. Detachment Tag & Mutual Exclusion Check
   const seenTags = new Map<string, string>();
-  for (const d of detachments) {
-    const exclusiveTags = (d.constraints && d.constraints.exclusiveTags) || [];
-    const tags = d.tags || [];
+  const normTag = (t: string) => {
+    const u = t.trim().toUpperCase();
+    return u === 'AUXILIARIES' ? 'AUXILIARY' : u;
+  };
+  for (let i = 0; i < detachments.length; i++) {
+    const d = detachments[i];
+    const exclusiveTags = ((d.constraints && d.constraints.exclusiveTags) || []).map(normTag);
+    const allTags = new Set([...(d.tags || []).map(normTag), ...exclusiveTags]);
 
-    for (const tag of tags) {
-      const upperTag = tag.toUpperCase();
-      if (exclusiveTags.includes(upperTag)) {
-        if (seenTags.has(upperTag)) {
-          const prevDet = seenTags.get(upperTag);
-          issues.push({
-            id: `tag-conflict-${upperTag}`,
-            severity: 'error',
-            title: `Detachment Conflict: [${upperTag}]`,
-            message: `'${d.name}' has the ${upperTag} tag and cannot be taken with '${prevDet}'.`
-          });
-        } else {
-          seenTags.set(upperTag, d.name);
-        }
+    for (const upperTag of allTags) {
+      const isExclHere = exclusiveTags.includes(upperTag);
+      const prevConflict = detachments.slice(0, i).find(prev => {
+        const prevExcl = ((prev.constraints && prev.constraints.exclusiveTags) || []).map(normTag);
+        const prevAll = new Set([...(prev.tags || []).map(normTag), ...prevExcl]);
+        return (isExclHere && prevAll.has(upperTag)) || (prevExcl.includes(upperTag) && allTags.has(upperTag));
+      });
+      if (prevConflict && !seenTags.has(upperTag)) {
+        seenTags.set(upperTag, d.name);
+        issues.push({
+          id: `tag-conflict-${upperTag}`,
+          severity: 'error',
+          title: `Detachment Conflict: [${upperTag}]`,
+          message: `'${d.name}' has the ${upperTag} tag and cannot be taken with '${prevConflict.name}'.`
+        });
       }
     }
   }

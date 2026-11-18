@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { X, Search, Plus, Eye, Check, AlertCircle, Sparkles } from 'lucide-react';
-import { SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
+import { SelectedDetachment, Enhancement, SelectedUnit, getDetachmentConflictReason } from '../types/roster';
 import { DetachmentModal } from './DetachmentModal';
 
 interface DetachmentBrowserModalProps {
@@ -118,29 +118,7 @@ export const DetachmentBrowserModal: React.FC<DetachmentBrowserModalProps> = ({
 
   // Check mutual exclusivity / tag conflicts
   const getDetachmentConflict = (det: SelectedDetachment): string | null => {
-    const isAlreadySelected = selectedDetachments.some(d => d.name === det.name);
-    if (isAlreadySelected) return null;
-
-    const exclusiveTags = det.constraints?.exclusiveTags || [];
-    const myTags = det.tags || [];
-
-    for (const selected of selectedDetachments) {
-      const selectedExclusiveTags = selected.constraints?.exclusiveTags || [];
-      const selectedTags = selected.tags || [];
-
-      for (const tag of myTags) {
-        if (selectedExclusiveTags.includes(tag.toUpperCase())) {
-          return `Conflicts with '${selected.name}' (shared exclusive tag: ${tag})`;
-        }
-      }
-      for (const tag of selectedTags) {
-        if (exclusiveTags.includes(tag.toUpperCase())) {
-          return `Conflicts with '${selected.name}' (shared exclusive tag: ${tag})`;
-        }
-      }
-    }
-
-    return null;
+    return getDetachmentConflictReason(det, selectedDetachments);
   };
 
   // Sort: Special unlocked detachments pushed to the top

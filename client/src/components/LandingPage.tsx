@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, Sparkles, BookOpen, Key, Package, Layers, Settings } from 'lucide-react';
+import { Plus, Upload, Trash2, Copy, Shield, Sparkles, BookOpen, Key, Package, Layers, Settings, MessageSquarePlus } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
@@ -19,6 +19,7 @@ interface LandingPageProps {
   onOpenAiArmyCreator?: () => void;
   onOpenAiRules?: () => void;
   onOpenAiSettings?: () => void;
+  onOpenFeedback?: () => void;
 }
 
 export const LandingPage: React.FC<LandingPageProps> = ({
@@ -31,7 +32,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onImportRoster,
   onOpenAiArmyCreator,
   onOpenAiRules,
-  onOpenAiSettings
+  onOpenAiSettings,
+  onOpenFeedback
 }) => {
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [activeNav, setActiveNav] = useState<'armies' | 'owned' | 'settings'>('armies');
@@ -151,9 +153,21 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </nav>
           </div>
 
-          {/* Secondary Tools: Rules AI & AI Settings */}
-          {(onOpenAiRules || onOpenAiSettings) && (
+          {/* Secondary Tools: Feedback, Rules AI & AI Settings */}
+          {(onOpenFeedback || onOpenAiRules || onOpenAiSettings) && (
             <div className="flex flex-col gap-1.5 pt-2 border-t border-theme-border-subtle">
+              {onOpenFeedback && (
+                <button
+                  type="button"
+                  onClick={onOpenFeedback}
+                  title="Send Feedback / Report Issue"
+                  aria-label="Send Feedback"
+                  className="flex items-center justify-center px-0 h-10 rounded-xl text-sm font-medium text-emerald-300 hover:text-emerald-200 hover:bg-theme-surface-hover transition-colors"
+                >
+                  <MessageSquarePlus className="w-5 h-5 shrink-0 text-emerald-400" />
+                </button>
+              )}
+
               {onOpenAiRules && (
                 <button
                   type="button"

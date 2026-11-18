@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Shield, Swords, Sparkles, Check } from 'lucide-react';
 import { BattleSize, ArmyRoster } from '../types/roster';
 import { FactionSummary } from '../types/faction';
@@ -12,11 +12,22 @@ interface CreateArmyModalProps {
 }
 
 export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClose, onCreate, onOpenAiCreator }) => {
-  const [name, setName] = useState('New Strike Force');
+  const [name, setName] = useState('');
+  const nameInputRef = useRef<HTMLInputElement>(null);
   const [selectedSuperFaction, setSelectedSuperFaction] = useState('Imperium');
   const [selectedFactionId, setSelectedFactionId] = useState('');
   const [selectedSubFactionId, setSelectedSubFactionId] = useState('');
   const [battleSize, setBattleSize] = useState<BattleSize>('strike-force');
+
+  useEffect(() => {
+    if (isOpen) {
+      setName('');
+      const timer = setTimeout(() => {
+        nameInputRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   const factions: FactionSummary[] = factionsIndexData as FactionSummary[];
 
@@ -129,8 +140,10 @@ export const CreateArmyModal: React.FC<CreateArmyModalProps> = ({ isOpen, onClos
               1. Army Name
             </label>
             <input
+              ref={nameInputRef}
               type="text"
               required
+              autoFocus
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. 1st Company Strike Force"
