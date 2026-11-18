@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['master', 'main']
+    branches: ['master', 'main', 'staging']
   workflow_dispatch:
 
 permissions:
@@ -21,19 +21,45 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout production (master)
         uses: actions/checkout@v4
+        with:
+          ref: master
+          path: prod
+
+      - name: Check if staging branch exists
+        id: check-staging
+        run: |
+          if git ls-remote --exit-code --heads https://github.com/${{ github.repository }}.git staging >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout staging
+        if: steps.check-staging.outputs.exists == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          path: staging
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install client dependencies
-        run: npm ci --prefix client
+      - name: Install & build production (master)
+        run: |
+          npm ci --prefix prod/client
+          npm run build --prefix prod/client
 
-      - name: Build client
-        run: npm run build --prefix client
+      - name: Install & build staging
+        if: steps.check-staging.outputs.exists == 'true'
+        run: |
+          npm ci --prefix staging/client
+          npm run build --prefix staging/client
+          mkdir -p prod/client/dist/staging
+          cp -r staging/client/dist/* prod/client/dist/staging/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -41,7 +67,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './client/dist'
+          path: './prod/client/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
