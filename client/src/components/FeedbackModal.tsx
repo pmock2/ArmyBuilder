@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, MessageSquarePlus, ExternalLink, Copy, Check, Bug, Lightbulb, HelpCircle } from 'lucide-react';
+import { X, MessageSquarePlus, ExternalLink, Copy, Check, Bug, Lightbulb, HelpCircle, Sparkles } from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 
 type FeedbackCategory = 'bug' | 'enhancement' | 'question';
@@ -50,6 +50,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   const [expectedBehavior, setExpectedBehavior] = useState('');
   const [factionOrUnit, setFactionOrUnit] = useState('');
   const [includeContext, setIncludeContext] = useState(true);
+  const [requestAiFix, setRequestAiFix] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -107,10 +108,11 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
     e.preventDefault();
     if (!canSubmit) return;
 
+    const labels = requestAiFix ? `${category},ai-fix` : category;
     const params = new URLSearchParams({
       title: title.trim(),
       body: buildIssueBody(),
-      labels: category
+      labels
     });
 
     const url = `${GITHUB_REPO_URL}/issues/new?${params.toString()}`;
@@ -283,16 +285,31 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
             </div>
           )}
 
-          {/* Include environment context */}
-          <label className="flex items-center gap-2.5 cursor-pointer select-none text-xs text-theme-text-secondary pt-1">
-            <input
-              type="checkbox"
-              checked={includeContext}
-              onChange={(e) => setIncludeContext(e.target.checked)}
-              className="w-4 h-4 rounded border-theme-border bg-theme-bg accent-sky-500"
-            />
-            <span>Include browser &amp; viewport details to help reproduce</span>
-          </label>
+          {/* Include environment context & AI auto-fix option */}
+          <div className="space-y-2 pt-1">
+            <label className="flex items-center gap-2.5 cursor-pointer select-none text-xs text-theme-text-secondary">
+              <input
+                type="checkbox"
+                checked={includeContext}
+                onChange={(e) => setIncludeContext(e.target.checked)}
+                className="w-4 h-4 rounded border-theme-border bg-theme-bg accent-sky-500"
+              />
+              <span>Include browser &amp; viewport details to help reproduce</span>
+            </label>
+
+            <label className="flex items-center gap-2.5 cursor-pointer select-none text-xs text-emerald-300 font-medium">
+              <input
+                type="checkbox"
+                checked={requestAiFix}
+                onChange={(e) => setRequestAiFix(e.target.checked)}
+                className="w-4 h-4 rounded border-theme-border bg-theme-bg accent-emerald-500"
+              />
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>
+                Request AI Auto-Fix (<code className="font-mono text-[11px] bg-emerald-950/60 px-1 py-0.5 rounded border border-emerald-700/50">ai-fix</code> label)
+              </span>
+            </label>
+          </div>
 
           {/* Footer Actions */}
           <div className="pt-3 border-t border-theme-border-subtle flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2">

@@ -1,0 +1,15 @@
+{
+  "name": "armybuilder-ai-fixer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vertex AI + Cloud Run GitHub issue auto-fixer targeting the staging branch",
+  "scripts": {
+    "start:webhook": "node src/webhook.js",
+    "start:worker": "node src/worker.js"
+  },
+  "dependencies": {
+    "@google/genai": "^0.14.0",
+    "google-auth-library": "^9.15.1"
+  }
+}
