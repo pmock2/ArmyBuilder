@@ -11,9 +11,21 @@ export interface FactionSummary {
   subFactions: { id: string; name: string }[];
 }
 
+export interface FactionArmyRuleTableRow {
+  roll?: string;
+  name: string;
+  description: string;
+}
+
+export interface FactionArmyRuleTable {
+  title: string;
+  rows: FactionArmyRuleTableRow[];
+}
+
 export interface FactionArmyRule {
   name: string;
   description: string;
+  tables?: FactionArmyRuleTable[];
 }
 
 export interface FactionDetail {

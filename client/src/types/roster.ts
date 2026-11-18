@@ -43,6 +43,11 @@ export interface CostTier {
   cost: number;
 }
 
+export interface DuplicatePenaltyTier {
+  afterCount: number;
+  penalty: number;
+}
+
 export interface WargearProfile {
   name: string;
   type: 'ranged' | 'melee' | 'ability';
@@ -112,6 +117,7 @@ export interface Datasheet {
   minModels: number;
   maxModels: number;
   costTiers: CostTier[];
+  duplicatePenalties?: DuplicatePenaltyTier[];
   stats: UnitStatProfile;
   extraStats?: UnitStatProfile[];
   rangedWeapons: WeaponProfile[];
@@ -209,6 +215,7 @@ export interface Enhancement {
   pts: number;
   description: string;
   isUpgrade: boolean;
+  isMandatory?: boolean;
   groupId?: string;
   detachment?: string;
   maxPerRoster?: number;
@@ -333,8 +340,30 @@ export function getUnitWargearPts(
   return wargearPts;
 }
 
-export function getUnitTotalPts(unit: SelectedUnit): number {
-  return Number(unit.cost || 0) + getUnitWargearPts(unit) + Number(unit.enhancement?.pts || 0);
+export function getUnitDuplicatePenalty(unit: SelectedUnit, allUnits?: SelectedUnit[] | null): number {
+  const penalties = unit?.datasheet?.duplicatePenalties;
+  if (!penalties || penalties.length === 0 || !allUnits || allUnits.length === 0) return 0;
+
+  let priorCount = 0;
+  for (const u of allUnits) {
+    if (u.instanceId === unit.instanceId) break;
+    if (u.datasheetId === unit.datasheetId || u.name === unit.name) {
+      priorCount++;
+    }
+  }
+
+  let totalPenalty = 0;
+  for (const tier of penalties) {
+    if (priorCount >= tier.afterCount) {
+      totalPenalty += Number(tier.penalty) || 0;
+    }
+  }
+  return totalPenalty;
+}
+
+export function getUnitTotalPts(unit: SelectedUnit, allUnits?: SelectedUnit[]): number {
+  const dupPenalty = allUnits ? getUnitDuplicatePenalty(unit, allUnits) : 0;
+  return Number(unit.cost || 0) + getUnitWargearPts(unit) + Number(unit.enhancement?.pts || 0) + dupPenalty;
 }
 
 export function unitMatchesEnhancementKeyword(d: Datasheet, keyword: string): boolean {
@@ -426,6 +455,17 @@ export function getEligibleEnhancementsForUnit(
 ): Enhancement[] {
   if (!allEnhancements || allEnhancements.length === 0) return [];
   return allEnhancements.filter(enh => isEnhancementEligibleForUnit(unitOrDatasheet, enh, activeDetachments));
+}
+
+export function getMandatoryEnhancementForUnit(
+  unitOrDatasheet: Datasheet | SelectedUnit,
+  allEnhancements: Enhancement[],
+  activeDetachments?: SelectedDetachment[]
+): Enhancement | undefined {
+  if (!allEnhancements || allEnhancements.length === 0) return undefined;
+  return allEnhancements.find(
+    enh => Boolean(enh.isMandatory) && isEnhancementEligibleForUnit(unitOrDatasheet, enh, activeDetachments)
+  );
 }
 
 export const DESTROYER_CULT_BODYGUARD_TARGETS = [

@@ -78,7 +78,12 @@ function validateRoster(roster, factionData) {
 
   // 1. Calculate Total Points
   let totalPoints = 0;
+  const seenUnitCounts = {};
   for (const u of units) {
+    const unitKey = u.datasheetId || u.name;
+    const priorCount = seenUnitCounts[unitKey] || 0;
+    seenUnitCounts[unitKey] = priorCount + 1;
+
     let unitCost = Number(u.totalCost || u.cost || 0);
     if (!u.totalCost) {
       if (u.enhancement && u.enhancement.pts) {
@@ -94,6 +99,13 @@ function validateRoster(roster, factionData) {
             if (idSet.has(opt.id) && opt.pts) {
               unitCost += Number(opt.pts);
             }
+          }
+        }
+      }
+      if (u.datasheet && Array.isArray(u.datasheet.duplicatePenalties)) {
+        for (const tier of u.datasheet.duplicatePenalties) {
+          if (priorCount >= tier.afterCount) {
+            unitCost += Number(tier.penalty) || 0;
           }
         }
       }

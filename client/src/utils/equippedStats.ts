@@ -530,8 +530,13 @@ export function computeUnitEquippedData(
 
     let totalCount = 1;
 
-    if (currentModels <= 1) {
-      // Single model unit (e.g. Character, Vehicle)
+    const isHeterogeneousCharacterUnit =
+      (unit.isEpicHero || unit.isCharacter) &&
+      Boolean(unit.extraStats && unit.extraStats.length > 0);
+
+    if (currentModels <= 1 || isHeterogeneousCharacterUnit) {
+      // Single model unit (e.g. Character, Vehicle) or heterogeneous multi-model Character/Hero unit
+      // (e.g. Canis Rex + Sir Hekhtur, The Silent King + Menhirs, Fabius Bile + Surgeon Acolyte)
       const baseCount = (typedKey && unit.baseWeaponCounts?.[typedKey] !== undefined)
         ? unit.baseWeaponCounts[typedKey]
         : (unit.baseWeaponCounts?.[weaponName] || 1);

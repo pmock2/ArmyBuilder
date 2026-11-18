@@ -156,6 +156,84 @@ const KNOWN_ARMY_RULE_NAMES = new Set([
   'Towering Example'
 ]);
 
+function extractRuleTablesFromCatalogueEntries(ruleName, allowedCats, allEntriesById) {
+  const tables = [];
+  const seenTitles = new Set();
+
+  for (const c of allowedCats) {
+    const candidates = [
+      ...(c.selectionEntries || []),
+      ...(c.sharedSelectionEntries || [])
+    ];
+    for (const il of c.entryLinks || []) {
+      if (il && il.targetId && allEntriesById.has(il.targetId)) {
+        candidates.push(allEntriesById.get(il.targetId));
+      }
+    }
+
+    for (const entry of candidates) {
+      if (!entry || entry.hidden || entry.name !== ruleName) continue;
+      const subEntries = [
+        ...(entry.selectionEntries || []),
+        ...(entry.selectionEntryGroups || []).flatMap(g => g.selectionEntries || [])
+      ];
+      for (const sub of subEntries) {
+        if (!sub || sub.hidden || !Array.isArray(sub.profiles) || sub.profiles.length === 0) continue;
+        const title = sub.name || 'Options';
+        if (seenTitles.has(title)) continue;
+        const rows = sub.profiles
+          .filter(p => !p.hidden && Array.isArray(p.characteristics))
+          .map(p => {
+            const descChar = p.characteristics.find(ch => (ch.name || '').toLowerCase() === 'description');
+            const rollChar = p.characteristics.find(ch => /^(d\d+|roll)$/i.test((ch.name || '').trim()));
+            return {
+              ...(rollChar && rollChar.$text ? { roll: rollChar.$text } : {}),
+              name: p.name || '',
+              description: descChar?.$text || ''
+            };
+          })
+          .filter(r => r.name || r.description);
+
+        if (rows.length > 0) {
+          rows.sort((a, b) => (a.roll || '').localeCompare(b.roll || '', undefined, { numeric: true }));
+          seenTitles.add(title);
+          tables.push({ title, rows });
+        }
+      }
+    }
+  }
+
+  return tables;
+}
+
+function parseInlineDreadTable(description) {
+  const markerRegex = /\*\*((?:N\/A|\d+)\s*-\s*[^*]+)\*\*\s*\n([\s\S]*?)(?=\n\*\*(?:N\/A|\d+)\s*-\s*[^*]+\*\*|$)/g;
+  const rows = [];
+  let firstMatchIndex = -1;
+  let match;
+
+  while ((match = markerRegex.exec(description)) !== null) {
+    if (firstMatchIndex === -1) firstMatchIndex = match.index;
+    const header = match[1].trim();
+    const body = match[2].trim();
+    const dashIdx = header.indexOf('-');
+    const roll = dashIdx >= 0 ? header.slice(0, dashIdx).trim() : '';
+    const name = dashIdx >= 0 ? header.slice(dashIdx + 1).trim() : header;
+    rows.push({
+      ...(roll ? { roll } : {}),
+      name,
+      description: body
+    });
+  }
+
+  if (rows.length === 0) return null;
+  const intro = description.slice(0, firstMatchIndex).trim();
+  return {
+    description: intro,
+    table: { title: 'Dread Abilities', rows }
+  };
+}
+
 function extractFactionArmyRules(allowedCats, faction, allEntriesById) {
   const found = new Map();
 
@@ -181,7 +259,24 @@ function extractFactionArmyRules(allowedCats, faction, allEntriesById) {
     }
   }
 
-  return [...found.entries()].map(([name, description]) => ({ name, description }));
+  return [...found.entries()].map(([name, rawDescription]) => {
+    let description = rawDescription;
+    const tables = extractRuleTablesFromCatalogueEntries(name, allowedCats, allEntriesById);
+
+    if (tables.length === 0) {
+      const parsedDread = parseInlineDreadTable(rawDescription);
+      if (parsedDread) {
+        description = parsedDread.description;
+        tables.push(parsedDread.table);
+      }
+    }
+
+    return {
+      name,
+      description,
+      ...(tables.length > 0 ? { tables } : {})
+    };
+  });
 }
 
 module.exports = {

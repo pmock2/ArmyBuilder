@@ -370,15 +370,76 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
               {armyRules.map((rule) => (
                 <div
                   key={rule.name}
-                  className="p-3.5 sm:p-4 rounded-xl bg-theme-card border border-theme-border-subtle space-y-2"
+                  className="p-3.5 sm:p-4 rounded-xl bg-theme-card border border-theme-border-subtle space-y-3"
                 >
                   <h3 className="font-warhammer text-sm sm:text-base font-bold text-theme-accent-soft">
                     {rule.name}
                   </h3>
-                  <FormattedText
-                    text={rule.description}
-                    className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed"
-                  />
+                  {rule.description && (
+                    <FormattedText
+                      text={rule.description}
+                      className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed"
+                    />
+                  )}
+                  {rule.tables && rule.tables.length > 0 && (
+                    <div className="space-y-3 pt-1">
+                      {rule.tables.map((table) => {
+                        const hasRoll = table.rows.some((r) => Boolean(r.roll));
+                        return (
+                          <div
+                            key={table.title}
+                            className="rounded-xl border border-theme-border-subtle bg-theme-surface/70 overflow-hidden"
+                          >
+                            <div className="px-3 py-2 border-b border-theme-border-subtle bg-theme-card/80 flex items-center justify-between">
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-theme-accent-soft">
+                                {table.title}
+                              </span>
+                            </div>
+                            <div className="overflow-x-auto">
+                              <table className="w-full text-left border-collapse">
+                                <thead>
+                                  <tr className="border-b border-theme-border-subtle/70 text-[10px] font-bold uppercase tracking-wider text-theme-text-muted bg-theme-card/40">
+                                    {hasRoll && <th className="py-1.5 px-3 w-20 whitespace-nowrap">D6</th>}
+                                    <th className="py-1.5 px-3">Ability / Effect</th>
+                                  </tr>
+                                </thead>
+                                <tbody className="divide-y divide-theme-border-subtle/60">
+                                  {table.rows.map((row, idx) => (
+                                    <tr key={`${table.title}-${idx}`} className="align-top">
+                                      {hasRoll && (
+                                        <td className="py-2 px-3 whitespace-nowrap">
+                                          {row.roll ? (
+                                            <span className="inline-flex items-center justify-center px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[11px] font-bold">
+                                              {row.roll}
+                                            </span>
+                                          ) : (
+                                            <span className="text-theme-text-muted text-xs">—</span>
+                                          )}
+                                        </td>
+                                      )}
+                                      <td className="py-2 px-3 space-y-1">
+                                        {row.name && (
+                                          <div className="text-xs sm:text-sm font-semibold text-theme-text">
+                                            {row.name}
+                                          </div>
+                                        )}
+                                        {row.description && (
+                                          <FormattedText
+                                            text={row.description}
+                                            className="text-xs text-theme-text-secondary leading-relaxed"
+                                          />
+                                        )}
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

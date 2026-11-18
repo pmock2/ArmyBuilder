@@ -33,7 +33,7 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
   onRemoveUnit,
   onSetWarlord
 }) => {
-  const sectionPoints = units.reduce((acc, u) => acc + getUnitTotalPts(u), 0);
+  const sectionPoints = units.reduce((acc, u) => acc + getUnitTotalPts(u, allUnitsInRoster), 0);
   const hasUnits = units.length > 0;
 
   if (isPlayMode && !hasUnits) {

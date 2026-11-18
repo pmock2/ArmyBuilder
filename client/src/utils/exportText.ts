@@ -42,7 +42,7 @@ export function generateShareableText(roster: ArmyRoster): string {
   const battleSizeKey = (roster.battleSize || 'strike-force').toLowerCase().replace(/\s+/g, '-');
   const limits = BATTLE_SIZE_CONFIGS[battleSizeKey] || BATTLE_SIZE_CONFIGS['strike-force'];
 
-  const totalPoints = roster.units.reduce((sum, u) => sum + getUnitTotalPts(u), 0);
+  const totalPoints = roster.units.reduce((sum, u) => sum + getUnitTotalPts(u, roster.units), 0);
   const totalDP = roster.detachments.reduce((sum, d) => sum + d.dpCost, 0);
 
   const factionLabel = roster.subFactionName && roster.subFactionName !== roster.factionName
@@ -64,11 +64,11 @@ export function generateShareableText(roster: ArmyRoster): string {
     const roleUnits = roster.units.filter(u => getUnitRole(u) === key);
     if (roleUnits.length === 0) continue;
 
-    const rolePts = roleUnits.reduce((sum, u) => sum + getUnitTotalPts(u), 0);
+    const rolePts = roleUnits.reduce((sum, u) => sum + getUnitTotalPts(u, roster.units), 0);
     out += `\n${label} (${rolePts} pts)\n`;
 
     for (const u of roleUnits) {
-      const cost = getUnitTotalPts(u);
+      const cost = getUnitTotalPts(u, roster.units);
       const modelBadge = u.modelsCount > 1 ? ` (${u.modelsCount} models)` : '';
       const warlordBadge = u.isWarlord ? ' [WARLORD]' : '';
 
@@ -125,7 +125,7 @@ export function generateTournamentText(roster: ArmyRoster): string {
 
   let totalPoints = 0;
   for (const u of roster.units) {
-    totalPoints += getUnitTotalPts(u);
+    totalPoints += getUnitTotalPts(u, roster.units);
   }
 
   let totalDP = 0;
@@ -168,7 +168,7 @@ export function generateTournamentText(roster: ArmyRoster): string {
       out += `------------------------------------------------------------\n`;
 
       for (const u of roleUnits) {
-        const cost = getUnitTotalPts(u);
+        const cost = getUnitTotalPts(u, roster.units);
         const wargearPts = getUnitWargearPts(u);
 
         out += `* ${u.name} [${cost} pts]`;

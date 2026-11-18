@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, normalizeDetachmentName, isRetinueUnit, hasAttachedCryptek } from './types/roster';
+import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, getMandatoryEnhancementForUnit, normalizeDetachmentName, isRetinueUnit, hasAttachedCryptek } from './types/roster';
 import { FactionDetail } from './types/faction';
 import { loadAllRosters, saveRoster, deleteRoster, duplicateRoster, loadActiveRosterId, saveActiveRosterId, loadPlayMode, savePlayMode } from './utils/storage';
 import { validateClientRoster, BATTLE_SIZE_CONFIGS } from './utils/validator';
@@ -117,6 +117,8 @@ export const App: React.FC = () => {
           !u.datasheet.baseProfileNames ||
           !u.datasheet.baseWeaponCounts ||
           JSON.stringify(u.datasheet.enhancementGroupIds || []) !== JSON.stringify(freshDs.enhancementGroupIds || []) ||
+          JSON.stringify(u.datasheet.duplicatePenalties || []) !== JSON.stringify(freshDs.duplicatePenalties || []) ||
+          Boolean(u.datasheet.isLegends) !== Boolean(freshDs.isLegends) ||
           u.datasheet.baseCost !== freshDs.baseCost ||
           (u.cost === 0 && freshDs.baseCost > 0) ||
           u.datasheet.canBeLed === undefined ||
@@ -151,6 +153,13 @@ export const App: React.FC = () => {
               nextUnit = { ...nextUnit, enhancement: freshEnh };
               changed = true;
             }
+          }
+        }
+        if (!nextUnit.enhancement && data.enhancements) {
+          const mandatoryEnh = getMandatoryEnhancementForUnit(nextUnit, data.enhancements, hydratedDetachments);
+          if (mandatoryEnh) {
+            nextUnit = { ...nextUnit, enhancement: mandatoryEnh };
+            changed = true;
           }
         }
         if (freshDs.wargearGroups && freshDs.wargearGroups.length > 0) {
@@ -292,21 +301,30 @@ export const App: React.FC = () => {
       }
     }
 
-    // Remove any equipped enhancements whose detachment is no longer selected
+    // Remove any equipped enhancements whose detachment is no longer selected,
+    // and auto-apply mandatory enhancements for newly active detachments
     const updatedUnits = activeRoster.units.map(u => {
-      if (!u.enhancement) return u;
-      if (u.enhancement.detachment) {
-        const enhDetNorm = normalizeDetachmentName(u.enhancement.detachment);
-        const stillHasDet = newDetachments.some(d => normalizeDetachmentName(d.name) === enhDetNorm);
-        if (!stillHasDet) {
-          const { enhancement, ...rest } = u;
-          return { ...rest, enhancement: undefined };
+      let nextUnit = u;
+      if (nextUnit.enhancement) {
+        if (nextUnit.enhancement.detachment) {
+          const enhDetNorm = normalizeDetachmentName(nextUnit.enhancement.detachment);
+          const stillHasDet = newDetachments.some(d => normalizeDetachmentName(d.name) === enhDetNorm);
+          if (!stillHasDet) {
+            const { enhancement, ...rest } = nextUnit;
+            nextUnit = { ...rest, enhancement: undefined };
+          }
+        } else if (!isEnhancementEligibleForUnit(nextUnit, nextUnit.enhancement, newDetachments)) {
+          const { enhancement, ...rest } = nextUnit;
+          nextUnit = { ...rest, enhancement: undefined };
         }
-      } else if (!isEnhancementEligibleForUnit(u, u.enhancement, newDetachments)) {
-        const { enhancement, ...rest } = u;
-        return { ...rest, enhancement: undefined };
       }
-      return u;
+      if (!nextUnit.enhancement && factionData?.enhancements) {
+        const mandatoryEnh = getMandatoryEnhancementForUnit(nextUnit, factionData.enhancements, newDetachments);
+        if (mandatoryEnh) {
+          nextUnit = { ...nextUnit, enhancement: mandatoryEnh };
+        }
+      }
+      return nextUnit;
     });
 
     const updated: ArmyRoster = {
@@ -398,6 +416,18 @@ export const App: React.FC = () => {
       selectedOptions: defaultSelectedOptions,
       datasheet
     };
+
+    // Auto-apply any mandatory detachment enhancement (e.g. Pantheon of Woe Necrodermal Binding)
+    if (factionData?.enhancements) {
+      const mandatoryEnh = getMandatoryEnhancementForUnit(
+        datasheet,
+        factionData.enhancements,
+        activeRoster.detachments
+      );
+      if (mandatoryEnh) {
+        newUnit.enhancement = mandatoryEnh;
+      }
+    }
 
     // If this is the first character and no warlord exists, make it Warlord automatically!
     const hasWarlord = activeRoster.units.some(u => u.isWarlord);

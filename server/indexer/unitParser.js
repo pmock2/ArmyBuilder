@@ -446,6 +446,30 @@ function createUnitParser({
     }
     costTiers.sort((a, b) => a.models - b.models);
 
+    // Duplicate unit escalation penalties (11e Rule of 3 / duplicate tax via localConditionGroups 'before')
+    const duplicatePenalties = [];
+    if (entry.modifiers) {
+      for (const m of entry.modifiers) {
+        if (m.field !== '51b2-306e-1021-d207' || m.type !== 'increment') continue;
+        const penalty = Number(m.value) || 0;
+        if (penalty <= 0) continue;
+        const lcgs = (m.conditionGroups || []).flatMap(cg => cg.localConditionGroups || []);
+        for (const lcg of lcgs) {
+          const hasBefore = (lcg.conditions || []).some(c => c.type === 'before');
+          if (!hasBefore) continue;
+          const rawVal = Number(lcg.value);
+          if (!Number.isFinite(rawVal)) continue;
+          let afterCount = null;
+          if (lcg.type === 'atLeast') afterCount = rawVal;
+          else if (lcg.type === 'greaterThan') afterCount = rawVal + 1;
+          if (afterCount !== null && afterCount >= 1) {
+            duplicatePenalties.push({ afterCount, penalty });
+          }
+        }
+      }
+      duplicatePenalties.sort((a, b) => a.afterCount - b.afterCount);
+    }
+
     // Transport Capacity
     let transportCapacity = null;
     const transportProfile = allProfiles.find(p => p.typeName && p.typeName.toLowerCase().includes('transport'));
@@ -555,6 +579,11 @@ function createUnitParser({
     }
     const characterKeywords = [...characterKeywordsSet];
 
+    const isLegends =
+      Boolean(entry.hidden) ||
+      (entry.name || '').toLowerCase().includes('legends') ||
+      categories.some(c => c.toLowerCase().includes('legends'));
+
     const parsedUnit = {
       id: entry.id,
       name: entry.name,
@@ -568,6 +597,7 @@ function createUnitParser({
       isDedicatedTransport,
       isLeader: effectiveIsLeader,
       isSupport: effectiveIsSupport,
+      ...(isLegends ? { isLegends: true } : {}),
       ...(hasCharacterModel ? { hasCharacterModel: true } : {}),
       ...(characterKeywords.length > 0 ? { characterKeywords } : {}),
       canLead,
@@ -575,6 +605,7 @@ function createUnitParser({
       minModels,
       maxModels,
       costTiers,
+      ...(duplicatePenalties.length > 0 ? { duplicatePenalties } : {}),
       stats,
       ...(extraStats.length > 0 ? { extraStats } : {}),
       rangedWeapons,

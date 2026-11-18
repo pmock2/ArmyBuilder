@@ -90,7 +90,7 @@ export function validateClientRoster(roster: ArmyRoster): ValidationResult {
   // 1. Calculate Total Points
   let totalPoints = 0;
   for (const u of units) {
-    totalPoints += getUnitTotalPts(u);
+    totalPoints += getUnitTotalPts(u, units);
   }
 
   if (totalPoints > effectivePointsLimit) {

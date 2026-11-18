@@ -106,7 +106,7 @@ function buildRosterSummaryForAi(
 
   lines.push('\nUnits:');
   for (const u of roster.units) {
-    const pts = getUnitTotalPts(u);
+    const pts = getUnitTotalPts(u, roster.units);
     const role = getUnitRole(u);
     const flags: string[] = [];
     if (u.isWarlord) flags.push('WARLORD');

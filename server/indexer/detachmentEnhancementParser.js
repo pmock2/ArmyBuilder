@@ -592,6 +592,10 @@ function createDetachmentEnhancementParser({
           if (pts <= 0) continue;
 
           let matchedDet = null;
+          let isMandatory = false;
+          const minConstraintIds = new Set(
+            (e.constraints || []).filter(c => c.type === 'min').map(c => c.id)
+          );
           for (const mg of e.modifierGroups || []) {
             const unhideMod = (mg.modifiers || []).some(
               m => m.field === 'hidden' && m.type === 'set' && (m.value === false || m.value === 'false')
@@ -602,7 +606,12 @@ function createDetachmentEnhancementParser({
                 const targetObj = allEntriesById.get(cond.childId);
                 if (targetObj && targetObj.name) {
                   matchedDet = findAllowedDetachmentName(targetObj.name);
-                  if (matchedDet) break;
+                  if (matchedDet) {
+                    isMandatory = (mg.modifiers || []).some(
+                      m => m.type === 'set' && Number(m.value) >= 1 && (minConstraintIds.has(m.field) || String(m.field).endsWith('-min'))
+                    );
+                    break;
+                  }
                 }
               }
             }
@@ -631,6 +640,7 @@ function createDetachmentEnhancementParser({
               pts,
               description: desc,
               isUpgrade: true,
+              ...(isMandatory ? { isMandatory: true } : {}),
               groupId: u.id,
               detachment: matchedDet,
               maxPerRoster: 3,

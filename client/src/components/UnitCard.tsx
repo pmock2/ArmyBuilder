@@ -6,7 +6,8 @@ import {
   SelectedDetachment,
   isLegendsUnit,
   getUnitTotalPts,
-  getUnitWargearPts
+  getUnitWargearPts,
+  getUnitDuplicatePenalty
 } from '../types/roster';
 import { doesEnhancementAffectLedUnit } from '../utils/equippedStats';
 import { DatasheetModal } from './DatasheetModal';
@@ -37,7 +38,8 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   const [isDatasheetOpen, setIsDatasheetOpen] = useState(false);
 
   const wargearPts = getUnitWargearPts(unit);
-  const totalCost = getUnitTotalPts(unit);
+  const dupPenalty = getUnitDuplicatePenalty(unit, allUnitsInRoster);
+  const totalCost = getUnitTotalPts(unit, allUnitsInRoster);
 
   // Attached unit references for subtitles
   const attachedLeader = allUnitsInRoster.find((u) => u.instanceId === unit.attachedLeaderId);
@@ -101,6 +103,15 @@ export const UnitCard: React.FC<UnitCardProps> = ({
               {wargearPts > 0 && (
                 <span className="text-theme-accent-soft/85 font-mono font-medium">
                   • Wargear (+{wargearPts} pts)
+                </span>
+              )}
+
+              {dupPenalty > 0 && (
+                <span
+                  title="Additional points penalty applied for taking multiple copies of this unit"
+                  className="text-amber-400/95 font-mono font-medium"
+                >
+                  • Duplicate Penalty (+{dupPenalty} pts)
                 </span>
               )}
 

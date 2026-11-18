@@ -540,6 +540,37 @@ function createWargearParser({
             groupObj.perModel = true;
           }
           groups.push(groupObj);
+
+          // Recurse into any option that itself contains nested selectionEntryGroups (e.g. Captain w/ Jump Pack "Melee and Pistol" -> Pistol / Melee)
+          for (const opt of gEntries) {
+            if (shouldSkipWargearNode(opt)) continue;
+            const resOpt = opt.targetId ? allEntriesById.get(opt.targetId) : opt;
+            if (!resOpt || shouldSkipWargearNode(resOpt)) continue;
+            if (!options.some(o => o.id === opt.id)) continue;
+
+            const optHasSubGroups = (node) =>
+              (node.selectionEntryGroups && node.selectionEntryGroups.some(sg => !shouldSkipWargearNode(sg))) ||
+              (node.entryLinks && node.entryLinks.some(l => l.type === 'selectionEntryGroup' && !shouldSkipWargearNode(l)));
+
+            if (optHasSubGroups(opt) || (resOpt !== opt && optHasSubGroups(resOpt))) {
+              const beforeLen = groups.length;
+              const optAncestors = new Set(groupAncestors);
+              addNodeAncestorIds(opt, optAncestors);
+              if (resOpt !== opt) addNodeAncestorIds(resOpt, optAncestors);
+              const optLabel = opt.name || resOpt.name || contextLabel;
+              if (optHasSubGroups(opt)) {
+                processContainer(opt, optLabel, parentModelOptional, modelScopeMax, optAncestors);
+              }
+              if (resOpt !== opt && optHasSubGroups(resOpt)) {
+                processContainer(resOpt, optLabel, parentModelOptional, modelScopeMax, optAncestors);
+              }
+              for (let gi = beforeLen; gi < groups.length; gi++) {
+                if (!groups[gi].requiresOption) {
+                  groups[gi].requiresOption = { groupId: groupObj.id, optionId: opt.id };
+                }
+              }
+            }
+          }
         }
 
         if (hasSubGroups) {

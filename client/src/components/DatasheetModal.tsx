@@ -142,7 +142,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const currentModelsCount = Math.max(unit.minModels || 1, selectedUnit?.modelsCount || unit.minModels || 1);
   const wargearPts = getUnitWargearPts(selectedUnit, previewSelectedOptions, unit);
   const currentCost = selectedUnit
-    ? getUnitTotalPts(selectedUnit)
+    ? getUnitTotalPts(selectedUnit, allUnitsInRoster)
     : unit.baseCost + wargearPts;
 
   const wargearGroups = unit.wargearGroups || [];
@@ -160,7 +160,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
       ? attachedPrimaryMember.datasheet.primaryCategory
       : unit.primaryCategory;
   const displayCurrentCost = isShowingAttachedUnit
-    ? attachedUnitMembers.reduce((sum, m) => sum + getUnitTotalPts(m), 0)
+    ? attachedUnitMembers.reduce((sum, m) => sum + getUnitTotalPts(m, allUnitsInRoster), 0)
     : currentCost;
   const displayCurrentModelsCount = isShowingAttachedUnit
     ? attachedUnitMembers.reduce((sum, m) => sum + Math.max(m.datasheet.minModels || 1, m.modelsCount || 1), 0)
@@ -197,7 +197,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
         name: m.name,
         role: getAttachedMemberRole(m, idx),
         modelsCount: Math.max(m.datasheet.minModels || 1, m.modelsCount || 1),
-        cost: getUnitTotalPts(m),
+        cost: getUnitTotalPts(m, allUnitsInRoster),
         datasheet: m.datasheet,
         selectedUnit: m,
         equipped:
@@ -379,6 +379,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const handleToggleEnhancement = (enh: Enhancement) => {
     if (!selectedUnit || !onUpdateUnit) return;
     const isCurrentlySelected = selectedUnit.enhancement?.id === enh.id;
+    if (isCurrentlySelected && enh.isMandatory) return;
     const nextUnit: SelectedUnit = isCurrentlySelected
       ? (() => {
           const { enhancement: _removed, ...rest } = selectedUnit;
@@ -533,14 +534,15 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const hasSquadSizeChoices = Boolean((unit.maxModels || 1) > (unit.minModels || 1) || (unit.costTiers && unit.costTiers.length > 1));
   const hasEnhancementChoices = Boolean(
     selectedUnit &&
-      !selectedUnit.isEpicHero &&
       onUpdateUnit &&
-      (eligibleEnhancements.length > 0 || Boolean(selectedUnit.enhancement))
+      (eligibleEnhancements.length > 0 || Boolean(selectedUnit.enhancement)) &&
+      (!selectedUnit.isEpicHero || eligibleEnhancements.some((e) => e.isUpgrade) || Boolean(selectedUnit.enhancement?.isUpgrade))
   );
   const hasAnyLoadoutConfig = Boolean(
     selectedUnit &&
       onUpdateUnit &&
       (selectedUnit.isCharacter ||
+        hasEnhancementChoices ||
         unitIsRetinue ||
         hasSquadSizeChoices ||
         (!selectedUnit.isLeader && !selectedUnit.isSupport && (canUnitBeLed || canUnitHaveSupport || canUnitHaveRetinue)) ||
@@ -1045,6 +1047,12 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                             >
                               {enh.name}
                             </span>
+
+                            {enh.isMandatory && (
+                              <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 flex-shrink-0">
+                                Mandatory
+                              </span>
+                            )}
 
                             <span
                               className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md border flex-shrink-0 ${
