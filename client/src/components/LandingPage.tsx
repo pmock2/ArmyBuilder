@@ -280,9 +280,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <h2 className="font-warhammer text-base sm:text-lg font-bold text-theme-text">
                   Command Roster ({rosters.length})
                 </h2>
-                <p className="text-[11px] sm:text-xs text-theme-text-secondary">
-                  Select a force to edit, duplicate, or export.
-                </p>
               </div>
             </div>
 
