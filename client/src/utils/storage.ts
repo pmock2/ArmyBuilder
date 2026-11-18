@@ -120,12 +120,78 @@ export function exportRosterJSON(roster: ArmyRoster) {
 
 export function parseRosterJSON(fileContent: string): ArmyRoster {
   const parsed = JSON.parse(fileContent);
-  if (!parsed.id || !parsed.name || !parsed.factionId || !parsed.units) {
-    throw new Error('Invalid Army Roster file format.');
+  if (
+    !parsed ||
+    typeof parsed !== 'object' ||
+    typeof parsed.name !== 'string' ||
+    !parsed.name.trim() ||
+    typeof parsed.factionId !== 'string' ||
+    !parsed.factionId.trim() ||
+    !Array.isArray(parsed.units)
+  ) {
+    throw new Error('Invalid Army Roster JSON format.');
   }
-  // Assign a fresh ID to avoid collisions
-  parsed.id = `roster-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
-  parsed.updatedAt = new Date().toISOString();
-  return parsed as ArmyRoster;
+
+  const now = new Date().toISOString();
+  const baseTs = Date.now();
+  const idMap = new Map<string, string>();
+
+  // First pass: assign fresh instanceIds so repeated imports never collide
+  const units = parsed.units.map((u: any, idx: number) => {
+    const oldId = typeof u?.instanceId === 'string' ? u.instanceId : `old-${idx}`;
+    const freshId = `unit-${baseTs}-${idx}-${Math.random().toString(36).slice(2, 6)}`;
+    idMap.set(oldId, freshId);
+    return {
+      ...u,
+      instanceId: freshId
+    };
+  });
+
+  // Second pass: remap attachment & transport IDs
+  const remappedUnits = units.map((u: any) => ({
+    ...u,
+    attachedToBodyguardId: u.attachedToBodyguardId
+      ? idMap.get(u.attachedToBodyguardId) || u.attachedToBodyguardId
+      : undefined,
+    attachedLeaderId: u.attachedLeaderId
+      ? idMap.get(u.attachedLeaderId) || u.attachedLeaderId
+      : undefined,
+    attachedSupportId: u.attachedSupportId
+      ? idMap.get(u.attachedSupportId) || u.attachedSupportId
+      : undefined,
+    attachedRetinueId: u.attachedRetinueId
+      ? idMap.get(u.attachedRetinueId) || u.attachedRetinueId
+      : undefined,
+    embarkedUnitIds: Array.isArray(u.embarkedUnitIds)
+      ? u.embarkedUnitIds.map((id: string) => idMap.get(id) || id)
+      : undefined
+  }));
+
+  const validBattleSize =
+    parsed.battleSize === 'incursion' ||
+    parsed.battleSize === 'strike-force' ||
+    parsed.battleSize === 'onslaught'
+      ? parsed.battleSize
+      : 'strike-force';
+
+  const forceDisposition =
+    typeof parsed.forceDisposition === 'string' && parsed.forceDisposition.trim()
+      ? parsed.forceDisposition.trim()
+      : Array.isArray(parsed.forceDispositions) && typeof parsed.forceDispositions[0] === 'string'
+      ? parsed.forceDispositions[0].trim()
+      : null;
+
+  return {
+    ...parsed,
+    id: `roster-${baseTs}-${Math.random().toString(36).slice(2, 7)}`,
+    name: parsed.name.trim(),
+    battleSize: validBattleSize,
+    detachments: Array.isArray(parsed.detachments) ? parsed.detachments : [],
+    forceDisposition,
+    forceDispositions: forceDisposition ? [forceDisposition] : [],
+    units: remappedUnits,
+    createdAt: typeof parsed.createdAt === 'string' ? parsed.createdAt : now,
+    updatedAt: now
+  } as ArmyRoster;
 }
 
