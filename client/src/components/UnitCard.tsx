@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Trash2, Copy, Eye } from 'lucide-react';
+import { Crown, Trash2, Copy, Eye, Skull } from 'lucide-react';
 import {
   SelectedUnit,
   Enhancement,
@@ -10,7 +10,14 @@ import {
   getUnitDuplicatePenalty
 } from '../types/roster';
 import { doesEnhancementAffectLedUnit } from '../utils/equippedStats';
+import {
+  RosterPlayState,
+  getUnitPlayStatus,
+  getAttachedChildrenForBodyguard,
+  isUnitDestroyedInPlay
+} from '../utils/playTracking';
 import { DatasheetModal } from './DatasheetModal';
+import { PlayTrackerRow } from './PlayTrackerRow';
 
 interface UnitCardProps {
   unit: SelectedUnit;
@@ -18,6 +25,10 @@ interface UnitCardProps {
   availableEnhancements: Enhancement[];
   selectedDetachments?: SelectedDetachment[];
   isPlayMode?: boolean;
+  playState?: RosterPlayState;
+  isDestroyedCard?: boolean;
+  onStepPlayRemaining?: (unit: SelectedUnit, delta: number) => void;
+  onOpenDatasheet?: (unit: SelectedUnit) => void;
   onUpdateUnit: (updated: SelectedUnit) => void;
   onDuplicateUnit: (unit: SelectedUnit) => void;
   onRemoveUnit: (instanceId: string) => void;
@@ -30,6 +41,10 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   availableEnhancements,
   selectedDetachments = [],
   isPlayMode = false,
+  playState = {},
+  isDestroyedCard = false,
+  onStepPlayRemaining,
+  onOpenDatasheet,
   onUpdateUnit,
   onDuplicateUnit,
   onRemoveUnit,
@@ -37,15 +52,41 @@ export const UnitCard: React.FC<UnitCardProps> = ({
 }) => {
   const [isDatasheetOpen, setIsDatasheetOpen] = useState(false);
 
+  const openDatasheet = () => {
+    if (onOpenDatasheet) {
+      onOpenDatasheet(unit);
+    } else {
+      setIsDatasheetOpen(true);
+    }
+  };
+
   const wargearPts = getUnitWargearPts(unit);
   const dupPenalty = getUnitDuplicatePenalty(unit, allUnitsInRoster);
-  const totalCost = getUnitTotalPts(unit, allUnitsInRoster);
 
-  // Attached unit references for subtitles
+  // Attached unit references
   const attachedLeader = allUnitsInRoster.find((u) => u.instanceId === unit.attachedLeaderId);
   const attachedSupport = allUnitsInRoster.find((u) => u.instanceId === unit.attachedSupportId);
   const attachedRetinue = allUnitsInRoster.find((u) => u.instanceId === unit.attachedRetinueId);
   const attachedToBodyguard = allUnitsInRoster.find((u) => u.instanceId === unit.attachedToBodyguardId);
+
+  const attachedChildren =
+    isPlayMode && !isDestroyedCard && !unit.attachedToBodyguardId
+      ? getAttachedChildrenForBodyguard(unit, allUnitsInRoster)
+      : [];
+  const livingAttachedChildren = attachedChildren.filter(
+    (c) => !isUnitDestroyedInPlay(c.unit, playState, allUnitsInRoster)
+  );
+  const destroyedAttachedChildren = attachedChildren.filter((c) =>
+    isUnitDestroyedInPlay(c.unit, playState, allUnitsInRoster)
+  );
+
+  const totalCost =
+    isPlayMode && !isDestroyedCard && livingAttachedChildren.length > 0
+      ? getUnitTotalPts(unit, allUnitsInRoster) +
+        livingAttachedChildren.reduce((sum, c) => sum + getUnitTotalPts(c.unit, allUnitsInRoster), 0)
+      : getUnitTotalPts(unit, allUnitsInRoster);
+
+  const primaryStatus = isPlayMode ? getUnitPlayStatus(unit, playState, allUnitsInRoster) : null;
 
   const leaderUnitEnhancement =
     attachedLeader?.enhancement && doesEnhancementAffectLedUnit(attachedLeader.enhancement)
@@ -57,18 +98,31 @@ export const UnitCard: React.FC<UnitCardProps> = ({
       ? { enhancement: attachedSupport.enhancement, leaderName: attachedSupport.name }
       : null;
 
+  const bodyguardDestroyedWhileIndependent = Boolean(
+    isPlayMode &&
+      !isDestroyedCard &&
+      attachedToBodyguard &&
+      isUnitDestroyedInPlay(attachedToBodyguard, playState, allUnitsInRoster)
+  );
+
+  const hasWarlordInCard =
+    unit.isWarlord ||
+    (isPlayMode && !isDestroyedCard && livingAttachedChildren.some((c) => c.unit.isWarlord));
+
   return (
     <>
       {/* Sleek, Elevated Unit Card */}
       <div
-        onClick={() => setIsDatasheetOpen(true)}
-        className="card-theme-item px-3.5 sm:px-4 py-3 flex flex-col gap-2.5 cursor-pointer active:scale-[0.998] group"
+        onClick={openDatasheet}
+        className={`card-theme-item px-3.5 sm:px-4 py-3 flex flex-col gap-2.5 cursor-pointer active:scale-[0.998] group ${
+          isDestroyedCard ? '!border-red-900/55 !bg-theme-card/65 opacity-90 hover:opacity-100' : ''
+        }`}
       >
         <div className="flex items-center justify-between gap-3">
           {/* Left: Name, Model Count, Badges */}
           <div className="min-w-0 flex-1">
             <div className="flex items-start gap-1.5 min-w-0">
-              {unit.isWarlord && (
+              {hasWarlordInCard && (
                 <span
                   title="Warlord"
                   aria-label="Warlord"
@@ -78,13 +132,29 @@ export const UnitCard: React.FC<UnitCardProps> = ({
                 </span>
               )}
 
+              {isDestroyedCard && (
+                <span
+                  title="Destroyed"
+                  aria-label="Destroyed"
+                  className="shrink-0 mt-0.5 text-red-400"
+                >
+                  <Skull className="w-4 h-4 stroke-[2.2]" />
+                </span>
+              )}
+
               {isLegendsUnit(unit) && (
                 <span className="shrink-0 mt-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-theme-elevated text-theme-text-secondary border border-theme-border font-mono tracking-wider">
                   LEGENDS
                 </span>
               )}
 
-              <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors tracking-wide leading-snug line-clamp-2 min-w-0 flex-1">
+              <h4
+                className={`font-warhammer text-sm sm:text-base font-bold transition-colors tracking-wide leading-snug line-clamp-2 min-w-0 flex-1 ${
+                  isDestroyedCard
+                    ? 'text-red-200/90 group-hover:text-red-100'
+                    : 'text-theme-text group-hover:text-theme-accent-soft'
+                }`}
+              >
                 {unit.name}
               </h4>
             </div>
@@ -115,7 +185,7 @@ export const UnitCard: React.FC<UnitCardProps> = ({
                 </span>
               )}
 
-              {attachedLeader && (
+              {!isPlayMode && attachedLeader && (
                 <span className="text-theme-text-secondary font-medium truncate max-w-[220px]">
                   • Leader: {attachedLeader.name}
                 </span>
@@ -127,13 +197,13 @@ export const UnitCard: React.FC<UnitCardProps> = ({
                 </span>
               )}
 
-              {attachedSupport && (
+              {!isPlayMode && attachedSupport && (
                 <span className="text-theme-text-secondary font-medium truncate max-w-[220px]">
                   • Support: {attachedSupport.name}
                 </span>
               )}
 
-              {attachedRetinue && (
+              {!isPlayMode && attachedRetinue && (
                 <span className="text-teal-300/90 font-medium truncate max-w-[220px]">
                   • Retinue: {attachedRetinue.name}
                 </span>
@@ -145,11 +215,34 @@ export const UnitCard: React.FC<UnitCardProps> = ({
                 </span>
               )}
 
-              {attachedToBodyguard && (
+              {!isPlayMode && attachedToBodyguard && (
                 <span className="text-theme-text-muted font-medium truncate max-w-[200px]">
                   • Attached to: {attachedToBodyguard.name}
                 </span>
               )}
+
+              {bodyguardDestroyedWhileIndependent && attachedToBodyguard && (
+                <span className="text-amber-300/85 font-medium truncate max-w-[240px]">
+                  • Operating Solo ({attachedToBodyguard.name} destroyed)
+                </span>
+              )}
+
+              {isPlayMode && isDestroyedCard && attachedToBodyguard && (
+                <span className="text-theme-text-muted font-medium truncate max-w-[220px]">
+                  • Was attached to: {attachedToBodyguard.name}
+                </span>
+              )}
+
+              {isPlayMode &&
+                !isDestroyedCard &&
+                destroyedAttachedChildren.map((dc) => (
+                  <span
+                    key={dc.unit.instanceId}
+                    className="text-red-300/85 font-medium truncate max-w-[220px]"
+                  >
+                    • {dc.role}: {dc.unit.name} (Destroyed)
+                  </span>
+                ))}
             </div>
           </div>
 
@@ -162,7 +255,7 @@ export const UnitCard: React.FC<UnitCardProps> = ({
             {isPlayMode ? (
               <button
                 type="button"
-                onClick={() => setIsDatasheetOpen(true)}
+                onClick={openDatasheet}
                 className="btn-theme-icon min-h-[34px] min-w-[34px] rounded-lg"
                 title="View Datasheet"
                 aria-label={`View ${unit.name} datasheet`}
@@ -196,21 +289,66 @@ export const UnitCard: React.FC<UnitCardProps> = ({
             )}
           </div>
         </div>
+
+        {/* Play Mode Models / Wounds Trackers */}
+        {isPlayMode && primaryStatus && onStepPlayRemaining && (
+          <div className="space-y-1.5 pt-0.5" onClick={(e) => e.stopPropagation()}>
+            <PlayTrackerRow
+              roleBadge={!isDestroyedCard && livingAttachedChildren.length > 0 ? 'Bodyguard' : undefined}
+              label={
+                !isDestroyedCard && livingAttachedChildren.length > 0
+                  ? unit.name
+                  : primaryStatus.isSingleModel
+                  ? 'Wounds Remaining'
+                  : 'Models Remaining'
+              }
+              status={primaryStatus}
+              onStep={(delta) => onStepPlayRemaining(unit, delta)}
+              compact
+            />
+
+            {!isDestroyedCard &&
+              livingAttachedChildren.map((child) => {
+                const childStatus = getUnitPlayStatus(child.unit, playState, allUnitsInRoster);
+                return (
+                  <PlayTrackerRow
+                    key={child.unit.instanceId}
+                    roleBadge={child.role}
+                    label={child.unit.name}
+                    subLabel={
+                      child.unit.enhancement
+                        ? `${child.unit.enhancement.name}${child.unit.isWarlord ? ' • Warlord' : ''}`
+                        : child.unit.isWarlord
+                        ? 'Warlord'
+                        : undefined
+                    }
+                    status={childStatus}
+                    onStep={(delta) => onStepPlayRemaining(child.unit, delta)}
+                    compact
+                  />
+                );
+              })}
+          </div>
+        )}
       </div>
 
-      {/* Full Datasheet & Unit Configuration Modal */}
-      <DatasheetModal
-        unit={unit.datasheet}
-        selectedUnit={unit}
-        allUnitsInRoster={allUnitsInRoster}
-        availableEnhancements={availableEnhancements}
-        selectedDetachments={selectedDetachments}
-        isPlayMode={isPlayMode}
-        onUpdateUnit={onUpdateUnit}
-        onSetWarlord={onSetWarlord}
-        isOpen={isDatasheetOpen}
-        onClose={() => setIsDatasheetOpen(false)}
-      />
+      {/* Fallback local Datasheet Modal when not hoisted to parent */}
+      {!onOpenDatasheet && (
+        <DatasheetModal
+          unit={unit.datasheet}
+          selectedUnit={unit}
+          allUnitsInRoster={allUnitsInRoster}
+          availableEnhancements={availableEnhancements}
+          selectedDetachments={selectedDetachments}
+          isPlayMode={isPlayMode}
+          playState={playState}
+          onStepPlayRemaining={onStepPlayRemaining}
+          onUpdateUnit={onUpdateUnit}
+          onSetWarlord={onSetWarlord}
+          isOpen={isDatasheetOpen}
+          onClose={() => setIsDatasheetOpen(false)}
+        />
+      )}
     </>
   );
 };

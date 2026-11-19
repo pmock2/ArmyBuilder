@@ -1,4 +1,5 @@
 import { ArmyRoster } from '../types/roster';
+import { clearRosterPlayState } from './playTracking';
 
 const STORAGE_KEY = 'wh40k_11e_rosters';
 const ACTIVE_ROSTER_KEY = 'wh40k_11e_active_roster_id';
@@ -84,6 +85,7 @@ export function deleteRoster(rosterId: string): ArmyRoster[] {
     if (loadActiveRosterId() === rosterId) {
       saveActiveRosterId(null);
     }
+    clearRosterPlayState(rosterId);
   } catch (err) {
     console.error('Failed to delete roster:', err);
   }

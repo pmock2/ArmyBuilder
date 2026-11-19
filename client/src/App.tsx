@@ -9,6 +9,8 @@ import { Navbar } from './components/Navbar';
 import { DetachmentSelector } from './components/DetachmentSelector';
 import { getUnlockedDispositions } from './components/ForceDispositionSelector';
 import { UnitSection } from './components/UnitSection';
+import { DestroyedUnitsSection } from './components/DestroyedUnitsSection';
+import { DatasheetModal } from './components/DatasheetModal';
 import { UnitBrowserModal } from './components/UnitBrowserModal';
 import { ValidationDrawer } from './components/ValidationDrawer';
 import { ExportModal } from './components/ExportModal';
@@ -22,8 +24,17 @@ import { StagingBanner } from './components/StagingBanner';
 import { InstallPromptBanner } from './components/InstallPromptBanner';
 import { useBackNavigation } from './utils/backNavigation';
 import { getAllThemes, applyThemeToDocument, initTheme } from './utils/themeStorage';
+import {
+  RosterPlayState,
+  loadRosterPlayState,
+  saveRosterPlayState,
+  clearRosterPlayState,
+  stepUnitPlayRemaining,
+  isUnitDestroyedInPlay,
+  isUnitConsolidatedUnderBodyguard
+} from './utils/playTracking';
 import { hasApiKey } from './services/geminiService';
-import { Shield, Sparkles, BookOpen, Plus } from 'lucide-react';
+import { Shield, Sparkles, BookOpen, Plus, RotateCcw } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [rosters, setRosters] = useState<ArmyRoster[]>(() => loadAllRosters());
@@ -44,6 +55,11 @@ export const App: React.FC = () => {
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isPlayMode, setIsPlayMode] = useState<boolean>(() => loadPlayMode());
+  const [playState, setPlayState] = useState<RosterPlayState>(() => {
+    const savedActiveId = loadActiveRosterId();
+    return savedActiveId ? loadRosterPlayState(savedActiveId) : {};
+  });
+  const [activeDatasheetUnitId, setActiveDatasheetUnitId] = useState<string | null>(null);
   const [isAiSettingsModalOpen, setIsAiSettingsModalOpen] = useState(false);
   const [isAiArmyCreatorOpen, setIsAiArmyCreatorOpen] = useState(false);
   const [isAiRulesAssistantOpen, setIsAiRulesAssistantOpen] = useState(false);
@@ -72,6 +88,12 @@ export const App: React.FC = () => {
   // 1. Persist Active Roster ID & Play Mode across mobile browser reloads / sleep wakeups
   useEffect(() => {
     saveActiveRosterId(activeRoster?.id || null);
+    setActiveDatasheetUnitId(null);
+    if (activeRoster?.id) {
+      setPlayState(loadRosterPlayState(activeRoster.id));
+    } else {
+      setPlayState({});
+    }
   }, [activeRoster?.id]);
 
   useEffect(() => {
@@ -640,6 +662,22 @@ export const App: React.FC = () => {
     saveRoster(updated);
   };
 
+  // Play Mode Tracking Handlers
+  const handleStepPlayRemaining = (unit: SelectedUnit, delta: number) => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = stepUnitPlayRemaining(unit, delta, prev, activeRoster.units);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
+  };
+
+  const handleResetPlayState = () => {
+    if (!activeRoster) return;
+    clearRosterPlayState(activeRoster.id);
+    setPlayState({});
+  };
+
   // Launch Unit Browser
   const handleOpenBrowser = (roleKey: string) => {
     setBrowserRoleFilter(roleKey);
@@ -800,8 +838,30 @@ export const App: React.FC = () => {
   const activeArmyCategories = getActiveArmyCategories();
 
   // Categorize Units by Role for Section rendering strictly using getUnitRole
+  const destroyedUnits = isPlayMode
+    ? activeRoster.units.filter((u) => isUnitDestroyedInPlay(u, playState, activeRoster.units))
+    : [];
+
+  const activeUnitsInPlay = isPlayMode
+    ? activeRoster.units.filter((u) => !isUnitDestroyedInPlay(u, playState, activeRoster.units))
+    : activeRoster.units;
+
+  const hasAnyPlayTrackingChanges = Object.keys(playState).some((id) =>
+    activeRoster.units.some((u) => u.instanceId === id)
+  );
+
+  const activeDatasheetUnit = activeDatasheetUnitId
+    ? activeRoster.units.find((u) => u.instanceId === activeDatasheetUnitId) || null
+    : null;
+
   const getUnitsByRole = (role: string) => {
-    return activeRoster.units.filter(u => getUnitRole(u) === role);
+    return activeRoster.units.filter((u) => {
+      if (getUnitRole(u) !== role) return false;
+      if (!isPlayMode) return true;
+      if (isUnitDestroyedInPlay(u, playState, activeRoster.units)) return false;
+      if (isUnitConsolidatedUnderBodyguard(u, playState, activeRoster.units)) return false;
+      return true;
+    });
   };
 
   return (
@@ -857,6 +917,42 @@ export const App: React.FC = () => {
             />
 
             {/* 2. Battlefield Role Unit Sections */}
+            {isPlayMode && activeRoster.units.length > 0 && (
+              <div className="mb-3 px-3 py-2 rounded-xl bg-theme-surface/85 border border-theme-border-subtle flex items-center justify-between gap-2 text-xs">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                  <span className="font-semibold text-theme-text">
+                    Active:{' '}
+                    <span className="font-mono text-emerald-400 font-bold">
+                      {activeUnitsInPlay.length}
+                    </span>
+                  </span>
+                  <span className="text-theme-border">•</span>
+                  <span className="font-semibold text-theme-text">
+                    Destroyed:{' '}
+                    <span
+                      className={`font-mono font-bold ${
+                        destroyedUnits.length > 0 ? 'text-red-400' : 'text-theme-text-muted'
+                      }`}
+                    >
+                      {destroyedUnits.length}
+                    </span>
+                  </span>
+                </div>
+
+                {hasAnyPlayTrackingChanges && (
+                  <button
+                    type="button"
+                    onClick={handleResetPlayState}
+                    className="btn-theme-secondary min-h-[30px] px-2.5 py-1 rounded-lg flex items-center gap-1.5 text-xs font-semibold shrink-0"
+                    title="Restore all units to full models and wounds"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Reset Game</span>
+                  </button>
+                )}
+              </div>
+            )}
+
             <div className="space-y-3 pb-6">
               {activeArmyCategories.map((cat) => (
                 <UnitSection
@@ -868,14 +964,33 @@ export const App: React.FC = () => {
                   availableEnhancements={factionData.enhancements}
                   selectedDetachments={activeRoster.detachments}
                   isPlayMode={isPlayMode}
+                  playState={playState}
                   unitLimit={cat.limit}
                   onOpenBrowser={handleOpenBrowser}
+                  onStepPlayRemaining={handleStepPlayRemaining}
+                  onOpenDatasheet={(u) => setActiveDatasheetUnitId(u.instanceId)}
                   onUpdateUnit={handleUpdateUnit}
                   onDuplicateUnit={handleDuplicateUnit}
                   onRemoveUnit={handleRemoveUnit}
                   onSetWarlord={handleSetWarlord}
                 />
               ))}
+
+              {isPlayMode && (
+                <DestroyedUnitsSection
+                  units={destroyedUnits}
+                  allUnitsInRoster={activeRoster.units}
+                  availableEnhancements={factionData.enhancements}
+                  selectedDetachments={activeRoster.detachments}
+                  playState={playState}
+                  onStepPlayRemaining={handleStepPlayRemaining}
+                  onOpenDatasheet={(u) => setActiveDatasheetUnitId(u.instanceId)}
+                  onUpdateUnit={handleUpdateUnit}
+                  onDuplicateUnit={handleDuplicateUnit}
+                  onRemoveUnit={handleRemoveUnit}
+                  onSetWarlord={handleSetWarlord}
+                />
+              )}
             </div>
           </>
         )}
@@ -883,6 +998,23 @@ export const App: React.FC = () => {
       </main>
 
       {/* Modals & Drawers */}
+      {factionData && (
+        <DatasheetModal
+          unit={activeDatasheetUnit?.datasheet || null}
+          selectedUnit={activeDatasheetUnit}
+          allUnitsInRoster={activeRoster.units}
+          availableEnhancements={factionData.enhancements}
+          selectedDetachments={activeRoster.detachments}
+          isPlayMode={isPlayMode}
+          playState={playState}
+          onStepPlayRemaining={handleStepPlayRemaining}
+          onUpdateUnit={handleUpdateUnit}
+          onSetWarlord={handleSetWarlord}
+          isOpen={Boolean(activeDatasheetUnit)}
+          onClose={() => setActiveDatasheetUnitId(null)}
+        />
+      )}
+
       {factionData && (
         <UnitBrowserModal
           isOpen={isBrowserModalOpen}
