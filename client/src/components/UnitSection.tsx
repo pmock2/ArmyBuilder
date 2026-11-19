@@ -1,6 +1,11 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 import { SelectedUnit, Enhancement, SelectedDetachment, getUnitTotalPts } from '../types/roster';
+import {
+  RosterPlayState,
+  getAttachedChildrenForBodyguard,
+  isUnitDestroyedInPlay
+} from '../utils/playTracking';
 import { UnitCard } from './UnitCard';
 
 interface UnitSectionProps {
@@ -11,8 +16,11 @@ interface UnitSectionProps {
   availableEnhancements: Enhancement[];
   selectedDetachments?: SelectedDetachment[];
   isPlayMode?: boolean;
+  playState?: RosterPlayState;
   unitLimit: number;
   onOpenBrowser: (roleKey: string) => void;
+  onStepPlayRemaining?: (unit: SelectedUnit, delta: number) => void;
+  onOpenDatasheet?: (unit: SelectedUnit) => void;
   onUpdateUnit: (updated: SelectedUnit) => void;
   onDuplicateUnit: (unit: SelectedUnit) => void;
   onRemoveUnit: (instanceId: string) => void;
@@ -27,13 +35,25 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
   availableEnhancements,
   selectedDetachments = [],
   isPlayMode = false,
+  playState = {},
   onOpenBrowser,
+  onStepPlayRemaining,
+  onOpenDatasheet,
   onUpdateUnit,
   onDuplicateUnit,
   onRemoveUnit,
   onSetWarlord
 }) => {
-  const sectionPoints = units.reduce((acc, u) => acc + getUnitTotalPts(u, allUnitsInRoster), 0);
+  const sectionPoints = units.reduce((acc, u) => {
+    let pts = getUnitTotalPts(u, allUnitsInRoster);
+    if (isPlayMode && !u.attachedToBodyguardId) {
+      const livingChildren = getAttachedChildrenForBodyguard(u, allUnitsInRoster).filter(
+        (c) => !isUnitDestroyedInPlay(c.unit, playState, allUnitsInRoster)
+      );
+      pts += livingChildren.reduce((s, c) => s + getUnitTotalPts(c.unit, allUnitsInRoster), 0);
+    }
+    return acc + pts;
+  }, 0);
   const hasUnits = units.length > 0;
 
   if (isPlayMode && !hasUnits) {
@@ -95,6 +115,9 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
               availableEnhancements={availableEnhancements}
               selectedDetachments={selectedDetachments}
               isPlayMode={isPlayMode}
+              playState={playState}
+              onStepPlayRemaining={onStepPlayRemaining}
+              onOpenDatasheet={onOpenDatasheet}
               onUpdateUnit={onUpdateUnit}
               onDuplicateUnit={onDuplicateUnit}
               onRemoveUnit={onRemoveUnit}

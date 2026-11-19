@@ -21,9 +21,15 @@ import {
   canRetinueAttachToBodyguard
 } from '../types/roster';
 import { computeUnitEquippedData, computeModifiedStat } from '../utils/equippedStats';
+import {
+  RosterPlayState,
+  getUnitPlayStatus,
+  isUnitDestroyedInPlay
+} from '../utils/playTracking';
 import { useBackNavigation } from '../utils/backNavigation';
 import { KeywordTooltip } from './KeywordTooltip';
 import { FormattedText } from './FormattedText';
+import { PlayTrackerRow } from './PlayTrackerRow';
 import {
   Stratagem,
   CORE_STRATAGEMS,
@@ -38,6 +44,8 @@ interface DatasheetModalProps {
   availableEnhancements?: Enhancement[];
   selectedDetachments?: SelectedDetachment[];
   isPlayMode?: boolean;
+  playState?: RosterPlayState;
+  onStepPlayRemaining?: (unit: SelectedUnit, delta: number) => void;
   onUpdateUnit?: (updated: SelectedUnit) => void;
   onSetWarlord?: (instanceId: string) => void;
   isOpen: boolean;
@@ -51,6 +59,8 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   availableEnhancements = [],
   selectedDetachments = [],
   isPlayMode = false,
+  playState = {},
+  onStepPlayRemaining,
   onUpdateUnit,
   onSetWarlord,
   isOpen,
@@ -67,9 +77,19 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
 
   const attachedUnitMembers: SelectedUnit[] = (() => {
     if (!isPlayMode || !selectedUnit) return [];
-    const bodyguard = selectedUnit.attachedToBodyguardId
-      ? allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedToBodyguardId) || selectedUnit
-      : selectedUnit;
+    // When inspecting a destroyed unit directly from Destroyed Units, show that specific unit
+    if (isUnitDestroyedInPlay(selectedUnit, playState, allUnitsInRoster)) {
+      return [];
+    }
+    let bodyguard: SelectedUnit = selectedUnit;
+    if (selectedUnit.attachedToBodyguardId) {
+      const foundBg = allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedToBodyguardId);
+      // If the Bodyguard has been destroyed, surviving attached units operate independently
+      if (!foundBg || isUnitDestroyedInPlay(foundBg, playState, allUnitsInRoster)) {
+        return [];
+      }
+      bodyguard = foundBg;
+    }
     const members: SelectedUnit[] = [];
     const seen = new Set<string>();
     const pushUnique = (u?: SelectedUnit) => {
@@ -717,6 +737,43 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
               </>
             )}
           </div>
+
+          {/* Play Mode Unit Tracking (Models Remaining / Wounds Remaining) */}
+          {isPlayMode && selectedUnit && onStepPlayRemaining && (
+            <div className="p-3 sm:p-3.5 rounded-xl bg-slate-850 border border-slate-700 space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-warhammer text-xs font-bold uppercase tracking-wider text-sky-300">
+                  Battlefield Tracking
+                </span>
+                {isShowingAttachedUnit && (
+                  <span className="text-[11px] text-slate-400">
+                    Track squad models &amp; attached characters separately
+                  </span>
+                )}
+              </div>
+              <div className="space-y-2">
+                {displayMembers.map((dm) => {
+                  if (!dm.selectedUnit) return null;
+                  const memberStatus = getUnitPlayStatus(dm.selectedUnit, playState, allUnitsInRoster);
+                  return (
+                    <PlayTrackerRow
+                      key={dm.key}
+                      roleBadge={isShowingAttachedUnit ? dm.role : undefined}
+                      label={
+                        isShowingAttachedUnit
+                          ? dm.name
+                          : memberStatus.isSingleModel
+                          ? 'Wounds Remaining'
+                          : 'Models Remaining'
+                      }
+                      status={memberStatus}
+                      onStep={(delta) => onStepPlayRemaining(dm.selectedUnit!, delta)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Loadout & Squad Configuration (when selected in roster and not in Play Mode) */}
           {!isPlayMode && selectedUnit && onUpdateUnit && hasAnyLoadoutConfig && (
