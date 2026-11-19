@@ -7,6 +7,10 @@ const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT;
 const REGION = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
 const JOB_NAME = process.env.CLOUD_RUN_JOB_NAME || 'armybuilder-ai-fixer';
 const TRIGGER_LABEL = (process.env.TRIGGER_LABEL || 'ai-fix').trim();
+const THREAD_LABEL = (process.env.THREAD_LABEL || 'ai-thread').trim();
+const IN_PROGRESS_LABEL = 'ai-fix-in-progress';
+const BOT_COMMENT_PREFIX = '🤖';
+const TRUSTED_ASSOCIATIONS = new Set(['OWNER', 'MEMBER', 'COLLABORATOR']);
 const GITHUB_WEBHOOK_SECRET = (process.env.GITHUB_WEBHOOK_SECRET || '').trim();
 const GITHUB_TOKEN = (process.env.GITHUB_TOKEN || '').trim();
 const GITHUB_REPO = (process.env.GITHUB_REPO || 'pmock2/ArmyBuilder').trim();
@@ -81,7 +85,7 @@ async function ghApi(endpoint, options = {}) {
   return { status: res.status, ok: res.ok, data };
 }
 
-async function triggerCloudRunJob(issueNumber) {
+async function triggerCloudRunJob(issueNumber, { triggerReason = 'label' } = {}) {
   const client = await auth.getClient();
   const accessTokenResponse = await client.getAccessToken();
   const token = accessTokenResponse?.token;
@@ -100,7 +104,10 @@ async function triggerCloudRunJob(issueNumber) {
       overrides: {
         containerOverrides: [
           {
-            env: [{ name: 'ISSUE_NUMBER', value: String(issueNumber) }]
+            env: [
+              { name: 'ISSUE_NUMBER', value: String(issueNumber) },
+              { name: 'TRIGGER_REASON', value: String(triggerReason) }
+            ]
           }
         ]
       }
@@ -385,10 +392,52 @@ const server = http.createServer(async (req, res) => {
   ) {
     const issueNumber = payload.issue.number;
     try {
-      const execution = await triggerCloudRunJob(issueNumber);
+      const execution = await triggerCloudRunJob(issueNumber, { triggerReason: 'label' });
       sendJson(res, 202, { triggered: true, issueNumber, execution: execution.name });
     } catch (err) {
       console.error('Failed to trigger job:', err);
+      sendJson(res, 500, { error: err.message });
+    }
+    return;
+  }
+
+  if (
+    event === 'issue_comment' &&
+    payload?.action === 'created' &&
+    payload?.issue?.number &&
+    !payload?.issue?.pull_request &&
+    payload?.issue?.state === 'open'
+  ) {
+    const commentBody = (payload?.comment?.body || '').trim();
+    const authorAssoc = payload?.comment?.author_association || '';
+    const issueLabels = (payload?.issue?.labels || []).map((l) => l.name);
+
+    if (!commentBody || commentBody.startsWith(BOT_COMMENT_PREFIX)) {
+      sendJson(res, 200, { ignored: true, reason: 'bot or empty comment' });
+      return;
+    }
+    if (!TRUSTED_ASSOCIATIONS.has(authorAssoc)) {
+      sendJson(res, 200, { ignored: true, reason: 'untrusted author_association', authorAssoc });
+      return;
+    }
+    if (issueLabels.includes(IN_PROGRESS_LABEL)) {
+      sendJson(res, 200, { ignored: true, reason: 'issue already in progress' });
+      return;
+    }
+
+    const explicitlyMentioned = /(^|\s)(@ai|\/ai)\b/i.test(commentBody);
+    const inAiThread = issueLabels.includes(THREAD_LABEL) || issueLabels.includes(TRIGGER_LABEL);
+    if (!inAiThread && !explicitlyMentioned) {
+      sendJson(res, 200, { ignored: true, reason: 'issue not in ai-thread and no @ai mention' });
+      return;
+    }
+
+    const issueNumber = payload.issue.number;
+    try {
+      const execution = await triggerCloudRunJob(issueNumber, { triggerReason: 'comment' });
+      sendJson(res, 202, { triggered: true, reason: 'comment', issueNumber, execution: execution.name });
+    } catch (err) {
+      console.error('Failed to trigger job from comment:', err);
       sendJson(res, 500, { error: err.message });
     }
     return;
