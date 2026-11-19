@@ -425,10 +425,10 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    const explicitlyMentioned = /(^|\s)(@ai|\/ai)\b/i.test(commentBody);
+    const explicitlyMentioned = /(^|\s)\/ai\b/i.test(commentBody);
     const inAiThread = issueLabels.includes(THREAD_LABEL) || issueLabels.includes(TRIGGER_LABEL);
     if (!inAiThread && !explicitlyMentioned) {
-      sendJson(res, 200, { ignored: true, reason: 'issue not in ai-thread and no @ai mention' });
+      sendJson(res, 200, { ignored: true, reason: 'issue not in ai-thread and no /ai command' });
       return;
     }
 
