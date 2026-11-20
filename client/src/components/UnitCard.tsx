@@ -12,12 +12,10 @@ import {
 import { doesEnhancementAffectLedUnit } from '../utils/equippedStats';
 import {
   RosterPlayState,
-  getUnitPlayStatus,
   getAttachedChildrenForBodyguard,
   isUnitDestroyedInPlay
 } from '../utils/playTracking';
 import { DatasheetModal } from './DatasheetModal';
-import { PlayTrackerRow } from './PlayTrackerRow';
 
 interface UnitCardProps {
   unit: SelectedUnit;
@@ -85,8 +83,6 @@ export const UnitCard: React.FC<UnitCardProps> = ({
       ? getUnitTotalPts(unit, allUnitsInRoster) +
         livingAttachedChildren.reduce((sum, c) => sum + getUnitTotalPts(c.unit, allUnitsInRoster), 0)
       : getUnitTotalPts(unit, allUnitsInRoster);
-
-  const primaryStatus = isPlayMode ? getUnitPlayStatus(unit, playState, allUnitsInRoster) : null;
 
   const leaderUnitEnhancement =
     attachedLeader?.enhancement && doesEnhancementAffectLedUnit(attachedLeader.enhancement)
@@ -235,6 +231,24 @@ export const UnitCard: React.FC<UnitCardProps> = ({
 
               {isPlayMode &&
                 !isDestroyedCard &&
+                livingAttachedChildren.map((child) => (
+                  <span
+                    key={child.unit.instanceId}
+                    className={`${
+                      child.role === 'Retinue'
+                        ? 'text-teal-300/90'
+                        : 'text-theme-text-secondary'
+                    } font-medium truncate max-w-[260px]`}
+                  >
+                    • {child.role}: {child.unit.name}
+                    {child.unit.enhancement && !doesEnhancementAffectLedUnit(child.unit.enhancement)
+                      ? ` (${child.unit.enhancement.name})`
+                      : ''}
+                  </span>
+                ))}
+
+              {isPlayMode &&
+                !isDestroyedCard &&
                 destroyedAttachedChildren.map((dc) => (
                   <span
                     key={dc.unit.instanceId}
@@ -289,47 +303,6 @@ export const UnitCard: React.FC<UnitCardProps> = ({
             )}
           </div>
         </div>
-
-        {/* Play Mode Models / Wounds Trackers */}
-        {isPlayMode && primaryStatus && onStepPlayRemaining && (
-          <div className="space-y-1.5 pt-0.5" onClick={(e) => e.stopPropagation()}>
-            <PlayTrackerRow
-              roleBadge={!isDestroyedCard && livingAttachedChildren.length > 0 ? 'Bodyguard' : undefined}
-              label={
-                !isDestroyedCard && livingAttachedChildren.length > 0
-                  ? unit.name
-                  : primaryStatus.isSingleModel
-                  ? 'Wounds Remaining'
-                  : 'Models Remaining'
-              }
-              status={primaryStatus}
-              onStep={(delta) => onStepPlayRemaining(unit, delta)}
-              compact
-            />
-
-            {!isDestroyedCard &&
-              livingAttachedChildren.map((child) => {
-                const childStatus = getUnitPlayStatus(child.unit, playState, allUnitsInRoster);
-                return (
-                  <PlayTrackerRow
-                    key={child.unit.instanceId}
-                    roleBadge={child.role}
-                    label={child.unit.name}
-                    subLabel={
-                      child.unit.enhancement
-                        ? `${child.unit.enhancement.name}${child.unit.isWarlord ? ' • Warlord' : ''}`
-                        : child.unit.isWarlord
-                        ? 'Warlord'
-                        : undefined
-                    }
-                    status={childStatus}
-                    onStep={(delta) => onStepPlayRemaining(child.unit, delta)}
-                    compact
-                  />
-                );
-              })}
-          </div>
-        )}
       </div>
 
       {/* Fallback local Datasheet Modal when not hoisted to parent */}
