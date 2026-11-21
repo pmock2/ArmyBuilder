@@ -26,13 +26,22 @@ import { useBackNavigation } from './utils/backNavigation';
 import { getAllThemes, applyThemeToDocument, initTheme } from './utils/themeStorage';
 import {
   RosterPlayState,
+  UnitPlayState,
+  ArmyRulePlayState,
   loadRosterPlayState,
   saveRosterPlayState,
+  loadArmyRulePlayState,
+  saveArmyRulePlayState,
+  hasArmyRulePlayStateChanges,
   clearRosterPlayState,
   stepUnitPlayRemaining,
+  patchUnitPlayState,
+  resetAllKaTahInPlayState,
+  clearAllOrdersInPlayState,
   isUnitDestroyedInPlay,
   isUnitConsolidatedUnderBodyguard
 } from './utils/playTracking';
+import { detectTrackableArmyRule } from './utils/armyRuleTracking';
 import { hasApiKey } from './services/geminiService';
 import { Shield, Sparkles, BookOpen, Plus, RotateCcw } from 'lucide-react';
 
@@ -58,6 +67,10 @@ export const App: React.FC = () => {
   const [playState, setPlayState] = useState<RosterPlayState>(() => {
     const savedActiveId = loadActiveRosterId();
     return savedActiveId ? loadRosterPlayState(savedActiveId) : {};
+  });
+  const [armyRuleState, setArmyRuleState] = useState<ArmyRulePlayState>(() => {
+    const savedActiveId = loadActiveRosterId();
+    return savedActiveId ? loadArmyRulePlayState(savedActiveId) : {};
   });
   const [activeDatasheetUnitId, setActiveDatasheetUnitId] = useState<string | null>(null);
   const [isAiSettingsModalOpen, setIsAiSettingsModalOpen] = useState(false);
@@ -91,8 +104,10 @@ export const App: React.FC = () => {
     setActiveDatasheetUnitId(null);
     if (activeRoster?.id) {
       setPlayState(loadRosterPlayState(activeRoster.id));
+      setArmyRuleState(loadArmyRulePlayState(activeRoster.id));
     } else {
       setPlayState({});
+      setArmyRuleState({});
     }
   }, [activeRoster?.id]);
 
@@ -676,6 +691,40 @@ export const App: React.FC = () => {
     if (!activeRoster) return;
     clearRosterPlayState(activeRoster.id);
     setPlayState({});
+    setArmyRuleState({});
+  };
+
+  const handleChangeArmyRuleState = (next: ArmyRulePlayState) => {
+    if (!activeRoster) return;
+    setArmyRuleState(next);
+    saveArmyRulePlayState(activeRoster.id, next);
+  };
+
+  const handlePatchUnitPlayState = (unitId: string, patch: Partial<UnitPlayState>) => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = patchUnitPlayState(unitId, patch, prev);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
+  };
+
+  const handleResetAllKaTah = () => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = resetAllKaTahInPlayState(prev);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
+  };
+
+  const handleClearAllOrders = () => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = clearAllOrdersInPlayState(prev);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
   };
 
   // Launch Unit Browser
@@ -846,9 +895,12 @@ export const App: React.FC = () => {
     ? activeRoster.units.filter((u) => !isUnitDestroyedInPlay(u, playState, activeRoster.units))
     : activeRoster.units;
 
-  const hasAnyPlayTrackingChanges = Object.keys(playState).some((id) =>
-    activeRoster.units.some((u) => u.instanceId === id)
-  );
+  const hasAnyPlayTrackingChanges =
+    Object.keys(playState).some((id) =>
+      activeRoster.units.some((u) => u.instanceId === id)
+    ) || hasArmyRulePlayStateChanges(armyRuleState);
+
+  const trackableArmyRuleType = detectTrackableArmyRule(factionData?.armyRules);
 
   const activeDatasheetUnit = activeDatasheetUnitId
     ? activeRoster.units.find((u) => u.instanceId === activeDatasheetUnitId) || null
@@ -912,12 +964,18 @@ export const App: React.FC = () => {
               rosterUnits={activeRoster.units}
               currentDisposition={activeRoster.forceDisposition}
               isPlayMode={isPlayMode}
+              battleSize={activeRoster.battleSize}
+              playState={playState}
+              armyRuleState={armyRuleState}
               onToggleDetachment={handleToggleDetachment}
               onSelectDisposition={handleSelectDisposition}
+              onChangeArmyRuleState={handleChangeArmyRuleState}
+              onResetAllKaTah={handleResetAllKaTah}
+              onClearAllOrders={handleClearAllOrders}
             />
 
             {/* 2. Battlefield Role Unit Sections */}
-            {isPlayMode && activeRoster.units.length > 0 && (
+            {isPlayMode && (activeRoster.units.length > 0 || hasAnyPlayTrackingChanges) && (
               <div className="mb-3 px-3 py-2 rounded-xl bg-theme-surface/85 border border-theme-border-subtle flex items-center justify-between gap-2 text-xs">
                 <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                   <span className="font-semibold text-theme-text">
@@ -965,9 +1023,11 @@ export const App: React.FC = () => {
                   selectedDetachments={activeRoster.detachments}
                   isPlayMode={isPlayMode}
                   playState={playState}
+                  armyRuleType={trackableArmyRuleType}
                   unitLimit={cat.limit}
                   onOpenBrowser={handleOpenBrowser}
                   onStepPlayRemaining={handleStepPlayRemaining}
+                  onPatchUnitPlayState={handlePatchUnitPlayState}
                   onOpenDatasheet={(u) => setActiveDatasheetUnitId(u.instanceId)}
                   onUpdateUnit={handleUpdateUnit}
                   onDuplicateUnit={handleDuplicateUnit}
