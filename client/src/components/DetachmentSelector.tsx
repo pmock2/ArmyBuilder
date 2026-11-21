@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Plus, Eye, Trash2, Compass, Check, Sparkles, X } from 'lucide-react';
-import { SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
+import { Plus, Eye, Trash2, Compass, Check, Sparkles, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { BattleSize, SelectedDetachment, Enhancement, SelectedUnit } from '../types/roster';
 import { FactionArmyRule } from '../types/faction';
 import { DetachmentBrowserModal } from './DetachmentBrowserModal';
 import { DetachmentModal } from './DetachmentModal';
@@ -8,6 +8,9 @@ import { StratagemsModal } from './StratagemsModal';
 import { FormattedText } from './FormattedText';
 import { getUnlockedDispositions } from './ForceDispositionSelector';
 import { useBackNavigation } from '../utils/backNavigation';
+import { ArmyRuleTracker } from './ArmyRuleTracker';
+import { detectTrackableArmyRule } from '../utils/armyRuleTracking';
+import { ArmyRulePlayState, RosterPlayState } from '../utils/playTracking';
 
 interface DetachmentSelectorProps {
   armyRules?: FactionArmyRule[];
@@ -21,8 +24,14 @@ interface DetachmentSelectorProps {
   rosterUnits?: SelectedUnit[];
   currentDisposition?: string | null;
   isPlayMode?: boolean;
+  battleSize?: BattleSize;
+  playState?: RosterPlayState;
+  armyRuleState?: ArmyRulePlayState;
   onToggleDetachment: (detachment: SelectedDetachment) => void;
   onSelectDisposition?: (disposition: string | null) => void;
+  onChangeArmyRuleState?: (next: ArmyRulePlayState) => void;
+  onResetAllKaTah?: () => void;
+  onClearAllOrders?: () => void;
 }
 
 export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
@@ -37,13 +46,20 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   rosterUnits = [],
   currentDisposition,
   isPlayMode = false,
+  battleSize = 'strike-force',
+  playState = {},
+  armyRuleState = {},
   onToggleDetachment,
-  onSelectDisposition
+  onSelectDisposition,
+  onChangeArmyRuleState,
+  onResetAllKaTah,
+  onClearAllOrders
 }) => {
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [inspectDetachment, setInspectDetachment] = useState<SelectedDetachment | null>(null);
   const [isStratagemsOpen, setIsStratagemsOpen] = useState(false);
   const [isArmyRuleOpen, setIsArmyRuleOpen] = useState(false);
+  const [isTrackerExpanded, setIsTrackerExpanded] = useState(true);
 
   useBackNavigation(isBrowserOpen, () => setIsBrowserOpen(false));
   useBackNavigation(Boolean(inspectDetachment), () => setInspectDetachment(null));
@@ -52,38 +68,74 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
 
   const hasDetachments = selectedDetachments.length > 0;
   const unlockedDispositions = getUnlockedDispositions(selectedDetachments);
+  const trackableRuleType = detectTrackableArmyRule(armyRules);
+  const showPlayTracker = Boolean(isPlayMode && trackableRuleType && onChangeArmyRuleState);
 
   return (
     <div className="space-y-2 mb-4 pb-3 border-b border-theme-border-subtle/50">
-      {/* 0. Army Ability Strip (Above Detachments — Amber Command Ledger Style) */}
+      {/* 0. Army Ability Strip + Play Mode Interactive Tracker (Amber Command Ledger Style) */}
       {armyRules.length > 0 && (
-        <section
-          onClick={() => setIsArmyRuleOpen(true)}
-          className="ledger-theme-panel hover:bg-amber-500/[0.1] hover:border-amber-400/50 px-3.5 py-2.5 cursor-pointer flex items-center justify-between gap-3 active:scale-[0.998] group"
-        >
-          <div className="flex items-center gap-2.5 min-w-0 flex-wrap">
-            <span className="ledger-theme-label flex items-center gap-1.5 shrink-0">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Army Ability</span>
-            </span>
-            <span className="text-amber-500/40 hidden sm:inline">•</span>
-            <h4 className="font-warhammer text-xs sm:text-sm font-bold text-theme-text group-hover:text-amber-300 transition-colors tracking-wide truncate">
-              {armyRules.map((r) => r.name).join(' • ')}
-            </h4>
+        <section className="ledger-theme-panel px-3.5 py-2.5 space-y-2.5">
+          <div
+            onClick={() => setIsArmyRuleOpen(true)}
+            className="cursor-pointer flex items-center justify-between gap-3 group"
+          >
+            <div className="flex items-center gap-2.5 min-w-0 flex-wrap">
+              <span className="ledger-theme-label flex items-center gap-1.5 shrink-0">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Army Ability</span>
+              </span>
+              <span className="text-amber-500/40 hidden sm:inline">•</span>
+              <h4 className="font-warhammer text-xs sm:text-sm font-bold text-theme-text group-hover:text-amber-300 transition-colors tracking-wide truncate">
+                {armyRules.map((r) => r.name).join(' • ')}
+              </h4>
+            </div>
+
+            <div className="flex items-center gap-1.5 shrink-0" onClick={(e) => e.stopPropagation()}>
+              {showPlayTracker && (
+                <button
+                  type="button"
+                  onClick={() => setIsTrackerExpanded((v) => !v)}
+                  className="min-h-[30px] px-2 rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center gap-1 text-[11px] font-semibold transition-colors"
+                  title={isTrackerExpanded ? 'Collapse Army Rule Tracker' : 'Expand Army Rule Tracker'}
+                  aria-label={isTrackerExpanded ? 'Collapse Army Rule Tracker' : 'Expand Army Rule Tracker'}
+                >
+                  <span className="hidden sm:inline">{isTrackerExpanded ? 'Hide' : 'Track'}</span>
+                  {isTrackerExpanded ? (
+                    <ChevronUp className="w-3.5 h-3.5 stroke-[2.2]" />
+                  ) : (
+                    <ChevronDown className="w-3.5 h-3.5 stroke-[2.2]" />
+                  )}
+                </button>
+              )}
+
+              <button
+                type="button"
+                onClick={() => setIsArmyRuleOpen(true)}
+                className="min-h-[30px] min-w-[30px] rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center justify-center flex-shrink-0 transition-colors"
+                title="View Army Ability"
+                aria-label="View Army Ability"
+              >
+                <Eye className="w-3.5 h-3.5 stroke-[2]" />
+              </button>
+            </div>
           </div>
 
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsArmyRuleOpen(true);
-            }}
-            className="min-h-[30px] min-w-[30px] rounded-lg border border-amber-500/35 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 flex items-center justify-center flex-shrink-0 transition-colors"
-            title="View Army Ability"
-            aria-label="View Army Ability"
-          >
-            <Eye className="w-3.5 h-3.5 stroke-[2]" />
-          </button>
+          {showPlayTracker && isTrackerExpanded && trackableRuleType && onChangeArmyRuleState && (
+            <div className="pt-2.5 border-t border-amber-500/20">
+              <ArmyRuleTracker
+                ruleType={trackableRuleType}
+                battleSize={battleSize}
+                selectedDetachments={selectedDetachments}
+                rosterUnits={rosterUnits}
+                playState={playState}
+                armyRuleState={armyRuleState}
+                onChangeArmyRuleState={onChangeArmyRuleState}
+                onResetAllKaTah={onResetAllKaTah}
+                onClearAllOrders={onClearAllOrders}
+              />
+            </div>
+          )}
         </section>
       )}
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Trash2, Copy, Eye, Skull } from 'lucide-react';
+import { Crown, Trash2, Copy, Eye, Skull, Check, Zap, X } from 'lucide-react';
 import {
   SelectedUnit,
   Enhancement,
@@ -12,9 +12,12 @@ import {
 import { doesEnhancementAffectLedUnit } from '../utils/equippedStats';
 import {
   RosterPlayState,
+  UnitPlayState,
   getAttachedChildrenForBodyguard,
-  isUnitDestroyedInPlay
+  isUnitDestroyedInPlay,
+  unitHasMartialKatah
 } from '../utils/playTracking';
+import { ASTRA_ORDERS, TrackableArmyRuleType } from '../utils/armyRuleTracking';
 import { DatasheetModal } from './DatasheetModal';
 
 interface UnitCardProps {
@@ -25,7 +28,9 @@ interface UnitCardProps {
   isPlayMode?: boolean;
   playState?: RosterPlayState;
   isDestroyedCard?: boolean;
+  armyRuleType?: TrackableArmyRuleType | null;
   onStepPlayRemaining?: (unit: SelectedUnit, delta: number) => void;
+  onPatchUnitPlayState?: (unitId: string, patch: Partial<UnitPlayState>) => void;
   onOpenDatasheet?: (unit: SelectedUnit) => void;
   onUpdateUnit: (updated: SelectedUnit) => void;
   onDuplicateUnit: (unit: SelectedUnit) => void;
@@ -41,7 +46,9 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   isPlayMode = false,
   playState = {},
   isDestroyedCard = false,
+  armyRuleType = null,
   onStepPlayRemaining,
+  onPatchUnitPlayState,
   onOpenDatasheet,
   onUpdateUnit,
   onDuplicateUnit,
@@ -49,6 +56,7 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   onSetWarlord
 }) => {
   const [isDatasheetOpen, setIsDatasheetOpen] = useState(false);
+  const [isOrderPickerOpen, setIsOrderPickerOpen] = useState(false);
 
   const openDatasheet = () => {
     if (onOpenDatasheet) {
@@ -104,6 +112,27 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   const hasWarlordInCard =
     unit.isWarlord ||
     (isPlayMode && !isDestroyedCard && livingAttachedChildren.some((c) => c.unit.isWarlord));
+
+  const showKatahToggle = Boolean(
+    isPlayMode &&
+      !isDestroyedCard &&
+      armyRuleType === 'martial-katah' &&
+      onPatchUnitPlayState &&
+      unitHasMartialKatah(unit, livingAttachedChildren)
+  );
+  const isKatahUsed = Boolean(playState[unit.instanceId]?.kaTahUsed);
+
+  const showOrderControl = Boolean(
+    isPlayMode &&
+      !isDestroyedCard &&
+      armyRuleType === 'voice-of-command' &&
+      onPatchUnitPlayState &&
+      !unit.datasheet?.isAllied
+  );
+  const activeOrderId = playState[unit.instanceId]?.activeOrder || null;
+  const activeOrderDef = activeOrderId
+    ? ASTRA_ORDERS.find((o) => o.id === activeOrderId) || null
+    : null;
 
   return (
     <>
@@ -303,6 +332,114 @@ export const UnitCard: React.FC<UnitCardProps> = ({
             )}
           </div>
         </div>
+
+        {/* Play Mode Per-Unit Army Rule Controls (Custodes Ka'tah / Astra Militarum Orders) */}
+        {(showKatahToggle || showOrderControl) && (
+          <div
+            className="pt-2 border-t border-theme-border-subtle/60 space-y-1.5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {showKatahToggle && onPatchUnitPlayState && (
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[11px] font-semibold text-theme-text-muted">
+                  Martial Ka&apos;tah
+                </span>
+                <button
+                  type="button"
+                  onClick={() =>
+                    onPatchUnitPlayState(unit.instanceId, {
+                      kaTahUsed: !isKatahUsed
+                    })
+                  }
+                  className={`min-h-[28px] px-2.5 py-0.5 rounded-lg border text-[11px] font-bold flex items-center gap-1.5 transition-colors ${
+                    isKatahUsed
+                      ? 'bg-theme-surface border-theme-border-subtle text-theme-text-muted'
+                      : 'bg-emerald-500/15 border-emerald-500/50 text-emerald-300 hover:bg-emerald-500/25'
+                  }`}
+                >
+                  {isKatahUsed ? (
+                    <span>Ka&apos;tah Used</span>
+                  ) : (
+                    <>
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                      <span>Readied</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+
+            {showOrderControl && onPatchUnitPlayState && (
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <span className="text-[11px] font-semibold text-theme-text-muted">
+                    Order
+                  </span>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setIsOrderPickerOpen((v) => !v)}
+                      className={`min-h-[28px] px-2.5 py-0.5 rounded-lg border text-[11px] font-bold flex items-center gap-1 transition-colors ${
+                        activeOrderDef
+                          ? 'bg-amber-500/15 border-amber-400/60 text-amber-200 hover:bg-amber-500/25'
+                          : 'bg-theme-surface border-theme-border-subtle text-theme-text-secondary hover:border-amber-500/40'
+                      }`}
+                    >
+                      <Zap className="w-3 h-3 text-amber-400 shrink-0" />
+                      <span>
+                        {activeOrderDef
+                          ? `${activeOrderDef.name} (${activeOrderDef.shortName})`
+                          : '+ Issue Order'}
+                      </span>
+                    </button>
+                    {activeOrderDef && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onPatchUnitPlayState(unit.instanceId, { activeOrder: null });
+                          setIsOrderPickerOpen(false);
+                        }}
+                        className="min-h-[28px] min-w-[28px] rounded-lg bg-theme-surface border border-theme-border-subtle text-theme-text-muted hover:text-theme-text flex items-center justify-center"
+                        title="Clear Order"
+                        aria-label="Clear Order"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {isOrderPickerOpen && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 pt-1">
+                    {ASTRA_ORDERS.map((ord) => {
+                      const selected = activeOrderId === ord.id;
+                      return (
+                        <button
+                          key={ord.id}
+                          type="button"
+                          onClick={() => {
+                            onPatchUnitPlayState(unit.instanceId, {
+                              activeOrder: selected ? null : ord.id
+                            });
+                            setIsOrderPickerOpen(false);
+                          }}
+                          className={`text-left px-2 py-1.5 rounded-lg border text-[11px] transition-colors ${
+                            selected
+                              ? 'bg-amber-500/20 border-amber-400/70 text-amber-200 font-bold'
+                              : 'bg-theme-surface border-theme-border-subtle text-theme-text-secondary hover:border-amber-500/40'
+                          }`}
+                        >
+                          <div className="font-bold truncate text-theme-text">{ord.name}</div>
+                          <div className="text-[10px] text-amber-300/90 font-mono">{ord.shortName}</div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Fallback local Datasheet Modal when not hoisted to parent */}
