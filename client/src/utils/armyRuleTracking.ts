@@ -1,5 +1,5 @@
 import { FactionArmyRule } from '../types/faction';
-import { BattleSize, SelectedDetachment, normalizeDetachmentName } from '../types/roster';
+import { BattleSize, SelectedDetachment, SelectedUnit, normalizeDetachmentName } from '../types/roster';
 
 export type TrackableArmyRuleType =
   | 'combat-doctrines'
@@ -18,7 +18,8 @@ export type TrackableArmyRuleType =
   | 'voice-of-command'
   | 'gate-of-infinity'
   | 'prioritised-efficiency'
-  | 'shadow-in-the-warp';
+  | 'shadow-in-the-warp'
+  | 'waaagh';
 
 const RULE_NAME_MAP: Record<string, TrackableArmyRuleType> = {
   'combat doctrines': 'combat-doctrines',
@@ -38,13 +39,15 @@ const RULE_NAME_MAP: Record<string, TrackableArmyRuleType> = {
   'voice of command': 'voice-of-command',
   'gate of infinity': 'gate-of-infinity',
   'prioritised efficiency': 'prioritised-efficiency',
-  'shadow in the warp': 'shadow-in-the-warp'
+  'shadow in the warp': 'shadow-in-the-warp',
+  'waaagh!': 'waaagh',
+  'waaagh': 'waaagh'
 };
 
 /**
  * Determines whether the army has a trackable special rule for Play Mode.
  * Passive/per-activation rules (e.g. Necrons Reanimation Protocols, T'au For The Greater Good,
- * CSM Dark Pacts, Emperor's Children Thrill Seekers, Orks Waaagh!, Agents Assigned Agents,
+ * CSM Dark Pacts, Emperor's Children Thrill Seekers, Agents Assigned Agents,
  * Titanicus Towering Example) intentionally return null.
  */
 export function detectTrackableArmyRule(
@@ -500,4 +503,80 @@ export function getGateOfInfinityLimit(battleSize: BattleSize): number {
   if (battleSize === 'incursion') return 2;
   if (battleSize === 'onslaught') return 4;
   return 3;
+}
+
+// 13. Orks: Waaagh! / Riled Up
+export interface OrkRiledUpSourceDef {
+  id: string;
+  name: string;
+  cadence: 'battle' | 'round';
+  sourceLabel: string;
+  summary: string;
+}
+
+export const ORK_RILED_UP_SOURCES: OrkRiledUpSourceDef[] = [
+  {
+    id: 'makari',
+    name: 'Makari, Hoist Dat Banner!',
+    cadence: 'battle',
+    sourceLabel: 'Ghazghkull Thraka',
+    summary: 'Movement phase: pick up to Battle Round # of friendly ORKS units → Riled Up until next turn.'
+  },
+  {
+    id: 'da-boss-is-watchin',
+    name: "Da Boss Is Watchin'",
+    cadence: 'battle',
+    sourceLabel: 'Enhancement',
+    summary: "Movement phase: bearer's unit becomes Riled Up until start of your next turn."
+  },
+  {
+    id: 'intimidating-motivation',
+    name: 'Intimidating Motivation',
+    cadence: 'round',
+    sourceLabel: 'Warboss / Nazdreg',
+    summary: 'Movement phase: 1 ORKS unit within 6" clears Battle-shock & becomes Riled Up.'
+  },
+  {
+    id: 'get-back-in-da-race',
+    name: 'Get Back in da Race!',
+    cadence: 'round',
+    sourceLabel: 'Deffkilla / Wazdakka',
+    summary: 'Movement phase: 1 SPEED FREEKS unit within 6" (and embarked) clears Battle-shock & becomes Riled Up.'
+  },
+  {
+    id: 'keep-huntin',
+    name: "Keep Huntin'!",
+    cadence: 'round',
+    sourceLabel: 'Mozrog / Beastboss on Squigosaur',
+    summary: 'Movement phase: 1 BEAST SNAGGA unit within 6" clears Battle-shock & becomes Riled Up.'
+  }
+];
+
+export function getActiveOrkRiledUpSources(livingUnits: SelectedUnit[]): OrkRiledUpSourceDef[] {
+  const presentIds = new Set<string>();
+
+  for (const u of livingUnits) {
+    const abilityNames = (u.datasheet?.abilities || []).map((a) =>
+      a.name.replace(/[’‘]/g, "'").trim().toLowerCase()
+    );
+    const enhName = (u.enhancement?.name || '').replace(/[’‘]/g, "'").trim().toLowerCase();
+
+    if (abilityNames.some((n) => n.startsWith('makari, hoist dat banner'))) {
+      presentIds.add('makari');
+    }
+    if (enhName === "da boss is watchin'") {
+      presentIds.add('da-boss-is-watchin');
+    }
+    if (abilityNames.some((n) => n.startsWith('intimidating motivation'))) {
+      presentIds.add('intimidating-motivation');
+    }
+    if (abilityNames.some((n) => n.startsWith('get back in da race'))) {
+      presentIds.add('get-back-in-da-race');
+    }
+    if (abilityNames.some((n) => n.startsWith("keep huntin'"))) {
+      presentIds.add('keep-huntin');
+    }
+  }
+
+  return ORK_RILED_UP_SOURCES.filter((s) => presentIds.has(s.id));
 }

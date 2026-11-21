@@ -38,6 +38,7 @@ import {
   patchUnitPlayState,
   resetAllKaTahInPlayState,
   clearAllOrdersInPlayState,
+  clearAllRiledUpInPlayState,
   isUnitDestroyedInPlay,
   isUnitConsolidatedUnderBodyguard
 } from './utils/playTracking';
@@ -727,6 +728,15 @@ export const App: React.FC = () => {
     });
   };
 
+  const handleClearAllRiledUp = () => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = clearAllRiledUpInPlayState(prev);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
+  };
+
   // Launch Unit Browser
   const handleOpenBrowser = (roleKey: string) => {
     setBrowserRoleFilter(roleKey);
@@ -972,6 +982,7 @@ export const App: React.FC = () => {
               onChangeArmyRuleState={handleChangeArmyRuleState}
               onResetAllKaTah={handleResetAllKaTah}
               onClearAllOrders={handleClearAllOrders}
+              onClearAllRiledUp={handleClearAllRiledUp}
             />
 
             {/* 2. Battlefield Role Unit Sections */}

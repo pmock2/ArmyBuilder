@@ -14,8 +14,11 @@ import { BattleSize, SelectedDetachment, SelectedUnit, normalizeDetachmentName }
 import {
   ArmyRulePlayState,
   RosterPlayState,
+  isUnitConsolidatedUnderBodyguard,
   isUnitDestroyedInPlay,
   unitHasMartialKatah,
+  unitHasWaaagh,
+  unitIsAlwaysRiledUp,
   getAttachedChildrenForBodyguard
 } from '../utils/playTracking';
 import {
@@ -31,6 +34,7 @@ import {
   NURGLE_PLAGUES,
   PSYCHIC_RITUALS,
   TrackableArmyRuleType,
+  getActiveOrkRiledUpSources,
   getBattleFocusRoundTokens,
   getCombatDoctrineLimits,
   getGateOfInfinityLimit,
@@ -47,6 +51,7 @@ interface ArmyRuleTrackerProps {
   onChangeArmyRuleState: (next: ArmyRulePlayState) => void;
   onResetAllKaTah?: () => void;
   onClearAllOrders?: () => void;
+  onClearAllRiledUp?: () => void;
 }
 
 export const ArmyRuleTracker: React.FC<ArmyRuleTrackerProps> = ({
@@ -58,7 +63,8 @@ export const ArmyRuleTracker: React.FC<ArmyRuleTrackerProps> = ({
   armyRuleState,
   onChangeArmyRuleState,
   onResetAllKaTah,
-  onClearAllOrders
+  onClearAllOrders,
+  onClearAllRiledUp
 }) => {
   const [showKatahRef, setShowKatahRef] = useState(false);
 
@@ -1538,6 +1544,165 @@ export const ArmyRuleTracker: React.FC<ArmyRuleTrackerProps> = ({
         </div>
         <p className="text-[11px] text-theme-text-muted">
           Either player&apos;s Command phase: every enemy unit takes a Battle-shock test (-1 if within 6&quot; of Synapse).
+        </p>
+      </div>
+    );
+  }
+
+  // 18. Orks: Waaagh! / Riled Up
+  if (ruleType === 'waaagh') {
+    const livingAll = rosterUnits.filter((u) => !isUnitDestroyedInPlay(u, playState, rosterUnits));
+    const eligibleCards = livingAll.filter((u) => {
+      if (isUnitConsolidatedUnderBodyguard(u, playState, rosterUnits)) return false;
+      const children = getAttachedChildrenForBodyguard(u, rosterUnits).filter(
+        (c) => !isUnitDestroyedInPlay(c.unit, playState, rosterUnits)
+      );
+      return unitHasWaaagh(u, children);
+    });
+
+    const riledUpCount = eligibleCards.filter((u) => {
+      const children = getAttachedChildrenForBodyguard(u, rosterUnits).filter(
+        (c) => !isUnitDestroyedInPlay(c.unit, playState, rosterUnits)
+      );
+      return unitIsAlwaysRiledUp(u, children) || Boolean(playState[u.instanceId]?.riledUp);
+    }).length;
+
+    const hasTempRiledUp = eligibleCards.some((u) => {
+      const children = getAttachedChildrenForBodyguard(u, rosterUnits).filter(
+        (c) => !isUnitDestroyedInPlay(c.unit, playState, rosterUnits)
+      );
+      return !unitIsAlwaysRiledUp(u, children) && Boolean(playState[u.instanceId]?.riledUp);
+    });
+
+    const onceUsed = armyRuleState.waaaghOncePerBattleUsed || [];
+    const roundUsed = armyRuleState.waaaghRoundAbilitiesUsed || [];
+    const livingSources = getActiveOrkRiledUpSources(livingAll);
+    const allRosterSources = getActiveOrkRiledUpSources(rosterUnits);
+    const presentIds = new Set(livingSources.map((s) => s.id));
+    for (const id of onceUsed) presentIds.add(id);
+    for (const id of roundUsed) presentIds.add(id);
+    const presentSources = allRosterSources.filter((s) => presentIds.has(s.id));
+
+    const toggleSource = (id: string, cadence: 'battle' | 'round') => {
+      if (cadence === 'battle') {
+        const next = onceUsed.includes(id)
+          ? onceUsed.filter((x) => x !== id)
+          : [...onceUsed, id];
+        onChangeArmyRuleState({ ...armyRuleState, waaaghOncePerBattleUsed: next });
+      } else {
+        const next = roundUsed.includes(id)
+          ? roundUsed.filter((x) => x !== id)
+          : [...roundUsed, id];
+        onChangeArmyRuleState({ ...armyRuleState, waaaghRoundAbilitiesUsed: next });
+      }
+    };
+
+    const handleNewTurnOrRound = () => {
+      if (onClearAllRiledUp) {
+        onClearAllRiledUp();
+      }
+      if (roundUsed.length > 0) {
+        onChangeArmyRuleState({ ...armyRuleState, waaaghRoundAbilitiesUsed: [] });
+      }
+    };
+
+    const canAdvanceTurn = hasTempRiledUp || roundUsed.length > 0;
+
+    return (
+      <div className="space-y-2.5" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-theme-text-secondary">
+              Riled Up:{' '}
+              <span className="font-mono font-bold text-amber-300">
+                {riledUpCount}/{eligibleCards.length}
+              </span>
+            </span>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-theme-card/80 border border-theme-border-subtle text-theme-text-secondary">
+              Always: Re-roll Advance rolls
+            </span>
+          </div>
+
+          {canAdvanceTurn && (
+            <button
+              type="button"
+              onClick={handleNewTurnOrRound}
+              className="min-h-[28px] px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/40 text-[11px] font-bold text-amber-200 hover:bg-amber-500/25 flex items-center gap-1"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Start of Turn: Clear Riled Up</span>
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-1.5 flex-wrap text-[10px]">
+          <span className="font-semibold text-emerald-300/90 uppercase tracking-wider">
+            While Riled Up:
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/35 text-emerald-200 font-semibold">
+            5+ InSv
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/35 text-emerald-200 font-semibold">
+            Ranged [ASSAULT]
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/35 text-emerald-200 font-semibold">
+            Advance &amp; Charge
+          </span>
+        </div>
+
+        {presentSources.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+            {presentSources.map((src) => {
+              const isUsed =
+                src.cadence === 'battle'
+                  ? onceUsed.includes(src.id)
+                  : roundUsed.includes(src.id);
+              return (
+                <button
+                  key={src.id}
+                  type="button"
+                  onClick={() => toggleSource(src.id, src.cadence)}
+                  className={`text-left p-2 rounded-lg border transition-all ${
+                    isUsed
+                      ? 'bg-theme-surface/50 border-theme-border-subtle/60 opacity-65'
+                      : 'bg-theme-card/80 border-theme-border-subtle hover:border-amber-500/50'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-1.5">
+                    <span
+                      className={`text-xs font-bold ${
+                        isUsed ? 'line-through text-theme-text-muted' : 'text-theme-text'
+                      }`}
+                    >
+                      {src.name}
+                    </span>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-theme-surface border border-theme-border-subtle text-theme-text-muted">
+                        {src.cadence === 'battle' ? '1/Battle' : '1/Round'}
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border ${
+                          isUsed
+                            ? 'bg-theme-surface border-theme-border-subtle text-theme-text-muted'
+                            : 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300'
+                        }`}
+                      >
+                        {isUsed ? 'Used' : 'Ready'}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-theme-text-muted leading-snug mt-0.5">
+                    <span className="text-amber-300/90 font-semibold">{src.sourceLabel}:</span>{' '}
+                    {src.summary}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        <p className="text-[11px] text-theme-text-muted">
+          Toggle <span className="text-emerald-300 font-semibold">Riled Up</span> directly on each Orks unit card below (lasts until start of your next turn).
         </p>
       </div>
     );
