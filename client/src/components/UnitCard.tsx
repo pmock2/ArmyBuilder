@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Trash2, Copy, Eye, Skull, Check, Zap, X } from 'lucide-react';
+import { Crown, Trash2, Copy, Eye, Skull, Check, Zap, Flame, X } from 'lucide-react';
 import {
   SelectedUnit,
   Enhancement,
@@ -15,7 +15,9 @@ import {
   UnitPlayState,
   getAttachedChildrenForBodyguard,
   isUnitDestroyedInPlay,
-  unitHasMartialKatah
+  unitHasMartialKatah,
+  unitHasWaaagh,
+  unitIsAlwaysRiledUp
 } from '../utils/playTracking';
 import { ASTRA_ORDERS, TrackableArmyRuleType } from '../utils/armyRuleTracking';
 import { DatasheetModal } from './DatasheetModal';
@@ -133,6 +135,17 @@ export const UnitCard: React.FC<UnitCardProps> = ({
   const activeOrderDef = activeOrderId
     ? ASTRA_ORDERS.find((o) => o.id === activeOrderId) || null
     : null;
+
+  const showRiledUpControl = Boolean(
+    isPlayMode &&
+      !isDestroyedCard &&
+      armyRuleType === 'waaagh' &&
+      onPatchUnitPlayState &&
+      unitHasWaaagh(unit, livingAttachedChildren)
+  );
+  const isAlwaysRiledUp =
+    showRiledUpControl && unitIsAlwaysRiledUp(unit, livingAttachedChildren);
+  const isRiledUp = isAlwaysRiledUp || Boolean(playState[unit.instanceId]?.riledUp);
 
   return (
     <>
@@ -333,8 +346,8 @@ export const UnitCard: React.FC<UnitCardProps> = ({
           </div>
         </div>
 
-        {/* Play Mode Per-Unit Army Rule Controls (Custodes Ka'tah / Astra Militarum Orders) */}
-        {(showKatahToggle || showOrderControl) && (
+        {/* Play Mode Per-Unit Army Rule Controls (Custodes Ka'tah / Astra Militarum Orders / Orks Waaagh!) */}
+        {(showKatahToggle || showOrderControl || showRiledUpControl) && (
           <div
             className="pt-2 border-t border-theme-border-subtle/60 space-y-1.5"
             onClick={(e) => e.stopPropagation()}
@@ -435,6 +448,50 @@ export const UnitCard: React.FC<UnitCardProps> = ({
                       );
                     })}
                   </div>
+                )}
+              </div>
+            )}
+
+            {showRiledUpControl && onPatchUnitPlayState && (
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="text-[11px] font-semibold text-theme-text-muted shrink-0">
+                    Waaagh!
+                  </span>
+                  {isRiledUp && (
+                    <span className="text-[10px] text-emerald-300/85 font-mono truncate">
+                      5+ InSv • Assault • Adv+Chg
+                    </span>
+                  )}
+                </div>
+                {isAlwaysRiledUp ? (
+                  <span className="min-h-[28px] px-2.5 py-0.5 rounded-lg border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 text-[11px] font-bold flex items-center gap-1 shrink-0">
+                    <Flame className="w-3 h-3 stroke-[2.2]" />
+                    <span>Riled Up (Always)</span>
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onPatchUnitPlayState(unit.instanceId, {
+                        riledUp: !isRiledUp
+                      })
+                    }
+                    className={`min-h-[28px] px-2.5 py-0.5 rounded-lg border text-[11px] font-bold flex items-center gap-1.5 transition-colors shrink-0 ${
+                      isRiledUp
+                        ? 'bg-emerald-500/20 border-emerald-500/60 text-emerald-300 hover:bg-emerald-500/30'
+                        : 'bg-theme-surface border-theme-border-subtle text-theme-text-secondary hover:border-amber-500/40'
+                    }`}
+                  >
+                    {isRiledUp ? (
+                      <>
+                        <Flame className="w-3 h-3 stroke-[2.2]" />
+                        <span>Riled Up</span>
+                      </>
+                    ) : (
+                      <span>+ Riled Up</span>
+                    )}
+                  </button>
                 )}
               </div>
             )}

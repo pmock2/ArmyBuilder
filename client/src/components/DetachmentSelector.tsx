@@ -32,6 +32,7 @@ interface DetachmentSelectorProps {
   onChangeArmyRuleState?: (next: ArmyRulePlayState) => void;
   onResetAllKaTah?: () => void;
   onClearAllOrders?: () => void;
+  onClearAllRiledUp?: () => void;
 }
 
 export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
@@ -53,7 +54,8 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
   onSelectDisposition,
   onChangeArmyRuleState,
   onResetAllKaTah,
-  onClearAllOrders
+  onClearAllOrders,
+  onClearAllRiledUp
 }) => {
   const [isBrowserOpen, setIsBrowserOpen] = useState(false);
   const [inspectDetachment, setInspectDetachment] = useState<SelectedDetachment | null>(null);
@@ -133,6 +135,7 @@ export const DetachmentSelector: React.FC<DetachmentSelectorProps> = ({
                 onChangeArmyRuleState={onChangeArmyRuleState}
                 onResetAllKaTah={onResetAllKaTah}
                 onClearAllOrders={onClearAllOrders}
+                onClearAllRiledUp={onClearAllRiledUp}
               />
             </div>
           )}
