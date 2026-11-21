@@ -1,0 +1,275 @@
+[
+  {
+    "file": "BattleShockExamples1.png",
+    "title": "BATTLE-SHOCK EXAMPLES",
+    "caption": "This unit has a starting strength of 3 so is not at or below half-strength, but it is currently battle-shocked, so a battle-shock roll must be made for it. If that roll succeeds, the unit will no longer be battle-shocked.",
+    "sectionNum": "08.05",
+    "sectionTitle": "5. End of Command Phase 08.05"
+  },
+  {
+    "file": "BattleShockExamples2.png",
+    "title": "Battle Shock Examples 2",
+    "caption": "This unit has a starting strength of 10. It has five models remaining, so it is at half-strength and a battle-shock roll must be made for it.",
+    "sectionNum": "08.05",
+    "sectionTitle": "5. End of Command Phase 08.05"
+  },
+  {
+    "file": "BattleShockExamples3.png",
+    "title": "Battle Shock Examples 3",
+    "caption": "This unit has a starting strength of 5. It has two models remaining, so it is below half-strength and a battle-shock roll must be made for it.",
+    "sectionNum": "08.05",
+    "sectionTitle": "5. End of Command Phase 08.05"
+  },
+  {
+    "file": "BattleShockExamples4.png",
+    "title": "Battle Shock Examples 4",
+    "caption": "This VEHICLE has a starting strength of 1 and a W characteristic of 11. It has 3 wounds remaining, so it is below half-strength and a battle-shock roll must be made for it.",
+    "sectionNum": "08.05",
+    "sectionTitle": "5. End of Command Phase 08.05"
+  },
+  {
+    "file": "BenefitOfCover.png",
+    "title": "BENEFIT OF COVER",
+    "caption": "When Unit E makes ranged attacks:\n• Unit A is fully visible to every model in Unit E, so does not have the benefit of cover.\n• Not all of the models in unit B are within a terrain area, so unit B does not have the benefit of cover.\n• All of the models in unit C are within a terrain area, so unit C has the benefit of cover.\n• Unit D is not fully visible to unit E due to an intervening obscuring terrain area, so unit D has the benefit of cover.",
+    "sectionNum": "13.11.01",
+    "sectionTitle": "Gone to Ground 13.11.01"
+  },
+  {
+    "file": "ControllingATerrainObjective.png",
+    "title": "CONTROLLING A TERRAIN OBJECTIVE",
+    "caption": "Both players add together the OC characteristics of all their models that are within the terrain area. The BLUE\nplayer’s level of control is 5, and the RED\nplayer’s level of control is 6. The RED\nplayer therefore controls the objective.\n\nA\nThis VEHICLE has an OC characteristic of 3, and it is within the terrain area.\n\nB\nThis VEHICLE has an OC characteristic of 2, and it is wholly within the terrain area.\n\nC\nThe models in this unit each have an OC characteristic of 1. Six of its models are within the terrain area.\n\nD\nThis unit is currently\nbattle-shocked, so the OC characteristic of all of its models is ‘-’.",
+    "sectionNum": "14.03",
+    "sectionTitle": "Secured Objectives 14.03"
+  },
+  {
+    "file": "DatasheetExample.png",
+    "title": "Datasheet Example",
+    "caption": "",
+    "sectionNum": "02.07",
+    "sectionTitle": "7. Wargear Options 02.07"
+  },
+  {
+    "file": "EngagedMonstersVehiclesShooting.png",
+    "title": "ENGAGED MONSTERS/VEHICLES – SHOOTING",
+    "caption": "A\nThe VEHICLE can shoot at this INFANTRY unit using close-quarters shooting. While resolving those attacks, subtract 1 from hit rolls (excluding attacks made with [CLOSE-QUARTERS] weapons).\n\nThis INFANTRY unit can shoot at the VEHICLE using normal shooting. While resolving those attacks, subtract 1 from hit rolls. As the VEHICLE is engaged, [BLAST] weapons cannot target it, but can target other unengaged units.\n\nB\nThe VEHICLE can shoot at this INFANTRY unit using close-quarters shooting. While resolving those attacks, subtract 1 from hit rolls. As the INFANTRY unit is engaged, [BLAST] weapons cannot target it, but can target other unengaged units.\n\nThis INFANTRY unit is engaged, but can shoot at the VEHICLE using close-quarters shooting. While doing so, it can only make attacks with its [CLOSE-QUARTERS] weapons and can only target the VEHICLE it is engaged with.",
+    "sectionNum": "17.03",
+    "sectionTitle": "Shooting at Engaged Monsters and Vehicles 17.03"
+  },
+  {
+    "file": "ExampleAction.png",
+    "title": "Example Action",
+    "caption": "",
+    "sectionNum": "",
+    "sectionTitle": "Completing an Action"
+  },
+  {
+    "file": "HiddenAndObscuring.png",
+    "title": "HIDDEN AND OBSCURING",
+    "caption": "• There is an obscuring terrain area between all models in units A and D, so none of them are visible to each other.\n• All models in units B and C are within the terrain area and are INFANTRY, so are hidden. However, unit D’s models are within the 15\" detection range of unit B’s models (but not unit C’s), so unit B’s models are visible to unit D’s. Unit D’s models are also visible to the models in units B and C, since they are not within a terrain area.",
+    "sectionNum": "13.11.01",
+    "sectionTitle": "Gone to Ground 13.11.01"
+  },
+  {
+    "file": "MakingAChargeMove.png",
+    "title": "MAKING A CHARGE MOVE",
+    "caption": "A\nThe BLUE unit declares a charge and the charge roll generates a maximum distance of 7\". Unit A is within this distance, so can be selected as a charge target, but the BLUE unit would not be able to end its charge move engaged with this unit after moving around the intervening terrain features.\n\nB\nThis unit is more than 7\" from the charging unit, so it cannot be selected as a charge target, even though the charging unit could end its charge move within 2\" of this unit.\n\nC\nThese units are both within 7\", so can be selected as charge targets. The charging unit can end its charge move engaged with all of its charge targets, so this move can be made.",
+    "sectionNum": "11.03",
+    "sectionTitle": "3. End of Charge Phase 11.03"
+  },
+  {
+    "file": "MakingASurgeMove.png",
+    "title": "MAKING A SURGE MOVE",
+    "caption": "• Unit A shoots, and destroys two models from unit B.\n\n• Unit B has an ability that allows it to make a surge move of D6\" after an enemy unit has shot, if one or more of its models were destroyed by those attacks. The active player rolls one D6, resulting in a 4.\n\n• Unit B makes a surge move, each of its surviving models moving up to 4\" towards the closest enemy unit (unit C). It ends this move engaged with that unit.",
+    "sectionNum": "21.01",
+    "sectionTitle": "Surge Moves 21.01"
+  },
+  {
+    "file": "ModelFullyVisible.png",
+    "title": "Model Fully Visible",
+    "caption": "If every part of another model that is facing the observing model is visible to the observing model (so the only thing blocking visibility to any part of that other model is that model itself), that model is fully visible.",
+    "sectionNum": "06.01",
+    "sectionTitle": "Visibility 06.01"
+  },
+  {
+    "file": "ModelVisible.png",
+    "title": "Model Visible",
+    "caption": "If any part of another model is visible to the observing model, that model is visible.",
+    "sectionNum": "06.01",
+    "sectionTitle": "Visibility 06.01"
+  },
+  {
+    "file": "NormalFight.png",
+    "title": "NORMAL FIGHT",
+    "caption": "Players alternate selecting units to fight. Fights First units must be selected before any other eligible units.\n• The RED player selects their MONSTER to fight. It makes a normal fight, destroying the TRANSPORT.\n• The embarked unit makes an emergency disembark move. After doing so, it is unengaged.",
+    "sectionNum": "",
+    "sectionTitle": "When a Unit is Selected to Fight"
+  },
+  {
+    "file": "ObjectiveConsolidation.png",
+    "title": "OBJECTIVE CONSOLIDATION",
+    "caption": "No enemy units are within 3\" of this MONSTER unit, but an objective is within 3\", so it moves within range of that objective.",
+    "sectionNum": "12.09",
+    "sectionTitle": "5. End of Fight Phase 12.09"
+  },
+  {
+    "file": "OngoingConsolidation.png",
+    "title": "ONGOING CONSOLIDATION",
+    "caption": "The RED player makes consolidation moves first. All engaged units and all units that were eligible to fight this phase can make a consolidation move.\n\nEach model moves up to 3\". Models in base-contact with enemy models cannot be moved.",
+    "sectionNum": "12.09",
+    "sectionTitle": "5. End of Fight Phase 12.09"
+  },
+  {
+    "file": "OverrunFight.png",
+    "title": "OVERRUN FIGHT",
+    "caption": "• The BLUE player has no Fights First units, so the RED player selects their next unit.\n• The RED player selects another Fights First unit. This unit is unengaged, but was engaged with the TRANSPORT at the start of the Fight step, so can make an overrun fight. It first makes a pile-in move to engage the unit that disembarked, then fights, destroying two enemy models.\n• The BLUE player’s unit fights back, but inflicts no damage.",
+    "sectionNum": "",
+    "sectionTitle": "When a Unit is Selected to Fight"
+  },
+  {
+    "file": "PileInMoves.png",
+    "title": "PILE-IN MOVES",
+    "caption": "• The RED player makes pile-in moves first.\n• The BLUE player makes pile-in moves next, but as their model is in base-contact with enemy models, it is not moved.",
+    "sectionNum": "12.02",
+    "sectionTitle": "2. Pile In 12.02"
+  },
+  {
+    "file": "PlungingFire.png",
+    "title": "PLUNGING FIRE",
+    "caption": "A\nThis attacking model is on ground level, but has the TOWERING keyword. The target unit is within 12\" and contains models on ground level, so Plunging Fire improves the BS characteristic of those attacks by 1.\n\nB\nAll of these attacking models are on a section of terrain feature that is 3\" or more in height, and the target unit contains models on ground level, so Plunging Fire improves the BS characteristic of those attacks by 1.",
+    "sectionNum": "22.05",
+    "sectionTitle": "Plunging Fire 22.05"
+  },
+  {
+    "file": "Solid.png",
+    "title": "SOLID",
+    "caption": "Units A and B are not visible to each other, because even though there is a window in this dense terrain feature, it has the Solid rule, so line of sight cannot be drawn through such enclosed gaps that are 3\" or less from ground level.\n\nUnits A and C are visible to each other, because even though this dense terrain feature has the Solid rule, line of sight can be drawn normally through enclosed gaps that are more than 3\" from ground level.",
+    "sectionNum": "13.11.01",
+    "sectionTitle": "Gone to Ground 13.11.01"
+  },
+  {
+    "file": "StartOfFightPhase.png",
+    "title": "START OF FIGHT PHASE",
+    "caption": "Because both RED units made charge moves this turn, they are both Fights First units this phase and are both eligible to make pile-in moves, even though the MONSTER is unengaged as it destroyed its charge target in the Charge phase using the Crushing Impact stratagem (15.06).",
+    "sectionNum": "12.02",
+    "sectionTitle": "2. Pile In 12.02"
+  },
+  {
+    "file": "TakingToTheSkies.png",
+    "title": "TAKING TO THE SKIES",
+    "caption": "• This Riptide Battlesuit can FLY. It makes an advance move with a maximum distance of 16\".\n\n• Before moving the unit, the active player declares that it will take to the skies. That move’s maximum distance is reduced to 14\", but while making that move, the Riptide Battlesuit can move through all enemy units (including VEHICLES) and all terrain features, ignoring any vertical distance that would normally be counted to ascend and descend terrain features.",
+    "sectionNum": "21.03",
+    "sectionTitle": "Flying Models 21.03"
+  },
+  {
+    "file": "TerrainAndMovement.png",
+    "title": "TERRAIN AND MOVEMENT",
+    "caption": "A\nAll sections of this dense terrain feature are more than 2\" in height, so this MONSTER model cannot move through it and must move around it instead.\n\nB\nThese INFANTRY models can move through dense terrain features, such as the walls of this ruin.",
+    "sectionNum": "",
+    "sectionTitle": "Setting Up or Ending a Move"
+  },
+  {
+    "file": "TerrainAndMovement2.png",
+    "title": "Terrain And Movement 2",
+    "caption": "A\nThis INFANTRY model is not being moved over or through any terrain features. Its move through the terrain area shown is therefore unimpeded.\n\nB\nThis INFANTRY model can move vertically and end its move on the top surface of this terrain feature, as it is stable and no part of its base overhangs the outer edge of that surface.\n\nC\nThis VEHICLE model cannot move through this dense terrain feature, but It can move vertically to ascend and descend sections that are more than 2\" in height (provided it does not end that move on top of such sections).",
+    "sectionNum": "",
+    "sectionTitle": "Setting Up or Ending a Move"
+  },
+  {
+    "file": "TerrainPlacedOnAMat.png",
+    "title": "TERRAIN PLACED ON A MAT",
+    "caption": "Two terrain features have been placed on a mat. The edges of this mat define the boundary of this terrain area. Both terrain features are ruins, so use the rules for dense terrain features.",
+    "sectionNum": "13.05",
+    "sectionTitle": "Dense 13.05"
+  },
+  {
+    "file": "TerrainPlacedOnTheBattlefield.png",
+    "title": "TERRAIN PLACED ON THE BATTLEFIELD",
+    "caption": "Three terrain features have been placed directly on the battlefield. The players have agreed on the boundary of the terrain area defined by these features (the shaded rectangle). The BLUE\nfeatures are dense terrain features and the RED\nfeature is a light terrain feature.",
+    "sectionNum": "13.05",
+    "sectionTitle": "Dense 13.05"
+  },
+  {
+    "file": "UnitFullyVisible.png",
+    "title": "Unit Fully Visible",
+    "caption": "If every model in a unit is fully visible to the observing model, that unit is fully visible. When determining this, the observing model can see through other models in that unit.",
+    "sectionNum": "06.01",
+    "sectionTitle": "Visibility 06.01"
+  },
+  {
+    "file": "UnitVisible.png",
+    "title": "Unit Visible",
+    "caption": "If one or more models in a unit are visible to the observing model, that unit is visible.",
+    "sectionNum": "06.01",
+    "sectionTitle": "Visibility 06.01"
+  },
+  {
+    "file": "ex10.png",
+    "title": "RESOLVING OTHER ATTACKS",
+    "caption": "1. HIT ROLLS\nThe controlling player then makes three hit rolls for the heavy bolter. The BS characteristic of the weapon is 4+. Two of the attacks hit the target.\n\n2. WOUND ROLLS\nThe controlling player makes two wound rolls. The weapon has an S characteristic of 5, so rolls of 3+ are required to wound. Both attacks wound the target.\n\n3. SAVE ROLLS\nThe target unit’s controlling player makes two save rolls.\n\n4. INFLICT DAMAGE\n• The lowest result, when modified by the attacking weapon’s AP characteristic of -1, is less than the target’s Sv characteristic of 3+, so that attack inflicts damage. This reduces the model to which that attack was allocated to 0 wounds, which destroys it.\n• The other result is equal to the target’s InSv characteristic of 5+; that attack fails.",
+    "sectionNum": "",
+    "sectionTitle": "Attack Sequence Examples"
+  },
+  {
+    "file": "ex11.png",
+    "title": "ATTACKING ATTACHED UNITS",
+    "caption": "1. SELECT WEAPONS\nThe RED unit is attacking. The following weapons are selected to make attacks with:\n• 7 boltguns (B)\n• 1 plasma pistol (PP)\n• 2 heavy bolters (HB)\n\n2. SELECT TARGETS\nThe BLUE unit is selected as the target. It is an attached unit (19) formed from a Seraphim unit and Saint Celestine (with her two Geminae Superia). The unit is visible to all models in the attacking unit, and all of the selected weapons are in range.\n\n3. RESOLVE ATTACKS\nThere is only one enemy unit being targeted, so the controlling player now gathers attack dice. They decide to resolve the heavy bolter attacks first, which each have an A characteristic of 3, so six attack dice are gathered.\n\nThe attack dice for the remaining weapons will be gathered once the heavy bolter attacks are resolved (see above), as follows:\n• 14 attack dice for the boltguns, which each have an A characteristic of 2.\n• One attack dice for the plasma pistol, which has an A characteristic of 1.",
+    "sectionNum": "",
+    "sectionTitle": "Attack Sequence Examples"
+  },
+  {
+    "file": "ex12.png",
+    "title": "ALLOCATION GROUPS",
+    "caption": "1. CREATE GROUPS AND DECLARE ORDER\nThe target unit’s controlling player divides it into groups: one containing Saint Celestine, one containing the Geminae Superia, and one containing the Seraphim. They then declare the allocation order, choosing the Geminae Superia first (1), hoping their better Sv and InSv characteristics will weather the attacks. The Seraphim must be chosen second (2), as Saint Celestine is a CHARACTER model so must be last in the order (3).\n\n2. RESOLVE ATTACK DICE\nThe heavy bolters’ attacks wound the target five times, so the target unit’s controlling player makes five save rolls.\n\nThe attacks are resolved one at a time, from lowest save rolls to highest:\n• The two results of 1 are allocated first, to the current allocation group (the Geminae Superia). They both inflict damage, and both Geminae Superia are destroyed.\n• The result of 3 is now allocated to the Seraphim, who have become the current allocation group. When modified by the attacking weapon’s AP characteristic of -1, this also inflicts damage, destroying one Seraphim model.\n• The remaining attacks fail, so no further damage is inflicted.\n\n3. SELECT NEXT GROUP OF ATTACK DICE AND REPEAT",
+    "sectionNum": "",
+    "sectionTitle": "Attack Sequence Examples"
+  },
+  {
+    "file": "ex2.png",
+    "title": "MOVING IN A STRAIGHT LINE",
+    "caption": "Both models shown here can move a maximum distance of 6\". They both move 3\" in a straight line, then 3\" in another straight line, for a total movement of 6\".",
+    "sectionNum": "",
+    "sectionTitle": "Ending a Move"
+  },
+  {
+    "file": "ex4.png",
+    "title": "ROTATING",
+    "caption": "This model can move a maximum distance of 12\". It moves in a series of straight lines and rotations, as follows:\nA) Moves 6\" in a straight line\nB) Rotates\nC) Moves 6\" in a straight line\nD) Rotates This model has moved a total of 12\".",
+    "sectionNum": "",
+    "sectionTitle": "Ending a Move"
+  },
+  {
+    "file": "ex5.png",
+    "title": "ROTATING",
+    "caption": "Models without a base are rotated around their central axis (see Frame, 17.02).",
+    "sectionNum": "",
+    "sectionTitle": "Ending a Move"
+  },
+  {
+    "file": "ex6.png",
+    "title": "COHERENCY",
+    "caption": "Every model in this unit is within 2\" of at least one other model in its unit, and every model is within 9\" of every other model in its unit. This unit is therefore in coherency.",
+    "sectionNum": "03.03",
+    "sectionTitle": "Coherency 03.03"
+  },
+  {
+    "file": "ex7.png",
+    "title": "ENGAGEMENT",
+    "caption": "These two units have at least one model within 2\" of the opposing unit, and are therefore engaged with each other.",
+    "sectionNum": "03.04",
+    "sectionTitle": "Engagement 03.04"
+  },
+  {
+    "file": "ex8.png",
+    "title": "MAKING ATTACKS",
+    "caption": "1. SELECT WEAPONS\nThe RED unit is attacking. The following weapons are selected to make attacks with:\n• 2 boltguns (B)\n• 2 bolt pistols (BP)\n• 1 heavy bolter (HB)\n\n2. SELECT TARGETS\nThe BLUE unit is selected as the target. The unit is visible to all models in the attacking unit. All of the selected weapons are in range, with the exception of one bolt pistol. As a result, that weapon will not make any attacks.\n\n3. RESOLVE ATTACKS\nThere is only one enemy unit being targeted, so the controlling player now gathers attack dice:\n• Five attack dice are gathered for the boltguns and bolt pistol, which have A characteristics of 2 and 1 respectively and all make identical attacks.\n• Three attack dice are gathered for the heavy bolter, which has an A characteristic of 3 but does not make identical attacks.",
+    "sectionNum": "",
+    "sectionTitle": "Attack Sequence Examples"
+  },
+  {
+    "file": "ex9.png",
+    "title": "RESOLVING ATTACK DICE",
+    "caption": "1. HIT ROLLS\nThe controlling player chooses to make the five hit rolls for the boltguns and bolt pistol first. The BS characteristic of the weapons is 3+. Four of the attacks hit the target.\n\n2. WOUND ROLLS\nThe controlling player makes four wound rolls. The weapons have an S characteristic of 4 and the target unit has a T characteristic of 3, so rolls of 3+ are required to wound. Three of the attacks wound the target.\n\n3. SAVE ROLLS\nThe target unit’s controlling player makes three save rolls.\n\n4. INFLICT DAMAGE\n• The lowest result is less than both the InSv and Sv characteristics of the target, so that attack inflicts damage. This reduces the model to which that attack was allocated to 0 wounds, which destroys it.\n• The next lowest result is less than the target’s InSv characteristic, but greater than its Sv characteristic of 3+; that attack fails.\n• The other result is greater than the target’s InSv characteristic of 5+; that attack also fails.",
+    "sectionNum": "",
+    "sectionTitle": "Attack Sequence Examples"
+  }
+]
