@@ -15,6 +15,7 @@ function cleanHtmlText(snippet) {
   return snippet
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<span[^>]*class="faqErrataBtn"[^>]*>[\s\S]*?<\/span>/gi, '')
     .replace(/<hr[^>]*>/gi, '\n')
     .replace(/<br\s*\/?>/gi, '\n')
     .replace(/<\/p>/gi, '\n\n')
@@ -33,6 +34,7 @@ function cleanHtmlText(snippet) {
     .replace(/&gt;/g, '>')
     .replace(/[ \t]+/g, ' ')
     .replace(/ *\n */g, '\n')
+    .replace(/\n(FAQ|Errata)\nShow\n/gi, '\n\n[$1]\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 }
@@ -87,6 +89,11 @@ while ((m = headingRegex.exec(html)) !== null) {
   const numMatch = headerHtml.match(/class="h_number">([^<]+)<\/span>/i);
   const sectionNum = numMatch ? numMatch[1].trim() : '';
   const title = cleanHtmlText(headerHtml).replace(/\s+/g, ' ').trim();
+  const lowerTitle = title.toLowerCase();
+  // Do NOT treat inline FAQ/Errata spoiler headers as section boundaries — keep them attached to their parent rule section!
+  if (lowerTitle === 'faq' || lowerTitle === 'errata' || lowerTitle === 'faq / errata') {
+    continue;
+  }
   const id = idMatch ? idMatch[1] : (sectionNum ? `sec-${sectionNum}` : title.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
   allHeadings.push({
     index: m.index,
