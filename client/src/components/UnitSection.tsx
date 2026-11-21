@@ -3,9 +3,11 @@ import { Plus } from 'lucide-react';
 import { SelectedUnit, Enhancement, SelectedDetachment, getUnitTotalPts } from '../types/roster';
 import {
   RosterPlayState,
+  UnitPlayState,
   getAttachedChildrenForBodyguard,
   isUnitDestroyedInPlay
 } from '../utils/playTracking';
+import { TrackableArmyRuleType } from '../utils/armyRuleTracking';
 import { UnitCard } from './UnitCard';
 
 interface UnitSectionProps {
@@ -17,9 +19,11 @@ interface UnitSectionProps {
   selectedDetachments?: SelectedDetachment[];
   isPlayMode?: boolean;
   playState?: RosterPlayState;
+  armyRuleType?: TrackableArmyRuleType | null;
   unitLimit: number;
   onOpenBrowser: (roleKey: string) => void;
   onStepPlayRemaining?: (unit: SelectedUnit, delta: number) => void;
+  onPatchUnitPlayState?: (unitId: string, patch: Partial<UnitPlayState>) => void;
   onOpenDatasheet?: (unit: SelectedUnit) => void;
   onUpdateUnit: (updated: SelectedUnit) => void;
   onDuplicateUnit: (unit: SelectedUnit) => void;
@@ -36,8 +40,10 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
   selectedDetachments = [],
   isPlayMode = false,
   playState = {},
+  armyRuleType = null,
   onOpenBrowser,
   onStepPlayRemaining,
+  onPatchUnitPlayState,
   onOpenDatasheet,
   onUpdateUnit,
   onDuplicateUnit,
@@ -116,7 +122,9 @@ export const UnitSection: React.FC<UnitSectionProps> = ({
               selectedDetachments={selectedDetachments}
               isPlayMode={isPlayMode}
               playState={playState}
+              armyRuleType={armyRuleType}
               onStepPlayRemaining={onStepPlayRemaining}
+              onPatchUnitPlayState={onPatchUnitPlayState}
               onOpenDatasheet={onOpenDatasheet}
               onUpdateUnit={onUpdateUnit}
               onDuplicateUnit={onDuplicateUnit}
