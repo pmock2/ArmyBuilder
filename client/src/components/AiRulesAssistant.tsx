@@ -116,7 +116,7 @@ export const AiRulesAssistant: React.FC<AiRulesAssistantProps> = ({
       ]);
 
       // 1. Lexical retrieval of top rules (with chapter + cross-reference expansion), keywords, stratagems, and candidate diagrams
-      const searchRes = searchRulesAndKeywords(q, rules, keywords, 6, 4);
+      const searchRes = searchRulesAndKeywords(q, rules, keywords, 6, 4, diagrams);
       const matchedStratagems = searchStratagems(q, activeRoster?.detachments || [], 4);
       const candidateDiagrams = searchRulesDiagrams(
         q,
