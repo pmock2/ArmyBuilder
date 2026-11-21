@@ -99,22 +99,26 @@ export async function loadFactionArmyRules(factionId: string): Promise<FactionAr
 }
 
 const STOP_WORDS = new Set([
-  'what', 'when', 'where', 'which', 'does', 'with', 'from', 'have', 'that', 'this',
-  'work', 'works', 'rule', 'rules', 'about', 'into', 'they', 'them', 'their', 'your',
-  'there', 'then', 'than', 'only', 'also', 'still', 'just', 'make', 'unit', 'units',
-  'model', 'models', 'turn', 'phase'
+  'the', 'and', 'for', 'are', 'can', 'how', 'you', 'all', 'any', 'not', 'but', 'its',
+  'was', 'were', 'been', 'being', 'will', 'would', 'could', 'should', 'may', 'might',
+  'must', 'into', 'onto', 'over', 'under', 'with', 'without', 'when', 'where', 'what',
+  'which', 'while', 'after', 'before', 'during', 'between', 'does', 'did', 'done',
+  'have', 'has', 'had', 'this', 'that', 'these', 'those', 'from', 'they', 'them',
+  'their', 'your', 'our', 'out', 'off', 'use', 'using', 'used', 'get', 'gets', 'getting',
+  'give', 'gives', 'take', 'takes', 'taking', 'make', 'makes', 'making', 'work', 'works',
+  'working', 'rule', 'rules', 'mean', 'means', 'explain', 'tell', 'show', 'help', 'please',
+  'question', 'need', 'want', 'know', 'one', 'two', 'about', 'there', 'then', 'than',
+  'only', 'also', 'still', 'just', 'unit', 'units', 'model', 'models', 'turn', 'phase'
 ]);
 
-const SHORT_WARHAMMER_TOKENS = new Set(['ap', 'cp', 'oc', 'ws', 'bs', 'sv', 'mw', 'ld', 'hp']);
+const SHORT_WARHAMMER_TOKENS = new Set(['ap', 'cp', 'oc', 'ws', 'bs', 'sv', 'mw', 'ld', 'hp', 'fly']);
 
 function stemToken(token: string): string {
   if (token.length <= 4) return token;
   if (token.endsWith('ing') && token.length > 5) {
-    const base = token.slice(0, -3);
-    // e.g. advancing -> advanc, charging -> charg, shooting -> shoot
-    return base;
+    return token.slice(0, -3);
   }
-  if (token.endsWith('ies') && token.length > 5) {
+  if (token.endsWith('ies') && token.length > 4) {
     return token.slice(0, -3) + 'y';
   }
   if (token.endsWith('ed') && token.length > 5) {
@@ -129,43 +133,66 @@ function stemToken(token: string): string {
   return token;
 }
 
-function tokenizeQuery(query: string): { tokens: string[]; bigrams: string[] } {
-  const rawWords = query
+function countOccurrences(haystack: string, token: string): number {
+  if (token.length <= 3) {
+    const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const matches = haystack.match(new RegExp(`\\b${escaped}\\b`, 'g'));
+    return matches ? matches.length : 0;
+  }
+  return haystack.split(token).length - 1;
+}
+
+function containsToken(haystack: string, token: string): boolean {
+  return countOccurrences(haystack, token) > 0;
+}
+
+function tokenizeQuery(query: string): { tokens: string[]; phrases: string[] } {
+  const cleaned = query
     .toLowerCase()
     .replace(/[^\w\s.-]/g, ' ')
-    .split(/\s+/)
-    .filter(Boolean);
+    .replace(/\s+/g, ' ')
+    .trim();
+  const rawWords = cleaned.split(' ').filter(Boolean);
 
   const tokens = new Set<string>();
-  const filteredWords: string[] = [];
 
   for (const w of rawWords) {
     if (SHORT_WARHAMMER_TOKENS.has(w) || /^\d{2}\.\d{2}/.test(w)) {
       tokens.add(w);
-      filteredWords.push(w);
       continue;
     }
     if (w.length < 3 || STOP_WORDS.has(w)) continue;
     tokens.add(w);
     const stemmed = stemToken(w);
-    if (stemmed.length >= 3) tokens.add(stemmed);
-    filteredWords.push(w);
+    if (stemmed.length >= 3 && !STOP_WORDS.has(stemmed)) tokens.add(stemmed);
   }
 
   // Fallback if all words were stop words (e.g. "how do units move")
   if (tokens.size === 0) {
     for (const w of rawWords) {
-      if (w.length >= 3) tokens.add(w);
+      if (w.length >= 3 && !['the', 'and', 'for', 'are', 'can', 'how', 'does', 'what'].includes(w)) {
+        tokens.add(w);
+      }
     }
   }
 
-  const bigrams: string[] = [];
-  for (let i = 0; i < rawWords.length - 1; i++) {
-    const pair = `${rawWords[i]} ${rawWords[i + 1]}`;
-    if (pair.length >= 6) bigrams.push(pair);
+  // Extract 2-, 3-, and 4-word phrases that contain at least one non-stop word
+  // so exact named rules like "take to the skies", "benefit of cover", "feel no pain" match verbatim
+  const phrases: string[] = [];
+  for (let len = 2; len <= 4; len++) {
+    for (let i = 0; i <= rawWords.length - len; i++) {
+      const slice = rawWords.slice(i, i + len);
+      const hasContentWord = slice.some(w => (w.length >= 3 && !STOP_WORDS.has(w)) || SHORT_WARHAMMER_TOKENS.has(w));
+      if (!hasContentWord) continue;
+      // Don't start or end a phrase with weak question words
+      if (['how', 'what', 'when', 'does', 'can', 'the', 'and', 'for'].includes(slice[0])) continue;
+      if (['work', 'works', 'rule', 'rules', 'mean', 'the', 'and', 'for', 'to', 'of', 'in'].includes(slice[slice.length - 1])) continue;
+      const phrase = slice.join(' ');
+      if (phrase.length >= 6) phrases.push(phrase);
+    }
   }
 
-  return { tokens: Array.from(tokens), bigrams };
+  return { tokens: Array.from(tokens), phrases };
 }
 
 export interface SearchRulesResult {
@@ -179,14 +206,27 @@ export function searchRulesAndKeywords(
   rules: RuleSection[],
   keywords: KeywordEntry[],
   maxRules: number = 6,
-  maxKeywords: number = 4
+  maxKeywords: number = 4,
+  diagrams: RuleDiagram[] = []
 ): SearchRulesResult {
-  const { tokens, bigrams } = tokenizeQuery(query);
-  if (tokens.length === 0) {
+  const { tokens, phrases } = tokenizeQuery(query);
+  if (tokens.length === 0 && phrases.length === 0) {
     return { ruleSections: [], expandedSections: [], keywords: [] };
   }
 
-  // 1. Score Rule Sections
+  // Precompute Inverse Document Frequency (IDF) so rare domain terms ("skies", "overwatch", "coherency")
+  // vastly outrank generic words ("move", "attack", "target").
+  const docCount = Math.max(rules.length, 1);
+  const idfMap = new Map<string, number>();
+  for (const token of tokens) {
+    let df = 0;
+    for (const r of rules) {
+      if (containsToken(`${r.title} ${r.text}`.toLowerCase(), token)) df++;
+    }
+    idfMap.set(token, Math.log((docCount + 1) / (df + 1)) + 1);
+  }
+
+  // 1. Score Rule Sections using IDF-weighted tokens + exact multi-word phrase boosts
   const scoredRules = rules
     .map(section => {
       let score = 0;
@@ -194,19 +234,22 @@ export function searchRulesAndKeywords(
       const textLower = section.text.toLowerCase();
 
       for (const token of tokens) {
-        if (section.sectionNum && section.sectionNum === token) score += 25;
-        else if (section.sectionNum && section.sectionNum.includes(token)) score += 10;
+        const idf = idfMap.get(token) || 1;
+        if (section.sectionNum && section.sectionNum === token) score += 30;
+        else if (section.sectionNum && section.sectionNum.includes(token)) score += 12;
 
-        if (titleLower.includes(token)) score += 9;
-        const matches = textLower.split(token).length - 1;
+        if (containsToken(titleLower, token)) score += 6 * idf;
+        const matches = countOccurrences(textLower, token);
         if (matches > 0) {
-          score += Math.min(matches, 6) * 1.6;
+          score += Math.min(matches, 5) * 1.4 * idf;
         }
       }
 
-      for (const bg of bigrams) {
-        if (titleLower.includes(bg)) score += 16;
-        else if (textLower.includes(bg)) score += 6;
+      for (const phrase of phrases) {
+        const wordCount = phrase.split(' ').length;
+        const phraseWeight = wordCount >= 3 ? 28 : 16;
+        if (titleLower.includes(phrase)) score += phraseWeight * 1.5;
+        else if (textLower.includes(phrase)) score += phraseWeight;
       }
 
       return { section, score };
@@ -215,7 +258,8 @@ export function searchRulesAndKeywords(
     .sort((a, b) => b.score - a.score)
     .slice(0, maxRules);
 
-  // 1b. Expand with sibling chapter sections (for top 2 non-glossary chapters) + explicit (XX.XX) cross-references
+  // 1b. Expand with sibling chapter sections (for top 2 non-glossary chapters),
+  // diagram-title reverse links, and explicit (XX.XX) cross-references
   const bySectionNum = new Map<string, RuleSection>();
   for (const r of rules) {
     if (r.sectionNum) bySectionNum.set(r.sectionNum, r);
@@ -229,6 +273,19 @@ export function searchRulesAndKeywords(
 
   for (const item of scoredRules) {
     addSection(item.section);
+  }
+
+  // Reverse-link: if a diagram title directly matches a query phrase/token (e.g. "TAKING TO THE SKIES" -> 21.03),
+  // guarantee its parent rule section is included
+  for (const d of diagrams) {
+    if (!d.sectionNum) continue;
+    const dTitle = d.title.toLowerCase();
+    const phraseHit = phrases.some(p => dTitle.includes(p));
+    const tokenHits = tokens.filter(t => (idfMap.get(t) || 1) >= 2.5 && containsToken(dTitle, t)).length;
+    if (phraseHit || tokenHits >= 1) {
+      const target = bySectionNum.get(d.sectionNum);
+      if (target) addSection(target);
+    }
   }
 
   // Include all sibling sub-sections of the top 2 matched chapters (except Ch. 24 glossary)
@@ -272,15 +329,17 @@ export function searchRulesAndKeywords(
       const summaryLower = keyword.summary.toLowerCase();
 
       for (const token of tokens) {
-        if (nameLower === token) score += 18;
-        else if (nameLower.includes(token)) score += 10;
-        if (summaryLower.includes(token)) score += 4;
-        if (descLower.includes(token)) score += 2;
+        const idf = idfMap.get(token) || 1;
+        if (nameLower === token) score += 18 * idf;
+        else if (containsToken(nameLower, token)) score += 8 * idf;
+        if (containsToken(summaryLower, token)) score += 3 * idf;
+        if (containsToken(descLower, token)) score += 1.5 * idf;
       }
 
-      for (const bg of bigrams) {
-        if (nameLower.includes(bg)) score += 18;
-        else if (summaryLower.includes(bg)) score += 6;
+      for (const phrase of phrases) {
+        if (nameLower.includes(phrase)) score += 24;
+        else if (summaryLower.includes(phrase)) score += 10;
+        else if (descLower.includes(phrase)) score += 6;
       }
 
       return { keyword, score };
@@ -301,8 +360,8 @@ export function searchStratagems(
   detachments: SelectedDetachment[] = [],
   maxStratagems: number = 4
 ): { stratagem: Stratagem; source: string; score: number }[] {
-  const { tokens, bigrams } = tokenizeQuery(query);
-  if (tokens.length === 0) return [];
+  const { tokens, phrases } = tokenizeQuery(query);
+  if (tokens.length === 0 && phrases.length === 0) return [];
 
   const pool: { stratagem: Stratagem; source: string }[] = [
     ...CORE_STRATAGEMS.map(s => ({ stratagem: s, source: 'Core Stratagem' })),
@@ -319,20 +378,20 @@ export function searchStratagems(
       const phaseLower = stratagem.phase.toLowerCase();
 
       for (const token of tokens) {
-        if (nameLower.includes(token)) score += 12;
-        if (phaseLower.includes(token)) score += 3;
-        const matches = descLower.split(token).length - 1;
+        if (containsToken(nameLower, token)) score += 12;
+        if (containsToken(phaseLower, token)) score += 3;
+        const matches = countOccurrences(descLower, token);
         if (matches > 0) score += Math.min(matches, 4) * 1.5;
       }
 
-      for (const bg of bigrams) {
-        if (nameLower.includes(bg)) score += 20;
-        else if (descLower.includes(bg)) score += 6;
+      for (const phrase of phrases) {
+        if (nameLower.includes(phrase)) score += 24;
+        else if (descLower.includes(phrase)) score += 10;
       }
 
       return { stratagem, source, score };
     })
-    .filter(item => item.score >= 6)
+    .filter(item => item.score >= 8)
     .sort((a, b) => b.score - a.score)
     .slice(0, maxStratagems);
 }
@@ -344,7 +403,7 @@ export function searchRulesDiagrams(
   maxDiagrams: number = 4
 ): { diagram: RuleDiagram; score: number }[] {
   if (!diagrams.length) return [];
-  const { tokens, bigrams } = tokenizeQuery(query);
+  const { tokens, phrases } = tokenizeQuery(query);
 
   const matchedNums = new Set(matchedSections.map(s => s.sectionNum).filter(Boolean));
   const matchedChapters = new Set(
@@ -364,24 +423,24 @@ export function searchRulesDiagrams(
       if (diagram.sectionNum && matchedNums.has(diagram.sectionNum)) {
         score += 12;
       } else if (chapter && matchedChapters.has(chapter)) {
-        score += 5;
+        score += 4;
       }
 
       for (const token of tokens) {
-        if (titleLower.includes(token)) score += 10;
-        if (secTitleLower.includes(token)) score += 6;
-        if (captionLower.includes(token)) score += 3;
+        if (containsToken(titleLower, token)) score += 12;
+        if (containsToken(secTitleLower, token)) score += 6;
+        if (containsToken(captionLower, token)) score += 4;
       }
 
-      for (const bg of bigrams) {
-        if (titleLower.includes(bg)) score += 18;
-        if (captionLower.includes(bg)) score += 8;
-        if (secTitleLower.includes(bg)) score += 8;
+      for (const phrase of phrases) {
+        if (titleLower.includes(phrase)) score += 24;
+        else if (captionLower.includes(phrase)) score += 14;
+        if (secTitleLower.includes(phrase)) score += 10;
       }
 
       return { diagram, score };
     })
-    .filter(item => item.score >= 8)
+    .filter(item => item.score >= 10)
     .sort((a, b) => b.score - a.score)
     .slice(0, maxDiagrams);
 }
