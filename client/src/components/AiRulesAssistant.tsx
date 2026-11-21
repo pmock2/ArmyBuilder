@@ -252,15 +252,6 @@ ${diagramOptionsText}`;
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const quickQuestions = [
-    "Can I shoot after Advancing?",
-    "Can a Leader and Support attach to the same unit?",
-    "How does [BLAST] work against multiple models?",
-    "Can I shoot Pistol / Close-quarters weapons in melee?",
-    "How does Benefit of Cover work?",
-    "When does Battle-shock happen and what does it do?"
-  ];
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-end bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="bg-slate-900 border-l border-slate-700 w-full max-w-xl h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-250">
@@ -475,23 +466,6 @@ ${diagramOptionsText}`;
           )}
 
           <div ref={messagesEndRef} />
-        </div>
-
-        {/* Quick Questions Pills */}
-        <div className="px-4 py-2 bg-slate-900/90 border-t border-slate-800 flex-shrink-0">
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
-            {quickQuestions.map((q, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => handleSend(q)}
-                disabled={isAsking}
-                className="whitespace-nowrap text-[11px] px-2.5 py-1 rounded-full bg-slate-800/90 hover:bg-slate-750 text-slate-300 hover:text-white border border-slate-700/80 transition-colors flex-shrink-0"
-              >
-                {q}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Input Bar */}
