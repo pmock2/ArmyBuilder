@@ -170,6 +170,7 @@ function tokenizeQuery(query: string): { tokens: string[]; bigrams: string[] } {
 
 export interface SearchRulesResult {
   ruleSections: { section: RuleSection; score: number }[];
+  expandedSections: RuleSection[];
   keywords: { keyword: KeywordEntry; score: number }[];
 }
 
@@ -182,7 +183,7 @@ export function searchRulesAndKeywords(
 ): SearchRulesResult {
   const { tokens, bigrams } = tokenizeQuery(query);
   if (tokens.length === 0) {
-    return { ruleSections: [], keywords: [] };
+    return { ruleSections: [], expandedSections: [], keywords: [] };
   }
 
   // 1. Score Rule Sections
@@ -214,6 +215,54 @@ export function searchRulesAndKeywords(
     .sort((a, b) => b.score - a.score)
     .slice(0, maxRules);
 
+  // 1b. Expand with sibling chapter sections (for top 2 non-glossary chapters) + explicit (XX.XX) cross-references
+  const bySectionNum = new Map<string, RuleSection>();
+  for (const r of rules) {
+    if (r.sectionNum) bySectionNum.set(r.sectionNum, r);
+  }
+
+  const expandedMap = new Map<string, RuleSection>();
+  const addSection = (s: RuleSection) => {
+    const key = s.sectionNum ? `num:${s.sectionNum}` : `id:${s.id}`;
+    if (!expandedMap.has(key)) expandedMap.set(key, s);
+  };
+
+  for (const item of scoredRules) {
+    addSection(item.section);
+  }
+
+  // Include all sibling sub-sections of the top 2 matched chapters (except Ch. 24 glossary)
+  // so "(see below)" cards like 09.04-09.07, 10.04-10.07, 11.04, 12.03-12.08, 15.02-15.12, 18.04-18.07 are always present
+  const expandedChapters = new Set<string>();
+  for (const item of scoredRules) {
+    const ch = item.section.sectionNum?.split('.')[0];
+    if (!ch || ch === '24' || expandedChapters.has(ch)) continue;
+    expandedChapters.add(ch);
+    for (const r of rules) {
+      if (r.sectionNum && r.sectionNum.startsWith(`${ch}.`)) {
+        addSection(r);
+      }
+    }
+    if (expandedChapters.size >= 2) break;
+  }
+
+  // Follow explicit rule cross-references like (03.04) or (24.13) found in the selected sections
+  const currentSections = Array.from(expandedMap.values());
+  for (const sec of currentSections) {
+    const refMatches = sec.text.matchAll(/\((\d{2}\.\d{2}(?:\.\d{2})?)\)/g);
+    for (const match of refMatches) {
+      const target = bySectionNum.get(match[1]);
+      if (target && expandedMap.size < 28) {
+        addSection(target);
+      }
+    }
+  }
+
+  // Sort expanded sections in natural sectionNum order for clean reading
+  const expandedSections = Array.from(expandedMap.values()).sort((a, b) =>
+    (a.sectionNum || '99').localeCompare(b.sectionNum || '99', undefined, { numeric: true })
+  );
+
   // 2. Score Keywords
   const scoredKeywords = keywords
     .map(keyword => {
@@ -242,6 +291,7 @@ export function searchRulesAndKeywords(
 
   return {
     ruleSections: scoredRules,
+    expandedSections,
     keywords: scoredKeywords
   };
 }

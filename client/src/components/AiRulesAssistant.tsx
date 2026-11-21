@@ -115,12 +115,12 @@ export const AiRulesAssistant: React.FC<AiRulesAssistantProps> = ({
           : Promise.resolve([])
       ]);
 
-      // 1. Lexical retrieval of top rules, keywords, stratagems, and candidate diagrams
+      // 1. Lexical retrieval of top rules (with chapter + cross-reference expansion), keywords, stratagems, and candidate diagrams
       const searchRes = searchRulesAndKeywords(q, rules, keywords, 6, 4);
       const matchedStratagems = searchStratagems(q, activeRoster?.detachments || [], 4);
       const candidateDiagrams = searchRulesDiagrams(
         q,
-        searchRes.ruleSections.map(r => r.section),
+        searchRes.expandedSections,
         diagrams,
         4
       );
@@ -131,9 +131,9 @@ export const AiRulesAssistant: React.FC<AiRulesAssistantProps> = ({
         ...matchedStratagems.map(s => ({ title: s.stratagem.name, sectionNum: `${s.stratagem.cp}CP` }))
       ];
 
-      // Build context string from retrieved rules
-      const ruleSnippets = searchRes.ruleSections.map(r =>
-        `[RULE SECTION ${r.section.sectionNum || ''}: ${r.section.title}]\n${r.section.text}`
+      // Build context string from retrieved + expanded chapter/cross-referenced rules
+      const ruleSnippets = searchRes.expandedSections.map(sec =>
+        `[RULE SECTION ${sec.sectionNum || ''}: ${sec.title}]\n${sec.text}`
       ).join('\n\n---\n\n');
 
       const keywordSnippets = searchRes.keywords.map(k =>
