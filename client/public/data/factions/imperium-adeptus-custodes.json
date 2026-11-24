@@ -2500,6 +2500,18 @@
         {
           "models": 4,
           "cost": 45
+        },
+        {
+          "models": 5,
+          "cost": 50
+        },
+        {
+          "models": 9,
+          "cost": 80
+        },
+        {
+          "models": 10,
+          "cost": 90
         }
       ],
       "stats": {
@@ -4191,6 +4203,10 @@
         {
           "models": 2,
           "cost": 220
+        },
+        {
+          "models": 3,
+          "cost": 330
         }
       ],
       "stats": {
@@ -4380,6 +4396,18 @@
         {
           "models": 4,
           "cost": 50
+        },
+        {
+          "models": 5,
+          "cost": 55
+        },
+        {
+          "models": 9,
+          "cost": 90
+        },
+        {
+          "models": 10,
+          "cost": 100
         }
       ],
       "stats": {
@@ -4476,6 +4504,18 @@
         {
           "models": 4,
           "cost": 55
+        },
+        {
+          "models": 5,
+          "cost": 60
+        },
+        {
+          "models": 9,
+          "cost": 100
+        },
+        {
+          "models": 10,
+          "cost": 110
         }
       ],
       "stats": {
