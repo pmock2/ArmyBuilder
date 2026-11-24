@@ -6,6 +6,7 @@ export interface UnitPlayState {
   woundsRemaining?: number;
   kaTahUsed?: boolean;
   activeOrder?: string | null;
+  riledUp?: boolean;
 }
 
 export type RosterPlayState = Record<string, UnitPlayState>;
@@ -71,6 +72,10 @@ export interface ArmyRulePlayState {
 
   // Tyranids: Shadow in the Warp
   shadowInTheWarpUsed?: boolean;
+
+  // Orks: Waaagh! / Riled Up sources
+  waaaghOncePerBattleUsed?: string[];
+  waaaghRoundAbilitiesUsed?: string[];
 }
 
 const PLAY_STATE_PREFIX = 'wh40k_11e_play_state_';
@@ -163,6 +168,7 @@ function cleanUnitPlayEntry(entry: UnitPlayState): UnitPlayState | null {
   if (typeof entry.woundsRemaining === 'number') cleaned.woundsRemaining = entry.woundsRemaining;
   if (entry.kaTahUsed) cleaned.kaTahUsed = true;
   if (entry.activeOrder) cleaned.activeOrder = entry.activeOrder;
+  if (entry.riledUp) cleaned.riledUp = true;
   return Object.keys(cleaned).length > 0 ? cleaned : null;
 }
 
@@ -195,6 +201,15 @@ export function clearAllOrdersInPlayState(playState: RosterPlayState): RosterPla
   const nextState: RosterPlayState = {};
   for (const [id, entry] of Object.entries(playState)) {
     const cleaned = cleanUnitPlayEntry({ ...entry, activeOrder: undefined });
+    if (cleaned) nextState[id] = cleaned;
+  }
+  return nextState;
+}
+
+export function clearAllRiledUpInPlayState(playState: RosterPlayState): RosterPlayState {
+  const nextState: RosterPlayState = {};
+  for (const [id, entry] of Object.entries(playState)) {
+    const cleaned = cleanUnitPlayEntry({ ...entry, riledUp: undefined });
     if (cleaned) nextState[id] = cleaned;
   }
   return nextState;
@@ -405,6 +420,39 @@ export function unitHasMartialKatah(
       (a) => a.name.toLowerCase() === "martial ka'tah"
     )
   );
+}
+
+export function unitHasWaaagh(
+  unit: SelectedUnit,
+  livingChildren: AttachedChildMember[] = []
+): boolean {
+  if (unit.datasheet?.isAllied) return false;
+  const hasOwn = (unit.datasheet?.abilities || []).some(
+    (a) => a.name.trim().toLowerCase() === 'waaagh!'
+  );
+  if (hasOwn) return true;
+  return livingChildren.some((c) =>
+    (c.unit.datasheet?.abilities || []).some(
+      (a) => a.name.trim().toLowerCase() === 'waaagh!'
+    )
+  );
+}
+
+export function unitIsAlwaysRiledUp(
+  unit: SelectedUnit,
+  livingChildren: AttachedChildMember[] = []
+): boolean {
+  const checkSingle = (u: SelectedUnit): boolean => {
+    const hasEffigy = (u.datasheet?.abilities || []).some(
+      (a) => a.name.trim().toLowerCase() === 'waaagh! effigy'
+    );
+    if (hasEffigy) return true;
+    const enhName = (u.enhancement?.name || '').replace(/[’‘]/g, "'").trim().toLowerCase();
+    if (enhName === 'mekwaaagh! mastermind') return true;
+    return false;
+  };
+  if (checkSingle(unit)) return true;
+  return livingChildren.some((c) => checkSingle(c.unit));
 }
 
 /**

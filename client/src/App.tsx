@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, getMandatoryEnhancementForUnit, normalizeDetachmentName, isRetinueUnit, hasAttachedCryptek } from './types/roster';
+import { ArmyRoster, BattleSize, Datasheet, SelectedUnit, SelectedDetachment, getUnitRole, isLegendsUnit, isUnitAllowedForChapter, isEnhancementEligibleForUnit, getMandatoryEnhancementForUnit, normalizeDetachmentName, isRetinueUnit, hasAttachedCryptek, getUnitBaseCostForModelCount } from './types/roster';
 import { FactionDetail } from './types/faction';
 import { loadAllRosters, saveRoster, deleteRoster, duplicateRoster, loadActiveRosterId, saveActiveRosterId, loadPlayMode, savePlayMode } from './utils/storage';
 import { validateClientRoster, BATTLE_SIZE_CONFIGS } from './utils/validator';
@@ -38,6 +38,7 @@ import {
   patchUnitPlayState,
   resetAllKaTahInPlayState,
   clearAllOrdersInPlayState,
+  clearAllRiledUpInPlayState,
   isUnitDestroyedInPlay,
   isUnitConsolidatedUnderBodyguard
 } from './utils/playTracking';
@@ -162,6 +163,7 @@ export const App: React.FC = () => {
         let nextUnit = u;
         const oldWgJson = JSON.stringify(u.datasheet.wargearGroups || []);
         const newWgJson = JSON.stringify(freshDs.wargearGroups || []);
+        const costTiersChanged = JSON.stringify(u.datasheet.costTiers || []) !== JSON.stringify(freshDs.costTiers || []);
         if (
           oldWgJson !== newWgJson ||
           JSON.stringify(u.datasheet.abilities || []) !== JSON.stringify(freshDs.abilities || []) ||
@@ -174,6 +176,7 @@ export const App: React.FC = () => {
           JSON.stringify(u.datasheet.duplicatePenalties || []) !== JSON.stringify(freshDs.duplicatePenalties || []) ||
           Boolean(u.datasheet.isLegends) !== Boolean(freshDs.isLegends) ||
           u.datasheet.baseCost !== freshDs.baseCost ||
+          costTiersChanged ||
           (u.cost === 0 && freshDs.baseCost > 0) ||
           u.datasheet.canBeLed === undefined ||
           u.datasheet.canHaveSupport === undefined
@@ -182,9 +185,8 @@ export const App: React.FC = () => {
             Math.max(u.modelsCount || 1, freshDs.minModels || 1),
             freshDs.maxModels || freshDs.minModels || 1
           );
-          const matchedTier = freshDs.costTiers?.find(t => t.models === nextModelsCount);
-          const updatedCost = u.cost === 0 && freshDs.baseCost > 0
-            ? (matchedTier ? matchedTier.cost : freshDs.baseCost)
+          const updatedCost = (costTiersChanged || u.datasheet.baseCost !== freshDs.baseCost || (u.cost === 0 && freshDs.baseCost > 0))
+            ? getUnitBaseCostForModelCount(freshDs, nextModelsCount)
             : u.cost;
           nextUnit = {
             ...nextUnit,
@@ -727,6 +729,15 @@ export const App: React.FC = () => {
     });
   };
 
+  const handleClearAllRiledUp = () => {
+    if (!activeRoster) return;
+    setPlayState((prev) => {
+      const next = clearAllRiledUpInPlayState(prev);
+      saveRosterPlayState(activeRoster.id, next);
+      return next;
+    });
+  };
+
   // Launch Unit Browser
   const handleOpenBrowser = (roleKey: string) => {
     setBrowserRoleFilter(roleKey);
@@ -972,6 +983,7 @@ export const App: React.FC = () => {
               onChangeArmyRuleState={handleChangeArmyRuleState}
               onResetAllKaTah={handleResetAllKaTah}
               onClearAllOrders={handleClearAllOrders}
+              onClearAllRiledUp={handleClearAllRiledUp}
             />
 
             {/* 2. Battlefield Role Unit Sections */}
