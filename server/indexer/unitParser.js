@@ -387,10 +387,30 @@ function createUnitParser({
       return null;
     }
 
+    // Gather entry-level modifiers (including modifierGroups, e.g. Custodes Sisters of Silence & Vertus Praetors)
+    const entryGroupModifiers = (entry.modifierGroups || []).flatMap(mg =>
+      (mg.modifiers || []).map(m => {
+        if (mg.conditions && mg.conditions.length > 0 && (!mg.conditionGroups || mg.conditionGroups.length === 0)) {
+          return {
+            ...m,
+            conditions: [...mg.conditions, ...(m.conditions || [])]
+          };
+        }
+        if (mg.conditionGroups && mg.conditionGroups.length > 0) {
+          return {
+            ...m,
+            conditionGroups: [...mg.conditionGroups, ...(m.conditionGroups || [])]
+          };
+        }
+        return m;
+      })
+    );
+    const allEntryModifiers = [...(entry.modifiers || []), ...entryGroupModifiers];
+
     // Modifiers for point scaling
-    if (entry.modifiers) {
+    if (allEntryModifiers.length > 0) {
       const rawTierMods = [];
-      for (const m of entry.modifiers) {
+      for (const m of allEntryModifiers) {
         if (m.field !== '51b2-306e-1021-d207') continue;
         let val = 0;
         if (m.type === 'set') {
@@ -448,8 +468,8 @@ function createUnitParser({
 
     // Duplicate unit escalation penalties (11e Rule of 3 / duplicate tax via localConditionGroups 'before')
     const duplicatePenalties = [];
-    if (entry.modifiers) {
-      for (const m of entry.modifiers) {
+    if (allEntryModifiers.length > 0) {
+      for (const m of allEntryModifiers) {
         if (m.field !== '51b2-306e-1021-d207' || m.type !== 'increment') continue;
         const penalty = Number(m.value) || 0;
         if (penalty <= 0) continue;
