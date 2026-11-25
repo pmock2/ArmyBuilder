@@ -167,10 +167,25 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
 
   const wargearGroups = unit.wargearGroups || [];
 
-  const primaryEquippedData = computeUnitEquippedData(unit, selectedUnit, previewSelectedOptions, allUnitsInRoster);
+  const destroyedUnitIds = isPlayMode
+    ? new Set(
+        allUnitsInRoster
+          .filter((u) => isUnitDestroyedInPlay(u, playState, allUnitsInRoster))
+          .map((u) => u.instanceId)
+      )
+    : undefined;
+
+  const primaryEquippedData = computeUnitEquippedData(
+    unit,
+    selectedUnit,
+    previewSelectedOptions,
+    allUnitsInRoster,
+    destroyedUnitIds
+  );
   const {
     getGroupSelectedIds,
-    inheritedLeaderEnhancements
+    inheritedLeaderEnhancements,
+    inheritedUnitAbilities
   } = primaryEquippedData;
 
   const attachedPrimaryMember = isShowingAttachedUnit ? attachedUnitMembers[0] : selectedUnit || null;
@@ -223,7 +238,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
         equipped:
           selectedUnit && m.instanceId === selectedUnit.instanceId
             ? primaryEquippedData
-            : computeUnitEquippedData(m.datasheet, m, {}, allUnitsInRoster)
+            : computeUnitEquippedData(m.datasheet, m, {}, allUnitsInRoster, destroyedUnitIds)
       }))
     : [
         {
@@ -479,7 +494,7 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     const list: {
       name: string;
       description: string;
-      sourceInfo?: { label: string; type: 'wargear' | 'enhancement' };
+      sourceInfo?: { label: string; type: 'wargear' | 'enhancement' | 'ability' };
       ownerName: string;
       ownerRole: 'Bodyguard' | 'Leader' | 'Support' | 'Retinue';
     }[] = [];
@@ -488,6 +503,13 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
     for (const dm of displayMembers) {
       for (const ab of dm.equipped.equippedAbilities) {
         const sourceInfo = dm.equipped.abilitySourceMap[ab.name];
+        if (
+          isShowingAttachedUnit &&
+          sourceInfo &&
+          (sourceInfo.type === 'ability' || /^(?:Leader|Support|Bodyguard|Retinue)\s+\(/.test(sourceInfo.label))
+        ) {
+          continue;
+        }
         const normSig = `${ab.name.toLowerCase()}::${(ab.description || '').replace(/\s+/g, ' ').trim().toLowerCase()}`;
         // Deduplicate identical shared rules (like Reanimation Protocols / Oath of Moment) across members
         if (!sourceInfo && seenCoreBySignature.has(normSig)) {
@@ -573,7 +595,23 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
   const renderKeywordsWithTooltips = (keywordsStr: string, addedKeywords: { kw: string; source: string }[] = []) => {
     const baseParts = keywordsStr ? keywordsStr.split(/,\s*/).filter(Boolean) : [];
     const baseSet = new Set(baseParts.map((k) => k.toLowerCase()));
-    const extraParts = addedKeywords.filter((a) => a.kw && !baseSet.has(a.kw.toLowerCase()));
+    const seenExtra = new Map<string, { kw: string; sources: string[] }>();
+    for (const a of addedKeywords) {
+      if (!a.kw) continue;
+      const key = a.kw.toLowerCase();
+      if (baseSet.has(key)) continue;
+      if (key.includes(':') && baseSet.has(key.split(':')[0].trim())) continue;
+      const existing = seenExtra.get(key);
+      if (existing) {
+        if (!existing.sources.includes(a.source)) existing.sources.push(a.source);
+      } else {
+        seenExtra.set(key, { kw: a.kw, sources: [a.source] });
+      }
+    }
+    const extraParts = Array.from(seenExtra.values()).map((e) => ({
+      kw: e.kw,
+      source: e.sources.join(', ')
+    }));
 
     if (baseParts.length === 0 && extraParts.length === 0) return null;
 
@@ -730,6 +768,14 @@ export const DatasheetModal: React.FC<DatasheetModalProps> = ({
                         className="text-xs px-2.5 py-1 rounded-md font-semibold bg-amber-950/50 text-amber-300 border border-amber-500/45"
                       >
                         Leader Enhancement: {lEnh.name} (via {leaderName})
+                      </span>
+                    ))}
+                    {inheritedUnitAbilities.map(({ ability: uAb, ownerName, roleLabel }, idx) => (
+                      <span
+                        key={`${uAb.name}-${ownerName}-${idx}`}
+                        className="text-xs px-2.5 py-1 rounded-md font-semibold bg-sky-950/50 text-sky-300 border border-sky-500/45"
+                      >
+                        {roleLabel} Ability: {uAb.name} (via {ownerName})
                       </span>
                     ))}
                   </div>

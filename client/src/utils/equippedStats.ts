@@ -11,7 +11,7 @@ import {
 export interface SourcedStatModifier {
   mod: StatModifier;
   source: string;
-  sourceType: 'wargear' | 'enhancement';
+  sourceType: 'wargear' | 'enhancement' | 'ability';
 }
 
 export interface ComputedStatValue {
@@ -49,7 +49,259 @@ export interface ComputedWeaponProfile {
 }
 
 export interface ComputedAbility extends Ability {
-  sourceInfo?: { label: string; type: 'wargear' | 'enhancement' };
+  sourceInfo?: { label: string; type: 'wargear' | 'enhancement' | 'ability' };
+}
+
+export interface ExtractedAbilityModifiers {
+  mods: StatModifier[];
+  requiresLeading: boolean;
+}
+
+const KNOWN_UNBRACKETED_WEAPON_KEYWORDS: RegExp[] = [
+  /\blethal\s+hits(?:\s*:\s*non-[a-z/]+)?/gi,
+  /\bsustained\s+hits\s+\d+(?:\s*:\s*non-[a-z/]+)?/gi,
+  /\bdevastating\s+wounds(?:\s*:\s*non-[a-z/]+)?/gi,
+  /\bignores\s+cover\b/gi,
+  /\blance\b/gi,
+  /\bassault\b/gi,
+  /\bprecision\b/gi,
+  /\btwin-linked\b/gi
+];
+
+function formatWeaponKeywordLabel(raw: string): string {
+  const cleaned = raw.replace(/[\[\]\*\^]/g, '').replace(/\s+/g, ' ').trim();
+  const colonIdx = cleaned.indexOf(':');
+  const mainPart = (colonIdx >= 0 ? cleaned.slice(0, colonIdx) : cleaned).trim();
+  const suffixPart = colonIdx >= 0 ? cleaned.slice(colonIdx + 1).trim() : '';
+
+  const formatMain = (s: string) =>
+    s
+      .split(/\s+/)
+      .map((word) => {
+        if (word.includes('-')) {
+          const [first, ...rest] = word.split('-');
+          const capFirst = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+          const capRest = rest.map((r) =>
+            first.toLowerCase() === 'anti'
+              ? r.charAt(0).toUpperCase() + r.slice(1).toLowerCase()
+              : r.toLowerCase()
+          );
+          return [capFirst, ...capRest].join('-');
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(' ');
+
+  const formattedMain = formatMain(mainPart);
+  if (!suffixPart) return formattedMain;
+  return `${formattedMain}: ${suffixPart}`;
+}
+
+/**
+ * Extracts unconditional unit-wide StatModifiers from a datasheet or wargear ability
+ * (such as Tactical Precision granting [LETHAL HITS: non-MONSTER/VEHICLE] to the unit's attacks).
+ */
+export function extractStatModifiersFromAbility(
+  ability?: Ability | null
+): ExtractedAbilityModifiers | null {
+  if (!ability?.description) return null;
+
+  const raw = ability.description
+    .replace(/[\*\^]/g, '')
+    .replace(/[\u2011\u2013\u2014]/g, '-')
+    .replace(/[’‘]/g, "'");
+  const normalized = raw.replace(/\s+/g, ' ').trim();
+
+  const leadingMatch = normalized.match(
+    /^while\s+(?:(?:this\s+(?:model|unit)|the\s+bearer)\s+is\s+)?leading\s+a(?:\s+bodyguard)?\s+unit,?\s*(.+)$/i
+  );
+  const requiresLeading = Boolean(leadingMatch);
+  const body = (leadingMatch ? leadingMatch[1] : normalized).trim();
+
+  // Reject conditional, phase-limited, activated, or target-restricted abilities
+  if (
+    /\b(?:if\b|when\b|while\b|once\s+per|in\s+your\b|in\s+the\b|at\s+the\s+start|at\s+the\s+end|each\s+time\b|until\s+the\s+end|select\s+one|you\s+can\b|unless\b|that\s+target|targeting\b|remained\s+stationary|within\s+\d|against\b|excluding\b|made\s+a\s+charge|charge\s+move|normal\s+move|advance\s+move|fall-?back\s+move|empowered|battle-?shocked|below\s+half|below\s+starting)\b/i.test(
+      body
+    )
+  ) {
+    return null;
+  }
+
+  // Must apply to the unit / models in the unit (not solely a single model)
+  const mentionsUnit =
+    /\b(?:this\s+unit|that\s+unit|the\s+bearer's\s+unit|models\s+in\s+(?:this|that|the\s+bearer's)\s+unit)\b/i.test(
+      body
+    );
+  if (!mentionsUnit) {
+    return null;
+  }
+
+  const mods: StatModifier[] = [];
+
+  // 1. Weapon keyword grants (e.g. "This unit's attacks have [LETHAL HITS: non-MONSTER/VEHICLE].")
+  const attacksMatch = body.match(
+    /\b(?:this|that|the\s+bearer's)\s+unit's\s+(ranged\s+|melee\s+)?attacks\s+have\s+(.+)$/i
+  );
+  const weaponsMatch = body.match(
+    /\b(ranged\s+|melee\s+)?weapons\s+equipped\s+by\s+models\s+in\s+(?:this|that|the\s+bearer's)\s+unit\s+have\s+(?:the\s+)?(.+)$/i
+  );
+
+  const kwScopeMatch = attacksMatch || weaponsMatch;
+  if (kwScopeMatch) {
+    const scopeWord = (kwScopeMatch[1] || '').trim().toLowerCase();
+    const targets: ('ranged' | 'melee')[] =
+      scopeWord === 'ranged'
+        ? ['ranged']
+        : scopeWord === 'melee'
+        ? ['melee']
+        : ['ranged', 'melee'];
+    const tail = kwScopeMatch[2];
+
+    const bracketMatches = Array.from(tail.matchAll(/\[([^\]]+)\]/g));
+    const keywordsToAdd: string[] = [];
+
+    if (bracketMatches.length > 0) {
+      for (const bm of bracketMatches) {
+        const formatted = formatWeaponKeywordLabel(bm[1]);
+        if (formatted && !keywordsToAdd.some((k) => k.toLowerCase() === formatted.toLowerCase())) {
+          keywordsToAdd.push(formatted);
+        }
+      }
+    } else {
+      for (const pattern of KNOWN_UNBRACKETED_WEAPON_KEYWORDS) {
+        const m = tail.match(pattern);
+        if (m) {
+          for (const rawKw of m) {
+            const formatted = formatWeaponKeywordLabel(rawKw);
+            if (formatted && !keywordsToAdd.some((k) => k.toLowerCase() === formatted.toLowerCase())) {
+              keywordsToAdd.push(formatted);
+            }
+          }
+        }
+      }
+    }
+
+    for (const kw of keywordsToAdd) {
+      for (const t of targets) {
+        mods.push({
+          target: t,
+          stat: 'keywords',
+          type: 'append',
+          value: kw
+        });
+      }
+    }
+  }
+
+  // 2. Unconditional OC bonus
+  const plusOcMatch = body.match(
+    /(?:this|that)\s+unit\s+has\s+\+(\d+)\s+OC\b|add\s+(\d+)\s+to\s+the\s+objective\s+control\s+characteristic\s+of\s+models\s+in\s+(?:this|that|the\s+bearer's)\s+unit/i
+  );
+  if (plusOcMatch) {
+    const val = Number(plusOcMatch[1] || plusOcMatch[2]);
+    if (val > 0) {
+      mods.push({
+        target: 'unit',
+        stat: 'OC',
+        type: 'increment',
+        value: val
+      });
+    }
+  }
+
+  // 3. Unconditional AP improvement
+  const apMatch = body.match(
+    /improve\s+the\s+(?:armour\s+penetration|AP)\s+characteristic\s+of\s+(ranged\s+|melee\s+)?weapons\s+equipped\s+by\s+models\s+in\s+(?:this|that|the\s+bearer's)\s+unit\s+by\s+(\d+)/i
+  );
+  if (apMatch) {
+    const scopeWord = (apMatch[1] || '').trim().toLowerCase();
+    const val = Number(apMatch[2]);
+    if (val > 0) {
+      const targets: ('ranged' | 'melee')[] =
+        scopeWord === 'ranged'
+          ? ['ranged']
+          : scopeWord === 'melee'
+          ? ['melee']
+          : ['ranged', 'melee'];
+      for (const t of targets) {
+        mods.push({
+          target: t,
+          stat: 'AP',
+          type: 'decrement',
+          value: val
+        });
+      }
+    }
+  }
+
+  // 4. Unconditional Invulnerable save
+  const inSvMatch = body.match(
+    /\b(?:this\s+unit|that\s+unit|models\s+in\s+(?:this|that|the\s+bearer's)\s+unit)\s+(?:has|have)\s+a\s+(\d\+)\s+(?:invulnerable\s+save|InvSv)\b/i
+  );
+  if (inSvMatch) {
+    mods.push({
+      target: 'unit',
+      stat: 'InSv',
+      type: 'set',
+      value: inSvMatch[1]
+    });
+  }
+
+  return mods.length > 0 ? { mods, requiresLeading } : null;
+}
+
+function getUnitDirectEquippedAbilities(ds: Datasheet, sel?: SelectedUnit | null): Ability[] {
+  const wargearGroups = ds.wargearGroups || [];
+  const getGroupSelIds = (groupId: string, defaultIds: string[]): string[] => {
+    if (sel?.selectedOptions && sel.selectedOptions[groupId] !== undefined) {
+      return sel.selectedOptions[groupId];
+    }
+    return defaultIds || [];
+  };
+  const baseProfileSet = new Set(ds.baseProfileNames || []);
+  const selectedSet = new Set<string>();
+  const unselectedSet = new Set<string>();
+  const optionAbilities: Ability[] = [];
+
+  for (const group of wargearGroups) {
+    if (group.requiresOption) {
+      const reqGroup = wargearGroups.find((wg) => wg.id === group.requiresOption!.groupId);
+      const reqSelIds = reqGroup ? getGroupSelIds(reqGroup.id, reqGroup.defaultOptionIds) : [];
+      if (!reqSelIds.includes(group.requiresOption.optionId)) {
+        for (const opt of group.options) {
+          for (const p of opt.profiles || []) unselectedSet.add(p.name);
+        }
+        continue;
+      }
+    }
+    const selIds = getGroupSelIds(group.id, group.defaultOptionIds);
+    for (const opt of group.options) {
+      const isSelected = selIds.includes(opt.id);
+      for (const p of opt.profiles || []) {
+        if (isSelected) {
+          selectedSet.add(p.name);
+          if (p.type === 'ability' && p.description && !optionAbilities.some((a) => a.name === p.name)) {
+            optionAbilities.push({ name: p.name, description: p.description });
+          }
+        } else {
+          unselectedSet.add(p.name);
+        }
+      }
+    }
+  }
+
+  const isEq = (name: string): boolean => {
+    if (wargearGroups.length === 0) return true;
+    return selectedSet.has(name) || baseProfileSet.has(name) || !unselectedSet.has(name);
+  };
+
+  const result: Ability[] = [...(ds.abilities || []).filter((a) => isEq(a.name))];
+  for (const oa of optionAbilities) {
+    if (!result.some((a) => a.name === oa.name)) {
+      result.push(oa);
+    }
+  }
+  return result;
 }
 
 /**
@@ -180,6 +432,13 @@ export function computeModifiedStat(
     }
 
     if (mod.type === 'set') {
+      if (statName === 'InSv') {
+        const curNum = parseInt(current, 10);
+        const nextNum = parseInt(String(mod.value), 10);
+        if (Number.isFinite(curNum) && Number.isFinite(nextNum) && curNum <= nextNum) {
+          continue;
+        }
+      }
       current = String(mod.value);
       if (!sources.includes(source)) sources.push(source);
     } else if (mod.type === 'increment' || mod.type === 'decrement') {
@@ -210,7 +469,8 @@ export function computeUnitEquippedData(
   unit: Datasheet,
   selectedUnit?: SelectedUnit | null,
   previewSelectedOptions?: Record<string, string[]>,
-  allUnitsInRoster: SelectedUnit[] = []
+  allUnitsInRoster: SelectedUnit[] = [],
+  destroyedUnitIds?: Set<string>
 ) {
   const wargearGroups = unit.wargearGroups || [];
 
@@ -230,9 +490,9 @@ export function computeUnitEquippedData(
   const selectedOptionProfiles: {
     profile: NonNullable<WargearOption['profiles']>[number];
     source: string;
-    sourceType: 'wargear' | 'enhancement';
+    sourceType: 'wargear' | 'enhancement' | 'ability';
   }[] = [];
-  const abilitySourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
+  const abilitySourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' | 'ability' }> = {};
   const weaponSourceMap: Record<string, { label: string; type: 'wargear' | 'enhancement' }> = {};
   const activeStatModifiers: SourcedStatModifier[] = [];
   const modelGroupPrefixes = new Map<string, { displayName: string; perModel: boolean }>();
@@ -240,6 +500,7 @@ export function computeUnitEquippedData(
   const squadOptionStatBatches: { name: string; count: number; mods: SourcedStatModifier[] }[] = [];
   const selectedOptionCountSum: Record<string, number> = {};
   const selectedOptionCountMax: Record<string, number> = {};
+  const wargearAbilitiesWithExplicitMods = new Set<string>();
 
   const currentModels = Math.max(unit.minModels || 1, selectedUnit?.modelsCount || unit.minModels || 1);
 
@@ -360,6 +621,9 @@ export function computeUnitEquippedData(
       }
       for (const p of opt.profiles || []) {
         if (isSelected) {
+          if (p.type === 'ability' && opt.statModifiers && opt.statModifiers.length > 0) {
+            wargearAbilitiesWithExplicitMods.add(p.name.toLowerCase());
+          }
           selectedProfileSet.add(p.name);
           selectedOptionProfiles.push({
             profile: p,
@@ -449,71 +713,128 @@ export function computeUnitEquippedData(
     }
   }
 
-  // 2. Include unit-affecting enhancements from attached Leader / Support units
-  const inheritedLeaderEnhancements: { enhancement: Enhancement; leaderName: string }[] = [];
+  // Resolve companion units in the same Attached Unit (Leader, Support, Retinue, or Bodyguard)
+  const attachedCompanionUnits: { unit: SelectedUnit; roleLabel: string }[] = [];
   if (selectedUnit && allUnitsInRoster.length > 0) {
-    const attachedCharacters = [
-      selectedUnit.attachedLeaderId
-        ? allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedLeaderId)
-        : undefined,
-      selectedUnit.attachedSupportId
-        ? allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedSupportId)
-        : undefined
-    ].filter((u): u is SelectedUnit => Boolean(u && u.enhancement));
+    const seenCompanionIds = new Set<string>([selectedUnit.instanceId]);
+    const pushCompanion = (comp: SelectedUnit | undefined, roleLabel: string) => {
+      if (!comp || seenCompanionIds.has(comp.instanceId)) return;
+      if (destroyedUnitIds?.has(comp.instanceId)) return;
+      seenCompanionIds.add(comp.instanceId);
+      attachedCompanionUnits.push({ unit: comp, roleLabel });
+    };
 
-    for (const charUnit of attachedCharacters) {
-      const leaderEnh = charUnit.enhancement!;
-      if (!doesEnhancementAffectLedUnit(leaderEnh)) continue;
+    const resolveRoleLabel = (u: SelectedUnit): string => {
+      if (u.isSupport && !u.isLeader) return 'Support';
+      if (u.isLeader) return 'Leader';
+      return 'Leader';
+    };
 
-      inheritedLeaderEnhancements.push({
-        enhancement: leaderEnh,
-        leaderName: charUnit.name
-      });
-
-      const sourceLabel = `Leader (${charUnit.name}) • ${leaderEnh.name}`;
-
-      if (leaderEnh.statModifiers) {
-        for (const sm of leaderEnh.statModifiers) {
-          if (doesStatModifierApplyToLedUnit(leaderEnh, sm)) {
-            activeStatModifiers.push({
-              mod: sm,
-              source: sourceLabel,
-              sourceType: 'enhancement'
-            });
+    if (selectedUnit.attachedToBodyguardId) {
+      const bg = allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedToBodyguardId);
+      if (bg && !destroyedUnitIds?.has(bg.instanceId)) {
+        pushCompanion(bg, 'Bodyguard');
+        if (bg.attachedLeaderId) {
+          pushCompanion(allUnitsInRoster.find((u) => u.instanceId === bg.attachedLeaderId), 'Leader');
+        }
+        if (bg.attachedSupportId) {
+          pushCompanion(allUnitsInRoster.find((u) => u.instanceId === bg.attachedSupportId), 'Support');
+        }
+        if (bg.attachedRetinueId) {
+          pushCompanion(allUnitsInRoster.find((u) => u.instanceId === bg.attachedRetinueId), 'Retinue');
+        }
+        for (const u of allUnitsInRoster) {
+          if (u.attachedToBodyguardId === bg.instanceId) {
+            pushCompanion(u, resolveRoleLabel(u));
           }
         }
       }
+    } else {
+      if (selectedUnit.attachedLeaderId) {
+        pushCompanion(allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedLeaderId), 'Leader');
+      }
+      if (selectedUnit.attachedSupportId) {
+        pushCompanion(allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedSupportId), 'Support');
+      }
+      if (selectedUnit.attachedRetinueId) {
+        pushCompanion(allUnitsInRoster.find((u) => u.instanceId === selectedUnit.attachedRetinueId), 'Retinue');
+      }
+      for (const u of allUnitsInRoster) {
+        if (u.attachedToBodyguardId === selectedUnit.instanceId) {
+          pushCompanion(u, resolveRoleLabel(u));
+        }
+      }
+    }
+  }
 
-      const abilityProfiles = (leaderEnh.profiles || []).filter((p) => p.type === 'ability');
-      if (abilityProfiles.length > 0) {
-        for (const p of abilityProfiles) {
-          selectedProfileSet.add(p.name);
-          selectedOptionProfiles.push({
-            profile: p,
+  const isAttachedToUnit = Boolean(
+    selectedUnit &&
+      (selectedUnit.attachedToBodyguardId ||
+        selectedUnit.attachedLeaderId ||
+        selectedUnit.attachedSupportId ||
+        selectedUnit.attachedRetinueId ||
+        attachedCompanionUnits.length > 0)
+  );
+
+  // 2. Include unit-affecting enhancements from attached companion units
+  const inheritedLeaderEnhancements: { enhancement: Enhancement; leaderName: string }[] = [];
+  const inheritedEnhancementAbilityNames = new Set<string>();
+  for (const { unit: comp, roleLabel } of attachedCompanionUnits) {
+    const compEnh = comp.enhancement;
+    if (!compEnh || !doesEnhancementAffectLedUnit(compEnh)) continue;
+
+    if (roleLabel === 'Leader' || roleLabel === 'Support') {
+      inheritedLeaderEnhancements.push({
+        enhancement: compEnh,
+        leaderName: comp.name
+      });
+    }
+
+    const sourceLabel = `${roleLabel} (${comp.name}) • ${compEnh.name}`;
+
+    if (compEnh.statModifiers) {
+      for (const sm of compEnh.statModifiers) {
+        if (doesStatModifierApplyToLedUnit(compEnh, sm)) {
+          activeStatModifiers.push({
+            mod: sm,
             source: sourceLabel,
             sourceType: 'enhancement'
           });
-          abilitySourceMap[p.name] = {
-            label: sourceLabel,
-            type: 'enhancement'
-          };
         }
-      } else if (leaderEnh.description) {
-        selectedProfileSet.add(leaderEnh.name);
+      }
+    }
+
+    const abilityProfiles = (compEnh.profiles || []).filter((p) => p.type === 'ability');
+    if (abilityProfiles.length > 0) {
+      for (const p of abilityProfiles) {
+        selectedProfileSet.add(p.name);
+        inheritedEnhancementAbilityNames.add(p.name.toLowerCase());
         selectedOptionProfiles.push({
-          profile: {
-            name: leaderEnh.name,
-            type: 'ability',
-            description: leaderEnh.description
-          },
+          profile: p,
           source: sourceLabel,
           sourceType: 'enhancement'
         });
-        abilitySourceMap[leaderEnh.name] = {
+        abilitySourceMap[p.name] = {
           label: sourceLabel,
           type: 'enhancement'
         };
       }
+    } else if (compEnh.description) {
+      selectedProfileSet.add(compEnh.name);
+      inheritedEnhancementAbilityNames.add(compEnh.name.toLowerCase());
+      selectedOptionProfiles.push({
+        profile: {
+          name: compEnh.name,
+          type: 'ability',
+          description: compEnh.description
+        },
+        source: sourceLabel,
+        sourceType: 'enhancement'
+      });
+      abilitySourceMap[compEnh.name] = {
+        label: sourceLabel,
+        type: 'enhancement'
+      };
     }
   }
 
@@ -662,6 +983,61 @@ export function computeUnitEquippedData(
     }
   }
 
+  // 3. Apply unconditional unit-affecting abilities from this unit's own equipped abilities
+  for (const ab of equippedAbilitiesRaw) {
+    const srcInfo = abilitySourceMap[ab.name];
+    if (srcInfo?.type === 'enhancement') continue;
+    if (inheritedEnhancementAbilityNames.has(ab.name.toLowerCase())) continue;
+    if (wargearAbilitiesWithExplicitMods.has(ab.name.toLowerCase())) continue;
+
+    const extracted = extractStatModifiersFromAbility(ab);
+    if (!extracted) continue;
+    if (extracted.requiresLeading && !isAttachedToUnit) continue;
+
+    for (const sm of extracted.mods) {
+      activeStatModifiers.push({
+        mod: sm,
+        source: `Ability: ${ab.name}`,
+        sourceType: 'ability'
+      });
+    }
+  }
+
+  // 4. Inherit unconditional unit-affecting abilities from attached companion units
+  //    (e.g., Lieutenant in Phobos Armour's Tactical Precision granting [LETHAL HITS: non-MONSTER/VEHICLE])
+  const inheritedUnitAbilities: { ability: Ability; ownerName: string; roleLabel: string }[] = [];
+  for (const { unit: comp, roleLabel } of attachedCompanionUnits) {
+    const compAbilities = getUnitDirectEquippedAbilities(comp.datasheet, comp);
+    for (const ab of compAbilities) {
+      const extracted = extractStatModifiersFromAbility(ab);
+      if (!extracted) continue;
+      if (extracted.requiresLeading && roleLabel === 'Bodyguard') continue;
+
+      const sourceLabel = `${roleLabel} (${comp.name}) • ${ab.name}`;
+      for (const sm of extracted.mods) {
+        activeStatModifiers.push({
+          mod: sm,
+          source: sourceLabel,
+          sourceType: 'ability'
+        });
+      }
+
+      inheritedUnitAbilities.push({
+        ability: ab,
+        ownerName: comp.name,
+        roleLabel
+      });
+
+      if (!equippedAbilitiesRaw.some((existing) => existing.name.toLowerCase() === ab.name.toLowerCase())) {
+        equippedAbilitiesRaw.push(ab);
+        abilitySourceMap[ab.name] = {
+          label: sourceLabel,
+          type: 'ability'
+        };
+      }
+    }
+  }
+
   const buildProfileStats = (base: typeof unit.stats, mods: SourcedStatModifier[]) => ({
     M: computeModifiedStat(base.M, 'M', mods, 'unit'),
     T: computeModifiedStat(base.T, 'T', mods, 'unit'),
@@ -796,6 +1172,20 @@ export function computeUnitEquippedData(
     }
   }
 
+  const dedupeAddedKeywords = (items: { kw: string; source: string }[]) => {
+    const seen = new Map<string, { kw: string; sources: string[] }>();
+    for (const item of items) {
+      const key = item.kw.toLowerCase();
+      const existing = seen.get(key);
+      if (existing) {
+        if (!existing.sources.includes(item.source)) existing.sources.push(item.source);
+      } else {
+        seen.set(key, { kw: item.kw, sources: [item.source] });
+      }
+    }
+    return Array.from(seen.values()).map((e) => ({ kw: e.kw, source: e.sources.join(', ') }));
+  };
+
   const computedRangedWeapons: ComputedWeaponProfile[] = equippedRangedRaw.map((w) => ({
     name: w.name,
     displayName: getEquippedWeaponDisplayName(w.name, 'ranged'),
@@ -806,9 +1196,11 @@ export function computeUnitEquippedData(
     AP: computeModifiedStat(w.AP, 'AP', activeStatModifiers, 'ranged', w.keywords),
     D: computeModifiedStat(w.D, 'D', activeStatModifiers, 'ranged', w.keywords),
     baseKeywords: w.keywords,
-    addedKeywords: activeStatModifiers
-      .filter((m) => m.mod.target === 'ranged' && m.mod.stat === 'keywords' && m.mod.type === 'append')
-      .map((m) => ({ kw: String(m.mod.value), source: m.source })),
+    addedKeywords: dedupeAddedKeywords(
+      activeStatModifiers
+        .filter((m) => m.mod.target === 'ranged' && m.mod.stat === 'keywords' && m.mod.type === 'append')
+        .map((m) => ({ kw: String(m.mod.value), source: m.source }))
+    ),
     weaponSource: weaponSourceMap[w.name]
   }));
 
@@ -822,9 +1214,11 @@ export function computeUnitEquippedData(
     AP: computeModifiedStat(w.AP, 'AP', activeStatModifiers, 'melee', w.keywords),
     D: computeModifiedStat(w.D, 'D', activeStatModifiers, 'melee', w.keywords),
     baseKeywords: w.keywords,
-    addedKeywords: activeStatModifiers
-      .filter((m) => m.mod.target === 'melee' && m.mod.stat === 'keywords' && m.mod.type === 'append')
-      .map((m) => ({ kw: String(m.mod.value), source: m.source })),
+    addedKeywords: dedupeAddedKeywords(
+      activeStatModifiers
+        .filter((m) => m.mod.target === 'melee' && m.mod.stat === 'keywords' && m.mod.type === 'append')
+        .map((m) => ({ kw: String(m.mod.value), source: m.source }))
+    ),
     weaponSource: weaponSourceMap[w.name]
   }));
 
@@ -875,6 +1269,7 @@ export function computeUnitEquippedData(
     getEquippedWeaponDisplayName,
     activeStatModifiers,
     inheritedLeaderEnhancements,
+    inheritedUnitAbilities,
     abilitySourceMap,
     weaponSourceMap,
     equippedRangedWeapons: equippedRangedRaw,
