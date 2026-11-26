@@ -32,6 +32,7 @@ export const KeywordTooltip: React.FC<KeywordTooltipProps> = ({ keyword, childre
   // Handles plain keywords, bracketed [KEYWORD], and parameterized forms (e.g. "Rapid Fire 1", "Anti-Infantry 4+", "Melta 2")
   const cleanKey = keyword.trim().replace(/^\[|\]$/g, '').toUpperCase();
   const baseKey = cleanKey
+    .replace(/\s*:.*$/, '')
     .replace(/\s+([0-9+D-]+|X\+?)$/, '')
     .replace(/-(INFANTRY|VEHICLE|MONSTER|MOUNTED|TITANIC|FLY|CHARACTER).*$/, '');
 
