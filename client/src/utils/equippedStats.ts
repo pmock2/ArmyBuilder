@@ -841,13 +841,37 @@ export function computeUnitEquippedData(
   const getEquippedWeaponDisplayName = (weaponName: string, weaponType?: 'ranged' | 'melee'): string => {
     if (/^\d+x\s/i.test(weaponName)) return weaponName;
     const typedKey = weaponType ? `${weaponType}:${weaponName}` : null;
+    const sameWeaponName = (a: string, b: string) => a.toLowerCase() === b.toLowerCase();
+    const isBaseWeaponName = (name: string) =>
+      baseProfileSet.has(name) ||
+      Boolean(unit.baseProfileNames && unit.baseProfileNames.some((p) => sameWeaponName(p, name)));
+
+    const getEffectiveProfilesForOption = (groupId: string, opt: WargearOption) => {
+      const profiles = [...(opt.profiles || [])];
+      const optNames = [opt.name];
+      for (const subGroup of wargearGroups) {
+        if (
+          subGroup.requiresOption?.groupId === groupId &&
+          subGroup.requiresOption?.optionId === opt.id
+        ) {
+          const subSelIds = getGroupSelectedIds(subGroup.id, subGroup.defaultOptionIds);
+          for (const subId of subSelIds) {
+            const subOpt = subGroup.options.find((o) => o.id === subId);
+            if (subOpt) {
+              optNames.push(subOpt.name);
+              if (subOpt.profiles) profiles.push(...subOpt.profiles);
+            }
+          }
+        }
+      }
+      return { profiles, optNames };
+    };
 
     const optSum = (typedKey && selectedOptionCountSum[typedKey] !== undefined)
       ? selectedOptionCountSum[typedKey]
       : (selectedOptionCountSum[weaponName] || 0);
 
-    const isBaseWeapon = baseProfileSet.has(weaponName) ||
-      Boolean(unit.baseProfileNames && unit.baseProfileNames.some(p => p.toLowerCase() === weaponName.toLowerCase()));
+    const isBaseWeapon = isBaseWeaponName(weaponName);
 
     let totalCount = 1;
 
@@ -872,18 +896,19 @@ export function computeUnitEquippedData(
           : (unit.baseWeaponCounts?.[weaponName] || 0);
         let exclusiveReplacements = 0;
         for (const group of wargearGroups) {
-          if (getGroupRequiredCount(group) === 0 || !group.isExclusive) continue;
+          if (getGroupRequiredCount(group) === 0) continue;
+          if (!group.isExclusive && (group.id.endsWith('-squad-options') || group.perModel || group.requiresOption)) continue;
           const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
           const defaultOpts = group.options.filter(o => (group.defaultOptionIds || []).includes(o.id));
           const defaultHadThisWeapon = defaultOpts.some(o =>
-            o.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase())
+            o.profiles?.some(p => sameWeaponName(p.name, weaponName))
           );
           const currentlyHasThisWeapon = selIds.some(id => {
             const opt = group.options.find(o => o.id === id);
-            return opt?.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase());
+            return opt?.profiles?.some(p => sameWeaponName(p.name, weaponName));
           });
           if (defaultHadThisWeapon && !currentlyHasThisWeapon) {
-            exclusiveReplacements += 1;
+            exclusiveReplacements += group.perModel ? perModelCount : 1;
           }
         }
         totalCount = Math.max(0, mandatoryBaseCount - exclusiveReplacements + optSum);
@@ -891,6 +916,12 @@ export function computeUnitEquippedData(
         // Base squad weapon: default count is currentModels
         // Minus any models that replaced this base weapon in a specialist or sergeant loadout
         let replacements = 0;
+        const hasNonPistolBaseRanged =
+          weaponType === 'ranged' &&
+          unit.rangedWeapons.some(
+            (rw) => isBaseWeaponName(rw.name) && !rw.name.toLowerCase().includes('pistol')
+          );
+
         for (const group of wargearGroups) {
           if (getGroupRequiredCount(group) === 0) continue;
           const selIds = getGroupSelectedIds(group.id, group.defaultOptionIds);
@@ -899,32 +930,63 @@ export function computeUnitEquippedData(
             // Check if this exclusive group's default option originally provided this weapon
             const defaultOpts = group.options.filter(o => (group.defaultOptionIds || []).includes(o.id));
             const defaultHadThisWeapon = defaultOpts.some(o =>
-              o.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase())
+              o.profiles?.some(p => sameWeaponName(p.name, weaponName))
             );
             const currentlyHasThisWeapon = selIds.some(id => {
               const opt = group.options.find(o => o.id === id);
-              return opt?.profiles?.some(p => p.name.toLowerCase() === weaponName.toLowerCase());
+              return opt?.profiles?.some(p => sameWeaponName(p.name, weaponName));
             });
             if (defaultHadThisWeapon && !currentlyHasThisWeapon) {
-              replacements += 1;
+              replacements += group.perModel ? perModelCount : 1;
             }
-          } else {
-            // Squad specialist options (e.g. Eradicator with Multi-melta)
+          } else if (group.id.endsWith('-squad-options')) {
+            // Squad specialist options (e.g. Heavy Intercessor w/ Heavy Bolter, Intercessor w/ Grenade Launcher).
+            // Specialist options list the weapons that model carries; only subtract if this base weapon was replaced.
             for (const opt of group.options) {
               const c = selIds.filter(id => id === opt.id).length;
               if (c > 0) {
-                // If option adds a weapon of the same type and is NOT an auxiliary weapon (like grenade launcher)
-                const isAuxiliary = opt.profiles?.some(p => p.name.toLowerCase().includes('grenade'));
-                const replacesThisType = opt.profiles?.some(p => p.type === weaponType);
-                if (replacesThisType && !isAuxiliary) {
-                  // Only replace if this base weapon is the squad's primary weapon of that type
-                  // (i.e. not sidearm pistol unless squad has only pistols)
-                  const isSidearmPistol = weaponName.toLowerCase().includes('pistol') && !opt.name.toLowerCase().includes('pistol');
-                  if (!isSidearmPistol) {
-                    replacements += c;
-                  }
+                const { profiles: effProfiles, optNames } = getEffectiveProfilesForOption(group.id, opt);
+                const stillCarriesThisWeapon = effProfiles.some(p => sameWeaponName(p.name, weaponName));
+                if (stillCarriesThisWeapon) continue;
+
+                const equipsThisType = effProfiles.some(p => p.type === weaponType);
+                if (!equipsThisType) continue;
+
+                // If the specialist still carries a base melee weapon (e.g. Close combat weapon alongside
+                // an added melee weapon), it did not replace base melee weapons.
+                if (
+                  weaponType === 'melee' &&
+                  effProfiles.some(p => p.type === 'melee' && isBaseWeaponName(p.name))
+                ) {
+                  continue;
+                }
+
+                // Only replace sidearm pistol if the squad has no other ranged weapon or the option equips a pistol
+                const isSidearmPistol =
+                  weaponType === 'ranged' &&
+                  weaponName.toLowerCase().includes('pistol') &&
+                  hasNonPistolBaseRanged &&
+                  !optNames.some(n => n.toLowerCase().includes('pistol')) &&
+                  !effProfiles.some(p => p.name.toLowerCase().includes('pistol'));
+                if (!isSidearmPistol) {
+                  replacements += c;
                 }
               }
+            }
+          } else if (!group.perModel && !group.requiresOption) {
+            // Single-model optional wargear (e.g. "Reiver Sergeant — Optional Wargear"):
+            // Additional optional wargear does not replace other base weapons,
+            // but if this group's default granted this exact base weapon and it was deselected, subtract 1.
+            const defaultOpts = group.options.filter(o => (group.defaultOptionIds || []).includes(o.id));
+            const defaultHadThisWeapon = defaultOpts.some(o =>
+              o.profiles?.some(p => sameWeaponName(p.name, weaponName))
+            );
+            const currentlyHasThisWeapon = selIds.some(id => {
+              const opt = group.options.find(o => o.id === id);
+              return opt?.profiles?.some(p => sameWeaponName(p.name, weaponName));
+            });
+            if (defaultHadThisWeapon && !currentlyHasThisWeapon) {
+              replacements += 1;
             }
           }
         }
