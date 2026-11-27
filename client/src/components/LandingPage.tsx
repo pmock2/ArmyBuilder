@@ -1,5 +1,26 @@
-import React, { useState, useRef } from 'react';
-import { Plus, Upload, Trash2, Copy, Shield, Sparkles, BookOpen, Key, Package, Layers, Settings, MessageSquarePlus } from 'lucide-react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
+import {
+  Plus,
+  Upload,
+  Trash2,
+  Copy,
+  Shield,
+  Sparkles,
+  BookOpen,
+  Key,
+  Package,
+  Layers,
+  Settings,
+  MessageSquarePlus,
+  MoreVertical,
+  ArrowUp,
+  ArrowDown,
+  Palette,
+  ChevronDown,
+  ChevronUp,
+  RotateCcw,
+  Check
+} from 'lucide-react';
 import { ArmyRoster } from '../types/roster';
 import { validateClientRoster } from '../utils/validator';
 import { OwnedModelsView } from './OwnedModelsView';
@@ -9,6 +30,18 @@ import { PromoteStagingModal } from './PromoteStagingModal';
 import { isStagingBuild } from './StagingBanner';
 import { loadAllOwnedModels, getTotalOwnedModelsCount, OwnedFactionInventory } from '../utils/ownedModelsStorage';
 import { useBackNavigation } from '../utils/backNavigation';
+import { AppTheme, getActiveTheme, getAllThemes } from '../utils/themeStorage';
+import {
+  FactionGroupPrefs,
+  loadFactionGroupPrefs,
+  saveFactionGroupPrefs,
+  groupRostersByFaction,
+  getThemeDerivedPalette,
+  getFactionColorSwatches,
+  getReadableTitleColor,
+  hexToRgba,
+  normalizeHexColor
+} from '../utils/commandRosterStorage';
 
 interface LandingPageProps {
   rosters: ArmyRoster[];
@@ -43,6 +76,135 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   const [ownedModels, setOwnedModels] = useState<Record<string, OwnedFactionInventory>>(() => loadAllOwnedModels());
   const totalOwnedModels = getTotalOwnedModelsCount(ownedModels);
   const logoClickTimestampsRef = useRef<number[]>([]);
+
+  const [activeTheme, setActiveThemeState] = useState<AppTheme>(() => getActiveTheme());
+  const [allThemes, setAllThemes] = useState<AppTheme[]>(() => getAllThemes());
+  const [factionPrefs, setFactionPrefs] = useState<FactionGroupPrefs>(() => loadFactionGroupPrefs());
+  const [openOptionsFactionKey, setOpenOptionsFactionKey] = useState<string | null>(null);
+  const [colorPickerFactionKey, setColorPickerFactionKey] = useState<string | null>(null);
+  const openMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const syncThemeAndPrefs = () => {
+      setActiveThemeState(getActiveTheme());
+      setAllThemes(getAllThemes());
+      setFactionPrefs(loadFactionGroupPrefs());
+    };
+    window.addEventListener('wh40k-theme-updated', syncThemeAndPrefs);
+    window.addEventListener('storage', syncThemeAndPrefs);
+    return () => {
+      window.removeEventListener('wh40k-theme-updated', syncThemeAndPrefs);
+      window.removeEventListener('storage', syncThemeAndPrefs);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activeNav === 'armies') {
+      setActiveThemeState(getActiveTheme());
+      setAllThemes(getAllThemes());
+      setFactionPrefs(loadFactionGroupPrefs());
+    } else {
+      setOpenOptionsFactionKey(null);
+      setColorPickerFactionKey(null);
+    }
+  }, [activeNav]);
+
+  useEffect(() => {
+    if (!openOptionsFactionKey) return;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (openMenuRef.current && !openMenuRef.current.contains(e.target as Node)) {
+        setOpenOptionsFactionKey(null);
+        setColorPickerFactionKey(null);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpenOptionsFactionKey(null);
+        setColorPickerFactionKey(null);
+      }
+    };
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [openOptionsFactionKey]);
+
+  const factionGroups = useMemo(
+    () => groupRostersByFaction(rosters, factionPrefs.order),
+    [rosters, factionPrefs.order]
+  );
+
+  const defaultColorByFactionKey = useMemo(() => {
+    const palette = getThemeDerivedPalette(activeTheme, Math.max(8, factionGroups.length));
+    const sortedKeys = [...factionGroups.map((g) => g.key)].sort();
+    const map: Record<string, string> = {};
+    sortedKeys.forEach((key, idx) => {
+      map[key] = palette[idx % palette.length];
+    });
+    return map;
+  }, [activeTheme, factionGroups]);
+
+  const colorSwatches = useMemo(
+    () => getFactionColorSwatches(activeTheme, allThemes),
+    [activeTheme, allThemes]
+  );
+
+  const updateFactionPrefs = (updater: (prev: FactionGroupPrefs) => FactionGroupPrefs) => {
+    setFactionPrefs((prev) => {
+      const next = updater(prev);
+      saveFactionGroupPrefs(next);
+      return next;
+    });
+  };
+
+  const handleMoveFactionGroup = (factionKey: string, direction: 'up' | 'down') => {
+    const activeKeys = factionGroups.map((g) => g.key);
+    const idx = activeKeys.indexOf(factionKey);
+    const targetIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (idx < 0 || targetIdx < 0 || targetIdx >= activeKeys.length) return;
+
+    const nextActive = [...activeKeys];
+    [nextActive[idx], nextActive[targetIdx]] = [nextActive[targetIdx], nextActive[idx]];
+
+    updateFactionPrefs((prev) => {
+      const inactiveKeys = prev.order.filter((k) => !nextActive.includes(k));
+      return {
+        ...prev,
+        order: [...nextActive, ...inactiveKeys]
+      };
+    });
+    setOpenOptionsFactionKey(null);
+    setColorPickerFactionKey(null);
+  };
+
+  const handleToggleCollapseFaction = (factionKey: string) => {
+    updateFactionPrefs((prev) => ({
+      ...prev,
+      collapsed: {
+        ...prev.collapsed,
+        [factionKey]: !prev.collapsed[factionKey]
+      }
+    }));
+  };
+
+  const handleSetFactionColor = (factionKey: string, hexColor: string | null) => {
+    updateFactionPrefs((prev) => {
+      const nextColors = { ...prev.colors };
+      if (hexColor) {
+        nextColors[factionKey] = normalizeHexColor(hexColor);
+      } else {
+        delete nextColors[factionKey];
+      }
+      return {
+        ...prev,
+        colors: nextColors
+      };
+    });
+  };
 
   useBackNavigation(activeNav !== 'armies', () => setActiveNav('armies'));
   useBackNavigation(isPromoteModalOpen, () => setIsPromoteModalOpen(false));
@@ -273,9 +435,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
           </div>
         ) : (
-          /* Roster Grid */
-          <div className="panel-theme-section">
-            <div className="flex items-center justify-between mb-2.5 sm:mb-3.5">
+          /* Roster Grid Separated by Faction */
+          <div className="panel-theme-section pb-6">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
               <div>
                 <h2 className="font-warhammer text-base sm:text-lg font-bold text-theme-text">
                   Command Roster ({rosters.length})
@@ -283,58 +445,279 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-3">
-              {rosters.map((roster) => {
-                const validation = validateClientRoster(roster);
+            <div className="space-y-3 sm:space-y-4">
+              {factionGroups.map((group, groupIndex) => {
+                const customColor = factionPrefs.colors[group.key];
+                const groupColor = normalizeHexColor(
+                  customColor || defaultColorByFactionKey[group.key] || activeTheme.accentColor
+                );
+                const titleColor = getReadableTitleColor(groupColor, activeTheme);
+                const isCollapsed = Boolean(factionPrefs.collapsed[group.key]);
+                const isMenuOpen = openOptionsFactionKey === group.key;
+                const isColorPickerOpen = colorPickerFactionKey === group.key;
+                const isFirst = groupIndex === 0;
+                const isLast = groupIndex === factionGroups.length - 1;
+
                 return (
-                  <div
-                    key={roster.id}
-                    onClick={() => onSelectRoster(roster)}
-                    className="card-theme-item px-3 py-2 sm:px-3.5 sm:py-2.5 cursor-pointer flex items-center justify-between gap-2.5 active:scale-[0.995] group"
+                  <section
+                    key={group.key}
+                    className="rounded-xl sm:rounded-2xl border bg-theme-bg/40 p-2 sm:p-3 transition-colors"
+                    style={{
+                      borderColor: hexToRgba(groupColor, 0.34)
+                    }}
                   >
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1.5 min-w-0">
-                        <h3 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors leading-tight tracking-wide truncate">
-                          {roster.name}
+                    {/* Faction Group Header */}
+                    <div
+                      className="flex items-center justify-between gap-2 px-2.5 sm:px-3 py-2 rounded-xl border border-l-4 transition-colors relative"
+                      style={{
+                        backgroundColor: hexToRgba(groupColor, 0.14),
+                        borderColor: hexToRgba(groupColor, 0.3),
+                        borderLeftColor: groupColor
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => handleToggleCollapseFaction(group.key)}
+                        className="flex items-center gap-2 min-w-0 flex-1 text-left py-0.5"
+                        aria-expanded={!isCollapsed}
+                        aria-label={`${isCollapsed ? 'Expand' : 'Collapse'} ${group.name}`}
+                      >
+                        <span
+                          className="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-white/25"
+                          style={{ backgroundColor: groupColor }}
+                        />
+                        <h3
+                          className="font-warhammer text-xs sm:text-sm font-extrabold tracking-wider uppercase truncate"
+                          style={{ color: titleColor }}
+                        >
+                          {group.name}
                         </h3>
-                        {roster.includeLegends && (
-                          <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded bg-theme-elevated text-theme-text-secondary border border-theme-border font-mono">
-                            LEGENDS
-                          </span>
+                        <span className="text-xs font-mono font-semibold text-theme-text-secondary shrink-0">
+                          ({group.rosters.length})
+                        </span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-theme-text-secondary shrink-0 transition-transform duration-150 ${
+                            isCollapsed ? '-rotate-90' : ''
+                          }`}
+                        />
+                      </button>
+
+                      {/* Faction Options Dropdown */}
+                      <div
+                        className="relative shrink-0"
+                        ref={isMenuOpen ? openMenuRef : undefined}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setOpenOptionsFactionKey((prev) => (prev === group.key ? null : group.key));
+                            setColorPickerFactionKey(null);
+                          }}
+                          className="btn-theme-icon w-8 h-8 rounded-lg"
+                          title={`${group.name} options`}
+                          aria-label={`${group.name} options`}
+                          aria-haspopup="menu"
+                          aria-expanded={isMenuOpen}
+                        >
+                          <MoreVertical className="w-4 h-4" />
+                        </button>
+
+                        {isMenuOpen && (
+                          <div
+                            role="menu"
+                            aria-label={`${group.name} options`}
+                            className={`absolute right-0 w-56 rounded-xl bg-theme-surface border border-theme-border shadow-2xl py-1.5 z-50 ${
+                              isLast && factionGroups.length > 1 ? 'bottom-full mb-1.5' : 'mt-1.5'
+                            }`}
+                          >
+                            <button
+                              type="button"
+                              role="menuitem"
+                              disabled={isFirst}
+                              onClick={() => handleMoveFactionGroup(group.key, 'up')}
+                              className="w-full px-3.5 py-2 text-left text-xs font-semibold text-theme-text hover:bg-theme-elevated flex items-center gap-2.5 disabled:opacity-40 disabled:pointer-events-none"
+                            >
+                              <ArrowUp className="w-4 h-4 text-theme-text-secondary" />
+                              <span>Move Up</span>
+                            </button>
+
+                            <button
+                              type="button"
+                              role="menuitem"
+                              disabled={isLast}
+                              onClick={() => handleMoveFactionGroup(group.key, 'down')}
+                              className="w-full px-3.5 py-2 text-left text-xs font-semibold text-theme-text hover:bg-theme-elevated flex items-center gap-2.5 disabled:opacity-40 disabled:pointer-events-none"
+                            >
+                              <ArrowDown className="w-4 h-4 text-theme-text-secondary" />
+                              <span>Move Down</span>
+                            </button>
+
+                            <button
+                              type="button"
+                              role="menuitem"
+                              onClick={() => {
+                                handleToggleCollapseFaction(group.key);
+                                setOpenOptionsFactionKey(null);
+                                setColorPickerFactionKey(null);
+                              }}
+                              className="w-full px-3.5 py-2 text-left text-xs font-semibold text-theme-text hover:bg-theme-elevated flex items-center gap-2.5"
+                            >
+                              {isCollapsed ? (
+                                <>
+                                  <ChevronDown className="w-4 h-4 text-theme-text-secondary" />
+                                  <span>Expand Group</span>
+                                </>
+                              ) : (
+                                <>
+                                  <ChevronUp className="w-4 h-4 text-theme-text-secondary" />
+                                  <span>Collapse Group</span>
+                                </>
+                              )}
+                            </button>
+
+                            <div className="my-1 border-t border-theme-border-subtle" />
+
+                            <button
+                              type="button"
+                              role="menuitem"
+                              onClick={() =>
+                                setColorPickerFactionKey((prev) =>
+                                  prev === group.key ? null : group.key
+                                )
+                              }
+                              className="w-full px-3.5 py-2 text-left text-xs font-semibold text-theme-text hover:bg-theme-elevated flex items-center justify-between gap-2"
+                            >
+                              <span className="flex items-center gap-2.5">
+                                <Palette className="w-4 h-4 text-theme-text-secondary" />
+                                <span>Change Color</span>
+                              </span>
+                              <span
+                                className="w-4 h-4 rounded-full border border-white/25 shrink-0"
+                                style={{ backgroundColor: groupColor }}
+                              />
+                            </button>
+
+                            {isColorPickerOpen && (
+                              <div className="px-3 py-2.5 mt-1 border-t border-theme-border-subtle bg-theme-bg/50 space-y-2.5">
+                                <div className="grid grid-cols-6 gap-1.5">
+                                  {colorSwatches.slice(0, 12).map((swatch) => {
+                                    const selected = groupColor === swatch;
+                                    return (
+                                      <button
+                                        key={swatch}
+                                        type="button"
+                                        onClick={() => handleSetFactionColor(group.key, swatch)}
+                                        className={`w-6 h-6 rounded-full border flex items-center justify-center transition-transform active:scale-90 ${
+                                          selected
+                                            ? 'border-white ring-2 ring-theme-accent scale-105'
+                                            : 'border-white/25 hover:scale-105'
+                                        }`}
+                                        style={{ backgroundColor: swatch }}
+                                        title={swatch}
+                                        aria-label={`Select color ${swatch}`}
+                                      >
+                                        {selected && <Check className="w-3 h-3 text-white drop-shadow" />}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+
+                                <div className="flex items-center justify-between gap-2 pt-1">
+                                  <label className="flex items-center gap-2 text-[11px] font-medium text-theme-text-secondary cursor-pointer">
+                                    <input
+                                      type="color"
+                                      value={groupColor}
+                                      onChange={(e) => handleSetFactionColor(group.key, e.target.value)}
+                                      className="w-6 h-6 rounded border border-theme-border bg-transparent cursor-pointer p-0"
+                                      aria-label={`Custom color for ${group.name}`}
+                                    />
+                                    <span className="font-mono uppercase">{groupColor}</span>
+                                  </label>
+
+                                  {customColor && (
+                                    <button
+                                      type="button"
+                                      onClick={() => handleSetFactionColor(group.key, null)}
+                                      className="text-[11px] font-semibold text-theme-accent-soft hover:underline flex items-center gap-1"
+                                      title="Reset to theme color"
+                                    >
+                                      <RotateCcw className="w-3 h-3" />
+                                      <span>Reset</span>
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                          </div>
                         )}
                       </div>
+                    </div>
 
-                      <p className="text-[11px] sm:text-xs text-theme-text-secondary font-medium truncate mt-0.5">
-                        {roster.factionName}
-                        {roster.subFactionName ? ` • ${roster.subFactionName}` : ''}
-                      </p>
+                    {/* Faction Roster Cards */}
+                    {!isCollapsed && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-3 mt-2 sm:mt-3">
+                        {group.rosters.map((roster) => {
+                          const validation = validateClientRoster(roster);
+                          return (
+                            <div
+                              key={roster.id}
+                              onClick={() => onSelectRoster(roster)}
+                              className="card-theme-item px-3 py-2 sm:px-3.5 sm:py-2.5 cursor-pointer flex items-center justify-between gap-2.5 active:scale-[0.995] group"
+                              style={{
+                                borderLeftWidth: '3px',
+                                borderLeftColor: hexToRgba(groupColor, 0.85)
+                              }}
+                            >
+                              <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-1.5 min-w-0">
+                                  <h4 className="font-warhammer text-sm sm:text-base font-bold text-theme-text group-hover:text-theme-accent-soft transition-colors leading-tight tracking-wide truncate">
+                                    {roster.name}
+                                  </h4>
+                                  {roster.includeLegends && (
+                                    <span className="shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded bg-theme-elevated text-theme-text-secondary border border-theme-border font-mono">
+                                      LEGENDS
+                                    </span>
+                                  )}
+                                </div>
 
-                      <div className="text-[11px] sm:text-xs font-mono font-semibold text-theme-accent-soft mt-0.5">
-                        {validation.totalPoints}/{validation.pointsLimit} pts
+                                <p className="text-[11px] sm:text-xs text-theme-text-secondary font-medium truncate mt-0.5">
+                                  {roster.subFactionName && roster.subFactionName !== group.name
+                                    ? `${group.name} • ${roster.subFactionName}`
+                                    : roster.factionName}
+                                </p>
+
+                                <div className="text-[11px] sm:text-xs font-mono font-semibold text-theme-accent-soft mt-0.5">
+                                  {validation.totalPoints}/{validation.pointsLimit} pts
+                                </div>
+                              </div>
+
+                              <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
+                                <button
+                                  onClick={() => onDuplicateRoster(roster.id)}
+                                  className="btn-theme-icon min-w-[28px] min-h-[28px] sm:min-w-[30px] sm:min-h-[30px] rounded-lg"
+                                  title="Duplicate Roster"
+                                  aria-label="Duplicate Roster"
+                                >
+                                  <Copy className="w-3.5 h-3.5 stroke-[2]" />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    if (confirm(`Delete '${roster.name}'?`)) onDeleteRoster(roster.id);
+                                  }}
+                                  className="btn-theme-danger-icon min-w-[28px] min-h-[28px] sm:min-w-[30px] sm:min-h-[30px] rounded-lg"
+                                  title="Delete Roster"
+                                  aria-label="Delete Roster"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5 stroke-[2]" />
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                    </div>
-
-                    <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
-                      <button
-                        onClick={() => onDuplicateRoster(roster.id)}
-                        className="btn-theme-icon min-w-[28px] min-h-[28px] sm:min-w-[30px] sm:min-h-[30px] rounded-lg"
-                        title="Duplicate Roster"
-                        aria-label="Duplicate Roster"
-                      >
-                        <Copy className="w-3.5 h-3.5 stroke-[2]" />
-                      </button>
-                      <button
-                        onClick={() => {
-                          if (confirm(`Delete '${roster.name}'?`)) onDeleteRoster(roster.id);
-                        }}
-                        className="btn-theme-danger-icon min-w-[28px] min-h-[28px] sm:min-w-[30px] sm:min-h-[30px] rounded-lg"
-                        title="Delete Roster"
-                        aria-label="Delete Roster"
-                      >
-                        <Trash2 className="w-3.5 h-3.5 stroke-[2]" />
-                      </button>
-                    </div>
-                  </div>
+                    )}
+                  </section>
                 );
               })}
             </div>

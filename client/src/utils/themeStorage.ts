@@ -176,15 +176,22 @@ export function getActiveThemeId(): string {
   return localStorage.getItem(ACTIVE_THEME_STORAGE_KEY) || DEFAULT_THEMES[0].id;
 }
 
+export function getActiveTheme(): AppTheme {
+  const all = getAllThemes();
+  const activeId = getActiveThemeId();
+  return all.find((t) => t.id === activeId) || DEFAULT_THEMES[0];
+}
+
 export function setActiveTheme(theme: AppTheme): void {
   localStorage.setItem(ACTIVE_THEME_STORAGE_KEY, theme.id);
   applyThemeToDocument(theme);
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('wh40k-theme-updated', { detail: theme }));
+  }
 }
 
 export function initTheme(): AppTheme {
-  const all = getAllThemes();
-  const activeId = getActiveThemeId();
-  const found = all.find((t) => t.id === activeId) || DEFAULT_THEMES[0];
+  const found = getActiveTheme();
   applyThemeToDocument(found);
   return found;
 }
