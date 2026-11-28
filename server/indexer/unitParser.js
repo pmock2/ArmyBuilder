@@ -410,8 +410,21 @@ function createUnitParser({
     // Modifiers for point scaling
     if (allEntryModifiers.length > 0) {
       const rawTierMods = [];
+      const rawIncMods = [];
       for (const m of allEntryModifiers) {
         if (m.field !== '51b2-306e-1021-d207') continue;
+        if (m.repeats && m.repeats.length > 0) continue;
+
+        if (m.type === 'increment' || m.type === 'decrement') {
+          const delta = (Number(m.value) || 0) * (m.type === 'decrement' ? -1 : 1);
+          if (delta === 0) continue;
+          const bounds = extractModifierTierBounds(m);
+          if (bounds) {
+            rawIncMods.push({ ...bounds, delta });
+          }
+          continue;
+        }
+
         let val = 0;
         if (m.type === 'set') {
           val = Number(m.value) || 0;
@@ -460,6 +473,39 @@ function createUnitParser({
 
           if (!costTiers.some(t => t.models === tierModels)) {
             costTiers.push({ models: tierModels, cost: rm.cost });
+          }
+        }
+      }
+
+      if (rawIncMods.length > 0) {
+        const highestLower = Math.max(...rawIncMods.map(t => t.lower));
+        if (highestLower > maxModels) {
+          maxModels = highestLower;
+        }
+
+        costTiers.sort((a, b) => a.models - b.models);
+        const getSetCostAt = (k) => {
+          const match = costTiers.find(t => k <= t.models);
+          return match ? match.cost : costTiers[costTiers.length - 1].cost;
+        };
+
+        const perCountCosts = [];
+        for (let k = minModels; k <= maxModels; k++) {
+          let c = getSetCostAt(k);
+          for (const im of rawIncMods) {
+            if (k >= im.lower && (im.explicitUpper === null || k <= im.explicitUpper)) {
+              c += im.delta;
+            }
+          }
+          perCountCosts.push({ models: k, cost: Math.max(0, c) });
+        }
+
+        costTiers.length = 0;
+        for (let i = 0; i < perCountCosts.length; i++) {
+          const cur = perCountCosts[i];
+          const next = perCountCosts[i + 1];
+          if (!next || next.cost !== cur.cost) {
+            costTiers.push({ models: cur.models, cost: cur.cost });
           }
         }
       }
