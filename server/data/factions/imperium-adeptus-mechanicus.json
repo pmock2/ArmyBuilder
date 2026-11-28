@@ -2064,6 +2064,14 @@
         {
           "models": 1,
           "cost": 80
+        },
+        {
+          "models": 2,
+          "cost": 160
+        },
+        {
+          "models": 3,
+          "cost": 250
         }
       ],
       "stats": {

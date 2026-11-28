@@ -7786,6 +7786,14 @@
         {
           "models": 1,
           "cost": 50
+        },
+        {
+          "models": 2,
+          "cost": 100
+        },
+        {
+          "models": 3,
+          "cost": 165
         }
       ],
       "stats": {
